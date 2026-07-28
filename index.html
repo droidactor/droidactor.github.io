@@ -323,8 +323,12 @@
   <section id="privacy">
     <h2><span lang="en">Privacy policy</span><span lang="ko">개인정보 처리방침</span></h2>
     <p class="lead">
-      <span lang="en">Last updated: 28 July 2026 · Applies to every app listed above.</span>
-      <span lang="ko">최종 갱신: 2026년 7월 28일 · 위에 나열된 모든 앱에 적용됩니다.</span>
+      <span lang="en">Effective date: 28 July 2026 · Developer: droidactor (individual developer) ·
+        Contact: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> ·
+        Applies to every app listed above.</span>
+      <span lang="ko">시행일: 2026년 7월 28일 · 개발자: droidactor (개인 개발자) ·
+        문의: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> ·
+        위에 나열된 모든 앱에 적용됩니다.</span>
     </p>
 
     <div class="note">
@@ -386,12 +390,40 @@
 
     <h3><span lang="en">3. Advertising and consent</span><span lang="ko">3. 광고와 동의</span></h3>
     <p>
-      <span lang="en">These apps are free and show ads through <strong>Google AdMob</strong>. Google may
-        process your advertising ID and device information to select and measure ads; that processing is
-        governed by Google's own policies, linked below.</span>
-      <span lang="ko">이 앱들은 무료이며 <strong>Google AdMob</strong> 을 통해 광고를 표시합니다. Google 은 광고
-        선택·측정을 위해 광고 ID 와 기기 정보를 처리할 수 있으며, 그 처리는 아래 링크의 Google 자체 정책을
-        따릅니다.</span>
+      <span lang="en">These apps are free and show ads through <strong>Google AdMob</strong> (the Google
+        Mobile Ads SDK). Per Google's own data disclosure, that SDK may automatically collect the following
+        and share it with Google and advertising providers — for ad delivery, measurement and analytics, and
+        fraud prevention:</span>
+      <span lang="ko">이 앱들은 무료이며 <strong>Google AdMob</strong>(Google Mobile Ads SDK)을 통해 광고를
+        표시합니다. Google 의 데이터 공개 문서에 따르면 이 SDK 는 광고 제공, 측정·분석, 부정행위 방지를 위해
+        다음 정보를 자동으로 수집하거나 Google 및 광고 서비스 제공자와 공유할 수 있습니다.</span>
+    </p>
+    <ul>
+      <li>
+        <span lang="en">IP addresses, which can be used to estimate general location</span>
+        <span lang="ko">IP 주소 — 대략적인 지역 추정에 사용될 수 있습니다</span>
+      </li>
+      <li>
+        <span lang="en">App and ad interactions such as app launches, taps and ad views</span>
+        <span lang="ko">앱 실행, 탭, 광고 조회 등 앱·광고 상호작용</span>
+      </li>
+      <li>
+        <span lang="en">Diagnostic information about app and SDK performance</span>
+        <span lang="ko">앱 및 SDK 성능과 관련된 진단 정보</span>
+      </li>
+      <li>
+        <span lang="en">Device or account identifiers such as the Android advertising ID and app set ID</span>
+        <span lang="ko">Android 광고 ID, 앱 세트 ID 등 기기 또는 계정 식별자</span>
+      </li>
+    </ul>
+    <p>
+      <span lang="en">Data the ad SDK sends is encrypted in transit. Whether ads are personalised — and the
+        actual scope of processing — depends on your consent, your region, your Android ad settings and the
+        AdMob configuration. That processing is governed by Google's own policies, linked at the end of this
+        section.</span>
+      <span lang="ko">광고 SDK 가 전송하는 데이터는 전송 중 암호화됩니다. 광고의 개인화 여부와 실제 처리 범위는
+        사용자의 동의, 지역, Android 광고 설정, AdMob 설정에 따라 달라집니다. 그 처리에는 Google 자체 정책이
+        적용되며, 이 절 끝에 링크를 두었습니다.</span>
     </p>
     <p>
       <span lang="en">Two rules we hold ourselves to. First, <strong>the ad SDK is not initialised until
@@ -474,6 +506,23 @@
                 홍보성 알림은 보내지 않습니다.</span>
             </td>
           </tr>
+          <tr>
+            <td><code>AD_ID</code></td>
+            <td>
+              <span lang="en">All</span>
+              <span lang="ko">전체</span>
+            </td>
+            <td>
+              <span lang="en">Ad delivery and measurement by the Google Mobile Ads SDK
+                (<code>com.google.android.gms.permission.AD_ID</code>). The SDK declares this itself through
+                manifest merging, so it is present in the installed app even where an app's own manifest does
+                not list it. You can reset or delete the advertising ID in Android Settings.</span>
+              <span lang="ko">Google Mobile Ads SDK 의 광고 제공·측정을 위한 권한입니다
+                (<code>com.google.android.gms.permission.AD_ID</code>). SDK 가 매니페스트 병합으로 스스로
+                선언하므로, 앱 자체 매니페스트에 적혀 있지 않아도 설치된 앱에는 포함됩니다. Android 설정에서
+                광고 ID 를 재설정하거나 삭제할 수 있습니다.</span>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -486,7 +535,7 @@
         않습니다.</span>
     </p>
 
-    <h3><span lang="en">6. Your rights, and deleting your data</span><span lang="ko">6. 사용자의 권리와 데이터 삭제</span></h3>
+    <h3 id="data-deletion"><span lang="en">6. Your rights, and deleting your data</span><span lang="ko">6. 사용자의 권리와 데이터 삭제</span></h3>
     <p>
       <span lang="en">Because we hold no personal data of yours, there is nothing on our side to request
         access to, correct or delete. Everything the app stored lives on your device:
@@ -513,6 +562,29 @@
           가지 않습니다. 키 입력은 기록·저장되지 않고 저희에게 전송되지도 않습니다 — 앱은 현재 눌려 있는 키를
           추적할 만큼의 상태만 메모리에 유지합니다. 검증된 host 의 주소는 재연결을 위해 로컬에만 저장하며, 표시할
           때는 마스킹합니다. 위치 권한은 요구하지 않습니다.</span>
+      </p>
+      <p>
+        <span lang="en">The app has no API that reads the clipboard. Text you paste into an input field with
+          the system keyboard is treated exactly like typed text: the app converts it to HID usages and
+          modifiers, and only a keyboard report reaches the host — the original string is not retained.
+          Removing the Bluetooth bond also deletes that host's stored record.</span>
+        <span lang="ko">앱 코드에는 clipboard 를 읽는 API 가 없습니다. 시스템 키보드로 입력란에 붙여 넣은 내용은
+          직접 입력한 문자열과 똑같이 처리됩니다 — 앱이 HID usage 와 modifier 로 변환하고 host 에는 키보드
+          report 만 전달되며, 원문 문자열은 남지 않습니다. 블루투스 bond 를 제거하면 해당 host 의 저장 기록도
+          함께 삭제됩니다.</span>
+      </p>
+      <p>
+        <span lang="en">If you export a diagnostic file, it is written only to a location you pick in
+          Android's document picker, and it is redacted as it is created: the host Bluetooth address is
+          replaced with <code>redacted_at_creation</code>, and the host display name, input strings and
+          clipboard content are excluded entirely. Ad slots are gated on session state rather than on which
+          screen you are viewing — idle and connected allow ads, while connecting, recovering and isolated
+          states do not — and no ad is placed on the trackpad or keyboard surfaces.</span>
+        <span lang="ko">진단 파일을 export 하면 Android 문서 선택기에서 직접 고른 위치에만 저장되며, 생성 시점에
+          마스킹됩니다 — host 블루투스 주소는 <code>redacted_at_creation</code> 으로 대체되고, host 표시 이름과
+          입력 문자열·clipboard 내용은 아예 제외됩니다. 광고 슬롯은 보고 있는 화면이 아니라 세션 상태로
+          판정합니다 — 유휴·연결됨 상태에서만 허용하고 연결 진행 중·복구·격리 상태에서는 표시하지 않으며,
+          트랙패드 면과 키보드 면에는 광고를 두지 않습니다.</span>
       </p>
     </div>
 
@@ -547,6 +619,21 @@
           한 주소로 보내는 read-only 요청 1회입니다. 이 앱은 그런 장비에 쓰기를 하지 않습니다.</span>
       </p>
       <p>
+        <span lang="en">Identification also uses what devices themselves broadcast — mDNS, SSDP, WSD and
+          NetBIOS responses, plus the manufacturer inferred from a MAC/OUI prefix. Results depend on the
+          network: VLANs, firewalls, client isolation and device configuration all change what answers.
+          Two actions leave the app, and only when you choose them — CSV export copies the result text to
+          your clipboard (what happens to it afterwards is yours to control), and opening a device's web UI
+          hands the selected local URL to your default browser. Use the app only on networks and equipment
+          you own or are authorised to manage.</span>
+        <span lang="ko">식별에는 장비가 스스로 알리는 정보도 씁니다 — mDNS·SSDP·WSD·NetBIOS 응답과 MAC/OUI
+          접두어로 추정한 제조사입니다. 결과는 네트워크에 따라 달라집니다 — VLAN·방화벽·client isolation·장비
+          설정이 모두 응답 여부를 바꿉니다. 앱 밖으로 나가는 동작은 두 가지이며 사용자가 선택할 때만
+          일어납니다 — CSV 내보내기는 결과 텍스트를 클립보드에 복사하고(그 이후의 보관·공유는 사용자가
+          통제합니다), 장비 웹 UI 열기는 선택한 로컬 URL 을 기본 브라우저로 넘깁니다. 본인이 소유하거나 관리
+          권한을 받은 네트워크·장비에서만 사용하십시오.</span>
+      </p>
+      <p>
         <span lang="en">A result row can be handed to SSH Scout by deep link. That link carries the host and
           port only — never a username or password.</span>
         <span lang="ko">결과 행은 딥링크로 SSH Scout 에 넘길 수 있습니다. 이 링크는 host 와 port 만 싣고,
@@ -567,6 +654,21 @@
           <strong>저희나 제3자에게 전송되지 않으며 딥링크에도 포함되지 않습니다</strong> — 앱 sandbox 가 분리되어
           WIFI Scout 을 포함한 다른 앱이 읽을 수 없습니다. 터미널 세션은 폰에서 지정한 host 로 직접 연결되며,
           어떤 트래픽도 저희를 경유하지 않습니다. 세션 출력은 기기 밖에 저장되지 않습니다.</span>
+      </p>
+      <p>
+        <span lang="en">While the app is open and on Wi-Fi, it automatically tries the selected TCP port
+          (22 by default) against hosts in the <code>/24</code> subnet derived from your current local IPv4
+          address — that automatic sweep is the discovery feature itself. Credentials are not stored
+          permanently unless you choose to save them, and saved ones can be deleted per target from the
+          saved-connections list. The SSH server you connect to is neither chosen nor operated by us; that
+          server operator's own policies apply to whatever it does with your session. Use the app only on
+          networks you own or are authorised to administer.</span>
+        <span lang="ko">앱이 열려 있고 Wi-Fi 에 연결되어 있으면, 현재 로컬 IPv4 주소에서 산출한
+          <code>/24</code> 대역의 host 에 선택한 TCP 포트(기본 22)를 자동으로 시도합니다 — 이 자동 탐색이
+          발견 기능 그 자체입니다. 자격증명은 사용자가 저장을 선택하지 않으면 영구 저장하지 않으며, 저장한
+          것은 저장된 접속 목록에서 대상별로 삭제할 수 있습니다. 접속하는 SSH 서버는 저희가 선택하거나
+          운영하지 않으므로, 그 서버가 세션을 어떻게 처리하는지는 서버 운영자의 정책이 적용됩니다. 본인이
+          소유하거나 관리 권한을 받은 네트워크에서만 사용하십시오.</span>
       </p>
     </div>
 
