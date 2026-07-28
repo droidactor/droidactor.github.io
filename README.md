@@ -20,7 +20,7 @@ and the host for `app-ads.txt`.
 |---|---|
 | 개발자 웹사이트 | `https://droidactor.github.io/` |
 | 개인정보 처리방침 | `https://droidactor.github.io/#privacy` |
-| 앱별 개인정보 처리방침 | `#privacy-bthid` · `#privacy-ppt` · `#privacy-wifi` · `#privacy-ssh` · `#privacy-ytdl` |
+| 앱별 개인정보 처리방침 | `#privacy-<app key>` — `bthid` · `scanner` · `ssh` · `ytdl` · `ppt` (play-release `apps.tsv` 의 key 와 같다) |
 | app-ads.txt 검증 | `https://droidactor.github.io/app-ads.txt` |
 
 `app-ads.txt` 는 **도메인 루트에 있어야 한다.** 그래서 이 리포 이름이 `droidactor.github.io` 여야 하고
