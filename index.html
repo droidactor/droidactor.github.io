@@ -205,8 +205,8 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">⌨️</div>
-        <h3>BT HID Remote</h3>
-        <div class="pkg">com.droidactor.bthidremote</div>
+        <h3>Dotori Bluetooth Keyboard</h3>
+        <div class="pkg">com.droidactor.bt_keyboard</div>
         <p class="desc">
           <span lang="en">Turns the phone into a Bluetooth HID keyboard and mouse, so a PC or TV can be
             driven with nothing installed on the other side. Includes a trackpad, horizontal scroll and
@@ -222,8 +222,8 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">📊</div>
-        <h3>PPT Remote</h3>
-        <div class="pkg">com.droidactor.pptremote</div>
+        <h3>Dotori Bluetooth PPT Remote</h3>
+        <div class="pkg">com.droidactor.bt_ppt</div>
         <p class="desc">
           <span lang="en">A presentation clicker, deliberately limited to five actions over Bluetooth HID —
             next, previous, start, end and exit. Nothing to mis-tap while you are speaking.</span>
@@ -238,7 +238,7 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">📡</div>
-        <h3>WIFI Scout</h3>
+        <h3>Dotori WIFI Scout</h3>
         <div class="pkg">com.droidactor.wifi_scanner</div>
         <p class="desc">
           <span lang="en">Sweeps the private subnet of the Wi-Fi you are on and identifies which devices
@@ -254,12 +254,12 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">🔐</div>
-        <h3>SSH Scout</h3>
+        <h3>Dotori SSH Scout</h3>
         <div class="pkg">com.droidactor.ssh_scout</div>
         <p class="desc">
           <span lang="en">SSH connections, a terminal, and trust-on-first-use host key management.
-            Can be entered straight from a WIFI Scout result via deep link.</span>
-          <span lang="ko">SSH 접속·터미널과 TOFU 호스트키 관리. WIFI Scout 의 스캔 결과에서 딥링크로 바로
+            Can be entered straight from a Dotori WIFI Scout result via deep link.</span>
+          <span lang="ko">SSH 접속·터미널과 TOFU 호스트키 관리. Dotori WIFI Scout 의 스캔 결과에서 딥링크로 바로
             들어올 수 있습니다.</span>
         </p>
         <div class="foot">
@@ -270,8 +270,8 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">⬇️</div>
-        <h3>YouTube Downloader</h3>
-        <div class="pkg">com.dualsoft.ytdownloader</div>
+        <h3>Dotori YouTube Downloader</h3>
+        <div class="pkg">com.droidactor.ytdownloader</div>
         <p class="desc">
           <span lang="en">Downloads videos and playlists to the location you choose. Requests go from your
             device to the source directly — never through a server of ours.</span>
@@ -374,9 +374,9 @@
           의도적으로 마스킹해 표시합니다.</span>
       </li>
       <li>
-        <span lang="en">SSH credentials and TOFU host keys (SSH Scout), held in Android's protected
+        <span lang="en">SSH credentials and TOFU host keys (Dotori SSH Scout), held in Android's protected
           app storage</span>
-        <span lang="ko">SSH 자격증명과 TOFU 호스트키(SSH Scout) — Android 의 보호된 앱 저장소에 보관</span>
+        <span lang="ko">SSH 자격증명과 TOFU 호스트키(Dotori SSH Scout) — Android 의 보호된 앱 저장소에 보관</span>
       </li>
       <li>
         <span lang="en">Your own settings and preferences</span>
@@ -459,7 +459,7 @@
         <tbody>
           <tr>
             <td><code>BLUETOOTH_CONNECT</code><br><code>BLUETOOTH_ADVERTISE</code></td>
-            <td>BT HID Remote<br>PPT Remote</td>
+            <td>Dotori Bluetooth Keyboard<br>Dotori Bluetooth PPT Remote</td>
             <td>
               <span lang="en">To appear as a HID keyboard/mouse to a nearby host and send your key and
                 pointer input to it. Required by Android for any Bluetooth pairing.</span>
@@ -469,7 +469,7 @@
           </tr>
           <tr>
             <td><code>NEARBY_WIFI_DEVICES</code><br><span class="badge">neverForLocation</span></td>
-            <td>WIFI Scout<br>SSH Scout</td>
+            <td>Dotori WIFI Scout<br>Dotori SSH Scout</td>
             <td>
               <span lang="en">To read the subnet of the Wi-Fi you are connected to, which is what the scan
                 range is derived from. The <code>neverForLocation</code> flag is declared, so Android
@@ -496,8 +496,8 @@
           <tr>
             <td><code>FOREGROUND_SERVICE</code><br><code>POST_NOTIFICATIONS</code></td>
             <td>
-              <span lang="en">All except WIFI/SSH Scout</span>
-              <span lang="ko">WIFI/SSH Scout 외 전체</span>
+              <span lang="en">All except Dotori WIFI Scout / Dotori SSH Scout</span>
+              <span lang="ko">Dotori WIFI Scout / Dotori SSH Scout 외 전체</span>
             </td>
             <td>
               <span lang="en">So a HID session or a download keeps running with a visible notification while
@@ -551,7 +551,7 @@
     <h3><span lang="en">7. Per-app notes</span><span lang="ko">7. 앱별 사항</span></h3>
 
     <div class="policy" id="privacy-bthid">
-      <h3>BT HID Remote<span class="pkg-inline">com.droidactor.bthidremote</span></h3>
+      <h3>Dotori Bluetooth Keyboard<span class="pkg-inline">com.droidactor.bt_keyboard</span></h3>
       <p>
         <span lang="en">What you type and where you move the pointer goes over Bluetooth to the host you
           paired with, and nowhere else. Keystrokes are not logged, stored or transmitted to us — the app
@@ -589,15 +589,15 @@
     </div>
 
     <div class="policy" id="privacy-ppt">
-      <h3>PPT Remote<span class="pkg-inline">com.droidactor.pptremote</span></h3>
+      <h3>Dotori Bluetooth PPT Remote<span class="pkg-inline">com.droidactor.bt_ppt</span></h3>
       <p>
         <span lang="en">The app sends only five fixed key actions over Bluetooth HID and has no text entry
-          at all. Otherwise it behaves exactly as BT HID Remote above: paired host address stored locally
+          at all. Otherwise it behaves exactly as Dotori Bluetooth Keyboard above: paired host address stored locally
           and masked, no location permission, nothing transmitted to us. Ads are shown on the Home, host
           picker, pairing, settings and about screens only — <strong>never on the presenter screen or while
           connecting</strong>, so a running presentation is never interrupted.</span>
         <span lang="ko">블루투스 HID 로 고정된 5개 키 동작만 보내며, 텍스트 입력 기능이 아예 없습니다. 그 외에는
-          위 BT HID Remote 와 동일합니다 — 페어링 host 주소는 로컬 저장 후 마스킹, 위치 권한 없음, 저희에게
+          위 Dotori Bluetooth Keyboard 와 동일합니다 — 페어링 host 주소는 로컬 저장 후 마스킹, 위치 권한 없음, 저희에게
           전송되는 것 없음. 광고는 홈·host 선택·페어링·설정·정보 화면에만 표시되며,
           <strong>발표 화면과 연결 중 화면에는 표시하지 않습니다</strong> — 진행 중인 발표를 방해하지
           않기 위해서입니다.</span>
@@ -605,7 +605,7 @@
     </div>
 
     <div class="policy" id="privacy-scanner">
-      <h3>WIFI Scout<span class="pkg-inline">com.droidactor.wifi_scanner</span></h3>
+      <h3>Dotori WIFI Scout<span class="pkg-inline">com.droidactor.wifi_scanner</span></h3>
       <p>
         <span lang="en">Scanning happens entirely between your phone and the local network it is attached
           to. Results — IP addresses, hostnames, open ports, device kind — are shown on screen and kept on
@@ -634,25 +634,25 @@
           권한을 받은 네트워크·장비에서만 사용하십시오.</span>
       </p>
       <p>
-        <span lang="en">A result row can be handed to SSH Scout by deep link. That link carries the host and
+        <span lang="en">A result row can be handed to Dotori SSH Scout by deep link. That link carries the host and
           port only — never a username or password.</span>
-        <span lang="ko">결과 행은 딥링크로 SSH Scout 에 넘길 수 있습니다. 이 링크는 host 와 port 만 싣고,
+        <span lang="ko">결과 행은 딥링크로 Dotori SSH Scout 에 넘길 수 있습니다. 이 링크는 host 와 port 만 싣고,
           사용자명·비밀번호는 절대 전달하지 않습니다.</span>
       </p>
     </div>
 
     <div class="policy" id="privacy-ssh">
-      <h3>SSH Scout<span class="pkg-inline">com.droidactor.ssh_scout</span></h3>
+      <h3>Dotori SSH Scout<span class="pkg-inline">com.droidactor.ssh_scout</span></h3>
       <p>
         <span lang="en">SSH usernames, passwords, private keys and trust-on-first-use host keys are stored
           in the app's own protected storage on your device. <strong>They are never transmitted to us or to
           any third party, and are not included in the deep link</strong> — the app sandbox means they
-          cannot be read by another app, including WIFI Scout. Terminal sessions connect directly from your
+          cannot be read by another app, including Dotori WIFI Scout. Terminal sessions connect directly from your
           phone to the host you specify; no traffic is proxied through us. Session output is not saved off
           the device.</span>
         <span lang="ko">SSH 사용자명·비밀번호·개인키와 TOFU 호스트키는 기기 안 앱 전용 보호 저장소에 보관됩니다.
           <strong>저희나 제3자에게 전송되지 않으며 딥링크에도 포함되지 않습니다</strong> — 앱 sandbox 가 분리되어
-          WIFI Scout 을 포함한 다른 앱이 읽을 수 없습니다. 터미널 세션은 폰에서 지정한 host 로 직접 연결되며,
+          Dotori WIFI Scout 을 포함한 다른 앱이 읽을 수 없습니다. 터미널 세션은 폰에서 지정한 host 로 직접 연결되며,
           어떤 트래픽도 저희를 경유하지 않습니다. 세션 출력은 기기 밖에 저장되지 않습니다.</span>
       </p>
       <p>
@@ -673,7 +673,7 @@
     </div>
 
     <div class="policy" id="privacy-ytdl">
-      <h3>YouTube Downloader<span class="pkg-inline">com.dualsoft.ytdownloader</span></h3>
+      <h3>Dotori YouTube Downloader<span class="pkg-inline">com.droidactor.ytdownloader</span></h3>
       <p>
         <span lang="en">The URL you paste is requested directly from your device; we run no download server
           and never see what you download. Files are written to the location you pick through Android's own
