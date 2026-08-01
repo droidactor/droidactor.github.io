@@ -25,6 +25,7 @@ privacy policy, and the host for `app-ads.txt`.
 /app-ads.txt            AdMob 판매자 선언 (반드시 도메인 루트)
 /.nojekyll              Jekyll 빌드 우회
 /.gitignore             작업 메모(doit.txt)·리뷰 산출물이 공개 커밋에 딸려가지 않게 막는다
+/googlec8773d84a9d25688.html   Search Console 소유권 확인 파일 — **지우면 소유권이 풀린다**
 ```
 
 | 파일 | 역할 |
@@ -71,8 +72,9 @@ privacy policy, and the host for `app-ads.txt`.
 
 1. <https://search.google.com/search-console> 에서 속성 추가 → **URL 접두어** 로
    `https://droidactor.github.io/` 입력 (도메인 속성은 DNS 를 요구하므로 `github.io` 에서는 불가)
-2. 소유권 확인은 **HTML 파일 업로드** 방식이 이 리포에 맞는다. 받은 `google<...>.html` 을 리포 루트에
-   두고 push 한 뒤 확인을 누른다. (파일은 계속 남겨둔다 — 지우면 소유권이 풀린다)
+2. 소유권 확인은 **HTML 파일 업로드** 방식이 이 리포에 맞는다. 현재 `googlec8773d84a9d25688.html` 이
+   루트에 있다. **이 파일은 지우지 않는다** — 지우면 소유권이 풀리고 색인 요청 권한도 사라진다.
+   확인 파일을 다시 발급받으면 옛 파일은 지우지 말고 새 파일을 함께 둔다(둘 다 유효하다).
 3. 좌측 **Sitemaps** 에 `sitemap.xml` 제출
 4. **URL 검사**에 `https://droidactor.github.io/` 를 넣고 **색인 생성 요청**. 주요 제품 페이지도 같은 방식으로
    한 번씩 요청한다(하루 할당량이 있어 12개를 한 번에 다 넣지는 못한다)
