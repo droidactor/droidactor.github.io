@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotori SSH Scout — find the SSH hosts on your Wi-Fi and connect</title>
+<meta name="description" content="Credentials never leave the device. An Android SSH client that finds hosts first — it sweeps your /24 subnet for the port you pick, then connects.">
+<link rel="canonical" href="https://droidactor.github.io/ssh-scout/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/ssh-scout/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/ssh-scout/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/ssh-scout/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/ssh-scout/">
+<meta property="og:title" content="Dotori SSH Scout — SSH client with host discovery for Android">
+<meta property="og:description" content="Sweeps your subnet for the SSH port, connects with a terminal, and keeps credentials in the app's protected storage.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Dotori SSH Scout",
+  "url": "https://droidactor.github.io/ssh-scout/",
+  "identifier": "com.droidactor.ssh_scout",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Android 9.0 (API 28) and newer",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "description": "An SSH client for Android with a terminal, trust-on-first-use host key management, and automatic discovery of hosts answering on the chosen port in the local /24 subnet.",
+  "featureList": [
+    "SSH connections with a terminal",
+    "Trust-on-first-use host key management",
+    "Automatic sweep of the local /24 subnet for the chosen TCP port",
+    "Credentials kept in the app's protected storage",
+    "Entry by deep link from Dotori WIFI Scout"
+  ],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "droidactor", "url": "https://droidactor.github.io/" },
+  "privacyPolicy": "https://droidactor.github.io/#privacy-ssh"
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="Language">
+      <a class="lang-btn" href="/ssh-scout/" aria-current="page" hreflang="en">EN</a>
+      <a class="lang-btn" href="/ko/ssh-scout/" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">droidactor</a><span>/</span><a href="/#apps">Apps</a><span>/</span>Dotori SSH Scout
+  </nav>
+
+  <div class="hero product">
+    <div class="icon" aria-hidden="true">🔐</div>
+    <h1>Dotori SSH Scout</h1>
+    <div class="pkg">com.droidactor.ssh_scout</div>
+    <p>
+      SSH connections, a terminal, and trust-on-first-use host key management — with discovery built in.
+      Most SSH clients assume you already know the address. This one finds the hosts that answer on your
+      network first.
+    </p>
+    <div class="status">
+      <span class="badge soon">Coming soon</span>
+      <a href="#privacy">Privacy</a>
+    </div>
+  </div>
+
+  <section>
+    <h2>What it does</h2>
+    <div class="feature">
+      <div>
+        <h3>Finds hosts, then connects</h3>
+        <p>While the app is open and on Wi-Fi it tries the selected TCP port — 22 by default — against
+          hosts in the <code>/24</code> subnet derived from your current local IPv4 address. That
+          automatic sweep <em>is</em> the discovery feature.</p>
+      </div>
+      <div>
+        <h3>A terminal, connected directly</h3>
+        <p>Sessions go from your phone straight to the host you specify. No traffic is proxied through a
+          server of ours, because there is no server of ours.</p>
+      </div>
+      <div>
+        <h3>Trust on first use</h3>
+        <p>A host key is recorded the first time you accept it and checked on every later connection, so a
+          changed key is something you get told about rather than something that passes quietly.</p>
+      </div>
+      <div>
+        <h3>Arrives from WIFI Scout</h3>
+        <p>A result row in <a href="/wifi-scout/">Dotori WIFI Scout</a> opens here by deep link, carrying
+          the host and port only — never a username or password.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Where your credentials live</h2>
+    <p>
+      SSH usernames, passwords, private keys and trust-on-first-use host keys are stored in the app's own
+      protected storage on your device. <strong>They are never transmitted to us or to any third party,
+      and are never included in the deep link.</strong> The Android app sandbox means another app cannot
+      read them — including Dotori WIFI Scout, which is why a handoff carries the address only.
+    </p>
+    <p>
+      Credentials are not stored permanently unless you choose to save them, and saved ones can be deleted
+      per target from the saved-connections list.
+    </p>
+    <div class="note">
+      <p><strong>Use it only on networks you own or are authorised to administer.</strong> The SSH server
+        you connect to is neither chosen nor operated by us — that operator's own policies apply to
+        whatever it does with your session.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Requirements</h2>
+    <div class="scroll">
+      <table class="spec">
+        <tbody>
+          <tr><th>Platform</th><td>Android (Flutter)</td></tr>
+          <tr><th>Package name</th><td><code>com.droidactor.ssh_scout</code></td></tr>
+          <tr><th>Minimum Android</th><td>Android 9.0 (API 28)</td></tr>
+          <tr><th>Target Android</th><td>API 36</td></tr>
+          <tr><th>Permissions</th><td><code>NEARBY_WIFI_DEVICES</code> declared <code>neverForLocation</code>. <strong>No location permission at all.</strong></td></tr>
+          <tr><th>Price</th><td>Free, supported by ads (Google AdMob)</td></tr>
+          <tr><th>Accounts</th><td>None. No sign-in, no registration.</td></tr>
+          <tr><th>Status</th><td>Not yet published on Google Play</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <h2>Privacy</h2>
+    <p>
+      Session output is not saved off the device, and nothing about the hosts you reach is given to the
+      advertising SDK. There is no account and no backend of ours to send anything to.
+    </p>
+    <p><a href="/#privacy-ssh">Full privacy policy for this app</a></p>
+  </section>
+
+  <section>
+    <h2>Support</h2>
+    <p>
+      Bug reports, questions and feature requests go to
+      <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Other apps</h2>
+    <div class="also">
+      <a href="/wifi-scout/">Dotori WIFI Scout</a>
+      <a href="/bt-keyboard/">Dotori Bluetooth Keyboard</a>
+      <a href="/bt-ppt/">Dotori Bluetooth PPT Remote</a>
+      <a href="/yt-downloader/">Dotori YouTube Downloader</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Android apps by droidactor.</p>
+    <p><a href="/">All apps</a> · <a href="/ko/ssh-scout/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>

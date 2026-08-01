@@ -1,0 +1,183 @@
+/* droidactor.github.io — shared stylesheet for every page.
+   Self-contained: no external CDN, font or import. Kept as one file so the
+   12 pages (root + /ko/ + 5 product pages in each language) never drift apart. */
+
+:root {
+  --bg: #0d1117;
+  --bg-soft: #161b22;
+  --bg-card: #12171f;
+  --line: #262d38;
+  --fg: #e6edf3;
+  --fg-dim: #9aa7b4;
+  --fg-faint: #6e7b8a;
+  --accent: #3ddc97;
+  --accent-dim: #1f7a58;
+  --warn: #d9a55b;
+  --radius: 12px;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f6f8fa;
+    --bg-card: #ffffff;
+    --line: #d8dee4;
+    --fg: #1f2328;
+    --fg-dim: #57606a;
+    --fg-faint: #7d8590;
+    --accent: #0f7b52;
+    --accent-dim: #a7e8cb;
+    --warn: #9a6700;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+}
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+
+header.top {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+@supports not (background: color-mix(in srgb, red 50%, transparent)) {
+  header.top { background: var(--bg); }
+}
+.top .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; min-height: 56px;
+}
+.brand { font-weight: 700; letter-spacing: -0.01em; }
+.brand a { color: inherit; text-decoration: none; }
+.brand span { color: var(--accent); }
+
+/* ---- language links (real URLs, not a JS toggle) ------------------------- */
+.langs { display: flex; gap: 4px; }
+.lang-btn {
+  font: inherit; font-size: 13px; line-height: 1;
+  padding: 6px 10px; text-decoration: none;
+  background: transparent; color: var(--fg-dim);
+  border: 1px solid var(--line); border-radius: 999px;
+}
+.lang-btn[aria-current="page"] {
+  color: var(--bg); background: var(--accent); border-color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---- hero --------------------------------------------------------------- */
+.hero { padding: 56px 0 40px; border-bottom: 1px solid var(--line); }
+.hero h1 { margin: 0 0 12px; font-size: clamp(28px, 5vw, 40px); line-height: 1.2; letter-spacing: -0.02em; }
+.hero p { margin: 0; max-width: 60ch; color: var(--fg-dim); font-size: 17px; }
+
+section { padding: 44px 0; border-bottom: 1px solid var(--line); }
+section:last-of-type { border-bottom: 0; }
+h2 {
+  margin: 0 0 6px; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent);
+}
+h2 + .lead { margin: 0 0 26px; color: var(--fg-dim); font-size: 15px; }
+/* Most product-page sections have no .lead, so give whatever follows the label the same
+   breathing room the .lead would have provided (6px + 20px = the 26px above). */
+h2 + :not(.lead) { margin-top: 20px; }
+h3 { margin: 30px 0 8px; font-size: 18px; letter-spacing: -0.01em; }
+h3:first-of-type { margin-top: 0; }
+p { margin: 0 0 14px; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+/* ---- app cards ---------------------------------------------------------- */
+.cards { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
+.card {
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 18px 18px 16px;
+  display: flex; flex-direction: column;
+}
+.card .icon { font-size: 26px; line-height: 1; margin-bottom: 10px; }
+.card h3 { margin: 0 0 4px; font-size: 17px; }
+.card h3 a { text-decoration: none; }
+.card h3 a:hover { text-decoration: underline; }
+.card .pkg {
+  font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, monospace;
+  font-size: 11.5px; color: var(--fg-faint); word-break: break-all; margin-bottom: 10px;
+}
+.card .desc { margin: 0 0 14px; font-size: 14.5px; color: var(--fg-dim); flex: 1; }
+.card .foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 12.5px; }
+.badge {
+  display: inline-block; padding: 3px 9px; border-radius: 999px;
+  border: 1px solid var(--line); color: var(--fg-faint); font-size: 12px;
+}
+.badge.soon { border-color: var(--accent-dim); color: var(--accent); }
+.badge.dev { border-color: var(--warn); color: var(--warn); }
+.card .foot a { font-size: 12.5px; }
+
+/* ---- tables ------------------------------------------------------------- */
+.scroll { overflow-x: auto; margin: 0 0 18px; }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 14.5px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--fg-dim); font-weight: 600; font-size: 13px; white-space: nowrap; }
+td code, p code, li code {
+  font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, monospace;
+  font-size: 12.5px; background: var(--bg-soft); border: 1px solid var(--line);
+  border-radius: 5px; padding: 1px 5px;
+}
+
+ul { margin: 0 0 14px; padding-left: 22px; }
+li { margin-bottom: 8px; }
+li::marker { color: var(--fg-faint); }
+
+.note {
+  background: var(--bg-soft); border: 1px solid var(--line);
+  border-left: 3px solid var(--accent); border-radius: 8px;
+  padding: 14px 16px; margin: 0 0 18px; font-size: 14.5px;
+}
+.note p:last-child { margin-bottom: 0; }
+.note strong { color: var(--fg); }
+
+.policy { border-top: 1px solid var(--line); padding-top: 20px; margin-top: 26px; }
+.policy:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+.policy h3 { margin-top: 0; }
+.policy h3 .pkg-inline {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 12px; font-weight: 400; color: var(--fg-faint); margin-left: 8px;
+}
+
+footer { padding: 34px 0 60px; color: var(--fg-faint); font-size: 13.5px; }
+footer p { margin: 0 0 6px; }
+:target { scroll-margin-top: 72px; }
+
+/* ---- product pages ------------------------------------------------------ */
+.crumb { padding: 18px 0 0; font-size: 13px; color: var(--fg-faint); }
+.crumb a { color: var(--fg-dim); }
+.crumb span { margin: 0 6px; }
+
+.hero.product { padding: 26px 0 36px; }
+.hero.product .icon { font-size: 40px; line-height: 1; margin-bottom: 14px; }
+.hero.product .pkg {
+  font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, monospace;
+  font-size: 12.5px; color: var(--fg-faint); word-break: break-all; margin: 0 0 16px;
+}
+.hero.product .status { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 20px; }
+
+.feature { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.feature > div {
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 16px 18px;
+}
+.feature h3 { margin: 0 0 6px; font-size: 15.5px; }
+.feature p { margin: 0; font-size: 14.5px; color: var(--fg-dim); }
+
+.spec { font-size: 14.5px; }
+.spec th { width: 34%; }
+
+.also { display: flex; flex-wrap: wrap; gap: 8px; }
+.also a {
+  display: inline-block; padding: 6px 12px; font-size: 13.5px; text-decoration: none;
+  background: var(--bg-soft); border: 1px solid var(--line); border-radius: 999px;
+}
+.also a:hover { border-color: var(--accent-dim); }

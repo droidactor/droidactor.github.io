@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotori YouTube Downloader — 직접 고른 폴더로 내려받는다</title>
+<meta name="description" content="영상·플레이리스트를 내려받는 Android 다운로더. 요청은 기기에서 원본으로 직접 가고, 파일은 Android 파일 선택기로 고른 폴더에 저장되며, 저장소 권한을 요구하지 않습니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/yt-downloader/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/yt-downloader/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/yt-downloader/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/yt-downloader/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/yt-downloader/">
+<meta property="og:title" content="Dotori YouTube Downloader — 저희 서버를 거치지 않는 다운로드">
+<meta property="og:description" content="영상과 플레이리스트를 기기가 직접 요청해 사용자가 고른 폴더로 내려받습니다.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Dotori YouTube Downloader",
+  "url": "https://droidactor.github.io/ko/yt-downloader/",
+  "identifier": "com.droidactor.ytdownloader",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Android 10 (API 29) 이상",
+  "inLanguage": "ko",
+  "isAccessibleForFree": true,
+  "description": "영상·플레이리스트를 사용자가 지정한 위치로 내려받는 Android 앱. 중계 서버 없이 기기가 직접 요청한다.",
+  "featureList": [
+    "영상·플레이리스트 다운로드",
+    "Android 파일 선택기로 고른 폴더에 저장",
+    "저장소 권한 불필요",
+    "알림으로 진행 상황 표시"
+  ],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+  "author": { "@type": "Organization", "name": "droidactor", "url": "https://droidactor.github.io/" },
+  "privacyPolicy": "https://droidactor.github.io/ko/#privacy-ytdl"
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="언어">
+      <a class="lang-btn" href="/yt-downloader/" hreflang="en" lang="en">EN</a>
+      <a class="lang-btn" href="/ko/yt-downloader/" aria-current="page" hreflang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="crumb" aria-label="탐색 경로">
+    <a href="/ko/">droidactor</a><span>/</span><a href="/ko/#apps">앱</a><span>/</span>Dotori YouTube Downloader
+  </nav>
+
+  <div class="hero product">
+    <div class="icon" aria-hidden="true">⬇️</div>
+    <h1>Dotori YouTube Downloader</h1>
+    <div class="pkg">com.droidactor.ytdownloader</div>
+    <p>
+      영상·플레이리스트를 사용자가 지정한 위치로 내려받습니다. 요청은 기기에서 원본으로 직접 가며 저희
+      서버를 거치지 않습니다 — 그래서 무엇을 내려받는지 저희는 알 수 없습니다.
+    </p>
+    <div class="status">
+      <span class="badge soon">출시 준비 중</span>
+      <a href="#privacy">개인정보</a>
+    </div>
+  </div>
+
+  <section>
+    <h2>하는 일</h2>
+    <div class="feature">
+      <div>
+        <h3>영상과 플레이리스트</h3>
+        <p>URL 을 붙여넣으면 앱이 가져옵니다. 플레이리스트는 지켜보고 있어야 하는 하나의 다운로드가
+          아니라 항목 목록으로 처리합니다.</p>
+      </div>
+      <div>
+        <h3>저희 폴더가 아니라 사용자의 폴더</h3>
+        <p>파일은 Android 파일 선택기로 고른 위치에 저장됩니다. 그래서 <strong>저장소 권한을 요구하지
+          않습니다</strong> — 사용자가 건네준 곳 외에는 손대지 않기 때문입니다.</p>
+      </div>
+      <div>
+        <h3>화면을 떠나도 계속</h3>
+        <p>다운로드가 진행되는 동안 알림으로 상태를 표시하므로, 다른 앱을 써도 전송이 중단되지 않습니다.</p>
+      </div>
+      <div>
+        <h3>중간에 서버가 없음</h3>
+        <p>대기열에 줄을 서거나, 속도 제한을 걸거나, 무엇을 요청했는지 기록할 저희 다운로드 서비스가
+          존재하지 않습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>요구 사항</h2>
+    <div class="scroll">
+      <table class="spec">
+        <tbody>
+          <tr><th>플랫폼</th><td>Android (Flutter)</td></tr>
+          <tr><th>패키지명</th><td><code>com.droidactor.ytdownloader</code></td></tr>
+          <tr><th>최소 Android</th><td>Android 10 (API 29)</td></tr>
+          <tr><th>대상 Android</th><td>API 36</td></tr>
+          <tr><th>저장소 권한</th><td>요구하지 않음 — 파일 선택기가 사용자가 고른 폴더 한 곳만 허용</td></tr>
+          <tr><th>가격</th><td>무료 (Google AdMob 광고 지원)</td></tr>
+          <tr><th>계정</th><td>없음. 로그인·회원가입 없음.</td></tr>
+          <tr><th>상태</th><td>Google Play 미출시</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>책임 있게 쓰기</h2>
+    <div class="note">
+      <p>원본 사이트의 이용약관과 내려받는 자료의 저작권을 지켜주시기 바랍니다.
+        <strong>앱 사용에 대한 책임은 사용자에게 있습니다.</strong></p>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <h2>개인정보</h2>
+    <p>
+      다운로드 기록은 어디로도 전송되지 않고 기기에만 남아 앱과 함께 사라집니다. 저희는 다운로드 서버를
+      운영하지 않으며 붙여넣은 URL 을 볼 수 없습니다.
+    </p>
+    <p><a href="/ko/#privacy-ytdl">이 앱의 개인정보 처리방침 전문</a></p>
+  </section>
+
+  <section>
+    <h2>지원</h2>
+    <p>
+      버그 신고·문의·기능 요청은 <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> 으로
+      보내주십시오.
+    </p>
+  </section>
+
+  <section>
+    <h2>다른 앱</h2>
+    <div class="also">
+      <a href="/ko/bt-keyboard/">Dotori Bluetooth Keyboard</a>
+      <a href="/ko/bt-ppt/">Dotori Bluetooth PPT Remote</a>
+      <a href="/ko/wifi-scout/">Dotori WIFI Scout</a>
+      <a href="/ko/ssh-scout/">Dotori SSH Scout</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>droidactor 가 만드는 Android 앱.</p>
+    <p><a href="/ko/">전체 앱</a> · <a href="/yt-downloader/" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>

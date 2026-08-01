@@ -1,0 +1,7 @@
+# droidactor.github.io — everything here is meant to be indexed.
+# app-ads.txt is left crawlable on purpose: the AdMob crawler reads it from the domain root.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://droidactor.github.io/sitemap.xml

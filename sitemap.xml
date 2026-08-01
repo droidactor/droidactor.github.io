@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Every page exists in English (/) and Korean (/ko/). Each <url> lists the whole
+  language set through xhtml:link, so both twins are declared as alternates of one another.
+  When a page is added or its content changes, update <lastmod> for that pair.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://droidactor.github.io/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/bt-keyboard/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/bt-keyboard/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/bt-keyboard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/bt-keyboard/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/bt-keyboard/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/bt-keyboard/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/bt-keyboard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/bt-keyboard/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/bt-ppt/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/bt-ppt/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/bt-ppt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/bt-ppt/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/bt-ppt/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/bt-ppt/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/bt-ppt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/bt-ppt/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/wifi-scout/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/wifi-scout/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/wifi-scout/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/wifi-scout/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/wifi-scout/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/wifi-scout/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/wifi-scout/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/wifi-scout/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/ssh-scout/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/ssh-scout/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/ssh-scout/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/ssh-scout/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/ssh-scout/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/ssh-scout/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/ssh-scout/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/ssh-scout/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/yt-downloader/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/yt-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/yt-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/yt-downloader/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/yt-downloader/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/yt-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/yt-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/yt-downloader/"/>
+  </url>
+
+</urlset>
