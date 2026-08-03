@@ -9,7 +9,7 @@
 
   <url>
     <loc>https://droidactor.github.io/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/"/>
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/"/>
@@ -119,6 +119,67 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/yt-downloader/"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/yt-downloader/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/yt-downloader/"/>
+  </url>
+
+  <!--
+    Blog. One <url> pair per post, newest first, under the index pair.
+    blog/_post-template.html is deliberately absent: it carries noindex and is not a page.
+  -->
+  <url>
+    <loc>https://droidactor.github.io/blog/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/find-ls-plc-ip-address/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/find-ls-plc-ip-address/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/find-ls-plc-ip-address/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/find-ls-plc-ip-address/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/find-ls-plc-ip-address/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/find-ls-plc-ip-address/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/find-ls-plc-ip-address/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/find-ls-plc-ip-address/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/identify-industrial-devices-by-port/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/identify-industrial-devices-by-port/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/identify-industrial-devices-by-port/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/identify-industrial-devices-by-port/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/identify-industrial-devices-by-port/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/identify-industrial-devices-by-port/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/identify-industrial-devices-by-port/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/identify-industrial-devices-by-port/"/>
   </url>
 
 </urlset>

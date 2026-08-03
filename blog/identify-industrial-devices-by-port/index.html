@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Identifying industrial devices by port on a plant network — droidactor</title>
+<meta name="description" content="Six TCP ports account for most of what answers on a control network — 102, 502, 44818, 9600, 5007, 48898. What each one implies, how far a port number can be trusted, and where a scan should stop.">
+<link rel="canonical" href="https://droidactor.github.io/blog/identify-industrial-devices-by-port/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/identify-industrial-devices-by-port/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/identify-industrial-devices-by-port/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/identify-industrial-devices-by-port/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/identify-industrial-devices-by-port/">
+<meta property="og:title" content="Identifying industrial devices by port on a plant network">
+<meta property="og:description" content="What ports 102, 502, 44818, 9600, 5007 and 48898 imply, why a port number is a candidate rather than an answer, and where a discovery tool should stop.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Identifying industrial devices by port on a plant network",
+      "description": "Six TCP ports account for most of what answers on a control network. What each implies, and how far a port number can be trusted.",
+      "url": "https://droidactor.github.io/blog/identify-industrial-devices-by-port/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/identify-industrial-devices-by-port/",
+      "datePublished": "2026-08-03",
+      "dateModified": "2026-08-03",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori WIFI Scout",
+        "url": "https://droidactor.github.io/wifi-scout/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Identifying industrial devices by port", "item": "https://droidactor.github.io/blog/identify-industrial-devices-by-port/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="Language">
+      <a class="lang-btn" href="/blog/identify-industrial-devices-by-port/" aria-current="page" hreflang="en">EN</a>
+      <a class="lang-btn" href="/ko/blog/identify-industrial-devices-by-port/" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Identifying industrial devices by port
+  </nav>
+
+  <div class="hero">
+    <h1>Identifying industrial devices by port on a plant network</h1>
+    <p class="post-meta"><time datetime="2026-08-03">3 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>Short answer.</strong> Six TCP ports account for most of what answers on a control
+        network, and each one narrows the vendor down considerably:</p>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr><th>Port</th><th>Protocol</th><th>Typically means</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>102</code></td><td>Siemens S7 (ISO-TSAP)</td><td>S7-300 / 400 / 1200 / 1500, and third-party devices speaking S7comm</td></tr>
+            <tr><td><code>502</code></td><td>Modbus TCP</td><td>Almost anything — PLCs, drives, meters, gateways, I/O blocks</td></tr>
+            <tr><td><code>44818</code></td><td>EtherNet/IP (CIP)</td><td>Rockwell / Allen-Bradley, and the wider ODVA ecosystem</td></tr>
+            <tr><td><code>9600</code></td><td>Omron FINS</td><td>Omron CJ / CS / NJ series</td></tr>
+            <tr><td><code>5007</code></td><td>Mitsubishi MC protocol</td><td>MELSEC Q / L / iQ-R, when an MC frame port is configured</td></tr>
+            <tr><td><code>48898</code></td><td>Beckhoff ADS</td><td>TwinCAT runtimes, often on an industrial PC rather than a PLC</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Treat a hit as a <strong>candidate</strong>, not an identification. The reasons why are the
+        rest of this post.</p>
+    </div>
+
+    <p>
+      You have a list of addresses that answered on an unfamiliar subnet. Some are obviously office
+      equipment. A few are not, and those are the ones you care about. The open port is the cheapest
+      signal available, and it is a good one — but it is weaker evidence than it looks.
+    </p>
+
+    <h2>Why a port number is a candidate and not an answer</h2>
+
+    <p>Three things break the clean mapping, and all three are common.</p>
+
+    <ul>
+      <li><strong>Gateways answer on behalf of things that are not PLCs.</strong> A serial-to-Ethernet
+        gateway with a handful of RS-485 meters behind it presents a single address on port 502. The
+        port says Modbus TCP, which is true; it does not say that there is a PLC there, because there
+        isn't one.</li>
+      <li><strong>Vendors implement each other's protocols.</strong> Modbus TCP in particular is
+        supported by nearly everyone, so port 502 narrows the field almost not at all. A Siemens CPU
+        with the right module answers on 502 as readily as on 102.</li>
+      <li><strong>An open port is not a running service.</strong> A firewall, a NAT rule or a load
+        balancer can leave a port apparently open at an address where nothing meaningful is listening.
+        A TCP connect succeeds and you learn nothing.</li>
+    </ul>
+
+    <p>
+      This is why it matters whether a tool tells you <em>"PLC"</em> or <em>"PLC candidate — port 502
+      open"</em>. The second is honest about what was actually observed. The first invites you to act
+      on an inference someone else made.
+    </p>
+
+    <h2>Turning a candidate into an identification</h2>
+
+    <p>
+      To confirm, you have to speak the protocol. Of the six, EtherNet/IP is the friendliest: the CIP
+      <strong>List Identity</strong> request returns vendor, product type, revision and product name
+      with no session, no authentication and no configuration on the device side.
+    </p>
+
+    <p>
+      The request is a 24-byte encapsulation header with command <code>0x0063</code> and every other
+      field zeroed — length, session handle, status, sender context, options. It can be sent as a UDP
+      broadcast to discover devices, or as a TCP connection to a single address when you already know
+      where you are pointing:
+    </p>
+
+<pre><code>request   TCP 44818
+          63 00 00 00 00 00 00 00 00 00 00 00
+          00 00 00 00 00 00 00 00 00 00 00 00
+          ^^^^^ command 0x0063 (List Identity), little-endian
+
+response  encapsulation header (24 bytes)
+          item count (2 bytes)
+          item type 0x000C  <-- CIP Identity item
+            +18  vendor ID       (uint16, little-endian)
+            +32  product name    (length-prefixed string)</code></pre>
+
+    <p>
+      Parse the identity item and you have the vendor and the product name straight from the device,
+      rather than a guess derived from a port number. That is a genuine identification.
+    </p>
+
+    <h2>The other five are not this easy</h2>
+
+    <p>
+      It is worth being clear about the asymmetry, because tools rarely are.
+    </p>
+
+    <ul>
+      <li><strong>S7 (102)</strong> needs a COTP connection to be established first, with correct TSAP
+        values, before any module information can be read. Getting the TSAP wrong just fails; getting
+        it right means you have opened a real session with the CPU.</li>
+      <li><strong>Modbus TCP (502)</strong> has an optional <em>Read Device Identification</em>
+        function, and plenty of devices simply do not implement it. There is no reliable identity
+        request that works everywhere.</li>
+      <li><strong>FINS (9600), MC (5007) and ADS (48898)</strong> each expect addressing information —
+        network and node numbers, or an AMS NetID — that you generally do not have before you have
+        already identified the device. It is circular.</li>
+    </ul>
+
+    <p>
+      So in practice: EtherNet/IP can be confirmed cheaply and safely, and the rest stay candidates
+      unless you bring project-specific knowledge to the network. A tool that claims otherwise is
+      guessing on your behalf.
+    </p>
+
+    <h2>Where a discovery tool should stop</h2>
+
+    <p>
+      Reading is not writing, and the distinction is the whole safety argument. A discovery request
+      asks a device to describe itself. A write frame changes it. Between those two sits a grey zone
+      that is worth ruling out explicitly:
+    </p>
+
+    <ul>
+      <li><strong>No write or job frames.</strong> Not as an advanced option, not behind a
+        confirmation dialog. They do not belong in a tool whose purpose is to find things.</li>
+      <li><strong>No automatic identity queries.</strong> A port scan is passive enough to run across
+        a range; a protocol-level query is a conversation with one specific piece of equipment, and it
+        should happen because a person chose that row — once, read-only, to that one address.</li>
+      <li><strong>No repeated polling.</strong> Discovery runs once. Anything that keeps a control
+        device answering on a schedule is a monitoring system, and building one accidentally is worse
+        than building one deliberately.</li>
+      <li><strong>Permission first.</strong> On a site you do not own, the decision to send anything at
+        all belongs to whoever owns the equipment.</li>
+    </ul>
+
+    <h2>Not detected is not the same as not there</h2>
+
+    <p>
+      A device can be present and entirely invisible to a scan: client isolation on the wireless,
+      VLAN separation, a wired-only control segment, a firewall between you and it, or equipment that
+      simply does not answer unsolicited traffic. An empty result is evidence about your vantage point
+      as much as about the network. Read it that way and you will waste less time.
+    </p>
+
+    <div class="note">
+      <p><strong>Dotori WIFI Scout</strong> lists these ports as candidates with the port and protocol
+        shown as the reason, and runs an identity query only on a row you approve — read-only, unicast,
+        once. It sends no write or job frames.
+        <a href="/wifi-scout/">More about Dotori WIFI Scout</a></p>
+    </div>
+
+    <h2>Related notes</h2>
+    <ul>
+      <li><a href="/blog/find-ls-plc-ip-address/">Finding an LS XGT PLC's IP address when you don't
+        know it</a> — LS equipment answers a broadcast on UDP 2007, which sidesteps port scanning
+        entirely.</li>
+    </ul>
+
+  </article>
+
+  <footer>
+    <p>Android apps by droidactor.</p>
+    <p><a href="/blog/">Field notes</a> · <a href="/">All apps</a> · <a href="/ko/blog/identify-industrial-devices-by-port/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>

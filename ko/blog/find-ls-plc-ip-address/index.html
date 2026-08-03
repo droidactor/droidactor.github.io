@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IP 를 모르는 LS XGT PLC 를 현장에서 찾는 법 — droidactor</title>
+<meta name="description" content="LS XGT PLC 는 UDP 2007 브로드캐스트에 자기 주소로 응답합니다. 요청 한 번이면 같은 대역의 LS PLC 가 전부 답하며, 대역 전수 스캔보다 빠르고 장비에 훨씬 조용합니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/find-ls-plc-ip-address/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/find-ls-plc-ip-address/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/find-ls-plc-ip-address/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/find-ls-plc-ip-address/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/find-ls-plc-ip-address/">
+<meta property="og:title" content="IP 를 모르는 LS XGT PLC 를 현장에서 찾는 법">
+<meta property="og:description" content="UDP 2007 브로드캐스트 한 번이면 같은 대역의 LS PLC 가 자기 주소를 알려줍니다. 무엇을 보내고, 아무것도 응답하지 않을 때 무엇을 확인해야 하는지.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "IP 를 모르는 LS XGT PLC 를 현장에서 찾는 법",
+      "description": "LS XGT PLC 는 UDP 2007 브로드캐스트에 자기 주소로 응답합니다. 요청 한 번이면 같은 대역의 LS PLC 가 전부 답합니다.",
+      "url": "https://droidactor.github.io/ko/blog/find-ls-plc-ip-address/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/find-ls-plc-ip-address/",
+      "datePublished": "2026-08-03",
+      "dateModified": "2026-08-03",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori WIFI Scout",
+        "url": "https://droidactor.github.io/ko/wifi-scout/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "LS XGT PLC 의 IP 찾기", "item": "https://droidactor.github.io/ko/blog/find-ls-plc-ip-address/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="언어">
+      <a class="lang-btn" href="/blog/find-ls-plc-ip-address/" hreflang="en" lang="en">EN</a>
+      <a class="lang-btn" href="/ko/blog/find-ls-plc-ip-address/" aria-current="page" hreflang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="crumb" aria-label="탐색 경로">
+    <a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>LS PLC 의 IP 찾기
+  </nav>
+
+  <div class="hero">
+    <h1>IP 를 모르는 LS XGT PLC 를 현장에서 찾는 법</h1>
+    <p class="post-meta"><time datetime="2026-08-03">2026년 8월 3일</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>요약.</strong> LS XGT PLC 는 <strong>UDP 2007 포트</strong>에서 대기하다가 브로드캐스트
+        발견 요청에 자기 주소로 응답합니다. <code>255.255.255.255:2007</code> 로 ASCII 문자열
+        <code>STATION_LIST_REQ_DATA</code> 를 담은 datagram 하나를 보내고 응답을 읽으면 됩니다.
+        <code>STATION_LIST_RESP_DATA</code> 로 시작하는 패킷은 PLC 가 보낸 것이고,
+        <strong>그 패킷의 출발지 주소가 찾던 IP</strong> 입니다. 요청 한 번이면 되고 대역 전수 스캔은
+        필요 없습니다.</p>
+    </div>
+
+    <p>
+      내가 시운전하지 않은 반 앞에 서 있습니다. XG5000 은 연결하려면 IP 를 먼저 요구하는데, CPU 에
+      붙어 있던 라벨은 떨어졌거나 애초에 없었고, 폴더 속 도면은 개조를 두 번 거치기 전 것입니다.
+      설비는 돌아가는 중이라 하나씩 뽑아 보며 확인할 수도 없습니다.
+    </p>
+
+    <h2>대역 전수 스캔이 첫 수로는 좋지 않은 이유</h2>
+
+    <p>
+      반사적으로 나오는 방법은 대역을 훑는 것입니다. 254개 주소에 ICMP 나 몇몇 포트로 TCP 연결을 시도해
+      응답하는 것을 봅니다. 실제로 자주 통하기 때문에 다들 계속 이렇게 합니다. 다만 살아 있는 제어망에서는
+      세 가지 문제가 있습니다.
+    </p>
+
+    <ul>
+      <li><strong>시끄럽습니다.</strong> 대역 안의 모든 주소로 패킷이 갑니다 — 이번 작업과 아무 상관 없는
+        드라이브·HMI·안전 장치까지 포함해서입니다. 오래된 장비 중에는 예상 못 한 연결 시도를 잘 견디지
+        못하는 것도 있습니다.</li>
+      <li><strong>느립니다.</strong> 254개 주소 × 포트별 타임아웃은 금방 쌓이고, 보통 이 작업은 누군가
+        기다리는 중에 하게 됩니다.</li>
+      <li><strong>응답했다는 것만 알려줍니다.</strong> 응답한 다섯 대 중 어느 것이 PLC 인지는 여전히
+        따로 가려내야 합니다.</li>
+    </ul>
+
+    <p>
+      아래의 벤더 전용 발견은 이 셋을 모두 피합니다. 전체 패킷이 한 개뿐이고, 응답은 2초 안에 돌아오며,
+      응답한 것은 정의상 LS PLC 입니다.
+    </p>
+
+    <h2>주고받는 내용</h2>
+
+    <p>
+      UDP 소켓을 2007 포트에 bind 하고 broadcast 를 켠 뒤, 같은 포트의 브로드캐스트 주소로 요청을 보냅니다.
+      요청 문자열은 두 가지를 함께 보내는 편이 좋습니다 — 펌웨어 세대에 따라 응답하는 쪽이 다릅니다.
+    </p>
+
+<pre><code>bind    UDP 0.0.0.0:2007          (broadcast 활성화)
+send -> 255.255.255.255:2007      "STATION_LIST_REQ_DATA"
+send -> 255.255.255.255:2007      "NP_DATA_REQ_V2"
+listen  약 2초
+
+recv &lt;- 192.168.0.31:2007         "STATION_LIST_RESP_DATA…"   <-- PLC, 192.168.0.31
+recv &lt;- 192.168.0.44:2007         "STATION_LIST_RESP_DATA…"   <-- 또 한 대</code></pre>
+
+    <p>
+      payload 가 평문 ASCII 라서 패킷 캡처에서도 눈으로 바로 알아볼 수 있습니다. 정작 중요한 것은 응답
+      본문 안이 아니라 <strong>응답 datagram 의 출발지 주소</strong> 입니다.
+      <code>STATION_LIST_RESP_DATA</code> 표지 뒤쪽은 station 상세 정보이고, XG5000 이 가리킬 주소만
+      필요하다면 통째로 무시해도 됩니다.
+    </p>
+
+    <p>
+      소켓을 임의 포트가 아니라 2007 에 bind 한다는 점을 유의해야 합니다. 응답이 그 포트로 돌아오기
+      때문인데, 같은 PC 의 다른 프로세스가 이미 그 포트를 쥐고 있으면 bind 가 실패하고 응답이 하나도 안
+      보입니다. 네트워크가 비어 있는 것이 아니라 포트가 물려 있는 것인데, 화면상으로는 구분되지 않아
+      오해하기 쉬운 자리입니다.
+    </p>
+
+    <h2>아무것도 응답하지 않을 때</h2>
+
+    <p>
+      결과가 비었다고 PLC 가 없는 것은 아닙니다. 실제로 원인이 되는 빈도 순서로 적으면 이렇습니다.
+    </p>
+
+    <ul>
+      <li><strong>PLC 가 다른 서브넷에 있습니다.</strong> <code>255.255.255.255</code> 브로드캐스트는
+        첫 라우터에서 멈춥니다 — 로컬 세그먼트를 벗어나지 못합니다. 폰이나 노트북이 사무망 VLAN 에서
+        DHCP 주소를 받았고 제어망은 따로 있다면, 아무리 기다려도 오지 않습니다. <strong>가장 흔한
+        원인입니다.</strong></li>
+      <li><strong>Wi-Fi 인데 AP 가 브로드캐스트를 걸러냅니다.</strong> 기업용 무선에서는 client isolation
+        과 broadcast/multicast 억제가 기본으로 켜져 있는 경우가 많습니다. 요청은 단말을 떠났지만 AP 에서
+        죽습니다.</li>
+      <li><strong>제어망이 유선 전용입니다.</strong> PLC 세그먼트를 의도적으로 무선에서 떼어 놓은 현장이
+        많습니다. 이 경우 폰으로는 어떤 방법으로도 닿지 않습니다.</li>
+      <li><strong>2007 포트가 이미 점유</strong> 돼 있습니다. 위에 적은 경우입니다.</li>
+      <li><strong>CPU 에 이더넷 모듈이 없거나</strong> FEnet 모듈은 꽂혀 있지만 설정되지 않았습니다.
+        시리얼 전용 CPU 는 네트워크 발견에 응답할 방법 자체가 없습니다.</li>
+    </ul>
+
+    <p>
+      앞의 두 가지는 다른 것을 시도하기 전에 먼저 확인할 값어치가 있습니다. 도구 쪽에서는 어느 경우든
+      "요청을 정상적으로 보냈다" 로 보이기 때문에 화면만 봐서는 구분되지 않습니다.
+    </p>
+
+    <h2>주소를 찾은 다음</h2>
+
+    <p>
+      IP 를 알아냈으면 XG5000 은 평소대로 연결합니다. <em>온라인 → 접속 설정</em>에서 연결 방식을
+      이더넷으로 두고 주소를 넣은 뒤 접속하고, PLC 로부터 프로젝트를 읽어 옵니다. 타임아웃이 아니라
+      연결 거부가 뜬다면 주소는 맞고 다른 것이 문제입니다 — FEnet 모듈의 접속 테이블이 가득 찬 경우가
+      대부분이고, 남아 있던 세션이 타임아웃되면 풀립니다.
+    </p>
+
+    <h2>내 설비가 아닌 곳을 스캔하는 문제</h2>
+
+    <p>
+      발견은 읽기 동작입니다. 레지스터도, 모드 스위치도, 프로그램도 건드리지 않습니다. 그래도 산업 장비를
+      향해 나가는 트래픽인 것은 분명하고, 내 현장이 아니라면 그 판단은 설비 소유자의 몫이지 내 몫이
+      아닙니다. 먼저 승인을 받아야 합니다. write·job 프레임은 아예 다른 범주이고, 발견 도구에 들어갈
+      이유가 없습니다.
+    </p>
+
+    <div class="note">
+      <p><strong>Dotori WIFI Scout</strong> 는 일반 대역 스캔과 함께 이 LS 발견을 수행하므로, 응답한 PLC
+        가 주소까지 확인된 상태로 결과 목록에 나타납니다. write·job 프레임은 보내지 않으며, identity
+        조회는 사용자가 특정 행을 승인한 뒤에만 나갑니다.
+        <a href="/ko/wifi-scout/">Dotori WIFI Scout 자세히 보기</a></p>
+    </div>
+
+    <h2>관련 글</h2>
+    <ul>
+      <li><a href="/ko/blog/identify-industrial-devices-by-port/">포트로 산업 장비 식별하기</a>
+        — 현장 네트워크의 나머지 다섯 포트가 뜻하는 것과, 포트 번호를 어디까지 믿을 수 있는지.</li>
+    </ul>
+
+  </article>
+
+  <footer>
+    <p>droidactor 가 만드는 Android 앱.</p>
+    <p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/">전체 앱</a> · <a href="/blog/find-ls-plc-ip-address/" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>

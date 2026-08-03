@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>포트로 산업 장비 식별하기 — 현장 네트워크에서 무엇이 응답하는가 — droidactor</title>
+<meta name="description" content="제어망에서 응답하는 것의 대부분은 TCP 포트 여섯 개로 설명됩니다 — 102, 502, 44818, 9600, 5007, 48898. 각 포트가 뜻하는 것, 포트 번호를 어디까지 믿을 수 있는지, 그리고 스캔이 멈춰야 할 지점.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/identify-industrial-devices-by-port/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/identify-industrial-devices-by-port/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/identify-industrial-devices-by-port/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/identify-industrial-devices-by-port/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/identify-industrial-devices-by-port/">
+<meta property="og:title" content="포트로 산업 장비 식별하기 — 현장 네트워크에서 무엇이 응답하는가">
+<meta property="og:description" content="포트 102·502·44818·9600·5007·48898 이 뜻하는 것, 포트 번호가 왜 답이 아니라 후보인지, 그리고 발견 도구가 어디서 멈춰야 하는지.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "포트로 산업 장비 식별하기 — 현장 네트워크에서 무엇이 응답하는가",
+      "description": "제어망에서 응답하는 것의 대부분은 TCP 포트 여섯 개로 설명됩니다. 각 포트가 뜻하는 것과, 포트 번호를 어디까지 믿을 수 있는지.",
+      "url": "https://droidactor.github.io/ko/blog/identify-industrial-devices-by-port/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/identify-industrial-devices-by-port/",
+      "datePublished": "2026-08-03",
+      "dateModified": "2026-08-03",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori WIFI Scout",
+        "url": "https://droidactor.github.io/ko/wifi-scout/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "포트로 산업 장비 식별하기", "item": "https://droidactor.github.io/ko/blog/identify-industrial-devices-by-port/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="언어">
+      <a class="lang-btn" href="/blog/identify-industrial-devices-by-port/" hreflang="en" lang="en">EN</a>
+      <a class="lang-btn" href="/ko/blog/identify-industrial-devices-by-port/" aria-current="page" hreflang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="crumb" aria-label="탐색 경로">
+    <a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>포트로 산업 장비 식별하기
+  </nav>
+
+  <div class="hero">
+    <h1>포트로 산업 장비 식별하기 — 현장 네트워크에서 무엇이 응답하는가</h1>
+    <p class="post-meta"><time datetime="2026-08-03">2026년 8월 3일</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>요약.</strong> 제어망에서 응답하는 것의 대부분은 TCP 포트 여섯 개로 설명되고, 각 포트는
+        벤더를 상당히 좁혀 줍니다.</p>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr><th>포트</th><th>프로토콜</th><th>대개 이런 장비</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>102</code></td><td>Siemens S7 (ISO-TSAP)</td><td>S7-300 / 400 / 1200 / 1500, S7comm 을 지원하는 타사 장비</td></tr>
+            <tr><td><code>502</code></td><td>Modbus TCP</td><td>거의 무엇이든 — PLC·드라이브·계측기·게이트웨이·I/O 블록</td></tr>
+            <tr><td><code>44818</code></td><td>EtherNet/IP (CIP)</td><td>Rockwell / Allen-Bradley 및 ODVA 계열 전반</td></tr>
+            <tr><td><code>9600</code></td><td>Omron FINS</td><td>Omron CJ / CS / NJ 시리즈</td></tr>
+            <tr><td><code>5007</code></td><td>Mitsubishi MC 프로토콜</td><td>MELSEC Q / L / iQ-R, MC 프레임 포트가 설정된 경우</td></tr>
+            <tr><td><code>48898</code></td><td>Beckhoff ADS</td><td>TwinCAT 런타임. PLC 가 아니라 산업용 PC 인 경우가 많음</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>포트가 열려 있다는 것은 <strong>후보</strong>이지 식별이 아닙니다. 그 이유가 이 글의 나머지입니다.</p>
+    </div>
+
+    <p>
+      낯선 대역에서 응답한 주소 목록을 손에 들고 있습니다. 몇 개는 딱 봐도 사무 기기이고, 몇 개는 아닙니다.
+      관심 있는 것은 후자입니다. 열린 포트는 가장 값싸게 얻을 수 있는 신호이고 실제로 쓸모도 있지만,
+      보이는 것만큼 강한 증거는 아닙니다.
+    </p>
+
+    <h2>포트 번호가 답이 아니라 후보인 이유</h2>
+
+    <p>깔끔한 대응 관계를 깨뜨리는 것이 셋 있고, 셋 다 흔합니다.</p>
+
+    <ul>
+      <li><strong>게이트웨이가 PLC 가 아닌 것을 대신해 응답합니다.</strong> RS-485 계측기 몇 대를 뒤에 달고
+        있는 시리얼-이더넷 게이트웨이는 502 포트에 주소 하나로 나타납니다. 포트는 Modbus TCP 라고
+        말하고 그건 사실이지만, 거기에 PLC 가 있다는 뜻은 아닙니다. 없으니까요.</li>
+      <li><strong>벤더들이 서로의 프로토콜을 구현합니다.</strong> 특히 Modbus TCP 는 거의 모두가
+        지원하므로 502 포트는 범위를 거의 좁혀 주지 못합니다. 해당 모듈이 붙은 Siemens CPU 는 102 만큼이나
+        502 에서도 잘 응답합니다.</li>
+      <li><strong>열린 포트가 곧 동작하는 서비스는 아닙니다.</strong> 방화벽·NAT 규칙·로드밸런서 때문에
+        실제로는 아무것도 대기하지 않는 주소에서 포트가 열린 것처럼 보일 수 있습니다. TCP 연결은
+        성공하는데 알아낸 것은 없습니다.</li>
+    </ul>
+
+    <p>
+      그래서 도구가 <em>"PLC"</em> 라고 적느냐 <em>"PLC 후보 — 502 포트 열림"</em> 이라고 적느냐가
+      중요합니다. 뒤쪽이 실제로 관측된 것에 대해 정직합니다. 앞쪽은 남이 내린 추론 위에서 행동하라고
+      권하는 셈입니다.
+    </p>
+
+    <h2>후보를 식별로 바꾸려면</h2>
+
+    <p>
+      확정하려면 프로토콜로 말을 걸어야 합니다. 여섯 중 EtherNet/IP 가 가장 다루기 쉽습니다. CIP 의
+      <strong>List Identity</strong> 요청은 세션도, 인증도, 장비 쪽 설정도 없이 vendor·product type·
+      revision·product name 을 돌려줍니다.
+    </p>
+
+    <p>
+      요청은 command 가 <code>0x0063</code> 이고 나머지 필드(length·session handle·status·sender
+      context·options)가 전부 0 인 24바이트 encapsulation 헤더입니다. 장비를 찾기 위해 UDP 브로드캐스트로
+      보낼 수도 있고, 이미 대상 주소를 아는 상태라면 그 주소로 TCP 연결해 보낼 수도 있습니다.
+    </p>
+
+<pre><code>요청      TCP 44818
+          63 00 00 00 00 00 00 00 00 00 00 00
+          00 00 00 00 00 00 00 00 00 00 00 00
+          ^^^^^ command 0x0063 (List Identity), little-endian
+
+응답      encapsulation 헤더 (24 바이트)
+          item 개수 (2 바이트)
+          item type 0x000C  <-- CIP Identity item
+            +18  vendor ID       (uint16, little-endian)
+            +32  product name    (길이 prefix 문자열)</code></pre>
+
+    <p>
+      identity item 을 파싱하면 포트 번호에서 추측한 값이 아니라 장비가 직접 말한 vendor 와 product name
+      을 얻습니다. 이건 진짜 식별입니다.
+    </p>
+
+    <h2>나머지 다섯은 이만큼 쉽지 않습니다</h2>
+
+    <p>이 비대칭은 분명히 해 두는 편이 좋습니다. 도구들이 잘 밝히지 않는 부분입니다.</p>
+
+    <ul>
+      <li><strong>S7 (102)</strong> 은 모듈 정보를 읽기 전에 올바른 TSAP 값으로 COTP 연결을 먼저 맺어야
+        합니다. TSAP 이 틀리면 그냥 실패하고, 맞으면 CPU 와 실제 세션을 연 것이 됩니다.</li>
+      <li><strong>Modbus TCP (502)</strong> 의 <em>Read Device Identification</em> 은 선택 기능이라
+        구현하지 않은 장비가 많습니다. 어디서나 통하는 신뢰할 만한 identity 요청이 존재하지 않습니다.</li>
+      <li><strong>FINS (9600) · MC (5007) · ADS (48898)</strong> 는 각각 네트워크·노드 번호나 AMS NetID
+        같은 주소 정보를 요구하는데, 그건 보통 장비를 이미 식별한 뒤에야 알 수 있는 값입니다. 순환입니다.</li>
+    </ul>
+
+    <p>
+      정리하면, EtherNet/IP 는 싸고 안전하게 확정할 수 있고 나머지는 현장별 사전 지식을 가져오지 않는 한
+      후보로 남습니다. 그렇지 않다고 주장하는 도구는 사용자를 대신해 추측하고 있는 것입니다.
+    </p>
+
+    <h2>발견 도구가 멈춰야 할 지점</h2>
+
+    <p>
+      읽기는 쓰기가 아니고, 이 구분이 안전 논거의 전부입니다. 발견 요청은 장비에게 스스로를 설명해
+      달라고 묻습니다. write 프레임은 장비를 바꿉니다. 그 사이의 회색지대는 명시적으로 배제해 둘
+      값어치가 있습니다.
+    </p>
+
+    <ul>
+      <li><strong>write·job 프레임 없음.</strong> 고급 옵션으로도, 확인 대화상자 뒤로도 두지 않습니다.
+        찾는 것이 목적인 도구에 있을 이유가 없습니다.</li>
+      <li><strong>자동 identity 조회 없음.</strong> 포트 스캔은 대역 전체에 돌릴 만큼은 수동적이지만,
+        프로토콜 수준 질의는 특정 장비 한 대와 나누는 대화입니다. 사람이 그 행을 골랐기 때문에 —
+        read-only 로, 그 주소 하나에, 1회만 — 나가야 합니다.</li>
+      <li><strong>반복 폴링 없음.</strong> 발견은 한 번 돕니다. 제어 장비가 주기적으로 응답하게 만드는
+        것은 감시 시스템이고, 그걸 의도치 않게 만드는 것은 의도적으로 만드는 것보다 나쁩니다.</li>
+      <li><strong>승인이 먼저.</strong> 내 현장이 아니라면 무엇이든 보낼지 말지는 설비 소유자의
+        판단입니다.</li>
+    </ul>
+
+    <h2>미탐지는 부재가 아닙니다</h2>
+
+    <p>
+      장비가 분명히 있는데도 스캔에 전혀 보이지 않을 수 있습니다 — 무선의 client isolation, VLAN 분리,
+      유선 전용 제어망, 사이에 놓인 방화벽, 혹은 요청하지 않은 트래픽에 아예 응답하지 않는 장비.
+      빈 결과는 네트워크에 대한 정보인 만큼이나 <strong>내가 서 있는 위치</strong>에 대한 정보이기도
+      합니다. 그렇게 읽으면 낭비하는 시간이 줄어듭니다.
+    </p>
+
+    <div class="note">
+      <p><strong>Dotori WIFI Scout</strong> 는 이 포트들을 후보로 표시하고 판단 근거로 포트와 프로토콜을
+        함께 보여주며, identity 조회는 사용자가 승인한 행에만 read-only unicast 로 1회 수행합니다.
+        write·job 프레임은 보내지 않습니다.
+        <a href="/ko/wifi-scout/">Dotori WIFI Scout 자세히 보기</a></p>
+    </div>
+
+    <h2>관련 글</h2>
+    <ul>
+      <li><a href="/ko/blog/find-ls-plc-ip-address/">IP 를 모르는 LS XGT PLC 를 현장에서 찾는 법</a>
+        — LS 장비는 UDP 2007 브로드캐스트에 응답하므로 포트 스캔 자체를 건너뛸 수 있습니다.</li>
+    </ul>
+
+  </article>
+
+  <footer>
+    <p>droidactor 가 만드는 Android 앱.</p>
+    <p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/">전체 앱</a> · <a href="/blog/identify-industrial-devices-by-port/" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--
+  droidactor.github.io/ko/blog/ — 국문 글 목록. 영문 원본은 /blog/ 이며 섹션 구성이 같다.
+
+  글을 추가할 때 — 다섯 가지를 모두 해야 한다. 하나라도 빠지면 언어 쌍이 어긋난다:
+    1. blog/<slug>/index.html      _post-template.html 에서 복사, lang="en"
+    2. ko/blog/<slug>/index.html   같은 템플릿에서 복사, lang="ko"
+    3. 아래 목록에 <li> 추가, /blog/index.html 에도 같은 항목 추가
+    4. /sitemap.xml 에 글 <url> 쌍 추가 + 블로그 목록 쌍
+       (목록 쌍은 첫 글이 나갈 때까지 주석 처리돼 있다 — sitemap.xml 참조)
+    5. 손댄 페이지의 <lastmod> 갱신
+
+  목록은 의도적으로 손으로 관리한다 — 이 저장소에 생성기는 없다. 글이 열 편쯤 넘어
+  손이 아프면 그때가 생성기를 도입할 신호다. 그전에는 아니다.
+-->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>현장 노트 — droidactor</title>
+<meta name="description" content="Android 블루투스 HID 리모컨과 현장용 네트워크 도구를 만들며 남긴 작업 노트 — 문서와 다르게 동작하는 프로토콜들, 그리고 실기에서 실제로 측정한 값.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/">
+<meta property="og:title" content="현장 노트 — droidactor">
+<meta property="og:description" content="블루투스 HID, 현장 네트워크의 PLC 탐색, TV 제어 프로토콜 — 문서가 말하는 것과 장비가 실제로 하는 것.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Blog",
+      "@id": "https://droidactor.github.io/ko/blog/#blog",
+      "url": "https://droidactor.github.io/ko/blog/",
+      "name": "droidactor 현장 노트",
+      "description": "Android 블루투스 HID 리모컨과 현장용 네트워크 도구를 만들며 남긴 작업 노트.",
+      "inLanguage": "ko",
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="언어">
+      <a class="lang-btn" href="/blog/" hreflang="en" lang="en">EN</a>
+      <a class="lang-btn" href="/ko/blog/" aria-current="page" hreflang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="crumb" aria-label="탐색 경로">
+    <a href="/ko/">droidactor</a><span>/</span>현장 노트
+  </nav>
+
+  <div class="hero">
+    <h1>현장 노트</h1>
+    <p>앱을 만들며 남긴 작업 노트입니다. 대부분은 문서와 다르게 동작하는 프로토콜에 대한 것이고,
+      host 나 현장 장비가 실제로 무엇을 돌려주었는지를 측정한 기록입니다.</p>
+  </div>
+
+  <section id="posts">
+    <h2>글</h2>
+    <p class="lead">최신 글이 위에 옵니다.</p>
+
+    <ul class="posts">
+      <!-- 항목 템플릿 — 이 블록을 복사해 채우고, /blog/index.html 에도 같은 항목을 넣는다.
+      <li>
+        <p class="meta"><time datetime="2026-08-10">2026년 8월 10일</time> · Dotori WIFI Scout</p>
+        <h3><a href="/ko/blog/find-ls-plc-ip-address/">LS XGT PLC 의 IP 주소를 폰으로 찾는 법</a></h3>
+        <p>읽고 나면 무엇을 할 수 있게 되는지를 한 문장으로.</p>
+      </li>
+      -->
+      <li>
+        <p class="meta"><time datetime="2026-08-03">2026년 8월 3일</time> · Dotori WIFI Scout</p>
+        <h3><a href="/ko/blog/find-ls-plc-ip-address/">IP 를 모르는 LS XGT PLC 를 현장에서 찾는 법</a></h3>
+        <p>UDP 2007 브로드캐스트 한 번이면 같은 대역의 LS PLC 가 자기 주소를 알려줍니다. 대역 전수 스캔이
+          필요 없습니다. 무엇을 보내고, 아무것도 응답하지 않을 때 무엇을 확인해야 하는지.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-03">2026년 8월 3일</time> · Dotori WIFI Scout</p>
+        <h3><a href="/ko/blog/identify-industrial-devices-by-port/">포트로 산업 장비 식별하기 — 현장 네트워크에서 무엇이 응답하는가</a></h3>
+        <p>포트 102·502·44818·9600·5007·48898 이 뜻하는 것, 포트 번호가 왜 답이 아니라 후보인지,
+          그리고 발견 도구가 어디서 멈춰야 하는지.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="about">
+    <h2>여기에 쓰는 것</h2>
+    <p class="lead">세 가지입니다. 앱이 실제로 부딪히는 것이 그 셋이기 때문입니다.</p>
+
+    <div class="feature">
+      <div>
+        <h3>블루투스 HID</h3>
+        <p>폰이 키보드·마우스로 광고될 때 host 에 실제로 무엇이 찍히는가 — report descriptor,
+          눌린 키 상태, 그리고 한글을 완성 음절이 아니라 자모 keystroke 로 분해해 보내야 하는 이유.</p>
+      </div>
+      <div>
+        <h3>처음 들어가는 현장 네트워크</h3>
+        <p>낯선 대역에서 무엇이 응답하는지 식별하는 방법: 어떤 포트가 어떤 프로토콜을 뜻하는지,
+          산업 장비가 발견 요청에 어떻게 답하는지, 그리고 스캔을 능력이 아니라 안전 때문에
+          어디서 멈춰야 하는지.</p>
+      </div>
+      <div>
+        <h3>추정이 아니라 실측</h3>
+        <p>장비가 계획에 동의하지 않아 기획을 접은 자리들. 실패한 시도도 함께 적습니다 —
+          기능이 아니라 측정이 요점이기 때문입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>앱</h2>
+    <div class="also">
+      <a href="/ko/bt-keyboard/">Dotori Bluetooth Keyboard</a>
+      <a href="/ko/bt-ppt/">Dotori Bluetooth PPT Remote</a>
+      <a href="/ko/wifi-scout/">Dotori WIFI Scout</a>
+      <a href="/ko/ssh-scout/">Dotori SSH Scout</a>
+      <a href="/ko/yt-downloader/">Dotori YouTube Downloader</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>droidactor 가 만드는 Android 앱.</p>
+    <p><a href="/ko/">전체 앱</a> · <a href="/blog/" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>

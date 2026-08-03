@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--
+  droidactor.github.io/blog/ — English post index. The Korean twin lives at /ko/blog/
+  and carries the same sections.
+
+  Adding a post — all five steps, or the language pair drifts apart:
+    1. blog/<slug>/index.html      from _post-template.html, lang="en"
+    2. ko/blog/<slug>/index.html   from the same template,   lang="ko"
+    3. an <li> in the list below, and its twin in /ko/blog/index.html
+    4. a <url> pair in /sitemap.xml for the post, plus the blog index pair
+       (that pair is commented out until the first post ships — see sitemap.xml)
+    5. bump <lastmod> for every page touched
+
+  The list is hand-maintained on purpose: there is no generator in this repo. If
+  that becomes tedious past roughly ten posts, that is the signal to add one —
+  not before.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Field notes — droidactor</title>
+<meta name="description" content="Working notes from building Bluetooth HID remotes and on-site network tools for Android — how these protocols actually behave on real hardware, and what we measured.">
+<link rel="canonical" href="https://droidactor.github.io/blog/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/">
+<meta property="og:title" content="Field notes — droidactor">
+<meta property="og:description" content="Bluetooth HID, PLC discovery on a plant network, TV control protocols — what the documentation says versus what the hardware does.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Blog",
+      "@id": "https://droidactor.github.io/blog/#blog",
+      "url": "https://droidactor.github.io/blog/",
+      "name": "droidactor field notes",
+      "description": "Working notes from building Bluetooth HID remotes and on-site network tools for Android.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="Language">
+      <a class="lang-btn" href="/blog/" aria-current="page" hreflang="en">EN</a>
+      <a class="lang-btn" href="/ko/blog/" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">droidactor</a><span>/</span>Field notes
+  </nav>
+
+  <div class="hero">
+    <h1>Field notes</h1>
+    <p>Working notes from building these apps. Mostly about protocols that behave
+      differently from their documentation, and about what a host or a piece of plant
+      equipment actually did when we measured it.</p>
+  </div>
+
+  <section id="posts">
+    <h2>Posts</h2>
+    <p class="lead">Newest first.</p>
+
+    <ul class="posts">
+      <!-- Entry template — copy this block, fill it, and mirror it in /ko/blog/index.html.
+      <li>
+        <p class="meta"><time datetime="2026-08-10">10 August 2026</time> · Dotori WIFI Scout</p>
+        <h3><a href="/blog/find-ls-plc-ip-address/">Finding an LS XGT PLC's IP address from a phone</a></h3>
+        <p>One sentence saying what the reader will be able to do after reading it.</p>
+      </li>
+      -->
+      <li>
+        <p class="meta"><time datetime="2026-08-03">3 August 2026</time> · Dotori WIFI Scout</p>
+        <h3><a href="/blog/find-ls-plc-ip-address/">Finding an LS XGT PLC's IP address when you don't know it</a></h3>
+        <p>One UDP broadcast on port 2007 makes every LS PLC on the segment announce its own
+          address — no subnet sweep. What it sends, and what to check when nothing answers.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-03">3 August 2026</time> · Dotori WIFI Scout</p>
+        <h3><a href="/blog/identify-industrial-devices-by-port/">Identifying industrial devices by port on a plant network</a></h3>
+        <p>What ports 102, 502, 44818, 9600, 5007 and 48898 imply, why a port number is a candidate
+          rather than an answer, and where a discovery tool should stop.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="about">
+    <h2>What gets written here</h2>
+    <p class="lead">Three subjects, because those are the three the apps run into.</p>
+
+    <div class="feature">
+      <div>
+        <h3>Bluetooth HID</h3>
+        <p>What a host actually receives when a phone advertises itself as a keyboard or
+          mouse — report descriptors, held-key state, and why Korean text has to be
+          decomposed into jamo keystrokes rather than sent as finished syllables.</p>
+      </div>
+      <div>
+        <h3>Networks you walk into</h3>
+        <p>Identifying what answers on an unfamiliar subnet: which port implies which
+          protocol, how industrial equipment responds to a discovery request, and where a
+          scan should stop for safety rather than for lack of ability.</p>
+      </div>
+      <div>
+        <h3>Measurements, not assumptions</h3>
+        <p>Where a plan was dropped because the hardware disagreed with it. These notes
+          include the ones that failed — the measurement is the point, not the feature.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Apps</h2>
+    <div class="also">
+      <a href="/bt-keyboard/">Dotori Bluetooth Keyboard</a>
+      <a href="/bt-ppt/">Dotori Bluetooth PPT Remote</a>
+      <a href="/wifi-scout/">Dotori WIFI Scout</a>
+      <a href="/ssh-scout/">Dotori SSH Scout</a>
+      <a href="/yt-downloader/">Dotori YouTube Downloader</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Android apps by droidactor.</p>
+    <p><a href="/">All apps</a> · <a href="/ko/blog/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>

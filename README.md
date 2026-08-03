@@ -19,7 +19,10 @@ privacy policy, and the host for `app-ads.txt`.
 /wifi-scout/            제품 페이지 — Dotori WIFI Scout              + /ko/wifi-scout/
 /ssh-scout/             제품 페이지 — Dotori SSH Scout               + /ko/ssh-scout/
 /yt-downloader/         제품 페이지 — Dotori YouTube Downloader      + /ko/yt-downloader/
-/assets/site.css        12개 페이지 공용 스타일
+/blog/                  글 목록 — Field notes                        + /ko/blog/ (현장 노트)
+/blog/<slug>/           글 1편                                       + /ko/blog/<slug>/
+/blog/_post-template.html  글 템플릿 — noindex · sitemap 제외. 페이지가 아니다
+/assets/site.css        전 페이지 공용 스타일
 /404.html               없는 주소 → 양 언어 홈으로 안내 (GitHub Pages 가 도메인 전역에 사용)
 /robots.txt  /sitemap.xml
 /app-ads.txt            AdMob 판매자 선언 (반드시 도메인 루트)
@@ -32,8 +35,10 @@ privacy policy, and the host for `app-ads.txt`.
 |---|---|
 | `index.html` · `ko/index.html` | 앱 목록 + 지원 연락처 + **개인정보 처리방침 전문**. 처리방침 앵커의 정본이다 |
 | `<앱>/index.html` | 제품 상세. 기능·요구사항·개인정보 요약을 담고, 처리방침 **전문은 홈 앵커로 링크**한다(중복 금지) |
+| `blog/index.html` · `ko/blog/index.html` | 글 목록. **손으로 관리한다** — 이 리포에 생성기는 없다. 열 편쯤 넘어 손이 아프면 그때가 도입 신호다 |
+| `blog/_post-template.html` | 글 템플릿. slug·경로·JSON-LD·CTA 규약을 머리주석에 담고 있으며 **글 추가 절차의 정본**이다 |
 | `assets/site.css` | 전 페이지 공용. 외부 CDN·폰트·스크립트 없음(자기완결) |
-| `sitemap.xml` | 12개 URL + `xhtml:link` hreflang. 페이지를 추가하면 여기도 넣는다 |
+| `sitemap.xml` | 제품 12개 URL + `xhtml:link` hreflang. 페이지를 추가하면 여기도 넣는다. 블로그 목록 쌍은 **첫 글이 나갈 때까지 주석 처리**돼 있다(빈 목록은 색인시켜 봐야 순위를 다툴 대상이 없다) |
 | `robots.txt` | 전체 허용 + sitemap 위치 |
 | `404.html` | 루트 절대경로만 쓴다 — 어느 깊이의 주소에서든 서빙되기 때문이다. `noindex` |
 | `app-ads.txt` | **AdMob 콘솔이 생성한 줄을 그대로** 넣는다 — 손으로 만들지 않는다 |
@@ -67,6 +72,9 @@ privacy policy, and the host for `app-ads.txt`.
 - 페이지마다 `canonical`, `og:*`, `hreflang`(en / ko / x-default 상호 참조), JSON-LD
   (홈 = `WebSite`+`Organization`+`ItemList`, 제품 = `SoftwareApplication`)
 - 색인 단위를 1개에서 **12개**로 늘린 제품별 URL
+- `/blog/` · `/ko/blog/` — 제품 페이지는 "이 앱은 무엇인가"만 답한다. 앱을 아직 모르는 사람이
+  검색하는 것은 **문제**("PLC IP 주소 찾기", "TV 한글 입력")이고, 그 검색어를 받는 자리가 블로그다.
+  글은 자기 도메인에 먼저 올리고, 외부 플랫폼에는 canonical 을 건 재배포만 한다
 
 **남은 것은 사람이 해야 한다 — Google Search Console 등록.** 이게 없으면 색인까지 몇 주가 걸린다.
 
@@ -103,6 +111,17 @@ privacy policy, and the host for `app-ads.txt`.
   3. 제품 페이지 2개 — `<앱>/index.html`, `ko/<앱>/index.html`
   4. `sitemap.xml` 에 URL 2개 (hreflang 3줄씩)
   5. 새 권한이 생기면 처리방침 §4 권한 표에 행 추가 (두 언어 모두)
+- **블로그 글을 추가하면** 다섯 가지를 한 묶음으로 처리한다. 자리표시자와 세부 규약의 정본은
+  `blog/_post-template.html` 머리주석이다.
+  1. `blog/<slug>/index.html`(`lang="en"`) · `ko/blog/<slug>/index.html`(`lang="ko"`) —
+     **slug 는 두 언어가 같은 문자열이다.** 그래야 hreflang 쌍이 기계적으로 맞는다
+  2. 두 목록 페이지에 `<li>` 추가 — `blog/index.html`, `ko/blog/index.html`
+  3. `sitemap.xml` 에 글 URL 2개. **첫 글이라면 주석 처리된 블로그 목록 쌍도 이때 함께 푼다**
+  4. 손댄 페이지의 `<lastmod>` 갱신
+  5. 글 끝 CTA 는 **앱 하나만** 가리킨다. 다섯 개를 나열하면 아무 데도 가지 않는다
+- **전역 네비게이션 항목이 늘면**(블로그처럼 새 섹션이 생기면) 푸터가 있는 **모든 페이지**를 고친다 —
+  홈 2 + 제품 10 + `404.html` + 블로그 목록 2. 홈만 고치면 나머지 페이지에서 그 섹션에 닿을 길이 없고,
+  크롤러도 홈 한 곳에서만 링크를 본다. 블로그를 붙일 때 실제로 여기서 한 번 빠뜨렸다.
 - **개인정보 처리방침을 고치면** 섹션 머리의 "최종 갱신 / Effective date" 날짜를 함께 고친다. **두 언어 모두다.**
 - **제품 페이지에 처리방침 전문을 복사하지 않는다.** 요약 + 홈 앵커 링크만 둔다. 두 벌이 되면 반드시 어긋난다.
 - 권한 설명은 추측하지 않고 각 앱의 `AndroidManifest.xml` 을 근거로 쓴다. 위치 권한 없음,

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--
+  POST TEMPLATE — this file is not a published page. It carries noindex and is kept
+  out of sitemap.xml on purpose.
+
+  To write a post:
+    1. copy to  blog/<slug>/index.html      and set lang="en"
+    2. copy to  ko/blog/<slug>/index.html   and set lang="ko"
+    3. replace every {{PLACEHOLDER}} — search for "{{" before publishing, none may remain
+    4. DELETE the <meta name="robots" content="noindex, nofollow"> line
+    5. add the entry to both blog indexes and the <url> pair to /sitemap.xml
+
+  Conventions this template already encodes, so they are not decided per post:
+    - <slug> is the SAME string in both languages. The URL pair is /blog/<slug>/ and
+      /ko/blog/<slug>/, which is what makes the hreflang pair mechanical.
+    - Slugs are English, lowercase, hyphenated, and describe the task the reader came
+      to do — find-ls-plc-ip-address, not plc-post-1.
+    - The stylesheet uses a RELATIVE path, like every other page in this repo, so the
+      file still renders when opened straight from disk. The depth is fixed per
+      language: ../../ from /blog/<slug>/, ../../../ from /ko/blog/<slug>/.
+    - Links stay ROOT-ABSOLUTE (/bt-keyboard/, /ko/blog/). They will not work under
+      file:// — that is expected and applies to the whole site. Check locally with
+      `python -m http.server 8000`, as README says.
+    - The post opens with a summary box. A reader who stops there should already have
+      the answer; generative search engines quote that box.
+    - Every post ends with one call to action pointing at one app. Not five.
+-->
+<html lang="{{LANG en|ko}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{TITLE — the search phrase first, brand last, under ~60 chars}} — droidactor</title>
+<meta name="description" content="{{DESCRIPTION — 120-155 chars. Say what the reader will be able to do after reading, not what the post 'covers'.}}">
+<link rel="canonical" href="https://droidactor.github.io/{{ko/}}blog/{{SLUG}}/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/{{SLUG}}/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/{{SLUG}}/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/{{SLUG}}/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="{{en_US|ko_KR}}">
+<meta property="og:locale:alternate" content="{{ko_KR|en_US}}">
+<meta property="og:url" content="https://droidactor.github.io/{{ko/}}blog/{{SLUG}}/">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESCRIPTION}}">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="{{../../ for /blog/<slug>/ | ../../../ for /ko/blog/<slug>/}}assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "{{TITLE}}",
+      "description": "{{DESCRIPTION}}",
+      "url": "https://droidactor.github.io/{{ko/}}blog/{{SLUG}}/",
+      "mainEntityOfPage": "https://droidactor.github.io/{{ko/}}blog/{{SLUG}}/",
+      "datePublished": "{{YYYY-MM-DD}}",
+      "dateModified": "{{YYYY-MM-DD}}",
+      "inLanguage": "{{en|ko}}",
+      "isPartOf": { "@id": "https://droidactor.github.io/{{ko/}}blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "{{APP_NAME — the one app this post lands on}}",
+        "url": "https://droidactor.github.io/{{ko/}}{{APP_PATH}}/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/{{ko/}}" },
+        { "@type": "ListItem", "position": 2, "name": "{{Field notes|현장 노트}}", "item": "https://droidactor.github.io/{{ko/}}blog/" },
+        { "@type": "ListItem", "position": 3, "name": "{{TITLE}}", "item": "https://droidactor.github.io/{{ko/}}blog/{{SLUG}}/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/{{ko/}}">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="{{Language|언어}}">
+      <a class="lang-btn" href="/blog/{{SLUG}}/" hreflang="en" lang="en">EN</a>
+      <a class="lang-btn" href="/ko/blog/{{SLUG}}/" hreflang="ko" lang="ko">한국어</a>
+      <!-- put aria-current="page" on whichever of the two this file is -->
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="crumb" aria-label="{{Breadcrumb|탐색 경로}}">
+    <a href="/{{ko/}}">droidactor</a><span>/</span><a href="/{{ko/}}blog/">{{Field notes|현장 노트}}</a><span>/</span>{{SHORT TITLE}}
+  </nav>
+
+  <div class="hero">
+    <h1>{{H1 — may differ from <title>; write it for the reader, not the SERP}}</h1>
+    <p class="post-meta"><time datetime="{{YYYY-MM-DD}}">{{10 August 2026|2026년 8월 10일}}</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>{{Short answer|요약}}.</strong> {{Two or three sentences that answer the
+        title outright. If the reader stops here they should already be able to act — the
+        rest of the post is the why and the edge cases. This box is what AI search
+        engines quote, so no teasing.}}</p>
+    </div>
+
+    <p>{{Opening paragraph — the concrete situation the reader is in. Name the symptom
+      they searched for, in their words.}}</p>
+
+    <h2>{{First step, phrased as the thing being done}}</h2>
+    <p>{{...}}</p>
+
+    <pre><code>{{command or protocol dump, if there is one — keep it copy-pasteable}}</code></pre>
+
+    <h2>{{What to do when that fails}}</h2>
+    <p>{{The failure branch is usually why the reader is searching at all. Do not skip it.}}</p>
+
+    <h2>{{Why it behaves this way}}</h2>
+    <p>{{The protocol-level explanation. This is the part no competing page has, and the
+      reason this post is worth reading rather than the vendor manual.}}</p>
+
+    <div class="note">
+      <p><strong>{{APP_NAME}}</strong> {{does this part of the job on a phone —
+        one sentence, factual, no superlatives. Then the link.}}
+        <a href="/{{ko/}}{{APP_PATH}}/">{{More about APP_NAME|APP_NAME 자세히 보기}}</a></p>
+    </div>
+
+    <h2>{{Related notes|관련 글}}</h2>
+    <ul>
+      <li><a href="/{{ko/}}blog/{{OTHER_SLUG}}/">{{Other post title}}</a></li>
+    </ul>
+
+  </article>
+
+  <footer>
+    <p>{{Android apps by droidactor.|droidactor 가 만드는 Android 앱.}}</p>
+    <p><a href="/{{ko/}}blog/">{{Field notes|현장 노트}}</a> · <a href="/{{ko/}}">{{All apps|전체 앱}}</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>

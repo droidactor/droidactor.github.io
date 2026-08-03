@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finding an LS XGT PLC's IP address when you don't know it — droidactor</title>
+<meta name="description" content="LS XGT PLCs answer a UDP broadcast on port 2007 with their own address. One request finds every LS PLC on the segment — faster and far quieter than sweeping the subnet.">
+<link rel="canonical" href="https://droidactor.github.io/blog/find-ls-plc-ip-address/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/find-ls-plc-ip-address/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/find-ls-plc-ip-address/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/find-ls-plc-ip-address/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/find-ls-plc-ip-address/">
+<meta property="og:title" content="Finding an LS XGT PLC's IP address when you don't know it">
+<meta property="og:description" content="One UDP broadcast on port 2007 makes every LS PLC on the segment announce its own address. Here is what it sends, and what to do when nothing answers.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Finding an LS XGT PLC's IP address when you don't know it",
+      "description": "LS XGT PLCs answer a UDP broadcast on port 2007 with their own address. One request finds every LS PLC on the segment.",
+      "url": "https://droidactor.github.io/blog/find-ls-plc-ip-address/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/find-ls-plc-ip-address/",
+      "datePublished": "2026-08-03",
+      "dateModified": "2026-08-03",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori WIFI Scout",
+        "url": "https://droidactor.github.io/wifi-scout/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Finding an LS XGT PLC's IP address", "item": "https://droidactor.github.io/blog/find-ls-plc-ip-address/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="Language">
+      <a class="lang-btn" href="/blog/find-ls-plc-ip-address/" aria-current="page" hreflang="en">EN</a>
+      <a class="lang-btn" href="/ko/blog/find-ls-plc-ip-address/" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Finding an LS PLC's IP address
+  </nav>
+
+  <div class="hero">
+    <h1>Finding an LS XGT PLC's IP address when you don't know it</h1>
+    <p class="post-meta"><time datetime="2026-08-03">3 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>Short answer.</strong> LS XGT PLCs listen on <strong>UDP port 2007</strong> and
+        answer a broadcast discovery request with their own address. Send one datagram to
+        <code>255.255.255.255:2007</code> containing the ASCII string
+        <code>STATION_LIST_REQ_DATA</code>, then read the replies: every packet that starts with
+        <code>STATION_LIST_RESP_DATA</code> came <em>from</em> a PLC, and the source address of that
+        packet is the address you were looking for. One request, no subnet sweep.</p>
+    </div>
+
+    <p>
+      You are standing in front of a panel you did not commission. XG5000 wants an IP address before
+      it will connect, the label on the CPU is gone or was never there, and the drawing in the folder
+      is two retrofits out of date. The plant is running, so unplugging things to see what falls over
+      is not on the table.
+    </p>
+
+    <h2>Why a ping sweep is the wrong first move</h2>
+
+    <p>
+      The reflex is to sweep the subnet — 254 addresses, ICMP or a TCP connect on a few likely ports,
+      and see what answers. It does work often enough that people keep doing it. But on a live control
+      network it has three problems.
+    </p>
+
+    <ul>
+      <li><strong>It is loud.</strong> A sweep sends packets to every address in the range, including
+        drives, HMIs and safety devices that have nothing to do with your task. Some older equipment
+        handles unexpected connection attempts poorly.</li>
+      <li><strong>It is slow.</strong> Two hundred and fifty four addresses times a per-port timeout
+        adds up, and you are usually doing this while somebody waits.</li>
+      <li><strong>It tells you an address answered, not what it is.</strong> You still have to work out
+        which of the five responding hosts is the PLC.</li>
+    </ul>
+
+    <p>
+      The vendor-specific discovery below avoids all three: it is one packet in total, the answers come
+      back within a couple of seconds, and anything that replies is by definition an LS PLC.
+    </p>
+
+    <h2>What the discovery exchange looks like</h2>
+
+    <p>
+      Bind a UDP socket to port 2007, enable broadcast, and send the request to the broadcast address
+      on the same port. Two request strings are worth sending — older and newer firmware do not answer
+      the same one:
+    </p>
+
+<pre><code>bind    UDP 0.0.0.0:2007          (broadcast enabled)
+send -> 255.255.255.255:2007      "STATION_LIST_REQ_DATA"
+send -> 255.255.255.255:2007      "NP_DATA_REQ_V2"
+listen  ~2 seconds
+
+recv &lt;- 192.168.0.31:2007         "STATION_LIST_RESP_DATA…"   <-- a PLC, at 192.168.0.31
+recv &lt;- 192.168.0.44:2007         "STATION_LIST_RESP_DATA…"   <-- another one</code></pre>
+
+    <p>
+      The payloads are plain ASCII, which is why this is easy to recognise in a capture. The part that
+      matters is not inside the response body at all — it is the <strong>source address of the reply
+      datagram</strong>. Everything after the <code>STATION_LIST_RESP_DATA</code> marker is station
+      detail; you can ignore it entirely if all you need is somewhere for XG5000 to point at.
+    </p>
+
+    <p>
+      Note that the socket binds to 2007 rather than an ephemeral port. Replies come back to that port,
+      so if something else on the machine already holds it, the bind fails and you will see no
+      responses at all — not an empty network, just a busy port. That failure mode is easy to
+      misread.
+    </p>
+
+    <h2>When nothing answers</h2>
+
+    <p>
+      A silent result does not mean there is no PLC. In rough order of how often each one turns out to
+      be the cause:
+    </p>
+
+    <ul>
+      <li><strong>The PLC is on a different subnet.</strong> A broadcast to
+        <code>255.255.255.255</code> stops at the first router — it never leaves the local segment. If
+        your phone or laptop pulled a DHCP address on the office VLAN and the control network is
+        somewhere else entirely, no amount of listening will help. This is the single most common
+        reason.</li>
+      <li><strong>You are on Wi-Fi and the AP filters broadcast.</strong> Client isolation and
+        broadcast/multicast suppression are on by default in a lot of enterprise wireless. The request
+        leaves your device and dies at the AP.</li>
+      <li><strong>The control network is wired-only.</strong> Plenty of plants keep the PLC segment off
+        Wi-Fi deliberately. Nothing you do from a phone will reach it.</li>
+      <li><strong>Port 2007 is already bound</strong> on your machine, as above.</li>
+      <li><strong>The CPU has no Ethernet module</strong>, or the FEnet module is present but not
+        configured. Serial-only CPUs will never answer a network discovery.</li>
+    </ul>
+
+    <p>
+      The first two are worth checking before anything else, because both are invisible from the tool's
+      side — the request looks like it was sent successfully in every case.
+    </p>
+
+    <h2>Once you have the address</h2>
+
+    <p>
+      With the IP in hand, XG5000 connects the ordinary way: <em>Online → Connection Settings</em>, type
+      Ethernet, enter the address, then connect and read the project from the PLC. If the connection is
+      refused rather than timing out, the address is right and something else is wrong — a full
+      connection table on the FEnet module is the usual culprit, and it clears when a stale session
+      times out.
+    </p>
+
+    <h2>A word on scanning equipment you do not own</h2>
+
+    <p>
+      Discovery is a read. It does not change a register, a mode switch or a program. But it is still
+      traffic aimed at industrial equipment, and on a site that is not yours, that is the site owner's
+      call to make and not yours. Get the go-ahead first. Write and job frames are a different category
+      entirely and have no place in a discovery tool.
+    </p>
+
+    <div class="note">
+      <p><strong>Dotori WIFI Scout</strong> runs this LS discovery alongside its ordinary subnet scan,
+        so responding PLCs show up in the result list with their address already resolved. It never
+        sends write or job frames, and an identity query only goes out after you approve a specific
+        row. <a href="/wifi-scout/">More about Dotori WIFI Scout</a></p>
+    </div>
+
+    <h2>Related notes</h2>
+    <ul>
+      <li><a href="/blog/identify-industrial-devices-by-port/">Identifying industrial devices by port</a>
+        — what the other five ports on a plant network mean, and how far a port number can be trusted.</li>
+    </ul>
+
+  </article>
+
+  <footer>
+    <p>Android apps by droidactor.</p>
+    <p><a href="/blog/">Field notes</a> · <a href="/">All apps</a> · <a href="/ko/blog/find-ls-plc-ip-address/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>

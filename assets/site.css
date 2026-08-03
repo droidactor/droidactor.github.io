@@ -1,6 +1,6 @@
 /* droidactor.github.io — shared stylesheet for every page.
-   Self-contained: no external CDN, font or import. Kept as one file so the
-   12 pages (root + /ko/ + 5 product pages in each language) never drift apart. */
+   Self-contained: no external CDN, font or import. Kept as one file so the pages
+   (root + /ko/, 5 product pages in each language, and the blog) never drift apart. */
 
 :root {
   --bg: #0d1117;
@@ -181,3 +181,40 @@ footer p { margin: 0 0 6px; }
   background: var(--bg-soft); border: 1px solid var(--line); border-radius: 999px;
 }
 .also a:hover { border-color: var(--accent-dim); }
+
+/* ---- blog: post list ---------------------------------------------------- */
+.posts { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.posts li {
+  margin: 0; padding: 16px 18px;
+  background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.posts li.empty {
+  background: none; border-style: dashed;
+  color: var(--fg-faint); font-size: 14.5px;
+}
+.posts h3 { margin: 0 0 6px; font-size: 17px; }
+.posts h3 a { text-decoration: none; }
+.posts h3 a:hover { text-decoration: underline; }
+.posts p:last-child { margin: 0; font-size: 14.5px; color: var(--fg-dim); }
+.posts .meta, .post-meta { font-size: 12.5px; color: var(--fg-faint); }
+.posts .meta { margin: 0 0 6px; }
+.post-meta { margin: 0; }
+
+/* ---- blog: post body ----------------------------------------------------- */
+/* A post is prose, so its headings are real headings — not the small uppercase
+   section labels the product pages use for h2. */
+.post-body { padding: 34px 0 8px; }
+.post-body h2 {
+  margin: 34px 0 10px; font-size: 21px; font-weight: 700;
+  text-transform: none; letter-spacing: -0.01em; color: var(--fg);
+}
+.post-body > h2:first-child { margin-top: 0; }
+.post-body h3 { margin: 24px 0 8px; font-size: 16.5px; }
+.post-body > :last-child { margin-bottom: 0; }
+pre {
+  margin: 0 0 16px; padding: 12px 14px; overflow-x: auto;
+  background: var(--bg-soft); border: 1px solid var(--line); border-radius: 8px;
+  font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, monospace;
+  font-size: 13px; line-height: 1.55;
+}
+pre code { background: none; border: 0; padding: 0; font-size: inherit; }
