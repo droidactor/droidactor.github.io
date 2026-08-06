@@ -64,7 +64,8 @@
         { "@type": "ListItem", "position": 3, "name": "Dotori Bluetooth Mouse", "url": "https://droidactor.github.io/bt-mouse/" },
         { "@type": "ListItem", "position": 4, "name": "Dotori WIFI Scout", "url": "https://droidactor.github.io/wifi-scout/" },
         { "@type": "ListItem", "position": 5, "name": "Dotori SSH Scout", "url": "https://droidactor.github.io/ssh-scout/" },
-        { "@type": "ListItem", "position": 6, "name": "Dotori YouTube Downloader", "url": "https://droidactor.github.io/yt-downloader/" }
+        { "@type": "ListItem", "position": 6, "name": "Dotori YouTube Downloader", "url": "https://droidactor.github.io/yt-downloader/" },
+        { "@type": "ListItem", "position": 7, "name": "Dotori LG TV Remote", "url": "https://droidactor.github.io/lgtv/" }
       ]
     }
   ]
@@ -192,15 +193,17 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">📺</div>
-        <h3>LG webOS Remote</h3>
-        <div class="pkg">—</div>
+        <h3><a href="/lgtv/">Dotori LG TV Remote</a></h3>
+        <div class="pkg">com.droidactor.lgtv</div>
         <p class="desc">
           A remote for LG webOS TVs that drives the set over the local network instead of
-          infrared — pointer, keys and app launch through the TV's own control protocol.
-          Text entry is out of scope for the first version. Still in development — not yet published.
+          infrared — trackpad pointer, keys, direct channel entry and power through the TV's own
+          control protocol. Text entry is out of scope for the first version.
         </p>
         <div class="foot">
-          <span class="badge dev">In development</span>
+          <span class="badge soon">Coming soon</span>
+          <a href="/lgtv/">Details</a>
+          <a href="#privacy-lgtv">Privacy</a>
         </div>
       </article>
 
@@ -308,7 +311,7 @@
         <tbody>
           <tr>
             <td><code>BLUETOOTH_CONNECT</code><br><code>BLUETOOTH_ADVERTISE</code></td>
-            <td>Dotori Bluetooth Keyboard<br>Dotori Bluetooth PPT Remote</td>
+            <td>Dotori Bluetooth Keyboard<br>Dotori Bluetooth PPT Remote<br>Dotori Bluetooth Mouse</td>
             <td>To appear as a HID keyboard/mouse to a nearby host and send your key and
               pointer input to it. Required by Android for any Bluetooth pairing.</td>
           </tr>
@@ -321,6 +324,13 @@
               permission at all.</td>
           </tr>
           <tr>
+            <td><code>CHANGE_WIFI_MULTICAST_STATE</code></td>
+            <td>Dotori LG TV Remote</td>
+            <td>To hold a multicast lock while the app looks for your TV. Without it Wi-Fi power
+              saving discards the SSDP discovery replies before the app sees them. It grants no access
+              to your location and none to any network you are not already on.</td>
+          </tr>
+          <tr>
             <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code><br><code>ACCESS_WIFI_STATE</code></td>
             <td>All (network apps directly; the HID apps through the ad SDK)</td>
             <td>To reach the devices or sources you asked for, and to fetch ads. The HID
@@ -328,9 +338,10 @@
           </tr>
           <tr>
             <td><code>FOREGROUND_SERVICE</code><br><code>POST_NOTIFICATIONS</code></td>
-            <td>All except Dotori WIFI Scout / Dotori SSH Scout</td>
+            <td>Dotori Bluetooth Keyboard<br>Dotori Bluetooth PPT Remote<br>Dotori Bluetooth Mouse<br>Dotori YouTube Downloader</td>
             <td>So a HID session or a download keeps running with a visible notification while
-              you use another app. We send no promotional notifications.</td>
+              you use another app. We send no promotional notifications. The scanners and the TV
+              remote declare neither permission — they do no work in the background.</td>
           </tr>
           <tr>
             <td><code>AD_ID</code></td>
@@ -484,8 +495,8 @@
         The app talks to your LG webOS TV directly over your own Wi-Fi. Remote commands travel from
         the phone to the TV you picked and nowhere else — there is no developer server and no app
         login. To reconnect and confirm it is the same set, it stores the TV's address, its MAC
-        address, the pairing key the TV issues and the TV certificate fingerprint on your phone;
-        removing the app removes them. No location permission. Ads appear only as a banner pinned to
+        address, the model name and certificate CN the set reports, the pairing key the TV issues and
+        the TV certificate fingerprint on your phone; removing the app removes them. No location permission. Ads appear only as a banner pinned to
         the top of the screen and kept clear of the controls — <strong>there are no interstitial
         ads</strong>, so nothing full-screen interrupts you while you change the volume or channel.
       </p>

@@ -54,7 +54,8 @@
         { "@type": "ListItem", "position": 3, "name": "Dotori Bluetooth Mouse", "url": "https://droidactor.github.io/ko/bt-mouse/" },
         { "@type": "ListItem", "position": 4, "name": "Dotori WIFI Scout", "url": "https://droidactor.github.io/ko/wifi-scout/" },
         { "@type": "ListItem", "position": 5, "name": "Dotori SSH Scout", "url": "https://droidactor.github.io/ko/ssh-scout/" },
-        { "@type": "ListItem", "position": 6, "name": "Dotori YouTube Downloader", "url": "https://droidactor.github.io/ko/yt-downloader/" }
+        { "@type": "ListItem", "position": 6, "name": "Dotori YouTube Downloader", "url": "https://droidactor.github.io/ko/yt-downloader/" },
+        { "@type": "ListItem", "position": 7, "name": "Dotori LG TV Remote", "url": "https://droidactor.github.io/ko/lgtv/" }
       ]
     }
   ]
@@ -180,15 +181,17 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">📺</div>
-        <h3>LG webOS Remote</h3>
-        <div class="pkg">—</div>
+        <h3><a href="/ko/lgtv/">Dotori LG TV Remote</a></h3>
+        <div class="pkg">com.droidactor.lgtv</div>
         <p class="desc">
-          LG webOS TV 를 적외선이 아니라 같은 네트워크에서 조작하는 IP 리모컨입니다. 포인터·키·앱
-          실행을 TV 자체 제어 프로토콜로 보냅니다. 텍스트 입력은 첫 버전 범위에서 제외했습니다.
-          아직 개발 중이며 출시되지 않았습니다.
+          LG webOS TV 를 적외선이 아니라 같은 네트워크에서 조작하는 IP 리모컨입니다. 트랙패드
+          포인터·키·채널 직접 입력·전원을 TV 자체 제어 프로토콜로 보냅니다. 텍스트 입력은 첫 버전
+          범위에서 제외했습니다.
         </p>
         <div class="foot">
-          <span class="badge dev">개발 중</span>
+          <span class="badge soon">출시 준비 중</span>
+          <a href="/ko/lgtv/">자세히</a>
+          <a href="#privacy-lgtv">개인정보</a>
         </div>
       </article>
 
@@ -290,7 +293,7 @@
         <tbody>
           <tr>
             <td><code>BLUETOOTH_CONNECT</code><br><code>BLUETOOTH_ADVERTISE</code></td>
-            <td>Dotori Bluetooth Keyboard<br>Dotori Bluetooth PPT Remote</td>
+            <td>Dotori Bluetooth Keyboard<br>Dotori Bluetooth PPT Remote<br>Dotori Bluetooth Mouse</td>
             <td>주변 host 에 HID 키보드·마우스로 나타나고 키·포인터 입력을 보내기 위해서입니다.
               블루투스 페어링에 Android 가 요구하는 권한입니다.</td>
           </tr>
@@ -302,6 +305,13 @@
               이 앱들은 위치 권한 자체를 요구하지 않습니다.</td>
           </tr>
           <tr>
+            <td><code>CHANGE_WIFI_MULTICAST_STATE</code></td>
+            <td>Dotori LG TV Remote</td>
+            <td>TV 를 찾는 동안 멀티캐스트 락을 잡기 위해서입니다. 이것이 없으면 Wi-Fi 절전이 SSDP
+              탐색 응답을 앱에 닿기 전에 버립니다. 위치나, 이미 접속한 것 외의 네트워크에 대한 접근
+              권한이 아닙니다.</td>
+          </tr>
+          <tr>
             <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code><br><code>ACCESS_WIFI_STATE</code></td>
             <td>전체 (네트워크 앱은 직접, HID 앱은 광고 SDK 경유)</td>
             <td>사용자가 지정한 장비·원본에 접속하고 광고를 받아오기 위해서입니다. HID 리모컨은
@@ -309,9 +319,10 @@
           </tr>
           <tr>
             <td><code>FOREGROUND_SERVICE</code><br><code>POST_NOTIFICATIONS</code></td>
-            <td>Dotori WIFI Scout / Dotori SSH Scout 외 전체</td>
+            <td>Dotori Bluetooth Keyboard<br>Dotori Bluetooth PPT Remote<br>Dotori Bluetooth Mouse<br>Dotori YouTube Downloader</td>
             <td>다른 앱을 쓰는 동안 HID 세션이나 다운로드가 알림과 함께 계속 동작하기 위해서입니다.
-              홍보성 알림은 보내지 않습니다.</td>
+              홍보성 알림은 보내지 않습니다. 스캐너 2종과 TV 리모컨은 두 권한을 선언하지 않습니다 —
+              백그라운드에서 하는 일이 없습니다.</td>
           </tr>
           <tr>
             <td><code>AD_ID</code></td>
@@ -455,8 +466,8 @@
       <p>
         집 Wi-Fi 안에서 LG webOS TV 와 직접 통신합니다. 리모컨 명령은 사용자가 고른 TV 로만 가고 그 밖의
         어디로도 가지 않습니다 — 개발자 서버도, 앱 로그인도 없습니다. 다시 연결할 때 같은 TV 인지
-        확인하려고 TV 의 주소와 MAC 주소, TV 가 발급한 페어링 키, TV 인증서 지문을 폰에 저장하며 앱을
-        지우면 함께 사라집니다. 위치 권한은 사용하지 않습니다. 광고는 화면 최상단 배너 하나뿐이고 조작
+        확인하려고 TV 의 주소와 MAC 주소, TV 가 알려주는 모델명과 인증서 CN, TV 가 발급한 페어링 키,
+        TV 인증서 지문을 폰에 저장하며 앱을 지우면 함께 사라집니다. 위치 권한은 사용하지 않습니다. 광고는 화면 최상단 배너 하나뿐이고 조작
         요소와 떨어져 있습니다 — <strong>전면광고는 없습니다</strong>. 볼륨이나 채널을 바꾸는 중에 전체
         화면이 끼어드는 일이 없습니다.
       </p>
