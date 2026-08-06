@@ -9,7 +9,7 @@
 
   <url>
     <loc>https://droidactor.github.io/</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/"/>
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/"/>
@@ -62,6 +62,25 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/bt-ppt/"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/bt-ppt/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/bt-ppt/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/bt-mouse/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/bt-mouse/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/bt-mouse/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/bt-mouse/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/bt-mouse/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/bt-mouse/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/bt-mouse/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/bt-mouse/"/>
   </url>
 
   <url>

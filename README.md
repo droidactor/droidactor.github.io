@@ -16,6 +16,7 @@ privacy policy, and the host for `app-ads.txt`.
 /ko/                    국문 홈 (같은 구성, 같은 앵커)
 /bt-keyboard/           제품 페이지 — Dotori Bluetooth Keyboard      + /ko/bt-keyboard/
 /bt-ppt/                제품 페이지 — Dotori Bluetooth PPT Remote    + /ko/bt-ppt/
+/bt-mouse/              제품 페이지 — Dotori Bluetooth Mouse         + /ko/bt-mouse/
 /wifi-scout/            제품 페이지 — Dotori WIFI Scout              + /ko/wifi-scout/
 /ssh-scout/             제품 페이지 — Dotori SSH Scout               + /ko/ssh-scout/
 /yt-downloader/         제품 페이지 — Dotori YouTube Downloader      + /ko/yt-downloader/
@@ -38,7 +39,7 @@ privacy policy, and the host for `app-ads.txt`.
 | `blog/index.html` · `ko/blog/index.html` | 글 목록. **손으로 관리한다** — 이 리포에 생성기는 없다. 열 편쯤 넘어 손이 아프면 그때가 도입 신호다 |
 | `blog/_post-template.html` | 글 템플릿. slug·경로·JSON-LD·CTA 규약을 머리주석에 담고 있으며 **글 추가 절차의 정본**이다 |
 | `assets/site.css` | 전 페이지 공용. 외부 CDN·폰트·스크립트 없음(자기완결) |
-| `sitemap.xml` | 제품 12개 URL + `xhtml:link` hreflang. 페이지를 추가하면 여기도 넣는다. 블로그 목록 쌍은 **첫 글이 나갈 때까지 주석 처리**돼 있다(빈 목록은 색인시켜 봐야 순위를 다툴 대상이 없다) |
+| `sitemap.xml` | 홈·제품 14개 URL + `xhtml:link` hreflang. 페이지를 추가하면 여기도 넣는다. 블로그 URL도 같은 언어 쌍 규칙을 따른다 |
 | `robots.txt` | 전체 허용 + sitemap 위치 |
 | `404.html` | 루트 절대경로만 쓴다 — 어느 깊이의 주소에서든 서빙되기 때문이다. `noindex` |
 | `app-ads.txt` | **AdMob 콘솔이 생성한 줄을 그대로** 넣는다 — 손으로 만들지 않는다 |
@@ -54,7 +55,7 @@ privacy policy, and the host for `app-ads.txt`.
 | 개발자 웹사이트 | `https://droidactor.github.io/` |
 | 개인정보 처리방침 (영문) | `https://droidactor.github.io/#privacy` |
 | 개인정보 처리방침 (국문) | `https://droidactor.github.io/ko/#privacy` |
-| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `wifi` · `ssh` · `ytdl` · `ppt` (`apps.tsv` 의 key 와 같다) |
+| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `wifi` · `ssh` · `ytdl` (`apps.tsv` 의 key 와 같다) |
 | app-ads.txt 검증 | `https://droidactor.github.io/app-ads.txt` |
 
 **`#privacy-*` 앵커 이름은 바꾸지 않는다.** 스토어 리스팅에 이미 등록된 주소다. 국문 처리방침이 필요하면
@@ -71,7 +72,7 @@ privacy policy, and the host for `app-ads.txt`.
 - `robots.txt` · `sitemap.xml`
 - 페이지마다 `canonical`, `og:*`, `hreflang`(en / ko / x-default 상호 참조), JSON-LD
   (홈 = `WebSite`+`Organization`+`ItemList`, 제품 = `SoftwareApplication`)
-- 색인 단위를 1개에서 **12개**로 늘린 제품별 URL
+- 색인 단위를 1개에서 **14개**로 늘린 홈·제품별 URL
 - `/blog/` · `/ko/blog/` — 제품 페이지는 "이 앱은 무엇인가"만 답한다. 앱을 아직 모르는 사람이
   검색하는 것은 **문제**("PLC IP 주소 찾기", "TV 한글 입력")이고, 그 검색어를 받는 자리가 블로그다.
   글은 자기 도메인에 먼저 올리고, 외부 플랫폼에는 canonical 을 건 재배포만 한다
@@ -85,7 +86,7 @@ privacy policy, and the host for `app-ads.txt`.
    확인 파일을 다시 발급받으면 옛 파일은 지우지 말고 새 파일을 함께 둔다(둘 다 유효하다).
 3. 좌측 **Sitemaps** 에 `sitemap.xml` 제출
 4. **URL 검사**에 `https://droidactor.github.io/` 를 넣고 **색인 생성 요청**. 주요 제품 페이지도 같은 방식으로
-   한 번씩 요청한다(하루 할당량이 있어 12개를 한 번에 다 넣지는 못한다)
+   한 번씩 요청한다(하루 할당량이 있어 14개를 한 번에 다 넣지는 못한다)
 
 가장 강한 유입 경로는 여전히 **Play Store 앱 페이지의 "개발자 웹사이트" 링크**다. 앱이 출시되면
 그 칸을 반드시 채운다.

@@ -6,7 +6,7 @@
   This page serves three purposes:
     1. the "Developer website" URL registered on Google Play / App Store
     2. the privacy policy for every app (per-app anchors: #privacy-keyboard, #privacy-ppt,
-       #privacy-ssh, #privacy-wifi, #privacy-ytdl — usable as per-app policy URLs)
+       #privacy-mouse, #privacy-ssh, #privacy-wifi, #privacy-ytdl — usable as per-app policy URLs)
     3. the host for /app-ads.txt (that file lives at the repo root, not here)
 
   Do not rename the #privacy-* anchors — they are registered on the store listings.
@@ -61,9 +61,10 @@
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Dotori Bluetooth Keyboard", "url": "https://droidactor.github.io/bt-keyboard/" },
         { "@type": "ListItem", "position": 2, "name": "Dotori Bluetooth PPT Remote", "url": "https://droidactor.github.io/bt-ppt/" },
-        { "@type": "ListItem", "position": 3, "name": "Dotori WIFI Scout", "url": "https://droidactor.github.io/wifi-scout/" },
-        { "@type": "ListItem", "position": 4, "name": "Dotori SSH Scout", "url": "https://droidactor.github.io/ssh-scout/" },
-        { "@type": "ListItem", "position": 5, "name": "Dotori YouTube Downloader", "url": "https://droidactor.github.io/yt-downloader/" }
+        { "@type": "ListItem", "position": 3, "name": "Dotori Bluetooth Mouse", "url": "https://droidactor.github.io/bt-mouse/" },
+        { "@type": "ListItem", "position": 4, "name": "Dotori WIFI Scout", "url": "https://droidactor.github.io/wifi-scout/" },
+        { "@type": "ListItem", "position": 5, "name": "Dotori SSH Scout", "url": "https://droidactor.github.io/ssh-scout/" },
+        { "@type": "ListItem", "position": 6, "name": "Dotori YouTube Downloader", "url": "https://droidactor.github.io/yt-downloader/" }
       ]
     }
   ]
@@ -126,6 +127,21 @@
           <span class="badge soon">Coming soon</span>
           <a href="/bt-ppt/">Details</a>
           <a href="#privacy-ppt">Privacy</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon" aria-hidden="true">🖱️</div>
+        <h3><a href="/bt-mouse/">Dotori Bluetooth Mouse</a></h3>
+        <div class="pkg">com.droidactor.bt_mouse</div>
+        <p class="desc">
+          Turns the phone into a Bluetooth HID mouse with a trackpad, three buttons, vertical and
+          horizontal scrolling, adjustable pointer sensitivity and optional natural scrolling.
+        </p>
+        <div class="foot">
+          <span class="badge soon">Coming soon</span>
+          <a href="/bt-mouse/">Details</a>
+          <a href="#privacy-mouse">Privacy</a>
         </div>
       </article>
 
@@ -207,7 +223,7 @@
   <section id="privacy">
     <h2>Privacy policy</h2>
     <p class="lead">
-      Effective date: 28 July 2026 · Developer: droidactor (individual developer) ·
+      Effective date: 6 August 2026 · Developer: droidactor (individual developer) ·
       Contact: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> ·
       Applies to every app listed above.
       <br><a href="/ko/#privacy" hreflang="ko" lang="ko">한국어 개인정보 처리방침</a>
@@ -381,6 +397,22 @@
         connecting</strong>, so a running presentation is never interrupted.
       </p>
       <p><a href="/bt-ppt/">More about Dotori Bluetooth PPT Remote</a></p>
+    </div>
+
+    <div class="policy" id="privacy-mouse">
+      <h3>Dotori Bluetooth Mouse<span class="pkg-inline">com.droidactor.bt_mouse</span></h3>
+      <p>
+        Pointer movement, button presses and scroll gestures go only over Bluetooth HID to the host
+        you paired with. They are not logged, retained or transmitted to us. The app stores the
+        verified host address locally for reconnection and masks it wherever it is displayed. Removing
+        the Bluetooth bond also removes that host record. No location permission is requested.
+      </p>
+      <p>
+        The app has no text or clipboard input. Ads are reserved outside the mouse control surface and
+        are requested only after the consent state is resolved; no ad is placed over the trackpad, mouse buttons or scroll rails.
+        Google may process advertising data as described in the general policy above.
+      </p>
+      <p><a href="/bt-mouse/">More about Dotori Bluetooth Mouse</a></p>
     </div>
 
     <div class="policy" id="privacy-wifi">

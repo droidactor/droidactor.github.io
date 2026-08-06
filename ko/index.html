@@ -3,7 +3,7 @@
   droidactor.github.io/ko/ — 국문 홈. 영문 원본은 루트 /index.html 이며 섹션·처리방침 앵커가 같다.
 
   개인정보 처리방침을 고치면 이 파일과 루트 index.html 을 **함께** 고친다. 앵커
-  (#privacy-keyboard / #privacy-ppt / #privacy-wifi / #privacy-ssh / #privacy-ytdl)는
+  (#privacy-keyboard / #privacy-ppt / #privacy-mouse / #privacy-wifi / #privacy-ssh / #privacy-ytdl)는
   스토어 등록 주소이므로 이름을 바꾸지 않는다.
 -->
 <html lang="ko">
@@ -51,9 +51,10 @@
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Dotori Bluetooth Keyboard", "url": "https://droidactor.github.io/ko/bt-keyboard/" },
         { "@type": "ListItem", "position": 2, "name": "Dotori Bluetooth PPT Remote", "url": "https://droidactor.github.io/ko/bt-ppt/" },
-        { "@type": "ListItem", "position": 3, "name": "Dotori WIFI Scout", "url": "https://droidactor.github.io/ko/wifi-scout/" },
-        { "@type": "ListItem", "position": 4, "name": "Dotori SSH Scout", "url": "https://droidactor.github.io/ko/ssh-scout/" },
-        { "@type": "ListItem", "position": 5, "name": "Dotori YouTube Downloader", "url": "https://droidactor.github.io/ko/yt-downloader/" }
+        { "@type": "ListItem", "position": 3, "name": "Dotori Bluetooth Mouse", "url": "https://droidactor.github.io/ko/bt-mouse/" },
+        { "@type": "ListItem", "position": 4, "name": "Dotori WIFI Scout", "url": "https://droidactor.github.io/ko/wifi-scout/" },
+        { "@type": "ListItem", "position": 5, "name": "Dotori SSH Scout", "url": "https://droidactor.github.io/ko/ssh-scout/" },
+        { "@type": "ListItem", "position": 6, "name": "Dotori YouTube Downloader", "url": "https://droidactor.github.io/ko/yt-downloader/" }
       ]
     }
   ]
@@ -114,6 +115,21 @@
           <span class="badge soon">출시 준비 중</span>
           <a href="/ko/bt-ppt/">자세히</a>
           <a href="#privacy-ppt">개인정보</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon" aria-hidden="true">🖱️</div>
+        <h3><a href="/ko/bt-mouse/">Dotori Bluetooth Mouse</a></h3>
+        <div class="pkg">com.droidactor.bt_mouse</div>
+        <p class="desc">
+          폰을 블루투스 HID 마우스로 만듭니다. 트랙패드·3버튼·세로/가로 스크롤과 포인터
+          감도 조절, 자연스러운 스크롤 방향을 지원합니다.
+        </p>
+        <div class="foot">
+          <span class="badge soon">출시 준비 중</span>
+          <a href="/ko/bt-mouse/">자세히</a>
+          <a href="#privacy-mouse">개인정보</a>
         </div>
       </article>
 
@@ -194,7 +210,7 @@
   <section id="privacy">
     <h2>개인정보 처리방침</h2>
     <p class="lead">
-      시행일: 2026년 7월 28일 · 개발자: droidactor (개인 개발자) ·
+      시행일: 2026년 8월 6일 · 개발자: droidactor (개인 개발자) ·
       문의: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> ·
       위에 나열된 모든 앱에 적용됩니다.
       <br><a href="/#privacy" hreflang="en" lang="en">Privacy policy in English</a>
@@ -359,6 +375,22 @@
         않기 위해서입니다.
       </p>
       <p><a href="/ko/bt-ppt/">Dotori Bluetooth PPT Remote 자세히 보기</a></p>
+    </div>
+
+    <div class="policy" id="privacy-mouse">
+      <h3>Dotori Bluetooth Mouse<span class="pkg-inline">com.droidactor.bt_mouse</span></h3>
+      <p>
+        포인터 이동·버튼 입력·스크롤 제스처는 페어링한 host 로 블루투스 HID 를 통해서만
+        전달됩니다. 입력은 기록·보관되지 않고 저희에게 전송되지도 않습니다. 검증된 host 주소는
+        재연결을 위해 로컬에만 저장하며 표시할 때는 마스킹합니다. 블루투스 bond 를 제거하면 host
+        기록도 함께 삭제됩니다. 위치 권한은 요구하지 않습니다.
+      </p>
+      <p>
+        텍스트 입력이나 clipboard 입력 기능은 없습니다. 광고 영역은 마우스 조작 면 밖에 고정해
+        확보하며 동의 상태가 확인된 뒤에만 광고를 요청합니다. 트랙패드·마우스 버튼·스크롤 레일 위에는 광고를
+        배치하지 않습니다. Google 의 광고 데이터 처리는 위 공통 처리방침을 따릅니다.
+      </p>
+      <p><a href="/ko/bt-mouse/">Dotori Bluetooth Mouse 자세히 보기</a></p>
     </div>
 
     <div class="policy" id="privacy-wifi">
