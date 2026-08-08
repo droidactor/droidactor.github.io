@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Controlling an LG webOS TV over Wi-Fi — droidactor</title>
+<meta name="description" content="Discover and pair an LG webOS TV over Wi-Fi, control it through SSAP and its pointer socket, and preserve the MAC needed for Wake-on-LAN.">
+<link rel="canonical" href="https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/control-lg-webos-tv-over-wifi/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/">
+<meta property="og:title" content="Controlling an LG webOS TV over Wi-Fi">
+<meta property="og:description" content="SSDP discovery, SSAP pairing, the separate pointer socket, and Wake-on-LAN power-on from a phone.">
+<meta property="og:image" content="https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Controlling an LG webOS TV over Wi-Fi",
+      "description": "Discover and pair with a webOS TV, control it through SSAP and its pointer socket, and preserve the MAC required for Wake-on-LAN.",
+      "url": "https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/",
+      "image": "https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/assets/icon.png",
+      "datePublished": "2026-08-08",
+      "dateModified": "2026-08-08",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori LG TV Remote",
+        "url": "https://droidactor.github.io/lgtv/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "LG webOS TV over Wi-Fi", "item": "https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language"><a class="lang-btn" href="/blog/control-lg-webos-tv-over-wifi/" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/blog/control-lg-webos-tv-over-wifi/" hreflang="ko" lang="ko">한국어</a></nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>LG webOS TV over Wi-Fi</nav>
+  <div class="hero"><h1>Controlling an LG webOS TV over Wi-Fi</h1><p class="post-meta"><time datetime="2026-08-08">8 August 2026</time></p></div>
+
+  <article class="post-body">
+    <div class="note">
+      <p><strong>Short answer.</strong> Discover the powered-on TV with SSDP, read its device
+        description, and ask the user to approve the first SSAP registration on the TV screen.
+        Store the returned client key and the TV's wired or Wi-Fi MAC address. SSAP controls state;
+        a separate pointer WebSocket carries movement and button frames. After deep standby the TV
+        answers nothing, so power-on must use Wake-on-LAN with the MAC saved while it was awake.</p>
+    </div>
+
+    <div class="post-app">
+      <img src="assets/icon.png" width="512" height="512" alt="Dotori LG TV Remote app icon" decoding="async">
+      <p><strong>Dotori LG TV Remote</strong>Uses the home network for a trackpad, number pad,
+        navigation, volume and channel controls, TV selection, and Wake-on-LAN power-on.</p>
+    </div>
+
+    <h2>Discovery works only while the TV is reachable</h2>
+    <p>While the TV is on, an SSDP search can return a device-description URL. Fetching that local
+      UPnP description yields the model and, on the measured TV, wired and Wi-Fi MAC addresses. Do
+      not treat the DHCP address as a permanent identity: the IP can change, while the saved device
+      record and certificate fingerprint identify the TV across reconnects.</p>
+
+    <p>The MAC is not optional bookkeeping. It is the information required later, when there is no
+      discovery response to ask for it.</p>
+
+    <h2>The first connection requires approval on the TV</h2>
+    <p>SSAP runs over a secure WebSocket. The phone sends a registration request and the TV displays
+      an approval prompt. Once approved, the TV returns a client key. Store that key per TV so later
+      connections can register without showing the prompt again. A remembered TLS certificate
+      fingerprint also prevents a different endpoint from silently replacing the paired TV.</p>
+
+    <h2>Control and pointer input use different sockets</h2>
+    <p>The main SSAP connection handles requests and subscriptions: volume, mute, current channel,
+      foreground application, app launch, and power-off. Pointer input begins with an SSAP request for
+      <code>getPointerInputSocket</code>, which returns a separate secure WebSocket URL.</p>
+
+    <pre><code>type:move
+dx:12
+dy:-4
+down:0
+
+type:button
+name:HOME</code></pre>
+
+    <p>The pointer socket carries newline-delimited frames for move, click, scroll, and remote buttons.
+      It does not return a result for each frame. A main SSAP connection can still look alive after the
+      pointer socket has stopped being useful, so a robust reconnect re-establishes both rather than
+      trusting one status indicator.</p>
+
+    <h2>Power-off and power-on are different protocols</h2>
+    <p>Power-off is an authenticated SSAP command: <code>ssap://system/turnOff</code>. Immediately after
+      that command, the TV may spend a short time in Active Standby and still answer on its control
+      port. Once it reaches deep standby, the measured TV closes SSAP and stops answering ping, SSDP,
+      and UPnP. A powered-off TV therefore cannot be newly discovered.</p>
+
+    <p>Power-on uses a Wake-on-LAN magic packet sent to the stored MAC address. The TV's “Mobile TV On”
+      setting must already be enabled. Wired and Wi-Fi interfaces have different MAC addresses, so the
+      address saved from the actual connection matters. Waking the measured TV took about 15–20 seconds;
+      the phone should show progress instead of declaring an immediate failure.</p>
+
+    <h2>Why text input is not promised</h2>
+    <p>SSAP text insertion worked in the measured webOS browser address field, but the YouTube search
+      field did not participate in the system remote-keyboard path and ignored the same input. The
+      pointer protocol also did not accept a text frame. A feature that works in one TV app and silently
+      fails in another is not a reliable v1 promise, so this remote deliberately omits text input.</p>
+
+    <h2>The measured boundary</h2>
+    <p>These protocol observations were measured on an LG OLED55C8GNA (2018, webOS 4.x). Other model
+      years can expose different commands or behavior. LG and webOS are LG Electronics trademarks;
+      this is an independent app and is not affiliated with LG Electronics.</p>
+
+    <h2>Remote, volume, TV picker, and settings screens</h2>
+    <div class="screenshot-grid">
+      <figure><img src="assets/en-US/01-remote.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV remote main screen"><figcaption>Number pad, navigation, trackpad, volume, channel, and power remain on one fixed screen.</figcaption></figure>
+      <figure><img src="assets/en-US/02-volume.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV remote volume feedback"><figcaption>Large feedback appears over the trackpad while volume or mute is changing.</figcaption></figure>
+      <figure><img src="assets/en-US/03-tv-picker.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV selection screen"><figcaption>Discovered and remembered TVs are selected separately from the control surface.</figcaption></figure>
+      <figure><img src="assets/en-US/04-settings.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV remote trackpad settings"><figcaption>Trackpad sensitivity and touch feedback can be adjusted without moving the controls.</figcaption></figure>
+      <figure><img src="assets/en-US/05-settings-about.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV remote app settings and information"><figcaption>Language, app information, and privacy controls continue below the trackpad settings.</figcaption></figure>
+      <figure><img src="assets/en-US/06-language.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV remote language selection"><figcaption>The app UI can be English even when a source name returned by the TV follows the TV's own language.</figcaption></figure>
+    </div>
+
+    <div class="note">
+      <p><strong>Dotori LG TV Remote</strong> combines SSDP discovery, approved SSAP pairing, a
+        separate pointer channel, and saved-MAC Wake-on-LAN in one phone remote.
+        <a href="/lgtv/">More about Dotori LG TV Remote</a></p>
+    </div>
+
+    <h2>Related notes</h2>
+    <ul><li><a href="/blog/find-devices-on-wifi-from-android/">Finding devices on your Wi-Fi from an Android phone</a></li></ul>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/">All apps</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

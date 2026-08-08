@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wi-Fi로 LG webOS TV를 조작하는 원리 — droidactor</title>
+<meta name="description" content="LG webOS TV를 Wi-Fi에서 발견하고 승인·페어링한 뒤 SSAP와 포인터 소켓으로 조작합니다. TV가 꺼지기 전에 MAC 주소를 저장해야 켤 수 있는 이유입니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/control-lg-webos-tv-over-wifi/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/control-lg-webos-tv-over-wifi/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/control-lg-webos-tv-over-wifi/">
+<meta property="og:title" content="Wi-Fi로 LG webOS TV를 조작하는 원리">
+<meta property="og:description" content="SSDP 발견, SSAP 페어링, 별도 포인터 소켓과 Wake-on-LAN 전원 켜기.">
+<meta property="og:image" content="https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Wi-Fi로 LG webOS TV를 조작하는 원리",
+      "description": "webOS TV를 발견·페어링하고 SSAP와 포인터 소켓으로 조작하며 Wake-on-LAN에 필요한 MAC을 보존합니다.",
+      "url": "https://droidactor.github.io/ko/blog/control-lg-webos-tv-over-wifi/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/control-lg-webos-tv-over-wifi/",
+      "image": "https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/assets/icon.png",
+      "datePublished": "2026-08-08",
+      "dateModified": "2026-08-08",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori LG TV Remote",
+        "url": "https://droidactor.github.io/ko/lgtv/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Wi-Fi LG webOS TV 리모컨", "item": "https://droidactor.github.io/ko/blog/control-lg-webos-tv-over-wifi/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="언어"><a class="lang-btn" href="/blog/control-lg-webos-tv-over-wifi/" hreflang="en" lang="en">EN</a><a class="lang-btn" href="/ko/blog/control-lg-webos-tv-over-wifi/" aria-current="page" hreflang="ko">한국어</a></nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>Wi-Fi LG webOS TV 리모컨</nav>
+  <div class="hero"><h1>Wi-Fi로 LG webOS TV를 조작하는 원리</h1><p class="post-meta"><time datetime="2026-08-08">2026년 8월 8일</time></p></div>
+
+  <article class="post-body">
+    <div class="note">
+      <p><strong>요약.</strong> 켜진 TV를 SSDP로 찾고 장비 설명을 읽은 뒤, TV 화면에서 최초 SSAP
+        등록을 승인합니다. TV가 돌려준 client key와 유선·Wi-Fi MAC 주소를 저장합니다. SSAP는 상태를
+        제어하고 별도 pointer WebSocket은 이동·버튼 frame을 보냅니다. 깊은 대기 상태의 TV는 아무것도
+        응답하지 않으므로 전원 켜기는 TV가 깨어 있을 때 저장한 MAC으로 Wake-on-LAN을 사용해야 합니다.</p>
+    </div>
+
+    <div class="post-app">
+      <img src="/blog/control-lg-webos-tv-over-wifi/assets/icon.png" width="512" height="512" alt="Dotori LG TV Remote 앱 아이콘" decoding="async">
+      <p><strong>Dotori LG TV Remote</strong>집 네트워크를 통해 트랙패드·숫자패드·방향키·볼륨·채널,
+        TV 선택과 Wake-on-LAN 전원 켜기를 제공합니다.</p>
+    </div>
+
+    <h2>TV가 응답할 때만 발견할 수 있다</h2>
+    <p>TV가 켜져 있으면 SSDP 검색으로 장비 설명 URL을 받을 수 있습니다. 그 로컬 UPnP 설명을 읽으면
+      실측 TV에서는 모델과 유선·Wi-Fi MAC 주소를 얻을 수 있었습니다. DHCP 주소를 영구 identity로
+      보아서는 안 됩니다. IP는 바뀔 수 있지만 저장한 장비 record와 인증서 지문은 다시 연결할 TV를
+      구분합니다.</p>
+
+    <p>MAC은 선택적인 부가 정보가 아닙니다. 나중에 발견 응답을 전혀 받을 수 없을 때 TV를 깨우는 데
+      필요한 정보입니다.</p>
+
+    <h2>첫 연결은 TV 화면에서 승인이 필요하다</h2>
+    <p>SSAP는 secure WebSocket으로 연결됩니다. 폰이 등록 요청을 보내면 TV가 승인 팝업을 표시합니다.
+      승인하면 TV가 client key를 돌려줍니다. 이 키를 TV별로 저장하면 이후에는 승인 팝업 없이 다시
+      등록할 수 있습니다. 기억한 TLS 인증서 지문은 다른 endpoint가 페어링된 TV를 조용히 대체하지
+      못하게 합니다.</p>
+
+    <h2>제어와 포인터 입력은 서로 다른 socket이다</h2>
+    <p>기본 SSAP 연결은 volume·mute·현재 channel·전경 app·app 실행·전원 끄기 같은 request와
+      subscription을 처리합니다. 포인터 입력은 SSAP에서 <code>getPointerInputSocket</code>을 요청해
+      별도 secure WebSocket URL을 받은 뒤 시작합니다.</p>
+
+    <pre><code>type:move
+dx:12
+dy:-4
+down:0
+
+type:button
+name:HOME</code></pre>
+
+    <p>포인터 socket은 move·click·scroll·리모컨 button을 줄바꿈으로 구분한 frame으로 받지만 각 frame의
+      결과를 돌려주지 않습니다. 기본 SSAP 연결이 살아 보이는 동안 포인터 socket만 무효가 될 수 있으므로
+      견고한 재연결은 상태 표시 하나만 믿지 않고 둘을 함께 다시 세웁니다.</p>
+
+    <h2>전원 끄기와 켜기는 protocol이 다르다</h2>
+    <p>끄기는 인증된 SSAP 명령 <code>ssap://system/turnOff</code>입니다. 명령 직후에는 TV가 잠깐 Active
+      Standby에 머물며 control port에 응답할 수 있습니다. 깊은 대기로 내려가면 실측 TV는 SSAP를 닫고
+      ping·SSDP·UPnP에도 답하지 않았습니다. 따라서 꺼진 TV를 새로 발견할 수 없습니다.</p>
+
+    <p>켜기는 저장한 MAC 주소를 향한 Wake-on-LAN magic packet을 사용합니다. TV의 ‘모바일 TV 켜기’
+      설정이 미리 켜져 있어야 합니다. 유선과 Wi-Fi interface의 MAC은 다르므로 실제 연결에서 저장한
+      주소가 중요합니다. 실측 TV가 깨어나는 데 약 15~20초 걸렸으므로 폰은 즉시 실패로 판정하지 않고
+      진행 상태를 보여주어야 합니다.</p>
+
+    <h2>텍스트 입력을 약속하지 않는 이유</h2>
+    <p>SSAP 문자열 입력은 실측 webOS browser 주소창에서는 동작했지만 YouTube 검색창은 같은 입력 경로에
+      참여하지 않아 무반응이었습니다. 포인터 protocol도 text frame을 받지 않았습니다. TV app마다
+      어떤 곳에서는 되고 다른 곳에서는 조용히 실패하는 기능은 신뢰할 수 있는 v1 약속이 아니므로 이
+      리모컨에서는 텍스트 입력을 제외했습니다.</p>
+
+    <h2>실측 범위</h2>
+    <p>이 protocol 관찰은 LG OLED55C8GNA(2018년형, webOS 4.x) 한 대에서 이루어졌습니다. 다른 연식은
+      지원 command와 동작이 다를 수 있습니다. LG와 webOS는 LG전자의 상표이며 이 앱은 LG전자와 제휴하지
+      않은 독립 앱입니다.</p>
+
+    <h2>리모컨·볼륨·TV 선택·설정 화면</h2>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/01-remote.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 리모컨 기본 화면"><figcaption>숫자·방향·트랙패드·볼륨·채널·전원을 한 고정 화면에 둡니다.</figcaption></figure>
+      <figure><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/02-volume.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 리모컨 볼륨 피드백"><figcaption>볼륨이나 음소거를 바꾸는 동안 트랙패드 위에 큰 피드백을 표시합니다.</figcaption></figure>
+      <figure><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/03-tv-picker.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 선택 화면"><figcaption>발견했거나 기억한 TV는 조작 화면과 분리된 목록에서 선택합니다.</figcaption></figure>
+      <figure><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/04-settings.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 리모컨 트랙패드 설정"><figcaption>조작 위치를 바꾸지 않고 트랙패드 감도와 터치 되먹임을 조절합니다.</figcaption></figure>
+      <figure><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/05-settings-about.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 리모컨 앱 설정과 정보"><figcaption>트랙패드 설정 아래에서 언어·앱 정보·개인정보 옵션을 확인합니다.</figcaption></figure>
+      <figure><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/06-language.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 리모컨 언어 선택"><figcaption>앱 표시 언어를 시스템 설정·한국어·영어 중에서 선택합니다.</figcaption></figure>
+    </div>
+
+    <div class="note">
+      <p><strong>Dotori LG TV Remote</strong>는 SSDP 발견, 사용자가 승인한 SSAP 페어링, 별도 포인터
+        channel과 저장 MAC을 이용한 Wake-on-LAN을 하나의 폰 리모컨에 묶습니다.
+        <a href="/ko/lgtv/">Dotori LG TV Remote 자세히 보기</a></p>
+    </div>
+
+    <h2>관련 글</h2>
+    <ul><li><a href="/ko/blog/find-devices-on-wifi-from-android/">Android 폰으로 Wi-Fi 장비를 찾는 법</a></li></ul>
+  </article>
+  <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/">전체 앱</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

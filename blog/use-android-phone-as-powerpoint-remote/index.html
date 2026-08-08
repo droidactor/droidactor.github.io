@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Using an Android phone as a PowerPoint remote — droidactor</title>
+<meta name="description" content="Pair Android as a Bluetooth keyboard and control PowerPoint without a PC companion app. These are the five keys, connection steps, and practical limits.">
+<link rel="canonical" href="https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/use-android-phone-as-powerpoint-remote/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/">
+<meta property="og:title" content="Using an Android phone as a PowerPoint remote">
+<meta property="og:description" content="The five standard keyboard actions behind a phone-based Bluetooth presentation remote.">
+<meta property="og:image" content="https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Using an Android phone as a PowerPoint remote",
+      "description": "Pair an Android phone as a Bluetooth keyboard and control a PowerPoint slideshow with five standard key actions.",
+      "url": "https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/",
+      "image": "https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/assets/icon.png",
+      "datePublished": "2026-08-08",
+      "dateModified": "2026-08-08",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori Bluetooth PPT Remote",
+        "url": "https://droidactor.github.io/bt-ppt/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Android PowerPoint remote", "item": "https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/use-android-phone-as-powerpoint-remote/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/use-android-phone-as-powerpoint-remote/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Android PowerPoint remote</nav>
+  <div class="hero">
+    <h1>Using an Android phone as a PowerPoint remote</h1>
+    <p class="post-meta"><time datetime="2026-08-08">8 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+    <div class="note">
+      <p><strong>Short answer.</strong> Pair the phone with the PC as a standard Bluetooth HID
+        keyboard. A presentation remote only needs five keyboard actions: PageUp, PageDown,
+        F5 followed by Home, Shift+F5, and Escape. Because the PC sees an ordinary keyboard,
+        there is no driver or companion program to install.</p>
+    </div>
+
+    <div class="post-app">
+      <img src="assets/icon.png" width="512" height="512" alt="Dotori Bluetooth PPT Remote app icon" decoding="async">
+      <p><strong>Dotori Bluetooth PPT Remote</strong>Turns those five actions into large,
+        fixed controls intended to be used without looking down during a presentation.</p>
+    </div>
+
+    <p>A PowerPoint clicker is a small keyboard in disguise. The useful part is not a proprietary
+      presentation protocol; it is sending a deliberately tiny set of keys while keeping the
+      Bluetooth session alive.</p>
+
+    <h2>The five actions and the keys they send</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Remote action</th><th>Keyboard input</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td>Previous</td><td><code>PageUp</code></td><td>Move to the previous slide</td></tr>
+          <tr><td>Next</td><td><code>PageDown</code></td><td>Move to the next slide</td></tr>
+          <tr><td>From beginning</td><td><code>F5</code>, then <code>Home</code></td><td>Open the slideshow and force the first slide</td></tr>
+          <tr><td>From current</td><td><code>Shift+F5</code></td><td>Start from the selected slide</td></tr>
+          <tr><td>End</td><td><code>Escape</code></td><td>Leave the slideshow</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The short delay between F5 and Home is intentional. PowerPoint needs time to create the
+      slideshow window before Home is sent to that window. Sending both reports with no barrier can
+      put Home into the editing window instead.</p>
+
+    <h2>Pair before the room fills up</h2>
+    <p>Bluetooth HID pairing establishes the phone as a keyboard. Do it before the presentation,
+      confirm that one Next press reaches the PC, and keep the slideshow window active. Once a host
+      has completed the connection and accepted a keyboard report, it can be remembered for a faster
+      reconnect next time.</p>
+
+    <h2>What to check when a button appears to do nothing</h2>
+    <ul>
+      <li><strong>The wrong window has focus.</strong> The keys go to whichever PC application is active.</li>
+      <li><strong>The PC was asleep.</strong> The first key may wake it without advancing the slide.</li>
+      <li><strong>The presentation app uses different shortcuts.</strong> Previous, Next, and Escape are widely understood; start commands in this article are PowerPoint behavior.</li>
+      <li><strong>The phone lacks the HID Device profile.</strong> In that case it cannot advertise itself as a Bluetooth keyboard.</li>
+      <li><strong>Power saving stopped the background session.</strong> Reopen the remote and reconnect before continuing.</li>
+    </ul>
+
+    <p>Bluetooth HID is one-way for this job. The phone does not know the current slide number, whether
+      a slideshow window actually opened, or whether another application consumed the key. A remote
+      should report that it sent the key, not invent presentation state it cannot read.</p>
+
+    <h2>The presenter screen and supporting settings</h2>
+    <div class="screenshot-grid">
+      <figure><img src="assets/en-US/01-presenter-control.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Presentation remote control screen"><figcaption>Large Previous and Next targets, with start and end actions separated above.</figcaption></figure>
+      <figure><img src="assets/en-US/02-language.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Presentation remote language selection"><figcaption>The interface can be switched between English and Korean.</figcaption></figure>
+      <figure><img src="assets/en-US/03-settings.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Presentation remote connection settings"><figcaption>Connection and host behavior remain outside the five-button presenter surface.</figcaption></figure>
+      <figure><img src="assets/en-US/04-help-about.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Presentation remote help and limitations"><figcaption>Help explains the exact keys, requirements, and one-way limitation.</figcaption></figure>
+    </div>
+
+    <div class="note">
+      <p><strong>Dotori Bluetooth PPT Remote</strong> exposes only the five slideshow actions above
+        and connects as a standard Bluetooth HID keyboard.
+        <a href="/bt-ppt/">More about Dotori Bluetooth PPT Remote</a></p>
+    </div>
+
+    <h2>Related notes</h2>
+    <ul>
+      <li><a href="/blog/type-korean-over-bluetooth-hid/">Typing Korean over Bluetooth HID from an Android phone</a></li>
+      <li><a href="/blog/use-android-phone-as-bluetooth-mouse/">Using an Android phone as a Bluetooth mouse</a></li>
+    </ul>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/">All apps</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

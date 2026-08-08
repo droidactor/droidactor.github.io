@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Android 폰에서 Bluetooth HID로 한글 입력하는 법 — droidactor</title>
+<meta name="description" content="Bluetooth 키보드는 Unicode 문자열이 아니라 물리 키를 보냅니다. Android 폰이 한글 음절을 두벌식 자모 키로 분해해 입력하는 원리와 점검 방법입니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/type-korean-over-bluetooth-hid/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/type-korean-over-bluetooth-hid/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/type-korean-over-bluetooth-hid/">
+<meta property="og:title" content="Android 폰에서 Bluetooth HID로 한글 입력하는 법">
+<meta property="og:description" content="Bluetooth 키보드가 완성된 한글 음절을 보낼 수 없는 이유와 두벌식 자모 키로 해결하는 방법.">
+<meta property="og:image" content="https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Android 폰에서 Bluetooth HID로 한글 입력하는 법",
+      "description": "Bluetooth 키보드는 Unicode 문자열이 아니라 물리 키를 보내므로 한글을 두벌식 자모 키로 표현해야 합니다.",
+      "url": "https://droidactor.github.io/ko/blog/type-korean-over-bluetooth-hid/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/type-korean-over-bluetooth-hid/",
+      "image": "https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/assets/icon.png",
+      "datePublished": "2026-08-08",
+      "dateModified": "2026-08-08",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori Bluetooth Keyboard",
+        "url": "https://droidactor.github.io/ko/bt-keyboard/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Bluetooth HID 한글 입력", "item": "https://droidactor.github.io/ko/blog/type-korean-over-bluetooth-hid/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="언어">
+      <a class="lang-btn" href="/blog/type-korean-over-bluetooth-hid/" hreflang="en" lang="en">EN</a>
+      <a class="lang-btn" href="/ko/blog/type-korean-over-bluetooth-hid/" aria-current="page" hreflang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로">
+    <a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>Bluetooth HID 한글 입력
+  </nav>
+
+  <div class="hero">
+    <h1>Android 폰에서 Bluetooth HID로 한글 입력하는 법</h1>
+    <p class="post-meta"><time datetime="2026-08-08">2026년 8월 8일</time></p>
+  </div>
+
+  <article class="post-body">
+    <div class="note">
+      <p><strong>요약.</strong> 표준 Bluetooth HID 키보드는 Unicode 음절 <code>한</code>을 직접
+        보내지 못합니다. 폰에서 음절을 <code>ㅎ + ㅏ + ㄴ</code>으로 분해하고, 이를 두벌식 물리 키
+        <code>g + k + s</code>로 바꿔 보낸 뒤, 상대 기기의 한글 IME가 다시 조합하게 해야 합니다.</p>
+    </div>
+
+    <div class="post-app">
+      <img src="/blog/type-korean-over-bluetooth-hid/assets/icon.png" width="512" height="512" alt="Dotori Bluetooth Keyboard 앱 아이콘" decoding="async">
+      <p><strong>Dotori Bluetooth Keyboard</strong>Android 폰을 표준 Bluetooth 키보드와
+        마우스로 페어링하므로 PC·태블릿·TV 쪽에는 별도 프로그램이 필요하지 않습니다.</p>
+    </div>
+
+    <p>폰을 실제 Bluetooth 키보드로 사용할 때와 전용 원격 제어 앱으로 사용할 때의 차이가 여기서
+      생깁니다. 전용 앱은 자기 프로토콜로 문자열을 보낼 수 있지만, HID 키보드는 report descriptor에
+      정의된 키만 보냅니다. 그 키가 어떤 문자가 되는지는 상대 기기가 결정합니다.</p>
+
+    <h2>Bluetooth HID는 완성된 문장이 아니라 키를 보낸다</h2>
+    <p>키보드 report에는 Shift 같은 modifier bit와 A·G·Enter 같은 key usage가 들어갑니다.
+      “이 Unicode 문자열을 넣어라”라는 범용 필드는 없습니다. 영문이 단순해 보이는 것은 US 키보드
+      배열에서 물리 키와 표시 문자의 대응이 익숙하기 때문입니다.</p>
+
+    <p>한글 음절은 초성·중성·선택적 종성으로 한 번 더 분해해야 합니다. 겹모음과 겹받침은 두벌식
+      keystroke 여러 개로 펼쳐집니다. 상대 기기의 한글 IME가 이 키 순서를 받아 다시 음절로 조합합니다.</p>
+
+    <pre><code>한 → ㅎ + ㅏ + ㄴ → g + k + s
+과 → ㄱ + ㅘ       → r + h + k</code></pre>
+
+    <h2>상대 기기 배열과 폰의 profile을 맞춘다</h2>
+    <p>문장을 보내기 전에 양쪽에서 세 가지가 맞는지 확인해야 합니다.</p>
+    <ol>
+      <li>상대 기기에 한국어 두벌식 입력기가 설치되어 있어야 합니다.</li>
+      <li>한글 자모 키가 도착할 때 상대 기기가 한글 모드여야 합니다.</li>
+      <li>폰에서 US 전용이 아니라 상대 기기에 맞는 입력 profile을 골라야 합니다.</li>
+    </ol>
+
+    <p>긴 문장을 보내기 전에 <code>가나다</code>처럼 결과를 아는 probe를 보내는 방법이 유용합니다.
+      영문이 찍히면 Bluetooth 연결은 정상이고 상대 기기가 아직 영문 모드인 것입니다. 예상과 다른
+      한글이 나오면 상대 배열과 폰 mapping이 서로 다릅니다.</p>
+
+    <h2>결과가 다를 때 확인할 것</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>표시 결과</th><th>가능성 높은 원인</th><th>조치</th></tr></thead>
+        <tbody>
+          <tr><td><code>한</code> 대신 <code>gks</code></td><td>상대 기기가 영문 모드</td><td>한글로 전환한 뒤 probe 재전송</td></tr>
+          <tr><td>예상과 다른 한글</td><td>상대 배열과 폰 profile 불일치</td><td>양쪽을 한국어 두벌식으로 통일</td></tr>
+          <tr><td>아무 문자도 없음</td><td>입력란 focus 없음, HID 연결 끊김, 폰 profile 미지원</td><td>입력란과 Bluetooth HID 연결 상태 확인</td></tr>
+          <tr><td>일부 특수 키만 다름</td><td>상대 기기별 키보드 동작 차이</td><td>Windows·iOS·Android TV 중 맞는 profile 선택</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>키보드와 트랙패드 화면</h2>
+    <p>같은 HID 연결로 키보드 report와 마우스 report를 함께 보냅니다. 세로 화면은 키보드 위에
+      트랙패드를 두고, 가로 화면은 키보드와 트랙패드를 각각 넓게 사용하도록 나눕니다. 설정에는
+      상대 기기 profile, 포인터 감도와 입력 보정 기능이 모여 있습니다.</p>
+
+    <div class="screenshot-grid">
+      <figure><img src="/blog/type-korean-over-bluetooth-hid/assets/ko-KR/01-portrait-keyboard-trackpad.png" width="1080" height="1920" loading="lazy" decoding="async" alt="세로 키보드와 트랙패드 화면"><figcaption>키보드 위에 트랙패드와 가로·세로 스크롤 영역을 함께 둔 세로 화면.</figcaption></figure>
+      <figure><img src="/blog/type-korean-over-bluetooth-hid/assets/ko-KR/02-landscape-keyboard.png" width="1920" height="1080" loading="lazy" decoding="async" alt="가로 Bluetooth 키보드 화면"><figcaption>키 전체를 넓게 쓰는 가로 키보드 화면.</figcaption></figure>
+      <figure><img src="/blog/type-korean-over-bluetooth-hid/assets/ko-KR/03-landscape-trackpad.png" width="1920" height="1080" loading="lazy" decoding="async" alt="가로 Bluetooth 트랙패드 화면"><figcaption>포인터와 휠 입력에 집중한 별도 가로 트랙패드.</figcaption></figure>
+      <figure><img src="/blog/type-korean-over-bluetooth-hid/assets/ko-KR/04-settings.png" width="1080" height="1920" loading="lazy" decoding="async" alt="상대 기기 profile과 키보드 설정"><figcaption>입력 profile과 진단 기능으로 배열에 대한 가정을 드러냅니다.</figcaption></figure>
+    </div>
+
+    <h2>호환성의 경계</h2>
+    <p>Android 폰 자체가 Bluetooth HID Device profile을 제공해야 하고, 상대 기기도 표준 Bluetooth
+      키보드를 받아야 합니다. 언어 전환·특수 키·가로 스크롤의 최종 동작은 여전히 상대 기기에 달려
+      있습니다. Bluetooth HID는 대부분 단방향이므로 폰이 상대 입력란을 읽어 배열 오류를 몰래
+      보정할 수 없습니다. 그래서 추정보다 눈에 보이는 probe가 더 정확합니다.</p>
+
+    <div class="note">
+      <p><strong>Dotori Bluetooth Keyboard</strong>는 하나의 Bluetooth HID 연결로 한국어 두벌식,
+        문장 입력, 상대 기기 profile, 입력 보정과 트랙패드를 제공합니다.
+        <a href="/ko/bt-keyboard/">Dotori Bluetooth Keyboard 자세히 보기</a></p>
+    </div>
+
+    <h2>관련 글</h2>
+    <ul>
+      <li><a href="/ko/blog/use-android-phone-as-powerpoint-remote/">Android 폰을 PowerPoint 발표 리모컨으로 쓰는 법</a></li>
+      <li><a href="/ko/blog/use-android-phone-as-bluetooth-mouse/">Android 폰을 Bluetooth 마우스로 쓰는 법</a></li>
+    </ul>
+  </article>
+
+  <footer>
+    <p>droidactor가 만드는 Android 앱.</p>
+    <p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/">전체 앱</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+</div>
+</body>
+</html>

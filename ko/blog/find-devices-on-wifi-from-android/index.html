@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Android 폰으로 Wi-Fi 장비를 찾는 법 — droidactor</title>
+<meta name="description" content="Android 폰이 접속한 Wi-Fi에서 TCP·mDNS·SSDP·WSD·NetBIOS·제조사 단서를 합쳐 장비를 찾고, 검색 결과가 없을 때의 의미를 판단합니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/find-devices-on-wifi-from-android/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/find-devices-on-wifi-from-android/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/find-devices-on-wifi-from-android/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/find-devices-on-wifi-from-android/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/find-devices-on-wifi-from-android/">
+<meta property="og:title" content="Android 폰으로 Wi-Fi 장비를 찾는 법">
+<meta property="og:description" content="유용한 로컬 장비 검색이 포트 하나를 믿지 않고 여러 약한 신호를 결합하는 이유.">
+<meta property="og:image" content="https://droidactor.github.io/blog/find-devices-on-wifi-from-android/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Android 폰으로 Wi-Fi 장비를 찾는 법",
+      "description": "TCP·mDNS·SSDP·WSD·NetBIOS·제조사 단서를 결합해 로컬 장비를 찾고 미탐지 결과를 올바르게 해석합니다.",
+      "url": "https://droidactor.github.io/ko/blog/find-devices-on-wifi-from-android/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/find-devices-on-wifi-from-android/",
+      "image": "https://droidactor.github.io/blog/find-devices-on-wifi-from-android/assets/icon.png",
+      "datePublished": "2026-08-08",
+      "dateModified": "2026-08-08",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori WIFI Scout",
+        "url": "https://droidactor.github.io/ko/wifi-scout/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Wi-Fi 장비 찾기", "item": "https://droidactor.github.io/ko/blog/find-devices-on-wifi-from-android/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="언어"><a class="lang-btn" href="/blog/find-devices-on-wifi-from-android/" hreflang="en" lang="en">EN</a><a class="lang-btn" href="/ko/blog/find-devices-on-wifi-from-android/" aria-current="page" hreflang="ko">한국어</a></nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>Wi-Fi 장비 찾기</nav>
+  <div class="hero"><h1>Android 폰으로 Wi-Fi 장비를 찾는 법</h1><p class="post-meta"><time datetime="2026-08-08">2026년 8월 8일</time></p></div>
+
+  <article class="post-body">
+    <div class="note">
+      <p><strong>요약.</strong> 폰이 실제로 접속한 Wi-Fi의 사설망 대역에서 시작해 여러 종류의 로컬
+        근거를 결합합니다. TCP 포트, mDNS 이름, SSDP 설명, WSD 응답, NetBIOS 이름과 MAC 제조사는
+        각각 유용하지만 어느 하나도 모든 장비를 식별하지 못합니다. 응답이 없다는 사실도 장비가 없다는
+        증거가 아닙니다.</p>
+    </div>
+
+    <div class="post-app">
+      <img src="/blog/find-devices-on-wifi-from-android/assets/icon.png" width="512" height="512" alt="Dotori WIFI Scout 앱 아이콘" decoding="async">
+      <p><strong>Dotori WIFI Scout</strong>검색 결과를 IP 주소·장비 종류·판정 근거로 표시합니다.
+        사용자가 복사하기 전에는 결과가 폰 밖으로 나가지 않습니다.</p>
+    </div>
+
+    <p>처음 들어간 작업장·사무실·가정 Wi-Fi에서 흔한 상황입니다. 폰 주소와 게이트웨이는 알지만
+      프린터·AP·NAS·TV·CCTV·컴퓨터·제어기가 어느 주소인지 모릅니다.</p>
+
+    <h2>폰이 사용 중인 네트워크에서 시작한다</h2>
+    <p>폰의 IPv4 주소와 prefix가 첫 검색 대역을 결정합니다. 흔한 <code>192.168.0.0/24</code>에는
+      사용 가능한 host 주소가 254개 있지만 prefix를 고정값으로 가정해서는 안 됩니다. Android 기본
+      네트워크가 바뀌면 이전 대역 결과를 비우고 새 대역을 반영해야 서로 다른 현장 결과가 섞이지 않습니다.</p>
+
+    <h2>여러 발견 신호를 함께 사용한다</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>신호</th><th>알 수 있는 것</th><th>단독으로 부족한 이유</th></tr></thead>
+        <tbody>
+          <tr><td>TCP 연결</td><td>웹·SSH·인쇄·SMB·산업용 포트처럼 응답하는 서비스</td><td>열린 포트는 protocol 후보이지 확인된 모델이 아님</td></tr>
+          <tr><td>mDNS / DNS-SD</td><td>프린터·Cast 장비·모바일 서비스와 광고된 이름</td><td>아무것도 광고하지 않거나 사용자 지정 이름만 내보내는 장비가 많음</td></tr>
+          <tr><td>SSDP / UPnP</td><td>TV·미디어 장비의 모델 설명과 service type</td><td>장비 상태와 네트워크 필터에 따라 응답이 달라짐</td></tr>
+          <tr><td>WSD</td><td>Windows 방식 프린터·장비 발견</td><td>전체 대역이 아니라 특정 장비군만 다룸</td></tr>
+          <tr><td>NetBIOS / hostname</td><td>컴퓨터와 예전 네트워크 서비스의 이름</td><td>이름이 없거나 오래됐거나 너무 일반적일 수 있음</td></tr>
+          <tr><td>MAC OUI</td><td>가능성 높은 제조사</td><td>제조사 이름만으로 장비 종류를 증명할 수 없음</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>이 신호들이 서로 보강할 때 분류가 쓸모 있어집니다. 프린터 service와 프린터 발견 응답의 조합은
+      제조사 이름 하나보다 강합니다. SMB와 NAS 근거가 있는 UPnP 모델의 조합은 445 포트 하나보다
+      강합니다. 약한 근거는 확정으로 올리지 말고 후보인 채로 보여주는 편이 정확합니다.</p>
+
+    <h2>비용이 없는 것처럼 가장하지 않고 검색 깊이를 고른다</h2>
+    <p>신속 모드는 짧은 대기를 우선합니다. 균형 모드는 느리게 답하는 장비를 더 기다립니다. 정확 모드는
+      안전한 HTTP metadata에서 제조사·모델 단서를 더 확인할 수 있습니다. 더 긴 대기와 protocol 작업은
+      분류를 개선할 수 있지만 VLAN을 넘거나 응답하지 않도록 설정된 장비를 억지로 답하게 하지는 못합니다.</p>
+
+    <h2>‘미탐지’가 ‘부재’를 뜻하지 않는 이유</h2>
+    <ul>
+      <li><strong>Client isolation</strong>은 폰의 인터넷 접속은 허용하면서 Wi-Fi client끼리의 통신은 막을 수 있습니다.</li>
+      <li><strong>VLAN 분리</strong>는 대상 장비를 다른 broadcast domain에 둘 수 있습니다.</li>
+      <li><strong>유선 제어망</strong>이 무선 구간으로 routing되지 않을 수 있습니다.</li>
+      <li><strong>Host 방화벽</strong>이 발견·연결 probe를 버릴 수 있습니다.</li>
+      <li><strong>절전 또는 부하가 높은 장비</strong>가 늦게 답하거나 전혀 답하지 않을 수 있습니다.</li>
+    </ul>
+
+    <p>산업 장비는 가능성 높은 포트를 찾은 지점이 합리적인 기본 정지선입니다. 모델별 identity 조회는
+      선택한 후보 하나에 사용자가 승인한 read-only unicast로 수행해야 하며, 장비 전체를 향한 write
+      명령이어서는 안 됩니다. 본인이 소유하거나 관리 권한을 받은 네트워크에서만 검색합니다.</p>
+
+    <h2>네트워크·검색·도움말·설정 화면</h2>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/ko-KR/01-network-required.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Wi-Fi 네트워크 필요 화면"><figcaption>적용 가능한 Wi-Fi 네트워크가 있을 때만 로컬 검색을 시작합니다.</figcaption></figure>
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/ko-KR/02-settings.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Wi-Fi 검색 설정"><figcaption>언어·테마·글자 크기와 검색 깊이를 명시적으로 설정합니다.</figcaption></figure>
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/ko-KR/03-scan-modes.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Wi-Fi 검색 모드 선택"><figcaption>신속·균형·정확 모드가 응답 대기와 추가 근거 확인 범위를 나눕니다.</figcaption></figure>
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/ko-KR/04-dark-mode.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Wi-Fi 검색기 다크 모드"><figcaption>현장 환경에 맞춰 Light와 Dark 테마를 선택할 수 있습니다.</figcaption></figure>
+    </div>
+
+    <div class="note">
+      <p><strong>Dotori WIFI Scout</strong>는 로컬 발견 신호를 결합하고 약한 단서 하나를 확정된
+        이름으로 바꾸지 않은 채 각 IP 옆에 판정 근거를 남깁니다.
+        <a href="/ko/wifi-scout/">Dotori WIFI Scout 자세히 보기</a></p>
+    </div>
+
+    <h2>관련 글</h2>
+    <ul>
+      <li><a href="/ko/blog/find-ls-plc-ip-address/">IP를 모르는 LS XGT PLC를 현장에서 찾는 법</a></li>
+      <li><a href="/ko/blog/identify-industrial-devices-by-port/">포트로 산업 장비 식별하기</a></li>
+      <li><a href="/ko/blog/find-and-connect-to-ssh-hosts-from-android/">Android 폰으로 SSH host를 찾아 접속하는 법</a></li>
+    </ul>
+  </article>
+  <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/">전체 앱</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

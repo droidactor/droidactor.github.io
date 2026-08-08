@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Android 폰을 PowerPoint 발표 리모컨으로 쓰는 법 — droidactor</title>
+<meta name="description" content="Android 폰을 Bluetooth 키보드로 페어링하면 PC 프로그램 없이 PowerPoint 슬라이드를 조작할 수 있습니다. 다섯 동작의 키와 한계를 설명합니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/use-android-phone-as-powerpoint-remote/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/use-android-phone-as-powerpoint-remote/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/use-android-phone-as-powerpoint-remote/">
+<meta property="og:title" content="Android 폰을 PowerPoint 발표 리모컨으로 쓰는 법">
+<meta property="og:description" content="폰 기반 Bluetooth 발표 리모컨이 보내는 표준 키 다섯 가지와 동작하지 않을 때의 점검 방법.">
+<meta property="og:image" content="https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Android 폰을 PowerPoint 발표 리모컨으로 쓰는 법",
+      "description": "Android 폰을 Bluetooth 키보드로 페어링하고 다섯 가지 표준 키로 PowerPoint 슬라이드를 조작합니다.",
+      "url": "https://droidactor.github.io/ko/blog/use-android-phone-as-powerpoint-remote/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/use-android-phone-as-powerpoint-remote/",
+      "image": "https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/assets/icon.png",
+      "datePublished": "2026-08-08",
+      "dateModified": "2026-08-08",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori Bluetooth PPT Remote",
+        "url": "https://droidactor.github.io/ko/bt-ppt/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Android PowerPoint 리모컨", "item": "https://droidactor.github.io/ko/blog/use-android-phone-as-powerpoint-remote/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="언어">
+    <a class="lang-btn" href="/blog/use-android-phone-as-powerpoint-remote/" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/use-android-phone-as-powerpoint-remote/" aria-current="page" hreflang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>Android PowerPoint 리모컨</nav>
+  <div class="hero">
+    <h1>Android 폰을 PowerPoint 발표 리모컨으로 쓰는 법</h1>
+    <p class="post-meta"><time datetime="2026-08-08">2026년 8월 8일</time></p>
+  </div>
+
+  <article class="post-body">
+    <div class="note">
+      <p><strong>요약.</strong> 폰을 PC에 표준 Bluetooth HID 키보드로 페어링합니다. 발표 리모컨에
+        필요한 것은 PageUp, PageDown, F5 다음 Home, Shift+F5, Escape의 다섯 동작뿐입니다.
+        PC는 일반 키보드로 인식하므로 드라이버나 전용 프로그램을 설치하지 않습니다.</p>
+    </div>
+
+    <div class="post-app">
+      <img src="/blog/use-android-phone-as-powerpoint-remote/assets/icon.png" width="512" height="512" alt="Dotori Bluetooth PPT Remote 앱 아이콘" decoding="async">
+      <p><strong>Dotori Bluetooth PPT Remote</strong>발표 중 폰을 내려다보지 않고 누를 수 있도록
+        이 다섯 동작을 크고 고정된 조작 영역으로 제공합니다.</p>
+    </div>
+
+    <p>PowerPoint 리모컨은 작은 키보드와 같습니다. 독자적인 발표 프로토콜보다 중요한 것은 의도적으로
+      줄인 키 집합을 정확한 순서로 보내고 Bluetooth 세션을 유지하는 일입니다.</p>
+
+    <h2>다섯 동작과 실제로 보내는 키</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>리모컨 동작</th><th>키보드 입력</th><th>결과</th></tr></thead>
+        <tbody>
+          <tr><td>이전</td><td><code>PageUp</code></td><td>이전 슬라이드로 이동</td></tr>
+          <tr><td>다음</td><td><code>PageDown</code></td><td>다음 슬라이드로 이동</td></tr>
+          <tr><td>처음부터</td><td><code>F5</code> 다음 <code>Home</code></td><td>슬라이드쇼를 열고 첫 슬라이드로 이동</td></tr>
+          <tr><td>현재부터</td><td><code>Shift+F5</code></td><td>선택한 슬라이드부터 시작</td></tr>
+          <tr><td>종료</td><td><code>Escape</code></td><td>슬라이드쇼 종료</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>F5와 Home 사이의 짧은 대기는 의도한 동작입니다. PowerPoint가 슬라이드쇼 창을 만든 뒤에 Home이
+      그 창으로 들어갈 시간이 필요합니다. 두 report를 간격 없이 보내면 Home이 편집 창으로 갈 수 있습니다.</p>
+
+    <h2>사람이 모이기 전에 페어링한다</h2>
+    <p>Bluetooth HID 페어링은 폰을 키보드로 등록합니다. 발표 전에 연결하고 다음 버튼 한 번이 PC에
+      도달하는지 확인한 뒤 슬라이드쇼 창을 활성 상태로 둡니다. 연결과 첫 키보드 report가 확인된 PC는
+      저장해 두었다가 다음 발표에서 더 빨리 다시 연결할 수 있습니다.</p>
+
+    <h2>버튼을 눌러도 동작하지 않을 때</h2>
+    <ul>
+      <li><strong>다른 창에 focus가 있습니다.</strong> 키는 PC에서 현재 활성인 프로그램으로 갑니다.</li>
+      <li><strong>PC가 잠들어 있었습니다.</strong> 첫 키는 슬라이드를 넘기지 않고 깨우는 데만 쓰일 수 있습니다.</li>
+      <li><strong>발표 프로그램의 단축키가 다릅니다.</strong> 이전·다음·종료는 널리 통하지만 시작 키는 PowerPoint 기준입니다.</li>
+      <li><strong>폰에 HID Device profile이 없습니다.</strong> 이 경우 폰이 Bluetooth 키보드로 광고될 수 없습니다.</li>
+      <li><strong>절전 정책이 백그라운드 세션을 멈췄습니다.</strong> 리모컨을 열어 다시 연결합니다.</li>
+    </ul>
+
+    <p>이 용도의 Bluetooth HID는 단방향입니다. 폰은 현재 슬라이드 번호, 슬라이드쇼 창이 실제로 열렸는지,
+      다른 프로그램이 키를 받았는지를 알 수 없습니다. 알 수 없는 발표 상태를 만들어 내지 않고 키를
+      보냈다는 사실만 표시하는 편이 정확합니다.</p>
+
+    <h2>발표 화면과 설정</h2>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/use-android-phone-as-powerpoint-remote/assets/ko-KR/01-presenter-control.png" width="1080" height="1920" loading="lazy" decoding="async" alt="발표 리모컨 조작 화면"><figcaption>큰 이전·다음 영역과 위쪽에 분리한 시작·종료 동작.</figcaption></figure>
+      <figure><img src="/blog/use-android-phone-as-powerpoint-remote/assets/ko-KR/02-language.png" width="1080" height="1920" loading="lazy" decoding="async" alt="발표 리모컨 언어 선택"><figcaption>한국어와 영어 사이에서 표시 언어를 선택합니다.</figcaption></figure>
+      <figure><img src="/blog/use-android-phone-as-powerpoint-remote/assets/ko-KR/03-settings.png" width="1080" height="1920" loading="lazy" decoding="async" alt="발표 리모컨 연결 설정"><figcaption>연결과 상대 기기 설정은 다섯 버튼 발표 화면 밖에 둡니다.</figcaption></figure>
+      <figure><img src="/blog/use-android-phone-as-powerpoint-remote/assets/ko-KR/04-help-about.png" width="1080" height="1920" loading="lazy" decoding="async" alt="발표 리모컨 도움말과 한계"><figcaption>도움말에서 정확한 키, 요구사항과 단방향 한계를 확인합니다.</figcaption></figure>
+    </div>
+
+    <div class="note">
+      <p><strong>Dotori Bluetooth PPT Remote</strong>는 위 다섯 슬라이드쇼 동작만 제공하고
+        표준 Bluetooth HID 키보드로 연결합니다.
+        <a href="/ko/bt-ppt/">Dotori Bluetooth PPT Remote 자세히 보기</a></p>
+    </div>
+
+    <h2>관련 글</h2>
+    <ul>
+      <li><a href="/ko/blog/type-korean-over-bluetooth-hid/">Android 폰에서 Bluetooth HID로 한글 입력하는 법</a></li>
+      <li><a href="/ko/blog/use-android-phone-as-bluetooth-mouse/">Android 폰을 Bluetooth 마우스로 쓰는 법</a></li>
+    </ul>
+  </article>
+  <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/">전체 앱</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

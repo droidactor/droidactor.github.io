@@ -165,7 +165,7 @@
   -->
   <url>
     <loc>https://droidactor.github.io/blog/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
@@ -174,12 +174,126 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/type-korean-over-bluetooth-hid/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/type-korean-over-bluetooth-hid/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/type-korean-over-bluetooth-hid/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/use-android-phone-as-powerpoint-remote/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/use-android-phone-as-powerpoint-remote/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/use-android-phone-as-powerpoint-remote/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/use-android-phone-as-bluetooth-mouse/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/use-android-phone-as-bluetooth-mouse/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/use-android-phone-as-bluetooth-mouse/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/use-android-phone-as-bluetooth-mouse/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/use-android-phone-as-bluetooth-mouse/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/use-android-phone-as-bluetooth-mouse/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/use-android-phone-as-bluetooth-mouse/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/use-android-phone-as-bluetooth-mouse/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/find-devices-on-wifi-from-android/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/find-devices-on-wifi-from-android/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/find-devices-on-wifi-from-android/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/find-devices-on-wifi-from-android/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/find-devices-on-wifi-from-android/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/find-devices-on-wifi-from-android/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/find-devices-on-wifi-from-android/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/find-devices-on-wifi-from-android/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/find-and-connect-to-ssh-hosts-from-android/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/find-and-connect-to-ssh-hosts-from-android/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/find-and-connect-to-ssh-hosts-from-android/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/find-and-connect-to-ssh-hosts-from-android/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/find-and-connect-to-ssh-hosts-from-android/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/find-and-connect-to-ssh-hosts-from-android/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/find-and-connect-to-ssh-hosts-from-android/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/find-and-connect-to-ssh-hosts-from-android/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/control-lg-webos-tv-over-wifi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/control-lg-webos-tv-over-wifi/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/control-lg-webos-tv-over-wifi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/"/>
   </url>
 
   <url>

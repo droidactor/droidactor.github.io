@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finding devices on your Wi-Fi from Android — droidactor</title>
+<meta name="description" content="Find devices on Wi-Fi from Android by combining TCP, mDNS, SSDP, WSD, NetBIOS, and vendor evidence—and learn what a missing result means.">
+<link rel="canonical" href="https://droidactor.github.io/blog/find-devices-on-wifi-from-android/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/find-devices-on-wifi-from-android/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/find-devices-on-wifi-from-android/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/find-devices-on-wifi-from-android/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/find-devices-on-wifi-from-android/">
+<meta property="og:title" content="Finding devices on your Wi-Fi from Android">
+<meta property="og:description" content="Why a useful local device scan combines several weak signals instead of trusting one port.">
+<meta property="og:image" content="https://droidactor.github.io/blog/find-devices-on-wifi-from-android/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Finding devices on your Wi-Fi from Android",
+      "description": "Find local devices by combining TCP, mDNS, SSDP, WSD, NetBIOS, and vendor evidence, while treating missing results correctly.",
+      "url": "https://droidactor.github.io/blog/find-devices-on-wifi-from-android/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/find-devices-on-wifi-from-android/",
+      "image": "https://droidactor.github.io/blog/find-devices-on-wifi-from-android/assets/icon.png",
+      "datePublished": "2026-08-08",
+      "dateModified": "2026-08-08",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori WIFI Scout",
+        "url": "https://droidactor.github.io/wifi-scout/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Finding devices on Wi-Fi", "item": "https://droidactor.github.io/blog/find-devices-on-wifi-from-android/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language"><a class="lang-btn" href="/blog/find-devices-on-wifi-from-android/" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/blog/find-devices-on-wifi-from-android/" hreflang="ko" lang="ko">한국어</a></nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Finding devices on Wi-Fi</nav>
+  <div class="hero"><h1>Finding devices on your Wi-Fi from an Android phone</h1><p class="post-meta"><time datetime="2026-08-08">8 August 2026</time></p></div>
+
+  <article class="post-body">
+    <div class="note">
+      <p><strong>Short answer.</strong> Start with the private subnet of the Wi-Fi network the phone
+        has actually joined, then combine several kinds of local evidence. A TCP port, mDNS name,
+        SSDP description, WSD reply, NetBIOS name, or MAC vendor can each be useful, but no single
+        signal identifies every device. And no reply never proves that no device exists.</p>
+    </div>
+
+    <div class="post-app">
+      <img src="assets/icon.png" width="512" height="512" alt="Dotori WIFI Scout app icon" decoding="async">
+      <p><strong>Dotori WIFI Scout</strong>Shows local results as IP address, device kind, and the
+        evidence behind that classification. Results stay on the phone unless you copy them.</p>
+    </div>
+
+    <p>This is the situation after joining an unfamiliar workshop, office, or home Wi-Fi: you know
+      the phone's address and perhaps the gateway, but not which addresses belong to the printer,
+      access point, NAS, TV, camera, computer, or controller you came to service.</p>
+
+    <h2>Begin with the network the phone is using</h2>
+    <p>The phone's IPv4 address and prefix define the first candidate range. A common
+      <code>192.168.0.0/24</code> network has 254 usable host addresses, but the prefix should come
+      from the active network rather than from a hard-coded assumption. If the Android default
+      network changes, results from the old range should be cleared instead of mixed into the new one.</p>
+
+    <h2>Use several discovery signals in parallel</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Signal</th><th>What it can reveal</th><th>Why it is not enough alone</th></tr></thead>
+        <tbody>
+          <tr><td>TCP connect</td><td>Reachable services such as web, SSH, printing, SMB, or industrial ports</td><td>An open port is a protocol candidate, not a verified model</td></tr>
+          <tr><td>mDNS / DNS-SD</td><td>Printers, Cast devices, mobile services, and advertised names</td><td>Many devices advertise nothing or expose only a user-assigned name</td></tr>
+          <tr><td>SSDP / UPnP</td><td>TVs, media devices, model descriptions, and service types</td><td>Replies vary by device state and network filtering</td></tr>
+          <tr><td>WSD</td><td>Windows-style printer and device discovery</td><td>It covers a family of devices rather than the whole subnet</td></tr>
+          <tr><td>NetBIOS / hostname</td><td>Names associated with computers and older network services</td><td>Names may be absent, stale, or generic</td></tr>
+          <tr><td>MAC OUI</td><td>Likely manufacturer</td><td>A vendor name does not prove device type</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Classification becomes useful when these signals reinforce one another. A printer service
+      plus a printer discovery reply is stronger than a vendor name. SMB plus a UPnP model containing
+      NAS evidence is stronger than port 445 alone. Weak evidence should remain visible as a candidate
+      instead of being promoted to certainty.</p>
+
+    <h2>Choose scan depth without pretending it is free</h2>
+    <p>A quick scan favors short waits. A balanced scan waits longer for devices that answer slowly.
+      An accurate scan can also inspect safe HTTP metadata for manufacturer or model clues. Longer
+      waits and more protocol work can improve classification, but they cannot cross a VLAN or make a
+      device answer traffic it is configured to ignore.</p>
+
+    <h2>Why “not found” does not mean “not there”</h2>
+    <ul>
+      <li><strong>Client isolation</strong> can let phones reach the internet while blocking one Wi-Fi client from another.</li>
+      <li><strong>VLAN separation</strong> can place the target on a different broadcast domain.</li>
+      <li><strong>A wired control network</strong> may not be routed to the wireless segment.</li>
+      <li><strong>Host firewalls</strong> may drop discovery and connection probes.</li>
+      <li><strong>Sleeping or busy equipment</strong> may answer later or not at all.</li>
+    </ul>
+
+    <p>For industrial devices, finding a likely port is a sensible stopping point. A model-specific
+      identity request should be a user-approved, read-only unicast to one selected candidate—not a
+      write command broadcast across equipment. Scan only networks and devices you own or are
+      authorized to manage.</p>
+
+    <h2>Network access, scan, help, and settings screens</h2>
+    <div class="screenshot-grid">
+      <figure><img src="assets/en-US/01-network-access.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Wi-Fi network access screen"><figcaption>Local scanning begins only after the phone has an applicable Wi-Fi network.</figcaption></figure>
+      <figure><img src="assets/en-US/02-scan-ready.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Wi-Fi subnet ready to scan"><figcaption>The active range and target count are shown before the scan starts.</figcaption></figure>
+      <figure><img src="assets/en-US/03-help.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Wi-Fi scanning help"><figcaption>Help explains evidence, missing results, and safe-use boundaries.</figcaption></figure>
+      <figure><img src="assets/en-US/04-settings.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Wi-Fi scanner settings"><figcaption>Theme, language, text size, and scan depth remain explicit settings.</figcaption></figure>
+    </div>
+
+    <div class="note">
+      <p><strong>Dotori WIFI Scout</strong> combines local discovery signals and keeps the evidence
+        beside each IP instead of turning one weak clue into a confident label.
+        <a href="/wifi-scout/">More about Dotori WIFI Scout</a></p>
+    </div>
+
+    <h2>Related notes</h2>
+    <ul>
+      <li><a href="/blog/find-ls-plc-ip-address/">Finding an LS XGT PLC's IP address when you don't know it</a></li>
+      <li><a href="/blog/identify-industrial-devices-by-port/">Identifying industrial devices by port on a plant network</a></li>
+      <li><a href="/blog/find-and-connect-to-ssh-hosts-from-android/">Finding and connecting to SSH hosts from Android</a></li>
+    </ul>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/">All apps</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

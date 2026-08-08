@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typing Korean over Bluetooth HID from Android — droidactor</title>
+<meta name="description" content="A Bluetooth keyboard sends key usages, not Unicode. Learn how Android types Korean by decomposing each syllable into Korean 2-set keystrokes.">
+<link rel="canonical" href="https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/type-korean-over-bluetooth-hid/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/">
+<meta property="og:title" content="Typing Korean over Bluetooth HID from Android">
+<meta property="og:description" content="Why Bluetooth keyboards cannot send a finished Hangul syllable, and how Korean 2-set keystrokes solve it.">
+<meta property="og:image" content="https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Typing Korean over Bluetooth HID from Android",
+      "description": "A Bluetooth keyboard sends key usages, not Unicode text. Korean input therefore has to be expressed as Korean 2-set keystrokes.",
+      "url": "https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/",
+      "image": "https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/assets/icon.png",
+      "datePublished": "2026-08-08",
+      "dateModified": "2026-08-08",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori Bluetooth Keyboard",
+        "url": "https://droidactor.github.io/bt-keyboard/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Typing Korean over Bluetooth HID", "item": "https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="Language">
+      <a class="lang-btn" href="/blog/type-korean-over-bluetooth-hid/" aria-current="page" hreflang="en">EN</a>
+      <a class="lang-btn" href="/ko/blog/type-korean-over-bluetooth-hid/" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Typing Korean over Bluetooth HID
+  </nav>
+
+  <div class="hero">
+    <h1>Typing Korean over Bluetooth HID from an Android phone</h1>
+    <p class="post-meta"><time datetime="2026-08-08">8 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+    <div class="note">
+      <p><strong>Short answer.</strong> A standard Bluetooth HID keyboard cannot send the Unicode
+        syllable <code>한</code>. It sends physical key usages. To type Korean, the phone has to
+        decompose the syllable into <code>ㅎ + ㅏ + ㄴ</code>, map those jamo to the Korean 2-set
+        keys <code>g + k + s</code>, and let the host's Korean IME compose the result.</p>
+    </div>
+
+    <div class="post-app">
+      <img src="assets/icon.png" width="512" height="512" alt="Dotori Bluetooth Keyboard app icon" decoding="async">
+      <p><strong>Dotori Bluetooth Keyboard</strong>Pairs an Android phone as a standard Bluetooth
+        keyboard and mouse, so the PC, tablet, or TV needs no companion program.</p>
+    </div>
+
+    <p>This distinction matters when a phone is being used as a real Bluetooth keyboard rather
+      than as a remote-control app. A remote app can send text through its own protocol. A HID
+      keyboard has only the keys described by its report descriptor, and the host decides what
+      those keys mean.</p>
+
+    <h2>Bluetooth HID sends keys, not finished text</h2>
+    <p>A keyboard report contains modifier bits and key usages such as A, G, Enter, or Left Shift.
+      There is no general-purpose “insert this Unicode string” field. English text appears simple
+      only because a US keyboard layout maps those usages directly to familiar letters.</p>
+
+    <p>Hangul syllables require another step. Modern Korean syllables are decomposed into an initial
+      consonant, vowel, and optional final consonant. Compound vowels and final consonants expand
+      into more than one 2-set keystroke. The host's Korean IME then recomposes that key sequence.</p>
+
+    <pre><code>한 → ㅎ + ㅏ + ㄴ → g + k + s
+과 → ㄱ + ㅘ       → r + h + k</code></pre>
+
+    <h2>The host layout and the phone profile must agree</h2>
+    <p>Before sending a sentence, make the two ends agree on three things:</p>
+    <ol>
+      <li>The host has a Korean 2-set input method installed.</li>
+      <li>The active input mode is Korean when Korean jamo keystrokes arrive.</li>
+      <li>The phone uses the matching host profile instead of a US-only profile.</li>
+    </ol>
+
+    <p>A useful calibration is to send a known probe such as <code>가나다</code> before relying on a
+      long sentence. If the host prints Latin letters, the connection works but the host is still
+      in English mode. If the result is different Korean text, the active layout does not match the
+      phone's mapping.</p>
+
+    <h2>What to check when the result is wrong</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>What appears</th><th>Likely cause</th><th>What to do</th></tr></thead>
+        <tbody>
+          <tr><td><code>gks</code> instead of <code>한</code></td><td>The host is in English mode</td><td>Switch the host to Korean, then resend the probe</td></tr>
+          <tr><td>Unexpected Korean characters</td><td>The host layout and phone profile differ</td><td>Select Korean 2-set on both ends</td></tr>
+          <tr><td>No characters</td><td>No focused text field, disconnected HID session, or unsupported phone profile</td><td>Focus a text field and check the Bluetooth HID connection</td></tr>
+          <tr><td>Some special keys differ</td><td>Host-specific keyboard behavior</td><td>Use the Windows, iOS, or Android TV profile that matches the host</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>The keyboard and trackpad screens</h2>
+    <p>The same HID connection carries keyboard reports and mouse reports. The portrait screen keeps
+      a trackpad above the keyboard; landscape separates the keyboard and trackpad into focused
+      layouts. Settings hold the host profile, pointer sensitivity, and input calibration.</p>
+
+    <div class="screenshot-grid">
+      <figure><img src="assets/en-US/01-portrait-keyboard-trackpad.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Portrait keyboard and trackpad screen"><figcaption>Portrait keyboard with trackpad, horizontal scroll, and vertical scroll.</figcaption></figure>
+      <figure><img src="assets/en-US/02-landscape-keyboard.png" width="1920" height="1080" loading="lazy" decoding="async" alt="Landscape Bluetooth keyboard screen"><figcaption>The landscape keyboard keeps the full key surface available.</figcaption></figure>
+      <figure><img src="assets/en-US/03-landscape-trackpad.png" width="1920" height="1080" loading="lazy" decoding="async" alt="Landscape Bluetooth trackpad screen"><figcaption>A separate landscape trackpad for pointer and wheel input.</figcaption></figure>
+      <figure><img src="assets/en-US/04-settings.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Host profile and keyboard settings"><figcaption>Host profiles and diagnostics make layout assumptions explicit.</figcaption></figure>
+    </div>
+
+    <h2>The compatibility boundary</h2>
+    <p>The Android phone itself must expose the Bluetooth HID Device profile. The receiving device
+      must accept a standard Bluetooth keyboard, and host behavior still controls language switching,
+      special keys, and horizontal scrolling. Bluetooth HID is also mostly one-way: the phone cannot
+      read the text field and silently correct a wrong host layout, so a visible probe is more honest
+      than guessing.</p>
+
+    <div class="note">
+      <p><strong>Dotori Bluetooth Keyboard</strong> provides Korean 2-set input, sentence input,
+        host profiles, calibration, and a trackpad over one Bluetooth HID connection.
+        <a href="/bt-keyboard/">More about Dotori Bluetooth Keyboard</a></p>
+    </div>
+
+    <h2>Related notes</h2>
+    <ul>
+      <li><a href="/blog/use-android-phone-as-powerpoint-remote/">Using an Android phone as a PowerPoint remote</a></li>
+      <li><a href="/blog/use-android-phone-as-bluetooth-mouse/">Using an Android phone as a Bluetooth mouse</a></li>
+    </ul>
+  </article>
+
+  <footer>
+    <p>Android apps by droidactor.</p>
+    <p><a href="/blog/">Field notes</a> · <a href="/">All apps</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+</div>
+</body>
+</html>

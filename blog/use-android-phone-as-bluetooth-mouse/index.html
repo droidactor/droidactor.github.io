@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Using an Android phone as a Bluetooth mouse — droidactor</title>
+<meta name="description" content="Use Android as a standard Bluetooth HID mouse without PC software. Learn relative pointer movement, three buttons, wheel input, and Shift+wheel scrolling.">
+<link rel="canonical" href="https://droidactor.github.io/blog/use-android-phone-as-bluetooth-mouse/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/use-android-phone-as-bluetooth-mouse/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/use-android-phone-as-bluetooth-mouse/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/use-android-phone-as-bluetooth-mouse/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/use-android-phone-as-bluetooth-mouse/">
+<meta property="og:title" content="Using an Android phone as a Bluetooth mouse">
+<meta property="og:description" content="How a phone sends relative pointer, button, wheel, and ordered Shift+wheel reports over Bluetooth HID.">
+<meta property="og:image" content="https://droidactor.github.io/blog/use-android-phone-as-bluetooth-mouse/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Using an Android phone as a Bluetooth mouse",
+      "description": "Use an Android phone as a standard Bluetooth HID mouse with relative pointer movement, three buttons, a wheel, and Shift+wheel horizontal scrolling.",
+      "url": "https://droidactor.github.io/blog/use-android-phone-as-bluetooth-mouse/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/use-android-phone-as-bluetooth-mouse/",
+      "image": "https://droidactor.github.io/blog/use-android-phone-as-bluetooth-mouse/assets/icon.png",
+      "datePublished": "2026-08-08",
+      "dateModified": "2026-08-08",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori Bluetooth Mouse",
+        "url": "https://droidactor.github.io/bt-mouse/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Android Bluetooth mouse", "item": "https://droidactor.github.io/blog/use-android-phone-as-bluetooth-mouse/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language"><a class="lang-btn" href="/blog/use-android-phone-as-bluetooth-mouse/" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/blog/use-android-phone-as-bluetooth-mouse/" hreflang="ko" lang="ko">한국어</a></nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Android Bluetooth mouse</nav>
+  <div class="hero"><h1>Using an Android phone as a Bluetooth mouse</h1><p class="post-meta"><time datetime="2026-08-08">8 August 2026</time></p></div>
+
+  <article class="post-body">
+    <div class="note">
+      <p><strong>Short answer.</strong> Pair the phone as a standard Bluetooth HID mouse. A drag on
+        the phone becomes relative X/Y movement, taps become mouse button reports, and dedicated
+        rails become wheel or ordered Shift+wheel input. The PC needs no companion program, but
+        the phone must support the Bluetooth HID Device profile.</p>
+    </div>
+
+    <div class="post-app">
+      <img src="assets/icon.png" width="512" height="512" alt="Dotori Bluetooth Mouse app icon" decoding="async">
+      <p><strong>Dotori Bluetooth Mouse</strong>Provides a large trackpad, left/middle/right buttons,
+        sensitivity control, natural scrolling, and separate scroll rails.</p>
+    </div>
+
+    <h2>A Bluetooth mouse reports movement, not position</h2>
+    <p>A conventional HID mouse does not say “move the pointer to pixel 800, 400.” It says “move by
+      this much since the last report.” The host applies its own pointer acceleration and clamps the
+      result at the screen edge.</p>
+
+    <pre><code>mouse report = buttons + Δx + Δy + wheel
+horizontal scroll = Left Shift down + wheel + restore modifiers</code></pre>
+
+    <p>This is why a phone trackpad feels like a laptop trackpad rather than a miniature map of the
+      monitor. Drag distance becomes a stream of deltas. Pointer sensitivity scales those deltas
+      before they are sent; it does not change a hidden absolute position.</p>
+
+    <h2>Clicks and scrolling depend on report order</h2>
+    <p>Left, right, and middle buttons are held-state bits in the report. A click is a pressed report
+      followed by a neutral report. A double-click repeats that pair. Vertical scrolling uses the
+      wheel field. Horizontal scrolling is synthesized by holding Left Shift while sending a wheel
+      report, then restoring the user's modifier state. Those reports must remain in order.</p>
+
+    <p>The host application still decides what to do with Shift+wheel. Spreadsheets and wide
+      canvases often use it; an application that has no horizontal scroll action may ignore it. The
+      natural-scrolling option simply reverses the direction before the wheel report leaves the phone.</p>
+
+    <h2>What the phone cannot know</h2>
+    <p>The report path is effectively one-way. The PC does not send its pointer coordinates back to
+      the phone, so the app cannot show a mirrored cursor or prove that the active application used a
+      wheel report. It can confirm that the Bluetooth session accepted the input, but the visible
+      result remains on the host.</p>
+
+    <h2>What to check when movement or scrolling fails</h2>
+    <ul>
+      <li><strong>No movement at all:</strong> confirm that the phone connected under the host's mouse or keyboard devices and that the phone supports HID Device mode.</li>
+      <li><strong>The first gesture only wakes the PC:</strong> repeat it after the host is awake.</li>
+      <li><strong>Movement is too slow or too fast:</strong> adjust phone sensitivity, then the host pointer setting if needed.</li>
+      <li><strong>Scrolling feels reversed:</strong> switch the natural-scrolling option.</li>
+      <li><strong>Horizontal scrolling does nothing:</strong> test in an application with content wider than its viewport.</li>
+    </ul>
+
+    <h2>Connection, settings, and help screens</h2>
+    <div class="screenshot-grid">
+      <figure><img src="assets/en-US/01-home.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Bluetooth mouse connection screen"><figcaption>The home screen makes connection readiness explicit before input is enabled.</figcaption></figure>
+      <figure><img src="assets/en-US/02-settings.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Bluetooth mouse pointer settings"><figcaption>Pointer sensitivity and scrolling behavior are stored as app settings.</figcaption></figure>
+      <figure><img src="assets/en-US/03-help.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Bluetooth mouse help screen"><figcaption>Help records the HID requirement and host-dependent limitations.</figcaption></figure>
+      <figure><img src="assets/en-US/04-language.png" width="1080" height="2400" loading="lazy" decoding="async" alt="Bluetooth mouse language selection"><figcaption>The user interface is available in English and Korean.</figcaption></figure>
+    </div>
+
+    <div class="note">
+      <p><strong>Dotori Bluetooth Mouse</strong> sends pointer, three-button, wheel, and synthesized
+        Shift+wheel horizontal input directly to the selected host over Bluetooth HID.
+        <a href="/bt-mouse/">More about Dotori Bluetooth Mouse</a></p>
+    </div>
+
+    <h2>Related notes</h2>
+    <ul>
+      <li><a href="/blog/type-korean-over-bluetooth-hid/">Typing Korean over Bluetooth HID from an Android phone</a></li>
+      <li><a href="/blog/use-android-phone-as-powerpoint-remote/">Using an Android phone as a PowerPoint remote</a></li>
+    </ul>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/">All apps</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>
