@@ -226,7 +226,7 @@
   <section id="privacy">
     <h2>Privacy policy</h2>
     <p class="lead">
-      Effective date: 6 August 2026 · Developer: droidactor (individual developer) ·
+      Effective date: 8 August 2026 · Developer: droidactor (individual developer) ·
       Contact: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> ·
       Applies to every app listed above.
       <br><a href="/ko/#privacy" hreflang="ko" lang="ko">한국어 개인정보 처리방침</a>
@@ -290,6 +290,15 @@
       ad SDK; nothing about the network you scanned or the host you paired with reaches an advertiser.
     </p>
     <p>
+      In the six ad-supported apps (Bluetooth Keyboard, PPT Remote, Bluetooth Mouse, WIFI Scout,
+      SSH Scout and LG TV Remote), a banner slot that cannot request or fill a paid ad may instead
+      show a first-party card labelled <strong>Promo</strong> for one of our other apps. This card
+      does not use the Mobile Ads SDK and does not collect or send app, network or device data. A tap
+      first opens an in-app description; the official product page on
+      <code>droidactor.github.io</code> is handed to your default external browser only if you choose
+      <strong>Learn more</strong>. A first-party card is never placed over a loaded paid ad.
+    </p>
+    <p>
       You can reopen the privacy options and change or withdraw consent at any time from
       each app's Settings screen.
     </p>
@@ -342,6 +351,19 @@
             <td>So a HID session or a download keeps running with a visible notification while
               you use another app. We send no promotional notifications. The scanners and the TV
               remote declare neither permission — they do no work in the background.</td>
+          </tr>
+          <tr>
+            <td><code>VIBRATE</code></td>
+            <td>Dotori Bluetooth Keyboard<br>Dotori LG TV Remote</td>
+            <td>To provide the short key-press vibration when you enable haptic feedback. This
+              normal permission does not expose vibration or input history.</td>
+          </tr>
+          <tr>
+            <td><code>com.droidactor.hid.session.permission.RELEASE</code><br><span class="badge">signature</span></td>
+            <td>Dotori Bluetooth Keyboard<br>Dotori Bluetooth PPT Remote<br>Dotori Bluetooth Mouse</td>
+            <td>To let our HID companion apps ask each other to release an active Bluetooth HID
+              session before another one starts. Android grants it only to apps signed with the same
+              certificate; it does not provide access to input content.</td>
           </tr>
           <tr>
             <td><code>AD_ID</code></td>

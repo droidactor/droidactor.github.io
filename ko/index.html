@@ -213,7 +213,7 @@
   <section id="privacy">
     <h2>개인정보 처리방침</h2>
     <p class="lead">
-      시행일: 2026년 8월 6일 · 개발자: droidactor (개인 개발자) ·
+      시행일: 2026년 8월 8일 · 개발자: droidactor (개인 개발자) ·
       문의: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> ·
       위에 나열된 모든 앱에 적용됩니다.
       <br><a href="/#privacy" hreflang="en" lang="en">Privacy policy in English</a>
@@ -272,6 +272,14 @@
       관한 어떤 정보도 광고주에게 가지 않습니다.
     </p>
     <p>
+      광고를 지원하는 6개 앱(Bluetooth Keyboard, PPT Remote, Bluetooth Mouse, WIFI Scout,
+      SSH Scout, LG TV Remote)은 유료 광고를 요청할 수 없거나 채우지 못한 배너 자리에 다른 자사 앱을
+      소개하는 <strong>추천</strong> 카드를 표시할 수 있습니다. 이 카드는 Mobile Ads SDK 를 사용하지
+      않으며 앱·네트워크·기기 정보를 수집하거나 전송하지 않습니다. 탭하면 먼저 앱 안의 설명이 열리고,
+      사용자가 <strong>자세히 보기</strong>를 선택한 경우에만 <code>droidactor.github.io</code>의 공식
+      제품 페이지를 기본 외부 브라우저로 넘깁니다. 로드된 유료 광고 위에는 자사 추천을 겹치지 않습니다.
+    </p>
+    <p>
       각 앱의 설정 화면에서 개인정보 옵션을 언제든 다시 열어 동의를 변경하거나 철회할 수
       있습니다.
     </p>
@@ -323,6 +331,19 @@
             <td>다른 앱을 쓰는 동안 HID 세션이나 다운로드가 알림과 함께 계속 동작하기 위해서입니다.
               홍보성 알림은 보내지 않습니다. 스캐너 2종과 TV 리모컨은 두 권한을 선언하지 않습니다 —
               백그라운드에서 하는 일이 없습니다.</td>
+          </tr>
+          <tr>
+            <td><code>VIBRATE</code></td>
+            <td>Dotori Bluetooth Keyboard<br>Dotori LG TV Remote</td>
+            <td>사용자가 햅틱 피드백을 켰을 때 짧은 키 입력 진동을 주기 위해서입니다. 이 normal 권한은
+              진동이나 입력 이력을 읽는 권한이 아닙니다.</td>
+          </tr>
+          <tr>
+            <td><code>com.droidactor.hid.session.permission.RELEASE</code><br><span class="badge">signature</span></td>
+            <td>Dotori Bluetooth Keyboard<br>Dotori Bluetooth PPT Remote<br>Dotori Bluetooth Mouse</td>
+            <td>다른 HID companion 앱이 시작되기 전에 기존 Bluetooth HID 세션을 해제하도록 앱끼리
+              요청하기 위해서입니다. 같은 인증서로 서명한 앱에만 Android가 부여하며 입력 내용에 대한
+              접근 권한은 주지 않습니다.</td>
           </tr>
           <tr>
             <td><code>AD_ID</code></td>
