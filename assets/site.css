@@ -116,6 +116,17 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
 .badge.dev { border-color: var(--warn); color: var(--warn); }
 .card .foot a { font-size: 12.5px; }
 
+/* ---- Google Play badge -------------------------------------------------- */
+/* Official artwork from play.google.com/intl/<lang>/badges/, self-hosted in assets/ and
+   used unmodified — Google's badge guidelines forbid recolouring, cropping, stretching or
+   lifting the logo out of it. So only the rendered height is set here; the PNG carries its
+   own clear space, which is why nothing adds padding around it. The -en asset goes on the
+   English tree and -ko on /ko/, matching the page language. This is a separate class from
+   .badge above, which is this site's own status chip. */
+.play-badge { display: inline-block; line-height: 0; }
+.play-badge img { height: 44px; width: auto; }
+.card .foot .play-badge img { height: 34px; }
+
 /* ---- tables ------------------------------------------------------------- */
 .scroll { overflow-x: auto; margin: 0 0 18px; }
 table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 14.5px; }
@@ -149,6 +160,8 @@ li::marker { color: var(--fg-faint); }
 
 footer { padding: 34px 0 60px; color: var(--fg-faint); font-size: 13.5px; }
 footer p { margin: 0 0 6px; }
+/* Trademark attribution required on any page that shows the Google Play badge. */
+footer .tm { margin-top: 12px; font-size: 12px; }
 :target { scroll-margin-top: 72px; }
 
 /* ---- product pages ------------------------------------------------------ */

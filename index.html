@@ -11,10 +11,21 @@
 
   Do not rename the #privacy-* anchors — they are registered on the store listings.
 
-  TODO before publishing:
-    - when an app goes live, replace its <span class="badge">Coming soon</span> with a
-      Play Store link and set the status to Available (here, in /ko/, and on both
-      product pages for that app)
+  When an app goes live, do all of this for it — wifi-scout went live 2026-08-10 and is the
+  worked example to copy from:
+    - replace its <span class="badge soon">Coming soon</span> with the Google Play badge:
+      <a class="play-badge"> around assets/google-play-badge-{en,ko}.png, pointing at
+      play.google.com/store/apps/details?id=<package>. -en on this tree, -ko under /ko/.
+    - here, in /ko/index.html, and on both product pages for that app — where the spec
+      table's Status row also stops saying "Not yet published on Google Play"
+    - also in the closing CTA box of every blog post that lands on that app
+    - the badge artwork is used unmodified (Google's guidelines forbid recolouring or
+      cropping it), and every page that shows it carries <p class="tm"> in the footer with
+      the trademark attribution
+    - the store URL is fixed by the package name alone, so it can be written before the app
+      is public — but it 404s for the public until then, which is why the badge goes up only
+      once the app is actually live on production
+  Still Coming soon: bt-keyboard, bt-ppt, bt-mouse, ssh-scout, yt-downloader, lgtv
 -->
 <html lang="en">
 <head>
@@ -155,7 +166,8 @@
           answer, listing each as IP, kind and note. Built for walking into an unfamiliar site.
         </p>
         <div class="foot">
-          <span class="badge soon">Coming soon</span>
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.wifi_scout"><img
+            src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
           <a href="/wifi-scout/">Details</a>
           <a href="#privacy-wifi">Privacy</a>
         </div>
@@ -539,6 +551,7 @@
   <footer>
     <p>Android apps by droidactor.</p>
     <p><a href="/blog/">Field notes</a> · <a href="/ko/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+    <p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p>
   </footer>
 
 </div>
