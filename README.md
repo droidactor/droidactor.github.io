@@ -30,7 +30,8 @@ privacy policy, and the host for `app-ads.txt`.
 /app-ads.txt            AdMob 판매자 선언 (반드시 도메인 루트)
 /.nojekyll              Jekyll 빌드 우회
 /.gitignore             작업 메모(doit.txt)·리뷰 산출물이 공개 커밋에 딸려가지 않게 막는다
-/googlec8773d84a9d25688.html   Search Console 소유권 확인 파일 — **지우면 소유권이 풀린다**
+/googlec8773d84a9d25688.html   Google Search Console 소유권 확인 파일 — **지우면 소유권이 풀린다**
+/naver291cd179e909bd205a8a0bf7179d3588.html  네이버 서치어드바이저 소유확인 파일 — 같은 이유로 **지우지 않는다**
 ```
 
 | 파일 | 역할 |
@@ -88,6 +89,21 @@ privacy policy, and the host for `app-ads.txt`.
 3. 좌측 **Sitemaps** 에 `sitemap.xml` 제출
 4. **URL 검사**에 `https://droidactor.github.io/` 를 넣고 **색인 생성 요청**. 주요 제품 페이지도 같은 방식으로
    한 번씩 요청한다(하루 할당량이 있어 16개를 한 번에 다 넣지는 못한다)
+
+### 네이버 서치어드바이저
+
+Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상당 부분을 네이버 통합검색이 받으므로
+같은 사이트를 여기에도 등록한다. 네이버 블로그 운영과도 별개다 — 이것은 자체 도메인을 네이버 색인에
+넣는 작업이다.
+
+1. <https://searchadvisor.naver.com> → **웹마스터 도구** → 사이트 등록에
+   `https://droidactor.github.io/` 를 입력한다
+2. 소유확인은 **HTML 파일 업로드** 방식을 쓴다(네이버 권장이고 Google 확인 파일과 같은 방식이라
+   이 리포에 맞는다). 현재 `naver291cd179e909bd205a8a0bf7179d3588.html` 이 루트에 있다.
+   **이 파일은 지우지 않는다** — 지우면 소유권이 풀린다.
+   **파일을 push 한 뒤 GitHub Pages 배포가 끝난 것을 확인하고 나서 "소유확인" 을 누른다.**
+   배포 전에 누르면 실패한다(Google 사이트맵에서 실제로 겪은 것과 같은 함정이다)
+3. 소유확인이 통과하면 **요청 → 사이트맵 제출**에 `sitemap.xml` 을 넣는다
 
 가장 강한 유입 경로는 여전히 **Play Store 앱 페이지의 "개발자 웹사이트" 링크**다. 앱이 출시되면
 그 칸을 반드시 채운다.
@@ -157,6 +173,11 @@ privacy policy, and the host for `app-ads.txt`.
       한국 사용자에게 영문 처리방침만 보여준다. 앱을 심사에 넣기 전에 처리한다.
 - [ ] 앱이 출시되는 대로 `badge soon` 을 스토어 링크로 교체 — 홈 2곳(`/`, `/ko/`)과 제품 페이지 2곳,
       합쳐서 앱당 4곳이다.
+- [ ] **네이버 서치어드바이저 소유확인 + 사이트맵 제출 (2026-08-10 착수).** 웹마스터 도구에 사이트
+      `https://droidactor.github.io/` 를 등록하고 확인 파일을 루트에 넣는 데까지 마쳤다.
+      **아직 "소유확인" 버튼은 누르지 않았다** — Pages 배포로
+      `https://droidactor.github.io/naver291cd179e909bd205a8a0bf7179d3588.html` 이 실제로 200 을
+      돌려주는 것을 확인한 뒤에 누른다. 통과하면 사이트맵을 제출하고 이 항목을 결과와 함께 닫는다.
 - [ ] 제품 페이지에 스크린샷 추가(현재는 텍스트만). 이미지를 넣으면 `og:image` 도 함께 채운다.
 
 지원·개인정보 문의 주소는 `droidactor@gmail.com` 이다(홈의 Support 섹션과 §8).
