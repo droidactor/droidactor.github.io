@@ -91,7 +91,7 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">⌨️</div>
-        <h3><a href="/ko/bt-keyboard/">Dotori Bluetooth Keyboard</a></h3>
+        <h3><a href="/ko/bt-keyboard/"><span class="dotori">Dotori</span> Bluetooth Keyboard</a></h3>
         <div class="pkg">com.droidactor.bt_keyboard</div>
         <p class="desc">
           폰을 블루투스 HID 키보드+마우스로 만들어, 상대 기기에 아무것도 설치하지 않고 PC·TV 를
@@ -106,7 +106,7 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">📊</div>
-        <h3><a href="/ko/bt-ppt/">Dotori Bluetooth PPT Remote</a></h3>
+        <h3><a href="/ko/bt-ppt/"><span class="dotori">Dotori</span> Bluetooth PPT Remote</a></h3>
         <div class="pkg">com.droidactor.bt_ppt</div>
         <p class="desc">
           발표 전용 리모컨. 블루투스 HID 로 5개 동작만 보냅니다 — 다음·이전·처음부터 시작·현재
@@ -121,7 +121,7 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">🖱️</div>
-        <h3><a href="/ko/bt-mouse/">Dotori Bluetooth Mouse</a></h3>
+        <h3><a href="/ko/bt-mouse/"><span class="dotori">Dotori</span> Bluetooth Mouse</a></h3>
         <div class="pkg">com.droidactor.bt_mouse</div>
         <p class="desc">
           폰을 블루투스 HID 마우스로 만듭니다. 트랙패드·3버튼·세로/가로 스크롤과 포인터
@@ -136,7 +136,7 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">📡</div>
-        <h3><a href="/ko/wifi-scout/">Dotori WIFI Scout</a></h3>
+        <h3><a href="/ko/wifi-scout/"><span class="dotori">Dotori</span> WIFI Scout</a></h3>
         <div class="pkg">com.droidactor.wifi_scout</div>
         <p class="desc">
           접속 중인 Wi-Fi 의 사설망 대역을 훑어 응답하는 장비를 <code>IP │ 종류 │ Note</code> 로
@@ -152,10 +152,10 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">🔐</div>
-        <h3><a href="/ko/ssh-scout/">Dotori SSH Scout</a></h3>
+        <h3><a href="/ko/ssh-scout/"><span class="dotori">Dotori</span> SSH Scout</a></h3>
         <div class="pkg">com.droidactor.ssh_scout</div>
         <p class="desc">
-          SSH 접속·터미널과 TOFU 호스트키 관리. Dotori WIFI Scout 의 스캔 결과에서 딥링크로 바로
+          SSH 접속·터미널과 TOFU 호스트키 관리. <span class="dotori">Dotori</span> WIFI Scout 의 스캔 결과에서 딥링크로 바로
           들어올 수 있습니다.
         </p>
         <div class="foot">
@@ -167,7 +167,7 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">⬇️</div>
-        <h3><a href="/ko/yt-downloader/">Dotori YouTube Downloader</a></h3>
+        <h3><a href="/ko/yt-downloader/"><span class="dotori">Dotori</span> YouTube Downloader</a></h3>
         <div class="pkg">com.droidactor.ytdownloader</div>
         <p class="desc">
           영상·플레이리스트를 사용자가 지정한 위치로 내려받습니다. 요청은 기기에서 원본으로 직접
@@ -182,7 +182,7 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">📺</div>
-        <h3><a href="/ko/lgtv/">Dotori LG TV Remote</a></h3>
+        <h3><a href="/ko/lgtv/"><span class="dotori">Dotori</span> LG TV Remote</a></h3>
         <div class="pkg">com.droidactor.lgtv</div>
         <p class="desc">
           LG webOS TV 를 적외선이 아니라 같은 네트워크에서 조작하는 IP 리모컨입니다. 트랙패드
@@ -244,7 +244,7 @@
       <li>스캔으로 발견한 네트워크 식별자 — IP 주소, hostname, 열린 포트, 장비 종류</li>
       <li>페어링한 host 의 블루투스 주소 — 재연결을 위해 보관합니다. 화면·로그·진단 export 에는
         의도적으로 마스킹해 표시합니다.</li>
-      <li>SSH 자격증명과 TOFU 호스트키(Dotori SSH Scout) — Android 의 보호된 앱 저장소에 보관</li>
+      <li>SSH 자격증명과 TOFU 호스트키(<span class="dotori">Dotori</span> SSH Scout) — Android 의 보호된 앱 저장소에 보관</li>
       <li>사용자가 지정한 설정값</li>
     </ul>
     <p>기기 시리얼 번호나 device ID 는 어디에도 저장하지 않습니다.</p>
@@ -302,20 +302,20 @@
         <tbody>
           <tr>
             <td><code>BLUETOOTH_CONNECT</code><br><code>BLUETOOTH_ADVERTISE</code></td>
-            <td>Dotori Bluetooth Keyboard<br>Dotori Bluetooth PPT Remote<br>Dotori Bluetooth Mouse</td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse</td>
             <td>주변 host 에 HID 키보드·마우스로 나타나고 키·포인터 입력을 보내기 위해서입니다.
               블루투스 페어링에 Android 가 요구하는 권한입니다.</td>
           </tr>
           <tr>
             <td><code>NEARBY_WIFI_DEVICES</code><br><span class="badge">neverForLocation</span></td>
-            <td>Dotori WIFI Scout<br>Dotori SSH Scout</td>
+            <td><span class="dotori">Dotori</span> WIFI Scout<br><span class="dotori">Dotori</span> SSH Scout</td>
             <td>접속 중인 Wi-Fi 의 사설망 대역을 알기 위해서이며, 스캔 범위가 여기서 산출됩니다.
               <code>neverForLocation</code> 플래그를 선언해 위치 추론에 쓰지 않음을 Android 가 강제하며,
               이 앱들은 위치 권한 자체를 요구하지 않습니다.</td>
           </tr>
           <tr>
             <td><code>CHANGE_WIFI_MULTICAST_STATE</code></td>
-            <td>Dotori LG TV Remote</td>
+            <td><span class="dotori">Dotori</span> LG TV Remote</td>
             <td>TV 를 찾는 동안 멀티캐스트 락을 잡기 위해서입니다. 이것이 없으면 Wi-Fi 절전이 SSDP
               탐색 응답을 앱에 닿기 전에 버립니다. 위치나, 이미 접속한 것 외의 네트워크에 대한 접근
               권한이 아닙니다.</td>
@@ -328,20 +328,20 @@
           </tr>
           <tr>
             <td><code>FOREGROUND_SERVICE</code><br><code>POST_NOTIFICATIONS</code></td>
-            <td>Dotori Bluetooth Keyboard<br>Dotori Bluetooth PPT Remote<br>Dotori Bluetooth Mouse<br>Dotori YouTube Downloader</td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><span class="dotori">Dotori</span> YouTube Downloader</td>
             <td>다른 앱을 쓰는 동안 HID 세션이나 다운로드가 알림과 함께 계속 동작하기 위해서입니다.
               홍보성 알림은 보내지 않습니다. 스캐너 2종과 TV 리모컨은 두 권한을 선언하지 않습니다 —
               백그라운드에서 하는 일이 없습니다.</td>
           </tr>
           <tr>
             <td><code>VIBRATE</code></td>
-            <td>Dotori Bluetooth Keyboard<br>Dotori LG TV Remote</td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> LG TV Remote</td>
             <td>사용자가 햅틱 피드백을 켰을 때 짧은 키 입력 진동을 주기 위해서입니다. 이 normal 권한은
               진동이나 입력 이력을 읽는 권한이 아닙니다.</td>
           </tr>
           <tr>
             <td><code>com.droidactor.hid.session.permission.RELEASE</code><br><span class="badge">signature</span></td>
-            <td>Dotori Bluetooth Keyboard<br>Dotori Bluetooth PPT Remote<br>Dotori Bluetooth Mouse</td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse</td>
             <td>다른 HID companion 앱이 시작되기 전에 기존 Bluetooth HID 세션을 해제하도록 앱끼리
               요청하기 위해서입니다. 같은 인증서로 서명한 앱에만 Android가 부여하며 입력 내용에 대한
               접근 권한은 주지 않습니다.</td>
@@ -375,7 +375,7 @@
     <h3>7. 앱별 사항</h3>
 
     <div class="policy" id="privacy-keyboard">
-      <h3>Dotori Bluetooth Keyboard<span class="pkg-inline">com.droidactor.bt_keyboard</span></h3>
+      <h3><span class="dotori">Dotori</span> Bluetooth Keyboard<span class="pkg-inline">com.droidactor.bt_keyboard</span></h3>
       <p>
         입력한 키와 포인터 이동은 페어링한 host 로 블루투스를 통해서만 전달되며, 다른 곳으로는
         가지 않습니다. 키 입력은 기록·저장되지 않고 저희에게 전송되지도 않습니다 — 앱은 현재 눌려 있는 키를
@@ -395,23 +395,23 @@
         판정합니다 — 유휴·연결됨 상태에서만 허용하고 연결 진행 중·복구·격리 상태에서는 표시하지 않으며,
         트랙패드 면과 키보드 면에는 광고를 두지 않습니다.
       </p>
-      <p><a href="/ko/bt-keyboard/">Dotori Bluetooth Keyboard 자세히 보기</a></p>
+      <p><a href="/ko/bt-keyboard/"><span class="dotori">Dotori</span> Bluetooth Keyboard 자세히 보기</a></p>
     </div>
 
     <div class="policy" id="privacy-ppt">
-      <h3>Dotori Bluetooth PPT Remote<span class="pkg-inline">com.droidactor.bt_ppt</span></h3>
+      <h3><span class="dotori">Dotori</span> Bluetooth PPT Remote<span class="pkg-inline">com.droidactor.bt_ppt</span></h3>
       <p>
         블루투스 HID 로 고정된 5개 키 동작만 보내며, 텍스트 입력 기능이 아예 없습니다. 그 외에는
-        위 Dotori Bluetooth Keyboard 와 동일합니다 — 페어링 host 주소는 로컬 저장 후 마스킹, 위치 권한 없음, 저희에게
+        위 <span class="dotori">Dotori</span> Bluetooth Keyboard 와 동일합니다 — 페어링 host 주소는 로컬 저장 후 마스킹, 위치 권한 없음, 저희에게
         전송되는 것 없음. 광고는 홈·host 선택·페어링·설정·정보 화면에만 표시되며,
         <strong>발표 화면과 연결 중 화면에는 표시하지 않습니다</strong> — 진행 중인 발표를 방해하지
         않기 위해서입니다.
       </p>
-      <p><a href="/ko/bt-ppt/">Dotori Bluetooth PPT Remote 자세히 보기</a></p>
+      <p><a href="/ko/bt-ppt/"><span class="dotori">Dotori</span> Bluetooth PPT Remote 자세히 보기</a></p>
     </div>
 
     <div class="policy" id="privacy-mouse">
-      <h3>Dotori Bluetooth Mouse<span class="pkg-inline">com.droidactor.bt_mouse</span></h3>
+      <h3><span class="dotori">Dotori</span> Bluetooth Mouse<span class="pkg-inline">com.droidactor.bt_mouse</span></h3>
       <p>
         포인터 이동·버튼 입력·스크롤 제스처는 페어링한 host 로 블루투스 HID 를 통해서만
         전달됩니다. 입력은 기록·보관되지 않고 저희에게 전송되지도 않습니다. 검증된 host 주소는
@@ -423,11 +423,11 @@
         확보하며 동의 상태가 확인된 뒤에만 광고를 요청합니다. 트랙패드·마우스 버튼·스크롤 레일 위에는 광고를
         배치하지 않습니다. Google 의 광고 데이터 처리는 위 공통 처리방침을 따릅니다.
       </p>
-      <p><a href="/ko/bt-mouse/">Dotori Bluetooth Mouse 자세히 보기</a></p>
+      <p><a href="/ko/bt-mouse/"><span class="dotori">Dotori</span> Bluetooth Mouse 자세히 보기</a></p>
     </div>
 
     <div class="policy" id="privacy-wifi">
-      <h3>Dotori WIFI Scout<span class="pkg-inline">com.droidactor.wifi_scout</span></h3>
+      <h3><span class="dotori">Dotori</span> WIFI Scout<span class="pkg-inline">com.droidactor.wifi_scout</span></h3>
       <p>
         스캔은 폰과 접속된 로컬 네트워크 사이에서만 일어납니다. 결과(IP·hostname·열린 포트·장비
         종류)는 화면에 표시되고 기기에 남으며, 어디로도 업로드되지 않고 광고 SDK 에도 제공되지 않습니다. 산업용
@@ -443,18 +443,18 @@
         권한을 받은 네트워크·장비에서만 사용하십시오.
       </p>
       <p>
-        결과 행은 딥링크로 Dotori SSH Scout 에 넘길 수 있습니다. 이 링크는 host 와 port 만 싣고,
+        결과 행은 딥링크로 <span class="dotori">Dotori</span> SSH Scout 에 넘길 수 있습니다. 이 링크는 host 와 port 만 싣고,
         사용자명·비밀번호는 절대 전달하지 않습니다.
       </p>
-      <p><a href="/ko/wifi-scout/">Dotori WIFI Scout 자세히 보기</a></p>
+      <p><a href="/ko/wifi-scout/"><span class="dotori">Dotori</span> WIFI Scout 자세히 보기</a></p>
     </div>
 
     <div class="policy" id="privacy-ssh">
-      <h3>Dotori SSH Scout<span class="pkg-inline">com.droidactor.ssh_scout</span></h3>
+      <h3><span class="dotori">Dotori</span> SSH Scout<span class="pkg-inline">com.droidactor.ssh_scout</span></h3>
       <p>
         SSH 사용자명·비밀번호·개인키와 TOFU 호스트키는 기기 안 앱 전용 보호 저장소에 보관됩니다.
         <strong>저희나 제3자에게 전송되지 않으며 딥링크에도 포함되지 않습니다</strong> — 앱 sandbox 가 분리되어
-        Dotori WIFI Scout 을 포함한 다른 앱이 읽을 수 없습니다. 터미널 세션은 폰에서 지정한 host 로 직접 연결되며,
+        <span class="dotori">Dotori</span> WIFI Scout 을 포함한 다른 앱이 읽을 수 없습니다. 터미널 세션은 폰에서 지정한 host 로 직접 연결되며,
         어떤 트래픽도 저희를 경유하지 않습니다. 세션 출력은 기기 밖에 저장되지 않습니다.
       </p>
       <p>
@@ -465,11 +465,11 @@
         운영하지 않으므로, 그 서버가 세션을 어떻게 처리하는지는 서버 운영자의 정책이 적용됩니다. 본인이
         소유하거나 관리 권한을 받은 네트워크에서만 사용하십시오.
       </p>
-      <p><a href="/ko/ssh-scout/">Dotori SSH Scout 자세히 보기</a></p>
+      <p><a href="/ko/ssh-scout/"><span class="dotori">Dotori</span> SSH Scout 자세히 보기</a></p>
     </div>
 
     <div class="policy" id="privacy-ytdl">
-      <h3>Dotori YouTube Downloader<span class="pkg-inline">com.droidactor.ytdownloader</span></h3>
+      <h3><span class="dotori">Dotori</span> YouTube Downloader<span class="pkg-inline">com.droidactor.ytdownloader</span></h3>
       <p>
         붙여넣은 URL 은 기기에서 직접 요청합니다. 저희는 다운로드 서버를 운영하지 않으며 무엇을
         내려받는지 알 수 없습니다. 파일은 Android 파일 선택기로 사용자가 고른 위치에 저장되며, 그래서 앱이
@@ -480,11 +480,11 @@
         원본 사이트의 이용약관과 내려받는 자료의 저작권을 지켜주시기 바랍니다. 앱 사용에 대한
         책임은 사용자에게 있습니다.
       </p>
-      <p><a href="/ko/yt-downloader/">Dotori YouTube Downloader 자세히 보기</a></p>
+      <p><a href="/ko/yt-downloader/"><span class="dotori">Dotori</span> YouTube Downloader 자세히 보기</a></p>
     </div>
 
     <div class="policy" id="privacy-lgtv">
-      <h3>Dotori LG TV Remote<span class="pkg-inline">com.droidactor.lgtv</span></h3>
+      <h3><span class="dotori">Dotori</span> LG TV Remote<span class="pkg-inline">com.droidactor.lgtv</span></h3>
       <p>
         집 Wi-Fi 안에서 LG webOS TV 와 직접 통신합니다. 리모컨 명령은 사용자가 고른 TV 로만 가고 그 밖의
         어디로도 가지 않습니다 — 개발자 서버도, 앱 로그인도 없습니다. 다시 연결할 때 같은 TV 인지

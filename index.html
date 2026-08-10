@@ -112,7 +112,7 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">⌨️</div>
-        <h3><a href="/bt-keyboard/">Dotori Bluetooth Keyboard</a></h3>
+        <h3><a href="/bt-keyboard/"><span class="dotori">Dotori</span> Bluetooth Keyboard</a></h3>
         <div class="pkg">com.droidactor.bt_keyboard</div>
         <p class="desc">
           Turns the phone into a Bluetooth HID keyboard and mouse, so a PC or TV can be
@@ -128,7 +128,7 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">📊</div>
-        <h3><a href="/bt-ppt/">Dotori Bluetooth PPT Remote</a></h3>
+        <h3><a href="/bt-ppt/"><span class="dotori">Dotori</span> Bluetooth PPT Remote</a></h3>
         <div class="pkg">com.droidactor.bt_ppt</div>
         <p class="desc">
           A presentation clicker, deliberately limited to five actions over Bluetooth HID — next,
@@ -144,7 +144,7 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">🖱️</div>
-        <h3><a href="/bt-mouse/">Dotori Bluetooth Mouse</a></h3>
+        <h3><a href="/bt-mouse/"><span class="dotori">Dotori</span> Bluetooth Mouse</a></h3>
         <div class="pkg">com.droidactor.bt_mouse</div>
         <p class="desc">
           Turns the phone into a Bluetooth HID mouse with a trackpad, three buttons, vertical and
@@ -159,7 +159,7 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">📡</div>
-        <h3><a href="/wifi-scout/">Dotori WIFI Scout</a></h3>
+        <h3><a href="/wifi-scout/"><span class="dotori">Dotori</span> WIFI Scout</a></h3>
         <div class="pkg">com.droidactor.wifi_scout</div>
         <p class="desc">
           Sweeps the private subnet of the Wi-Fi you are on and identifies which devices
@@ -175,11 +175,11 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">🔐</div>
-        <h3><a href="/ssh-scout/">Dotori SSH Scout</a></h3>
+        <h3><a href="/ssh-scout/"><span class="dotori">Dotori</span> SSH Scout</a></h3>
         <div class="pkg">com.droidactor.ssh_scout</div>
         <p class="desc">
           SSH connections, a terminal, and trust-on-first-use host key management.
-          Can be entered straight from a Dotori WIFI Scout result via deep link.
+          Can be entered straight from a <span class="dotori">Dotori</span> WIFI Scout result via deep link.
         </p>
         <div class="foot">
           <span class="badge soon">Coming soon</span>
@@ -190,7 +190,7 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">⬇️</div>
-        <h3><a href="/yt-downloader/">Dotori YouTube Downloader</a></h3>
+        <h3><a href="/yt-downloader/"><span class="dotori">Dotori</span> YouTube Downloader</a></h3>
         <div class="pkg">com.droidactor.ytdownloader</div>
         <p class="desc">
           Downloads videos and playlists to the location you choose. Requests go from your
@@ -205,7 +205,7 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">📺</div>
-        <h3><a href="/lgtv/">Dotori LG TV Remote</a></h3>
+        <h3><a href="/lgtv/"><span class="dotori">Dotori</span> LG TV Remote</a></h3>
         <div class="pkg">com.droidactor.lgtv</div>
         <p class="desc">
           A remote for LG webOS TVs that drives the set over the local network instead of
@@ -270,7 +270,7 @@
       <li>Network identifiers found by scanning — IP addresses, hostnames, open ports, device kind</li>
       <li>Bluetooth addresses of hosts you paired with, kept so the app can reconnect. They
         are deliberately masked in the UI, logs and diagnostic exports.</li>
-      <li>SSH credentials and TOFU host keys (Dotori SSH Scout), held in Android's protected
+      <li>SSH credentials and TOFU host keys (<span class="dotori">Dotori</span> SSH Scout), held in Android's protected
         app storage</li>
       <li>Your own settings and preferences</li>
     </ul>
@@ -332,13 +332,13 @@
         <tbody>
           <tr>
             <td><code>BLUETOOTH_CONNECT</code><br><code>BLUETOOTH_ADVERTISE</code></td>
-            <td>Dotori Bluetooth Keyboard<br>Dotori Bluetooth PPT Remote<br>Dotori Bluetooth Mouse</td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse</td>
             <td>To appear as a HID keyboard/mouse to a nearby host and send your key and
               pointer input to it. Required by Android for any Bluetooth pairing.</td>
           </tr>
           <tr>
             <td><code>NEARBY_WIFI_DEVICES</code><br><span class="badge">neverForLocation</span></td>
-            <td>Dotori WIFI Scout<br>Dotori SSH Scout</td>
+            <td><span class="dotori">Dotori</span> WIFI Scout<br><span class="dotori">Dotori</span> SSH Scout</td>
             <td>To read the subnet of the Wi-Fi you are connected to, which is what the scan
               range is derived from. The <code>neverForLocation</code> flag is declared, so Android
               enforces that this is not used to derive your location — and these apps request no location
@@ -346,7 +346,7 @@
           </tr>
           <tr>
             <td><code>CHANGE_WIFI_MULTICAST_STATE</code></td>
-            <td>Dotori LG TV Remote</td>
+            <td><span class="dotori">Dotori</span> LG TV Remote</td>
             <td>To hold a multicast lock while the app looks for your TV. Without it Wi-Fi power
               saving discards the SSDP discovery replies before the app sees them. It grants no access
               to your location and none to any network you are not already on.</td>
@@ -359,20 +359,20 @@
           </tr>
           <tr>
             <td><code>FOREGROUND_SERVICE</code><br><code>POST_NOTIFICATIONS</code></td>
-            <td>Dotori Bluetooth Keyboard<br>Dotori Bluetooth PPT Remote<br>Dotori Bluetooth Mouse<br>Dotori YouTube Downloader</td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><span class="dotori">Dotori</span> YouTube Downloader</td>
             <td>So a HID session or a download keeps running with a visible notification while
               you use another app. We send no promotional notifications. The scanners and the TV
               remote declare neither permission — they do no work in the background.</td>
           </tr>
           <tr>
             <td><code>VIBRATE</code></td>
-            <td>Dotori Bluetooth Keyboard<br>Dotori LG TV Remote</td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> LG TV Remote</td>
             <td>To provide the short key-press vibration when you enable haptic feedback. This
               normal permission does not expose vibration or input history.</td>
           </tr>
           <tr>
             <td><code>com.droidactor.hid.session.permission.RELEASE</code><br><span class="badge">signature</span></td>
-            <td>Dotori Bluetooth Keyboard<br>Dotori Bluetooth PPT Remote<br>Dotori Bluetooth Mouse</td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse</td>
             <td>To let our HID companion apps ask each other to release an active Bluetooth HID
               session before another one starts. Android grants it only to apps signed with the same
               certificate; it does not provide access to input content.</td>
@@ -407,7 +407,7 @@
     <h3>7. Per-app notes</h3>
 
     <div class="policy" id="privacy-keyboard">
-      <h3>Dotori Bluetooth Keyboard<span class="pkg-inline">com.droidactor.bt_keyboard</span></h3>
+      <h3><span class="dotori">Dotori</span> Bluetooth Keyboard<span class="pkg-inline">com.droidactor.bt_keyboard</span></h3>
       <p>
         What you type and where you move the pointer goes over Bluetooth to the host you
         paired with, and nowhere else. Keystrokes are not logged, stored or transmitted to us — the app
@@ -429,23 +429,23 @@
         screen you are viewing — idle and connected allow ads, while connecting, recovering and isolated
         states do not — and no ad is placed on the trackpad or keyboard surfaces.
       </p>
-      <p><a href="/bt-keyboard/">More about Dotori Bluetooth Keyboard</a></p>
+      <p><a href="/bt-keyboard/">More about <span class="dotori">Dotori</span> Bluetooth Keyboard</a></p>
     </div>
 
     <div class="policy" id="privacy-ppt">
-      <h3>Dotori Bluetooth PPT Remote<span class="pkg-inline">com.droidactor.bt_ppt</span></h3>
+      <h3><span class="dotori">Dotori</span> Bluetooth PPT Remote<span class="pkg-inline">com.droidactor.bt_ppt</span></h3>
       <p>
         The app sends only five fixed key actions over Bluetooth HID and has no text entry
-        at all. Otherwise it behaves exactly as Dotori Bluetooth Keyboard above: paired host address stored locally
+        at all. Otherwise it behaves exactly as <span class="dotori">Dotori</span> Bluetooth Keyboard above: paired host address stored locally
         and masked, no location permission, nothing transmitted to us. Ads are shown on the Home, host
         picker, pairing, settings and about screens only — <strong>never on the presenter screen or while
         connecting</strong>, so a running presentation is never interrupted.
       </p>
-      <p><a href="/bt-ppt/">More about Dotori Bluetooth PPT Remote</a></p>
+      <p><a href="/bt-ppt/">More about <span class="dotori">Dotori</span> Bluetooth PPT Remote</a></p>
     </div>
 
     <div class="policy" id="privacy-mouse">
-      <h3>Dotori Bluetooth Mouse<span class="pkg-inline">com.droidactor.bt_mouse</span></h3>
+      <h3><span class="dotori">Dotori</span> Bluetooth Mouse<span class="pkg-inline">com.droidactor.bt_mouse</span></h3>
       <p>
         Pointer movement, button presses and scroll gestures go only over Bluetooth HID to the host
         you paired with. They are not logged, retained or transmitted to us. The app stores the
@@ -457,11 +457,11 @@
         are requested only after the consent state is resolved; no ad is placed over the trackpad, mouse buttons or scroll rails.
         Google may process advertising data as described in the general policy above.
       </p>
-      <p><a href="/bt-mouse/">More about Dotori Bluetooth Mouse</a></p>
+      <p><a href="/bt-mouse/">More about <span class="dotori">Dotori</span> Bluetooth Mouse</a></p>
     </div>
 
     <div class="policy" id="privacy-wifi">
-      <h3>Dotori WIFI Scout<span class="pkg-inline">com.droidactor.wifi_scout</span></h3>
+      <h3><span class="dotori">Dotori</span> WIFI Scout<span class="pkg-inline">com.droidactor.wifi_scout</span></h3>
       <p>
         Scanning happens entirely between your phone and the local network it is attached
         to. Results — IP addresses, hostnames, open ports, device kind — are shown on screen and kept on
@@ -480,19 +480,19 @@
         you own or are authorised to manage.
       </p>
       <p>
-        A result row can be handed to Dotori SSH Scout by deep link. That link carries the host and
+        A result row can be handed to <span class="dotori">Dotori</span> SSH Scout by deep link. That link carries the host and
         port only — never a username or password.
       </p>
-      <p><a href="/wifi-scout/">More about Dotori WIFI Scout</a></p>
+      <p><a href="/wifi-scout/">More about <span class="dotori">Dotori</span> WIFI Scout</a></p>
     </div>
 
     <div class="policy" id="privacy-ssh">
-      <h3>Dotori SSH Scout<span class="pkg-inline">com.droidactor.ssh_scout</span></h3>
+      <h3><span class="dotori">Dotori</span> SSH Scout<span class="pkg-inline">com.droidactor.ssh_scout</span></h3>
       <p>
         SSH usernames, passwords, private keys and trust-on-first-use host keys are stored
         in the app's own protected storage on your device. <strong>They are never transmitted to us or to
         any third party, and are not included in the deep link</strong> — the app sandbox means they
-        cannot be read by another app, including Dotori WIFI Scout. Terminal sessions connect directly from your
+        cannot be read by another app, including <span class="dotori">Dotori</span> WIFI Scout. Terminal sessions connect directly from your
         phone to the host you specify; no traffic is proxied through us. Session output is not saved off
         the device.
       </p>
@@ -505,11 +505,11 @@
         server operator's own policies apply to whatever it does with your session. Use the app only on
         networks you own or are authorised to administer.
       </p>
-      <p><a href="/ssh-scout/">More about Dotori SSH Scout</a></p>
+      <p><a href="/ssh-scout/">More about <span class="dotori">Dotori</span> SSH Scout</a></p>
     </div>
 
     <div class="policy" id="privacy-ytdl">
-      <h3>Dotori YouTube Downloader<span class="pkg-inline">com.droidactor.ytdownloader</span></h3>
+      <h3><span class="dotori">Dotori</span> YouTube Downloader<span class="pkg-inline">com.droidactor.ytdownloader</span></h3>
       <p>
         The URL you paste is requested directly from your device; we run no download server
         and never see what you download. Files are written to the location you pick through Android's own
@@ -520,11 +520,11 @@
         Please respect the terms of service of the source site and the copyright of the
         material you download. Responsibility for how the app is used rests with the user.
       </p>
-      <p><a href="/yt-downloader/">More about Dotori YouTube Downloader</a></p>
+      <p><a href="/yt-downloader/">More about <span class="dotori">Dotori</span> YouTube Downloader</a></p>
     </div>
 
     <div class="policy" id="privacy-lgtv">
-      <h3>Dotori LG TV Remote<span class="pkg-inline">com.droidactor.lgtv</span></h3>
+      <h3><span class="dotori">Dotori</span> LG TV Remote<span class="pkg-inline">com.droidactor.lgtv</span></h3>
       <p>
         The app talks to your LG webOS TV directly over your own Wi-Fi. Remote commands travel from
         the phone to the TV you picked and nowhere else — there is no developer server and no app

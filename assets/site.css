@@ -13,6 +13,13 @@
   --accent: #3ddc97;
   --accent-dim: #1f7a58;
   --warn: #d9a55b;
+  /* The six colours of the "Dotori" wordmark — 빨 주 노 초 파 보. See .dotori below. */
+  --dot-1: #ff7b72;
+  --dot-2: #ffa657;
+  --dot-3: #e3b341;
+  --dot-4: #3fb950;
+  --dot-5: #58a6ff;
+  --dot-6: #d2a8ff;
   --radius: 12px;
 }
 @media (prefers-color-scheme: light) {
@@ -27,6 +34,13 @@
     --accent: #0f7b52;
     --accent-dim: #a7e8cb;
     --warn: #9a6700;
+    /* Darkened so every one of the six clears 4.5:1 on white — yellow especially. */
+    --dot-1: #cf222e;
+    --dot-2: #bc4c00;
+    --dot-3: #9a6700;
+    --dot-4: #1a7f37;
+    --dot-5: #0969da;
+    --dot-6: #8250df;
   }
 }
 
@@ -57,6 +71,60 @@ header.top {
 .brand { font-weight: 700; letter-spacing: -0.01em; }
 .brand a { color: inherit; text-decoration: none; }
 .brand span { color: var(--accent); }
+
+/* ---- "Dotori" wordmark --------------------------------------------------- */
+/* The product-name prefix is painted in the six colours of 빨주노초파보. The word is
+   deliberately NOT split into per-letter elements: the text node stays whole, so a
+   crawler, a translator or a screen reader still reads one word, "Dotori". The colours
+   therefore arrive as a gradient clipped to the glyphs.
+   Stops sit on the letter boundaries rather than at even sixths, because D is wide and i
+   is narrow — even sixths would cut letters in half. The boundaries are the measured
+   cumulative advance widths of D-o-t-o-r-i. Weight matters as much as family here: 56 of
+   the 281 places this class is used sit inside h1/h3/strong, and bold shifts every
+   boundary left. Measured across what the stack at the top of this file actually resolves
+   to on Windows — Segoe UI in three weights, Malgun Gothic for the Korean pages, and
+   Arial as the final sans-serif fallback:
+       Segoe UI           25.03  45.94  58.03  78.95  91.36
+       Segoe UI Semibold  24.70  45.26  57.70  78.26  91.01
+       Segoe UI Bold      24.32  44.49  57.33  77.50  90.62
+       Malgun Gothic      25.08  46.03  58.08  79.03  91.39
+       Malgun Gothic Bold 24.55  44.95  57.60  78.01  90.96
+       Arial              27.07  47.92  58.34  79.19  91.67
+       Arial Bold         24.53  45.28  56.59  77.34  90.56
+   Each seam is a blend wide enough to hold the whole spread of those seven, so none of
+   them puts a hard edge inside a letter. The second seam opens at 44% rather than an even
+   44.5% for one reason: Segoe UI Bold's 44.49 sits right on that line.
+   -apple-system (SF Pro) and Roboto carry the other platforms and are not installed here,
+   so they are unmeasured. The seams are wide enough that they should land inside, but
+   that is an expectation rather than a measurement. Fonts outside this stack are not a
+   consideration — Calibri, Tahoma and Verdana all drift past these seams, and none of
+   them can be selected by the stack above.
+   Everything sits inside @supports because without background-clip:text the transparent
+   fill would make the word vanish; unsupported browsers just inherit the text colour. */
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  .dotori {
+    background-image: linear-gradient(90deg,
+      var(--dot-1)    0%, var(--dot-1) 23.5%,
+      var(--dot-2) 28.5%, var(--dot-2)   44%,
+      var(--dot-3) 49.5%, var(--dot-3) 55.5%,
+      var(--dot-4) 60.5%, var(--dot-4) 76.5%,
+      var(--dot-5) 81.5%, var(--dot-5) 89%,
+      var(--dot-6)   94%, var(--dot-6) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+  /* Windows high contrast and print both discard the painted background, which would
+     leave a transparent — invisible — word. Hand the text back its own colour there. */
+  @media (forced-colors: active), print {
+    .dotori {
+      background-image: none;
+      color: inherit;
+      -webkit-text-fill-color: currentColor;
+    }
+  }
+}
 
 /* ---- language links (real URLs, not a JS toggle) ------------------------- */
 .langs { display: flex; gap: 4px; }
@@ -167,7 +235,9 @@ footer .tm { margin-top: 12px; font-size: 12px; }
 /* ---- product pages ------------------------------------------------------ */
 .crumb { padding: 18px 0 0; font-size: 13px; color: var(--fg-faint); }
 .crumb a { color: var(--fg-dim); }
-.crumb span { margin: 0 6px; }
+/* The bare <span> here is the "/" separator. .dotori is excluded because the trail ends
+   in the product name, and a margin there would push "Dotori" off its own word. */
+.crumb span:not(.dotori) { margin: 0 6px; }
 
 .hero.product { padding: 26px 0 36px; }
 .hero.product .icon { font-size: 40px; line-height: 1; margin-bottom: 14px; }
