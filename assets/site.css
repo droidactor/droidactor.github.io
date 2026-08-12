@@ -126,6 +126,21 @@ header.top {
   }
 }
 
+/* 한국어 로켈의 브랜드는 앱과 같은 빨강·노랑·파랑을 글자 단위로 쓴다.
+   글자를 실제 span으로 나눠 gradient 경계가 한글 획 한가운데 걸리지 않게 한다. */
+.dotori-ko { white-space: nowrap; }
+.dotori-ko > span:nth-child(1) { color: #ff8a80; }
+.dotori-ko > span:nth-child(2) { color: #ffe082; }
+.dotori-ko > span:nth-child(3) { color: #90caf9; }
+@media (prefers-color-scheme: light) {
+  .dotori-ko > span:nth-child(1) { color: #b71c1c; }
+  .dotori-ko > span:nth-child(2) { color: #6b5800; }
+  .dotori-ko > span:nth-child(3) { color: #0d47a1; }
+}
+@media (forced-colors: active), print {
+  .dotori-ko > span { color: inherit; }
+}
+
 /* ---- language links (real URLs, not a JS toggle) ------------------------- */
 .langs { display: flex; gap: 4px; }
 .lang-btn {
@@ -237,7 +252,7 @@ footer .tm { margin-top: 12px; font-size: 12px; }
 .crumb a { color: var(--fg-dim); }
 /* The bare <span> here is the "/" separator. .dotori is excluded because the trail ends
    in the product name, and a margin there would push "Dotori" off its own word. */
-.crumb span:not(.dotori) { margin: 0 6px; }
+.crumb > span:not(.dotori):not(.dotori-ko) { margin: 0 6px; }
 
 .hero.product { padding: 26px 0 36px; }
 .hero.product .icon { font-size: 40px; line-height: 1; margin-bottom: 14px; }

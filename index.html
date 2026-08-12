@@ -73,8 +73,8 @@
         { "@type": "ListItem", "position": 1, "name": "Dotori Bluetooth Keyboard", "url": "https://droidactor.github.io/bt-keyboard/" },
         { "@type": "ListItem", "position": 2, "name": "Dotori Bluetooth PPT Remote", "url": "https://droidactor.github.io/bt-ppt/" },
         { "@type": "ListItem", "position": 3, "name": "Dotori Bluetooth Mouse", "url": "https://droidactor.github.io/bt-mouse/" },
-        { "@type": "ListItem", "position": 4, "name": "Dotori WIFI Scout", "url": "https://droidactor.github.io/wifi-scout/" },
-        { "@type": "ListItem", "position": 5, "name": "Dotori SSH Scout", "url": "https://droidactor.github.io/ssh-scout/" },
+        { "@type": "ListItem", "position": 4, "name": "Dotori WiFi Scanner", "url": "https://droidactor.github.io/wifi-scout/" },
+        { "@type": "ListItem", "position": 5, "name": "Dotori SSH Terminal", "url": "https://droidactor.github.io/ssh-scout/" },
         { "@type": "ListItem", "position": 6, "name": "Dotori YouTube Downloader", "url": "https://droidactor.github.io/yt-downloader/" },
         { "@type": "ListItem", "position": 7, "name": "Dotori LG TV Remote", "url": "https://droidactor.github.io/lgtv/" }
       ]
@@ -159,7 +159,7 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">📡</div>
-        <h3><a href="/wifi-scout/"><span class="dotori">Dotori</span> WIFI Scout</a></h3>
+        <h3><a href="/wifi-scout/"><span class="dotori">Dotori</span> WiFi Scanner</a></h3>
         <div class="pkg">com.droidactor.wifi_scout</div>
         <p class="desc">
           Sweeps the private subnet of the Wi-Fi you are on and identifies which devices
@@ -175,11 +175,11 @@
 
       <article class="card">
         <div class="icon" aria-hidden="true">🔐</div>
-        <h3><a href="/ssh-scout/"><span class="dotori">Dotori</span> SSH Scout</a></h3>
+        <h3><a href="/ssh-scout/"><span class="dotori">Dotori</span> SSH Terminal</a></h3>
         <div class="pkg">com.droidactor.ssh_scout</div>
         <p class="desc">
           SSH connections, a terminal, and trust-on-first-use host key management.
-          Can be entered straight from a <span class="dotori">Dotori</span> WIFI Scout result via deep link.
+          Can be entered straight from a <span class="dotori">Dotori</span> WiFi Scanner result via deep link.
         </p>
         <div class="foot">
           <span class="badge soon">Coming soon</span>
@@ -270,7 +270,7 @@
       <li>Network identifiers found by scanning — IP addresses, hostnames, open ports, device kind</li>
       <li>Bluetooth addresses of hosts you paired with, kept so the app can reconnect. They
         are deliberately masked in the UI, logs and diagnostic exports.</li>
-      <li>SSH credentials and TOFU host keys (<span class="dotori">Dotori</span> SSH Scout), held in Android's protected
+      <li>SSH credentials and TOFU host keys (<span class="dotori">Dotori</span> SSH Terminal), held in Android's protected
         app storage</li>
       <li>Your own settings and preferences</li>
     </ul>
@@ -302,8 +302,8 @@
       ad SDK; nothing about the network you scanned or the host you paired with reaches an advertiser.
     </p>
     <p>
-      In the six ad-supported apps (Bluetooth Keyboard, PPT Remote, Bluetooth Mouse, WIFI Scout,
-      SSH Scout and LG TV Remote), a banner slot that cannot request or fill a paid ad may instead
+      In the six ad-supported apps (Bluetooth Keyboard, PPT Remote, Bluetooth Mouse, WiFi Scanner,
+      SSH Terminal and LG TV Remote), a banner slot that cannot request or fill a paid ad may instead
       show a first-party card labelled <strong>Promo</strong> for one of our other apps. This card
       does not use the Mobile Ads SDK and does not collect or send app, network or device data. A tap
       first opens an in-app description; the official product page on
@@ -338,7 +338,7 @@
           </tr>
           <tr>
             <td><code>NEARBY_WIFI_DEVICES</code><br><span class="badge">neverForLocation</span></td>
-            <td><span class="dotori">Dotori</span> WIFI Scout<br><span class="dotori">Dotori</span> SSH Scout</td>
+            <td><span class="dotori">Dotori</span> WiFi Scanner<br><span class="dotori">Dotori</span> SSH Terminal</td>
             <td>To read the subnet of the Wi-Fi you are connected to, which is what the scan
               range is derived from. The <code>neverForLocation</code> flag is declared, so Android
               enforces that this is not used to derive your location — and these apps request no location
@@ -461,7 +461,7 @@
     </div>
 
     <div class="policy" id="privacy-wifi">
-      <h3><span class="dotori">Dotori</span> WIFI Scout<span class="pkg-inline">com.droidactor.wifi_scout</span></h3>
+      <h3><span class="dotori">Dotori</span> WiFi Scanner<span class="pkg-inline">com.droidactor.wifi_scout</span></h3>
       <p>
         Scanning happens entirely between your phone and the local network it is attached
         to. Results — IP addresses, hostnames, open ports, device kind — are shown on screen and kept on
@@ -480,19 +480,19 @@
         you own or are authorised to manage.
       </p>
       <p>
-        A result row can be handed to <span class="dotori">Dotori</span> SSH Scout by deep link. That link carries the host and
+        A result row can be handed to <span class="dotori">Dotori</span> SSH Terminal by deep link. That link carries the host and
         port only — never a username or password.
       </p>
-      <p><a href="/wifi-scout/">More about <span class="dotori">Dotori</span> WIFI Scout</a></p>
+      <p><a href="/wifi-scout/">More about <span class="dotori">Dotori</span> WiFi Scanner</a></p>
     </div>
 
     <div class="policy" id="privacy-ssh">
-      <h3><span class="dotori">Dotori</span> SSH Scout<span class="pkg-inline">com.droidactor.ssh_scout</span></h3>
+      <h3><span class="dotori">Dotori</span> SSH Terminal<span class="pkg-inline">com.droidactor.ssh_scout</span></h3>
       <p>
         SSH usernames, passwords, private keys and trust-on-first-use host keys are stored
         in the app's own protected storage on your device. <strong>They are never transmitted to us or to
         any third party, and are not included in the deep link</strong> — the app sandbox means they
-        cannot be read by another app, including <span class="dotori">Dotori</span> WIFI Scout. Terminal sessions connect directly from your
+        cannot be read by another app, including <span class="dotori">Dotori</span> WiFi Scanner. Terminal sessions connect directly from your
         phone to the host you specify; no traffic is proxied through us. Session output is not saved off
         the device.
       </p>
@@ -505,7 +505,7 @@
         server operator's own policies apply to whatever it does with your session. Use the app only on
         networks you own or are authorised to administer.
       </p>
-      <p><a href="/ssh-scout/">More about <span class="dotori">Dotori</span> SSH Scout</a></p>
+      <p><a href="/ssh-scout/">More about <span class="dotori">Dotori</span> SSH Terminal</a></p>
     </div>
 
     <div class="policy" id="privacy-ytdl">

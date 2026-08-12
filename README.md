@@ -17,8 +17,8 @@ privacy policy, and the host for `app-ads.txt`.
 /bt-keyboard/           제품 페이지 — Dotori Bluetooth Keyboard      + /ko/bt-keyboard/
 /bt-ppt/                제품 페이지 — Dotori Bluetooth PPT Remote    + /ko/bt-ppt/
 /bt-mouse/              제품 페이지 — Dotori Bluetooth Mouse         + /ko/bt-mouse/
-/wifi-scout/            제품 페이지 — Dotori WIFI Scout              + /ko/wifi-scout/
-/ssh-scout/             제품 페이지 — Dotori SSH Scout               + /ko/ssh-scout/
+/wifi-scout/            제품 페이지 — Dotori WiFi Scanner              + /ko/wifi-scout/
+/ssh-scout/             제품 페이지 — Dotori SSH Terminal               + /ko/ssh-scout/
 /yt-downloader/         제품 페이지 — Dotori YouTube Downloader      + /ko/yt-downloader/
 /lgtv/                  제품 페이지 — Dotori LG TV Remote            + /ko/lgtv/
 /blog/                  글 목록 — Field notes                        + /ko/blog/ (현장 노트)
