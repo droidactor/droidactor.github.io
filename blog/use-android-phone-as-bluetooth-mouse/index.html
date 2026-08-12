@@ -78,7 +78,7 @@
     <div class="post-app">
       <img src="assets/icon.png" width="512" height="512" alt="Dotori Bluetooth Mouse app icon" decoding="async">
       <p><strong><span class="dotori">Dotori</span> Bluetooth Mouse</strong>Provides a large trackpad, left/middle/right buttons,
-        sensitivity control, natural scrolling, and separate scroll rails.</p>
+        sensitivity control, and separate scroll rails.</p>
     </div>
 
     <h2>A Bluetooth mouse reports movement, not position</h2>
@@ -101,7 +101,8 @@ horizontal scroll = Left Shift down + wheel + restore modifiers</code></pre>
 
     <p>The host application still decides what to do with Shift+wheel. Spreadsheets and wide
       canvases often use it; an application that has no horizontal scroll action may ignore it. The
-      natural-scrolling option simply reverses the direction before the wheel report leaves the phone.</p>
+      phone never reverses the direction: the arrow drawn on a rail is the direction the wheel report
+      carries, which matches the default scroll direction of a laptop trackpad on Windows.</p>
 
     <h2>What the phone cannot know</h2>
     <p>The report path is effectively one-way. The PC does not send its pointer coordinates back to
@@ -114,7 +115,9 @@ horizontal scroll = Left Shift down + wheel + restore modifiers</code></pre>
       <li><strong>No movement at all:</strong> confirm that the phone connected under the host's mouse or keyboard devices and that the phone supports HID Device mode.</li>
       <li><strong>The first gesture only wakes the PC:</strong> repeat it after the host is awake.</li>
       <li><strong>Movement is too slow or too fast:</strong> adjust phone sensitivity, then the host pointer setting if needed.</li>
-      <li><strong>Scrolling feels reversed:</strong> switch the natural-scrolling option.</li>
+      <li><strong>Scrolling feels reversed:</strong> the phone follows the arrow drawn on the rail —
+        the up arrow scrolls up, as a laptop trackpad does by default. If only one application
+        scrolls the other way, check that application's own scroll setting.</li>
       <li><strong>Horizontal scrolling does nothing:</strong> test in an application with content wider than its viewport.</li>
     </ul>
 
