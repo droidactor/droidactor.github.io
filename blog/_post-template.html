@@ -3,9 +3,12 @@
   POST TEMPLATE — this file is not a published page. It carries noindex and is kept
   out of sitemap.xml on purpose.
 
-  To write a post:
-    1. copy to  blog/<slug>/index.html      and set lang="en"
-    2. copy to  ko/blog/<slug>/index.html   and set lang="ko"
+  To author and publish a post:
+    1. author and review ../blogs/<app>/<slug>/site.en.md and site.ko.md from the
+       MyApps/Mobile repository root. All writing happens there; this repo receives
+       only the publishing artifacts.
+    2. copy this template to blog/<slug>/index.html and ko/blog/<slug>/index.html,
+       then transfer the reviewed English/Korean drafts and set each lang attribute.
     3. replace every {{PLACEHOLDER}} — search for "{{" before publishing, none may remain
     4. DELETE the <meta name="robots" content="noindex, nofollow"> line
     5. add the entry to both blog indexes and the <url> pair to /sitemap.xml
@@ -13,16 +16,19 @@
   Conventions this template already encodes, so they are not decided per post:
     - <slug> is the SAME string in both languages. The URL pair is /blog/<slug>/ and
       /ko/blog/<slug>/, which is what makes the hreflang pair mechanical.
-    - Slugs are English, lowercase, hyphenated, and describe the task the reader came
-      to do — find-ls-plc-ip-address, not plc-post-1.
+    - Slugs are English, lowercase, hyphenated, and name the technical question or task
+      precisely — find-ls-plc-ip-address, not plc-post-1.
     - The stylesheet uses a RELATIVE path, like every other page in this repo, so the
       file still renders when opened straight from disk. The depth is fixed per
       language: ../../ from /blog/<slug>/, ../../../ from /ko/blog/<slug>/.
     - Links stay ROOT-ABSOLUTE (/bt-keyboard/, /ko/blog/). They will not work under
       file:// — that is expected and applies to the whole site. Check locally with
       `python -m http.server 8000`, as README says.
-    - The post opens with a summary box. A reader who stops there should already have
-      the answer; generative search engines quote that box.
+    - This site carries technical references: protocol/behavior explanations,
+      measurements with reproducible conditions, and detailed procedures. User-story
+      acquisition posts belong to Naver and their English versions belong to Blogger.
+    - The post opens with a technical conclusion and its applicability conditions.
+      A reader who stops there should know both the answer and its limits.
     - Every post ends with one call to action pointing at one app. Not five.
 -->
 <html lang="{{LANG en|ko}}">
@@ -30,8 +36,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>{{TITLE — the search phrase first, brand last, under ~60 chars}} — droidactor</title>
-<meta name="description" content="{{DESCRIPTION — 120-155 chars. Say what the reader will be able to do after reading, not what the post 'covers'.}}">
+<title>{{TITLE — the specific technical question first, brand last, under ~60 chars}} — droidactor</title>
+<meta name="description" content="{{DESCRIPTION — 120-155 chars. State the conclusion, scope, or measurable result rather than saying what the post 'covers'.}}">
 <link rel="canonical" href="https://droidactor.github.io/{{ko/}}blog/{{SLUG}}/">
 <link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/{{SLUG}}/">
 <link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/{{SLUG}}/">
@@ -109,26 +115,27 @@
   <article class="post-body">
 
     <div class="note">
-      <p><strong>{{Short answer|요약}}.</strong> {{Two or three sentences that answer the
-        title outright. If the reader stops here they should already be able to act — the
-        rest of the post is the why and the edge cases. This box is what AI search
-        engines quote, so no teasing.}}</p>
+      <p><strong>{{Technical conclusion|기술 결론}}.</strong> {{Two or three sentences that
+        answer the title and state the conditions where the answer applies. Include a
+        measured value only with its environment and method. The rest of the post
+        provides evidence, reproduction steps, and limitations.}}</p>
     </div>
 
-    <p>{{Opening paragraph — the concrete situation the reader is in. Name the symptom
-      they searched for, in their words.}}</p>
+    <p>{{Scope and prerequisites — versions, devices, network conditions, permissions,
+      or other assumptions needed to reproduce the result.}}</p>
 
-    <h2>{{First step, phrased as the thing being done}}</h2>
-    <p>{{...}}</p>
+    <h2>{{Method or detailed procedure}}</h2>
+    <p>{{Explain the setup and steps precisely enough for another person to reproduce.}}</p>
 
     <pre><code>{{command or protocol dump, if there is one — keep it copy-pasteable}}</code></pre>
 
-    <h2>{{What to do when that fails}}</h2>
-    <p>{{The failure branch is usually why the reader is searching at all. Do not skip it.}}</p>
+    <h2>{{Results and interpretation}}</h2>
+    <p>{{Show observations or expected behavior. For numbers, include units, sample size,
+      device/software versions, date, and relevant uncertainty.}}</p>
 
-    <h2>{{Why it behaves this way}}</h2>
-    <p>{{The protocol-level explanation. This is the part no competing page has, and the
-      reason this post is worth reading rather than the vendor manual.}}</p>
+    <h2>{{Why it behaves this way and where it does not apply}}</h2>
+    <p>{{Give the protocol-level explanation, constraints, failure modes, and limits on
+      generalizing the result.}}</p>
 
     <div class="note">
       <p><strong>{{APP_NAME}}</strong> {{does this part of the job on a phone —

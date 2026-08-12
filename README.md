@@ -75,14 +75,15 @@ privacy policy, and the host for `app-ads.txt`.
 - 페이지마다 `canonical`, `og:*`, `hreflang`(en / ko / x-default 상호 참조), JSON-LD
   (홈 = `WebSite`+`Organization`+`ItemList`, 제품 = `SoftwareApplication`)
 - 색인 단위를 1개에서 **16개**로 늘린 홈·제품별 URL
-- `/blog/` · `/ko/blog/` — 제품 페이지는 "이 앱은 무엇인가"만 답한다. 앱을 아직 모르는 사람이
-  검색하는 것은 **문제**("PLC IP 주소 찾기", "TV 한글 입력")이고, 그 검색어를 받는 자리가 블로그다.
-  **글의 정본은 이 도메인이고, 외부 플랫폼에는 전문을 재배포하지 않는다** — 채널마다 고유판을 따로 쓴다
-  (네이버 블로그는 한국어 절차 중심 재작성, Blogger 는 독립적으로 가치가 서는 영문 실측 노트).
-  전문 복제에 canonical 만 거는 방식은 쓰지 않는다: Google 은 배포처의 `noindex` 를 더 확실한 중복
-  방지책으로 안내하는데 검색 유입이 목적인 글을 `noindex` 할 수는 없고, 네이버는 유사 문서로 판독한
-  글을 노출하지 않을 수 있다. 채널별 역할은 `MyApps/Mobile/promotion/README.md` §2, 발행 순서는 같은
-  문서 §5, 채널별 세부 규약은 `promotion/rules/*.md` 가 정본이고, 근거는 `docs/todo-promotion.md` §3·§7 이다
+- `/blog/` · `/ko/blog/` — 제품 페이지보다 깊은 **기술 설명·정량 실측·원리·재현 가능한 상세 사용법**을
+  싣는다. 측정 수치는 환경·방법·시점을 함께 적고, 적용 범위와 제약을 생략하지 않는다.
+- 모든 사용자 유입형 사용 사례를 이 사이트에 먼저 만들지 않는다. Naver는 한국어 사용 사례의 원본,
+  Blogger는 그 원고의 영어판을 맡으며, 사이트 글이 없는 Naver/Blogger 주제도 허용한다. 같은 주제를
+  다루더라도 사이트는 기술 근거, Naver/Blogger는 사용 상황과 결과로 역할을 분리한다.
+- 블로그 원고는 `MyApps/Mobile` 저장소 기준 `../blogs/<app>/<slug>/`에서 작성하고, 이 저장소에는 발행
+  HTML과 발행 자산만 둔다. 발행 후 본문 수정도 `site.{en,ko}.md` 원고를 먼저 고친 뒤 HTML에 반영한다.
+  채널별 역할은 `MyApps/Mobile/promotion/README.md` §2, 발행 순서는 같은 문서
+  §5, 채널별 세부 규약은 `promotion/rules/*.md`가 정본이고, 근거는 `docs/todo-promotion.md` §3·§7이다.
 
 **남은 것은 사람이 해야 한다 — Google Search Console 등록.** 이게 없으면 색인까지 몇 주가 걸린다.
 
@@ -265,7 +266,8 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
      새 앱으로 들어가는 내부 링크가 없어 크롤러가 한 경로로만 본다(bt-mouse 를 붙일 때 실제로 빠뜨렸다)
   8. 손댄 페이지의 `<lastmod>` 갱신
 - **블로그 글을 추가하면** 다섯 가지를 한 묶음으로 처리한다. 자리표시자와 세부 규약의 정본은
-  `blog/_post-template.html` 머리주석이다.
+  `blog/_post-template.html` 머리주석이며, 작성 원고는 `MyApps/Mobile` 저장소 기준
+  `../blogs/<app>/<slug>/site.{en,ko}.md`에서 가져온다.
   1. `blog/<slug>/index.html`(`lang="en"`) · `ko/blog/<slug>/index.html`(`lang="ko"`) —
      **slug 는 두 언어가 같은 문자열이다.** 그래야 hreflang 쌍이 기계적으로 맞는다
   2. 두 목록 페이지에 `<li>` 추가 — `blog/index.html`, `ko/blog/index.html`
