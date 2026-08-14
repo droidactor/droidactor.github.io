@@ -54,12 +54,14 @@ GitHub Pages에서는 server-side `301`을 설정할 수 없으므로 현재 배
 
 - `meta refresh` 0초 → 대응하는 최종 URL로 직접 이동
 - 새 URL을 가리키는 `rel="canonical"`
-- `noindex,follow`
 - sitemap과 내부 링크에서는 옛 URL을 제거
+
+최초 개편 때는 여기에 `noindex,follow`도 함께 걸었으나 **2026-08-14 commit `d6e04f0` 으로 제거했다.**
+아래 정리 항목이 그 작업이며, 지금 배포된 신호는 위 세 가지뿐이다.
 
 Google은 0초 `meta refresh`를 permanent redirect 신호로 처리한다. 다만 Google은 같은 사이트 안의 canonical
 선택 수단으로 `noindex`를 권장하지 않고 redirect 또는 `rel="canonical"`을 사용하라고 안내한다. 이동 신호가
-불필요하게 섞이지 않도록 Search Console 작업 전에 다음 상태로 정리한다.
+불필요하게 섞이지 않도록 Search Console 작업 전에 다음 상태로 정리했다.
 
 - [x] 옛 호환 페이지 14개에서 `<meta name="robots" content="noindex,follow">`를 제거한다.
       2026-08-14 commit `d6e04f0` 로 14개 전부 제거·배포했다. README 의 호환 페이지 설명도 함께 고쳤다.
