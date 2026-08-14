@@ -439,3 +439,12 @@ Google은 소규모 사이트도 URL 이동 처리가 수 주 걸릴 수 있으�
 - [Sitemaps report](https://support.google.com/webmasters/answer/7451001)
 - [Canonicalization](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
 - [Removals tool](https://support.google.com/webmasters/answer/9689846)
+
+## 9. Google TV Bluetooth HID 조사 글 추가 URL
+
+2026-08-14에 bt-mouse의 Bluetooth HID가 Google TV 페어링 목록에서 보이지 않는 원인을 분석한 한·영 글을
+추가했다. 기존 64 URL에 더해 sitemap의 예상 URL 수는 66개다. 배포 뒤 live 응답·self canonical·상호
+`hreflang`을 확인하고, 먼저 sitemap에 맡긴다. 7~14일 뒤에도 미발견 또는 비색인이면 필요한 URL만 검사한다.
+
+- [ ] `https://droidactor.github.io/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html`
+- [ ] `https://droidactor.github.io/ko/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html`

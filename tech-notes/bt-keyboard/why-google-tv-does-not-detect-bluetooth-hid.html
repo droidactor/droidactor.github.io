@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Google TV does not detect bt-mouse Bluetooth HID — droidactor</title>
+<meta name="description" content="Why Google TV can find a physical Bluetooth keyboard but hide the Bluetooth HID advertised by an Android phone: the input-device class and BLE Appearance filter explained.">
+<link rel="canonical" href="https://droidactor.github.io/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html"><meta property="og:title" content="Why Google TV does not detect bt-mouse Bluetooth HID"><meta property="og:description" content="Google TV may receive the advertisement and still hide it because the phone is not classified as a keyboard, mouse, gamepad, joystick, or remote."><meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Why Google TV does not detect bt-mouse Bluetooth HID","description":"An AOSP-source-based investigation of why Google TV finds a physical Bluetooth keyboard but may hide an Android phone advertising HID over GATT.","url":"https://droidactor.github.io/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html","mainEntityOfPage":"https://droidactor.github.io/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"en","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"Dotori Bluetooth Mouse","url":"https://droidactor.github.io/apps/bt-mouse/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/"},{"@type":"ListItem","position":2,"name":"Tech notes","item":"https://droidactor.github.io/tech-notes/"},{"@type":"ListItem","position":3,"name":"Bluetooth HID","item":"https://droidactor.github.io/tech-notes/bt-keyboard/"},{"@type":"ListItem","position":4,"name":"Google TV discovery","item":"https://droidactor.github.io/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html"}]}]}</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand"><a href="/">droid<span>actor</span></a></div><nav class="langs" aria-label="Language"><a class="lang-btn" href="/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html" hreflang="ko" lang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/tech-notes/">Tech notes</a><span>/</span><a href="/tech-notes/bt-keyboard/">Bluetooth HID</a><span>/</span>Google TV discovery</nav>
+  <div class="hero manual-hero"><h1>Why Google TV does not detect bt-mouse Bluetooth HID</h1><p>Why the same phone is visible to PCs and Android phones, while a Google TV that accepts a real Bluetooth keyboard does not list it.</p><p class="manual-meta">Investigation baseline · 14 August 2026</p></div>
+  <nav class="manual-toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#finding">Finding</a></li><li><a href="#filter">Google TV's filter</a></li><li><a href="#ble">The BLE failure path</a></li><li><a href="#classic">The Classic path</a></li><li><a href="#hardware">Why hardware works</a></li><li><a href="#verify">Verification and options</a></li><li><a href="#sources">Sources</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <div class="note" id="finding"><p><strong>Finding.</strong> The best match for the observed behavior is not “Google TV receives no advertisement.” It is “Google TV receives the discovery data, fails to classify the phone as an allowed input device, and removes it from the Remote &amp; Accessories list.” A PC or phone usually shows a broad Bluetooth scan result; Google TV's pairing screen is a filtered accessory browser.</p></div>
+
+    <p>The physical-keyboard comparison is important. A real keyboard working on the same TV shows that Bluetooth scanning and HID-host support are present. The remaining difference is the identity published before pairing: a hardware keyboard normally identifies itself as a keyboard or pointing peripheral, while a phone can still look like a phone or an unclassified peripheral even when an app has opened an HID service.</p>
+
+    <h2 id="filter">Google TV does not show every discoverable Bluetooth device</h2>
+    <p>Google's help page sends users to <em>Settings → Remote &amp; Accessories → Pair remote or accessory</em>. In AOSP TvSettings, the class used for this screen accepts a device only when both conditions below are true:</p>
+    <pre><code>major class == PERIPHERAL
+and
+minor class contains POINTING, KEYBOARD, JOYSTICK, GAMEPAD, or REMOTE</code></pre>
+    <p>A peripheral with no accepted minor bit does not pass. A device whose major class is PHONE does not pass either. This filtering happens during discovery, before the TV has paired and read the full HID report descriptor. That is why a correct keyboard-and-mouse descriptor can work on a PC and still never reach the selection screen on a TV.</p>
+
+    <h2 id="ble">The BLE HOGP path has a concrete classification gap</h2>
+    <p>bt-mouse first asks Android for the Classic HID Device profile. If the proxy is not ready within a bounded grace period, the shared HID layer can fall back to BLE HID over GATT (HOGP). The BLE advertisement contains the HID service UUID <code>0x1812</code>, the device name when it fits, and optional Microsoft Swift Pair manufacturer data. It does not contain the Bluetooth Appearance advertising field.</p>
+    <p>AOSP's Bluetooth stack first looks for the Appearance field when it derives a Classic-style Class of Device from a BLE advertisement. The relevant assigned values are:</p>
+    <div class="scroll"><table class="spec"><thead><tr><th>BLE Appearance</th><th>AOSP classification</th><th>Google TV result</th></tr></thead><tbody><tr><td><code>0x03C1</code> HID Keyboard</td><td>Peripheral + Keyboard</td><td>Accepted</td></tr><tr><td><code>0x03C2</code> HID Mouse</td><td>Peripheral + Pointing</td><td>Accepted</td></tr><tr><td>No Appearance, service <code>0x1812</code> only</td><td>Peripheral + unclassified minor (<code>0</code>)</td><td>Rejected by the minor-class mask</td></tr></tbody></table></div>
+    <p>This makes the BLE failure path direct: service UUID <code>0x1812</code> proves that the device offers HOGP, but it is not enough for TvSettings' input-device filter. Without an Appearance value, AOSP assigns the Peripheral major class and leaves the minor byte at zero; the next filter requires a non-zero keyboard, pointing, joystick, gamepad, or remote bit.</p>
+    <div class="note"><p><strong>Why this is not a simple app-side one-line fix.</strong> Android's public <code>AdvertiseData.Builder</code> can add service UUIDs, service data, manufacturer data, and the device name, but it has no API for adding an arbitrary Appearance AD field. A system or vendor API, raw advertising control, or different peripheral hardware is needed to publish that field reliably.</p></div>
+
+    <h2 id="classic">Classic HID has a similar early-identity boundary</h2>
+    <p>On the Classic path, bt-mouse registers <code>BluetoothHidDevice.SUBCLASS1_COMBO</code> with its HID SDP record. That correctly describes a keyboard-and-mouse combination to a host that performs SDP discovery. It is not, however, the same field as the Class of Device delivered in the initial Bluetooth inquiry result.</p>
+    <p>If a phone or vendor Bluetooth stack continues to advertise the local adapter as PHONE, or as PERIPHERAL without the keyboard/pointing minor bits, Google TV can discard it before querying that SDP record. The exact Classic result is therefore device-dependent: it must be confirmed by observing the phone's actual over-the-air Class of Device. This is a conditional explanation, unlike the missing BLE Appearance path, which is visible directly in the current bt-mouse advertisement construction.</p>
+
+    <h2 id="hardware">Why a physical Bluetooth keyboard works</h2>
+    <p>A dedicated keyboard controls its Bluetooth controller firmware and its complete discovery identity. A Classic keyboard normally publishes PERIPHERAL with Keyboard or Keyboard/Pointing bits. A BLE keyboard or mouse can publish Appearance <code>0x03C1</code> or <code>0x03C2</code>. Both identities satisfy the same Google TV filter that rejects an unclassified phone-hosted HID service.</p>
+    <p>There is no contradiction between “Google TV supports physical Bluetooth keyboards” and “Google TV does not list bt-mouse.” HID support answers what the TV can use after connection. The discovery filter answers which devices are allowed to reach pairing in the first place.</p>
+
+    <h2 id="verify">How to verify the diagnosis</h2>
+    <ol>
+      <li><strong>Identify the active transport.</strong> Capture bt-mouse logs while opening pairing. A <code>ble-hogp</code> selection makes the missing Appearance path the primary diagnosis; a Classic selection calls for measuring Class of Device.</li>
+      <li><strong>Inspect the advertisement.</strong> Use a BLE scanner that exposes raw AD structures. Confirm service UUID <code>0x1812</code> and check whether AD type <code>0x19</code> (Appearance) is absent.</li>
+      <li><strong>Compare with the working keyboard.</strong> Record its Classic Class of Device or BLE Appearance. It should carry the keyboard or pointing classification that the phone advertisement lacks.</li>
+      <li><strong>Use TV logs when available.</strong> ADB logs from the pairing screen can show that the device was scanned but did not satisfy the input-device criteria. Vendor builds may rename or replace the AOSP components.</li>
+    </ol>
+    <p>Practical compatibility options are to prefer a Classic HID path on phone/TV combinations that publish the correct input Class of Device, use a privileged or system-integrated BLE peripheral that can set Appearance, use dedicated HID hardware, or use a TV companion/network protocol instead of Bluetooth pairing. A normal Play-distributed app cannot assume that every phone exposes the low-level identity controls required by this TV filter.</p>
+
+    <div class="note"><p><strong>Confidence.</strong> High for the BLE HOGP path: the bt-mouse advertisement, AOSP's BLE-to-Class-of-Device mapping, and TvSettings' filter form a complete rejection chain. Medium for Classic HID: the result depends on the phone's actual Class of Device and vendor changes. Google TV manufacturers can modify AOSP, so an over-the-air capture on the affected model remains the final proof.</p></div>
+
+    <h2 id="sources">Official sources</h2>
+    <ul>
+      <li><a href="https://support.google.com/googletv/answer/10049908?hl=en">Google TV Help: Connect Bluetooth devices to Google TV</a></li>
+      <li><a href="https://android.googlesource.com/platform/packages/apps/TvSettings/+/refs/heads/main/Settings/src/com/android/tv/settings/accessories/InputDeviceCriteria.java#25">AOSP TvSettings: InputDeviceCriteria</a></li>
+      <li><a href="https://android.googlesource.com/platform/packages/modules/Bluetooth/+/a5166e46f923ce427c7c5fbea9c231b18e198d6f/system/stack/btm/btm_ble_gap.cc#1942">AOSP Bluetooth: BLE Appearance and HID service classification</a></li>
+      <li><a href="https://android.googlesource.com/platform/packages/modules/Bluetooth/+/refs/heads/main/system/stack/include/ble_appearance.h#136">AOSP Bluetooth: HID Appearance mappings</a></li>
+      <li><a href="https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Assigned_Numbers/out/en/index-en.html">Bluetooth SIG Assigned Numbers: Appearance and Class of Device</a></li>
+      <li><a href="https://developer.android.com/reference/android/bluetooth/le/AdvertiseData.Builder">Android SDK: AdvertiseData.Builder</a></li>
+      <li><a href="https://developer.android.com/reference/android/bluetooth/BluetoothHidDevice">Android SDK: BluetoothHidDevice subclasses</a></li>
+    </ul>
+    <div class="manual-actions"><a href="/tech-notes/bt-keyboard/">Bluetooth HID tech notes</a><a href="/apps/bt-mouse/">bt-mouse product page</a><a href="/manual/bt-mouse/">bt-mouse user manual</a></div>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/tech-notes/">All tech notes</a> · <a href="/tech-notes/bt-keyboard/">Bluetooth HID</a> · <a href="/ko/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

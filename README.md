@@ -28,6 +28,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 /tech-notes/            개발 기술 노트 목록 — 6종 앱                 + /ko/tech-notes/
 /tech-notes/<앱>/       6종 앱 영문 기술 노트                        + /ko/tech-notes/<앱>/
                         (bt-keyboard · bt-ppt · bt-mouse · wifi-scout · ssh-scout · lgtv)
+/tech-notes/<앱>/<slug>.html  주제별 상세 조사 글                    + /ko/tech-notes/<앱>/<slug>.html
 /blog/                  글 목록 — Field notes                        + /ko/blog/ (현장 노트)
 /blog/<slug>/           글 1편                                       + /ko/blog/<slug>/
 /blog/_post-template.html  글 템플릿 — noindex · sitemap 제외. 페이지가 아니다
@@ -61,7 +62,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | `blog/index.html` · `ko/blog/index.html` | 글 목록. **손으로 관리한다** — 이 리포에 생성기는 없다. 열 편쯤 넘어 손이 아프면 그때가 도입 신호다 |
 | `blog/_post-template.html` | 글 템플릿. slug·경로·JSON-LD·CTA 규약을 머리주석에 담고 있으며 **글 추가 절차의 정본**이다 |
 | `assets/site.css` | 전 페이지 공용. 외부 CDN·폰트·스크립트 없음(자기완결) |
-| `sitemap.xml` | 홈 2 + 앱 허브 2 + 제품 14 + 매뉴얼 허브 2 + 매뉴얼 12 + 기술 노트 허브 2 + 기술 노트 12 + 블로그 18 = 64개 URL. 모든 한·영 쌍에 `xhtml:link` hreflang 3개를 둔다 |
+| `sitemap.xml` | 홈 2 + 앱 허브 2 + 제품 14 + 매뉴얼 허브 2 + 매뉴얼 12 + 기술 노트 허브 2 + 기술 노트 14 + 블로그 18 = 66개 URL. 모든 한·영 쌍에 `xhtml:link` hreflang 3개를 둔다 |
 | `robots.txt` | 전체 허용 + sitemap 위치 |
 | `404.html` | 루트 절대경로만 쓴다 — 어느 깊이의 주소에서든 서빙되기 때문이다. `noindex` |
 | `app-ads.txt` | **AdMob 콘솔이 생성한 줄을 그대로** 넣는다 — 손으로 만들지 않는다 |
@@ -95,7 +96,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 - 페이지마다 `canonical`, `og:*`, `hreflang`(en / ko / x-default 상호 참조), JSON-LD
   (홈 = `WebSite`+`Organization`+`ItemList`, 제품 = `SoftwareApplication`)
 - 홈 2개, 앱 허브 2개, 제품 14개, 매뉴얼 허브 2개와 6종 한·영 매뉴얼 12개, 기술 노트 허브 2개와
-  6종 한·영 기술 노트 12개. 매뉴얼과 기술 노트는 `TechArticle`, 제품은 `SoftwareApplication`으로
+  6종 한·영 기술 노트 12개, 주제별 한·영 상세 조사 글 2개. 매뉴얼과 기술 노트는 `TechArticle`, 제품은 `SoftwareApplication`으로
   역할을 분리하고 같은 언어끼리 상호 링크한다.
 - `/blog/` · `/ko/blog/` — 제품 페이지보다 깊은 **기술 설명·정량 실측·원리·재현 가능한 상세 사용법**을
   싣는다. 측정 수치는 환경·방법·시점을 함께 적고, 적용 범위와 제약을 생략하지 않는다.

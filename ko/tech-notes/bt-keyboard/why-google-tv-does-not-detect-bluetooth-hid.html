@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>왜 Google TV에서는 bt-mouse의 Bluetooth HID를 인식하지 못하는가 — droidactor</title>
+<meta name="description" content="Google TV가 실물 Bluetooth 키보드는 찾으면서 Android 폰의 bt-mouse HID 광고를 숨기는 이유를 입력장치 Class와 BLE Appearance 필터로 설명합니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="ko_KR"><meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html"><meta property="og:title" content="왜 Google TV에서는 bt-mouse의 Bluetooth HID를 인식하지 못하는가"><meta property="og:description" content="Google TV는 광고를 받고도 폰을 키보드·마우스·게임패드·조이스틱·리모컨으로 분류하지 못하면 목록에서 숨길 수 있습니다."><meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"왜 Google TV에서는 bt-mouse의 Bluetooth HID를 인식하지 못하는가","description":"Google TV가 실물 Bluetooth 키보드는 찾으면서 Android 폰의 BLE HID 광고를 숨길 수 있는 이유를 AOSP 소스로 분석합니다.","url":"https://droidactor.github.io/ko/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html","mainEntityOfPage":"https://droidactor.github.io/ko/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"ko","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"도토리 블루투스 마우스","url":"https://droidactor.github.io/ko/apps/bt-mouse/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/ko/"},{"@type":"ListItem","position":2,"name":"기술 노트","item":"https://droidactor.github.io/ko/tech-notes/"},{"@type":"ListItem","position":3,"name":"Bluetooth HID","item":"https://droidactor.github.io/ko/tech-notes/bt-keyboard/"},{"@type":"ListItem","position":4,"name":"Google TV 검색 문제","item":"https://droidactor.github.io/ko/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html"}]}]}</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand"><a href="/ko/">droid<span>actor</span></a></div><nav class="langs" aria-label="언어"><a class="lang-btn" href="/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html" hreflang="en" lang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html" aria-current="page" hreflang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/tech-notes/">기술 노트</a><span>/</span><a href="/ko/tech-notes/bt-keyboard/">Bluetooth HID</a><span>/</span>Google TV 검색 문제</nav>
+  <div class="hero manual-hero"><h1>왜 Google TV에서는 bt-mouse의 Bluetooth HID를 인식하지 못하는가</h1><p>같은 폰이 PC와 Android 폰에는 보이는데, 실물 Bluetooth 키보드를 잘 쓰는 Google TV의 목록에는 나타나지 않는 이유를 분석합니다.</p><p class="manual-meta">조사 기준 · 2026년 8월 14일</p></div>
+  <nav class="manual-toc" aria-label="이 페이지의 내용"><strong>이 페이지의 내용</strong><ol><li><a href="#finding">결론</a></li><li><a href="#filter">Google TV의 필터</a></li><li><a href="#ble">BLE에서 실패하는 경로</a></li><li><a href="#classic">Classic 경로</a></li><li><a href="#hardware">실물 키보드가 되는 이유</a></li><li><a href="#verify">확인법과 대응</a></li><li><a href="#sources">근거 자료</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <div class="note" id="finding"><p><strong>결론.</strong> 관찰한 현상에는 “Google TV가 광고를 전혀 받지 못한다”보다 “Google TV가 검색 자료를 받은 뒤 폰을 허용된 입력장치로 분류하지 못해 리모컨 및 액세서리 목록에서 제거한다”는 설명이 가장 잘 맞습니다. PC와 폰의 Bluetooth 화면은 대체로 폭넓은 검색 결과를 보여주지만, Google TV의 페어링 화면은 액세서리 종류를 거르는 화면입니다.</p></div>
+
+    <p>같은 TV에서 실물 Bluetooth 키보드가 동작한다는 점이 중요합니다. 이는 TV의 Bluetooth 검색과 HID Host 지원 자체가 살아 있다는 뜻입니다. 남는 차이는 페어링 전에 공개하는 장치 정체성입니다. 전용 키보드는 자신을 키보드 또는 포인팅 주변기기로 분명하게 표시하지만, 앱이 HID 서비스를 연 폰은 여전히 폰이나 종류 미지정 주변기기로 보일 수 있습니다.</p>
+
+    <h2 id="filter">Google TV는 검색된 모든 Bluetooth 기기를 보여주지 않는다</h2>
+    <p>Google 공식 도움말은 <em>설정 → 리모컨 및 액세서리 → 리모컨 또는 액세서리 페어링</em>으로 안내합니다. AOSP TvSettings에서 이 화면이 사용하는 판정 코드는 다음 두 조건을 모두 만족하는 기기만 입력장치로 받습니다.</p>
+    <pre><code>major class == PERIPHERAL
+그리고
+minor class에 POINTING, KEYBOARD, JOYSTICK, GAMEPAD, REMOTE 중 하나가 있음</code></pre>
+    <p>PERIPHERAL이더라도 허용된 minor bit가 하나도 없으면 통과하지 못합니다. major class가 PHONE이어도 탈락합니다. 이 판정은 TV가 페어링하고 전체 HID report descriptor를 읽기 전인 검색 단계에 있습니다. 따라서 키보드·마우스 report descriptor가 PC에서 정상 동작해도 TV의 선택 목록까지 도달하지 못할 수 있습니다.</p>
+
+    <h2 id="ble">BLE HOGP 경로에는 분명한 분류 공백이 있다</h2>
+    <p>bt-mouse는 먼저 Android의 Classic HID Device profile을 요청합니다. 제한된 유예 시간 안에 proxy를 얻지 못하면 공용 HID 계층이 BLE HID over GATT(HOGP)로 전환할 수 있습니다. 현재 BLE 광고에는 HID service UUID <code>0x1812</code>, 공간이 허용될 때의 기기 이름, 선택적인 Microsoft Swift Pair manufacturer data가 들어갑니다. Bluetooth Appearance 광고 필드는 없습니다.</p>
+    <p>AOSP Bluetooth stack은 BLE 광고에서 Classic 방식의 Class of Device를 추론할 때 Appearance 필드를 먼저 찾습니다. 관련 표준 값과 결과는 다음과 같습니다.</p>
+    <div class="scroll"><table class="spec"><thead><tr><th>BLE Appearance</th><th>AOSP 분류</th><th>Google TV 결과</th></tr></thead><tbody><tr><td><code>0x03C1</code> HID Keyboard</td><td>Peripheral + Keyboard</td><td>통과</td></tr><tr><td><code>0x03C2</code> HID Mouse</td><td>Peripheral + Pointing</td><td>통과</td></tr><tr><td>Appearance 없음, service <code>0x1812</code>만 있음</td><td>Peripheral + minor 미지정(<code>0</code>)</td><td>minor class 필터에서 탈락</td></tr></tbody></table></div>
+    <p>따라서 BLE에서 실패하는 경로가 직접 이어집니다. service UUID <code>0x1812</code>는 HOGP 제공 사실은 알리지만 TvSettings 입력장치 필터를 통과시키기에는 부족합니다. Appearance가 없으면 AOSP는 major를 Peripheral로 만들고 minor byte는 0으로 남깁니다. 바로 다음 필터는 keyboard·pointing·joystick·gamepad·remote 중 하나의 bit를 요구합니다.</p>
+    <div class="note"><p><strong>앱 코드 한 줄로 간단히 고치기 어려운 이유.</strong> Android 공개 <code>AdvertiseData.Builder</code>는 service UUID·service data·manufacturer data·기기 이름 등을 추가할 수 있지만 임의의 Appearance AD field를 넣는 API는 제공하지 않습니다. 이 필드를 확실히 광고하려면 system·제조사 API, raw advertising 제어 또는 다른 주변기기 hardware가 필요합니다.</p></div>
+
+    <h2 id="classic">Classic HID에도 페어링 전 정체성의 경계가 있다</h2>
+    <p>Classic 경로에서 bt-mouse는 HID SDP record에 <code>BluetoothHidDevice.SUBCLASS1_COMBO</code>를 등록합니다. 이는 SDP 조회까지 진행한 호스트에 키보드·마우스 복합 장치임을 올바르게 설명합니다. 하지만 초기 Bluetooth inquiry 결과에 실리는 Class of Device와 HID SDP subclass는 서로 다른 필드입니다.</p>
+    <p>폰 또는 제조사 Bluetooth stack이 local adapter를 계속 PHONE으로 광고하거나, keyboard·pointing minor bit가 없는 PERIPHERAL로 광고한다면 Google TV는 SDP record를 조회하기 전에 기기를 버릴 수 있습니다. 그래서 Classic 결과는 기종 의존적이며 실제 전파상의 Class of Device를 측정해야 확정할 수 있습니다. 현재 bt-mouse의 광고 구성에서 바로 확인되는 BLE Appearance 누락과는 신뢰도가 다른 조건부 설명입니다.</p>
+
+    <h2 id="hardware">실물 Bluetooth 키보드가 되는 이유</h2>
+    <p>전용 키보드는 Bluetooth controller firmware와 검색 정체성 전체를 직접 제어합니다. Classic 키보드는 보통 PERIPHERAL major와 Keyboard 또는 Keyboard/Pointing bit를 광고합니다. BLE 키보드와 마우스는 Appearance <code>0x03C1</code> 또는 <code>0x03C2</code>를 광고할 수 있습니다. 둘 다 종류 미지정 폰 기반 HID를 거르는 Google TV의 같은 필터를 통과합니다.</p>
+    <p>따라서 “Google TV가 실물 Bluetooth 키보드를 지원한다”와 “Google TV가 bt-mouse를 목록에 표시하지 않는다”는 모순이 아닙니다. HID 지원 여부는 연결 후 무엇을 사용할 수 있는가의 문제이고, 검색 필터는 어떤 기기에게 페어링 단계 진입을 허용하는가의 문제입니다.</p>
+
+    <h2 id="verify">진단을 확인하는 방법</h2>
+    <ol>
+      <li><strong>선택된 전송 방식을 확인합니다.</strong> bt-mouse에서 페어링을 여는 동안 log를 수집합니다. <code>ble-hogp</code>가 선택됐다면 Appearance 누락이 우선 원인이고, Classic이면 Class of Device 측정이 필요합니다.</li>
+      <li><strong>광고 원문을 봅니다.</strong> raw AD structure를 표시하는 BLE scanner로 service UUID <code>0x1812</code>를 확인하고 AD type <code>0x19</code>(Appearance)가 없는지 봅니다.</li>
+      <li><strong>동작하는 실물 키보드와 비교합니다.</strong> 그 기기의 Classic Class of Device 또는 BLE Appearance를 기록합니다. 폰 광고에 없는 Keyboard 또는 Pointing 분류가 있어야 합니다.</li>
+      <li><strong>가능하면 TV log를 확인합니다.</strong> 페어링 화면의 ADB log에서 기기는 scan됐지만 input-device criteria를 통과하지 못했는지 확인할 수 있습니다. 제조사 build는 AOSP component를 바꾸거나 이름을 달리할 수 있습니다.</li>
+    </ol>
+    <p>현실적인 호환 경로는 해당 폰·TV 조합에서 올바른 input Class of Device를 내보내는 Classic HID를 우선 사용하거나, Appearance를 설정할 수 있는 privileged/system BLE 구현 또는 전용 HID hardware를 쓰거나, Bluetooth 페어링 대신 TV companion app·network protocol을 사용하는 것입니다. 일반 Play 배포 앱은 모든 폰에서 TV 필터가 요구하는 저수준 정체성 제어를 쓸 수 있다고 가정할 수 없습니다.</p>
+
+    <div class="note"><p><strong>판정 신뢰도.</strong> BLE HOGP 경로는 높습니다. bt-mouse 광고 내용, AOSP의 BLE→Class of Device 변환, TvSettings 필터가 하나의 완전한 탈락 경로를 만듭니다. Classic HID는 중간입니다. 폰의 실제 Class of Device와 제조사 변경에 따라 달라집니다. Google TV 제조사가 AOSP를 수정할 수 있으므로 영향을 받는 TV와 폰의 전파 자료를 캡처하는 것이 최종 확인입니다.</p></div>
+
+    <h2 id="sources">공식 근거 자료</h2>
+    <ul>
+      <li><a href="https://support.google.com/googletv/answer/10049908?hl=ko">Google TV 고객센터: Google TV에 블루투스 기기 연결하기</a></li>
+      <li><a href="https://android.googlesource.com/platform/packages/apps/TvSettings/+/refs/heads/main/Settings/src/com/android/tv/settings/accessories/InputDeviceCriteria.java#25">AOSP TvSettings: InputDeviceCriteria</a></li>
+      <li><a href="https://android.googlesource.com/platform/packages/modules/Bluetooth/+/a5166e46f923ce427c7c5fbea9c231b18e198d6f/system/stack/btm/btm_ble_gap.cc#1942">AOSP Bluetooth: BLE Appearance와 HID service 분류</a></li>
+      <li><a href="https://android.googlesource.com/platform/packages/modules/Bluetooth/+/refs/heads/main/system/stack/include/ble_appearance.h#136">AOSP Bluetooth: HID Appearance mapping</a></li>
+      <li><a href="https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Assigned_Numbers/out/en/index-en.html">Bluetooth SIG Assigned Numbers: Appearance와 Class of Device</a></li>
+      <li><a href="https://developer.android.com/reference/android/bluetooth/le/AdvertiseData.Builder">Android SDK: AdvertiseData.Builder</a></li>
+      <li><a href="https://developer.android.com/reference/android/bluetooth/BluetoothHidDevice">Android SDK: BluetoothHidDevice subclass</a></li>
+    </ul>
+    <div class="manual-actions"><a href="/ko/tech-notes/bt-keyboard/">Bluetooth HID 기술 노트</a><a href="/ko/apps/bt-mouse/">bt-mouse 제품 페이지</a><a href="/ko/manual/bt-mouse/">bt-mouse 사용 설명서</a></div>
+  </article>
+  <footer><p>droidactor의 Android 앱입니다.</p><p><a href="/ko/tech-notes/">전체 기술 노트</a> · <a href="/ko/tech-notes/bt-keyboard/">Bluetooth HID</a> · <a href="/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>
