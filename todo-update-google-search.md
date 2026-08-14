@@ -61,9 +61,13 @@ Google은 0초 `meta refresh`를 permanent redirect 신호로 처리한다. 다�
 선택 수단으로 `noindex`를 권장하지 않고 redirect 또는 `rel="canonical"`을 사용하라고 안내한다. 이동 신호가
 불필요하게 섞이지 않도록 Search Console 작업 전에 다음 상태로 정리한다.
 
-- [ ] 옛 호환 페이지 14개에서 `<meta name="robots" content="noindex,follow">`를 제거한다.
-- [ ] 0초 `meta refresh`, 새 URL canonical, 새 URL로 가는 1:1 링크는 유지한다.
-- [ ] 변경을 배포한 뒤 옛 URL 14개의 live HTML에 `noindex`가 없고 대상 URL이 정확한지 확인한다.
+- [x] 옛 호환 페이지 14개에서 `<meta name="robots" content="noindex,follow">`를 제거한다.
+      2026-08-14 commit `d6e04f0` 로 14개 전부 제거·배포했다. README 의 호환 페이지 설명도 함께 고쳤다.
+- [x] 0초 `meta refresh`, 새 URL canonical, 새 URL로 가는 1:1 링크는 유지한다.
+      제거 전후 모두 14개 전부 `content="0; url=<대응 새 URL>"`로 1:1 정확.
+- [x] 변경을 배포한 뒤 옛 URL 14개의 live HTML에 `noindex`가 없고 대상 URL이 정확한지 확인한다.
+      2026-08-14 11:46 KST 배포 반영 확인. 14/14 가 `200` + `noindex` 없음 + `meta refresh` 1:1 정확 +
+      canonical 이 대응 새 URL. 이제 이동 신호는 `meta refresh` + `rel="canonical"` 둘뿐이다.
 
 Server-side `301`/`308`이 가장 권장되지만, 현재 GitHub Pages 제약에서는 0초 `meta refresh`가 공식적으로
 인정되는 대안이다. 향후 server redirect를 설정할 수 있는 hosting으로 옮기면 `301`/`308`로 교체한다.
@@ -140,41 +144,66 @@ Google이 다시 crawl하면 갱신된 link graph를 읽는다.
 
 Search Console 작업 전 아래 항목을 다시 확인한다.
 
-- [ ] GitHub Pages 배포가 기준 변경 `f300f26`을 포함한다.
-- [ ] 옛 URL의 `noindex` 제거와 ytdl `lastmod` 정정 후속 commit을 기록한다: `____________`.
-- [ ] GitHub Pages live 배포가 기록한 후속 commit까지 반영한다.
-- [ ] 새 URL 또는 이동 후 canonical URL 44개가 모두 `200`이다.
-- [ ] 옛 제품 URL 14개가 각각 대응하는 새 URL 하나로 직접 이동하며 `noindex`가 없다.
-- [ ] 새 페이지에 `noindex`가 없다.
-- [ ] 새 페이지의 canonical과 `hreflang`이 `/apps/`, `/manual/`, `/tech-notes/` 구조를 사용한다.
-- [ ] `robots.txt`가 `sitemap.xml`을 계속 가리킨다.
-- [ ] Google 소유권 확인 파일 `googlec8773d84a9d25688.html`을 삭제하지 않았다.
+아래는 2026-08-14 11:15~11:40 KST 에 실제 live 응답으로 확인한 결과다.
+
+- [x] GitHub Pages 배포가 기준 변경 `f300f26`을 포함한다.
+      사이트 저장소 HEAD `ffb3c23`(6종 앱 한·영 기술 노트 추가), `f300f26`은 그 조상. working tree clean.
+- [x] 옛 URL의 `noindex` 제거와 ytdl `lastmod` 정정 후속 commit을 기록한다: **`d6e04f0`**.
+      ytdl `lastmod`는 `ffb3c23`에 이미 반영돼 있었고(아래 sitemap 항목), `noindex` 제거가 `d6e04f0`이다.
+- [x] GitHub Pages live 배포가 기록한 후속 commit까지 반영한다.
+      push 후 약 25초 만에 14개 전부 반영을 확인했다(2026-08-14 11:46 KST).
+- [x] 새 URL 또는 이동 후 canonical URL 44개가 모두 `200`이다. — 44/44 `200`.
+- [x] 옛 제품 URL 14개가 각각 대응하는 새 URL 하나로 직접 이동하며 `noindex`가 없다. — 14/14 충족.
+- [x] 새 페이지에 `noindex`가 없다. — 44개 전부 없음.
+- [x] 새 페이지의 canonical과 `hreflang`이 `/apps/`, `/manual/`, `/tech-notes/` 구조를 사용한다.
+      44/44 self canonical 일치, 44/44 `hreflang` 2개 이상.
+- [x] `robots.txt`가 `sitemap.xml`을 계속 가리킨다. — `Sitemap: https://droidactor.github.io/sitemap.xml`.
+- [x] Google 소유권 확인 파일 `googlec8773d84a9d25688.html`을 삭제하지 않았다. — `200`.
 
 ## 4. Search Console에서 수행할 작업
 
 ### 4.1 속성
 
-- [ ] 기존 URL 접두어 속성 `https://droidactor.github.io/`를 연다.
-- [ ] 소유권이 계속 확인됨인지 본다.
-- [ ] 새 속성을 만들지 않는다.
-- [ ] 주소 변경 도구를 실행하지 않는다.
+- [x] 기존 URL 접두어 속성 `https://droidactor.github.io/`를 연다. — 2026-08-14 수행.
+- [x] 소유권이 계속 확인됨인지 본다. — 속성이 정상 열리고 URL 검사·색인 요청이 모두 수락됐다.
+- [x] 새 속성을 만들지 않는다. — 만들지 않았다.
+- [x] 주소 변경 도구를 실행하지 않는다. — 실행하지 않았다.
 
 ### 4.2 Sitemap
 
 Google은 URL 이동 후 새 canonical URL을 담은 sitemap을 제출하라고 권장하며, 많은 새 URL의 crawl 요청에는
 개별 URL 검사보다 sitemap이 적합하다고 안내한다.
 
-- [ ] `https://droidactor.github.io/sitemap.xml`의 실제 내용이 64 URL인지 확인한다.
-- [ ] sitemap에는 옛 제품 URL 14개가 없고 새 canonical URL만 있는지 확인한다.
-- [ ] 중요한 내용·구조·link가 바뀐 모든 URL의 `lastmod`가 실제 최종 변경일인지 양방향으로 확인한다.
-- [ ] `/apps/yt-downloader/`, `/ko/apps/yt-downloader/`를 포함해 이번에 전역 탐색 링크가 바뀐 URL의
-      `lastmod`가 실제 변경일 `2026-08-14`인지 확인하고 배포한다.
-- [ ] Search Console의 기존 sitemap 행을 **삭제하지 않는다.** 삭제하면 이전 처리 이력만 잃는다.
-- [ ] 기존 행의 상태·마지막으로 읽은 날짜·발견된 페이지 수를 기록한다.
+- [x] `https://droidactor.github.io/sitemap.xml`의 실제 내용이 64 URL인지 확인한다.
+      2026-08-14 실측: `200`, `Content-Type: application/xml`, BOM 없음, well-formed,
+      root `urlset` + `xmlns=http://www.sitemaps.org/schemas/sitemap/0.9`, `<loc>` 64개.
+      Googlebot UA 로도 `200`.
+- [x] sitemap에는 옛 제품 URL 14개가 없고 새 canonical URL만 있는지 확인한다. — 옛 URL 0건.
+- [x] 중요한 내용·구조·link가 바뀐 모든 URL의 `lastmod`가 실제 최종 변경일인지 양방향으로 확인한다.
+      **실측: 64개 전부 `2026-08-14` 단일 값이다.** 이번 배포로 전역 탐색 링크가 모두 바뀌었으므로
+      과다 표기는 아니나, 앞으로 부분 변경 때 같은 방식으로 전량 갱신하면 신호가 무뎌진다.
+- [x] `/apps/yt-downloader/`, `/ko/apps/yt-downloader/`를 포함해 이번에 전역 탐색 링크가 바뀐 URL의
+      `lastmod`가 실제 변경일 `2026-08-14`인지 확인하고 배포한다. — 두 URL 모두 `2026-08-14`.
+- [x] Search Console의 기존 sitemap 행을 **삭제하지 않는다.** 삭제하면 이전 처리 이력만 잃는다.
+      삭제하지 않았다.
+- [x] 기존 행의 상태·마지막으로 읽은 날짜·발견된 페이지 수를 기록한다.
+
+      **2026-08-14 11:40 KST 기록 — 행이 1개뿐이다.**
+
+      | Sitemap | 유형 | 제출 | 마지막으로 읽은 날짜 | 상태 | 발견된 페이지 |
+      |---|---|---|---|---|---|
+      | `/sitemap.xml` | 알 수 없음 | 2026-08-13 | (없음) | **가져올 수 없음** | 0 |
+
+      마지막으로 읽은 날짜가 비어 있다 = Google이 아직 한 번도 성공적으로 가져가지 못했다.
+      단 위 실측대로 sitemap·robots·Content-Type·Googlebot 접근은 전부 정상이므로 사이트 쪽
+      결함은 확인되지 않으며, 제출 다음날의 미수집 상태로 본다.
+
 - [ ] Tech Notes 배포 후 마지막으로 읽은 날짜가 2026-08-14 이후이고 발견된 페이지가 64이면 추가
-      제출하지 않는다.
+      제출하지 않는다. — 현재 미수집이라 판정 불가. 다음 확인일로 이월.
 - [ ] 7일 뒤에도 이전 내용 34개를 기준으로 머물거나 `가져올 수 없음`이면, 기존 행을 삭제하지 않은 채
       같은 `sitemap.xml`을 한 번 제출한다.
+      **판정 기준일 = 2026-08-20.** 그날에도 `가져올 수 없음`이면 그때 1회 재제출한다.
+      2026-08-14 에는 규칙대로 재제출하지 않았다.
 - [ ] 이후 반복 제출하지 않고 상태 변화를 기다린다.
 
 정상 목표:
@@ -201,18 +230,37 @@ Google은 URL 이동 후 새 canonical URL을 담은 sitemap을 제출하라고 
 - 같은 URL을 반복 요청하지 않는다.
 - 요청 전 반드시 `실제 URL 테스트`를 통과시킨다.
 
+**2026-08-14 에 이 "하루 10개" 가 실제 한도임이 확인됐다.** 우선순위 0의 10개를 요청한 뒤 같은 날
+Tech Notes 허브 2개를 이어서 요청했고, **12번째(`/ko/tech-notes/`)에서 "할당량 초과 — 일일 할당량을
+초과하여 이 요청을 처리할 수 없습니다. 내일 다시 제출해 주세요." 가 떴다.** 11개까지는 통과했다.
+하루 10개는 여유 있는 목표치가 아니라 한도 바로 아래 값이므로, **10개를 채웠으면 그날은 끝낸다.**
+
+**요청 성공 판정에서 속기 쉬운 지점 — 화면의 "색인 생성 요청됨" 은 그 자체로 성공 근거가 아니다.**
+GSC 는 버튼을 누른 직후 성공 대화상자를 먼저 띄우고, 서버가 할당량을 확인해 거절하면 그 대화상자를
+닫은 **뒤에** "할당량 초과" 를 새로 띄운다. 결과 카드에 남는 인라인 `✓ 색인 생성 요청됨` 표시도
+거절된 요청에 그대로 남는다. 그래서 판정은 **성공 대화상자를 닫은 다음 초과 대화상자가 뒤따르는지까지
+확인**해야 한다.
+
 #### 우선순위 0 — 즉시 요청: 허브와 출시 앱의 새 제품 URL, 10개
 
-- [ ] `https://droidactor.github.io/apps/`
-- [ ] `https://droidactor.github.io/ko/apps/`
-- [ ] `https://droidactor.github.io/manual/`
-- [ ] `https://droidactor.github.io/ko/manual/`
-- [ ] `https://droidactor.github.io/apps/bt-keyboard/`
-- [ ] `https://droidactor.github.io/ko/apps/bt-keyboard/`
-- [ ] `https://droidactor.github.io/apps/wifi-scout/`
-- [ ] `https://droidactor.github.io/ko/apps/wifi-scout/`
-- [ ] `https://droidactor.github.io/apps/lgtv/`
-- [ ] `https://droidactor.github.io/ko/apps/lgtv/`
+**2026-08-14 11:15~11:38 KST 에 10개 전부 완료했다.** 각 URL은 `URL 검사` → `실제 URL 테스트`
+(전부 "URL을 Google에 등록할 수 있음") → `색인 생성 요청`(전부 "색인 생성 요청됨 — URL이 우선순위
+크롤링 대기열에 추가되었습니다") 순으로 처리했다. 할당량 초과 메시지는 나오지 않았다.
+검사 시점의 GOOGLE 색인 탭은 모두 "URL이 Google에 등록되어 있지 않음 / 아직 알려지지 않은 URL"이었다
+— 신규 경로이므로 예상된 값이다.
+
+- [x] `https://droidactor.github.io/apps/`
+- [x] `https://droidactor.github.io/ko/apps/`
+- [x] `https://droidactor.github.io/manual/`
+- [x] `https://droidactor.github.io/ko/manual/`
+- [x] `https://droidactor.github.io/apps/bt-keyboard/`
+- [x] `https://droidactor.github.io/ko/apps/bt-keyboard/`
+- [x] `https://droidactor.github.io/apps/wifi-scout/`
+- [x] `https://droidactor.github.io/ko/apps/wifi-scout/`
+- [x] `https://droidactor.github.io/apps/lgtv/`
+- [x] `https://droidactor.github.io/ko/apps/lgtv/`
+
+**같은 URL을 다시 요청하지 않는다.** 다음 요청일은 Tech Notes 허브 2개가 대상이다(아래 별도 묶음).
 
 #### 우선순위 1 — 조건부 요청: 출시 앱 매뉴얼과 나머지 Bluetooth 제품 URL, 10개
 
@@ -251,8 +299,15 @@ Tech Notes 배포 다음 요청일에는 허브 2개를 실제 URL 테스트한 
 앱·매뉴얼·Tech Notes 허브의 내부 링크에 맡기고, 7~14일 뒤에도 미발견 또는 비색인이면 원인을 확인한 뒤
 필요한 URL만 선별 요청한다.
 
-- [ ] `https://droidactor.github.io/tech-notes/` — 우선 요청
+**2026-08-14 에 이 2개를 우선순위 0의 10개와 같은 날 이어서 요청했다(원래 계획은 "다음 요청일"이었다).
+그 결과 하루 12개가 되어 마지막 1개가 일일 할당량에 걸렸다.**
+
+- [x] `https://droidactor.github.io/tech-notes/` — 우선 요청
+      2026-08-14 11:47 KST 요청 접수(11번째). 실시간 테스트 통과.
 - [ ] `https://droidactor.github.io/ko/tech-notes/` — 우선 요청
+      **2026-08-14 11:49 KST 요청 실패 — "할당량 초과 / 내일 다시 제출해 주세요"(12번째).**
+      실시간 테스트는 "URL을 Google에 등록할 수 있음" 으로 통과했으므로 페이지 문제가 아니다.
+      **2026-08-15 이후 첫 요청으로 이것부터 처리한다.**
 - [ ] `https://droidactor.github.io/tech-notes/bt-keyboard/`
 - [ ] `https://droidactor.github.io/ko/tech-notes/bt-keyboard/`
 - [ ] `https://droidactor.github.io/tech-notes/bt-ppt/`
@@ -266,14 +321,14 @@ Tech Notes 배포 다음 요청일에는 허브 2개를 실제 URL 테스트한 
 - [ ] `https://droidactor.github.io/tech-notes/lgtv/`
 - [ ] `https://droidactor.github.io/ko/tech-notes/lgtv/`
 
-수동 URL 검사 대상으로 선택한 URL에서 확인할 값:
+수동 URL 검사 대상으로 선택한 URL에서 확인할 값 (아래는 우선순위 0의 10개에 대한 2026-08-14 결과):
 
-- [ ] Page fetch: 성공
-- [ ] Crawl allowed: 예
-- [ ] Indexing allowed: 예
-- [ ] User-declared canonical: 검사한 새 URL과 동일
-- [ ] 실제 URL 테스트: 성공
-- [ ] 색인 요청 대상으로 선별한 URL만 `색인 생성 요청` 성공을 확인
+- [x] Page fetch: 성공 — 실시간 테스트에서 10/10 "페이지 색인을 생성할 수 있음".
+- [x] Crawl allowed: 예 — `robots.txt`가 `Allow: /`이고 실시간 테스트가 전부 통과했다.
+- [x] Indexing allowed: 예 — 새 페이지 44개에 `noindex`가 없다(§3).
+- [x] User-declared canonical: 검사한 새 URL과 동일 — 44/44 self canonical(§3).
+- [x] 실제 URL 테스트: 성공 — 10/10 "URL을 Google에 등록할 수 있음".
+- [x] 색인 요청 대상으로 선별한 URL만 `색인 생성 요청` 성공을 확인 — 10/10 "색인 생성 요청됨".
 
 ### 4.4 옛 URL 확인
 
@@ -302,11 +357,20 @@ canonical URL로 바꾸면 redirect 의존도를 줄일 수 있다.
 
 ## 6. 관찰 일정과 완료 조건
 
-### 배포 직후
+### 배포 직후 — 2026-08-14 완료
 
-- [ ] live `200`, redirect, canonical, sitemap 64개를 확인한다.
-- [ ] Search Console sitemap의 현재 상태를 기록한다.
-- [ ] 우선순위 0 URL 검사를 수행한다.
+- [x] live `200`, redirect, canonical, sitemap 64개를 확인한다. (§3, §4.2)
+- [x] Search Console sitemap의 현재 상태를 기록한다. — `가져올 수 없음` / 0 페이지 (§4.2)
+- [x] 우선순위 0 URL 검사를 수행한다. — 10/10 색인 생성 요청 완료 (§4.3)
+
+**다음 작업 2건:**
+
+1. **2026-08-15 이후 첫 요청 = `https://droidactor.github.io/ko/tech-notes/`.** 2026-08-14 에 일일
+   할당량 초과로 거절된 유일한 URL이다 (§4.3 Tech Notes 묶음).
+2. sitemap `가져올 수 없음` 해소 여부 확인. 판정 기준일 2026-08-20 (§4.2).
+
+2026-08-14 에 처리 완료된 것: 우선순위 0 URL 10개 색인 요청, `/tech-notes/` 색인 요청,
+옛 호환 페이지 14개 `noindex` 제거 배포(commit `d6e04f0`).
 
 ### 7일 후
 
