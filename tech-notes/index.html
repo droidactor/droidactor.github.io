@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tech notes — droidactor</title>
+<meta name="description" content="Engineering notes for six droidactor Android apps: architecture, protocols, design decisions, safety boundaries, and verified limitations.">
+<link rel="canonical" href="https://droidactor.github.io/tech-notes/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/tech-notes/">
+<meta property="og:title" content="Tech notes — droidactor">
+<meta property="og:description" content="Architecture, protocols, design decisions, and verified limitations behind six droidactor Android apps.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://droidactor.github.io/tech-notes/#notes",
+      "url": "https://droidactor.github.io/tech-notes/",
+      "name": "droidactor tech notes",
+      "description": "Engineering notes for six droidactor Android apps.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": 6,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "url": "https://droidactor.github.io/tech-notes/bt-keyboard/", "name": "Dotori Bluetooth Keyboard tech notes" },
+          { "@type": "ListItem", "position": 2, "url": "https://droidactor.github.io/tech-notes/bt-ppt/", "name": "Dotori Bluetooth PPT Remote tech notes" },
+          { "@type": "ListItem", "position": 3, "url": "https://droidactor.github.io/tech-notes/bt-mouse/", "name": "Dotori Bluetooth Mouse tech notes" },
+          { "@type": "ListItem", "position": 4, "url": "https://droidactor.github.io/tech-notes/wifi-scout/", "name": "Dotori WiFi Scanner tech notes" },
+          { "@type": "ListItem", "position": 5, "url": "https://droidactor.github.io/tech-notes/ssh-scout/", "name": "Dotori SSH Terminal tech notes" },
+          { "@type": "ListItem", "position": 6, "url": "https://droidactor.github.io/tech-notes/lgtv/", "name": "Dotori LG TV Remote tech notes" }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Tech notes", "item": "https://droidactor.github.io/tech-notes/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="Language">
+      <a class="lang-btn" href="/tech-notes/" aria-current="page" hreflang="en">EN</a>
+      <a class="lang-btn" href="/ko/tech-notes/" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span>Tech notes</nav>
+
+  <div class="hero">
+    <h1>Tech notes</h1>
+    <p>Architecture, protocols, design decisions, safety boundaries, and limitations recorded while building six droidactor Android apps.</p>
+  </div>
+
+  <section id="notes">
+    <h2>Choose an app</h2>
+    <p class="lead">The manual explains how to use an app. These notes explain why its implementation is shaped this way.</p>
+    <div class="cards">
+      <article class="card"><div class="icon" aria-hidden="true">⌨️</div><h3><a href="/tech-notes/bt-keyboard/"><span class="dotori">Dotori</span> Bluetooth Keyboard</a></h3><p class="pkg">HID transport · Korean input</p><p class="desc">Classic HID and BLE HOGP fallback, host profiles, Hangul decomposition, and safe session ownership.</p><div class="foot"><a href="/tech-notes/bt-keyboard/">Open tech notes</a><a href="/manual/bt-keyboard/">User manual</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true">📽️</div><h3><a href="/tech-notes/bt-ppt/"><span class="dotori">Dotori</span> Bluetooth PPT Remote</a></h3><p class="pkg">HID commands · scheduler</p><p class="desc">How five presenter actions become bounded keyboard reports without stuck keys or stale queued commands.</p><div class="foot"><a href="/tech-notes/bt-ppt/">Open tech notes</a><a href="/manual/bt-ppt/">User manual</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true">🖱️</div><h3><a href="/tech-notes/bt-mouse/"><span class="dotori">Dotori</span> Bluetooth Mouse</a></h3><p class="pkg">Pointer pipeline · lifecycle</p><p class="desc">Motion coalescing, deterministic clicks and wheels, foreground service ownership, and neutral shutdown.</p><div class="foot"><a href="/tech-notes/bt-mouse/">Open tech notes</a><a href="/manual/bt-mouse/">User manual</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true">📡</div><h3><a href="/tech-notes/wifi-scout/"><span class="dotori">Dotori</span> WiFi Scanner</a></h3><p class="pkg">Discovery · evidence model</p><p class="desc">Bounded subnet scanning, parallel discovery protocols, evidence-based classification, and explicit confidence.</p><div class="foot"><a href="/tech-notes/wifi-scout/">Open tech notes</a><a href="/manual/wifi-scout/">User manual</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true">▣</div><h3><a href="/tech-notes/ssh-scout/"><span class="dotori">Dotori</span> SSH Terminal</a></h3><p class="pkg">TOFU · secure storage</p><p class="desc">Local SSH discovery, deep-link boundaries, host-key verification, encrypted credentials, and terminal streaming.</p><div class="foot"><a href="/tech-notes/ssh-scout/">Open tech notes</a><a href="/manual/ssh-scout/">User manual</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true">📺</div><h3><a href="/tech-notes/lgtv/"><span class="dotori">Dotori</span> LG TV Remote</a></h3><p class="pkg">SSAP · pointer · WoL</p><p class="desc">Measured webOS behavior, pairing and client keys, separate control channels, read-back, and network power-on.</p><div class="foot"><a href="/tech-notes/lgtv/">Open tech notes</a><a href="/manual/lgtv/">User manual</a></div></article>
+    </div>
+  </section>
+
+  <footer>
+    <p>Android apps by droidactor.</p>
+    <p><a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/blog/">Field notes</a> · <a href="/ko/tech-notes/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+</div>
+</body>
+</html>

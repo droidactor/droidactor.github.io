@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>기술 노트 — droidactor</title>
+<meta name="description" content="droidactor Android 앱 6종의 구조, 프로토콜, 설계 결정, 안전 경계와 검증된 제약을 정리한 기술 노트입니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/tech-notes/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/tech-notes/">
+<meta property="og:title" content="기술 노트 — droidactor">
+<meta property="og:description" content="droidactor Android 앱 6종을 만들며 확인한 구조, 프로토콜, 설계 결정과 제약입니다.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://droidactor.github.io/ko/tech-notes/#notes",
+      "url": "https://droidactor.github.io/ko/tech-notes/",
+      "name": "droidactor 기술 노트",
+      "description": "droidactor Android 앱 6종의 개발 기술 노트.",
+      "inLanguage": "ko",
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": 6,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "url": "https://droidactor.github.io/ko/tech-notes/bt-keyboard/", "name": "도토리 한글 키보드 기술 노트" },
+          { "@type": "ListItem", "position": 2, "url": "https://droidactor.github.io/ko/tech-notes/bt-ppt/", "name": "도토리 PPT 리모컨 기술 노트" },
+          { "@type": "ListItem", "position": 3, "url": "https://droidactor.github.io/ko/tech-notes/bt-mouse/", "name": "도토리 블루투스 마우스 기술 노트" },
+          { "@type": "ListItem", "position": 4, "url": "https://droidactor.github.io/ko/tech-notes/wifi-scout/", "name": "도토리 와이파이 스캐너 기술 노트" },
+          { "@type": "ListItem", "position": 5, "url": "https://droidactor.github.io/ko/tech-notes/ssh-scout/", "name": "도토리 SSH 터미널 기술 노트" },
+          { "@type": "ListItem", "position": 6, "url": "https://droidactor.github.io/ko/tech-notes/lgtv/", "name": "도토리 LG TV 리모컨 기술 노트" }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "기술 노트", "item": "https://droidactor.github.io/ko/tech-notes/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="언어">
+      <a class="lang-btn" href="/tech-notes/" hreflang="en" lang="en">EN</a>
+      <a class="lang-btn" href="/ko/tech-notes/" aria-current="page" hreflang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span>기술 노트</nav>
+
+  <div class="hero">
+    <h1>기술 노트</h1>
+    <p>droidactor Android 앱 6종을 만들며 기록한 구조, 프로토콜, 설계 결정, 안전 경계와 확인된 제약입니다.</p>
+  </div>
+
+  <section id="notes">
+    <h2>앱 선택</h2>
+    <p class="lead">사용 설명서가 앱을 쓰는 방법을 설명한다면, 기술 노트는 구현을 왜 이렇게 구성했는지 설명합니다.</p>
+    <div class="cards">
+      <article class="card"><div class="icon" aria-hidden="true">⌨️</div><h3><a href="/ko/tech-notes/bt-keyboard/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드</a></h3><p class="pkg">HID 전송 · 한글 입력</p><p class="desc">Classic HID와 BLE HOGP 대체 경로, 호스트 프로필, 한글 분해, 안전한 세션 소유권을 다룹니다.</p><div class="foot"><a href="/ko/tech-notes/bt-keyboard/">기술 노트 열기</a><a href="/ko/manual/bt-keyboard/">사용 설명서</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true">📽️</div><h3><a href="/ko/tech-notes/bt-ppt/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨</a></h3><p class="pkg">HID 명령 · 순서 제어</p><p class="desc">발표 명령 5개를 키가 눌린 채 남거나 오래된 명령이 재생되지 않도록 제한된 키보드 리포트로 바꿉니다.</p><div class="foot"><a href="/ko/tech-notes/bt-ppt/">기술 노트 열기</a><a href="/ko/manual/bt-ppt/">사용 설명서</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true">🖱️</div><h3><a href="/ko/tech-notes/bt-mouse/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스</a></h3><p class="pkg">포인터 처리 · 수명 주기</p><p class="desc">이동량 합치기, 결정적인 클릭과 휠, 포그라운드 서비스 소유권, 중립 상태 종료를 설명합니다.</p><div class="foot"><a href="/ko/tech-notes/bt-mouse/">기술 노트 열기</a><a href="/ko/manual/bt-mouse/">사용 설명서</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true">📡</div><h3><a href="/ko/tech-notes/wifi-scout/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 와이파이 스캐너</a></h3><p class="pkg">탐색 · 근거 모델</p><p class="desc">동시성을 제한한 서브넷 검색, 병렬 탐색 프로토콜, 근거 기반 분류와 명시적 신뢰도를 다룹니다.</p><div class="foot"><a href="/ko/tech-notes/wifi-scout/">기술 노트 열기</a><a href="/ko/manual/wifi-scout/">사용 설명서</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true">▣</div><h3><a href="/ko/tech-notes/ssh-scout/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> SSH 터미널</a></h3><p class="pkg">TOFU · 보안 저장소</p><p class="desc">로컬 SSH 탐색, 딥 링크 경계, 호스트 키 확인, 암호화한 자격증명과 터미널 스트림을 설명합니다.</p><div class="foot"><a href="/ko/tech-notes/ssh-scout/">기술 노트 열기</a><a href="/ko/manual/ssh-scout/">사용 설명서</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true">📺</div><h3><a href="/ko/tech-notes/lgtv/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> LG TV 리모컨</a></h3><p class="pkg">SSAP · 포인터 · WoL</p><p class="desc">실측 webOS 동작, 페어링과 클라이언트 키, 분리된 제어 채널, 상태 재확인, 네트워크 전원 켜기를 다룹니다.</p><div class="foot"><a href="/ko/tech-notes/lgtv/">기술 노트 열기</a><a href="/ko/manual/lgtv/">사용 설명서</a></div></article>
+    </div>
+  </section>
+
+  <footer>
+    <p>droidactor의 Android 앱입니다.</p>
+    <p><a href="/ko/apps/">전체 앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/blog/">현장 노트</a> · <a href="/tech-notes/" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+</div>
+</body>
+</html>

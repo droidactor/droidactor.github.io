@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>webOS 제어 채널과 전원 — 도토리 LG TV 리모컨 기술 노트</title>
+<meta name="description" content="LG webOS SSAP 페어링, 포인터 명령, 상태 재확인, Wake-on-LAN, 실측 동작과 호환성 제약에 관한 개발 기록입니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/tech-notes/lgtv/"><link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/lgtv/"><link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/lgtv/"><link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/lgtv/">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="ko_KR"><meta property="og:locale:alternate" content="en_US"><meta property="og:url" content="https://droidactor.github.io/ko/tech-notes/lgtv/"><meta property="og:title" content="webOS 제어 채널과 전원"><meta property="og:description" content="SSAP·포인터 입력·Wake-on-LAN은 서로 다른 근거와 실패 방식을 가진 별도 채널입니다."><meta name="twitter:card" content="summary"><link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"webOS 제어 채널과 전원 — 도토리 LG TV 리모컨 기술 노트","url":"https://droidactor.github.io/ko/tech-notes/lgtv/","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"ko","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"도토리 LG TV 리모컨","url":"https://droidactor.github.io/ko/apps/lgtv/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/ko/"},{"@type":"ListItem","position":2,"name":"기술 노트","item":"https://droidactor.github.io/ko/tech-notes/"},{"@type":"ListItem","position":3,"name":"도토리 LG TV 리모컨","item":"https://droidactor.github.io/ko/tech-notes/lgtv/"}]}]}</script>
+</head>
+<body><header class="top"><div class="wrap"><div class="brand"><a href="/ko/">droid<span>actor</span></a></div><nav class="langs" aria-label="언어"><a class="lang-btn" href="/tech-notes/lgtv/" hreflang="en" lang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/lgtv/" aria-current="page" hreflang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/tech-notes/">기술 노트</a><span>/</span><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> LG TV 리모컨</nav>
+  <div class="hero manual-hero"><h1>webOS 제어 채널과 전원</h1><p>실측한 TV 동작을 기준으로 설계했습니다. SSAP 요청, 단방향 포인터 소켓, Wake-on-LAN이 제어의 서로 다른 부분을 맡습니다.</p><p class="manual-meta">소스 기준: 앱 1.0.0 (1) · 2026년 8월 14일</p></div>
+  <nav class="manual-toc" aria-label="이 페이지의 내용"><strong>이 페이지의 내용</strong><ol><li><a href="#evidence">실측 기준</a></li><li><a href="#pairing">탐색과 페어링</a></li><li><a href="#channels">제어 채널</a></li><li><a href="#power">전원 왕복</a></li><li><a href="#limits">검증과 제약</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <h2 id="evidence">실측 기준</h2>
+    <p>프로토콜 기준은 2018년형 LG OLED C8, webOS 4.x에서 측정했습니다. 일반 리모컨 제어는 안정적으로 성립하지만 모든 TV 앱에 임의의 글자를 넣을 수는 없다는 실기 결과를 반영해 제품 방향을 바꿨습니다.</p>
+    <div class="scroll"><table class="spec"><tbody><tr><th>주 API</th><td>보안 WebSocket을 쓰는 LG webOS SSAP</td></tr><tr><th>포인터 입력</th><td>줄바꿈 프레임을 쓰는 별도 단방향 보안 WebSocket</td></tr><tr><th>전원 끄기</th><td>SSAP <code>system/turnOff</code></td></tr><tr><th>전원 켜기</th><td>미리 저장한 인터페이스 MAC에 Wake-on-LAN 매직 패킷 전송</td></tr></tbody></table></div>
+
+    <h2 id="pairing">탐색, 신뢰와 페어링</h2>
+    <p>켜진 TV를 로컬 네트워크에서 찾고 보안 SSAP 끝점에 연결한 뒤 권한 명세를 보내 TV 화면의 승인을 기다립니다. 돌려받은 클라이언트 키는 Android Keystore 기반 구현으로 저장하고 같은 권한 명세와 함께 재사용합니다.</p>
+    <ul><li>TV 인증서는 자체 서명이므로 공인 CA 체인 대신 최초 인증서 지문 신뢰 방식을 사용합니다.</li><li>페어링 상태 기계가 첫 승인·키 재사용·거절·재연결을 구분합니다.</li><li>클라이언트 키는 권한 자료이므로 진단 정보나 화면 문구에 넣지 않습니다.</li><li>DHCP에서 IP는 바뀔 수 있어 저장한 기기 식별 정보에 더 강한 로컬 근거를 함께 둡니다.</li></ul>
+
+    <h2 id="channels">제어 채널과 상태 재확인</h2>
+    <p>SSAP 요청은 음량·음소거·채널 정보·앱 실행·전원과 상태 구독을 다룹니다. 포인터 이동·클릭·스크롤·리모컨 버튼 프레임은 응답을 돌려주지 않는 포인터 소켓을 사용합니다.</p>
+    <div class="note"><p><strong>전송 성공과 상태 성공은 다릅니다.</strong> webOS가 조회나 구독을 제공하면 음량·채널·전원·현재 앱 상태를 다시 읽습니다. 포인터 전용 명령은 같은 수준의 증거를 만들 수 없습니다.</p></div>
+    <p>이동값을 모아 합친 뒤 포인터 프레임으로 보냅니다. 제스처 처리는 이동·탭·두 손가락 스크롤·튕기기를 다루는 결정적 상태 기계이며, 실제 시간 대신 가상 시계로 시험할 수 있습니다.</p>
+
+    <h2 id="power">전원 왕복</h2>
+    <p>깨어 있는 TV는 SSAP로 끌 수 있습니다. 깊은 대기 상태에서는 SSAP와 탐색 기능이 닫힐 수 있어 깨울 시점에 MAC을 물어볼 수 없습니다. TV가 깨어 있을 때 활성 유선 또는 Wi-Fi MAC을 저장해 뒀다가 WoL 매직 패킷을 보냅니다.</p>
+    <ul><li>TV의 모바일 전원 켜기 설정이 활성화돼야 합니다.</li><li>MAC은 TV가 실제 사용하는 인터페이스와 맞아야 합니다.</li><li>활성 대기 상태에서 SSAP 포트가 열렸다는 사실만으로 화면이 켜졌다고 판단하지 않습니다.</li><li>명령 뒤 전원·연결 상태를 소켓 이벤트 하나로 추정하지 않고 다시 조정합니다.</li></ul>
+
+    <h2 id="limits">검증과 확인된 제약</h2>
+    <p>순수 코어 상태 기계와 Android 전송 어댑터를 나누고 가짜 TV 시험 장치, 가상 스케줄러, SSAP 코덱, 페어링·전송, 포인터·제스처, WoL 패킷, UI 시험과 실기 탐침을 사용합니다.</p>
+    <ul><li>webOS 동작은 연식·펌웨어·지역·활성 앱에 따라 달라집니다.</li><li>글자 입력은 현재 TV 앱이 webOS IME 규약에 참여할 때만 동작합니다.</li><li>일부 화면 겹침 동작은 믿을 만하게 상태를 되읽을 수 없어 지원 여부를 단정하지 않습니다.</li><li>깊은 대기에서는 새 탐색이 안 되므로 미리 저장한 기기 식별 정보가 있어야 깨울 수 있습니다.</li></ul>
+    <div class="manual-actions"><a href="/ko/apps/lgtv/">제품 페이지</a><a href="/ko/manual/lgtv/">사용 설명서</a><a href="/ko/blog/control-lg-webos-tv-over-wifi/">webOS 현장 노트</a></div>
+  </article>
+  <footer><p>droidactor의 Android 앱입니다.</p><p><a href="/ko/tech-notes/">전체 기술 노트</a> · <a href="/ko/manual/lgtv/">사용 설명서</a> · <a href="/ko/apps/lgtv/">제품 페이지</a> · <a href="/tech-notes/lgtv/" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div></body></html>

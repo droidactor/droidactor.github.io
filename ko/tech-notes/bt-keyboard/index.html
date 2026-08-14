@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bluetooth HID와 한글 입력 — 도토리 한글 키보드 기술 노트</title>
+<meta name="description" content="도토리 한글 키보드의 HID 전송 방식 선택, 호스트 프로필, 한글 분해, 리포트 전송과 세션 소유권에 관한 개발 기록입니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/"><link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/"><link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/"><link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-keyboard/">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="ko_KR"><meta property="og:locale:alternate" content="en_US"><meta property="og:url" content="https://droidactor.github.io/ko/tech-notes/bt-keyboard/"><meta property="og:title" content="Bluetooth HID와 한글 입력"><meta property="og:description" content="키보드가 전송 방식을 고르고 호스트 IME를 모델로 다루며 글자를 제한된 HID 리포트로 바꾸는 과정입니다."><meta name="twitter:card" content="summary"><link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Bluetooth HID와 한글 입력 — 도토리 한글 키보드 기술 노트","url":"https://droidactor.github.io/ko/tech-notes/bt-keyboard/","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"ko","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"도토리 한글 키보드","url":"https://droidactor.github.io/ko/apps/bt-keyboard/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/ko/"},{"@type":"ListItem","position":2,"name":"기술 노트","item":"https://droidactor.github.io/ko/tech-notes/"},{"@type":"ListItem","position":3,"name":"도토리 한글 키보드","item":"https://droidactor.github.io/ko/tech-notes/bt-keyboard/"}]}]}</script>
+</head>
+<body><header class="top"><div class="wrap"><div class="brand"><a href="/ko/">droid<span>actor</span></a></div><nav class="langs" aria-label="언어"><a class="lang-btn" href="/tech-notes/bt-keyboard/" hreflang="en" lang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/bt-keyboard/" aria-current="page" hreflang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/tech-notes/">기술 노트</a><span>/</span><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드</nav>
+  <div class="hero manual-hero"><h1>Bluetooth HID와 한글 입력</h1><p>폰 키보드에 전송 상태 기계와 상대 기기 동작에 대한 명시적 모델이 모두 필요한 이유를 정리합니다.</p><p class="manual-meta">소스 기준: 앱 1.0.0 (1) · 2026년 8월 14일</p></div>
+  <nav class="manual-toc" aria-label="이 페이지의 내용"><strong>이 페이지의 내용</strong><ol><li><a href="#baseline">시스템 경계</a></li><li><a href="#transport">전송 방식 선택</a></li><li><a href="#text">글자 인코딩</a></li><li><a href="#session">세션 안전성</a></li><li><a href="#limits">검증과 제약</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <h2 id="baseline">시스템 경계</h2>
+    <p>폰은 Bluetooth HID 기기이고 PC·TV·태블릿은 호스트입니다. 앱은 키보드와 마우스 리포트를 보내지만 호스트에서 초점을 가진 입력 칸을 보거나 IME 모드를 항상 읽을 수는 없습니다. 그래서 보정과 호스트 프로필은 단순 설정값이 아니라 핵심 상태입니다.</p>
+    <div class="scroll"><table class="spec"><tbody><tr><th>UI와 수명 주기</th><td>Kotlin, Jetpack Compose, Android 포그라운드 서비스</td></tr><tr><th>HID 자료</th><td>키보드와 마우스 리포트 ID를 나눈 공용 디스크립터</td></tr><tr><th>영속 상태</th><td>확인된 호스트, 선택 프로필, 보정과 앱 설정</td></tr><tr><th>네트워크 의존성</th><td>HID 입력에는 없음; 광고 실행 경로는 별도</td></tr></tbody></table></div>
+
+    <h2 id="transport">전송 방식 선택</h2>
+    <p>공용 HID 계층은 먼저 Android의 Classic Bluetooth HID Device 프로필을 요청합니다. 제한된 유예 시간 안에 프로필을 얻지 못하면 BLE HOGP를 선택할 수 있습니다. 선택한 전송 방식을 상태로 공개하므로 페어링·재연결·검색 가능 정책이 활성 경로를 추측하지 않습니다.</p>
+    <ul><li>Classic은 Android HID Device 프로필과 SDP 식별 정보를 사용합니다.</li><li>BLE HOGP는 GATT 서버를 소유하며 광고·재연결 규칙이 다릅니다.</li><li>하나의 조작 화면에 두 전송 방식을 독립 세션으로 동시에 열지 않습니다.</li><li>최소 중립 리포트로 등록이 실제 사용 가능한 호스트 연결이 됐는지 확인합니다.</li></ul>
+
+    <h2 id="text">글자 인코딩과 호스트 프로필</h2>
+    <p>글자를 정규화하고 영문·한글 구간으로 나눈 뒤 전송 전에 인코딩 계획을 만듭니다. 현대 완성형 한글 음절은 두벌식 자모 키 입력으로 분해하고 영문 문자는 US 키 맵을 사용합니다. 계획에는 필요한 IME 전환과 최종 추정 IME 상태도 들어갑니다.</p>
+    <div class="note"><p><strong>앱은 호스트 IME를 관찰하기보다 모델로 다룹니다.</strong> 일부 호스트의 키보드 LED 출력으로 추정을 보정할 수 있지만 플랫폼마다 언어 전환 키가 달라 보정 절차는 여전히 필요합니다.</p></div>
+    <p>Windows 한글, Windows US, iOS US, Android TV US 프로필이 키 맵과 모드 전환 후보를 명시합니다. 지원하지 않는 코드 포인트가 있으면 일부 글자를 먼저 보내지 않고 전체 계획을 거절합니다.</p>
+
+    <h2 id="session">세션 소유권과 안전한 해제</h2>
+    <p>포그라운드 서비스가 등록·호스트 연결·리포트 전송을 소유합니다. Keyboard·PPT·Mouse는 별도 앱이지만 Android의 HID 역할은 제한돼 있으므로 같은 서명의 형제 앱끼리 소유권 넘김 규약을 사용합니다. 새 소유자가 해제를 요청하면 이전 소유자는 정상 종료 경로를 따릅니다.</p>
+    <ul><li>현재 세션 토큰에 맞는 입력만 받아 재연결을 넘어온 오래된 작업을 차단합니다.</li><li>눌린 키 상태를 추적하고 정상 해제 때 중립 리포트를 보냅니다.</li><li>연결 해제·등록 해제·UI 상태 공개를 하나의 순서 있는 종료 경로로 처리합니다.</li><li>복구 결과가 불확실하면 조용히 입력을 계속하지 않고 세션을 격리할 수 있습니다.</li></ul>
+
+    <h2 id="limits">검증과 확인된 제약</h2>
+    <p>한글 분해, 키 맵, 인코딩 계획, 디스크립터 리포트, 대기열 순서, 재연결 정책, 형제 앱 소유권 넘김, 프로세스 재생성, 보정 결정을 단위·통합 시험으로 확인합니다. 실제 동작은 폰이 HID 전송 방식을 제공하고 호스트가 디스크립터를 수용해야 성립합니다.</p>
+    <ul><li>호스트에서 어떤 입력 칸이 초점을 가졌는지는 보장할 수 없습니다.</li><li>폰의 IME 표시와 호스트의 실제 IME가 어긋날 수 있습니다.</li><li>선택한 키 맵과 현대 한글 계획이 지원하는 문자만 보냅니다.</li><li>가로 스크롤과 특수 키 동작은 호스트 앱이 결정합니다.</li></ul>
+    <div class="manual-actions"><a href="/ko/apps/bt-keyboard/">제품 페이지</a><a href="/ko/manual/bt-keyboard/">사용 설명서</a><a href="/ko/blog/type-korean-over-bluetooth-hid/">한글 HID 현장 노트</a></div>
+  </article>
+  <footer><p>droidactor의 Android 앱입니다.</p><p><a href="/ko/tech-notes/">전체 기술 노트</a> · <a href="/ko/manual/bt-keyboard/">사용 설명서</a> · <a href="/ko/apps/bt-keyboard/">제품 페이지</a> · <a href="/tech-notes/bt-keyboard/" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div></body></html>

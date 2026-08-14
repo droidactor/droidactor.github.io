@@ -1,7 +1,7 @@
 # droidactor.github.io
 
-Developer site for the droidactor Android apps — app listing, per-app product pages and bilingual user
-manuals, support contact, privacy policy, and the host for `app-ads.txt`.
+Developer site for the droidactor Android apps — app listing, per-app product pages, bilingual user
+manuals and tech notes, support contact, privacy policy, and the host for `app-ads.txt`.
 
 `https://droidactor.github.io/` 로 게시되는 GitHub Pages 사이트다. Play Console · App Store Connect 에
 **개발자 웹사이트**로 등록하는 주소이며, AdMob 의 `app-ads.txt` 크롤러가 읽는 도메인 루트도 여기다.
@@ -24,6 +24,9 @@ manuals, support contact, privacy policy, and the host for `app-ads.txt`.
 /apps/lgtv/             제품 페이지 — Dotori LG TV Remote            + /ko/apps/lgtv/
 /manual/                사용 설명서 목록 — 6종 앱                     + /ko/manual/
 /manual/<앱>/           6종 앱 영문 사용 설명서                       + /ko/manual/<앱>/
+                        (bt-keyboard · bt-ppt · bt-mouse · wifi-scout · ssh-scout · lgtv)
+/tech-notes/            개발 기술 노트 목록 — 6종 앱                 + /ko/tech-notes/
+/tech-notes/<앱>/       6종 앱 영문 기술 노트                        + /ko/tech-notes/<앱>/
                         (bt-keyboard · bt-ppt · bt-mouse · wifi-scout · ssh-scout · lgtv)
 /blog/                  글 목록 — Field notes                        + /ko/blog/ (현장 노트)
 /blog/<slug>/           글 1편                                       + /ko/blog/<slug>/
@@ -49,10 +52,12 @@ manuals, support contact, privacy policy, and the host for `app-ads.txt`.
 | `apps/<앱>/index.html` · `ko/apps/<앱>/index.html` | 제품 상세. 기능·요구사항·개인정보 요약을 담고, 처리방침 **전문은 홈 앵커로 링크**한다(중복 금지) |
 | `manual/index.html` · `ko/manual/index.html` | `yt-downloader`를 제외한 6종 사용 설명서 목록 허브 |
 | `manual/<앱>/index.html` · `ko/manual/<앱>/index.html` | 6종 앱의 한·영 사용 설명서. 실제 UI 문구·검증 앱 버전·빠른 시작·설정·문제 해결을 담고 해당 제품·기술 글과 상호 링크한다. `yt-downloader`는 대상이 아니다 |
+| `tech-notes/index.html` · `ko/tech-notes/index.html` | `yt-downloader`를 제외한 6종 개발 기술 노트 목록 허브 |
+| `tech-notes/<앱>/index.html` · `ko/tech-notes/<앱>/index.html` | 6종 앱의 한·영 기술 노트. 소스 기준 버전과 구조·protocol·핵심 설계 결정·안전 경계·확인된 제약을 기록하고 제품·매뉴얼·현장 노트와 연결한다 |
 | `blog/index.html` · `ko/blog/index.html` | 글 목록. **손으로 관리한다** — 이 리포에 생성기는 없다. 열 편쯤 넘어 손이 아프면 그때가 도입 신호다 |
 | `blog/_post-template.html` | 글 템플릿. slug·경로·JSON-LD·CTA 규약을 머리주석에 담고 있으며 **글 추가 절차의 정본**이다 |
 | `assets/site.css` | 전 페이지 공용. 외부 CDN·폰트·스크립트 없음(자기완결) |
-| `sitemap.xml` | 홈 2 + 앱 허브 2 + 제품 14 + 매뉴얼 허브 2 + 매뉴얼 12 + 블로그 18 = 50개 URL. 모든 한·영 쌍에 `xhtml:link` hreflang 3개를 둔다 |
+| `sitemap.xml` | 홈 2 + 앱 허브 2 + 제품 14 + 매뉴얼 허브 2 + 매뉴얼 12 + 기술 노트 허브 2 + 기술 노트 12 + 블로그 18 = 64개 URL. 모든 한·영 쌍에 `xhtml:link` hreflang 3개를 둔다 |
 | `robots.txt` | 전체 허용 + sitemap 위치 |
 | `404.html` | 루트 절대경로만 쓴다 — 어느 깊이의 주소에서든 서빙되기 때문이다. `noindex` |
 | `app-ads.txt` | **AdMob 콘솔이 생성한 줄을 그대로** 넣는다 — 손으로 만들지 않는다 |
@@ -85,8 +90,9 @@ manuals, support contact, privacy policy, and the host for `app-ads.txt`.
 - `robots.txt` · `sitemap.xml`
 - 페이지마다 `canonical`, `og:*`, `hreflang`(en / ko / x-default 상호 참조), JSON-LD
   (홈 = `WebSite`+`Organization`+`ItemList`, 제품 = `SoftwareApplication`)
-- 홈 2개, 앱 허브 2개, 제품 14개, 매뉴얼 허브 2개와 6종 한·영 매뉴얼 12개. 매뉴얼은 `TechArticle`, 제품은
-  `SoftwareApplication`으로 역할을 분리하고 같은 언어끼리 상호 링크한다.
+- 홈 2개, 앱 허브 2개, 제품 14개, 매뉴얼 허브 2개와 6종 한·영 매뉴얼 12개, 기술 노트 허브 2개와
+  6종 한·영 기술 노트 12개. 매뉴얼과 기술 노트는 `TechArticle`, 제품은 `SoftwareApplication`으로
+  역할을 분리하고 같은 언어끼리 상호 링크한다.
 - `/blog/` · `/ko/blog/` — 제품 페이지보다 깊은 **기술 설명·정량 실측·원리·재현 가능한 상세 사용법**을
   싣는다. 측정 수치는 환경·방법·시점을 함께 적고, 적용 범위와 제약을 생략하지 않는다.
 - 모든 사용자 유입형 사용 사례를 이 사이트에 먼저 만들지 않는다. Naver는 한국어 사용 사례의 원본,
@@ -289,6 +295,12 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
   3. 문서 머리의 검증 앱 버전과 `dateModified`, `sitemap.xml`의 `<lastmod>`를 함께 갱신
   4. 제품 페이지의 매뉴얼 CTA와 해당 기술 글의 관련 글 링크가 양방향으로 살아 있는지 확인
   5. 스크린샷은 기존 블로그 자산을 참조한다. 발행된 자산 경로를 매뉴얼 때문에 이동하거나 복제하지 않는다
+- **6종 앱 기술 노트를 고치면** 사용법이 아니라 구현 근거를 유지한다.
+  1. `tech-notes/<앱>/index.html`과 `ko/tech-notes/<앱>/index.html`을 같은 목차·같은 기술 범위로 갱신
+  2. 구조·protocol·수치·제약은 `MyApps/Mobile/master`의 현재 앱 소스와 test를 근거로 확인
+  3. 머리의 source 기준 버전과 `dateModified`, `sitemap.xml`의 `<lastmod>`를 함께 갱신
+  4. 제품·매뉴얼·관련 현장 노트로 가는 같은 언어 링크가 살아 있는지 확인
+  5. 미출시 기능이나 source에서 확인하지 않은 동작을 확정형으로 기록하지 않는다
 - **블로그 글을 추가하면** 다섯 가지를 한 묶음으로 처리한다. 자리표시자와 세부 규약의 정본은
   `blog/_post-template.html` 머리주석이며, 작성 원고는 `MyApps/Mobile` 저장소 기준
   `../blogs/<app>/<slug>/site.{en,ko}.md`에서 가져온다.
@@ -299,7 +311,7 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
   4. 손댄 페이지의 `<lastmod>` 갱신
   5. 글 끝 CTA 는 **앱 하나만** 가리킨다. 다섯 개를 나열하면 아무 데도 가지 않는다
 - **전역 네비게이션 항목이 늘면**(블로그나 매뉴얼처럼 새 섹션이 생기면) 푸터가 있는 **모든 페이지**를 고친다 —
-  홈 2 + 허브 6 + 제품 14 + 매뉴얼 12 + 블로그 글 16 + `404.html`. 홈만 고치면 나머지 페이지에서 그 섹션에 닿을 길이 없고,
+  홈 2 + 허브 8 + 제품 14 + 매뉴얼 12 + 기술 노트 12 + 블로그 글 16 + `404.html`. 홈만 고치면 나머지 페이지에서 그 섹션에 닿을 길이 없고,
   크롤러도 홈 한 곳에서만 링크를 본다. 블로그를 붙일 때 실제로 여기서 한 번 빠뜨렸다.
 - **개인정보 처리방침을 고치면** 섹션 머리의 "최종 갱신 / Effective date" 날짜를 함께 고친다. **두 언어 모두다.**
 - **제품 페이지에 처리방침 전문을 복사하지 않는다.** 요약 + 홈 앵커 링크만 둔다. 두 벌이 되면 반드시 어긋난다.

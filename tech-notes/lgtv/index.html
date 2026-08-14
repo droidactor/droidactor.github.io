@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>webOS control channels and power — Dotori LG TV Remote tech notes</title>
+<meta name="description" content="Engineering notes on LG webOS SSAP pairing, pointer commands, state read-back, Wake-on-LAN, measured behavior, and compatibility limits.">
+<link rel="canonical" href="https://droidactor.github.io/tech-notes/lgtv/"><link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/lgtv/"><link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/lgtv/"><link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/lgtv/">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR"><meta property="og:url" content="https://droidactor.github.io/tech-notes/lgtv/"><meta property="og:title" content="webOS control channels and power"><meta property="og:description" content="SSAP, pointer input, and Wake-on-LAN are separate channels with different evidence and failure modes."><meta name="twitter:card" content="summary"><link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"webOS control channels and power — Dotori LG TV Remote tech notes","url":"https://droidactor.github.io/tech-notes/lgtv/","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"en","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"Dotori LG TV Remote","url":"https://droidactor.github.io/apps/lgtv/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/"},{"@type":"ListItem","position":2,"name":"Tech notes","item":"https://droidactor.github.io/tech-notes/"},{"@type":"ListItem","position":3,"name":"Dotori LG TV Remote","item":"https://droidactor.github.io/tech-notes/lgtv/"}]}]}</script>
+</head>
+<body><header class="top"><div class="wrap"><div class="brand"><a href="/">droid<span>actor</span></a></div><nav class="langs" aria-label="Language"><a class="lang-btn" href="/tech-notes/lgtv/" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/lgtv/" hreflang="ko" lang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/tech-notes/">Tech notes</a><span>/</span><span class="dotori">Dotori</span> LG TV Remote</nav>
+  <div class="hero manual-hero"><h1>webOS control channels and power</h1><p>The remote is built around measured TV behavior: SSAP requests, a one-way pointer socket, and Wake-on-LAN each solve a different part of control.</p><p class="manual-meta">Source baseline: app 1.0.0 (1) · 14 August 2026</p></div>
+  <nav class="manual-toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#evidence">Measured baseline</a></li><li><a href="#pairing">Discovery and pairing</a></li><li><a href="#channels">Control channels</a></li><li><a href="#power">Power round trip</a></li><li><a href="#limits">Verification and limits</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <h2 id="evidence">Measured baseline</h2>
+    <p>The protocol baseline was measured against an LG OLED C8 from 2018 running webOS 4.x. The product direction changed after testing showed that general remote control worked reliably while arbitrary text input did not work in every TV app.</p>
+    <div class="scroll"><table class="spec"><tbody><tr><th>Primary API</th><td>LG webOS SSAP over secure WebSocket</td></tr><tr><th>Pointer input</th><td>Separate one-way secure WebSocket with line-delimited frames</td></tr><tr><th>Power off</th><td>SSAP <code>system/turnOff</code></td></tr><tr><th>Power on</th><td>Wake-on-LAN magic packet using a previously saved interface MAC</td></tr></tbody></table></div>
+
+    <h2 id="pairing">Discovery, trust, and pairing</h2>
+    <p>Discovery locates awake TVs on the local network. The app connects to the secure SSAP endpoint, presents the permission manifest, and waits for approval on the TV. The returned client key is stored through an Android Keystore-backed implementation and reused with the same permission manifest.</p>
+    <ul><li>The TV certificate is self-signed, so the design uses first-use fingerprint trust rather than a public CA chain.</li><li>The pairing state machine distinguishes first approval, key reuse, rejection, and reconnect.</li><li>The client key is authorization material; it is not included in diagnostics or UI text.</li><li>An IP address can change under DHCP, so saved device identity includes stronger local evidence.</li></ul>
+
+    <h2 id="channels">Control channels and read-back</h2>
+    <p>SSAP requests cover volume, mute, channel information, app launch, power, and subscriptions. Pointer movement, click, scroll, and remote-button frames use the pointer socket, which returns no command acknowledgement.</p>
+    <div class="note"><p><strong>Send success is not state success.</strong> Where webOS exposes a query or subscription, the app reads back volume, channel, power, or foreground-app state. Pointer-only commands cannot offer the same proof.</p></div>
+    <p>Movement is accumulated and coalesced before pointer frames are emitted. Gesture handling is a deterministic state machine for move, tap, two-finger scroll, and flick, allowing tests to use a virtual clock rather than physical timing.</p>
+
+    <h2 id="power">Power round trip</h2>
+    <p>An awake TV can be turned off through SSAP. A deeply sleeping TV closes SSAP and may stop answering discovery, so it cannot provide its MAC at wake time. The app saves the active wired or Wi-Fi MAC while the TV is awake and sends a WoL magic packet to wake it later.</p>
+    <ul><li>The TV setting that allows mobile power-on must be enabled.</li><li>The MAC must match the interface actually used by the TV.</li><li>An open SSAP port during active standby is not, by itself, proof that the panel is on.</li><li>After a command, power and connection state are reconciled instead of inferred from one socket event.</li></ul>
+
+    <h2 id="limits">Verification and known limits</h2>
+    <p>The code separates pure core state machines from Android transport adapters and includes a fake-TV harness, virtual scheduler, SSAP codec tests, pairing and transport tests, pointer and gesture tests, WoL packet tests, UI tests, and measured-device probes.</p>
+    <ul><li>webOS behavior varies by model year, firmware, region, and active app.</li><li>Text insertion works only when the foreground TV app participates in the webOS IME contract.</li><li>Some overlay actions have no reliable read-back and remain capability questions.</li><li>Deep standby removes discovery; wake requires identity saved earlier.</li></ul>
+    <div class="manual-actions"><a href="/apps/lgtv/">Product page</a><a href="/manual/lgtv/">User manual</a><a href="/blog/control-lg-webos-tv-over-wifi/">webOS field note</a></div>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/tech-notes/">All tech notes</a> · <a href="/manual/lgtv/">User manual</a> · <a href="/apps/lgtv/">Product page</a> · <a href="/ko/tech-notes/lgtv/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div></body></html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Presenter command scheduling — Dotori Bluetooth PPT Remote tech notes</title>
+<meta name="description" content="Engineering notes on mapping presentation actions to HID keys, bounding the command queue, releasing keys, and discarding stale input.">
+<link rel="canonical" href="https://droidactor.github.io/tech-notes/bt-ppt/"><link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-ppt/"><link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-ppt/"><link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-ppt/">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR"><meta property="og:url" content="https://droidactor.github.io/tech-notes/bt-ppt/"><meta property="og:title" content="Presenter command scheduling"><meta property="og:description" content="Five presentation actions, one bounded HID command pipeline."><meta name="twitter:card" content="summary"><link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Presenter command scheduling — Dotori Bluetooth PPT Remote tech notes","url":"https://droidactor.github.io/tech-notes/bt-ppt/","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"en","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"Dotori Bluetooth PPT Remote","url":"https://droidactor.github.io/apps/bt-ppt/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/"},{"@type":"ListItem","position":2,"name":"Tech notes","item":"https://droidactor.github.io/tech-notes/"},{"@type":"ListItem","position":3,"name":"Dotori Bluetooth PPT Remote","item":"https://droidactor.github.io/tech-notes/bt-ppt/"}]}]}</script>
+</head>
+<body><header class="top"><div class="wrap"><div class="brand"><a href="/">droid<span>actor</span></a></div><nav class="langs" aria-label="Language"><a class="lang-btn" href="/tech-notes/bt-ppt/" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/bt-ppt/" hreflang="ko" lang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/tech-notes/">Tech notes</a><span>/</span><span class="dotori">Dotori</span> Bluetooth PPT Remote</nav>
+  <div class="hero manual-hero"><h1>Presenter command scheduling</h1><p>Turning five large buttons into keyboard reports that remain ordered, bounded, and safe across a Bluetooth disconnect.</p><p class="manual-meta">Source baseline: app 1.0.0 (2) · 14 August 2026</p></div>
+  <nav class="manual-toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#boundary">Control boundary</a></li><li><a href="#mapping">Command mapping</a></li><li><a href="#scheduler">Scheduler rules</a></li><li><a href="#release">Report release</a></li><li><a href="#limits">Verification and limits</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <h2 id="boundary">Control boundary</h2>
+    <p>The app does not automate PowerPoint through a network API. It presents itself as a Bluetooth keyboard, so the host needs no companion software and receives the same standard keys as a physical presenter.</p>
+    <div class="scroll"><table class="spec"><tbody><tr><th>UI and lifecycle</th><td>Kotlin, Jetpack Compose, Android foreground service</td></tr><tr><th>Transport</th><td>Shared Classic HID / BLE HOGP selection</td></tr><tr><th>Command state</th><td>Connected or disconnected, with one in-flight command and a bounded queue</td></tr><tr><th>Host dependency</th><td>The active presentation application must interpret the standard keys</td></tr></tbody></table></div>
+
+    <h2 id="mapping">Five semantic commands</h2>
+    <div class="scroll"><table><thead><tr><th>Action</th><th>HID key sequence</th></tr></thead><tbody><tr><td>Next</td><td>Page Down</td></tr><tr><td>Previous</td><td>Page Up</td></tr><tr><td>Start from beginning</td><td>F5, then Home</td></tr><tr><td>Start from current slide</td><td>Shift + F5</td></tr><tr><td>Stop</td><td>Escape</td></tr></tbody></table></div>
+    <p>These mappings are kept as semantic commands until dispatch. That separation lets the UI describe presentation intent while the protocol layer owns key usage codes and neutral reports.</p>
+
+    <h2 id="scheduler">Scheduler rules</h2>
+    <p>The scheduler permits input immediately after a usable connection; there is no hidden “armed” state. It serializes one command at a time and caps pending work at 16 entries.</p>
+    <ul><li>Adjacent opposite navigation commands cancel before transmission.</li><li>Start commands are accepted only when no command is in flight or waiting.</li><li>Stop clears pending navigation and becomes the next barrier command.</li><li>Disconnect discards waiting commands so old taps cannot replay after reconnect.</li><li>The F5-to-Home sequence has a 500 ms gap so the slideshow window exists before Home arrives.</li></ul>
+
+    <h2 id="release">Pressed and neutral reports</h2>
+    <p>Each key command is sent as one burst containing the pressed report and its neutral release. The presenter therefore disables the generic release watchdog: adding another neutral report would increase traffic without closing a real hold window.</p>
+    <div class="note"><p><strong>Stale commands are more dangerous than dropped commands.</strong> During a presentation, replaying an old Next after reconnection changes visible content, so the queue favors bounded rejection and generation-scoped dispatch.</p></div>
+    <p>The foreground service owns the HID session and participates in the same signed-sibling handoff as the Keyboard and Mouse apps. Shutdown returns neutral state before disconnecting and unregistering.</p>
+
+    <h2 id="limits">Verification and known limits</h2>
+    <p>Tests cover key mappings, queue capacity, opposite-command cancellation, start and stop barriers, battery policy, session routing, lifecycle recovery, and accessibility hit regions.</p>
+    <ul><li>The app cannot know the current PowerPoint slide or whether a slideshow window has focus.</li><li>Key behavior may differ in presentation software that does not follow PowerPoint shortcuts.</li><li>Bluetooth delivery confirms transport activity, not that the application acted on the key.</li></ul>
+    <div class="manual-actions"><a href="/apps/bt-ppt/">Product page</a><a href="/manual/bt-ppt/">User manual</a><a href="/blog/use-android-phone-as-powerpoint-remote/">Presenter field note</a></div>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/tech-notes/">All tech notes</a> · <a href="/manual/bt-ppt/">User manual</a> · <a href="/apps/bt-ppt/">Product page</a> · <a href="/ko/tech-notes/bt-ppt/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div></body></html>

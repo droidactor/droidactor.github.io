@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evidence-based local discovery — Dotori WiFi Scanner tech notes</title>
+<meta name="description" content="Engineering notes on bounded subnet scanning, parallel discovery protocols, fingerprinting, confidence, and local data handling in Dotori WiFi Scanner.">
+<link rel="canonical" href="https://droidactor.github.io/tech-notes/wifi-scout/"><link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/wifi-scout/"><link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/wifi-scout/"><link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/wifi-scout/">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR"><meta property="og:url" content="https://droidactor.github.io/tech-notes/wifi-scout/"><meta property="og:title" content="Evidence-based local discovery"><meta property="og:description" content="Discovery is parallel and bounded; classification exposes its evidence and confidence."><meta name="twitter:card" content="summary"><link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Evidence-based local discovery — Dotori WiFi Scanner tech notes","url":"https://droidactor.github.io/tech-notes/wifi-scout/","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"en","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"Dotori WiFi Scanner","url":"https://droidactor.github.io/apps/wifi-scout/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/"},{"@type":"ListItem","position":2,"name":"Tech notes","item":"https://droidactor.github.io/tech-notes/"},{"@type":"ListItem","position":3,"name":"Dotori WiFi Scanner","item":"https://droidactor.github.io/tech-notes/wifi-scout/"}]}]}</script>
+</head>
+<body><header class="top"><div class="wrap"><div class="brand"><a href="/">droid<span>actor</span></a></div><nav class="langs" aria-label="Language"><a class="lang-btn" href="/tech-notes/wifi-scout/" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/wifi-scout/" hreflang="ko" lang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/tech-notes/">Tech notes</a><span>/</span><span class="dotori">Dotori</span> WiFi Scanner</nav>
+  <div class="hero manual-hero"><h1>Evidence-based local discovery</h1><p>A responsive IP is only the beginning. Useful identification requires multiple probes, bounded concurrency, and an honest confidence model.</p><p class="manual-meta">Source baseline: app 1.0.1 (3) · 14 August 2026</p></div>
+  <nav class="manual-toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#pipeline">Scan pipeline</a></li><li><a href="#discovery">Discovery sources</a></li><li><a href="#classification">Classification</a></li><li><a href="#resources">Resource and privacy bounds</a></li><li><a href="#limits">Verification and limits</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <h2 id="pipeline">Two-phase scan pipeline</h2>
+    <p>The Flutter app first performs preflight to identify the active network, phone address, gateway, and candidate CIDR. Discovery finds responsive hosts; fingerprinting then gathers deeper evidence only for those hosts. Results stream to the UI as each device row becomes available.</p>
+    <div class="scroll"><table class="spec"><tbody><tr><th>Fast and balanced profiles</th><td>16 concurrent host tasks, 8 concurrent fingerprint tasks</td></tr><tr><th>Per-probe timeout</th><td>1.2 seconds fast; 1.8 seconds balanced and accurate</td></tr><tr><th>Accurate profile</th><td>Adds HTTP content analysis</td></tr><tr><th>Cancellation</th><td>Shared cancel token stops new work and progress publication</td></tr></tbody></table></div>
+
+    <h2 id="discovery">Multiple discovery sources</h2>
+    <p>TCP liveness checks run alongside UDP and native reachability work so one silent protocol does not erase a real device. The scanner merges evidence by IP and keeps protocol-only responders inside the requested CIDR.</p>
+    <ul><li>Selected TCP ports cover web, SSH, RTSP, Windows, mobile, printer, and industrial services.</li><li>SSDP/UPnP, media discovery, mobile-device discovery, printer discovery, and LS PLC browse run in parallel.</li><li>Native reachability can retain a host even when every selected TCP port is closed.</li><li>The phone's own IP is inserted explicitly so the local endpoint is visible.</li></ul>
+
+    <h2 id="classification">Evidence before labels</h2>
+    <p>Classification consumes a probe summary rather than one port number. It combines open ports, banners, HTTP signatures, host names, MAC OUI, gateway identity, SSDP and mDNS metadata, printer records, media records, and vendor-specific industrial responses.</p>
+    <div class="note"><p><strong>Confirmed and candidate are different product states.</strong> A device type is confirmed only when the evidence contract is strong enough; otherwise the UI preserves uncertainty instead of presenting a guess as fact.</p></div>
+    <p>Each row carries localized evidence text alongside its kind and confidence. This makes a wrong classification diagnosable and allows future rules to be tested against the same input facts.</p>
+
+    <h2 id="resources">Resource and privacy boundaries</h2>
+    <p>Concurrency is bounded at both discovery and fingerprint stages. The fast profile's initial TCP fan-out is capped rather than multiplying every host by every port at once. Printer and content probes have separate smaller limits.</p>
+    <ul><li>Scanning and classification happen on the phone.</li><li>Sessions are saved locally; export happens only through an explicit user action.</li><li>The app does not send the device inventory to a droidactor server.</li><li>Results are observations from one time and network, not a permanent asset registry.</li></ul>
+
+    <h2 id="limits">Verification and known limits</h2>
+    <p>Tests cover CIDR enumeration, bounded pools, cancellation, protocol parsers, OUI lookup, device models, classification rules, export, session persistence, and UI progress.</p>
+    <ul><li>Client isolation, firewalls, sleep, and rate limiting can hide devices.</li><li>An open port is evidence of a service, not proof of ownership or authorization.</li><li>Vendor and device labels can become stale as firmware and network roles change.</li><li>Scanning must be limited to networks the user owns or is authorized to inspect.</li></ul>
+    <div class="manual-actions"><a href="/apps/wifi-scout/">Product page</a><a href="/manual/wifi-scout/">User manual</a><a href="/blog/find-devices-on-wifi-from-android/">Discovery field note</a></div>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/tech-notes/">All tech notes</a> · <a href="/manual/wifi-scout/">User manual</a> · <a href="/apps/wifi-scout/">Product page</a> · <a href="/ko/tech-notes/wifi-scout/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div></body></html>

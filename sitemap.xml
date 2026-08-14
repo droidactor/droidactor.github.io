@@ -256,7 +256,7 @@
 
   <url>
     <loc>https://droidactor.github.io/apps/yt-downloader/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/yt-downloader/"/>
@@ -265,7 +265,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/apps/yt-downloader/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/yt-downloader/"/>
@@ -311,13 +311,147 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/manual/lgtv/"/>
   </url>
 
+  <!-- Tech notes. Six app-specific engineering notes plus the bilingual index pair. -->
+  <url>
+    <loc>https://droidactor.github.io/tech-notes/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/tech-notes/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/tech-notes/bt-keyboard/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-keyboard/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/tech-notes/bt-keyboard/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-keyboard/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/tech-notes/bt-ppt/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-ppt/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-ppt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-ppt/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/tech-notes/bt-ppt/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-ppt/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-ppt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-ppt/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/tech-notes/bt-mouse/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-mouse/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-mouse/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-mouse/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/tech-notes/bt-mouse/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-mouse/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-mouse/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-mouse/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/tech-notes/wifi-scout/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/wifi-scout/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/wifi-scout/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/wifi-scout/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/tech-notes/wifi-scout/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/wifi-scout/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/wifi-scout/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/wifi-scout/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/tech-notes/ssh-scout/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/ssh-scout/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/ssh-scout/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/ssh-scout/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/tech-notes/ssh-scout/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/ssh-scout/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/ssh-scout/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/ssh-scout/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/tech-notes/lgtv/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/lgtv/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/lgtv/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/lgtv/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/tech-notes/lgtv/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/lgtv/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/lgtv/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/lgtv/"/>
+  </url>
+
   <!--
     Blog. One <url> pair per post, newest first, under the index pair.
     blog/_post-template.html is deliberately absent: it carries noindex and is not a page.
   -->
   <url>
     <loc>https://droidactor.github.io/blog/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
@@ -326,7 +460,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
@@ -450,7 +584,7 @@
 
   <url>
     <loc>https://droidactor.github.io/blog/find-ls-plc-ip-address/</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/find-ls-plc-ip-address/"/>
@@ -459,7 +593,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/find-ls-plc-ip-address/</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/find-ls-plc-ip-address/"/>
@@ -469,7 +603,7 @@
 
   <url>
     <loc>https://droidactor.github.io/blog/identify-industrial-devices-by-port/</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/identify-industrial-devices-by-port/"/>
@@ -478,7 +612,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/identify-industrial-devices-by-port/</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/identify-industrial-devices-by-port/"/>

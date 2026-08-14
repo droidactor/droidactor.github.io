@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bounded pointer input — Dotori Bluetooth Mouse tech notes</title>
+<meta name="description" content="Engineering notes on pointer coalescing, click timing, scroll encoding, queue boundaries, and HID lifecycle safety in Dotori Bluetooth Mouse.">
+<link rel="canonical" href="https://droidactor.github.io/tech-notes/bt-mouse/"><link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-mouse/"><link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-mouse/"><link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-mouse/">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR"><meta property="og:url" content="https://droidactor.github.io/tech-notes/bt-mouse/"><meta property="og:title" content="Bounded pointer input"><meta property="og:description" content="How motion, buttons, and wheels keep their order without building an unbounded HID backlog."><meta name="twitter:card" content="summary"><link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Bounded pointer input — Dotori Bluetooth Mouse tech notes","url":"https://droidactor.github.io/tech-notes/bt-mouse/","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"en","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"Dotori Bluetooth Mouse","url":"https://droidactor.github.io/apps/bt-mouse/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/"},{"@type":"ListItem","position":2,"name":"Tech notes","item":"https://droidactor.github.io/tech-notes/"},{"@type":"ListItem","position":3,"name":"Dotori Bluetooth Mouse","item":"https://droidactor.github.io/tech-notes/bt-mouse/"}]}]}</script>
+</head>
+<body><header class="top"><div class="wrap"><div class="brand"><a href="/">droid<span>actor</span></a></div><nav class="langs" aria-label="Language"><a class="lang-btn" href="/tech-notes/bt-mouse/" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/bt-mouse/" hreflang="ko" lang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/tech-notes/">Tech notes</a><span>/</span><span class="dotori">Dotori</span> Bluetooth Mouse</nav>
+  <div class="hero manual-hero"><h1>Bounded pointer input</h1><p>A touch surface can produce events faster than Bluetooth can send reports. The pipeline must preserve meaning without preserving an unlimited backlog.</p><p class="manual-meta">Source baseline: app 1.0.0 (3) · 14 August 2026</p></div>
+  <nav class="manual-toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#boundary">Input boundary</a></li><li><a href="#pipeline">Motion pipeline</a></li><li><a href="#semantics">Clicks and wheels</a></li><li><a href="#lifecycle">Lifecycle safety</a></li><li><a href="#limits">Verification and limits</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <h2 id="boundary">Input boundary</h2>
+    <p>The Compose control surface produces semantic requests—motion, button state, clicks, and horizontal scroll—rather than raw report bytes. A foreground service validates those requests and passes them to the shared HID session.</p>
+    <div class="scroll"><table class="spec"><tbody><tr><th>Transport</th><td>Classic HID Device with BLE HOGP fallback</td></tr><tr><th>Report range</th><td>Each relative motion component is segmented into signed 8-bit HID deltas</td></tr><tr><th>Queue model</th><td>Bounded ingress, semantic, and pending-command capacities</td></tr><tr><th>Persistent state</th><td>Verified hosts and local control preferences</td></tr></tbody></table></div>
+
+    <h2 id="pipeline">Motion coalescing without reordering</h2>
+    <p>Pointer movement is coalesced while it remains adjacent. A button, click, or horizontal-scroll boundary flushes pending movement first, preventing the queue from moving a click ahead of the pointer position that selected its target.</p>
+    <ul><li>Large motion is split into report-sized segments.</li><li>One worker drains batches, so every touch event does not create a new sending coroutine.</li><li>Input arriving in the same UI frame can merge before the worker starts.</li><li>When a bounded batch is full, stale remainder is counted as dropped motion rather than replayed later.</li></ul>
+
+    <h2 id="semantics">Buttons, clicks, and wheels</h2>
+    <p>Button state is represented as a three-button snapshot. A release for an already accepted press is priority work, because queue pressure must never leave the host button stuck down. Single and double clicks expand into deterministic down, report, hold, up, and gap commands.</p>
+    <div class="scroll"><table><thead><tr><th>Gesture</th><th>Protocol treatment</th></tr></thead><tbody><tr><td>Single click</td><td>60 ms held press followed by release</td></tr><tr><td>Double click</td><td>Two clicks with a 100 ms inter-click gap</td></tr><tr><td>Vertical scroll</td><td>Mouse wheel in the relative mouse report</td></tr><tr><td>Horizontal scroll</td><td>Temporary Shift modifier plus wheel, then restore the user's modifier mask</td></tr></tbody></table></div>
+
+    <h2 id="lifecycle">Session and lifecycle safety</h2>
+    <p>The service owns the transport beyond one Activity frame and exposes connection state as flows. Verified hosts are kept in Android DataStore. The three Dotori HID apps coordinate signed-sibling ownership so only one active control surface claims the scarce device role.</p>
+    <ul><li>A minimum report verifies a newly connected host.</li><li>Session generation and service-instance checks reject late callbacks.</li><li>Shutdown sends neutral state, disconnects, and unregisters in order.</li><li>Background-start restrictions are surfaced instead of hidden behind a false connected state.</li></ul>
+
+    <h2 id="limits">Verification and known limits</h2>
+    <p>Tests cover accumulator capacity, motion segmentation and dropping, button snapshots, click timing, horizontal-scroll modifier restoration, reconnect policy, sibling handoff, persistence fallback, and lifecycle routing.</p>
+    <ul><li>Horizontal scrolling works only where the host application interprets Shift + wheel that way.</li><li>Pointer acceleration and edge behavior are controlled by the host.</li><li>Dropping excess stale movement is intentional under sustained overload.</li></ul>
+    <div class="manual-actions"><a href="/apps/bt-mouse/">Product page</a><a href="/manual/bt-mouse/">User manual</a><a href="/blog/use-android-phone-as-bluetooth-mouse/">Mouse field note</a></div>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/tech-notes/">All tech notes</a> · <a href="/manual/bt-mouse/">User manual</a> · <a href="/apps/bt-mouse/">Product page</a> · <a href="/ko/tech-notes/bt-mouse/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div></body></html>

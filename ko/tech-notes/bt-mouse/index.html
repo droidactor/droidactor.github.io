@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>제한된 포인터 입력 — 도토리 블루투스 마우스 기술 노트</title>
+<meta name="description" content="도토리 블루투스 마우스의 이동량 합치기, 클릭 시점, 스크롤 인코딩, 대기열 경계와 HID 수명 주기 안전성에 관한 개발 기록입니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/tech-notes/bt-mouse/"><link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-mouse/"><link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-mouse/"><link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-mouse/">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="ko_KR"><meta property="og:locale:alternate" content="en_US"><meta property="og:url" content="https://droidactor.github.io/ko/tech-notes/bt-mouse/"><meta property="og:title" content="제한된 포인터 입력"><meta property="og:description" content="이동·버튼·휠의 순서를 지키면서 끝없이 쌓이는 HID 대기 작업을 만들지 않는 방법입니다."><meta name="twitter:card" content="summary"><link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"제한된 포인터 입력 — 도토리 블루투스 마우스 기술 노트","url":"https://droidactor.github.io/ko/tech-notes/bt-mouse/","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"ko","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"도토리 블루투스 마우스","url":"https://droidactor.github.io/ko/apps/bt-mouse/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/ko/"},{"@type":"ListItem","position":2,"name":"기술 노트","item":"https://droidactor.github.io/ko/tech-notes/"},{"@type":"ListItem","position":3,"name":"도토리 블루투스 마우스","item":"https://droidactor.github.io/ko/tech-notes/bt-mouse/"}]}]}</script>
+</head>
+<body><header class="top"><div class="wrap"><div class="brand"><a href="/ko/">droid<span>actor</span></a></div><nav class="langs" aria-label="언어"><a class="lang-btn" href="/tech-notes/bt-mouse/" hreflang="en" lang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/bt-mouse/" aria-current="page" hreflang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/tech-notes/">기술 노트</a><span>/</span><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스</nav>
+  <div class="hero manual-hero"><h1>제한된 포인터 입력</h1><p>터치 면은 Bluetooth가 리포트를 보내는 속도보다 많은 이벤트를 만들 수 있습니다. 작업이 끝없이 쌓이지 않으면서 입력 의미를 지키는 처리 흐름을 설명합니다.</p><p class="manual-meta">소스 기준: 앱 1.0.0 (3) · 2026년 8월 14일</p></div>
+  <nav class="manual-toc" aria-label="이 페이지의 내용"><strong>이 페이지의 내용</strong><ol><li><a href="#boundary">입력 경계</a></li><li><a href="#pipeline">이동 처리</a></li><li><a href="#semantics">클릭과 휠</a></li><li><a href="#lifecycle">수명 주기 안전성</a></li><li><a href="#limits">검증과 제약</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <h2 id="boundary">입력 경계</h2>
+    <p>Compose 조작 화면은 원시 리포트 바이트 대신 이동, 버튼 상태, 클릭, 가로 스크롤이라는 의미 요청을 만듭니다. 포그라운드 서비스가 요청을 검증한 뒤 공용 HID 세션에 전달합니다.</p>
+    <div class="scroll"><table class="spec"><tbody><tr><th>전송 방식</th><td>Classic HID Device와 BLE HOGP 대체 경로</td></tr><tr><th>리포트 범위</th><td>상대 이동의 각 성분을 부호 있는 8비트 HID 변화량으로 분할</td></tr><tr><th>대기열 모델</th><td>유입·의미·대기 명령 용량을 모두 제한</td></tr><tr><th>영속 상태</th><td>확인된 호스트와 로컬 조작 설정</td></tr></tbody></table></div>
+
+    <h2 id="pipeline">순서를 바꾸지 않는 이동량 합치기</h2>
+    <p>포인터 이동이 이어지는 동안에는 값을 합칩니다. 버튼·클릭·가로 스크롤 경계를 만나면 그 전에 대기 이동을 먼저 비워, 클릭이 대상 위치를 정한 이동보다 앞서지 않게 합니다.</p>
+    <ul><li>큰 이동량은 리포트 범위에 맞는 여러 구간으로 나눕니다.</li><li>작업자 하나가 묶음을 비워 터치 이벤트마다 코루틴이 생기지 않습니다.</li><li>같은 UI 프레임에 들어온 입력은 작업자가 시작되기 전에 합칠 수 있습니다.</li><li>제한된 묶음이 가득 차면 오래된 나머지 이동을 나중에 재생하지 않고 폐기 통계로 남깁니다.</li></ul>
+
+    <h2 id="semantics">버튼, 클릭과 휠</h2>
+    <p>버튼 상태는 세 버튼의 한 시점 상태로 표현합니다. 이미 받은 누름의 해제는 우선 작업입니다. 대기열이 가득 찼다는 이유로 호스트에 버튼이 눌린 채 남아서는 안 되기 때문입니다. 한 번·두 번 클릭은 정해진 누름, 리포트, 유지, 해제, 간격 명령으로 펼칩니다.</p>
+    <div class="scroll"><table><thead><tr><th>제스처</th><th>프로토콜 처리</th></tr></thead><tbody><tr><td>한 번 클릭</td><td>60ms 누른 뒤 해제</td></tr><tr><td>두 번 클릭</td><td>100ms 간격의 클릭 두 번</td></tr><tr><td>세로 스크롤</td><td>상대 마우스 리포트의 휠</td></tr><tr><td>가로 스크롤</td><td>Shift 보조 키와 휠을 함께 보내고 사용자의 보조 키 상태 복원</td></tr></tbody></table></div>
+
+    <h2 id="lifecycle">세션과 수명 주기 안전성</h2>
+    <p>서비스가 한 화면보다 오래 전송 역할을 소유하고 연결 상태를 흐름으로 공개합니다. 확인된 호스트는 Android DataStore에 둡니다. 도토리 HID 앱 3종은 같은 서명의 형제 앱 소유권을 조정해 제한된 기기 역할을 하나의 활성 조작 화면만 사용합니다.</p>
+    <ul><li>최소 리포트로 새 호스트 연결을 확인합니다.</li><li>세션 세대와 서비스 인스턴스 검사로 늦게 도착한 콜백을 버립니다.</li><li>종료할 때 중립 상태·연결 해제·등록 해제를 순서대로 실행합니다.</li><li>백그라운드 시작 제약을 가짜 연결 상태로 숨기지 않고 화면에 반영합니다.</li></ul>
+
+    <h2 id="limits">검증과 확인된 제약</h2>
+    <p>누산기 용량, 이동 분할과 폐기, 버튼 상태, 클릭 시점, 가로 스크롤 보조 키 복원, 재연결 정책, 형제 앱 소유권 넘김, 영속화 대체 경로와 수명 주기 전달을 시험으로 확인합니다.</p>
+    <ul><li>가로 스크롤은 Shift + 휠을 그렇게 해석하는 호스트 앱에서만 동작합니다.</li><li>포인터 가속과 화면 가장자리 동작은 호스트가 결정합니다.</li><li>지속적인 과부하에서 오래된 남은 이동을 버리는 것은 의도한 동작입니다.</li></ul>
+    <div class="manual-actions"><a href="/ko/apps/bt-mouse/">제품 페이지</a><a href="/ko/manual/bt-mouse/">사용 설명서</a><a href="/ko/blog/use-android-phone-as-bluetooth-mouse/">마우스 현장 노트</a></div>
+  </article>
+  <footer><p>droidactor의 Android 앱입니다.</p><p><a href="/ko/tech-notes/">전체 기술 노트</a> · <a href="/ko/manual/bt-mouse/">사용 설명서</a> · <a href="/ko/apps/bt-mouse/">제품 페이지</a> · <a href="/tech-notes/bt-mouse/" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div></body></html>

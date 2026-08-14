@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>발표 명령 순서 제어 — 도토리 PPT 리모컨 기술 노트</title>
+<meta name="description" content="도토리 PPT 리모컨의 발표 동작과 HID 키 매핑, 제한된 명령 대기열, 키 해제와 오래된 입력 폐기에 관한 개발 기록입니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/tech-notes/bt-ppt/"><link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-ppt/"><link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-ppt/"><link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-ppt/">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="ko_KR"><meta property="og:locale:alternate" content="en_US"><meta property="og:url" content="https://droidactor.github.io/ko/tech-notes/bt-ppt/"><meta property="og:title" content="발표 명령 순서 제어"><meta property="og:description" content="발표 동작 5개를 하나의 제한된 HID 명령 처리 흐름으로 다룹니다."><meta name="twitter:card" content="summary"><link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"발표 명령 순서 제어 — 도토리 PPT 리모컨 기술 노트","url":"https://droidactor.github.io/ko/tech-notes/bt-ppt/","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"ko","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"도토리 PPT 리모컨","url":"https://droidactor.github.io/ko/apps/bt-ppt/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/ko/"},{"@type":"ListItem","position":2,"name":"기술 노트","item":"https://droidactor.github.io/ko/tech-notes/"},{"@type":"ListItem","position":3,"name":"도토리 PPT 리모컨","item":"https://droidactor.github.io/ko/tech-notes/bt-ppt/"}]}]}</script>
+</head>
+<body><header class="top"><div class="wrap"><div class="brand"><a href="/ko/">droid<span>actor</span></a></div><nav class="langs" aria-label="언어"><a class="lang-btn" href="/tech-notes/bt-ppt/" hreflang="en" lang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/bt-ppt/" aria-current="page" hreflang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/tech-notes/">기술 노트</a><span>/</span><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨</nav>
+  <div class="hero manual-hero"><h1>발표 명령 순서 제어</h1><p>큰 버튼 5개의 입력을 Bluetooth 연결 해제 전후에도 순서와 한계를 지키는 키보드 리포트로 바꾸는 과정입니다.</p><p class="manual-meta">소스 기준: 앱 1.0.0 (2) · 2026년 8월 14일</p></div>
+  <nav class="manual-toc" aria-label="이 페이지의 내용"><strong>이 페이지의 내용</strong><ol><li><a href="#boundary">제어 경계</a></li><li><a href="#mapping">명령 매핑</a></li><li><a href="#scheduler">순서 제어 규칙</a></li><li><a href="#release">리포트 해제</a></li><li><a href="#limits">검증과 제약</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <h2 id="boundary">제어 경계</h2>
+    <p>네트워크 API로 PowerPoint를 자동화하지 않습니다. 앱이 Bluetooth 키보드로 동작하므로 상대 기기에 별도 프로그램이 필요 없고, 물리 발표 리모컨과 같은 표준 키를 보냅니다.</p>
+    <div class="scroll"><table class="spec"><tbody><tr><th>UI와 수명 주기</th><td>Kotlin, Jetpack Compose, Android 포그라운드 서비스</td></tr><tr><th>전송 방식</th><td>공용 Classic HID / BLE HOGP 선택</td></tr><tr><th>명령 상태</th><td>연결/해제, 실행 중 1개와 제한된 대기열</td></tr><tr><th>호스트 의존성</th><td>활성 발표 앱이 표준 키를 해석해야 함</td></tr></tbody></table></div>
+
+    <h2 id="mapping">의미 명령 5개</h2>
+    <div class="scroll"><table><thead><tr><th>동작</th><th>HID 키 순서</th></tr></thead><tbody><tr><td>다음</td><td>Page Down</td></tr><tr><td>이전</td><td>Page Up</td></tr><tr><td>처음부터 시작</td><td>F5, 이어서 Home</td></tr><tr><td>현재 슬라이드부터 시작</td><td>Shift + F5</td></tr><tr><td>종료</td><td>Escape</td></tr></tbody></table></div>
+    <p>전송 직전까지 의미 명령으로 유지합니다. UI는 발표 의도를 다루고 프로토콜 계층은 키 사용 코드와 중립 리포트를 소유합니다.</p>
+
+    <h2 id="scheduler">순서 제어 규칙</h2>
+    <p>사용 가능한 연결이 생기면 숨은 준비 단계 없이 바로 입력을 받습니다. 한 번에 한 명령만 보내고 대기 작업은 16개로 제한합니다.</p>
+    <ul><li>서로 반대인 인접 이동 명령은 전송 전에 상쇄합니다.</li><li>시작 명령은 실행·대기 중인 명령이 없을 때만 받습니다.</li><li>종료는 대기 중인 이동을 비우고 다음 경계 명령이 됩니다.</li><li>연결이 끊기면 오래된 탭이 재연결 후 재생되지 않도록 대기 명령을 버립니다.</li><li>슬라이드 쇼 창이 생긴 뒤 Home이 도달하도록 F5와 Home 사이에 500ms를 둡니다.</li></ul>
+
+    <h2 id="release">눌림과 중립 리포트</h2>
+    <p>키 명령 하나를 눌림 리포트와 중립 해제가 함께 든 묶음으로 보냅니다. 실제로 누른 채 기다리는 구간이 없으므로 일반 해제 감시기는 끕니다. 중립 리포트를 한 번 더 보내면 키가 눌린 채 남는 문제를 더 막지 못하면서 전송량만 늘어납니다.</p>
+    <div class="note"><p><strong>오래된 명령은 누락된 명령보다 위험합니다.</strong> 재연결 후 이전 ‘다음’이 재생되면 화면 내용이 바뀌므로 대기열은 제한된 거절과 세션 범위 전송을 우선합니다.</p></div>
+    <p>포그라운드 서비스가 HID 세션을 소유하고 Keyboard·Mouse 앱과 같은 형제 앱 소유권 넘김을 따릅니다. 종료 시 중립 상태를 보낸 뒤 연결과 등록을 해제합니다.</p>
+
+    <h2 id="limits">검증과 확인된 제약</h2>
+    <p>키 매핑, 대기열 용량, 반대 명령 상쇄, 시작·종료 경계, 배터리 정책, 서비스 전달 경로, 수명 주기 복구와 접근성 터치 영역을 시험으로 확인합니다.</p>
+    <ul><li>현재 슬라이드나 PowerPoint 슬라이드 쇼 창의 초점 여부를 읽을 수 없습니다.</li><li>PowerPoint 단축키를 따르지 않는 발표 프로그램에서는 키 동작이 달라질 수 있습니다.</li><li>Bluetooth 전송 성공은 발표 앱이 키를 처리했다는 확인이 아닙니다.</li></ul>
+    <div class="manual-actions"><a href="/ko/apps/bt-ppt/">제품 페이지</a><a href="/ko/manual/bt-ppt/">사용 설명서</a><a href="/ko/blog/use-android-phone-as-powerpoint-remote/">발표 현장 노트</a></div>
+  </article>
+  <footer><p>droidactor의 Android 앱입니다.</p><p><a href="/ko/tech-notes/">전체 기술 노트</a> · <a href="/ko/manual/bt-ppt/">사용 설명서</a> · <a href="/ko/apps/bt-ppt/">제품 페이지</a> · <a href="/tech-notes/bt-ppt/" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div></body></html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bluetooth HID and Korean input — Dotori Bluetooth Keyboard tech notes</title>
+<meta name="description" content="Engineering notes on HID transport selection, host profiles, Hangul decomposition, report delivery, and session ownership in Dotori Bluetooth Keyboard.">
+<link rel="canonical" href="https://droidactor.github.io/tech-notes/bt-keyboard/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-keyboard/">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/tech-notes/bt-keyboard/"><meta property="og:title" content="Bluetooth HID and Korean input"><meta property="og:description" content="How the keyboard chooses a transport, models a host IME, and turns text into bounded HID reports."><meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Bluetooth HID and Korean input — Dotori Bluetooth Keyboard tech notes","url":"https://droidactor.github.io/tech-notes/bt-keyboard/","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"en","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"Dotori Bluetooth Keyboard","url":"https://droidactor.github.io/apps/bt-keyboard/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/"},{"@type":"ListItem","position":2,"name":"Tech notes","item":"https://droidactor.github.io/tech-notes/"},{"@type":"ListItem","position":3,"name":"Dotori Bluetooth Keyboard","item":"https://droidactor.github.io/tech-notes/bt-keyboard/"}]}]}</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand"><a href="/">droid<span>actor</span></a></div><nav class="langs" aria-label="Language"><a class="lang-btn" href="/tech-notes/bt-keyboard/" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/bt-keyboard/" hreflang="ko" lang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/tech-notes/">Tech notes</a><span>/</span><span class="dotori">Dotori</span> Bluetooth Keyboard</nav>
+  <div class="hero manual-hero"><h1>Bluetooth HID and Korean input</h1><p>Why a phone keyboard needs both a transport state machine and an explicit model of what the receiving host will do.</p><p class="manual-meta">Source baseline: app 1.0.0 (1) · 14 August 2026</p></div>
+  <nav class="manual-toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#baseline">System boundary</a></li><li><a href="#transport">Transport selection</a></li><li><a href="#text">Text encoding</a></li><li><a href="#session">Session safety</a></li><li><a href="#limits">Verification and limits</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <h2 id="baseline">System boundary</h2>
+    <p>The phone is the Bluetooth HID device; the PC, TV, or tablet is the host. The app sends keyboard and mouse reports, but it cannot inspect the host's focused field or reliably read its IME mode. That boundary is the reason calibration and host profiles are first-class state rather than UI preferences.</p>
+    <div class="scroll"><table class="spec"><tbody><tr><th>UI and lifecycle</th><td>Kotlin, Jetpack Compose, Android foreground service</td></tr><tr><th>HID payload</th><td>Shared keyboard-and-mouse descriptor with separate report IDs</td></tr><tr><th>Persistent state</th><td>Verified hosts, selected profile, calibration and app preferences</td></tr><tr><th>Network dependency</th><td>None for HID input; ads are a separate optional runtime</td></tr></tbody></table></div>
+
+    <h2 id="transport">Transport selection</h2>
+    <p>The shared HID layer asks Android for the Classic Bluetooth HID Device profile first. If that profile is unavailable after a bounded grace period, it can select BLE HOGP instead. The chosen transport is published as state so pairing, reconnect, and discoverability rules do not guess which path is active.</p>
+    <ul><li>Classic uses Android's HID Device profile and SDP identity.</li><li>BLE HOGP owns a GATT server and has different advertising and reconnect rules.</li><li>The app never runs both transports as independent sessions for one control surface.</li><li>A minimum neutral report verifies that registration alone has become a usable host connection.</li></ul>
+
+    <h2 id="text">Text encoding and host profiles</h2>
+    <p>Text is normalized, divided into English and Korean runs, and compiled into an encoding plan before reports are sent. A modern precomposed Hangul syllable is decomposed into two-set jamo keystrokes; English characters use a US key map. The plan also contains required IME transitions and its final assumed IME state.</p>
+    <div class="note"><p><strong>The app models, rather than observes, the host IME.</strong> Keyboard LED output can refine the assumption on supported hosts, but calibration remains necessary because platforms map language-switch keys differently.</p></div>
+    <p>Profiles make those differences explicit: Windows Korean, Windows US, iOS US, and Android TV US select key maps and mode-switch candidates. Unsupported code points reject the plan before partial text is emitted.</p>
+
+    <h2 id="session">Session ownership and safe release</h2>
+    <p>A foreground service owns registration, host connection, and report dispatch. Keyboard, PPT, and Mouse are separate apps but Android exposes a scarce HID role, so signed sibling apps use a handoff contract: the new owner requests release and the old owner follows its normal shutdown path.</p>
+    <ul><li>Input is accepted against a current session token so stale work cannot cross reconnect boundaries.</li><li>Pressed-key state is tracked and neutral reports are sent during normal release.</li><li>Disconnect, unregister, and published UI state follow one ordered shutdown path.</li><li>Recovery can quarantine an uncertain session instead of silently continuing to type.</li></ul>
+
+    <h2 id="limits">Verification and known limits</h2>
+    <p>Unit and integration tests cover Hangul decomposition, key maps, encoding plans, descriptor reports, queue ordering, reconnect policy, sibling handoff, process recreation, and calibration decisions. Device behavior still depends on the phone exposing a usable HID transport and the host honoring the advertised descriptor.</p>
+    <ul><li>The app cannot guarantee which field has focus on the host.</li><li>The phone's IME indicator can differ from the actual host IME.</li><li>Only characters covered by the selected key maps and modern Hangul plan are sent as text.</li><li>Host applications decide whether horizontal scrolling and special keys have an effect.</li></ul>
+    <div class="manual-actions"><a href="/apps/bt-keyboard/">Product page</a><a href="/manual/bt-keyboard/">User manual</a><a href="/blog/type-korean-over-bluetooth-hid/">Korean HID field note</a></div>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/tech-notes/">All tech notes</a> · <a href="/manual/bt-keyboard/">User manual</a> · <a href="/apps/bt-keyboard/">Product page</a> · <a href="/ko/tech-notes/bt-keyboard/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

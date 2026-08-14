@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>근거 기반 로컬 탐색 — 도토리 와이파이 스캐너 기술 노트</title>
+<meta name="description" content="도토리 와이파이 스캐너의 제한된 서브넷 검색, 병렬 탐색 프로토콜, 장비 식별 근거, 신뢰도와 로컬 자료 처리에 관한 개발 기록입니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/tech-notes/wifi-scout/"><link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/wifi-scout/"><link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/wifi-scout/"><link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/wifi-scout/">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="ko_KR"><meta property="og:locale:alternate" content="en_US"><meta property="og:url" content="https://droidactor.github.io/ko/tech-notes/wifi-scout/"><meta property="og:title" content="근거 기반 로컬 탐색"><meta property="og:description" content="탐색은 병렬이지만 제한돼 있고, 분류는 근거와 신뢰도를 함께 공개합니다."><meta name="twitter:card" content="summary"><link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"근거 기반 로컬 탐색 — 도토리 와이파이 스캐너 기술 노트","url":"https://droidactor.github.io/ko/tech-notes/wifi-scout/","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"ko","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"도토리 와이파이 스캐너","url":"https://droidactor.github.io/ko/apps/wifi-scout/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/ko/"},{"@type":"ListItem","position":2,"name":"기술 노트","item":"https://droidactor.github.io/ko/tech-notes/"},{"@type":"ListItem","position":3,"name":"도토리 와이파이 스캐너","item":"https://droidactor.github.io/ko/tech-notes/wifi-scout/"}]}]}</script>
+</head>
+<body><header class="top"><div class="wrap"><div class="brand"><a href="/ko/">droid<span>actor</span></a></div><nav class="langs" aria-label="언어"><a class="lang-btn" href="/tech-notes/wifi-scout/" hreflang="en" lang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/wifi-scout/" aria-current="page" hreflang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/tech-notes/">기술 노트</a><span>/</span><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 와이파이 스캐너</nav>
+  <div class="hero manual-hero"><h1>근거 기반 로컬 탐색</h1><p>응답하는 IP는 시작일 뿐입니다. 유용한 식별에는 여러 탐침, 제한된 동시성과 정직한 신뢰도 모델이 필요합니다.</p><p class="manual-meta">소스 기준: 앱 1.0.1 (3) · 2026년 8월 14일</p></div>
+  <nav class="manual-toc" aria-label="이 페이지의 내용"><strong>이 페이지의 내용</strong><ol><li><a href="#pipeline">검색 처리 흐름</a></li><li><a href="#discovery">탐색 출처</a></li><li><a href="#classification">분류</a></li><li><a href="#resources">자원·개인정보 경계</a></li><li><a href="#limits">검증과 제약</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <h2 id="pipeline">2단계 검색 처리 흐름</h2>
+    <p>Flutter 앱은 먼저 활성 네트워크, 폰 주소, 게이트웨이와 후보 CIDR을 확인합니다. 탐색 단계가 응답 호스트를 찾고, 장비 분석 단계는 그 호스트에만 더 깊은 근거를 모읍니다. 각 장비 행이 준비되는 대로 UI에 보냅니다.</p>
+    <div class="scroll"><table class="spec"><tbody><tr><th>신속·균형 프로필</th><td>호스트 16개, 장비 분석 8개 동시 작업</td></tr><tr><th>탐침 제한 시간</th><td>신속 1.2초, 균형·정확 1.8초</td></tr><tr><th>정확 프로필</th><td>HTTP 본문 분석 추가</td></tr><tr><th>취소</th><td>공유 취소 토큰으로 새 작업과 진행 상태 공개 중단</td></tr></tbody></table></div>
+
+    <h2 id="discovery">여러 탐색 출처</h2>
+    <p>TCP 응답 확인과 UDP·운영체제 도달성 확인을 병렬로 실행해 한 프로토콜에 침묵하는 실제 장비를 빠뜨리지 않습니다. IP를 기준으로 근거를 합치고 특정 프로토콜에만 응답한 장비도 요청 CIDR 안이라면 결과에 넣습니다.</p>
+    <ul><li>선택 TCP 포트는 웹·SSH·RTSP·Windows·모바일·프린터·산업용 서비스를 포함합니다.</li><li>SSDP/UPnP, 미디어, 모바일 장비, 프린터와 LS PLC 검색을 병렬 실행합니다.</li><li>선택 TCP 포트가 모두 닫혀도 운영체제 도달성 확인에 응답한 호스트를 유지할 수 있습니다.</li><li>폰 자신의 IP는 로컬 끝점이 보이도록 명시적으로 추가합니다.</li></ul>
+
+    <h2 id="classification">이름표보다 근거 먼저</h2>
+    <p>분류는 포트 하나가 아니라 탐침 요약을 받습니다. 열린 포트, 배너, HTTP 서명, 호스트 이름, MAC OUI, 게이트웨이 식별 정보, SSDP·mDNS 메타데이터, 프린터·미디어 기록과 제조사 전용 산업 프로토콜 응답을 조합합니다.</p>
+    <div class="note"><p><strong>확정과 후보는 서로 다른 제품 상태입니다.</strong> 근거 규약이 충분히 강할 때만 장비 종류를 확정하며, 나머지는 추정을 사실처럼 보이지 않고 불확실성을 남깁니다.</p></div>
+    <p>각 행은 종류·신뢰도와 함께 지역화 가능한 근거 문구를 가집니다. 잘못된 분류 원인을 확인할 수 있고 같은 입력 사실을 대상으로 새 규칙을 시험할 수 있습니다.</p>
+
+    <h2 id="resources">자원과 개인정보 경계</h2>
+    <p>탐색과 장비 분석 단계 모두 동시성을 제한합니다. 신속 프로필도 모든 호스트와 모든 포트를 한 번에 곱해 열지 않습니다. 프린터와 본문 분석 탐침에는 더 작은 별도 한계가 있습니다.</p>
+    <ul><li>검색과 분류는 폰에서 처리합니다.</li><li>세션은 로컬에 저장하며 사용자가 명시적으로 선택할 때만 내보냅니다.</li><li>장비 목록을 droidactor 서버로 보내지 않습니다.</li><li>결과는 한 시점·한 네트워크의 관찰이며 영구 자산 목록이 아닙니다.</li></ul>
+
+    <h2 id="limits">검증과 확인된 제약</h2>
+    <p>CIDR 열거, 제한된 작업 풀, 취소, 프로토콜 파서, OUI 조회, 장비 모델, 분류 규칙, 내보내기, 세션 영속화와 UI 진행 상태를 시험합니다.</p>
+    <ul><li>클라이언트 격리·방화벽·절전·속도 제한 때문에 장비가 보이지 않을 수 있습니다.</li><li>열린 포트는 서비스 근거이지 소유권이나 접근 권한의 증명이 아닙니다.</li><li>펌웨어와 네트워크 역할이 바뀌면 제조사·장비 이름표가 오래될 수 있습니다.</li><li>사용자가 소유하거나 검사 권한을 받은 네트워크만 검색해야 합니다.</li></ul>
+    <div class="manual-actions"><a href="/ko/apps/wifi-scout/">제품 페이지</a><a href="/ko/manual/wifi-scout/">사용 설명서</a><a href="/ko/blog/find-devices-on-wifi-from-android/">장비 탐색 현장 노트</a></div>
+  </article>
+  <footer><p>droidactor의 Android 앱입니다.</p><p><a href="/ko/tech-notes/">전체 기술 노트</a> · <a href="/ko/manual/wifi-scout/">사용 설명서</a> · <a href="/ko/apps/wifi-scout/">제품 페이지</a> · <a href="/tech-notes/wifi-scout/" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div></body></html>

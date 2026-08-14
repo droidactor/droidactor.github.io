@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SSH trust and local discovery — Dotori SSH Terminal tech notes</title>
+<meta name="description" content="Engineering notes on SSH port discovery, deep-link boundaries, TOFU host keys, secure credential storage, and terminal streaming.">
+<link rel="canonical" href="https://droidactor.github.io/tech-notes/ssh-scout/"><link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/ssh-scout/"><link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/ssh-scout/"><link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/ssh-scout/">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR"><meta property="og:url" content="https://droidactor.github.io/tech-notes/ssh-scout/"><meta property="og:title" content="SSH trust and local discovery"><meta property="og:description" content="Discovery proposes a target; TOFU and explicit credentials decide whether to connect."><meta name="twitter:card" content="summary"><link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"SSH trust and local discovery — Dotori SSH Terminal tech notes","url":"https://droidactor.github.io/tech-notes/ssh-scout/","datePublished":"2026-08-14","dateModified":"2026-08-14","inLanguage":"en","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"Dotori SSH Terminal","url":"https://droidactor.github.io/apps/ssh-scout/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/"},{"@type":"ListItem","position":2,"name":"Tech notes","item":"https://droidactor.github.io/tech-notes/"},{"@type":"ListItem","position":3,"name":"Dotori SSH Terminal","item":"https://droidactor.github.io/tech-notes/ssh-scout/"}]}]}</script>
+</head>
+<body><header class="top"><div class="wrap"><div class="brand"><a href="/">droid<span>actor</span></a></div><nav class="langs" aria-label="Language"><a class="lang-btn" href="/tech-notes/ssh-scout/" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/ssh-scout/" hreflang="ko" lang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/tech-notes/">Tech notes</a><span>/</span><span class="dotori">Dotori</span> SSH Terminal</nav>
+  <div class="hero manual-hero"><h1>SSH trust and local discovery</h1><p>Finding an open SSH port is convenient, but it is not trust. Connection identity and credentials stay behind explicit user decisions.</p><p class="manual-meta">Source baseline: app 1.0.1 (2) · 14 August 2026</p></div>
+  <nav class="manual-toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#discovery">Target discovery</a></li><li><a href="#link">Deep-link boundary</a></li><li><a href="#trust">Trust and storage</a></li><li><a href="#terminal">Terminal path</a></li><li><a href="#limits">Verification and limits</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <h2 id="discovery">Target discovery</h2>
+    <p>Direct host and port entry is always available. When Wi-Fi is active, a separate discovery controller scans the current /24 for the selected TCP port and updates when either the port or Android's default network changes.</p>
+    <div class="scroll"><table class="spec"><tbody><tr><th>Implementation</th><td>Flutter UI with a Dart SSH client and terminal emulator</td></tr><tr><th>Automatic search</th><td>254 addresses in the current Wi-Fi /24, selected TCP port only</td></tr><tr><th>Authentication</th><td>Username and password</td></tr><tr><th>Server identity</th><td>TOFU host-key fingerprint per host and port</td></tr></tbody></table></div>
+    <p>Discovery produces candidate endpoints; it never starts a session by itself. This keeps availability probing separate from authentication and authorization.</p>
+
+    <h2 id="link">Deep-link boundary</h2>
+    <p>WiFi Scanner can open <code>dstools-ssh://connect/connect?host=&lt;host&gt;&amp;port=&lt;port&gt;</code>. Only host and port cross that app boundary. Username, password, commands, and terminal text are deliberately excluded.</p>
+    <ul><li>The target is parsed and validated before the credential prompt appears.</li><li>A deep link skips broad discovery because the caller has already chosen an endpoint.</li><li>Stored credentials may prefill locally, but they are not part of the link.</li><li>Separate Android sandboxes mean credentials from another app are not silently imported.</li></ul>
+
+    <h2 id="trust">TOFU and secure local storage</h2>
+    <p>On first connection, the app displays the server key type and SHA-256 fingerprint for approval. The accepted fingerprint is stored for that target. A later mismatch produces a changed-key warning rather than silently replacing the known value.</p>
+    <div class="note"><p><strong>TOFU detects change after first trust.</strong> It does not prove that the first endpoint was legitimate; users should compare the first fingerprint through a separate trusted channel when that matters.</p></div>
+    <p>Saved credentials and known-host fingerprints use Android-backed secure storage through the app's secure key-value boundary. They remain local unless the user deletes app data or removes an entry.</p>
+
+    <h2 id="terminal">Terminal data path</h2>
+    <p>After authentication, the client opens a PTY sized from the terminal view. Standard output and error are decoded and streamed into the terminal; terminal input is encoded and written back to the SSH session. Resize events update the remote PTY, while a mobile key bar supplies keys that are awkward on a soft keyboard.</p>
+    <ul><li>Connection work is scoped to the terminal page lifecycle.</li><li>Closing the page closes the session instead of leaving a hidden shell.</li><li>The terminal displays a local end marker when the stream closes.</li></ul>
+
+    <h2 id="limits">Verification and known limits</h2>
+    <p>Tests cover Wi-Fi network changes, port scanning, discovery cancellation, target parsing, secure-store behavior, TOFU decisions, terminal key translation, settings, and localized UI paths.</p>
+    <ul><li>Automatic discovery is IPv4 /24 convenience, not a general network inventory.</li><li>Firewalls and client isolation can hide a reachable SSH server.</li><li>The current product path documents password authentication; key-file workflows are not implied.</li><li>The user remains responsible for authorization to access the selected host.</li></ul>
+    <div class="manual-actions"><a href="/apps/ssh-scout/">Product page</a><a href="/manual/ssh-scout/">User manual</a><a href="/blog/find-and-connect-to-ssh-hosts-from-android/">SSH field note</a></div>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/tech-notes/">All tech notes</a> · <a href="/manual/ssh-scout/">User manual</a> · <a href="/apps/ssh-scout/">Product page</a> · <a href="/ko/tech-notes/ssh-scout/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div></body></html>
