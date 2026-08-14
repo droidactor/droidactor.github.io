@@ -42,8 +42,12 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 ```
 
 제품의 예전 `/<앱>/` · `/ko/<앱>/` 주소는 이미 외부에 공개됐으므로 삭제하지 않는다. 각 주소에는
-`noindex,follow`·새 canonical·즉시 이동을 담은 호환 HTML을 두고, sitemap과 내부 링크는 새
+0초 `meta refresh`·새 canonical·본문 1:1 링크를 담은 호환 HTML을 두고, sitemap과 내부 링크는 새
 `/apps/<앱>/` · `/ko/apps/<앱>/` 주소만 사용한다. GitHub Pages 정적 호스팅이라 서버 301은 쓸 수 없다.
+
+**이 호환 페이지에 `noindex`를 넣지 않는다.** Google은 같은 사이트 안의 canonical 선택 수단으로
+`noindex`를 권장하지 않고 redirect 또는 `rel="canonical"`을 쓰라고 안내한다. 셋을 같이 걸면 이동
+신호가 서로 섞인다. 최초 개편 때 들어갔던 `noindex,follow`는 2026-08-14에 14개 전부 제거했다.
 
 | 파일 | 역할 |
 |---|---|
