@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotori WiFi Scanner user manual</title>
+<meta name="description" content="Choose a local Wi-Fi range, scan for reachable devices, read the evidence, and open discovered HTTP or SSH services with Dotori WiFi Scanner.">
+<link rel="canonical" href="https://droidactor.github.io/manual/wifi-scout/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/manual/wifi-scout/"><link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/manual/wifi-scout/"><link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/manual/wifi-scout/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/manual/wifi-scout/"><meta property="og:title" content="Dotori WiFi Scanner user manual"><meta property="og:description" content="Scan the local Wi-Fi, interpret device evidence, and open discovered services.">
+<meta property="og:image" content="https://droidactor.github.io/blog/find-devices-on-wifi-from-android/assets/icon.png"><meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "TechArticle", "headline": "Dotori WiFi Scanner user manual", "url": "https://droidactor.github.io/manual/wifi-scout/", "datePublished": "2026-08-14", "dateModified": "2026-08-14", "inLanguage": "en", "author": { "@id": "https://droidactor.github.io/#publisher" }, "publisher": { "@id": "https://droidactor.github.io/#publisher" }, "about": { "@type": "SoftwareApplication", "name": "Dotori WiFi Scanner", "url": "https://droidactor.github.io/apps/wifi-scout/", "operatingSystem": "Android" } },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+      { "@type": "ListItem", "position": 2, "name": "User manuals", "item": "https://droidactor.github.io/manual/" },
+      { "@type": "ListItem", "position": 3, "name": "Dotori WiFi Scanner", "item": "https://droidactor.github.io/manual/wifi-scout/" }
+    ] }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand"><a href="/">droid<span>actor</span></a></div><nav class="langs" aria-label="Language"><a class="lang-btn" href="/manual/wifi-scout/" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/manual/wifi-scout/" hreflang="ko" lang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/manual/">User manuals</a><span>/</span><span class="dotori">Dotori</span> WiFi Scanner</nav>
+  <div class="hero manual-hero"><h1><span class="dotori">Dotori</span> WiFi Scanner user manual</h1><p>Detect the local range, discover devices that answer, inspect the evidence behind each result, and hand off known services to the appropriate app.</p><p class="manual-meta">Checked with Android app version 1.0.1 (3) · Updated 14 August 2026</p></div>
+  <nav class="manual-toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#quick-start">Quick start</a></li><li><a href="#results">Read the results</a></li><li><a href="#actions">Open services</a></li><li><a href="#settings">Scan settings</a></li><li><a href="#troubleshooting">Troubleshooting</a></li><li><a href="#privacy">Permission and privacy</a></li></ol></nav>
+
+  <article class="manual-body post-body">
+    <h2 id="quick-start">Quick start</h2>
+    <ol class="manual-steps">
+      <li><h3>Connect to the Wi-Fi you want to inspect</h3><p>The app derives the phone address, gateway, and scan range from the active Wi-Fi. Mobile data or an offline phone does not provide a local range to scan.</p></li>
+      <li><h3>Review network access</h3><p>Allow the requested nearby Wi-Fi access. It is used to read network information, not for location. If the subnet cannot be determined, review the estimated <code>/24</code> range or choose <strong>Enter CIDR manually</strong>.</p></li>
+      <li><h3>Check the target range</h3><p>Confirm the gateway, the phone's address, the CIDR, and the estimated target count. Scan only networks and equipment you own or are authorized to inspect.</p></li>
+      <li><h3>Press Start scan</h3><p>Discovery first checks addresses, then analyzes the devices that answered. You can cancel the scan; completed results remain available.</p></li>
+    </ol>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/en-US/01-home.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Wi-Fi scan range and gateway"><figcaption>Review the derived gateway, range, phone address, and target count before scanning.</figcaption></figure>
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/en-US/02-scan-results.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Wi-Fi scan results"><figcaption>Every responding address stays visible with its type and evidence.</figcaption></figure>
+    </div>
+
+    <h2 id="results">Read the results</h2>
+    <ul>
+      <li><strong>Type</strong> is the app's best classification of the responding device.</li>
+      <li><strong>Confidence: Confirmed</strong> means stronger evidence agreed; <strong>Candidate</strong> means the evidence is useful but not conclusive.</li>
+      <li><strong>Open ports</strong> show reachable services observed during this scan, not every service that may exist.</li>
+      <li><strong>Evidence</strong> records why a name or type was assigned. A product identity is not proof that the device is trusted.</li>
+      <li><strong>Risk notes</strong> call out sensitive or industrial operations.</li>
+    </ul>
+    <div class="note"><p><strong>Not detected does not mean absent.</strong> Client isolation, VLANs, firewalls, wired control networks, sleeping devices, and silent services can all hide a device from a phone on Wi-Fi.</p></div>
+    <figure class="manual-shot"><img src="/blog/find-devices-on-wifi-from-android/assets/en-US/03-device-detail.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Device detail with ports and evidence"><figcaption>Device detail keeps the address, classification, open ports, evidence, and available actions together.</figcaption></figure>
+
+    <h2 id="actions">Open discovered services</h2>
+    <ul>
+      <li><strong>Open HTTP:</strong> opens the device's own web interface in the phone browser. Administration remains in that interface.</li>
+      <li><strong>Connect with SSH:</strong> opens Dotori SSH Terminal with the host and port. Credentials are not placed in the handoff link and must be entered in the SSH app.</li>
+      <li><strong>EtherNet/IP identity lookup (advanced):</strong> sends packets to industrial equipment. Use it only with explicit site-administrator approval.</li>
+      <li><strong>Copy:</strong> copies scan data as CSV for your own records.</li>
+    </ul>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/en-US/04-ssh-session.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH session opened from a scan result"><figcaption>SSH credentials are entered in the terminal app after handoff.</figcaption></figure>
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/en-US/06-router-web.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Router web interface opened in browser"><figcaption>An HTTP action opens the device's own page in the browser.</figcaption></figure>
+    </div>
+
+    <h2 id="settings">Scan settings</h2>
+    <ul>
+      <li><strong>Fast:</strong> uses the shortest response wait.</li>
+      <li><strong>Balanced:</strong> waits longer to reduce missed devices.</li>
+      <li><strong>Accurate:</strong> adds detailed HTTP body analysis to Balanced mode.</li>
+      <li>Theme, font size, and language changes apply immediately and are stored on the phone.</li>
+    </ul>
+    <figure class="manual-shot"><img src="/blog/find-devices-on-wifi-from-android/assets/en-US/07-settings.png" width="1080" height="2340" loading="lazy" decoding="async" alt="WiFi Scanner settings"><figcaption>Scan mode trades speed for a longer wait and deeper HTTP analysis.</figcaption></figure>
+
+    <h2 id="troubleshooting">Troubleshooting</h2>
+    <div class="scroll"><table class="troubleshooting"><thead><tr><th>Symptom</th><th>What to check</th></tr></thead><tbody>
+      <tr><td>Wi-Fi connection required</td><td>Connect the phone to Wi-Fi rather than mobile data, then press <strong>Retry</strong>.</td></tr>
+      <tr><td>The range cannot be determined</td><td>Allow nearby Wi-Fi access. If the subnet remains unavailable, verify and enter the CIDR manually.</td></tr>
+      <tr><td>No devices answer</td><td>Check client isolation, VLANs, device firewalls, sleeping devices, and whether the chosen CIDR is correct. Try Balanced or Accurate mode.</td></tr>
+      <tr><td>A known device has the wrong type</td><td>Open its detail and read the evidence. Treat Candidate results as hints, not authoritative identity.</td></tr>
+      <tr><td>SSH or HTTP will not open</td><td>Confirm that the listed port is still reachable. Install Dotori SSH Terminal for SSH handoff; for HTTP, check whether the browser can reach the local address.</td></tr>
+    </tbody></table></div>
+
+    <h2 id="privacy">Permission and privacy</h2>
+    <p>The app requires Internet, network-state, Wi-Fi-state, and nearby Wi-Fi access to inspect the local network. Nearby Wi-Fi access is declared as not used for location. Scan results and private-network addresses are not sent to the advertising SDK. Read the <a href="/#privacy-wifi">full privacy policy</a>.</p>
+    <div class="manual-actions"><a href="/apps/wifi-scout/">Product page</a><a href="/blog/find-devices-on-wifi-from-android/">How local discovery works</a><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.wifi_scout"><img src="../../assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a></div>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/manual/">All manuals</a> · <a href="/apps/wifi-scout/">Product page</a> · <a href="/blog/">Field notes</a> · <a href="/ko/manual/wifi-scout/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+</div>
+</body>
+</html>

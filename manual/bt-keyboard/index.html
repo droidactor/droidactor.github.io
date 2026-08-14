@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotori Bluetooth Keyboard user manual</title>
+<meta name="description" content="Set up, pair, calibrate, and use Dotori Bluetooth Keyboard as a Bluetooth HID keyboard and trackpad for a PC, TV, or tablet.">
+<link rel="canonical" href="https://droidactor.github.io/manual/bt-keyboard/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/manual/bt-keyboard/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/manual/bt-keyboard/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/manual/bt-keyboard/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/manual/bt-keyboard/">
+<meta property="og:title" content="Dotori Bluetooth Keyboard user manual">
+<meta property="og:description" content="Pair the phone, select a host profile, verify the layout, and use the keyboard and trackpad.">
+<meta property="og:image" content="https://droidactor.github.io/blog/type-korean-over-bluetooth-hid/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": "Dotori Bluetooth Keyboard user manual",
+      "url": "https://droidactor.github.io/manual/bt-keyboard/",
+      "datePublished": "2026-08-14",
+      "dateModified": "2026-08-14",
+      "inLanguage": "en",
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" },
+      "about": { "@type": "SoftwareApplication", "name": "Dotori Bluetooth Keyboard", "url": "https://droidactor.github.io/apps/bt-keyboard/", "operatingSystem": "Android" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "User manuals", "item": "https://droidactor.github.io/manual/" },
+        { "@type": "ListItem", "position": 3, "name": "Dotori Bluetooth Keyboard", "item": "https://droidactor.github.io/manual/bt-keyboard/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="Language">
+      <a class="lang-btn" href="/manual/bt-keyboard/" aria-current="page" hreflang="en">EN</a>
+      <a class="lang-btn" href="/ko/manual/bt-keyboard/" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">droidactor</a><span>/</span><a href="/manual/">User manuals</a><span>/</span><span class="dotori">Dotori</span> Bluetooth Keyboard
+  </nav>
+
+  <div class="hero manual-hero">
+    <h1><span class="dotori">Dotori</span> Bluetooth Keyboard user manual</h1>
+    <p>Pair the phone as a standard Bluetooth keyboard, verify what the host receives, then use the keyboard and trackpad without installing host software.</p>
+    <p class="manual-meta">Checked with Android app version 1.0.0 (1) · Updated 14 August 2026</p>
+  </div>
+
+  <nav class="manual-toc" aria-label="On this page">
+    <strong>On this page</strong>
+    <ol>
+      <li><a href="#quick-start">Quick start</a></li>
+      <li><a href="#keyboard">Keyboard input</a></li>
+      <li><a href="#trackpad">Trackpad</a></li>
+      <li><a href="#settings">Settings</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+      <li><a href="#requirements">Requirements and privacy</a></li>
+    </ol>
+  </nav>
+
+  <article class="manual-body post-body">
+    <h2 id="quick-start">Quick start</h2>
+    <ol class="manual-steps">
+      <li><h3>Prepare the phone and host</h3><p>Turn on Bluetooth on both devices. On the phone, grant the Bluetooth and notification permissions requested by the app. On the PC, TV, tablet, or other host, open its Bluetooth device screen.</p></li>
+      <li><h3>Choose the profile for a new host</h3><p>Open <strong>Settings</strong> and check <strong>Default input profile for new devices</strong>. Choose Windows Korean 2-set, Windows US, iOS US, or Android TV US to match the receiving device.</p></li>
+      <li><h3>Start the connection</h3><p>Start a new connection in the app. If the host has never been paired, make the phone discoverable when prompted and select it from the host's Bluetooth screen. Confirm the pairing request on both sides.</p></li>
+      <li><h3>Wait for input verification</h3><p>The app prepares HID, connects the host, and sends a minimum report. When verification succeeds, the host is saved in <strong>Connected devices and history</strong>.</p></li>
+      <li><h3>Calibrate the layout</h3><p>Focus an empty text field on the host. Send the offered <code>abc</code> or <code>가나다</code> probe and answer whether the result matches exactly. Recalibrate whenever the host keyboard layout changes.</p></li>
+    </ol>
+
+    <div class="note"><p><strong>No companion program is required.</strong> The receiving device sees the phone as a normal Bluetooth HID keyboard and mouse.</p></div>
+
+    <h2 id="keyboard">Keyboard input</h2>
+    <h3>Custom keyboard</h3>
+    <p>Every on-screen key is sent immediately. Select Korean as the keyboard language to enable the Korean/English key. The indicator on the phone cannot read the host's actual IME state; if the two indicators differ, long-press the Korean/English key to realign the display without sending another key.</p>
+    <h3>Sentence input</h3>
+    <p>Use <strong>Sentence input (system keyboard)</strong> when you want to compose and edit a sentence on the phone first. The buffer is local to the phone. A space or Enter sends the current text, or you can press <strong>Send</strong>. Use <strong>Host ⌫</strong> to send Backspace to the receiving device.</p>
+
+    <div class="screenshot-grid">
+      <figure><img src="/blog/type-korean-over-bluetooth-hid/assets/en-US/01-portrait-keyboard-trackpad.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Portrait keyboard and trackpad screen"><figcaption>The portrait layout keeps the keyboard, trackpad, and both scroll axes together.</figcaption></figure>
+      <figure><img src="/blog/type-korean-over-bluetooth-hid/assets/en-US/02-landscape-keyboard.png" width="1920" height="1080" loading="lazy" decoding="async" alt="Landscape custom keyboard"><figcaption>The landscape custom keyboard sends keys immediately.</figcaption></figure>
+    </div>
+
+    <h2 id="trackpad">Trackpad</h2>
+    <ul>
+      <li>Drag on the main surface to move the pointer.</li>
+      <li>Tap once for a left click and twice for a double-click.</li>
+      <li>Use the separate left- and right-click buttons when precise clicking matters.</li>
+      <li>Drag or hold the vertical and horizontal scroll controls. Horizontal scrolling depends on the active host application.</li>
+      <li>Change pointer speed with <strong>Pointer sensitivity</strong>.</li>
+    </ul>
+    <figure class="manual-shot"><img src="/blog/type-korean-over-bluetooth-hid/assets/en-US/03-landscape-trackpad.png" width="1920" height="1080" loading="lazy" decoding="async" alt="Landscape Bluetooth trackpad"><figcaption>The dedicated landscape trackpad separates pointer, click, and wheel input.</figcaption></figure>
+
+    <h2 id="settings">Settings</h2>
+    <ul>
+      <li><strong>Permissions:</strong> review and request the required Bluetooth and notification permissions.</li>
+      <li><strong>Connected devices and history:</strong> reconnect to a verified host or review its assigned profile.</li>
+      <li><strong>Keyboard language and input profile:</strong> select Korean support and the receiving platform.</li>
+      <li><strong>Landscape keyboard:</strong> choose the custom keyboard or sentence input.</li>
+      <li><strong>Input preview and feedback:</strong> show recent input and enable vibration or key sounds.</li>
+      <li><strong>Compatibility diagnostics:</strong> inspect the current Bluetooth HID state and run guided tests.</li>
+    </ul>
+    <figure class="manual-shot"><img src="/blog/type-korean-over-bluetooth-hid/assets/en-US/04-settings.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Bluetooth Keyboard settings"><figcaption>Profiles and diagnostics make the host assumptions explicit.</figcaption></figure>
+
+    <h2 id="troubleshooting">Troubleshooting</h2>
+    <div class="scroll">
+      <table class="troubleshooting">
+        <thead><tr><th>Symptom</th><th>What to check</th></tr></thead>
+        <tbody>
+          <tr><td>The host cannot find the phone</td><td>Grant the requested permissions, turn Bluetooth on, start a new connection, and make the phone discoverable. Close another Dotori HID remote if it currently owns the session.</td></tr>
+          <tr><td><code>gks</code> appears instead of <code>한</code></td><td>The connection works, but the host is in English mode. Switch the host IME to Korean and resend the probe.</td></tr>
+          <tr><td>Unexpected Korean characters appear</td><td>Choose Korean 2-set on the host and the matching Windows Korean profile in the app, then run <strong>Recalibrate</strong>.</td></tr>
+          <tr><td>Keys produce nothing</td><td>Focus an editable field, check the connection chip, and reconnect. If the session is quarantined, disconnect in the app and open diagnostics before trying again.</td></tr>
+          <tr><td>The pointer or scroll stops</td><td>Reconnect the host and retry. Horizontal scroll support is controlled by the active host application.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="requirements">Requirements and privacy</h2>
+    <ul>
+      <li>Android 9.0 or newer on a phone that exposes the Bluetooth HID Device profile.</li>
+      <li>A host that accepts a standard Bluetooth keyboard or mouse.</li>
+      <li>No account, receiver dongle, or host-side software.</li>
+    </ul>
+    <p>Key and pointer reports go only to the paired host. The app does not read the clipboard or retain typed content. See the <a href="/#privacy-keyboard">full privacy policy</a> for stored connection data and diagnostics.</p>
+
+    <div class="manual-actions">
+      <a href="/apps/bt-keyboard/">Product page</a>
+      <a href="/blog/type-korean-over-bluetooth-hid/">How Korean Bluetooth HID input works</a>
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_keyboard"><img src="../../assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
+    </div>
+  </article>
+
+  <footer>
+    <p>Android apps by droidactor.</p>
+    <p><a href="/manual/">All manuals</a> · <a href="/apps/bt-keyboard/">Product page</a> · <a href="/blog/">Field notes</a> · <a href="/ko/manual/bt-keyboard/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+    <p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p>
+  </footer>
+</div>
+</body>
+</html>

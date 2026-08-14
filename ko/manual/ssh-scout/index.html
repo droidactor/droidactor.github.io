@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>도토리 SSH 터미널 사용 설명서</title>
+<meta name="description" content="SSH host를 찾거나 직접 입력하고 host key와 자격증명을 확인한 뒤 안전하게 터미널을 사용하는 방법입니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/manual/ssh-scout/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/manual/ssh-scout/"><link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/manual/ssh-scout/"><link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/manual/ssh-scout/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="ko_KR"><meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/manual/ssh-scout/"><meta property="og:title" content="도토리 SSH 터미널 사용 설명서"><meta property="og:description" content="SSH host에 직접 또는 검색으로 접속하고 TOFU 확인 뒤 터미널을 사용하는 방법입니다.">
+<meta property="og:image" content="https://droidactor.github.io/blog/find-and-connect-to-ssh-hosts-from-android/assets/icon.png"><meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "TechArticle", "headline": "도토리 SSH 터미널 사용 설명서", "url": "https://droidactor.github.io/ko/manual/ssh-scout/", "datePublished": "2026-08-14", "dateModified": "2026-08-14", "inLanguage": "ko", "author": { "@id": "https://droidactor.github.io/#publisher" }, "publisher": { "@id": "https://droidactor.github.io/#publisher" }, "about": { "@type": "SoftwareApplication", "name": "도토리 SSH 터미널", "url": "https://droidactor.github.io/ko/apps/ssh-scout/", "operatingSystem": "Android" } },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+      { "@type": "ListItem", "position": 2, "name": "사용 설명서", "item": "https://droidactor.github.io/ko/manual/" },
+      { "@type": "ListItem", "position": 3, "name": "도토리 SSH 터미널", "item": "https://droidactor.github.io/ko/manual/ssh-scout/" }
+    ] }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand"><a href="/ko/">droid<span>actor</span></a></div><nav class="langs" aria-label="언어"><a class="lang-btn" href="/manual/ssh-scout/" hreflang="en" lang="en">EN</a><a class="lang-btn" href="/ko/manual/ssh-scout/" aria-current="page" hreflang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/manual/">사용 설명서</a><span>/</span><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> SSH 터미널</nav>
+  <div class="hero manual-hero"><h1><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> SSH 터미널 사용 설명서</h1><p>Host를 직접 입력하거나 찾고, 서버 신원을 확인한 뒤 SSH 앱 안에서 자격증명을 입력해 직접 터미널 session을 엽니다.</p><p class="manual-meta">Android 앱 1.0.1 (2) 기준 · 2026년 8월 14일 갱신</p></div>
+  <nav class="manual-toc" aria-label="이 페이지의 내용"><strong>이 페이지의 내용</strong><ol><li><a href="#connect">Host 접속</a></li><li><a href="#credentials">자격증명과 host key</a></li><li><a href="#terminal">터미널 사용</a></li><li><a href="#settings">설정</a></li><li><a href="#troubleshooting">문제 해결</a></li><li><a href="#privacy">보안과 개인정보</a></li></ol></nav>
+
+  <article class="manual-body post-body">
+    <h2 id="connect">Host 접속</h2>
+    <ol class="manual-steps">
+      <li><h3>권한이 있는지 확인합니다</h3><p>소유하거나 관리 권한을 받은 system과 network에서만 SSH를 사용합니다. SSH service가 실행 중이고 port를 알고 있는지 확인합니다.</p></li>
+      <li><h3>알고 있는 대상을 입력합니다</h3><p><strong>SSH 직접 접속</strong>에서 IP 주소 또는 hostname과 port—보통 <code>22</code>—를 입력하고 <strong>접속</strong>을 누릅니다. 직접 접속에는 Wi-Fi 검색이 필요하지 않습니다.</p></li>
+      <li><h3>또는 service를 검색합니다</h3><p>현재 Wi-Fi의 로컬 대역에서 선택한 TCP port를 검색하고 응답한 host를 고릅니다. 열린 port는 후보일 뿐 SSH service라는 증명은 아닙니다.</p></li>
+      <li><h3>와이파이 스캐너에서 넘겨받습니다</h3><p>도토리 와이파이 스캐너가 host와 port를 채운 상태로 이 앱을 열 수 있습니다. 넘김 정보에는 사용자명·비밀번호가 들어가지 않습니다.</p></li>
+    </ol>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/01-direct-connection.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH 직접 접속 화면"><figcaption>알고 있는 host를 직접 입력하거나 검색된 주소를 선택합니다.</figcaption></figure>
+      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/02-connect-prompt.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH 자격증명 입력 화면"><figcaption>대상을 선택한 다음 SSH 앱 안에서 자격증명을 요청합니다.</figcaption></figure>
+    </div>
+
+    <h2 id="credentials">자격증명과 host key</h2>
+    <ol class="manual-steps">
+      <li><h3>계정 정보를 입력합니다</h3><p>접속 화면에서 사용자명과 비밀번호를 입력합니다. 이 host와 port에 계속 보관하려는 경우에만 자격증명 저장을 선택합니다. 현재 버전은 비밀번호 인증만 지원하며 개인키 인증은 지원하지 않습니다.</p></li>
+      <li><h3>첫 host key를 확인합니다</h3><p>처음 접속할 때 표시되는 key 종류와 SHA-256 fingerprint를 서버 관리자나 다른 신뢰 경로에서 받은 값과 비교한 뒤 승인합니다.</p></li>
+      <li><h3>저장된 key가 바뀌면 멈춥니다</h3><p>서버 재설치나 key 교체로 정상 변경될 수도 있지만 가로채기일 수도 있습니다. 새 값을 별도로 검증하기 전에는 저장된 fingerprint를 바꾸지 않습니다.</p></li>
+    </ol>
+    <div class="note"><p><strong>비밀번호와 host key는 서로 다른 것을 확인합니다.</strong> 자격증명은 사용자를 서버에 증명하고, host key는 사용자가 서버를 알아보도록 돕습니다.</p></div>
+
+    <h2 id="terminal">터미널 사용</h2>
+    <ul>
+      <li>명령은 접속한 host에서 직접 실행되며 droidactor 중계 server는 없습니다.</li>
+      <li>폰 키보드에서 누르기 어려운 키는 수정키·방향키 도구 모음을 사용합니다.</li>
+      <li>작업이 끝나면, 특히 network를 바꾸기 전에 session을 종료합니다.</li>
+      <li>명령 기록·shell 동작·권한·감사 log는 원격 server가 관리합니다.</li>
+    </ul>
+    <figure class="manual-shot"><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/03-terminal.png" width="1080" height="2340" loading="lazy" decoding="async" alt="연결된 SSH 터미널"><figcaption>터미널에는 명령행 작업용 수정키와 방향키가 있습니다.</figcaption></figure>
+
+    <h2 id="settings">설정</h2>
+    <ul>
+      <li>언어를 시스템·한국어·영어 중에서 선택합니다.</li>
+      <li>테마와 터미널 글자 크기를 바꿉니다.</li>
+      <li>저장된 접속을 확인하고 폰에 더 두지 않을 자격증명을 삭제합니다.</li>
+      <li>네트워크와 개인정보 안내에서 로컬 검색·저장·허가받은 사용 범위를 확인합니다.</li>
+    </ul>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/04-settings.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH 터미널 설정"><figcaption>언어·테마·글자 크기·터미널 동작을 명시적으로 설정합니다.</figcaption></figure>
+      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/05-network-privacy.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH 네트워크와 개인정보 안내"><figcaption>접속 경로와 폰에 남는 정보를 앱 안에서 설명합니다.</figcaption></figure>
+    </div>
+
+    <h2 id="troubleshooting">문제 해결</h2>
+    <div class="scroll"><table class="troubleshooting"><thead><tr><th>증상</th><th>확인할 내용</th></tr></thead><tbody>
+      <tr><td>검색된 host가 없음</td><td>SSH service와 port, Wi-Fi 도달 가능성, client isolation·VLAN, server 방화벽을 확인합니다. 알고 있는 주소로 직접 접속해 봅니다.</td></tr>
+      <tr><td>접속 거부 또는 시간 초과</td><td>Host와 port를 다시 확인하고 server가 해당 interface에서 수신하며 폰 subnet을 허용하는지 봅니다.</td></tr>
+      <tr><td>인증 실패</td><td>이 server의 사용자와 자격증명을 다시 입력합니다. 검색 결과는 계정의 유효성을 확인하지 않습니다.</td></tr>
+      <tr><td>Host key 변경됨</td><td>멈추고 신뢰할 수 있는 별도 경로로 새 fingerprint를 검증합니다. 검색 문제가 아니라 서버 신원 문제로 다룹니다.</td></tr>
+      <tr><td>와이파이 스캐너에서 열었지만 접속 안 됨</td><td>넘김 정보는 host와 port뿐입니다. 이 앱에서 자격증명 입력과 host key 확인을 끝냅니다.</td></tr>
+    </tbody></table></div>
+
+    <h2 id="privacy">보안과 개인정보</h2>
+    <p>자격증명과 신뢰한 host key는 폰의 앱 전용 보호 저장소에 둡니다. 사용자가 저장을 선택한 자격증명만 지속되며 대상별로 삭제할 수 있습니다. Session 출력·발견한 host·자격증명은 droidactor나 광고 SDK로 전송하지 않습니다. 자세한 내용은 <a href="/ko/#privacy-ssh">개인정보 처리방침 전문</a>에서 확인할 수 있습니다.</p>
+    <div class="manual-actions"><a href="/ko/apps/ssh-scout/">제품 페이지</a><a href="/ko/blog/find-and-connect-to-ssh-hosts-from-android/">SSH 검색과 TOFU 원리</a></div>
+  </article>
+  <footer><p>droidactor의 Android 앱입니다.</p><p><a href="/ko/manual/">전체 설명서</a> · <a href="/ko/apps/ssh-scout/">제품 페이지</a> · <a href="/ko/blog/">현장 노트</a> · <a href="/manual/ssh-scout/" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

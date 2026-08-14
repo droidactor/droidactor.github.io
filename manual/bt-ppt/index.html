@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotori Bluetooth PPT Remote user manual</title>
+<meta name="description" content="Pair Dotori Bluetooth PPT Remote with a PC and control a PowerPoint slideshow with five focused actions.">
+<link rel="canonical" href="https://droidactor.github.io/manual/bt-ppt/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/manual/bt-ppt/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/manual/bt-ppt/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/manual/bt-ppt/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article"><meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/manual/bt-ppt/">
+<meta property="og:title" content="Dotori Bluetooth PPT Remote user manual">
+<meta property="og:description" content="Connect, test, and control a PowerPoint slideshow from an Android phone.">
+<meta property="og:image" content="https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "TechArticle", "headline": "Dotori Bluetooth PPT Remote user manual", "url": "https://droidactor.github.io/manual/bt-ppt/", "datePublished": "2026-08-14", "dateModified": "2026-08-14", "inLanguage": "en", "author": { "@id": "https://droidactor.github.io/#publisher" }, "publisher": { "@id": "https://droidactor.github.io/#publisher" }, "about": { "@type": "SoftwareApplication", "name": "Dotori Bluetooth PPT Remote", "url": "https://droidactor.github.io/apps/bt-ppt/", "operatingSystem": "Android" } },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+      { "@type": "ListItem", "position": 2, "name": "User manuals", "item": "https://droidactor.github.io/manual/" },
+      { "@type": "ListItem", "position": 3, "name": "Dotori Bluetooth PPT Remote", "item": "https://droidactor.github.io/manual/bt-ppt/" }
+    ] }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand"><a href="/">droid<span>actor</span></a></div><nav class="langs" aria-label="Language"><a class="lang-btn" href="/manual/bt-ppt/" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/manual/bt-ppt/" hreflang="ko" lang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/manual/">User manuals</a><span>/</span><span class="dotori">Dotori</span> Bluetooth PPT Remote</nav>
+  <div class="hero manual-hero"><h1><span class="dotori">Dotori</span> Bluetooth PPT Remote user manual</h1><p>Pair the phone as a Bluetooth keyboard, test it before the presentation, and control the slideshow with five deliberate actions.</p><p class="manual-meta">Checked with Android app version 1.0.0 (2) · Updated 14 August 2026</p></div>
+
+  <nav class="manual-toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#quick-start">Quick start</a></li><li><a href="#controls">The five controls</a></li><li><a href="#settings">Connection and settings</a></li><li><a href="#troubleshooting">Troubleshooting</a></li><li><a href="#requirements">Requirements and privacy</a></li></ol></nav>
+
+  <article class="manual-body post-body">
+    <h2 id="quick-start">Quick start</h2>
+    <ol class="manual-steps">
+      <li><h3>Prepare before presenting</h3><p>Turn on Bluetooth on the phone and PC. Grant the Bluetooth and notification permissions requested by the app. Open the PC's Bluetooth settings.</p></li>
+      <li><h3>Start the connection</h3><p>Press <strong>Start connection</strong>. For a new PC, make the phone discoverable and pair it from the PC. Confirm the request on both devices, then wait for HID registration and the minimum report check to complete.</p></li>
+      <li><h3>Open PowerPoint and test</h3><p>Bring the PowerPoint window to the foreground. Open the remote, start a test slideshow, and press <strong>Next</strong> once. Do this before the room fills up so focus or pairing problems are visible early.</p></li>
+      <li><h3>Keep the presentation window active</h3><p>The remote sends keyboard shortcuts to whichever PC application has focus. Return focus to the slideshow if another window was opened.</p></li>
+    </ol>
+    <figure class="manual-shot"><img src="/blog/use-android-phone-as-powerpoint-remote/assets/en-US/01-presenter-control.png" width="1080" height="1920" loading="lazy" decoding="async" alt="PowerPoint remote control screen"><figcaption>Previous and Next have the largest targets; start and end actions stay separate.</figcaption></figure>
+
+    <h2 id="controls">The five controls</h2>
+    <div class="scroll"><table><thead><tr><th>Control</th><th>Key sent</th><th>PowerPoint result</th></tr></thead><tbody>
+      <tr><td>Previous</td><td><code>PageUp</code></td><td>Move to the previous slide</td></tr>
+      <tr><td>Next</td><td><code>PageDown</code></td><td>Move to the next slide</td></tr>
+      <tr><td>From beginning</td><td><code>F5</code>, then <code>Home</code></td><td>Open the slideshow at the first slide</td></tr>
+      <tr><td>From current</td><td><code>Shift+F5</code></td><td>Start from the selected slide</td></tr>
+      <tr><td>End</td><td><code>Escape</code></td><td>Leave the slideshow</td></tr>
+    </tbody></table></div>
+    <div class="note"><p><strong>The remote is one-way.</strong> It can report that a key was sent, but it cannot read the current slide number or confirm that PowerPoint used the key.</p></div>
+
+    <h2 id="settings">Connection and settings</h2>
+    <ul>
+      <li><strong>Connected PC:</strong> shows the current host; use <strong>Connect to another PC</strong> to change it.</li>
+      <li><strong>Connect to the last PC on startup:</strong> attempts one reconnect when Bluetooth is ready and the last PC remains paired.</li>
+      <li><strong>Language:</strong> follows the system by default or can be set to English or Korean.</li>
+      <li><strong>Help and app information:</strong> lists the exact keys and known limits.</li>
+    </ul>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/use-android-phone-as-powerpoint-remote/assets/en-US/03-settings.png" width="1080" height="1920" loading="lazy" decoding="async" alt="PPT Remote settings"><figcaption>Connection behavior is kept away from the five-button presenter surface.</figcaption></figure>
+      <figure><img src="/blog/use-android-phone-as-powerpoint-remote/assets/en-US/04-help-about.png" width="1080" height="1920" loading="lazy" decoding="async" alt="PPT Remote help"><figcaption>Help records the shortcuts, requirements, and one-way limitation.</figcaption></figure>
+    </div>
+
+    <h2 id="troubleshooting">Troubleshooting</h2>
+    <div class="scroll"><table class="troubleshooting"><thead><tr><th>Symptom</th><th>What to check</th></tr></thead><tbody>
+      <tr><td>A button does nothing</td><td>Put the PowerPoint slideshow in the foreground. If the PC was asleep, the first key may only wake it; press the action again.</td></tr>
+      <tr><td>The wrong app reacts</td><td>The wrong PC window has focus. Activate PowerPoint before sending another command.</td></tr>
+      <tr><td>The phone cannot pair</td><td>Grant permissions, enable Bluetooth, make the phone discoverable, and close another Dotori HID remote that may own the session.</td></tr>
+      <tr><td>Start commands differ</td><td><strong>From beginning</strong> and <strong>From current</strong> use PowerPoint shortcuts. Another presentation app may use different keys.</td></tr>
+      <tr><td>The connection ends in the background</td><td>Open the app and reconnect. Some phone power-saving policies stop a background Bluetooth session.</td></tr>
+    </tbody></table></div>
+
+    <h2 id="requirements">Requirements and privacy</h2>
+    <ul><li>Android 9.0 or newer on a phone with the Bluetooth HID Device profile</li><li>A PC that accepts a standard Bluetooth keyboard</li><li>PowerPoint for the documented start shortcuts</li></ul>
+    <p>The app sends only the five documented keyboard actions to the paired PC. It cannot read the presentation file, slide content, or current slide. See the <a href="/#privacy-ppt">full privacy policy</a>.</p>
+    <div class="manual-actions"><a href="/apps/bt-ppt/">Product page</a><a href="/blog/use-android-phone-as-powerpoint-remote/">How the remote works</a></div>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/manual/">All manuals</a> · <a href="/apps/bt-ppt/">Product page</a> · <a href="/blog/">Field notes</a> · <a href="/ko/manual/bt-ppt/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

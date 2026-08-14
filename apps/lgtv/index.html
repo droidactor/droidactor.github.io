@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotori LG TV Remote — control your LG webOS TV over Wi-Fi</title>
+<meta name="description" content="A phone remote for LG webOS TVs that works over your home Wi-Fi instead of infrared. Trackpad, number pad, volume and channel rockers, and power on by Wake-on-LAN.">
+<link rel="canonical" href="https://droidactor.github.io/apps/lgtv/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/lgtv/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/lgtv/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/lgtv/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/apps/lgtv/">
+<meta property="og:title" content="Dotori LG TV Remote — an IP remote for LG webOS TVs">
+<meta property="og:description" content="Drives the TV over your own Wi-Fi through its control protocol. No infrared, no dongle, no account.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Dotori LG TV Remote",
+  "url": "https://droidactor.github.io/apps/lgtv/",
+  "identifier": "com.droidactor.lgtv",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Android 8.0 (API 26) and newer",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "description": "Controls an LG webOS TV over the local network through the TV's own control protocol, with a trackpad, number pad, volume and channel rockers, and Wake-on-LAN power on.",
+  "featureList": [
+    "Trackpad for the on-screen cursor, with tap to click and two-finger scroll",
+    "Number pad for direct channel entry",
+    "Volume and channel rockers with press-and-hold repeat",
+    "Arrow keys with OK, Back and Home in one block",
+    "Power off, or wake a sleeping TV with a Wake-on-LAN packet",
+    "Portrait-locked layout so every control keeps its position"
+  ],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "droidactor", "url": "https://droidactor.github.io/" },
+  "privacyPolicy": "https://droidactor.github.io/#privacy-lgtv"
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="Language">
+      <a class="lang-btn" href="/apps/lgtv/" aria-current="page" hreflang="en">EN</a>
+      <a class="lang-btn" href="/ko/apps/lgtv/" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">droidactor</a><span>/</span><a href="/apps/">Apps</a><span>/</span><span class="dotori">Dotori</span> LG TV Remote
+  </nav>
+
+  <div class="hero product">
+    <div class="icon" aria-hidden="true">📺</div>
+    <h1><span class="dotori">Dotori</span> LG TV Remote</h1>
+    <div class="pkg">com.droidactor.lgtv</div>
+    <p>
+      Controls an LG webOS TV over your home network rather than by infrared, so you do not have to
+      aim at the set. The phone and the TV only need to be on the same Wi-Fi — there is no Bluetooth
+      pairing, no dongle and no account.
+    </p>
+    <div class="status">
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv"><img
+        src="../../assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
+      <a href="/manual/lgtv/">User manual</a>
+      <a href="#privacy">Privacy</a>
+    </div>
+  </div>
+
+  <section>
+    <h2>What it does</h2>
+    <div class="feature">
+      <div>
+        <h3>Trackpad and keys together</h3>
+        <p>Drag to move the on-screen cursor, tap to click, scroll with two fingers — and the arrow
+          keys with OK, Back and Home sit right below in one block.</p>
+      </div>
+      <div>
+        <h3>Channel and volume without looking</h3>
+        <p>A number pad enters a channel digit by digit, the rockers repeat while held, and every
+          button answers with haptic feedback and a press inversion.</p>
+      </div>
+      <div>
+        <h3>Power over the network</h3>
+        <p>One tap turns a running TV off. A sleeping set is woken with a Wake-on-LAN packet sent to
+          the MAC address recorded when you paired.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Built to be used while you watch the TV</h2>
+    <p>
+      The layout is portrait-locked and every control keeps its coordinates, so nothing moves under
+      your thumb between sessions. There is no mode toggle hiding half the buttons. Volume and mute
+      readouts appear large on the trackpad the moment you change them, which is the one thing worth
+      showing on the phone.
+    </p>
+    <p>
+      The channel list and the TV settings open <em>on the TV</em>. The app does not redraw them on
+      your phone — you are already looking at the bigger screen.
+    </p>
+    <p>
+      The first connection raises an approval prompt on the TV. Accept it once and the app keeps the
+      key the TV hands back, so later connections need no prompt.
+    </p>
+  </section>
+
+  <section>
+    <h2>Known limits</h2>
+    <ul>
+      <li><strong>No text entry.</strong> This generation of webOS does not let a remote type into a
+        TV app's own search box, so v1 leaves text input out rather than shipping something that
+        works in one app and silently fails in the next.</li>
+      <li><strong>No programme guide button.</strong> The guide key did nothing on the set this app
+        was measured against, and the TV's control channel offers no way to detect whether a given
+        set supports it — a button that silently does nothing is worse than no button at all.</li>
+      <li><strong>Waking the TV needs the MAC address saved during pairing</strong> and the TV's
+        "Mobile TV On" setting enabled. A set that is already off cannot be discovered on the network
+        at all, and waking takes roughly 15 to 20 seconds.</li>
+      <li><strong>No app-launch keys.</strong> The Netflix-style hotkeys on the physical remote are
+        not carried by the TV's remote-input channel.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Requirements</h2>
+    <div class="scroll">
+      <table class="spec">
+        <tbody>
+          <tr><th>Platform</th><td>Android (Kotlin)</td></tr>
+          <tr><th>Package name</th><td><code>com.droidactor.lgtv</code></td></tr>
+          <tr><th>Minimum Android</th><td>Android 8.0 (API 26)</td></tr>
+          <tr><th>Target Android</th><td>API 36</td></tr>
+          <tr><th>TV side</th><td>An LG webOS TV on the same Wi-Fi. Developed and measured against an
+            LG OLED C8 (webOS 4.x). Nothing to install on the TV.</td></tr>
+          <tr><th>Price</th><td>Free, supported by a banner ad (Google AdMob). No interstitials.</td></tr>
+          <tr><th>Accounts</th><td>None. No sign-in, no registration.</td></tr>
+          <tr><th>Status</th><td>Published on Google Play —
+            <a href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv">store listing</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <h2>Privacy</h2>
+    <p>
+      Remote commands travel from the phone straight to the TV you picked, over your own local
+      network. They are not sent to us and not to the ads SDK, and there is no app login and no
+      developer backend. So it can reconnect and confirm it is the same set, the app stores the TV's
+      address, its MAC address, the model name and certificate CN the set reports, the pairing key
+      the TV issues and the TV certificate fingerprint on your phone; uninstalling removes them.
+      No location permission is used.
+    </p>
+    <p><a href="/#privacy-lgtv">Full privacy policy for this app</a></p>
+  </section>
+
+  <section>
+    <h2>Support</h2>
+    <p>Bug reports, questions and feature requests go to <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a>.</p>
+    <p>
+      LG and webOS are trademarks of LG Electronics. This app is unofficial and not affiliated with
+      LG Electronics.
+    </p>
+  </section>
+
+  <section>
+    <h2>Related reading</h2>
+    <ul>
+      <li><a href="/blog/control-lg-webos-tv-over-wifi/">How this remote controls an LG webOS TV over Wi-Fi</a></li>
+      <li><a href="https://zzunkong.blogspot.com/2026/08/lost-your-lg-tv-remote-use-your-phone.html">Lost Your LG TV Remote? Use Your Phone Instead</a> — a hands-on walkthrough of the first-time setup.</li>
+      <li><a href="https://blog.naver.com/droidactor/224377014923" hreflang="ko" lang="ko">LG TV 리모컨 분실·고장, 폰을 리모컨으로 쓰는 방법</a> — the same walkthrough in Korean.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Other apps</h2>
+    <div class="also">
+      <a href="/apps/bt-keyboard/"><span class="dotori">Dotori</span> Bluetooth Keyboard</a>
+      <a href="/apps/bt-ppt/"><span class="dotori">Dotori</span> Bluetooth PPT Remote</a>
+      <a href="/apps/bt-mouse/"><span class="dotori">Dotori</span> Bluetooth Mouse</a>
+      <a href="/apps/wifi-scout/"><span class="dotori">Dotori</span> WiFi Scanner</a>
+      <a href="/apps/ssh-scout/"><span class="dotori">Dotori</span> SSH Terminal</a>
+      <a href="/apps/yt-downloader/"><span class="dotori">Dotori</span> YouTube Downloader</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Android apps by droidactor.</p>
+    <p><a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/blog/">Field notes</a> · <a href="/ko/apps/lgtv/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+    <p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p>
+  </footer>
+</div>
+
+</body>
+</html>

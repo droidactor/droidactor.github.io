@@ -1,7 +1,7 @@
 # droidactor.github.io
 
-Developer site for the droidactor Android apps — app listing, per-app product pages, support contact,
-privacy policy, and the host for `app-ads.txt`.
+Developer site for the droidactor Android apps — app listing, per-app product pages and bilingual user
+manuals, support contact, privacy policy, and the host for `app-ads.txt`.
 
 `https://droidactor.github.io/` 로 게시되는 GitHub Pages 사이트다. Play Console · App Store Connect 에
 **개발자 웹사이트**로 등록하는 주소이며, AdMob 의 `app-ads.txt` 크롤러가 읽는 도메인 루트도 여기다.
@@ -14,13 +14,17 @@ privacy policy, and the host for `app-ads.txt`.
 ```
 /                       영문 홈 (앱 목록 · 지원 · 개인정보 처리방침 전문)
 /ko/                    국문 홈 (같은 구성, 같은 앵커)
-/bt-keyboard/           제품 페이지 — Dotori Bluetooth Keyboard      + /ko/bt-keyboard/
-/bt-ppt/                제품 페이지 — Dotori Bluetooth PPT Remote    + /ko/bt-ppt/
-/bt-mouse/              제품 페이지 — Dotori Bluetooth Mouse         + /ko/bt-mouse/
-/wifi-scout/            제품 페이지 — Dotori WiFi Scanner              + /ko/wifi-scout/
-/ssh-scout/             제품 페이지 — Dotori SSH Terminal               + /ko/ssh-scout/
-/yt-downloader/         제품 페이지 — Dotori YouTube Downloader      + /ko/yt-downloader/
-/lgtv/                  제품 페이지 — Dotori LG TV Remote            + /ko/lgtv/
+/apps/                  제품 목록 — 7종 앱                            + /ko/apps/
+/apps/bt-keyboard/      제품 페이지 — Dotori Bluetooth Keyboard      + /ko/apps/bt-keyboard/
+/apps/bt-ppt/           제품 페이지 — Dotori Bluetooth PPT Remote    + /ko/apps/bt-ppt/
+/apps/bt-mouse/         제품 페이지 — Dotori Bluetooth Mouse         + /ko/apps/bt-mouse/
+/apps/wifi-scout/       제품 페이지 — Dotori WiFi Scanner             + /ko/apps/wifi-scout/
+/apps/ssh-scout/        제품 페이지 — Dotori SSH Terminal             + /ko/apps/ssh-scout/
+/apps/yt-downloader/    제품 페이지 — Dotori YouTube Downloader      + /ko/apps/yt-downloader/
+/apps/lgtv/             제품 페이지 — Dotori LG TV Remote            + /ko/apps/lgtv/
+/manual/                사용 설명서 목록 — 6종 앱                     + /ko/manual/
+/manual/<앱>/           6종 앱 영문 사용 설명서                       + /ko/manual/<앱>/
+                        (bt-keyboard · bt-ppt · bt-mouse · wifi-scout · ssh-scout · lgtv)
 /blog/                  글 목록 — Field notes                        + /ko/blog/ (현장 노트)
 /blog/<slug>/           글 1편                                       + /ko/blog/<slug>/
 /blog/_post-template.html  글 템플릿 — noindex · sitemap 제외. 페이지가 아니다
@@ -34,14 +38,21 @@ privacy policy, and the host for `app-ads.txt`.
 /naver291cd179e909bd205a8a0bf7179d3588.html  네이버 서치어드바이저 소유확인 파일 — 같은 이유로 **지우지 않는다**
 ```
 
+제품의 예전 `/<앱>/` · `/ko/<앱>/` 주소는 이미 외부에 공개됐으므로 삭제하지 않는다. 각 주소에는
+`noindex,follow`·새 canonical·즉시 이동을 담은 호환 HTML을 두고, sitemap과 내부 링크는 새
+`/apps/<앱>/` · `/ko/apps/<앱>/` 주소만 사용한다. GitHub Pages 정적 호스팅이라 서버 301은 쓸 수 없다.
+
 | 파일 | 역할 |
 |---|---|
 | `index.html` · `ko/index.html` | 앱 목록 + 지원 연락처 + **개인정보 처리방침 전문**. 처리방침 앵커의 정본이다 |
-| `<앱>/index.html` | 제품 상세. 기능·요구사항·개인정보 요약을 담고, 처리방침 **전문은 홈 앵커로 링크**한다(중복 금지) |
+| `apps/index.html` · `ko/apps/index.html` | 7종 제품 목록 허브. 제품 상세와 6종 매뉴얼로 연결한다 |
+| `apps/<앱>/index.html` · `ko/apps/<앱>/index.html` | 제품 상세. 기능·요구사항·개인정보 요약을 담고, 처리방침 **전문은 홈 앵커로 링크**한다(중복 금지) |
+| `manual/index.html` · `ko/manual/index.html` | `yt-downloader`를 제외한 6종 사용 설명서 목록 허브 |
+| `manual/<앱>/index.html` · `ko/manual/<앱>/index.html` | 6종 앱의 한·영 사용 설명서. 실제 UI 문구·검증 앱 버전·빠른 시작·설정·문제 해결을 담고 해당 제품·기술 글과 상호 링크한다. `yt-downloader`는 대상이 아니다 |
 | `blog/index.html` · `ko/blog/index.html` | 글 목록. **손으로 관리한다** — 이 리포에 생성기는 없다. 열 편쯤 넘어 손이 아프면 그때가 도입 신호다 |
 | `blog/_post-template.html` | 글 템플릿. slug·경로·JSON-LD·CTA 규약을 머리주석에 담고 있으며 **글 추가 절차의 정본**이다 |
 | `assets/site.css` | 전 페이지 공용. 외부 CDN·폰트·스크립트 없음(자기완결) |
-| `sitemap.xml` | 홈·제품 16개 URL + `xhtml:link` hreflang. 페이지를 추가하면 여기도 넣는다. 블로그 URL도 같은 언어 쌍 규칙을 따른다 |
+| `sitemap.xml` | 홈 2 + 앱 허브 2 + 제품 14 + 매뉴얼 허브 2 + 매뉴얼 12 + 블로그 18 = 50개 URL. 모든 한·영 쌍에 `xhtml:link` hreflang 3개를 둔다 |
 | `robots.txt` | 전체 허용 + sitemap 위치 |
 | `404.html` | 루트 절대경로만 쓴다 — 어느 깊이의 주소에서든 서빙되기 때문이다. `noindex` |
 | `app-ads.txt` | **AdMob 콘솔이 생성한 줄을 그대로** 넣는다 — 손으로 만들지 않는다 |
@@ -74,7 +85,8 @@ privacy policy, and the host for `app-ads.txt`.
 - `robots.txt` · `sitemap.xml`
 - 페이지마다 `canonical`, `og:*`, `hreflang`(en / ko / x-default 상호 참조), JSON-LD
   (홈 = `WebSite`+`Organization`+`ItemList`, 제품 = `SoftwareApplication`)
-- 색인 단위를 1개에서 **16개**로 늘린 홈·제품별 URL
+- 홈 2개, 앱 허브 2개, 제품 14개, 매뉴얼 허브 2개와 6종 한·영 매뉴얼 12개. 매뉴얼은 `TechArticle`, 제품은
+  `SoftwareApplication`으로 역할을 분리하고 같은 언어끼리 상호 링크한다.
 - `/blog/` · `/ko/blog/` — 제품 페이지보다 깊은 **기술 설명·정량 실측·원리·재현 가능한 상세 사용법**을
   싣는다. 측정 수치는 환경·방법·시점을 함께 적고, 적용 범위와 제약을 생략하지 않는다.
 - 모든 사용자 유입형 사용 사례를 이 사이트에 먼저 만들지 않는다. Naver는 한국어 사용 사례의 원본,
@@ -210,7 +222,8 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
       6종이 추가돼 34 URL 이 되면서 "남은 13개" 가 됐고, 8-10 오후 2건으로 11개, 8-11 05:37 의 1건으로
       10개, 그리고 09:26 에 0 이 됐다. **중간의 11 은 맨 처음의 11 과 기준이 다르다 — 우연히 같은
       숫자였다.** 34개 중 Google 이 아는 것은 아직 9개다 — 2026-08-11 재확인, 단 보고서 기준일 8-07.)
-- [ ] **요청한 34 URL 의 크롤·색인 도달 관찰.** 이제 넣을 것이 없으므로 남은 일은 기다림이다.
+- [ ] **경로 개편 전 요청한 34 URL 의 크롤·색인 도달 관찰.** 이 항목은 2026-08-14 경로 개편 전
+      색인 이력을 추적하는 기록이다. 당시 기준으로는 넣을 것이 없었으므로 남은 일은 기다림이었다.
       크롤이 닿지 않은 URL 이 있어도 **재요청하지 않는다**(대기열 우선순위가 바뀌지 않는다).
       볼 순서는 `todo-google-search.md` §5-2 — **보고서 최종 업데이트 날짜를 먼저 읽고**, 그것이
       움직였을 때만 수치를 본다.
@@ -247,6 +260,11 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
 - [ ] 네이버 수집·색인 현황 확인. 위 34건 중 실제로 수집된 것이 몇 개인지 `요약 → 수집 현황` 과
       `리포트` 에서 확인하고, Google 쪽 진행과 나란히 비교한다.
 - [ ] 제품 페이지에 스크린샷 추가(현재는 텍스트만). 이미지를 넣으면 `og:image` 도 함께 채운다.
+- [ ] **2026-08-14 경로 개편 배포 확인.** 배포 뒤 `/apps/`·`/manual/` 허브, 7종 새 제품 URL,
+      6종 새 매뉴얼 URL과 기존 제품 URL 14개의 호환 이동이 실제 도메인에서 `200`인지 확인한다.
+      sitemap 주소 자체는 그대로이므로 삭제·재제출하지 말고 Search Console의 재수집을 기다린다.
+      URL 검사는 우선 `/apps/`, `/ko/apps/`, `/manual/`, `/ko/manual/`과 이미 색인됐던 제품의 새 주소부터
+      요청한다. 네이버도 같은 새 canonical URL을 수집 요청하되 콘솔이 거부하면 그날은 중단한다.
 
 지원·개인정보 문의 주소는 `droidactor@gmail.com` 이다(홈의 Support 섹션과 §8).
 개인정보 처리방침의 연락처는 Play 정책상 필수 항목이므로 비워두지 않는다.
@@ -256,15 +274,21 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
 - **앱을 추가하면** 다음을 한 묶음으로 처리한다. 하나라도 빠지면 링크가 깨지거나 색인에서 누락된다.
   1. 홈 카드 2개 — `index.html`, `ko/index.html` 의 `<article class="card">`
   2. 처리방침 앱별 항목 2개 — 같은 두 파일의 `<div class="policy" id="privacy-…">`
-  3. 제품 페이지 2개 — `<앱>/index.html`, `ko/<앱>/index.html`
+  3. 제품 페이지 2개 — `apps/<앱>/index.html`, `ko/apps/<앱>/index.html`
   4. `sitemap.xml` 에 URL 2개 (hreflang 3줄씩)
   5. 새 권한이 생기면 처리방침 §4 권한 표에 행 추가 (두 언어 모두). 기존 권한을 쓰는 앱이라도
      그 행의 "해당 앱" 칸에 이름을 더한다
   6. 홈 JSON-LD `ItemList` 에 `ListItem` 2개 (`index.html` · `ko/index.html`, position 은 카드 순서)
-  7. **역방향 링크** — 기존 모든 페이지의 `<div class="also">` 에 새 앱을 넣는다. 제품 12 + 블로그 목록 2
+  7. **역방향 링크** — 기존 모든 페이지의 `<div class="also">` 에 새 앱을 넣는다. 기존 한·영 제품 페이지 전부 + 앱·블로그 목록
      + `404.html` 이고, 새 제품 페이지 쪽에는 나머지 앱 전부를 넣는다. 여기를 빠뜨리면 홈 카드 외에는
      새 앱으로 들어가는 내부 링크가 없어 크롤러가 한 경로로만 본다(bt-mouse 를 붙일 때 실제로 빠뜨렸다)
   8. 손댄 페이지의 `<lastmod>` 갱신
+- **6종 앱 매뉴얼을 고치면** 제품 소개나 블로그 설명과 섞지 않고 다음을 한 묶음으로 처리한다.
+  1. `manual/<앱>/index.html`과 `ko/manual/<앱>/index.html`을 같은 목차·같은 기능 범위로 갱신
+  2. 화면의 실제 버튼명은 앱 리소스 문자열, 동작·권한은 앱 코드와 `AndroidManifest.xml`을 근거로 확인
+  3. 문서 머리의 검증 앱 버전과 `dateModified`, `sitemap.xml`의 `<lastmod>`를 함께 갱신
+  4. 제품 페이지의 매뉴얼 CTA와 해당 기술 글의 관련 글 링크가 양방향으로 살아 있는지 확인
+  5. 스크린샷은 기존 블로그 자산을 참조한다. 발행된 자산 경로를 매뉴얼 때문에 이동하거나 복제하지 않는다
 - **블로그 글을 추가하면** 다섯 가지를 한 묶음으로 처리한다. 자리표시자와 세부 규약의 정본은
   `blog/_post-template.html` 머리주석이며, 작성 원고는 `MyApps/Mobile` 저장소 기준
   `../blogs/<app>/<slug>/site.{en,ko}.md`에서 가져온다.
@@ -274,19 +298,19 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
   3. `sitemap.xml` 에 글 URL 2개. **첫 글이라면 주석 처리된 블로그 목록 쌍도 이때 함께 푼다**
   4. 손댄 페이지의 `<lastmod>` 갱신
   5. 글 끝 CTA 는 **앱 하나만** 가리킨다. 다섯 개를 나열하면 아무 데도 가지 않는다
-- **전역 네비게이션 항목이 늘면**(블로그처럼 새 섹션이 생기면) 푸터가 있는 **모든 페이지**를 고친다 —
-  홈 2 + 제품 14 + `404.html` + 블로그 목록 2. 홈만 고치면 나머지 페이지에서 그 섹션에 닿을 길이 없고,
+- **전역 네비게이션 항목이 늘면**(블로그나 매뉴얼처럼 새 섹션이 생기면) 푸터가 있는 **모든 페이지**를 고친다 —
+  홈 2 + 허브 6 + 제품 14 + 매뉴얼 12 + 블로그 글 16 + `404.html`. 홈만 고치면 나머지 페이지에서 그 섹션에 닿을 길이 없고,
   크롤러도 홈 한 곳에서만 링크를 본다. 블로그를 붙일 때 실제로 여기서 한 번 빠뜨렸다.
 - **개인정보 처리방침을 고치면** 섹션 머리의 "최종 갱신 / Effective date" 날짜를 함께 고친다. **두 언어 모두다.**
 - **제품 페이지에 처리방침 전문을 복사하지 않는다.** 요약 + 홈 앵커 링크만 둔다. 두 벌이 되면 반드시 어긋난다.
 - 권한 설명은 추측하지 않고 각 앱의 `AndroidManifest.xml` 을 근거로 쓴다. 위치 권한 없음,
   `NEARBY_WIFI_DEVICES` 의 `neverForLocation` 처럼 심사에서 문제되는 항목은 매니페스트가 근거다.
-- 앱 목록·패키지명·출시 상태·minSdk 의 정본은 이 리포가 아니라 `MyApps/Mobile/apps-map.md` 다.
+- 앱 목록·패키지명·출시 상태·버전·minSdk 의 정본은 이 리포가 아니라 `MyApps/Mobile/master/apps.tsv` 다.
 - 스타일을 고칠 일이 있으면 `assets/site.css` 한 곳만 고친다. 페이지에 `<style>` 을 다시 넣지 않는다.
 
 ## 확인
 
-내부 링크가 `/bt-keyboard/` 같은 **절대경로**라 `file://` 로 열면 링크가 동작하지 않는다. 로컬 확인은
+내부 링크가 `/apps/bt-keyboard/` 같은 **절대경로**라 `file://` 로 열면 링크가 동작하지 않는다. 로컬 확인은
 정적 서버로 한다.
 
 ```sh

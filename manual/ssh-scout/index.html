@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotori SSH Terminal user manual</title>
+<meta name="description" content="Find or enter an SSH host, verify its host key, provide credentials, and use the terminal securely with Dotori SSH Terminal.">
+<link rel="canonical" href="https://droidactor.github.io/manual/ssh-scout/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/manual/ssh-scout/"><link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/manual/ssh-scout/"><link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/manual/ssh-scout/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/manual/ssh-scout/"><meta property="og:title" content="Dotori SSH Terminal user manual"><meta property="og:description" content="Connect directly or discover an SSH host, verify TOFU, and use the terminal.">
+<meta property="og:image" content="https://droidactor.github.io/blog/find-and-connect-to-ssh-hosts-from-android/assets/icon.png"><meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "TechArticle", "headline": "Dotori SSH Terminal user manual", "url": "https://droidactor.github.io/manual/ssh-scout/", "datePublished": "2026-08-14", "dateModified": "2026-08-14", "inLanguage": "en", "author": { "@id": "https://droidactor.github.io/#publisher" }, "publisher": { "@id": "https://droidactor.github.io/#publisher" }, "about": { "@type": "SoftwareApplication", "name": "Dotori SSH Terminal", "url": "https://droidactor.github.io/apps/ssh-scout/", "operatingSystem": "Android" } },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+      { "@type": "ListItem", "position": 2, "name": "User manuals", "item": "https://droidactor.github.io/manual/" },
+      { "@type": "ListItem", "position": 3, "name": "Dotori SSH Terminal", "item": "https://droidactor.github.io/manual/ssh-scout/" }
+    ] }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand"><a href="/">droid<span>actor</span></a></div><nav class="langs" aria-label="Language"><a class="lang-btn" href="/manual/ssh-scout/" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/manual/ssh-scout/" hreflang="ko" lang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/manual/">User manuals</a><span>/</span><span class="dotori">Dotori</span> SSH Terminal</nav>
+  <div class="hero manual-hero"><h1><span class="dotori">Dotori</span> SSH Terminal user manual</h1><p>Enter or discover a host, verify the server identity, provide credentials inside the SSH app, and work in a direct terminal session.</p><p class="manual-meta">Checked with Android app version 1.0.1 (2) · Updated 14 August 2026</p></div>
+  <nav class="manual-toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#connect">Connect to a host</a></li><li><a href="#credentials">Credentials and host keys</a></li><li><a href="#terminal">Use the terminal</a></li><li><a href="#settings">Settings</a></li><li><a href="#troubleshooting">Troubleshooting</a></li><li><a href="#privacy">Security and privacy</a></li></ol></nav>
+
+  <article class="manual-body post-body">
+    <h2 id="connect">Connect to a host</h2>
+    <ol class="manual-steps">
+      <li><h3>Confirm authorization</h3><p>Use SSH only on systems and networks you own or are authorized to administer. Make sure the SSH service is running and that you know its port.</p></li>
+      <li><h3>Enter a known target</h3><p>Under <strong>Direct SSH connection</strong>, enter an IP address or hostname and a port—normally <code>22</code>—then press <strong>Connect</strong>. Direct connection does not require a Wi-Fi discovery scan.</p></li>
+      <li><h3>Or discover the service</h3><p>On the current Wi-Fi, scan the selected TCP port in the derived local range and choose a responding host. An open port is a candidate, not proof that the service is SSH.</p></li>
+      <li><h3>Accept a handoff from WiFi Scanner</h3><p><span class="dotori">Dotori</span> WiFi Scanner can open this app with the host and port filled in. The handoff never carries a username or password.</p></li>
+    </ol>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/en-US/01-direct-connection.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Direct SSH connection screen"><figcaption>Enter a known host directly or select a discovered address.</figcaption></figure>
+      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/en-US/02-connect-prompt.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH credential prompt"><figcaption>Credentials are requested by the SSH app after a target is selected.</figcaption></figure>
+    </div>
+
+    <h2 id="credentials">Credentials and host keys</h2>
+    <ol class="manual-steps">
+      <li><h3>Enter the account</h3><p>Provide the username and password in the connection prompt. Save credentials only when you want them retained for this host and port. This version supports password authentication, not private-key authentication.</p></li>
+      <li><h3>Verify the first host key</h3><p>On first connection, compare the displayed key type and SHA-256 fingerprint with a value from the server administrator or another trusted channel before accepting it.</p></li>
+      <li><h3>Stop when a saved key changes</h3><p>A changed host key can be legitimate after a reinstall or key rotation, but it can also indicate interception. Do not replace the saved fingerprint until the new value is verified independently.</p></li>
+    </ol>
+    <div class="note"><p><strong>Passwords and host keys answer different questions.</strong> Credentials prove the user to the server; the host key helps the user recognize the server.</p></div>
+
+    <h2 id="terminal">Use the terminal</h2>
+    <ul>
+      <li>Commands run directly on the connected host; there is no droidactor proxy server.</li>
+      <li>Use the modifier and arrow-key bar for keys that are awkward on a phone keyboard.</li>
+      <li>Close the session when work is finished, especially before changing networks.</li>
+      <li>The remote server controls command history, shell behavior, permissions, and audit logging.</li>
+    </ul>
+    <figure class="manual-shot"><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/en-US/03-terminal.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Connected SSH terminal"><figcaption>The terminal includes modifier and arrow keys for command-line work.</figcaption></figure>
+
+    <h2 id="settings">Settings</h2>
+    <ul>
+      <li>Choose system, English, or Korean language.</li>
+      <li>Change the theme and terminal text size.</li>
+      <li>Review saved connections and remove credentials that should no longer remain on the phone.</li>
+      <li>Open network and privacy information to review local discovery, storage, and authorized-use boundaries.</li>
+    </ul>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/en-US/04-settings.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH Terminal settings"><figcaption>Language, theme, text size, and terminal behavior are explicit settings.</figcaption></figure>
+      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/en-US/05-network-privacy.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH network and privacy information"><figcaption>The app states where connections go and what remains on the device.</figcaption></figure>
+    </div>
+
+    <h2 id="troubleshooting">Troubleshooting</h2>
+    <div class="scroll"><table class="troubleshooting"><thead><tr><th>Symptom</th><th>What to check</th></tr></thead><tbody>
+      <tr><td>No host is discovered</td><td>Confirm the SSH service and port, Wi-Fi reachability, client isolation or VLAN boundaries, and the server firewall. Try direct connection with a known address.</td></tr>
+      <tr><td>Connection refused or timed out</td><td>Verify the host and port, then check whether the server listens on that interface and permits the phone's subnet.</td></tr>
+      <tr><td>Authentication fails</td><td>Re-enter the username and credential for this server. Discovery does not verify an account.</td></tr>
+      <tr><td>Host key changed</td><td>Stop and verify the new fingerprint through a trusted channel. Treat this as a server-identity issue, not a discovery problem.</td></tr>
+      <tr><td>WiFi Scanner handoff opens no session</td><td>The handoff fills only host and port. Complete the credential prompt and host-key check inside this app.</td></tr>
+    </tbody></table></div>
+
+    <h2 id="privacy">Security and privacy</h2>
+    <p>Credentials and trusted host keys are stored in the app's protected storage on the phone. Credentials are permanent only when you choose to save them and can be deleted per target. Session output, discovered hosts, and credentials are not sent to droidactor or the advertising SDK. See the <a href="/#privacy-ssh">full privacy policy</a>.</p>
+    <div class="manual-actions"><a href="/apps/ssh-scout/">Product page</a><a href="/blog/find-and-connect-to-ssh-hosts-from-android/">How SSH discovery and TOFU work</a></div>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/manual/">All manuals</a> · <a href="/apps/ssh-scout/">Product page</a> · <a href="/blog/">Field notes</a> · <a href="/ko/manual/ssh-scout/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

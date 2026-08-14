@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotori WiFi Scanner — see what is on the Wi-Fi you just joined</title>
+<meta name="description" content="Sweeps the private subnet of your current Wi-Fi and lists every device that answers as IP, kind and note. No location permission, nothing uploaded.">
+<link rel="canonical" href="https://droidactor.github.io/apps/wifi-scout/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/wifi-scout/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/wifi-scout/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/wifi-scout/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/apps/wifi-scout/">
+<meta property="og:title" content="Dotori WiFi Scanner — a network scanner for walking into an unfamiliar site">
+<meta property="og:description" content="Sweeps your current Wi-Fi subnet and identifies what answers. Nothing leaves the device.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Dotori WiFi Scanner",
+  "url": "https://droidactor.github.io/apps/wifi-scout/",
+  "identifier": "com.droidactor.wifi_scout",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Android 9.0 (API 28) and newer",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "description": "Sweeps the private subnet of the Wi-Fi the phone is attached to and identifies which devices answer, listing each as IP, kind and note.",
+  "featureList": [
+    "Subnet sweep of the current Wi-Fi",
+    "Device identification from mDNS, SSDP, WSD and NetBIOS responses",
+    "Manufacturer inferred from the MAC/OUI prefix",
+    "Read-only handling of industrial equipment",
+    "Hand a result to Dotori SSH Terminal by deep link"
+  ],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "droidactor", "url": "https://droidactor.github.io/" },
+  "privacyPolicy": "https://droidactor.github.io/#privacy-wifi"
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="Language">
+      <a class="lang-btn" href="/apps/wifi-scout/" aria-current="page" hreflang="en">EN</a>
+      <a class="lang-btn" href="/ko/apps/wifi-scout/" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">droidactor</a><span>/</span><a href="/apps/">Apps</a><span>/</span><span class="dotori">Dotori</span> WiFi Scanner
+  </nav>
+
+  <div class="hero product">
+    <div class="icon" aria-hidden="true">📡</div>
+    <h1><span class="dotori">Dotori</span> WiFi Scanner</h1>
+    <div class="pkg">com.droidactor.wifi_scout</div>
+    <p>
+      Sweeps the private subnet of the Wi-Fi you are on and identifies which devices answer, listing each
+      as IP, kind and note. Built for the moment you walk into an unfamiliar site and need to know what is
+      actually on the network before you touch anything.
+    </p>
+    <div class="status">
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.wifi_scout"><img
+        src="../../assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
+      <a href="/manual/wifi-scout/">User manual</a>
+      <a href="#privacy">Privacy</a>
+    </div>
+  </div>
+
+  <section>
+    <h2>What it does</h2>
+    <div class="feature">
+      <div>
+        <h3>Sweeps the subnet you are actually on</h3>
+        <p>The scan range is normally derived from the Wi-Fi the phone is attached to. If it cannot be
+          determined, you can enter a CIDR manually. Each device that answers gets a row: IP, kind, note.</p>
+      </div>
+      <div>
+        <h3>Identifies from what devices announce</h3>
+        <p>mDNS, SSDP, WSD and NetBIOS responses, open ports and service banners, plus the manufacturer
+          inferred from the MAC/OUI prefix.</p>
+      </div>
+      <div>
+        <h3>Careful around industrial equipment</h3>
+        <p>PLC ports are listed as candidates only. An identity query is a single read-only request sent
+          to one address, and only after you approve that row. The app never writes to such equipment.</p>
+      </div>
+      <div>
+        <h3>Hands off to SSH</h3>
+        <p>A result row can be opened in <a href="/apps/ssh-scout/"><span class="dotori">Dotori</span> SSH Terminal</a> by deep link. The
+          link carries the host and port only — never a username or password.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What the results depend on</h2>
+    <p>
+      A scan reports what answers, not what exists. VLANs, firewalls, client isolation and each device's
+      own configuration all change the picture — a quiet result can mean a well-segmented network rather
+      than an empty one. The app states what it observed and leaves the interpretation to you.
+    </p>
+    <p>
+      Two actions leave the app, and only when you choose them. CSV export copies the result text to your
+      clipboard, and opening a device's web UI hands the selected local URL to your default browser.
+    </p>
+    <div class="note">
+      <p><strong>Use it only on networks and equipment you own or are authorised to manage.</strong>
+        Scanning a network you have no permission to touch is a problem regardless of which tool you use.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Requirements</h2>
+    <div class="scroll">
+      <table class="spec">
+        <tbody>
+          <tr><th>Platform</th><td>Android (Flutter)</td></tr>
+          <tr><th>Package name</th><td><code>com.droidactor.wifi_scout</code></td></tr>
+          <tr><th>Minimum Android</th><td>Android 9.0 (API 28)</td></tr>
+          <tr><th>Target Android</th><td>API 36</td></tr>
+          <tr><th>Permissions</th><td><code>NEARBY_WIFI_DEVICES</code> declared <code>neverForLocation</code>. <strong>No location permission at all.</strong></td></tr>
+          <tr><th>Price</th><td>Free, supported by ads (Google AdMob)</td></tr>
+          <tr><th>Accounts</th><td>None. No sign-in, no registration.</td></tr>
+          <tr><th>Status</th><td>Published on Google Play —
+            <a href="https://play.google.com/store/apps/details?id=com.droidactor.wifi_scout">store listing</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <h2>Privacy</h2>
+    <p>
+      Scanning happens entirely between your phone and the local network it is attached to. Results — IP
+      addresses, hostnames, open ports, device kind — are shown on screen and kept on the device. They are
+      not uploaded anywhere and are never given to the advertising SDK.
+    </p>
+    <p><a href="/#privacy-wifi">Full privacy policy for this app</a></p>
+  </section>
+
+  <section>
+    <h2>Support</h2>
+    <p>
+      Bug reports, questions and feature requests go to
+      <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a>. The phone model, Android version and
+      what the device you expected to see actually is help most.
+    </p>
+  </section>
+
+  <section>
+    <h2>Other apps</h2>
+    <div class="also">
+      <a href="/apps/ssh-scout/"><span class="dotori">Dotori</span> SSH Terminal</a>
+      <a href="/apps/bt-keyboard/"><span class="dotori">Dotori</span> Bluetooth Keyboard</a>
+      <a href="/apps/bt-ppt/"><span class="dotori">Dotori</span> Bluetooth PPT Remote</a>
+      <a href="/apps/bt-mouse/"><span class="dotori">Dotori</span> Bluetooth Mouse</a>
+      <a href="/apps/yt-downloader/"><span class="dotori">Dotori</span> YouTube Downloader</a>
+      <a href="/apps/lgtv/"><span class="dotori">Dotori</span> LG TV Remote</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Android apps by droidactor.</p>
+    <p><a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/blog/">Field notes</a> · <a href="/ko/apps/wifi-scout/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+    <p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

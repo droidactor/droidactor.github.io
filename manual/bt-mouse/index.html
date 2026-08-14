@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotori Bluetooth Mouse user manual</title>
+<meta name="description" content="Pair Dotori Bluetooth Mouse with a PC, then move, click, drag, and scroll from the Android phone.">
+<link rel="canonical" href="https://droidactor.github.io/manual/bt-mouse/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/manual/bt-mouse/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/manual/bt-mouse/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/manual/bt-mouse/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/manual/bt-mouse/"><meta property="og:title" content="Dotori Bluetooth Mouse user manual"><meta property="og:description" content="Connect the phone as a Bluetooth HID mouse and use its pointer, click, and wheel controls.">
+<meta property="og:image" content="https://droidactor.github.io/blog/use-android-phone-as-bluetooth-mouse/assets/icon.png"><meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "TechArticle", "headline": "Dotori Bluetooth Mouse user manual", "url": "https://droidactor.github.io/manual/bt-mouse/", "datePublished": "2026-08-14", "dateModified": "2026-08-14", "inLanguage": "en", "author": { "@id": "https://droidactor.github.io/#publisher" }, "publisher": { "@id": "https://droidactor.github.io/#publisher" }, "about": { "@type": "SoftwareApplication", "name": "Dotori Bluetooth Mouse", "url": "https://droidactor.github.io/apps/bt-mouse/", "operatingSystem": "Android" } },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+      { "@type": "ListItem", "position": 2, "name": "User manuals", "item": "https://droidactor.github.io/manual/" },
+      { "@type": "ListItem", "position": 3, "name": "Dotori Bluetooth Mouse", "item": "https://droidactor.github.io/manual/bt-mouse/" }
+    ] }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand"><a href="/">droid<span>actor</span></a></div><nav class="langs" aria-label="Language"><a class="lang-btn" href="/manual/bt-mouse/" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/manual/bt-mouse/" hreflang="ko" lang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/manual/">User manuals</a><span>/</span><span class="dotori">Dotori</span> Bluetooth Mouse</nav>
+  <div class="hero manual-hero"><h1><span class="dotori">Dotori</span> Bluetooth Mouse user manual</h1><p>Connect the phone as a standard Bluetooth HID mouse, then use one surface for pointer movement, clicks, and scrolling.</p><p class="manual-meta">Checked with Android app version 1.0.0 (3) · Updated 14 August 2026</p></div>
+  <nav class="manual-toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#quick-start">Quick start</a></li><li><a href="#controls">Mouse controls</a></li><li><a href="#settings">Settings</a></li><li><a href="#troubleshooting">Troubleshooting</a></li><li><a href="#requirements">Requirements and privacy</a></li></ol></nav>
+
+  <article class="manual-body post-body">
+    <h2 id="quick-start">Quick start</h2>
+    <ol class="manual-steps">
+      <li><h3>Prepare Bluetooth</h3><p>Turn on Bluetooth on the phone and PC. Grant the Bluetooth and notification permissions requested by the app.</p></li>
+      <li><h3>Start the connection</h3><p>Press <strong>Start connection</strong>. If this is a new PC, make the phone discoverable and pair it from the PC's Bluetooth screen. Confirm both pairing prompts.</p></li>
+      <li><h3>Wait until the app is ready</h3><p>The connection screen checks HID registration, pairing, connection, and a minimum report. A successful PC is remembered for later reconnects.</p></li>
+      <li><h3>Open the remote</h3><p>When the Home screen shows <strong>Connected</strong>, press <strong>Open remote</strong>. Move the pointer once and test a click before relying on the connection.</p></li>
+    </ol>
+    <figure class="manual-shot"><img src="/blog/use-android-phone-as-bluetooth-mouse/assets/en-US/01-home.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Bluetooth Mouse connection screen"><figcaption>The Home screen separates connection readiness from mouse input.</figcaption></figure>
+
+    <h2 id="controls">Mouse controls</h2>
+    <ul>
+      <li><strong>Move:</strong> drag one finger across the main trackpad surface.</li>
+      <li><strong>Click:</strong> tap once for a left click or twice for a double-click.</li>
+      <li><strong>Buttons:</strong> use the separate Left, Middle, and Right controls for explicit button input.</li>
+      <li><strong>Scroll:</strong> drag the vertical or horizontal scroll area. Support for horizontal scrolling depends on the active PC application.</li>
+      <li><strong>Speed:</strong> choose Low, Normal, or High sensitivity.</li>
+    </ul>
+    <div class="note"><p><strong>The phone sends movement, not screen coordinates.</strong> Bluetooth HID reports relative movement, so the app cannot see or correct the pointer position displayed on the PC.</p></div>
+
+    <h2 id="settings">Settings</h2>
+    <ul>
+      <li><strong>Connected PC:</strong> view the current host, disconnect it, or choose <strong>Connect to another PC</strong>.</li>
+      <li><strong>Connect to the last PC on startup:</strong> tries one reconnect when the last PC is still paired.</li>
+      <li><strong>Language:</strong> use the system language or select English or Korean.</li>
+      <li><strong>Help and app information:</strong> review the HID requirements and host-dependent limits.</li>
+    </ul>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/use-android-phone-as-bluetooth-mouse/assets/en-US/02-settings.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Bluetooth Mouse settings"><figcaption>Connection behavior and pointer settings are saved on the phone.</figcaption></figure>
+      <figure><img src="/blog/use-android-phone-as-bluetooth-mouse/assets/en-US/03-help.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Bluetooth Mouse help"><figcaption>Help explains the HID requirement and the limits the phone cannot observe.</figcaption></figure>
+    </div>
+
+    <h2 id="troubleshooting">Troubleshooting</h2>
+    <div class="scroll"><table class="troubleshooting"><thead><tr><th>Symptom</th><th>What to check</th></tr></thead><tbody>
+      <tr><td>The PC cannot find the phone</td><td>Grant permissions, turn on Bluetooth, start the connection, and make the phone discoverable. Close another Dotori HID remote if it owns the session.</td></tr>
+      <tr><td>The remote will not open</td><td>Return to Home and wait for <strong>Connected</strong>. If the minimum report check failed, retry the connection.</td></tr>
+      <tr><td>Pointer movement is too slow or fast</td><td>Change <strong>Sensitivity</strong> between Low, Normal, and High.</td></tr>
+      <tr><td>Horizontal scrolling does nothing</td><td>Try the same control in an application that supports horizontal wheel input. The host application decides how to use it.</td></tr>
+      <tr><td>The PC woke but did not click</td><td>The first report may only wake a sleeping PC. Wait until it is awake, then repeat the input.</td></tr>
+    </tbody></table></div>
+
+    <h2 id="requirements">Requirements and privacy</h2>
+    <ul><li>Android 9.0 or newer on a phone with the Bluetooth HID Device profile</li><li>A host that accepts a standard Bluetooth mouse</li><li>No receiver dongle, account, or host software</li></ul>
+    <p>Pointer and button reports go only to the paired host. The app cannot read the PC's pointer position or screen. See the <a href="/#privacy-mouse">full privacy policy</a>.</p>
+    <div class="manual-actions"><a href="/apps/bt-mouse/">Product page</a><a href="/blog/use-android-phone-as-bluetooth-mouse/">How Bluetooth mouse input works</a></div>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/manual/">All manuals</a> · <a href="/apps/bt-mouse/">Product page</a> · <a href="/blog/">Field notes</a> · <a href="/ko/manual/bt-mouse/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

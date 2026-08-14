@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>도토리 SSH 터미널 — Wi-Fi 의 SSH host 를 찾아 접속한다</title>
+<meta name="description" content="host 를 찾아주는 Android SSH 클라이언트. 접속 중인 Wi-Fi 의 /24 대역에서 지정한 포트를 자동으로 훑고, 터미널과 TOFU 호스트키 관리로 접속합니다. 자격증명은 기기 밖으로 나가지 않습니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/apps/ssh-scout/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/ssh-scout/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/ssh-scout/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/ssh-scout/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/apps/ssh-scout/">
+<meta property="og:title" content="도토리 SSH 터미널 — host 탐색이 있는 Android SSH 클라이언트">
+<meta property="og:description" content="대역에서 SSH 포트를 훑어 찾고, 터미널로 접속하며, 자격증명은 앱 전용 보호 저장소에 둡니다.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260812-ko-brand">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "도토리 SSH 터미널",
+  "url": "https://droidactor.github.io/ko/apps/ssh-scout/",
+  "identifier": "com.droidactor.ssh_scout",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Android 9.0 (API 28) 이상",
+  "inLanguage": "ko",
+  "isAccessibleForFree": true,
+  "description": "터미널과 TOFU 호스트키 관리를 갖춘 Android SSH 클라이언트. 로컬 /24 대역에서 지정한 포트에 응답하는 host 를 자동으로 찾는다.",
+  "featureList": [
+    "SSH 접속과 터미널",
+    "TOFU 호스트키 관리",
+    "로컬 /24 대역의 지정 TCP 포트 자동 탐색",
+    "자격증명은 앱 전용 보호 저장소에 보관",
+    "도토리 와이파이 스캐너에서 딥링크 진입"
+  ],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+  "author": { "@type": "Organization", "name": "droidactor", "url": "https://droidactor.github.io/" },
+  "privacyPolicy": "https://droidactor.github.io/ko/#privacy-ssh"
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="언어">
+      <a class="lang-btn" href="/apps/ssh-scout/" hreflang="en" lang="en">EN</a>
+      <a class="lang-btn" href="/ko/apps/ssh-scout/" aria-current="page" hreflang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="crumb" aria-label="탐색 경로">
+    <a href="/ko/">droidactor</a><span>/</span><a href="/ko/apps/">앱</a><span>/</span><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> SSH 터미널
+  </nav>
+
+  <div class="hero product">
+    <div class="icon" aria-hidden="true">🔐</div>
+    <h1><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> SSH 터미널</h1>
+    <div class="pkg">com.droidactor.ssh_scout</div>
+    <p>
+      SSH 접속·터미널과 TOFU 호스트키 관리에 탐색 기능이 붙어 있습니다. 대부분의 SSH 클라이언트는 주소를
+      이미 안다고 전제합니다. 이 앱은 네트워크에서 응답하는 host 를 먼저 찾습니다.
+    </p>
+    <div class="status">
+      <span class="badge soon">출시 준비 중</span>
+      <a href="/ko/manual/ssh-scout/">사용 설명서</a>
+      <a href="#privacy">개인정보</a>
+    </div>
+  </div>
+
+  <section>
+    <h2>하는 일</h2>
+    <div class="feature">
+      <div>
+        <h3>host 를 찾고, 접속한다</h3>
+        <p>앱이 열려 있고 Wi-Fi 에 연결되어 있으면, 현재 로컬 IPv4 주소에서 산출한 <code>/24</code>
+          대역의 host 에 선택한 TCP 포트(기본 22)를 자동으로 시도합니다. 이 자동 탐색이 발견 기능
+          그 자체입니다.</p>
+      </div>
+      <div>
+        <h3>직접 연결되는 터미널</h3>
+        <p>세션은 폰에서 지정한 host 로 곧장 연결됩니다. 어떤 트래픽도 저희를 경유하지 않습니다 —
+          경유할 서버 자체가 없기 때문입니다.</p>
+      </div>
+      <div>
+        <h3>TOFU — 처음 본 키를 기억</h3>
+        <p>호스트키는 처음 수락한 시점에 기록되고 이후 접속마다 검사합니다. 키가 바뀌면 조용히 넘어가는
+          대신 사용자에게 알립니다.</p>
+      </div>
+      <div>
+        <h3>WiFi Scanner 에서 넘어오기</h3>
+        <p><a href="/ko/apps/wifi-scout/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 와이파이 스캐너</a> 의 결과 행이 딥링크로 이 앱을 엽니다.
+          링크에는 host 와 port 만 실리고 사용자명·비밀번호는 절대 들어가지 않습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>화면</h2>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/01-direct-connection.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH 직접 접속 화면"><figcaption>알고 있는 host 와 port 를 바로 입력하고, 아래에서 발견 결과를 함께 봅니다.</figcaption></figure>
+      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/02-connect-prompt.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH 자격증명 입력 화면"><figcaption>자격증명은 발견 링크가 아니라 앱 안에서 요청합니다.</figcaption></figure>
+      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/03-terminal.png" width="1080" height="2340" loading="lazy" decoding="async" alt="접속된 SSH 터미널 화면"><figcaption>접속하면 수정키·방향키 도구 모음이 있는 실제 터미널에서 명령을 실행합니다.</figcaption></figure>
+      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/04-settings.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH Terminal 설정"><figcaption>언어·테마·글자 크기를 설정에서 직접 고릅니다.</figcaption></figure>
+      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/05-network-privacy.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH 네트워크와 개인정보 안내"><figcaption>네트워크 사용, 로컬 저장과 허가받은 사용 범위를 앱에서 설명합니다.</figcaption></figure>
+      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/06-intro.png" width="1080" height="2340" loading="lazy" decoding="async" alt="도토리 SSH 터미널 시작 화면"><figcaption>앱을 열면 홈 화면 전에 짧은 브랜드 시작 화면이 나타납니다.</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>자격증명이 있는 곳</h2>
+    <p>
+      SSH 사용자명·비밀번호와 TOFU 호스트키는 기기 안 앱 전용 보호 저장소에 보관됩니다.
+      <strong>저희나 제3자에게 전송되지 않으며 딥링크에도 포함되지 않습니다.</strong> Android 앱 sandbox
+      때문에 다른 앱은 이를 읽을 수 없습니다 — <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 와이파이 스캐너 도 마찬가지이고, 그래서 넘겨받는 것이
+      주소뿐입니다.
+    </p>
+    <p>
+      자격증명은 사용자가 저장을 선택하지 않으면 영구 저장하지 않으며, 저장한 것은 저장된 접속 목록에서
+      대상별로 삭제할 수 있습니다.
+    </p>
+    <div class="note">
+      <p><strong>본인이 소유하거나 관리 권한을 받은 네트워크에서만 사용하십시오.</strong> 접속하는 SSH
+        서버는 저희가 선택하거나 운영하지 않으므로, 그 서버가 세션을 어떻게 처리하는지는 서버 운영자의
+        정책이 적용됩니다.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>요구 사항</h2>
+    <div class="scroll">
+      <table class="spec">
+        <tbody>
+          <tr><th>플랫폼</th><td>Android (Flutter)</td></tr>
+          <tr><th>패키지명</th><td><code>com.droidactor.ssh_scout</code></td></tr>
+          <tr><th>최소 Android</th><td>Android 9.0 (API 28)</td></tr>
+          <tr><th>대상 Android</th><td>API 36</td></tr>
+          <tr><th>권한</th><td><code>NEARBY_WIFI_DEVICES</code> 를 <code>neverForLocation</code> 으로 선언. <strong>위치 권한은 아예 요구하지 않습니다.</strong></td></tr>
+          <tr><th>가격</th><td>무료 (Google AdMob 광고 지원)</td></tr>
+          <tr><th>계정</th><td>없음. 로그인·회원가입 없음.</td></tr>
+          <tr><th>상태</th><td>Google Play 미출시</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <h2>개인정보</h2>
+    <p>
+      세션 출력은 기기 밖에 저장되지 않으며, 접속한 host 에 관한 어떤 정보도 광고 SDK 에 전달되지
+      않습니다. 계정도, 무언가를 보낼 저희 백엔드도 없습니다.
+    </p>
+    <p><a href="/ko/#privacy-ssh">이 앱의 개인정보 처리방침 전문</a></p>
+  </section>
+
+  <section>
+    <h2>지원</h2>
+    <p>
+      버그 신고·문의·기능 요청은 <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> 으로
+      보내주십시오.
+    </p>
+  </section>
+
+  <section>
+    <h2>다른 앱</h2>
+    <div class="also">
+      <a href="/ko/apps/wifi-scout/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 와이파이 스캐너</a>
+      <a href="/ko/apps/bt-keyboard/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드</a>
+      <a href="/ko/apps/bt-ppt/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨</a>
+      <a href="/ko/apps/bt-mouse/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스</a>
+      <a href="/ko/apps/yt-downloader/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> YouTube Downloader</a>
+      <a href="/ko/apps/lgtv/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> LG TV 리모컨</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>droidactor 가 만드는 Android 앱.</p>
+    <p><a href="/ko/apps/">전체 앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/blog/">현장 노트</a> · <a href="/apps/ssh-scout/" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>

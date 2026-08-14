@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>도토리 와이파이 스캐너 사용 설명서</title>
+<meta name="description" content="로컬 Wi-Fi 대역을 선택하고 장비를 검색하며 판정 근거를 읽고 발견한 HTTP·SSH 서비스를 여는 방법입니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/manual/wifi-scout/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/manual/wifi-scout/"><link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/manual/wifi-scout/"><link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/manual/wifi-scout/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="ko_KR"><meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/manual/wifi-scout/"><meta property="og:title" content="도토리 와이파이 스캐너 사용 설명서"><meta property="og:description" content="로컬 Wi-Fi를 검색하고 장비 판정 근거와 발견한 서비스를 확인하는 방법입니다.">
+<meta property="og:image" content="https://droidactor.github.io/blog/find-devices-on-wifi-from-android/assets/icon.png"><meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "TechArticle", "headline": "도토리 와이파이 스캐너 사용 설명서", "url": "https://droidactor.github.io/ko/manual/wifi-scout/", "datePublished": "2026-08-14", "dateModified": "2026-08-14", "inLanguage": "ko", "author": { "@id": "https://droidactor.github.io/#publisher" }, "publisher": { "@id": "https://droidactor.github.io/#publisher" }, "about": { "@type": "SoftwareApplication", "name": "도토리 와이파이 스캐너", "url": "https://droidactor.github.io/ko/apps/wifi-scout/", "operatingSystem": "Android" } },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+      { "@type": "ListItem", "position": 2, "name": "사용 설명서", "item": "https://droidactor.github.io/ko/manual/" },
+      { "@type": "ListItem", "position": 3, "name": "도토리 와이파이 스캐너", "item": "https://droidactor.github.io/ko/manual/wifi-scout/" }
+    ] }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand"><a href="/ko/">droid<span>actor</span></a></div><nav class="langs" aria-label="언어"><a class="lang-btn" href="/manual/wifi-scout/" hreflang="en" lang="en">EN</a><a class="lang-btn" href="/ko/manual/wifi-scout/" aria-current="page" hreflang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/manual/">사용 설명서</a><span>/</span><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 와이파이 스캐너</nav>
+  <div class="hero manual-hero"><h1><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 와이파이 스캐너 사용 설명서</h1><p>로컬 대역을 확인하고 응답하는 장비를 찾은 뒤, 각 결과의 판정 근거를 살펴보고 적절한 앱으로 서비스를 엽니다.</p><p class="manual-meta">Android 앱 1.0.1 (3) 기준 · 2026년 8월 14일 갱신</p></div>
+  <nav class="manual-toc" aria-label="이 페이지의 내용"><strong>이 페이지의 내용</strong><ol><li><a href="#quick-start">빠른 시작</a></li><li><a href="#results">결과 읽기</a></li><li><a href="#actions">서비스 열기</a></li><li><a href="#settings">스캔 설정</a></li><li><a href="#troubleshooting">문제 해결</a></li><li><a href="#privacy">권한과 개인정보</a></li></ol></nav>
+
+  <article class="manual-body post-body">
+    <h2 id="quick-start">빠른 시작</h2>
+    <ol class="manual-steps">
+      <li><h3>확인할 Wi-Fi에 연결합니다</h3><p>앱은 현재 Wi-Fi에서 폰 주소·게이트웨이·스캔 대역을 구합니다. 모바일 데이터나 미연결 상태에서는 검색할 로컬 대역을 정할 수 없습니다.</p></li>
+      <li><h3>네트워크 접근 안내를 확인합니다</h3><p>요청된 근처 Wi-Fi 접근을 허용합니다. 위치 확인이 아니라 네트워크 정보 읽기에 사용합니다. Subnet을 판단할 수 없으면 추정 <code>/24</code> 대역을 검토하거나 <strong>수동 CIDR 입력</strong>을 선택합니다.</p></li>
+      <li><h3>대상 대역을 확인합니다</h3><p>게이트웨이·내 IP·CIDR·예상 대상 수를 확인합니다. 소유하거나 명시적으로 검색 허가를 받은 네트워크와 장비만 검사합니다.</p></li>
+      <li><h3>스캔 시작을 누릅니다</h3><p>먼저 주소 응답을 확인하고, 응답한 장비를 다시 분석합니다. 중간에 취소할 수 있으며 완료된 결과는 남습니다.</p></li>
+    </ol>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/ko-KR/01-home.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Wi-Fi 스캔 대역과 게이트웨이"><figcaption>검색 전에 게이트웨이·대역·폰 주소·대상 수를 확인합니다.</figcaption></figure>
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/ko-KR/02-scan-results.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Wi-Fi 스캔 결과"><figcaption>응답한 모든 주소를 종류와 판정 근거와 함께 표시합니다.</figcaption></figure>
+    </div>
+
+    <h2 id="results">결과 읽기</h2>
+    <ul>
+      <li><strong>종류</strong>는 응답한 장비에 대한 앱의 최선의 분류입니다.</li>
+      <li><strong>신뢰도: 확정</strong>은 강한 근거가 일치한 경우이고, <strong>후보</strong>는 유용하지만 단정할 수 없는 근거입니다.</li>
+      <li><strong>열린 포트</strong>는 이번 검색에서 응답한 서비스이며 장비에 존재할 수 있는 모든 서비스를 뜻하지 않습니다.</li>
+      <li><strong>판정 근거</strong>는 이름이나 종류를 정한 이유입니다. 제품 식별은 그 장비를 신뢰해도 된다는 인증이 아닙니다.</li>
+      <li><strong>위험 참고사항</strong>은 민감하거나 산업 장비에 영향을 줄 수 있는 동작을 알립니다.</li>
+    </ul>
+    <div class="note"><p><strong>미탐지가 부재를 뜻하지 않습니다.</strong> Client isolation·VLAN·방화벽·유선 제어망·절전 중인 장비·응답하지 않는 서비스 때문에 Wi-Fi 폰에서 보이지 않을 수 있습니다.</p></div>
+    <figure class="manual-shot"><img src="/blog/find-devices-on-wifi-from-android/assets/ko-KR/03-device-detail.png" width="1080" height="2340" loading="lazy" decoding="async" alt="포트와 판정 근거가 있는 장비 상세"><figcaption>주소·종류·열린 포트·판정 근거·사용 가능한 동작을 한곳에서 확인합니다.</figcaption></figure>
+
+    <h2 id="actions">발견한 서비스 열기</h2>
+    <ul>
+      <li><strong>HTTP 접속:</strong> 장비가 제공하는 웹 화면을 폰 브라우저에서 엽니다. 장비 관리는 그 장비의 화면에서 수행합니다.</li>
+      <li><strong>SSH 접속:</strong> Host와 port를 도토리 SSH 터미널로 넘깁니다. 자격증명은 링크에 넣지 않고 SSH 앱에서 입력합니다.</li>
+      <li><strong>EtherNet/IP identity 조회(고급):</strong> 산업 장비에 패킷을 보냅니다. 현장 관리자의 명시적 승인을 받은 경우에만 사용합니다.</li>
+      <li><strong>복사:</strong> 검색 결과를 CSV로 복사해 사용자가 직접 보관합니다.</li>
+    </ul>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/ko-KR/04-ssh-session.png" width="1080" height="2340" loading="lazy" decoding="async" alt="검색 결과에서 연 SSH session"><figcaption>SSH 자격증명은 넘겨받은 터미널 앱에서 입력합니다.</figcaption></figure>
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/ko-KR/06-router-web.png" width="1080" height="2340" loading="lazy" decoding="async" alt="브라우저에서 연 공유기 웹 화면"><figcaption>HTTP 동작은 장비 자신의 페이지를 브라우저에서 엽니다.</figcaption></figure>
+    </div>
+
+    <h2 id="settings">스캔 설정</h2>
+    <ul>
+      <li><strong>신속:</strong> 가장 짧은 응답 대기시간을 사용합니다.</li>
+      <li><strong>균형:</strong> 응답을 더 기다려 누락 가능성을 낮춥니다.</li>
+      <li><strong>정확:</strong> 균형 모드에 HTTP 본문 상세 분석을 더합니다.</li>
+      <li>테마·폰트 크기·언어 변경은 즉시 적용되고 폰에 저장됩니다.</li>
+    </ul>
+    <figure class="manual-shot"><img src="/blog/find-devices-on-wifi-from-android/assets/ko-KR/07-settings.png" width="1080" height="2340" loading="lazy" decoding="async" alt="와이파이 스캐너 설정"><figcaption>스캔 모드는 속도와 응답 대기·HTTP 분석 깊이를 맞바꿉니다.</figcaption></figure>
+
+    <h2 id="troubleshooting">문제 해결</h2>
+    <div class="scroll"><table class="troubleshooting"><thead><tr><th>증상</th><th>확인할 내용</th></tr></thead><tbody>
+      <tr><td>Wi-Fi 연결 필요</td><td>모바일 데이터가 아니라 Wi-Fi에 연결한 뒤 <strong>재시도</strong>합니다.</td></tr>
+      <tr><td>대역을 판단할 수 없음</td><td>근처 Wi-Fi 접근을 허용합니다. Subnet을 계속 알 수 없다면 CIDR을 검증해 직접 입력합니다.</td></tr>
+      <tr><td>응답하는 장비가 없음</td><td>Client isolation·VLAN·장비 방화벽·절전 상태와 CIDR을 확인합니다. 균형 또는 정확 모드로 다시 검색합니다.</td></tr>
+      <tr><td>알고 있는 장비의 종류가 다름</td><td>상세 화면에서 판정 근거를 봅니다. 후보 결과는 단정이 아니라 단서로 사용합니다.</td></tr>
+      <tr><td>SSH 또는 HTTP를 열 수 없음</td><td>표시된 port가 아직 응답하는지 확인합니다. SSH 접속에는 도토리 SSH 터미널이 필요하고, HTTP는 브라우저에서 로컬 주소에 접근할 수 있어야 합니다.</td></tr>
+    </tbody></table></div>
+
+    <h2 id="privacy">권한과 개인정보</h2>
+    <p>앱은 로컬 네트워크를 확인하기 위해 인터넷·네트워크 상태·Wi-Fi 상태·근처 Wi-Fi 접근 권한을 사용합니다. 근처 Wi-Fi 접근은 위치 목적으로 사용하지 않도록 선언되어 있습니다. 검색 결과와 사설망 주소는 광고 SDK로 보내지 않습니다. 자세한 내용은 <a href="/ko/#privacy-wifi">개인정보 처리방침 전문</a>에서 확인할 수 있습니다.</p>
+    <div class="manual-actions"><a href="/ko/apps/wifi-scout/">제품 페이지</a><a href="/ko/blog/find-devices-on-wifi-from-android/">로컬 장비 발견 원리</a><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.wifi_scout"><img src="../../../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></a></div>
+  </article>
+  <footer><p>droidactor의 Android 앱입니다.</p><p><a href="/ko/manual/">전체 설명서</a> · <a href="/ko/apps/wifi-scout/">제품 페이지</a> · <a href="/ko/blog/">현장 노트</a> · <a href="/manual/wifi-scout/" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play 및 Google Play 로고는 Google LLC의 상표입니다.</p></footer>
+</div>
+</body>
+</html>

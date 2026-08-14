@@ -21,7 +21,7 @@
     - The stylesheet uses a RELATIVE path, like every other page in this repo, so the
       file still renders when opened straight from disk. The depth is fixed per
       language: ../../ from /blog/<slug>/, ../../../ from /ko/blog/<slug>/.
-    - Links stay ROOT-ABSOLUTE (/bt-keyboard/, /ko/blog/). They will not work under
+    - Links stay ROOT-ABSOLUTE (/apps/bt-keyboard/, /ko/blog/). They will not work under
       file:// — that is expected and applies to the whole site. Check locally with
       `python -m http.server 8000`, as README says.
     - This site carries technical references: protocol/behavior explanations,
@@ -71,7 +71,7 @@
       "about": {
         "@type": "SoftwareApplication",
         "name": "{{APP_NAME — the one app this post lands on}}",
-        "url": "https://droidactor.github.io/{{ko/}}{{APP_PATH}}/",
+        "url": "https://droidactor.github.io/{{ko/}}apps/{{APP_PATH}}/",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "Android"
       }
@@ -140,7 +140,7 @@
     <div class="note">
       <p><strong>{{APP_NAME}}</strong> {{does this part of the job on a phone —
         one sentence, factual, no superlatives. Then the link.}}
-        <a href="/{{ko/}}{{APP_PATH}}/">{{More about APP_NAME|APP_NAME 자세히 보기}}</a></p>
+        <a href="/{{ko/}}apps/{{APP_PATH}}/">{{More about APP_NAME|APP_NAME 자세히 보기}}</a></p>
     </div>
 
     <h2>{{Related notes|관련 글}}</h2>
@@ -152,7 +152,7 @@
 
   <footer>
     <p>{{Android apps by droidactor.|droidactor 가 만드는 Android 앱.}}</p>
-    <p><a href="/{{ko/}}blog/">{{Field notes|현장 노트}}</a> · <a href="/{{ko/}}">{{All apps|전체 앱}}</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+    <p><a href="/{{ko/}}blog/">{{Field notes|현장 노트}}</a> · <a href="/{{ko/}}apps/">{{All apps|전체 앱}}</a> · <a href="/{{ko/}}manual/">{{User manuals|사용 설명서}}</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
   </footer>
 
 </div>
