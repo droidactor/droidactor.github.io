@@ -18,14 +18,17 @@
       play.google.com/store/apps/details?id=<package>. -en on this tree, -ko under /ko/.
     - here, in /ko/index.html, and on both product pages for that app — where the spec
       table's Status row also stops saying "Not yet published on Google Play"
-    - also in the closing CTA box of every blog post that lands on that app
+    - also at the end of .manual-actions on both user manuals for that app, and in the
+      closing CTA box of every blog post that lands on that app — the manuals are the ones
+      that get forgotten, and the number of blog posts differs per app (wifi-scout has three,
+      yt-downloader has none), so count them rather than assuming one
     - the badge artwork is used unmodified (Google's guidelines forbid recolouring or
       cropping it), and every page that shows it carries <p class="tm"> in the footer with
       the trademark attribution
     - the store URL is fixed by the package name alone, so it can be written before the app
       is public — but it 404s for the public until then, which is why the badge goes up only
       once the app is actually live on production
-  Still Coming soon: bt-ppt, bt-mouse, ssh-scout, yt-downloader
+  Still Coming soon: yt-downloader
 -->
 <html lang="en">
 <head>
@@ -106,7 +109,7 @@
   <!-- ==================== APPS ==================== -->
   <section id="apps">
     <h2>Apps</h2>
-    <p class="lead">All apps are Android. Store links appear here as each app is published.</p>
+    <p class="lead">All apps are Android. Published apps link straight to Google Play; the rest get a link as they go live.</p>
 
     <div class="cards">
 
@@ -137,7 +140,8 @@
           mis-tap while you are speaking.
         </p>
         <div class="foot">
-          <span class="badge soon">Coming soon</span>
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_ppt"><img
+            src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
           <a href="/apps/bt-ppt/">Details</a>
           <a href="#privacy-ppt">Privacy</a>
         </div>
@@ -152,7 +156,8 @@
           horizontal scrolling and adjustable pointer sensitivity.
         </p>
         <div class="foot">
-          <span class="badge soon">Coming soon</span>
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_mouse"><img
+            src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
           <a href="/apps/bt-mouse/">Details</a>
           <a href="#privacy-mouse">Privacy</a>
         </div>
@@ -183,7 +188,8 @@
           Can be entered straight from a <span class="dotori">Dotori</span> WiFi Scanner result via deep link.
         </p>
         <div class="foot">
-          <span class="badge soon">Coming soon</span>
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout"><img
+            src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
           <a href="/apps/ssh-scout/">Details</a>
           <a href="#privacy-ssh">Privacy</a>
         </div>

@@ -251,8 +251,17 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
 - [ ] **한국 스토어 등록정보의 개인정보 처리방침 URL 을 `/ko/#privacy-<key>` 로 교체.**
       언어를 자동 전환하던 JS 를 없애고 `/` 를 영문 고정으로 바꿨으므로, 지금 등록된 `/#privacy-*` 는
       한국 사용자에게 영문 처리방침만 보여준다. 앱을 심사에 넣기 전에 처리한다.
-- [ ] 앱이 출시되는 대로 `badge soon` 을 스토어 링크로 교체 — 홈 2곳(`/`, `/ko/`)과 제품 페이지 2곳,
-      합쳐서 앱당 4곳이다.
+- [x] **`badge soon` → 스토어 배지 교체 완료 (2026-08-14).** `bt-ppt` · `bt-mouse` · `ssh-scout` 가
+      프로덕션에 올라 6종(`bt-keyboard` `bt-ppt` `bt-mouse` `wifi-scout` `ssh-scout` `lgtv`)이 모두
+      출시 상태가 됐다. 교체 전에 6종의 `play.google.com/store/apps/details?id=…` 가 **로그아웃
+      상태에서 `200`** 인지 확인했다(`yt-downloader` 만 `404`). **이 항목이 적어둔 "앱당 4곳" 은
+      2026-08-02 당시 구조에서만 맞는 값이었다** — 8-10 에 블로그 글 CTA 로 배지가 들어가고
+      8-14 경로 개편으로 매뉴얼이 생기면서 어긋났는데 그때 이 줄을 갱신하지 않았다.
+      **곳 수는 앱마다 다르다** — 이번 세 앱은 각 8곳, `wifi-scout` 은 CTA 블로그가 3편이라 12곳,
+      매뉴얼도 CTA 글도 없는 `yt-downloader` 는 4곳이다. 그래서 고정 숫자 대신 판정 규칙을
+      "고칠 때 → 앱이 출시되면" 에 적었다. 홈 2곳은 세 앱이 같은 파일을 공유하므로 이번에 고친 파일은
+      앱 전용 18개(제품·매뉴얼·블로그 각 2 × 3앱) + 홈 2개 = 20개다.
+      남은 미출시 앱은 `yt-downloader` 하나뿐이다.
 - [x] **네이버 서치어드바이저 등록 · 소유확인 · 사이트맵 제출 (2026-08-10).** 웹마스터 도구에
       `https://droidactor.github.io/` 를 등록하고 HTML 파일 방식으로 소유확인을 마쳤다. 확인 파일을
       `687f2cd` 로 push 한 뒤 `https://droidactor.github.io/naver291cd179e909bd205a8a0bf7179d3588.html`
@@ -294,6 +303,26 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
      + `404.html` 이고, 새 제품 페이지 쪽에는 나머지 앱 전부를 넣는다. 여기를 빠뜨리면 홈 카드 외에는
      새 앱으로 들어가는 내부 링크가 없어 크롤러가 한 경로로만 본다(bt-mouse 를 붙일 때 실제로 빠뜨렸다)
   8. 손댄 페이지의 `<lastmod>` 갱신
+- **앱이 출시되면** `badge soon` 을 스토어 배지로 바꾼다. **곳 수를 숫자로 외우지 말고 아래 규칙으로
+  센다** — 앱마다 다르다(2026-08-14 기준 `bt-keyboard`·`bt-ppt`·`bt-mouse`·`ssh-scout`·`lgtv` 는 8곳,
+  `wifi-scout` 은 12곳, `yt-downloader` 는 4곳). 홈과 제품 페이지만 고치고 끝내면 매뉴얼·블로그에는
+  여전히 배지가 없다.
+  1. 홈 카드 2곳 — `index.html`, `ko/index.html` 의 `<div class="foot">`. **항상 있다**
+  2. 제품 페이지 2곳 — `apps/<앱>/`, `ko/apps/<앱>/` 의 `<div class="status">`. **항상 있다.**
+     같은 파일의 사양표 `Status`/`상태` 행도 함께 발행 문구로 바꾼다
+  3. 매뉴얼 2곳 — `manual/<앱>/`, `ko/manual/<앱>/` 의 `<div class="manual-actions">` 맨 끝.
+     **그 앱의 매뉴얼이 있을 때만이다** — `yt-downloader` 에는 매뉴얼도 기술 노트도 없다
+  4. 그 앱을 CTA 로 두는 **블로그 글 전부**(글 1편당 en/ko 2곳) — 마무리 `<div class="note">` 안에
+     배지 문단을 더한다. **1편이라고 가정하지 말고 센다** — `wifi-scout` 은 3편(`find-devices-on-wifi-
+     from-android` · `find-ls-plc-ip-address` · `identify-industrial-devices-by-port`)이라 6곳이다.
+     `grep -rl 'apps/<앱>/' blog/ ko/blog/` 로 뽑는 것이 확실하다
+  5. 손댄 페이지의 `sitemap.xml` `<lastmod>` 갱신
+  - **배지를 새로 넣은 페이지에는 푸터 `<p class="tm">` 상표 고지가 반드시 함께 들어간다.** Google 의
+    배지 가이드라인 요구사항이고, 배지만 넣고 고지를 빠뜨린 페이지가 생기기 쉽다
+  - 이미지 경로는 페이지 깊이마다 다르다 — 홈 `assets/`(`/ko/` 는 `../assets/`), 그 외 영문은
+    `../../assets/`, 국문은 `../../../assets/`. 파일은 영문 `-en`, 국문 `-ko` 를 쓴다
+  - **교체 시점의 판정은 로그아웃 상태에서 스토어 URL 이 `200` 인지 하나뿐이다.** Console 이 "게시됨"
+    으로 보여도 내부 테스트 트랙이면 테스터 외에는 `404` 라 배지가 죽은 링크가 된다
 - **6종 앱 매뉴얼을 고치면** 제품 소개나 블로그 설명과 섞지 않고 다음을 한 묶음으로 처리한다.
   1. `manual/<앱>/index.html`과 `ko/manual/<앱>/index.html`을 같은 목차·같은 기능 범위로 갱신
   2. 화면의 실제 버튼명은 앱 리소스 문자열, 동작·권한은 앱 코드와 `AndroidManifest.xml`을 근거로 확인

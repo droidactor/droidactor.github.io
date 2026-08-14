@@ -264,10 +264,15 @@ GSC 는 버튼을 누른 직후 성공 대화상자를 먼저 띄우고, 서버�
 
 **같은 URL을 다시 요청하지 않는다.** 다음 요청일은 Tech Notes 허브 2개가 대상이다(아래 별도 묶음).
 
-#### 우선순위 1 — 조건부 요청: 출시 앱 매뉴얼과 나머지 Bluetooth 제품 URL, 10개
+#### 우선순위 1 — 조건부 요청: 매뉴얼 3종과 나머지 Bluetooth 제품 URL, 10개
 
 먼저 sitemap에 맡긴다. 7~14일 뒤에도 URL Inspection에서 미발견 또는 비색인이면 제외 사유와 live test를
 확인하고, 기술 문제를 고친 뒤 필요한 URL만 요청한다.
+
+**우선순위 1·2 를 가른 기준은 "출시 앱 먼저" 였는데 그 기준은 2026-08-14 오후에 소멸했다** —
+`bt-ppt`·`bt-mouse`·`ssh-scout` 가 프로덕션에 올라 6종이 모두 출시 상태가 됐고, 미출시는
+`yt-downloader`(우선순위 2) 하나뿐이다. 위 우선순위 0 의 "출시 앱" 은 8-14 오전 시점 기록이므로
+그대로 둔다. 실제 요청일에는 두 묶음의 순서를 출시 여부가 아니라 **색인 미도달 여부**로 다시 정한다.
 
 - [ ] `https://droidactor.github.io/manual/bt-keyboard/`
 - [ ] `https://droidactor.github.io/ko/manual/bt-keyboard/`
