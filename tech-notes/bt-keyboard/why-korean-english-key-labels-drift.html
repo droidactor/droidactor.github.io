@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Korean/English key labels can drift — droidactor</title>
+<meta name="description" content="A physical keycap carries both the Latin and the Hangul legend at once, so it never claims which mode the PC is in. A phone screen has room for only one, and that turns the label into a claim the app cannot verify.">
+<link rel="canonical" href="https://droidactor.github.io/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html"><meta property="og:title" content="Why Korean/English key labels can drift"><meta property="og:description" content="A hardware keycap shows both legends and claims nothing. A screen keycap shows one, and a claim needs a read-back channel that Bluetooth HID does not provide."><meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Why Korean/English key labels can drift","description":"Why a phone keyboard's Korean/English legends can disagree with what the PC actually types, traced to one legend per keycap and the absence of an IME read-back channel in Bluetooth HID.","url":"https://droidactor.github.io/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html","mainEntityOfPage":"https://droidactor.github.io/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html","datePublished":"2026-08-15","dateModified":"2026-08-15","inLanguage":"en","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"Dotori Bluetooth Keyboard","url":"https://droidactor.github.io/apps/bt-keyboard/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/"},{"@type":"ListItem","position":2,"name":"Tech notes","item":"https://droidactor.github.io/tech-notes/"},{"@type":"ListItem","position":3,"name":"Bluetooth HID","item":"https://droidactor.github.io/tech-notes/bt-keyboard/"},{"@type":"ListItem","position":4,"name":"Korean/English label drift","item":"https://droidactor.github.io/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html"}]}]}</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand"><a href="/">droid<span>actor</span></a></div><nav class="langs" aria-label="Language"><a class="lang-btn" href="/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html" hreflang="ko" lang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/tech-notes/">Tech notes</a><span>/</span><a href="/tech-notes/bt-keyboard/">Bluetooth HID</a><span>/</span>Korean/English label drift</nav>
+  <div class="hero manual-hero"><h1>Why Korean/English key labels can drift</h1><p>A hardware keyboard has the same blind spot and never suffers from it. The difference is not the protocol — it is how many legends fit on one keycap.</p><p class="manual-meta">Source baseline: app 1.0.0 (2) · 15 August 2026</p></div>
+  <nav class="manual-toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#finding">Finding</a></li><li><a href="#legends">Two legends claim nothing</a></li><li><a href="#space">One legend per key</a></li><li><a href="#readback">No read-back channel</a></li><li><a href="#drift">How the assumption drifts</a></li><li><a href="#caps">Why Caps Lock was fixable</a></li><li><a href="#recovery">Cheap recovery instead</a></li><li><a href="#limits">Limits</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <div class="note" id="finding"><p><strong>Finding.</strong> A hardware Bluetooth keyboard does not know the PC's IME mode either. It sends a Korean/English key and never learns whether the mode actually changed. It gets away with this because its keycaps carry the Latin and the Hangul legend <em>at the same time</em>, so the printing never asserts which mode is active. A phone screen has room for one legend per key, so the app must pick one — and picking one turns the label from a map into a claim. The claim rests on an assumption the app has no way to verify.</p></div>
+
+    <p>This note is about the label, not about the typing. Text sent from the input field is compiled into a plan that carries its own mode transitions, and that path is covered in the <a href="/tech-notes/bt-keyboard/">Bluetooth HID and Korean input</a> note. What follows is specifically about the on-screen keyboard, where each keycap has to decide what to print before the user presses it.</p>
+
+    <h2 id="legends">Two legends on one keycap claim nothing</h2>
+    <p>Look at the printing on a Korean hardware keyboard. The <code>Q</code> key carries <code>Q</code> and <code>ㅂ</code> together, and the shifted forms live there too. The legend is a <strong>map</strong>: <em>this key is one of these.</em> It stays true no matter which mode the PC is in, because it never committed to a mode in the first place.</p>
+    <p>That is why mode drift is not an experience on hardware. A user types, sees Latin letters where Hangul was expected, presses the Korean/English key, and types again. Nothing on the keyboard was wrong, so nothing has to be corrected. The keyboard was never the thing being trusted — the screen was.</p>
+    <div class="note"><p><strong>The blind spot is shared, not unique to the app.</strong> Neither a hardware keyboard nor this app can read the host's IME mode. The hardware keyboard simply has no reason to care, because it never displays a mode. The moment a keyboard displays one, the same blind spot becomes visible.</p></div>
+
+    <h2 id="space">A phone screen fits one legend per key</h2>
+    <p>A letter key in the app has four possible legends: base, shifted, Korean, and shifted Korean — <code>q</code>, <code>Q</code>, <code>ㅂ</code>, <code>ㅃ</code>. A phone screen has no room to draw them all. Each keycap is a touch target that a fingertip covers, its label is drawn on a single line, and every label size on the board is derived from one shared measurement — so a keycap crowded with two legends would shrink the legends on every other key along with it.</p>
+    <p>So the app prints one: Hangul in Korean mode, Latin in English mode. It is not missing information. It <strong>holds all four legends</strong> and uses all four to compute a label size that will not jitter when the mode or Shift changes, then displays exactly one of them. Space is the entire reason.</p>
+    <p>And a single legend is no longer a map. <code>ㅂ</code> alone on a keycap says <em>press this and you get</em> <code>ㅂ</code>. That is a claim about the host's current state, and it is only as good as the app's assumption about that state.</p>
+
+    <h2 id="readback">Bluetooth HID has no channel to check the claim</h2>
+    <p>The app keeps an assumed IME state and drives the keycap legends from it. Nothing sends the real state back. The one thing a host does report to a keyboard is the LED output byte, and the standard boot-keyboard LEDs are Num Lock, Caps Lock, Scroll Lock, Compose, and Kana. There is no Hangul bit. Korean mode is a property of the host's input method, not of the keyboard device the host thinks it is talking to.</p>
+    <p>The app carries a hook for the case where some host does expose one — a profile may declare which LED bit means Hangul, and a matching report would mark the assumption verified for that session. None of the four shipped profiles declares such a bit, because there is no standard bit to declare. The hook is a place to put a future finding, not a working feedback loop.</p>
+
+    <h2 id="drift">How the assumption drifts</h2>
+    <p>Each of these is enough on its own, and none of them produces a visible error at the moment it happens.</p>
+    <div class="scroll"><table class="spec"><thead><tr><th>Cause</th><th>What happens</th></tr></thead><tbody>
+      <tr><td>The mode-switch key never lands</td><td>The app updates its assumption when it sends the switch, not when the host acts on it. One lost switch inverts every label from then on. This is not hypothetical: on Windows the first Hangul consonant after a switch was measured being dropped (<code>빠른</code> arriving as <code>ㅏ른</code>), which is why the profile now waits 400&nbsp;ms after a switch before typing.</td></tr>
+      <tr><td>The profile does not match the host</td><td>Hosts do not agree on the switch key — right Alt and <code>LANG1</code> are both in use on Windows, and other platforms use other keys. The app sends the first candidate of the selected profile, falling back to <code>LANG1</code> when the profile lists none. Send a key the host does not read as a switch and the label flips while the host does not.</td></tr>
+      <tr><td>A session boundary resets one side</td><td>Crossing into a new session — a reconnect, an app process restart, a profile change — discards the verified mark and returns the keycaps to the initial layout for the configured keyboard language. The host's IME keeps whatever it had, and the app no longer holds a verified assumption it could align against.</td></tr>
+      <tr><td>Toggling has no absolute form</td><td>There is no way to command <em>be Korean now</em>; there is only a key that flips whatever the host currently has. Once the two sides disagree, every further toggle preserves the disagreement rather than resolving it.</td></tr>
+    </tbody></table></div>
+    <p>The user, meanwhile, is pressing the key that says <code>ㅂ</code> and getting <code>q</code>.</p>
+
+    <h2 id="caps">Why Caps Lock was fixable and this is not</h2>
+    <p>Caps Lock had the identical shape of problem, and the app removed it. It does not send Caps Lock to the host at all. It tracks caps as app state and adds Shift to the keys it sends, so what arrives matches what the keycap shows regardless of the host's own Caps Lock. That was a response to a measured failure: when a key release was lost, the host toggled Caps Lock more times than the app did, and the result was text where only the first letter came out capitalized.</p>
+    <p>The same trick cannot work for Korean. Capitalization is a property of the keystroke, so the app can own it. Hangul composition is not — jamo are assembled into syllables by the host's input method, and the app's only way to produce <code>ㅂ</code> is to send the physical key that a Korean IME reads as <code>ㅂ</code>. There is no bypass. Whether that key becomes <code>ㅂ</code> or <code>q</code> is decided on the host, by state the app cannot own and cannot read.</p>
+
+    <h2 id="recovery">So the app makes recovery cheap instead</h2>
+    <p>Since drift cannot be prevented, the design goal shifts to making it a two-second correction rather than a puzzle.</p>
+    <ul>
+      <li><strong>Long-press the Korean/English key to realign the display only.</strong> It flips the labels, sends nothing, and marks the corrected state as verified for that session. This is the direct fix when the labels are inverted: the host is already in the mode you want, so you correct the app rather than the host. A short press remains the ordinary switch that does send the key.</li>
+      <li><strong>Calibration probes.</strong> The app types a probe — <code>abc</code>, and <code>가나다</code> as well on a profile that switches modes — then asks what appeared on the host. The user's answer is what marks the assumption verified, since no machine channel can.</li>
+      <li><strong>Trust does not outlive the session.</strong> A verified assumption is scoped to one host connection and is dropped at reconnect or process restart, rather than being carried into a session where it may already be false.</li>
+      <li><strong>No switch key on an English-only keyboard.</strong> When the keyboard language is not Korean — the app setting, or the phone's own language while that setting stays on system default — the Korean/English key is replaced by Alt and the keycaps stay Latin. A keyboard with no switch key has nothing to desynchronize.</li>
+    </ul>
+    <div class="note"><p><strong>One residue worth knowing.</strong> When text sent from the input field ends in Hangul, the app marks that send as needing host confirmation: the final syllable sits uncommitted in the host's composition buffer, and the app sends no commit key of its own. Whatever eventually commits it happens on the host, outside anything the app observes.</p></div>
+
+    <h2 id="limits">Limits</h2>
+    <p>Nothing here is fixed by a better app. Closing the loop needs a read-back path that the transport does not define: a standard Hangul indicator in the LED report, or a host that exposes its IME mode to an input device. Until then the keycap legend is the app's best assumption rendered at full size, and the long-press realign exists precisely because a best assumption is not a measurement.</p>
+    <div class="manual-actions"><a href="/tech-notes/bt-keyboard/">Bluetooth HID tech notes</a><a href="/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html">Why Google TV hides phone HID</a><a href="/apps/bt-keyboard/">Product page</a><a href="/manual/bt-keyboard/">User manual</a></div>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/tech-notes/">All tech notes</a> · <a href="/tech-notes/bt-keyboard/">Bluetooth HID</a> · <a href="/ko/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

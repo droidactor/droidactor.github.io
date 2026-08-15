@@ -333,7 +333,7 @@
 
   <url>
     <loc>https://droidactor.github.io/tech-notes/bt-keyboard/</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/"/>
@@ -342,7 +342,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/tech-notes/bt-keyboard/</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/"/>
@@ -352,7 +352,7 @@
 
   <url>
     <loc>https://droidactor.github.io/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html"/>
@@ -361,12 +361,31 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html"/>
   </url>
 
   <url>
