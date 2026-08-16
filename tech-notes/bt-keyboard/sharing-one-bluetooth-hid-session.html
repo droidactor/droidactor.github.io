@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sharing one Bluetooth HID session across several Android apps — droidactor</title>
+<meta name="description" content="Android registers only one Bluetooth HID Device app per phone. How a keyboard, a mouse and a presenter app hand that single session to each other without forcing the host to pair again.">
+<link rel="canonical" href="https://droidactor.github.io/tech-notes/bt-keyboard/sharing-one-bluetooth-hid-session.html">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/sharing-one-bluetooth-hid-session.html">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/sharing-one-bluetooth-hid-session.html">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-keyboard/sharing-one-bluetooth-hid-session.html">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/tech-notes/bt-keyboard/sharing-one-bluetooth-hid-session.html"><meta property="og:title" content="Sharing one Bluetooth HID session across several Android apps"><meta property="og:description" content="One HID registration per phone, one device identity for the host, and a signature-protected handover that depends on the Play app signing key."><meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Sharing one Bluetooth HID session across several Android apps","description":"Android allows a single Bluetooth HID Device registration per phone. This note describes the device identity, the signature-protected handover, and the Play app signing constraint that makes it work.","url":"https://droidactor.github.io/tech-notes/bt-keyboard/sharing-one-bluetooth-hid-session.html","mainEntityOfPage":"https://droidactor.github.io/tech-notes/bt-keyboard/sharing-one-bluetooth-hid-session.html","datePublished":"2026-08-16","dateModified":"2026-08-16","inLanguage":"en","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"Dotori Bluetooth Keyboard","url":"https://droidactor.github.io/apps/bt-keyboard/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/"},{"@type":"ListItem","position":2,"name":"Tech notes","item":"https://droidactor.github.io/tech-notes/"},{"@type":"ListItem","position":3,"name":"Bluetooth HID","item":"https://droidactor.github.io/tech-notes/bt-keyboard/"},{"@type":"ListItem","position":4,"name":"Sharing one HID session","item":"https://droidactor.github.io/tech-notes/bt-keyboard/sharing-one-bluetooth-hid-session.html"}]}]}</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand"><a href="/">droid<span>actor</span></a></div><nav class="langs" aria-label="Language"><a class="lang-btn" href="/tech-notes/bt-keyboard/sharing-one-bluetooth-hid-session.html" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/bt-keyboard/sharing-one-bluetooth-hid-session.html" hreflang="ko" lang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/tech-notes/">Tech notes</a><span>/</span><a href="/tech-notes/bt-keyboard/">Bluetooth HID</a><span>/</span>Sharing one HID session</nav>
+  <div class="hero manual-hero"><h1>Sharing one Bluetooth HID session across several Android apps</h1><p>A keyboard, a trackpad and a presenter remote can be separate apps and still behave as a single Bluetooth device — if they agree on identity, hand the session over deliberately, and are signed by the same key.</p><p class="manual-meta">Implementation notes · 16 August 2026</p></div>
+  <nav class="manual-toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#constraint">The constraint</a></li><li><a href="#identity">One identity for the host</a></li><li><a href="#handover">Handing the session over</a></li><li><a href="#signing">The signing key decides</a></li><li><a href="#visibility">Package visibility</a></li><li><a href="#rename">Surviving a package rename</a></li><li><a href="#verify">What to verify</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <div class="note" id="constraint"><p><strong>The constraint.</strong> Android exposes the Bluetooth HID Device profile through <code>BluetoothHidDevice</code>, and the platform accepts <em>one registered app per phone</em>. A second app calling <code>registerApp()</code> while another still holds the registration does not queue behind it — it simply fails. Any product family that ships a keyboard, a mouse and a presenter as separate installs has to solve this explicitly.</p></div>
+
+    <p>The naive alternatives are both bad. Merging everything into one app forces users to install features they do not want. Letting each app grab the profile whenever it starts produces a race in which the outcome depends on which app was opened last, and the failure surfaces as “it just does not connect” with nothing useful in the log.</p>
+
+    <p>What follows is the structure the Dotori HID apps use: a shared identity so the host sees one device, a signature-protected handover so only sibling apps can release the session, and a signing arrangement that makes that permission actually work once the apps are distributed through Google Play.</p>
+
+    <h2 id="identity">The host must see one device, not three</h2>
+
+    <p>A Bluetooth host reads the SDP record <strong>at pairing time and caches it</strong>. It does not re-read it on every reconnect. That single fact drives the whole design: if each app publishes its own service name or its own HID report descriptor, the host treats them as different devices even though they come from the same phone. The host then keeps the one it cached and rejects the others.</p>
+
+    <p>Observed symptoms when the identity is not shared: repeated “device out of range” errors on Windows, mutual authentication failures, and eventually removal of the link key — that is, the pairing is destroyed and the user has to pair again.</p>
+
+    <p>So the three values below are shared constants, not per-app resources:</p>
+
+    <div class="scroll"><table class="spec"><thead><tr><th>Value</th><th>Rule</th></tr></thead><tbody>
+      <tr><td>SDP name / description / provider</td><td>Identical string in every app. Not the app name, not the package name</td></tr>
+      <tr><td>HID report descriptor</td><td>Byte-identical. One combined keyboard-and-mouse descriptor with separate report IDs</td></tr>
+      <tr><td>Subclass</td><td>Same <code>SUBCLASS1_COMBO</code> declaration in every app</td></tr>
+    </tbody></table></div>
+
+    <div class="note"><p><strong>Do not derive the SDP provider from <code>packageName</code>.</strong> It is tempting, and it works until the day an <code>applicationId</code> changes. Then the identity silently changes with it and every existing pairing breaks — a Bluetooth-protocol breaking change disguised as a refactor. A fixed literal costs nothing and removes the failure mode.</p></div>
+
+    <p>A useful way to think about it: the report descriptor answers <em>what the device can send</em>, and the descriptor is the same whether the user is currently typing, moving the pointer, or advancing slides. Which app produced the report is an implementation detail that the host neither sees nor cares about.</p>
+
+    <h2 id="handover">Handing the session over</h2>
+
+    <p>Because only one app can hold the registration, a starting app must ask the current holder to release it. The mechanism is a broadcast that is explicitly addressed and permission-protected:</p>
+
+    <pre><code>Intent(ACTION_RELEASE).setPackage(siblingPackage)
+context.sendBroadcast(intent, permission)</code></pre>
+
+    <p>Three properties matter here. The intent is <strong>explicit</strong> (<code>setPackage</code>), so it is delivered to a known app rather than broadcast to whoever is listening. It is sent <strong>with a permission</strong>, so a third-party app cannot receive it. And the receiver on the other side declares the same permission, so a third-party app cannot forge it either.</p>
+
+    <p>The receiving app stops its foreground service and gives up the registration. The starting app then waits before its first attempt, because shutdown is not instantaneous — a settle delay of roughly 250 ms, and one retry about 1.5 s later if the first <code>registerApp()</code> still collides. Values in that range came from watching real shutdowns take up to a second and a half.</p>
+
+    <p>The permission itself is declared <code>signature</code>:</p>
+
+    <pre><code>&lt;permission android:name="…hid.session.permission.RELEASE"
+            android:protectionLevel="signature" /&gt;
+&lt;uses-permission android:name="…hid.session.permission.RELEASE" /&gt;</code></pre>
+
+    <p>Keep the permission name identical across the family and never version it per app. Do split it by build type, though — a <code>DEBUG</code> variant alongside the <code>RELEASE</code> one — so that a debug build on the phone talks only to other debug builds. A debug-to-release fallback looks convenient and hides exactly the failure you need to see before shipping.</p>
+
+    <h2 id="signing">The signing key decides whether any of this works</h2>
+
+    <p>This is the part that is easy to get wrong, because everything above can be correct in source and still fail after publication.</p>
+
+    <p>A <code>signature</code> permission is granted only when the apps are signed by the <strong>same certificate as actually installed</strong>. In local development that is the debug key, so handover works on the first try and gives a false sense of completeness. Under Google Play, the installed APK is signed by the <strong>Play app signing key</strong> — not by the upload key. Two apps can share an upload keystore and still receive different app signing keys, in which case the permission is never granted and the handover broadcast is silently dropped.</p>
+
+    <div class="scroll"><table class="spec"><thead><tr><th>Key</th><th>Role</th><th>Must match across the family?</th></tr></thead><tbody>
+      <tr><td>Upload key</td><td>Proves who is uploading the AAB</td><td>Convenient, but not what grants the permission</td></tr>
+      <tr><td><strong>Play app signing key</strong></td><td>Signs the APK that users install</td><td><strong>Yes — this is the one that matters</strong></td></tr>
+    </tbody></table></div>
+
+    <p>In Play Console the setting is <em>App signing → Change key → Use the same key as another app in this developer account</em>. The critical detail is timing:</p>
+
+    <div class="note"><p><strong>The option closes once the app has been published to a public track.</strong> Before publication it is available and the cost is trivial — an app with no installs and no uploaded bundle loses nothing. Afterwards the choice is gone, and because Google Play permanently binds an <code>applicationId</code> to an app (deleting the app does not free the identifier), recovering means shipping under a new package name.</p></div>
+
+    <p>Practical order for a new sibling app: create the app, upload the first bundle to an internal track, change the signing key immediately, then verify. Do not put a public release between those steps. Verification means comparing the app signing certificate fingerprints of both apps in Console — <em>every</em> axis shown, including the quantum-resistant key when present — and separately confirming that the upload certificate matches too. Checking the upload certificate alone does not answer the question.</p>
+
+    <h2 id="visibility">Package visibility is not optional</h2>
+
+    <p>On Android 11 and above, an app cannot see or send an explicit broadcast to an arbitrary package unless it declares that package. Each app therefore lists its siblings, in both build-type flavours:</p>
+
+    <pre><code>&lt;queries&gt;
+  &lt;package android:name="com.example.keyboard" /&gt;
+  &lt;package android:name="com.example.keyboard.debug" /&gt;
+  &lt;package android:name="com.example.ppt" /&gt;
+  &lt;package android:name="com.example.ppt.debug" /&gt;
+&lt;/queries&gt;
+</code></pre>
+
+    <p>Omitting this does not throw. The sibling lookup simply returns “not installed”, the release request is never sent, and the new app fails to register for no visible reason. It is worth a contract test that parses the merged manifest and asserts the exact expected set, because the symptom is indistinguishable from a Bluetooth problem.</p>
+
+    <h2 id="rename">Surviving a package rename</h2>
+
+    <p>Sibling apps usually exchange more than a release broadcast — a content provider for connection state, another for subscription data. Derive those authorities from the build variable rather than typing them out:</p>
+
+    <pre><code>android:authorities="${applicationId}.hid-bridge"</code></pre>
+
+    <p>and resolve the sibling side at runtime from the package name (<code>content://$sibling.hid-bridge</code>). With no authority literal anywhere, a package rename propagates automatically. The parts that must then change are few and easy to enumerate: the <code>applicationId</code>, the sibling list, each <code>&lt;queries&gt;</code> block, and the contract tests.</p>
+
+    <p>Keeping <code>namespace</code> separate from <code>applicationId</code> is worth knowing about here — the Kotlin package and the store identifier are independent, so a store-side rename does not have to touch the source tree at all. Whether to move both or only the store identifier is a judgement call about which kind of inconsistency you would rather maintain.</p>
+
+    <h2 id="verify">What to verify before shipping</h2>
+
+    <ol>
+      <li><strong>Physical, not log-based.</strong> Confirm input arrives at the host. Matching <code>down</code>/<code>up</code> pairs in the app log can coexist with nothing reaching the PC, because the loss happens on the link.</li>
+      <li><strong>Signer equality on the device.</strong> Install the Play builds of every sibling and compare the signer of the installed APKs, not the local ones.</li>
+      <li><strong>Handover in both directions.</strong> Keyboard → mouse and mouse → keyboard, using an existing pairing, with no re-pairing prompt.</li>
+      <li><strong>Remove stale builds first.</strong> An older sibling still on the phone can hold the registration while not knowing about the newer app — its own sibling list predates it, so it never receives a release request. The asymmetry is invisible until you look for it.</li>
+      <li><strong>Contract tests over the merged manifest.</strong> Permission names per build type, provider authorities per variant, the sibling mapping, and rejection of unknown packages.</li>
+    </ol>
+
+    <div class="note"><p><strong>Summary.</strong> The Bluetooth work — descriptor, SDP, transport — is the visible part but rarely the hard part. The failures that cost the most time are a shared identity that quietly diverges, a permission that is correct in source but ungranted after publication, and a package-visibility declaration that turns a missing entry into a silent no-op.</p></div>
+
+    <div class="manual-actions"><a href="/tech-notes/bt-keyboard/">Bluetooth HID tech notes</a><a href="/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html">Why Google TV hides phone HID</a><a href="/apps/bt-keyboard/">Keyboard product page</a><a href="/apps/bt-mouse/">Mouse product page</a><a href="/apps/bt-ppt/">PPT remote product page</a></div>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/tech-notes/">All tech notes</a> · <a href="/tech-notes/bt-keyboard/">Bluetooth HID</a> · <a href="/ko/tech-notes/bt-keyboard/sharing-one-bluetooth-hid-session.html" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>
