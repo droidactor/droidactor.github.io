@@ -19,7 +19,7 @@
 <meta property="og:description" content="SSDP 발견, SSAP 페어링, 별도 포인터 소켓과 Wake-on-LAN 전원 켜기.">
 <meta property="og:image" content="https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/assets/icon.png">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="../../../assets/site.css?v=20260812-ko-brand">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -32,7 +32,7 @@
       "mainEntityOfPage": "https://droidactor.github.io/ko/blog/control-lg-webos-tv-over-wifi/",
       "image": "https://droidactor.github.io/blog/control-lg-webos-tv-over-wifi/assets/icon.png",
       "datePublished": "2026-08-08",
-      "dateModified": "2026-08-14",
+      "dateModified": "2026-08-17",
       "inLanguage": "ko",
       "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
       "author": { "@id": "https://droidactor.github.io/#publisher" },
@@ -75,11 +75,15 @@
         응답하지 않으므로 전원 켜기는 TV가 깨어 있을 때 저장한 MAC으로 Wake-on-LAN을 사용해야 합니다.</p>
     </div>
 
-    <div class="post-app">
+    <a class="post-app" href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv">
       <img src="/blog/control-lg-webos-tv-over-wifi/assets/icon.png" width="512" height="512" alt="도토리 LG TV 리모컨 앱 아이콘" decoding="async">
-      <p><strong><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> LG TV 리모컨</strong>집 네트워크를 통해 트랙패드·숫자패드·방향키·볼륨·채널,
-        TV 선택과 Wake-on-LAN 전원 켜기를 제공합니다.</p>
-    </div>
+      <div class="post-app-text">
+        <p><strong><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> LG TV 리모컨</strong>집 네트워크를 통해 트랙패드·숫자패드·방향키·볼륨·채널,
+          TV 선택과 Wake-on-LAN 전원 켜기를 제공합니다.</p>
+        <span class="play-badge"><img
+          src="../../../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></span>
+      </div>
+    </a>
 
     <h2>TV가 응답할 때만 발견할 수 있다</h2>
     <p>TV가 켜져 있으면 SSDP 검색으로 장비 설명 URL을 받을 수 있습니다. 그 로컬 UPnP 설명을 읽으면
@@ -136,12 +140,12 @@ name:HOME</code></pre>
 
     <h2>리모컨·볼륨·TV 선택·설정 화면</h2>
     <div class="screenshot-grid">
-      <figure><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/01-remote.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 리모컨 기본 화면"><figcaption>숫자·방향·트랙패드·볼륨·채널·전원을 한 고정 화면에 둡니다.</figcaption></figure>
-      <figure><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/02-volume.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 리모컨 볼륨 피드백"><figcaption>볼륨이나 음소거를 바꾸는 동안 트랙패드 위에 큰 피드백을 표시합니다.</figcaption></figure>
-      <figure><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/03-tv-picker.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 선택 화면"><figcaption>발견했거나 기억한 TV는 조작 화면과 분리된 목록에서 선택합니다.</figcaption></figure>
-      <figure><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/04-settings.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 리모컨 트랙패드 설정"><figcaption>조작 위치를 바꾸지 않고 트랙패드 감도와 터치 되먹임을 조절합니다.</figcaption></figure>
-      <figure><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/05-settings-about.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 리모컨 앱 설정과 정보"><figcaption>트랙패드 설정 아래에서 언어·앱 정보·개인정보 옵션을 확인합니다.</figcaption></figure>
-      <figure><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/06-language.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 리모컨 언어 선택"><figcaption>앱 표시 언어를 시스템 설정·한국어·영어 중에서 선택합니다.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv" aria-label="LG TV 리모컨 기본 화면 — Google Play에서 앱 받기"><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/01-remote.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 리모컨 기본 화면"></a><figcaption>숫자·방향·트랙패드·볼륨·채널·전원을 한 고정 화면에 둡니다.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv" aria-label="LG TV 리모컨 볼륨 피드백 — Google Play에서 앱 받기"><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/02-volume.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 리모컨 볼륨 피드백"></a><figcaption>볼륨이나 음소거를 바꾸는 동안 트랙패드 위에 큰 피드백을 표시합니다.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv" aria-label="LG TV 선택 화면 — Google Play에서 앱 받기"><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/03-tv-picker.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 선택 화면"></a><figcaption>발견했거나 기억한 TV는 조작 화면과 분리된 목록에서 선택합니다.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv" aria-label="LG TV 리모컨 트랙패드 설정 — Google Play에서 앱 받기"><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/04-settings.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 리모컨 트랙패드 설정"></a><figcaption>조작 위치를 바꾸지 않고 트랙패드 감도와 터치 되먹임을 조절합니다.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv" aria-label="LG TV 리모컨 앱 설정과 정보 — Google Play에서 앱 받기"><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/05-settings-about.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 리모컨 앱 설정과 정보"></a><figcaption>트랙패드 설정 아래에서 언어·앱 정보·개인정보 옵션을 확인합니다.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv" aria-label="LG TV 리모컨 언어 선택 — Google Play에서 앱 받기"><img src="/blog/control-lg-webos-tv-over-wifi/assets/ko-KR/06-language.png" width="1080" height="1920" loading="lazy" decoding="async" alt="LG TV 리모컨 언어 선택"></a><figcaption>앱 표시 언어를 시스템 설정·한국어·영어 중에서 선택합니다.</figcaption></figure>
     </div>
 
     <div class="note">

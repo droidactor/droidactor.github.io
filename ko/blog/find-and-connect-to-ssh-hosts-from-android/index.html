@@ -19,7 +19,7 @@
 <meta property="og:description" content="로컬 포트 발견과 SSH 신뢰를 분리해 host를 찾은 뒤 인증 전에 호스트키를 확인합니다.">
 <meta property="og:image" content="https://droidactor.github.io/blog/find-and-connect-to-ssh-hosts-from-android/assets/icon.png">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="../../../assets/site.css?v=20260812-ko-brand">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -32,7 +32,7 @@
       "mainEntityOfPage": "https://droidactor.github.io/ko/blog/find-and-connect-to-ssh-hosts-from-android/",
       "image": "https://droidactor.github.io/blog/find-and-connect-to-ssh-hosts-from-android/assets/icon.png",
       "datePublished": "2026-08-08",
-      "dateModified": "2026-08-14",
+      "dateModified": "2026-08-17",
       "inLanguage": "ko",
       "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
       "author": { "@id": "https://droidactor.github.io/#publisher" },
@@ -75,11 +75,15 @@
         찾을 수 있지만 변경된 호스트키가 안전한지는 결정할 수 없습니다.</p>
     </div>
 
-    <div class="post-app">
+    <a class="post-app" href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout">
       <img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/icon.png" width="512" height="512" alt="도토리 SSH 터미널 앱 아이콘" decoding="async">
-      <p><strong><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> SSH 터미널</strong>로컬 포트 검색, host 직접 입력, Android 터미널,
-        기기 보안 저장소의 자격증명과 TOFU 호스트키 확인을 한 앱에 둡니다.</p>
-    </div>
+      <div class="post-app-text">
+        <p><strong><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> SSH 터미널</strong>로컬 포트 검색, host 직접 입력, Android 터미널,
+          기기 보안 저장소의 자격증명과 TOFU 호스트키 확인을 한 앱에 둡니다.</p>
+        <span class="play-badge"><img
+          src="../../../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></span>
+      </div>
+    </a>
 
     <h2>자격증명을 묻기 전에 service를 찾는다</h2>
     <p>현재 Wi-Fi 어딘가에 SSH 서버가 있지만 주소를 모른다면 좁은 포트 검색이면 충분합니다.
@@ -123,12 +127,12 @@ username + password는 넘기지 않음</code></pre>
 
     <h2>직접 접속·자격증명·터미널·설정·개인정보 화면</h2>
     <div class="screenshot-grid">
-      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/01-direct-connection.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH 직접 접속 화면"><figcaption>알고 있는 host와 port는 발견 검색 없이 바로 입력할 수 있습니다.</figcaption></figure>
-      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/02-connect-prompt.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH 자격증명 입력 화면"><figcaption>자격증명은 발견 링크가 아니라 SSH 앱 안에서 요청합니다.</figcaption></figure>
-      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/03-terminal.png" width="1080" height="2340" loading="lazy" decoding="async" alt="접속된 SSH 터미널 화면"><figcaption>접속하면 수정키·방향키 도구 모음이 있는 실제 터미널에서 명령을 실행합니다.</figcaption></figure>
-      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/04-settings.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH Terminal 설정"><figcaption>언어·테마·글자 크기와 터미널 동작을 설정합니다.</figcaption></figure>
-      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/05-network-privacy.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH 네트워크와 개인정보 안내"><figcaption>네트워크 사용, 로컬 저장과 허가받은 사용 범위를 앱에서 설명합니다.</figcaption></figure>
-      <figure><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/06-intro.png" width="1080" height="2340" loading="lazy" decoding="async" alt="도토리 SSH 터미널 시작 화면"><figcaption>앱을 열면 홈 화면 전에 짧은 브랜드 시작 화면이 나타납니다.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout" aria-label="SSH 직접 접속 화면 — Google Play에서 앱 받기"><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/01-direct-connection.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH 직접 접속 화면"></a><figcaption>알고 있는 host와 port는 발견 검색 없이 바로 입력할 수 있습니다.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout" aria-label="SSH 자격증명 입력 화면 — Google Play에서 앱 받기"><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/02-connect-prompt.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH 자격증명 입력 화면"></a><figcaption>자격증명은 발견 링크가 아니라 SSH 앱 안에서 요청합니다.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout" aria-label="접속된 SSH 터미널 화면 — Google Play에서 앱 받기"><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/03-terminal.png" width="1080" height="2340" loading="lazy" decoding="async" alt="접속된 SSH 터미널 화면"></a><figcaption>접속하면 수정키·방향키 도구 모음이 있는 실제 터미널에서 명령을 실행합니다.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout" aria-label="SSH Terminal 설정 — Google Play에서 앱 받기"><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/04-settings.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH Terminal 설정"></a><figcaption>언어·테마·글자 크기와 터미널 동작을 설정합니다.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout" aria-label="SSH 네트워크와 개인정보 안내 — Google Play에서 앱 받기"><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/05-network-privacy.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH 네트워크와 개인정보 안내"></a><figcaption>네트워크 사용, 로컬 저장과 허가받은 사용 범위를 앱에서 설명합니다.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout" aria-label="도토리 SSH 터미널 시작 화면 — Google Play에서 앱 받기"><img src="/blog/find-and-connect-to-ssh-hosts-from-android/assets/ko-KR/06-intro.png" width="1080" height="2340" loading="lazy" decoding="async" alt="도토리 SSH 터미널 시작 화면"></a><figcaption>앱을 열면 홈 화면 전에 짧은 브랜드 시작 화면이 나타납니다.</figcaption></figure>
     </div>
 
     <div class="note">

@@ -19,7 +19,7 @@
 <meta property="og:description" content="Separate local port discovery from SSH trust: find a host first, then verify its key before authenticating.">
 <meta property="og:image" content="https://droidactor.github.io/blog/find-and-connect-to-ssh-hosts-from-android/assets/icon.png">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/site.css?v=20260817-blog-play-link">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -32,7 +32,7 @@
       "mainEntityOfPage": "https://droidactor.github.io/blog/find-and-connect-to-ssh-hosts-from-android/",
       "image": "https://droidactor.github.io/blog/find-and-connect-to-ssh-hosts-from-android/assets/icon.png",
       "datePublished": "2026-08-08",
-      "dateModified": "2026-08-14",
+      "dateModified": "2026-08-17",
       "inLanguage": "en",
       "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
       "author": { "@id": "https://droidactor.github.io/#publisher" },
@@ -75,11 +75,15 @@
         find an open port; it cannot decide that a changed host key is safe.</p>
     </div>
 
-    <div class="post-app">
+    <a class="post-app" href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout">
       <img src="assets/icon.png" width="512" height="512" alt="Dotori SSH Terminal app icon" decoding="async">
-      <p><strong><span class="dotori">Dotori</span> SSH Terminal</strong>Combines local port discovery, direct host entry, an Android
-        terminal, secure on-device credential storage, and TOFU host-key checks.</p>
-    </div>
+      <div class="post-app-text">
+        <p><strong><span class="dotori">Dotori</span> SSH Terminal</strong>Combines local port discovery, direct host entry, an Android
+          terminal, secure on-device credential storage, and TOFU host-key checks.</p>
+        <span class="play-badge"><img
+          src="../../assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></span>
+      </div>
+    </a>
 
     <h2>Find the service before asking for credentials</h2>
     <p>If you know that an SSH server is somewhere on the current Wi-Fi but not which address it has,
@@ -125,12 +129,12 @@ not username + password</code></pre>
 
     <h2>Direct connection, prompt, terminal, settings, and privacy screens</h2>
     <div class="screenshot-grid">
-      <figure><img src="assets/en-US/01-direct-connection.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Direct SSH connection screen"><figcaption>A known host and port can be entered directly without running discovery first.</figcaption></figure>
-      <figure><img src="assets/en-US/02-connect-prompt.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH credential prompt"><figcaption>Credentials are requested inside the SSH app, not carried in a discovery link.</figcaption></figure>
-      <figure><img src="assets/en-US/03-terminal.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Connected SSH terminal session"><figcaption>Once connected, commands run in a real terminal with a modifier and arrow key bar.</figcaption></figure>
-      <figure><img src="assets/en-US/04-settings.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH Terminal settings"><figcaption>Language, theme, text size, and terminal behavior are explicit settings.</figcaption></figure>
-      <figure><img src="assets/en-US/05-network-privacy.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH network and privacy information"><figcaption>Network use, local storage, and authorized-use boundaries are shown in the app.</figcaption></figure>
-      <figure><img src="assets/en-US/06-intro.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Dotori SSH Terminal startup screen"><figcaption>The app opens on a short branded startup screen before the home view.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout" aria-label="Direct SSH connection screen — get the app on Google Play"><img src="assets/en-US/01-direct-connection.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Direct SSH connection screen"></a><figcaption>A known host and port can be entered directly without running discovery first.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout" aria-label="SSH credential prompt — get the app on Google Play"><img src="assets/en-US/02-connect-prompt.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH credential prompt"></a><figcaption>Credentials are requested inside the SSH app, not carried in a discovery link.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout" aria-label="Connected SSH terminal session — get the app on Google Play"><img src="assets/en-US/03-terminal.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Connected SSH terminal session"></a><figcaption>Once connected, commands run in a real terminal with a modifier and arrow key bar.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout" aria-label="SSH Terminal settings — get the app on Google Play"><img src="assets/en-US/04-settings.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH Terminal settings"></a><figcaption>Language, theme, text size, and terminal behavior are explicit settings.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout" aria-label="SSH network and privacy information — get the app on Google Play"><img src="assets/en-US/05-network-privacy.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH network and privacy information"></a><figcaption>Network use, local storage, and authorized-use boundaries are shown in the app.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout" aria-label="Dotori SSH Terminal startup screen — get the app on Google Play"><img src="assets/en-US/06-intro.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Dotori SSH Terminal startup screen"></a><figcaption>The app opens on a short branded startup screen before the home view.</figcaption></figure>
     </div>
 
     <div class="note">
