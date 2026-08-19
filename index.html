@@ -6,8 +6,8 @@
   This page serves three purposes:
     1. the "Developer website" URL registered on Google Play / App Store
     2. the privacy policy for every app (per-app anchors: #privacy-keyboard, #privacy-ppt,
-       #privacy-mouse, #privacy-ssh, #privacy-wifi, #privacy-ytdl, #privacy-lgtv, #privacy-gas
-       — usable as per-app policy URLs)
+       #privacy-mouse, #privacy-ssh, #privacy-wifi, #privacy-ytdl, #privacy-lgtv, #privacy-gas,
+       #privacy-apartment, #privacy-calendar, #privacy-unit — usable as per-app policy URLs)
     3. the host for /app-ads.txt (that file lives at the repo root, not here)
 
   Do not rename the #privacy-* anchors — they are registered on the store listings.
@@ -249,7 +249,7 @@
     <p class="lead">
       Effective date: 19 August 2026 · Developer: droidactor (individual developer) ·
       Contact: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> ·
-      Applies to every app listed above.
+      Applies to every app listed in section 7 below.
       <br><a href="/ko/#privacy" hreflang="ko" lang="ko">한국어 개인정보 처리방침</a>
     </p>
 
@@ -281,14 +281,18 @@
         are deliberately masked in the UI, logs and diagnostic exports.</li>
       <li>SSH credentials and TOFU host keys (<span class="dotori">Dotori</span> SSH Terminal), held in Android's protected
         app storage</li>
+      <li>Lunar anniversaries you add in <span lang="ko">온드로이드 캘린더</span> — written to the
+        device calendar you pick. Unlike the rest of this list they outlive the app: uninstalling it
+        does not remove them, so delete them in your calendar app if you no longer want them.</li>
       <li>Your own settings and preferences</li>
     </ul>
     <p>We do not store device serial numbers or device IDs anywhere.</p>
 
     <h3>3. Advertising and consent</h3>
     <p>
-      These apps are free and show ads through <strong>Google AdMob</strong> (the Google
-      Mobile Ads SDK). Per Google's own data disclosure, that SDK may automatically collect the following
+      These apps are free, and the ones that carry ads show them through
+      <strong>Google AdMob</strong> (the Google Mobile Ads SDK). <span class="dotori">Dotori</span> YouTube
+      Downloader carries no ads. Per Google's own data disclosure, that SDK may automatically collect the following
       and share it with Google and advertising providers — for ad delivery, measurement and analytics, and
       fraud prevention:
     </p>
@@ -311,7 +315,7 @@
       ad SDK; nothing about the network you scanned or the host you paired with reaches an advertiser.
     </p>
     <p>
-      In the six ad-supported apps (Bluetooth Keyboard, PPT Remote, Bluetooth Mouse, WiFi Scanner,
+      In six of the apps (Bluetooth Keyboard, PPT Remote, Bluetooth Mouse, WiFi Scanner,
       SSH Terminal and LG TV Remote), a banner slot that cannot request or fill a paid ad may instead
       show a first-party card labelled <strong>Promo</strong> for one of our other apps. This card
       does not use the Mobile Ads SDK and does not collect or send app, network or device data. A tap
@@ -361,17 +365,29 @@
               to your location and none to any network you are not already on.</td>
           </tr>
           <tr>
-            <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code><br><code>ACCESS_WIFI_STATE</code></td>
-            <td>All (network apps directly; the HID apps through the ad SDK)</td>
+            <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code></td>
+            <td>All (network apps directly; every other ad-supported app through the ad SDK)</td>
             <td>To reach the devices or sources you asked for, and to fetch ads. The HID
-              remotes send your input over Bluetooth, not over the internet.</td>
+              remotes send your input over Bluetooth, not over the internet, and the calculator,
+              converter and calendar apps use the internet for nothing but fetching ads.</td>
           </tr>
           <tr>
-            <td><code>FOREGROUND_SERVICE</code><br><code>POST_NOTIFICATIONS</code></td>
+            <td><code>ACCESS_WIFI_STATE</code></td>
+            <td><span class="dotori">Dotori</span> WiFi Scanner<br><span class="dotori">Dotori</span> SSH Terminal<br><span class="dotori">Dotori</span> LG TV Remote</td>
+            <td>To read the state of the Wi-Fi you are already connected to. The ad SDK does not
+              add this permission, so the apps that only carry ads do not have it.</td>
+          </tr>
+          <tr>
+            <td><code>FOREGROUND_SERVICE</code></td>
             <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><span class="dotori">Dotori</span> YouTube Downloader</td>
-            <td>So a HID session or a download keeps running with a visible notification while
-              you use another app. We send no promotional notifications. The scanners and the TV
-              remote declare neither permission — they do no work in the background.</td>
+            <td>So a HID session or a download keeps running while you use another app.</td>
+          </tr>
+          <tr>
+            <td><code>POST_NOTIFICATIONS</code></td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><span class="dotori">Dotori</span> YouTube Downloader<br><span lang="ko">온드로이드 캘린더</span></td>
+            <td>To show the notification that accompanies a running HID session or download, and
+              to raise the reminders you set on a calendar entry. We send no promotional
+              notifications.</td>
           </tr>
           <tr>
             <td><code>VIBRATE</code></td>
@@ -387,8 +403,16 @@
               certificate; it does not provide access to input content.</td>
           </tr>
           <tr>
+            <td><code>READ_CALENDAR</code><br><code>WRITE_CALENDAR</code></td>
+            <td lang="ko">온드로이드 캘린더</td>
+            <td>To show the events already on the device alongside the dates in the calendar view,
+              and to save the lunar anniversaries you add into the device calendar you pick. What it
+              reads is used for that display only, and neither what it reads nor what it writes is
+              sent to any server of ours.</td>
+          </tr>
+          <tr>
             <td><code>AD_ID</code></td>
-            <td>All</td>
+            <td>Every ad-supported app (not <span class="dotori">Dotori</span> YouTube Downloader)</td>
             <td>Ad delivery and measurement by the Google Mobile Ads SDK
               (<code>com.google.android.gms.permission.AD_ID</code>). The SDK declares this itself through
               manifest merging, so it is present in the installed app even where an app's own manifest does
@@ -559,6 +583,53 @@
       </p>
       <p>
         A single banner ad is shown. Google serves it, and what the Google Mobile Ads SDK
+        collects for that purpose is described in section 3 above.
+      </p>
+    </div>
+
+    <div class="policy" id="privacy-apartment">
+      <h3><span lang="ko">아파트 계산기 @ 온드로이드</span><span class="pkg-inline">com.app.apartment</span></h3>
+      <p>
+        The app only does the arithmetic an apartment transaction needs, on the numbers you type
+        in. Those numbers stay on your device. There is no account, no sign-in and no server of
+        ours to send them to, and uninstalling the app removes them. The app asks for no location
+        permission, and it reads nothing about any actual property, listing or contract.
+      </p>
+      <p>
+        Banner ads are shown. Google serves them, and what the Google Mobile Ads SDK
+        collects for that purpose is described in section 3 above.
+      </p>
+    </div>
+
+    <div class="policy" id="privacy-calendar">
+      <h3><span lang="ko">온드로이드 캘린더</span><span class="pkg-inline">com.droidactor.DrCalendar</span></h3>
+      <p>
+        The app works out solar and lunar dates on your device and shows them on a calendar. There
+        is no account, no sign-in and no server of ours for anything to be sent to. To show the
+        events you already have alongside those dates, and to save the lunar anniversaries you add,
+        the app reads and writes the calendar on your device
+        (<code>READ_CALENDAR</code>, <code>WRITE_CALENDAR</code>). What it reads is only displayed;
+        what it writes goes into the device calendar you pick. Neither leaves your device. Reminders
+        you set are shown as device notifications (<code>POST_NOTIFICATIONS</code>). The app's own
+        settings are removed when you uninstall it, but <strong>anniversaries saved into the device
+        calendar stay there</strong> — delete them in your calendar app if you no longer want them.
+        The app asks for no location permission.
+      </p>
+      <p>
+        Banner ads are shown. Google serves them, and what the Google Mobile Ads SDK
+        collects for that purpose is described in section 3 above.
+      </p>
+    </div>
+
+    <div class="policy" id="privacy-unit">
+      <h3><span lang="ko">단위 변환기</span><span class="pkg-inline">com.app.unitconverter</span></h3>
+      <p>
+        The app converts the numbers you type from one unit to another. Those numbers stay on your
+        device. There is no account, no sign-in and no server of ours to send them to, and
+        uninstalling the app removes them. The app asks for no location permission.
+      </p>
+      <p>
+        Banner ads are shown. Google serves them, and what the Google Mobile Ads SDK
         collects for that purpose is described in section 3 above.
       </p>
     </div>
