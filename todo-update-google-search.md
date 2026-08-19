@@ -1109,21 +1109,37 @@ sitemap 도 늘지 않는다. 다음 세션이 "앱이 늘었는데 제품 페�
       `index.html` 상단 주석이 `Do not rename the #privacy-* anchors — they are registered on the
       store listings` 라고 못박은 대로, 앵커를 만든 것과 스토어에 등록하는 것은 별개 작업이다.
       같은 커밋이 발견한 누락 앵커 `#privacy-lgtv` 도 함께 본다.
-- [ ] **개인정보 처리방침 `Effective date` 판단** — §12.1.
+- [x] **개인정보 처리방침 `Effective date` 판단 — 올리는 것으로 결정.** 저장소 선례가 있었다(§12.1).
 
-### 12.1 홈 2개의 `Effective date` — 판단이 필요해 일부러 두었다
+### 12.1 홈 2개의 `Effective date` — 저장소 선례에 따라 `19 August 2026` 으로 올렸다
 
-`index.html:250`·`ko/index.html:222` 의 `Effective date: 8 August 2026` / `시행일: 2026년 8월 8일` 은
-그대로다. 그런데 같은 문서가 바로 아래 8장에서 **"If this policy changes, the updated version is posted
-on this page with a new date"** 라고 약속하고 있고, 이번에 앱 하나의 처리방침 절이 새로 늘었다.
+처음에는 "기계적으로 정할 수 없다" 며 미뤄 뒀는데, **`index.html` 자신의 이력이 답을 갖고 있었다.**
+`Effective date` 가 바뀐 지점을 전 이력에서 추적한 결과다.
 
-- 기존 조항의 **내용은 하나도 바뀌지 않았고 새 앱에 대한 공개 범위만 늘었다.** 이것을 "정책 변경"
-  으로 볼지가 갈림길이다.
-- 이것은 검색 신호 문제가 아니라 **문서의 자기 약속과 스토어 심사** 쪽 문제다. `lastmod` 처럼
-  기계적으로 정할 수 없다.
-- 그래서 **의도적으로 두었다.** 다음 세션이 "날짜 동기화" 로 판단해 자동으로 바꾸지 않도록 여기
-  적어 둔다 — §11.1 B-2 가 `why-korean-english-key-labels-drift.html` 의 `Source baseline` 표기를
-  남겨 둔 것과 같은 취지다.
+| 커밋 | 날짜 | 개인정보 처리방침에 한 일 | `Effective date` |
+|---|---|---|---|
+| `13e41d2` | 8-06 09:11 | LG TV Remote 절 추가 | `28 July` 유지 |
+| **`8f3317d`** | **8-06 14:22** | **Bluetooth Mouse 절 추가**(`<h3>` + `pkg-inline`) | `28 July` → **`6 August`** |
+| `e01e36d` | 8-08 | 하우스 광고 공개 정책 보강 | `6 August` → **`8 August`** |
+| `e0cac58` ~ `a806fbd` | 8-10 ~ 8-19 | 링크·배지·URL 개편 등 정책 무관 | `8 August` 유지 |
+
+`8f3317d` 는 `a806fbd` 와 **정확히 같은 모양의 변경**(새 앱의 `<h3>…<span class="pkg-inline">` 처리방침
+절 추가)이고 그때 시행일을 올렸다. `13e41d2` 만 올리지 않았으나 같은 날 5시간 뒤 `8f3317d` 가 덮었다.
+반대로 정책과 무관한 변경에서는 **한 번도 올리지 않았다.** 규칙이 이미 서 있었던 것이다 —
+**처리방침 본문이 실질적으로 늘거나 바뀌면 그 배포일로 올리고, 그 외에는 유지한다.**
+
+문서의 자기 약속도 같은 방향이다. 8장이 영문은 "If this policy changes, the updated version is posted
+on this page with a new date above", 국문은 "이 방침이 변경되면 갱신된 내용을 이 페이지에 게시하고
+**위의 날짜를 함께 고칩니다**" 라고 적고 있다. 앱 하나의 공개 범위가 늘어난 것은 이 문서의 변경이다.
+
+그래서 `index.html:250` 을 `19 August 2026`, `ko/index.html:222` 를 `2026년 8월 19일` 로 고쳤다.
+
+**`lastmod` 영향은 없다.** 이 정정도 홈 2개의 본문 변경이지만 같은 날(8-19) 안에서 일어났고 두 URL 의
+`lastmod` 는 이미 `2026-08-19` 다. 하루를 넘겨서 고쳤다면 `lastmod` 를 다시 올려야 했고, 그것이
+§11.1 이 경계한 "정정할 때마다 날짜가 밀리는" 상황을 부른다 — **날짜 성격의 정정은 같은 날 안에
+끝내는 편이 싸다**는 것이 이번에 얻은 실무 규칙이다.
+
+`dateModified` 는 여전히 대상이 아니다(홈 2개에 JSON-LD 날짜 필드가 없다, §12).
 
 ### 12.2 소유권 확인 파일이 3개였다 — 문서는 하나만 보호하고 있었다
 
