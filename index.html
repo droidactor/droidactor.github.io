@@ -257,8 +257,9 @@
       <p>
         <strong>The short version.</strong> These apps have no accounts and no backend of
         ours. We do not collect, store or transmit your personal information — there is no server on our
-        side to send it to. Everything an app records stays on your device and is removed when you
-        uninstall it. The one third party involved is Google, which serves the ads.
+        side to send it to. Everything an app records stays on your device, and what an app stores
+        itself is removed when you uninstall it — section 6 notes the one exception. The one third
+        party involved is Google, which serves the ads.
       </p>
     </div>
 
@@ -272,8 +273,10 @@
     <h3>2. What stays on your device</h3>
     <p>
       These apps work with technical identifiers by nature — a scan finds IP addresses, an
-      HID remote pairs with a Bluetooth host. Those values are used on the device to make the feature
-      work, are never sent off the device, and are never passed to the advertising SDK:
+      HID remote pairs with a Bluetooth host — and they also hold what you type into them. All of it
+      is used on the device to make the feature work, is never sent to a server of ours, and is never
+      passed to the advertising SDK. The last item below is the only one that can leave the device,
+      and only because you chose a calendar that syncs:
     </p>
     <ul>
       <li>Network identifiers found by scanning — IP addresses, hostnames, open ports, device kind</li>
@@ -366,7 +369,7 @@
           </tr>
           <tr>
             <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code></td>
-            <td>All (network apps directly; every other ad-supported app through the ad SDK)</td>
+            <td>All (apps that use the internet themselves declare it; apps that only carry ads get it through the ad SDK)</td>
             <td>To reach the devices or sources you asked for, and to fetch ads. The HID
               remotes send your input over Bluetooth, not over the internet, and the calculator,
               converter and calendar apps use the internet for nothing but fetching ads.</td>
@@ -375,7 +378,7 @@
             <td><code>ACCESS_WIFI_STATE</code></td>
             <td><span class="dotori">Dotori</span> WiFi Scanner<br><span class="dotori">Dotori</span> SSH Terminal<br><span class="dotori">Dotori</span> LG TV Remote</td>
             <td>To read the state of the Wi-Fi you are already connected to. The ad SDK does not
-              add this permission, so the apps that only carry ads do not have it.</td>
+              add this permission.</td>
           </tr>
           <tr>
             <td><code>FOREGROUND_SERVICE</code></td>
@@ -384,10 +387,9 @@
           </tr>
           <tr>
             <td><code>POST_NOTIFICATIONS</code></td>
-            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><span class="dotori">Dotori</span> YouTube Downloader<br><span lang="ko">온드로이드 캘린더</span></td>
-            <td>To show the notification that accompanies a running HID session or download, and
-              to raise the reminders you set on a calendar entry. We send no promotional
-              notifications.</td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><span class="dotori">Dotori</span> YouTube Downloader</td>
+            <td>To show the notification that accompanies a running HID session or download. Only
+              the apps listed declare it, and we send no promotional notifications.</td>
           </tr>
           <tr>
             <td><code>VIBRATE</code></td>
@@ -432,9 +434,15 @@
     <p>
       Because we hold no personal data of yours, there is nothing on our side to request
       access to, correct or delete. Everything the app stored lives on your device:
-      <strong>uninstalling the app removes all of it</strong>, and clearing the app's storage in Android
-      Settings resets it without uninstalling. For the advertising data Google processes, use the ad
-      settings on your device and the privacy options inside the app.
+      <strong>uninstalling the app removes the app's own storage</strong>, and clearing the app's
+      storage in Android Settings resets it without uninstalling. For the advertising data Google
+      processes, use the ad settings on your device and the privacy options inside the app.
+    </p>
+    <p>
+      <strong>One exception.</strong> Lunar anniversaries you saved from
+      <span lang="ko">온드로이드 캘린더</span> into a calendar on your device are entries in that
+      calendar, not in the app's own storage. They stay after the app is gone, so delete them in your
+      calendar app if you no longer want them.
     </p>
 
     <h3>7. Per-app notes</h3>
@@ -605,15 +613,22 @@
       <h3><span lang="ko">온드로이드 캘린더</span><span class="pkg-inline">com.droidactor.DrCalendar</span></h3>
       <p>
         The app works out solar and lunar dates on your device and shows them on a calendar. There
-        is no account, no sign-in and no server of ours for anything to be sent to. To show the
-        events you already have alongside those dates, and to save the lunar anniversaries you add,
-        the app reads and writes the calendar on your device
+        is no account, no sign-in and no server of ours for anything to be sent to. The app asks for
+        no location permission.
+      </p>
+      <p>
+        To show the events you already have alongside those dates, and to save the lunar
+        anniversaries you add, the app reads and writes the calendar on your device
         (<code>READ_CALENDAR</code>, <code>WRITE_CALENDAR</code>). What it reads is only displayed;
-        what it writes goes into the device calendar you pick. Neither leaves your device. Reminders
-        you set are shown as device notifications (<code>POST_NOTIFICATIONS</code>). The app's own
-        settings are removed when you uninstall it, but <strong>anniversaries saved into the device
-        calendar stay there</strong> — delete them in your calendar app if you no longer want them.
-        The app asks for no location permission.
+        what it writes goes into the calendar you pick. Neither is sent to any server of ours. If the
+        calendar you pick is one that syncs with an account — a Google account, for instance — then
+        the anniversaries you save there are handled under that provider's sync policy, the same as
+        any other entry in that calendar. Reminders you set are shown as device notifications.
+      </p>
+      <p>
+        The app's own settings are removed when you uninstall it, but <strong>anniversaries saved
+        into a device calendar stay there</strong> — delete them in your calendar app if you no
+        longer want them.
       </p>
       <p>
         Banner ads are shown. Google serves them, and what the Google Mobile Ads SDK
