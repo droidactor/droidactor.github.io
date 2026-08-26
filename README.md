@@ -33,6 +33,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 /blog/<slug>/           글 1편                                       + /ko/blog/<slug>/
 /blog/_post-template.html  글 템플릿 — noindex · sitemap 제외. 페이지가 아니다
 /assets/site.css        전 페이지 공용 스타일
+/assets/shots/<앱>/<로케일>/  앱 허브 카드용 720px WebP 축소본. 발행 자산이 아니라 파생물이다
 /404.html               없는 주소 → 양 언어 홈으로 안내 (GitHub Pages 가 도메인 전역에 사용)
 /robots.txt  /sitemap.xml
 /app-ads.txt            AdMob 판매자 선언 (반드시 도메인 루트)
@@ -53,7 +54,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | 파일 | 역할 |
 |---|---|
 | `index.html` · `ko/index.html` | 앱 목록 + 지원 연락처 + **개인정보 처리방침 전문**. 처리방침 앵커의 정본이다 |
-| `apps/index.html` · `ko/apps/index.html` | 7종 제품 목록 허브. 제품 상세와 6종 매뉴얼로 연결한다 |
+| `apps/index.html` · `ko/apps/index.html` | 7종 제품 목록 허브. 제품 상세와 6종 매뉴얼로 연결하고, 출시된 6종은 카드에 스크린샷 2장을 싣는다(각 장이 그 앱의 Play 스토어 링크) |
 | `apps/<앱>/index.html` · `ko/apps/<앱>/index.html` | 제품 상세. 기능·요구사항·개인정보 요약을 담고, 처리방침 **전문은 홈 앵커로 링크**한다(중복 금지) |
 | `manual/index.html` · `ko/manual/index.html` | `yt-downloader`를 제외한 6종 사용 설명서 목록 허브 |
 | `manual/<앱>/index.html` · `ko/manual/<앱>/index.html` | 6종 앱의 한·영 사용 설명서. 실제 UI 문구·검증 앱 버전·빠른 시작·설정·문제 해결을 담고 해당 제품·기술 글과 상호 링크한다. `yt-downloader`는 대상이 아니다 |
@@ -329,6 +330,19 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
   3. 문서 머리의 검증 앱 버전과 `dateModified`, `sitemap.xml`의 `<lastmod>`를 함께 갱신
   4. 제품 페이지의 매뉴얼 CTA와 해당 기술 글의 관련 글 링크가 양방향으로 살아 있는지 확인
   5. 스크린샷은 기존 블로그 자산을 참조한다. 발행된 자산 경로를 매뉴얼 때문에 이동하거나 복제하지 않는다
+- **앱 허브(`/apps/`·`/ko/apps/`)의 카드 스크린샷을 고치면** 다음을 지킨다.
+  1. 원본 정본은 `MyApps/Mobile/_screenshot/<앱>/<로케일>/` 이다. 사이트의 다른 샷과 같은 출처다
+  2. 허브는 **1080px 발행 PNG 를 직접 가리키지 않는다.** 카드에서 156~340px 폭으로 그려지는데
+     발행본을 그대로 쓰면 페이지가 2.0MB 가 되고, 카드가 촘촘해 `loading="lazy"` 가 한 장도 미루지
+     못한다(실측). `/assets/shots/<앱>/<로케일>/<이름>.webp` 로 줄여 쓴다 —
+     `magick <src>.png -resize 720x -strip -quality 88 <dst>.webp` (720px 는 768px 뷰포트에서
+     카드가 1열이 될 때의 341px 를 DPR 2 로 덮는 값이다)
+  3. 이것은 위 매뉴얼 규칙의 예외가 아니다 — 발행 자산의 **복제가 아니라 다른 해상도의 파생물**이라
+     경로가 따로 있다. 블로그·매뉴얼은 계속 1080px 발행본을 참조한다
+  4. `<img>` 의 `width`/`height` 는 축소본의 실제 치수(720×1280 또는 720×1560)로 적는다
+  5. 링크 대상 앱이 **로그아웃 상태에서 스토어 200** 인지 확인한다. 미출시 앱에는 샷을 넣지 않는다
+     (링크가 404 가 된다 — `yt-downloader` 가 그 경우다)
+  6. `sitemap.xml` 의 두 허브 `<lastmod>` 갱신
 - **6종 앱 기술 노트를 고치면** 사용법이 아니라 구현 근거를 유지한다.
   1. `tech-notes/<앱>/index.html`과 `ko/tech-notes/<앱>/index.html`을 같은 목차·같은 기술 범위로 갱신
   2. 구조·protocol·수치·제약은 `MyApps/Mobile/master`의 현재 앱 소스와 test를 근거로 확인

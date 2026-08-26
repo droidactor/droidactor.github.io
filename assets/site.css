@@ -199,6 +199,26 @@ a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset:
 .badge.dev { border-color: var(--warn); color: var(--warn); }
 .card .foot a { font-size: 12.5px; }
 
+/* ---- app cards: store screenshots --------------------------------------- */
+/* Only the app hub (/apps/ and /ko/apps/) carries shots, so the modifier goes on .cards
+   there and the home page keeps the plain three-column grid. Two phone shots side by side
+   need more room than the 270px floor gives, so the floor rises to 360px — two columns
+   inside the 880px wrap instead of three.
+   min(360px, 100%) rather than a bare 360px: auto-fit clamps the track COUNT to one but
+   not the track's own floor, so on a 320-375px phone the card grew past .wrap and the page
+   scrolled sideways (measured: 380px of content in a 320px viewport). The plain .cards
+   never showed this because its 270px floor fits inside a 320px viewport's 280px of
+   content. */
+.cards.shots { grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); }
+/* align-items centres a landscape shot beside a portrait one. Every shot in use today is
+   portrait and the two in a card always share an aspect, so this currently changes nothing
+   — it is here so that mixing in a landscape capture stays a content decision. */
+.card-shots {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center; gap: 10px; margin: 0 0 14px;
+}
+.card-shots img { border: 1px solid var(--line); }
+
 /* ---- Google Play badge -------------------------------------------------- */
 /* Official artwork from play.google.com/intl/<lang>/badges/, self-hosted in assets/ and
    used unmodified — Google's badge guidelines forbid recolouring, cropping, stretching or
@@ -343,15 +363,21 @@ a.post-app:hover { border-color: var(--accent-dim); }
   min-width: 0; margin: 0; padding: 10px;
   background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius);
 }
-.screenshot-grid img {
-  display: block; width: 100%; height: auto; max-height: 680px;
-  object-fit: contain; border-radius: 8px; background: #05080c;
+.screenshot-grid img, .card-shots img {
+  display: block; width: 100%; height: auto; border-radius: 8px; background: #05080c;
 }
-/* A shot may link to the store listing. Block so the inline baseline gap under the image
-   disappears; the ring makes the shot read as clickable without moving the grid. */
-.screenshot-grid a { display: block; border-radius: 8px; }
-.screenshot-grid a:hover img,
-.screenshot-grid a:focus-visible img { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* The cap is the blog grid's alone. Its cells run the full width of the post, so a 9:19.5
+   phone shot would otherwise tower over the paragraph it illustrates. A card cell is at
+   most ~341px wide (one card per row, 768px viewport), and capping there would letterbox
+   the tall shots instead of shortening them. */
+.screenshot-grid img { max-height: 680px; object-fit: contain; }
+/* A shot may link to the store listing — on the app hub every one of them does. Block so
+   the inline baseline gap under the image disappears; the ring makes the shot read as
+   clickable without moving the grid. .card-shots is folded in here so the two grids cannot
+   drift apart; it differs only in gap, alignment and a border. */
+.screenshot-grid a, .card-shots a { display: block; border-radius: 8px; }
+.screenshot-grid a:hover img, .screenshot-grid a:focus-visible img,
+.card-shots a:hover img, .card-shots a:focus-visible img { outline: 2px solid var(--accent); outline-offset: 2px; }
 .screenshot-grid figcaption {
   padding: 9px 2px 1px; color: var(--fg-dim); font-size: 13px; line-height: 1.45;
 }
