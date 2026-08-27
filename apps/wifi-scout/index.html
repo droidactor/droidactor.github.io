@@ -17,6 +17,7 @@
 <meta property="og:url" content="https://droidactor.github.io/apps/wifi-scout/">
 <meta property="og:title" content="Dotori WiFi Scanner — a network scanner for walking into an unfamiliar site">
 <meta property="og:description" content="Sweeps your current Wi-Fi subnet and identifies what answers. Nothing leaves the device.">
+<meta property="og:image" content="https://droidactor.github.io/blog/find-devices-on-wifi-from-android/assets/icon.png">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="../../assets/site.css">
 <script type="application/ld+json">
@@ -37,6 +38,12 @@
     "Manufacturer inferred from the MAC/OUI prefix",
     "Read-only handling of industrial equipment",
     "Hand a result to Dotori SSH Terminal by deep link"
+  ],
+  "screenshot": [
+    "https://droidactor.github.io/blog/find-devices-on-wifi-from-android/assets/en-US/01-home.png",
+    "https://droidactor.github.io/blog/find-devices-on-wifi-from-android/assets/en-US/02-scan-results.png",
+    "https://droidactor.github.io/blog/find-devices-on-wifi-from-android/assets/en-US/03-device-detail.png",
+    "https://droidactor.github.io/blog/find-devices-on-wifi-from-android/assets/en-US/04-ssh-session.png"
   ],
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "author": { "@type": "Organization", "name": "droidactor", "url": "https://droidactor.github.io/" },
@@ -103,6 +110,16 @@
         <p>A result row can be opened in <a href="/apps/ssh-scout/"><span class="dotori">Dotori</span> SSH Terminal</a> by deep link. The
           link carries the host and port only — never a username or password.</p>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Screens</h2>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/en-US/01-home.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Wi-Fi scan range and gateway"><figcaption>The gateway, range, and this phone's address come from the connected Wi-Fi, and the scan reports how many hosts answered.</figcaption></figure>
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/en-US/02-scan-results.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Discovered devices with type and evidence"><figcaption>Every answering host is listed with a device type and the evidence behind it, candidates included.</figcaption></figure>
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/en-US/03-device-detail.png" width="1080" height="2340" loading="lazy" decoding="async" alt="Device detail with open ports and an SSH action"><figcaption>Open ports and evidence stay beside the address, and an SSH host can be handed to <span class="dotori">Dotori</span> SSH Terminal.</figcaption></figure>
+      <figure><img src="/blog/find-devices-on-wifi-from-android/assets/en-US/04-ssh-session.png" width="1080" height="2340" loading="lazy" decoding="async" alt="SSH session opened from the scan result"><figcaption>The handoff lands in a real shell on the discovered host, with credentials entered in the SSH app rather than carried in the link.</figcaption></figure>
     </div>
   </section>
 

@@ -63,7 +63,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | `blog/index.html` · `ko/blog/index.html` | 글 목록. **손으로 관리한다** — 이 리포에 생성기는 없다. 열 편쯤 넘어 손이 아프면 그때가 도입 신호다 |
 | `blog/_post-template.html` | 글 템플릿. slug·경로·JSON-LD·CTA 규약을 머리주석에 담고 있으며 **글 추가 절차의 정본**이다 |
 | `assets/site.css` | 전 페이지 공용. 외부 CDN·폰트·스크립트 없음(자기완결) |
-| `sitemap.xml` | 홈 2 + 앱 허브 2 + 제품 14 + 매뉴얼 허브 2 + 매뉴얼 12 + 기술 노트 허브 2 + 기술 노트 14 + 블로그 18 = 66개 URL. 모든 한·영 쌍에 `xhtml:link` hreflang 3개를 둔다 |
+| `sitemap.xml` | 홈 2 + 앱 허브 2 + 제품 14 + 매뉴얼 허브 2 + 매뉴얼 12 + 기술 노트 허브 2 + 기술 노트 18 + 블로그 18 = 70개 URL. 모든 한·영 쌍에 `xhtml:link` hreflang 3개를 둔다 |
 | `robots.txt` | 전체 허용 + sitemap 위치 |
 | `404.html` | 루트 절대경로만 쓴다 — 어느 깊이의 주소에서든 서빙되기 때문이다. `noindex` |
 | `app-ads.txt` | **AdMob 콘솔이 생성한 줄을 그대로** 넣는다 — 손으로 만들지 않는다 |
@@ -280,7 +280,16 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
       리포트 미생성). **수집 결과는 며칠 뒤에 본다.**
 - [ ] 네이버 수집·색인 현황 확인. 위 34건 중 실제로 수집된 것이 몇 개인지 `요약 → 수집 현황` 과
       `리포트` 에서 확인하고, Google 쪽 진행과 나란히 비교한다.
-- [ ] 제품 페이지에 스크린샷 추가(현재는 텍스트만). 이미지를 넣으면 `og:image` 도 함께 채운다.
+- [x] **제품 페이지에 스크린샷 추가 (2026-08-27).** `bt-keyboard`·`bt-ppt`·`bt-mouse`·`wifi-scout` 한·영
+      8페이지에 `Screens`/`화면` 절을 넣고 4장씩 실었다(`ssh-scout` 은 이미 6장이 있어 그대로 뒀다).
+      `ko/apps/lgtv/` 는 국문 자산이 멀쩡해 함께 넣었다. `og:image` 는 그 앱 아이콘으로 12페이지에 채웠고
+      제품 JSON-LD 에 `screenshot` 배열을 더했다.
+- [ ] **`apps/lgtv/`(영문)의 스크린샷.** 발행된 영문 자산 6장이 옛 캡처이고 `01-remote`·`03-tv-picker` 에
+      `App 현재 방송` 한글이 남아 있어 영문 제품 페이지에 그대로 쓸 수 없다. 허브는 `_screenshot` 의 새
+      캡처로 만든 `/assets/shots/lgtv/` 를 쓰고 있어 영향이 없다. 발행 자산 6장을 `_screenshot` 기준으로
+      갱신하면 블로그 글·매뉴얼의 옛 캡처까지 함께 해소된다 — 사용자 결정 대기.
+- [ ] **`yt-downloader` 의 스크린샷·`og:image`.** 미출시라 `_screenshot` 에도 발행 자산에도 캡처가 없고
+      아이콘도 없다(블로그 글이 없어서다). 출시 준비와 함께 처리한다.
 - [ ] **2026-08-14 경로 개편 배포 확인.** 배포 뒤 `/apps/`·`/manual/` 허브, 7종 새 제품 URL,
       6종 새 매뉴얼 URL과 기존 제품 URL 14개의 호환 이동이 실제 도메인에서 `200`인지 확인한다.
       sitemap 주소 자체는 그대로이므로 삭제·재제출하지 말고 Search Console의 재수집을 기다린다.
@@ -343,6 +352,24 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
   5. 링크 대상 앱이 **로그아웃 상태에서 스토어 200** 인지 확인한다. 미출시 앱에는 샷을 넣지 않는다
      (링크가 404 가 된다 — `yt-downloader` 가 그 경우다)
   6. `sitemap.xml` 의 두 허브 `<lastmod>` 갱신
+- **제품 페이지(`/apps/<앱>/`·`/ko/apps/<앱>/`)의 스크린샷을 고치면** 허브와 규칙이 다르다.
+  1. **여기는 1080px 발행본을 그대로 참조한다** — `/blog/<slug>/assets/<로케일>/<이름>.png`. 허브의
+     720px 축소본을 쓰지 않는다. 셀 폭이 391px(`max-height:680px`+`contain` 이 걸리면 314px)이라
+     축소본으로는 DPR 2 를 못 덮는다. 먼저 있었던 `apps/ssh-scout/` 도 이 방식이다
+  2. 4장을 기준으로 하고 `<h2>Screens</h2>`/`<h2>화면</h2>` 절을 **첫 콘텐츠 절 바로 뒤**에 둔다
+  3. **한 행에 종횡비가 다른 두 장을 두지 않는다.** `.screenshot-grid` 는 2열이고 `align-items:start`
+     라서 가로 캡처가 세로 캡처 옆에 오면 칸이 비어 보이고, 1080×1920 과 1080×2340 을 나란히 두면
+     `max-height` cap 때문에 렌더 폭이 382px 대 314px 로 갈린다. 같은 비율끼리 짝지어 배열한다
+  4. alt·figcaption 은 **그 앱 블로그 글의 문구를 그대로** 가져온다. 같은 그림에 세 가지 설명이 생기지
+     않게 한다. 캡션을 고칠 때는
+     `grep -rl "<파일명>" blog/ ko/blog/ manual/ ko/manual/ apps/ ko/apps/` 로 전 참조를 함께 고친다
+  5. 페이지에 그림이 생기면 `og:image` 를 **그 앱 아이콘**(`/blog/<slug>/assets/icon.png`)으로 채우고
+     `twitter:card` 는 `summary` 로 둔다. 앱 샷은 1:2.17 이라 `summary_large_image` 에 넣으면 잘린다
+  6. 제품 JSON-LD(`SoftwareApplication`)의 `screenshot` 배열도 그 페이지가 싣는 샷으로 함께 갱신한다
+  7. `sitemap.xml` 의 해당 `<lastmod>` 갱신
+- **`/blog/<slug>/assets/<로케일>/` 는 그 글의 자산이 아니라 그 앱의 발행 자산 저장소다.** 글·매뉴얼·제품
+  페이지가 함께 참조한다. 그래서 글이 쓰지 않는 그림도 여기 둔다 — `06-mouse-control.png` 가 그 예로,
+  마우스 조작 화면은 글에 실리지 않았지만 제품 페이지가 쓴다. **글에 없다고 지우지 않는다.**
 - **6종 앱 기술 노트를 고치면** 사용법이 아니라 구현 근거를 유지한다.
   1. `tech-notes/<앱>/index.html`과 `ko/tech-notes/<앱>/index.html`을 같은 목차·같은 기술 범위로 갱신
   2. 구조·protocol·수치·제약은 `MyApps/Mobile/master`의 현재 앱 소스와 test를 근거로 확인
