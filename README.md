@@ -33,7 +33,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 /blog/<slug>/           글 1편                                       + /ko/blog/<slug>/
 /blog/_post-template.html  글 템플릿 — noindex · sitemap 제외. 페이지가 아니다
 /assets/site.css        전 페이지 공용 스타일
-/assets/shots/<앱>/<로케일>/  앱 허브 카드용 720px WebP 축소본. 발행 자산이 아니라 파생물이다
+/assets/shots/<앱>/<로케일>/  앱 허브·제품 페이지 공용 800px WebP 축소본. 발행 자산이 아니라 파생물이다
 /404.html               없는 주소 → 양 언어 홈으로 안내 (GitHub Pages 가 도메인 전역에 사용)
 /robots.txt  /sitemap.xml
 /app-ads.txt            AdMob 판매자 선언 (반드시 도메인 루트)
@@ -284,10 +284,28 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
       8페이지에 `Screens`/`화면` 절을 넣고 4장씩 실었다(`ssh-scout` 은 이미 6장이 있어 그대로 뒀다).
       `ko/apps/lgtv/` 는 국문 자산이 멀쩡해 함께 넣었다. `og:image` 는 그 앱 아이콘으로 12페이지에 채웠고
       제품 JSON-LD 에 `screenshot` 배열을 더했다.
-- [ ] **`apps/lgtv/`(영문)의 스크린샷.** 발행된 영문 자산 6장이 옛 캡처이고 `01-remote`·`03-tv-picker` 에
-      `App 현재 방송` 한글이 남아 있어 영문 제품 페이지에 그대로 쓸 수 없다. 허브는 `_screenshot` 의 새
-      캡처로 만든 `/assets/shots/lgtv/` 를 쓰고 있어 영향이 없다. 발행 자산 6장을 `_screenshot` 기준으로
-      갱신하면 블로그 글·매뉴얼의 옛 캡처까지 함께 해소된다 — 사용자 결정 대기.
+- [x] **`apps/lgtv/`(영문)의 스크린샷 (2026-08-27).** 제품 페이지가 발행 PNG 대신 `_screenshot` 에서
+      만든 `/assets/shots/` 축소본을 쓰게 되면서 막고 있던 사유가 사라졌다 — 새 캡처에는
+      `App 현재 방송` 한글이 없다.
+- [x] **lgtv 발행 그림을 `_screenshot` 기준으로 갱신 (2026-08-27).** `blog/control-lg-webos-tv-over-wifi/`
+      `assets/` 의 en·ko 12장을 교체해 6개 앱 발행 자산이 전부 `_screenshot` 과 byte 동일해졌다
+      (예외는 원본이 없는 `bt-mouse/01-home` 과 원본명이 `01-mouse-control` 인 `06-mouse-control` 둘).
+      옛 캡처의 `App 현재 방송` 은 TV 가 돌려준 소스 이름이 TV 언어를 따른 것인데 영문 글·매뉴얼에서
+      오식으로 읽혔다. **그 줄이 있던 것은 `01-remote`·`03-tv-picker` 이고 `06-language` 가 아니다** —
+      `06-language` 의 옛 영문 캡션은 그 두 장을 해설하던 문장이라 그림을 설명하는 문구로 바꿨다.
+      제품 페이지는 이때 이미 `_screenshot` 에서 만든 축소본을 쓰고 있어 영향을 받지 않았다.
+- [ ] **lgtv 캡처를 현행 앱(`1.0.0+3`)에서 재촬영.** 지금 발행된 12장은 두 가지가 어긋난다.
+      1. **광고를 끈 store screenshot mode 로 찍혀 `Privacy options`(개인정보 옵션)가 없다.**
+         그 항목은 `SettingsScreen.kt` 의 `if (runtime.adsEnabled)` 안에 있어 배포본에는 나오지만
+         `STORE_SCREENSHOT_MODE=true` 빌드에서는 가려진다. 처리방침이 약속하는 동의 철회 경로라
+         문서용 그림은 **광고를 켠 debug 빌드**로 찍어야 한다
+      2. **`settings_section_tv`(TV 연결)·`settings_section_appearance`(겉모습) 절이 없다.** 두 절은
+         2026-08-12 에 들어왔는데 캡처는 그 이전 빌드다. 매뉴얼 본문이 두 절을 안내하므로 그림과
+         어긋난다(옛 발행 캡처도 같았다 — 교체가 만든 문제가 아니라 그대로 남은 문제다)
+      재촬영하면 `_screenshot` → 발행 PNG 12장 → `assets/shots/lgtv/` webp 8장을 함께 다시 뽑는다.
+      그때까지 `05-settings-about` 캡션 4곳(en·ko × 글·매뉴얼)은 개인정보 옵션·겉모습을 언급하지 않는다.
+- [ ] **`manual/lgtv/` 의 검증 앱 버전 갱신.** 현재 `1.0.0 (1)` 인데 앱은 `1.0.0+3` 이다. 위 재촬영과
+      함께 실제로 다시 확인하고 올린다(그림의 About 카드도 `1.0.0` 이라 지금은 그림과 모순은 없다).
 - [ ] **`yt-downloader` 의 스크린샷·`og:image`.** 미출시라 `_screenshot` 에도 발행 자산에도 캡처가 없고
       아이콘도 없다(블로그 글이 없어서다). 출시 준비와 함께 처리한다.
 - [ ] **2026-08-14 경로 개편 배포 확인.** 배포 뒤 `/apps/`·`/manual/` 허브, 7종 새 제품 URL,
@@ -343,19 +361,22 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
   1. 원본 정본은 `MyApps/Mobile/_screenshot/<앱>/<로케일>/` 이다. 사이트의 다른 샷과 같은 출처다
   2. 허브는 **1080px 발행 PNG 를 직접 가리키지 않는다.** 카드에서 156~340px 폭으로 그려지는데
      발행본을 그대로 쓰면 페이지가 2.0MB 가 되고, 카드가 촘촘해 `loading="lazy"` 가 한 장도 미루지
-     못한다(실측). `/assets/shots/<앱>/<로케일>/<이름>.webp` 로 줄여 쓴다 —
-     `magick <src>.png -resize 720x -strip -quality 88 <dst>.webp` (720px 는 768px 뷰포트에서
-     카드가 1열이 될 때의 341px 를 DPR 2 로 덮는 값이다)
+     못한다(실측). 대신 `/assets/shots/<앱>/<로케일>/<이름>.webp` 를 쓴다 —
+     **제품 페이지가 참조하는 것과 같은 파일**이고, 800px 한 벌이 양쪽을 덮는다
   3. 이것은 위 매뉴얼 규칙의 예외가 아니다 — 발행 자산의 **복제가 아니라 다른 해상도의 파생물**이라
      경로가 따로 있다. 블로그·매뉴얼은 계속 1080px 발행본을 참조한다
-  4. `<img>` 의 `width`/`height` 는 축소본의 실제 치수(720×1280 또는 720×1560)로 적는다
+  4. `<img>` 의 `width`/`height` 는 축소본의 실제 치수(세로 800×1422 · 800×1733, 가로 1200×675)로 적는다
   5. 링크 대상 앱이 **로그아웃 상태에서 스토어 200** 인지 확인한다. 미출시 앱에는 샷을 넣지 않는다
      (링크가 404 가 된다 — `yt-downloader` 가 그 경우다)
   6. `sitemap.xml` 의 두 허브 `<lastmod>` 갱신
-- **제품 페이지(`/apps/<앱>/`·`/ko/apps/<앱>/`)의 스크린샷을 고치면** 허브와 규칙이 다르다.
-  1. **여기는 1080px 발행본을 그대로 참조한다** — `/blog/<slug>/assets/<로케일>/<이름>.png`. 허브의
-     720px 축소본을 쓰지 않는다. 셀 폭이 391px(`max-height:680px`+`contain` 이 걸리면 314px)이라
-     축소본으로는 DPR 2 를 못 덮는다. 먼저 있었던 `apps/ssh-scout/` 도 이 방식이다
+- **제품 페이지(`/apps/<앱>/`·`/ko/apps/<앱>/`)의 스크린샷을 고치면** 자산은 허브와 같고 배치 규칙이 더 붙는다.
+  1. **허브와 같은 `/assets/shots/<앱>/<로케일>/<이름>.webp` 를 참조한다.** 발행 PNG 를 그대로
+     가리키면 제품 페이지가 0.5~1.3MB 가 된다(실측 `apps/wifi-scout` 1,060KB → 276KB, -74%).
+     **폭은 셀 폭이 아니라 실제로 그려지는 폭으로 정한다.** 셀은 2열에서 391px, `max-width:600px`
+     1열 분기에서 538px 인데, 세로 캡처는 `max-height:680px`+`contain` 이 걸려 어느 쪽이든
+     382.6px(800×1422) · 313.9px(800×1733) 로 수렴하므로 800px 이면 DPR 2 를 덮는다.
+     **가로 캡처는 cap 에 걸리지 않아 538px 까지 그려지므로 1200px 로 뽑는다**(실측: 800px 이면
+     DPR 2 에 0.74배라 키 글자가 뭉개진다). 허브 카드는 최대 342.5px 로 800px 이면 충분하다
   2. 4장을 기준으로 하고 `<h2>Screens</h2>`/`<h2>화면</h2>` 절을 **첫 콘텐츠 절 바로 뒤**에 둔다
   3. **한 행에 종횡비가 다른 두 장을 두지 않는다.** `.screenshot-grid` 는 2열이고 `align-items:start`
      라서 가로 캡처가 세로 캡처 옆에 오면 칸이 비어 보이고, 1080×1920 과 1080×2340 을 나란히 두면
@@ -367,6 +388,15 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
      `twitter:card` 는 `summary` 로 둔다. 앱 샷은 1:2.17 이라 `summary_large_image` 에 넣으면 잘린다
   6. 제품 JSON-LD(`SoftwareApplication`)의 `screenshot` 배열도 그 페이지가 싣는 샷으로 함께 갱신한다
   7. `sitemap.xml` 의 해당 `<lastmod>` 갱신
+- **축소본을 만들거나 다시 만들 때**는 정본인 `MyApps/Mobile/_screenshot/<원본폴더>/<로케일>/` 에서 뽑는다.
+  `magick <src>.png -resize 800x -strip -quality 88 <dst>.webp` (가로 캡처만 `-resize 1200x`).
+  허브와 제품 페이지가 이 한 벌을 공유하므로 같은 그림이 두 해상도로 갈리지 않는다. 이 명령의 정본은
+  여기 한 곳이다 — 페이지 주석에 사본을 두지 않는다(720px 시절 사본이 갈린 적이 있다).
+  어긋나는 이름 셋을 조심한다.
+  1. **`_screenshot` 폴더명이 앱 key 와 다르다** — `ssh-scout` → `_screenshot/ssh/`,
+     `wifi-scout` → `_screenshot/wifi/`. 나머지 넷은 같다
+  2. `bt-mouse/01-home` 은 `_screenshot` 에 없다. 발행본에서 뽑는다
+  3. `_screenshot/bt-mouse/*/01-mouse-control.png` 의 발행명은 `06-mouse-control` 이다
 - **`/blog/<slug>/assets/<로케일>/` 는 그 글의 자산이 아니라 그 앱의 발행 자산 저장소다.** 글·매뉴얼·제품
   페이지가 함께 참조한다. 그래서 글이 쓰지 않는 그림도 여기 둔다 — `06-mouse-control.png` 가 그 예로,
   마우스 조작 화면은 글에 실리지 않았지만 제품 페이지가 쓴다. **글에 없다고 지우지 않는다.**
