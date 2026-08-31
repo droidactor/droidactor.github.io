@@ -99,7 +99,7 @@
           조작합니다. 트랙패드·가로 스크롤·한글 자모 분해 전송을 지원합니다.
         </p>
         <div class="foot">
-          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_keyboard"><img
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_keyboard&amp;hl=ko"><img
             src="../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></a>
           <a href="/ko/apps/bt-keyboard/">자세히</a>
           <a href="#privacy-keyboard">개인정보</a>
@@ -115,7 +115,7 @@
           슬라이드부터 시작·종료. 발표 중에 잘못 누를 것이 없습니다.
         </p>
         <div class="foot">
-          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_ppt"><img
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_ppt&amp;hl=ko"><img
             src="../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></a>
           <a href="/ko/apps/bt-ppt/">자세히</a>
           <a href="#privacy-ppt">개인정보</a>
@@ -131,7 +131,7 @@
           감도 조절, 자연스러운 스크롤 방향을 지원합니다.
         </p>
         <div class="foot">
-          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_mouse2"><img
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_mouse2&amp;hl=ko"><img
             src="../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></a>
           <a href="/ko/apps/bt-mouse/">자세히</a>
           <a href="#privacy-mouse">개인정보</a>
@@ -147,7 +147,7 @@
           식별합니다. 낯선 현장에 들어갔을 때를 위한 도구입니다.
         </p>
         <div class="foot">
-          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.wifi_scout"><img
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.wifi_scout&amp;hl=ko"><img
             src="../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></a>
           <a href="/ko/apps/wifi-scout/">자세히</a>
           <a href="#privacy-wifi">개인정보</a>
@@ -163,7 +163,7 @@
           들어올 수 있습니다.
         </p>
         <div class="foot">
-          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout"><img
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout&amp;hl=ko"><img
             src="../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></a>
           <a href="/ko/apps/ssh-scout/">자세히</a>
           <a href="#privacy-ssh">개인정보</a>
@@ -195,7 +195,7 @@
           범위에서 제외했습니다.
         </p>
         <div class="foot">
-          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv"><img
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv&amp;hl=ko"><img
             src="../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></a>
           <a href="/ko/apps/lgtv/">자세히</a>
           <a href="#privacy-lgtv">개인정보</a>
@@ -220,7 +220,7 @@
   <section id="privacy">
     <h2>개인정보 처리방침</h2>
     <p class="lead">
-      시행일: 2026년 8월 19일 · 개발자: droidactor (개인 개발자) ·
+      시행일: 2026년 8월 31일 · 개발자: droidactor (개인 개발자) ·
       문의: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> ·
       아래 7절에 열거된 모든 앱에 적용됩니다.
       <br><a href="/#privacy" hreflang="en" lang="en">Privacy policy in English</a>
@@ -425,9 +425,10 @@
       <p>
         진단 파일을 export 하면 Android 문서 선택기에서 직접 고른 위치에만 저장되며, 생성 시점에
         마스킹됩니다 — host 블루투스 주소는 <code>redacted_at_creation</code> 으로 대체되고, host 표시 이름과
-        입력 문자열·clipboard 내용은 아예 제외됩니다. 광고 슬롯은 보고 있는 화면이 아니라 세션 상태로
-        판정합니다 — 유휴·연결됨 상태에서만 허용하고 연결 진행 중·복구·격리 상태에서는 표시하지 않으며,
-        트랙패드 면과 키보드 면에는 광고를 두지 않습니다.
+        입력 문자열·clipboard 내용은 아예 제외됩니다. 광고 슬롯은 화면 단위로 판정하고, 복구 중 같은
+        세션 상태가 그 판정을 덮습니다 — 홈·기록·설정·진단 결과·연결된 입력 화면에서 허용하고,
+        페어링·연결 중·가이드 테스트·복구 중에는 붙이지 않습니다. 슬롯은 조작 영역 위쪽에 따로 있어
+        트랙패드와 키 위에는 광고가 그려지지 않습니다.
       </p>
       <p><a href="/ko/apps/bt-keyboard/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드 자세히 보기</a></p>
     </div>
@@ -437,9 +438,9 @@
       <p>
         블루투스 HID 로 고정된 5개 키 동작만 보내며, 텍스트 입력 기능이 아예 없습니다. 그 외에는
         위 <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드와 동일합니다 — 페어링 host 주소는 로컬 저장 후 마스킹, 위치 권한 없음, 저희에게
-        전송되는 것 없음. 광고는 홈·host 선택·페어링·설정·정보 화면에만 표시되며,
-        <strong>발표 화면과 연결 중 화면에는 표시하지 않습니다</strong> — 진행 중인 발표를 방해하지
-        않기 위해서입니다.
+        전송되는 것 없음. 배너 하나가 발표 화면을 포함한 모든 화면 최상단에 표시되며,
+        <strong>그 높이는 광고가 붙기 전에도 그대로 예약</strong>해 발표 도중 아래 버튼이 밀리지
+        않습니다. 전면 광고는 없습니다.
       </p>
       <p><a href="/ko/apps/bt-ppt/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨 자세히 보기</a></p>
     </div>

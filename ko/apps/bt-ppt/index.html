@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>도토리 PPT 리모컨 — 5개 동작만 보내는 발표 리모컨</title>
-<meta name="description" content="블루투스 HID 발표 리모컨 Android 앱. 다음·이전·처음부터 시작·현재 슬라이드부터 시작·종료 5개 동작만 보냅니다. 발표 화면에는 광고를 두지 않습니다.">
+<meta name="description" content="블루투스 HID 발표 리모컨 Android 앱. 다음·이전·처음부터 시작·현재 슬라이드부터 시작·종료 5개 동작만 보냅니다. 수신기도 발표용 PC 쪽 설치도 필요 없습니다.">
 <link rel="canonical" href="https://droidactor.github.io/ko/apps/bt-ppt/">
 <link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/bt-ppt/">
 <link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/bt-ppt/">
@@ -16,7 +16,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:url" content="https://droidactor.github.io/ko/apps/bt-ppt/">
 <meta property="og:title" content="도토리 PPT 리모컨 — 5버튼 발표 리모컨">
-<meta property="og:description" content="블루투스 HID 로 5개 동작만. 수신기도, 발표용 PC 쪽 설치도, 발표 화면 광고도 없습니다.">
+<meta property="og:description" content="블루투스 HID 로 5개 동작만. 수신기도, 발표용 PC 쪽 설치도 필요 없습니다.">
 <meta property="og:image" content="https://droidactor.github.io/blog/use-android-phone-as-powerpoint-remote/assets/icon.png">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="../../../assets/site.css?v=20260812-ko-brand">
@@ -36,7 +36,7 @@
     "다음·이전 슬라이드",
     "처음부터 시작 / 현재 슬라이드부터 시작",
     "발표 종료",
-    "발표 화면에 광고 없음"
+    "시작할 때 마지막 PC 로 자동 재연결"
   ],
   "screenshot": [
     "https://droidactor.github.io/assets/shots/bt-ppt/ko-KR/01-presenter-control.webp",
@@ -78,7 +78,7 @@
       설치할 것도, 잃어버릴 동글도 없습니다.
     </p>
     <div class="status">
-      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_ppt"><img
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_ppt&amp;hl=ko"><img
         src="../../../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></a>
       <a href="/ko/manual/bt-ppt/">사용 설명서</a>
       <a href="/ko/tech-notes/bt-ppt/">기술 노트</a>
@@ -129,9 +129,10 @@
           외에는 아무것도 보낼 수 없습니다.</p>
       </div>
       <div>
-        <h3>발표 중에는 광고 없음</h3>
-        <p>광고는 홈·host 선택·페어링·설정·정보 화면에만 표시하고,
-          <strong>발표 화면과 연결 중 화면에는 표시하지 않습니다</strong>.</p>
+        <h3>배너가 버튼을 밀지 않음</h3>
+        <p>배너 하나가 발표 화면을 포함한 모든 화면 최상단에 고정되고, 그 높이는
+          <strong>광고가 붙기 전에도 그대로 예약</strong>합니다. 발표 도중 아래 버튼이 밀려
+          내려가지 않습니다. 전면 광고는 없습니다.</p>
       </div>
       <div>
         <h3>host 에는 설치할 것이 없음</h3>
@@ -154,7 +155,7 @@
           <tr><th>가격</th><td>무료 (Google AdMob 광고 지원)</td></tr>
           <tr><th>계정</th><td>없음. 로그인·회원가입 없음.</td></tr>
           <tr><th>상태</th><td>Google Play 출시 —
-            <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_ppt">스토어 페이지</a></td></tr>
+            <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_ppt&amp;hl=ko">스토어 페이지</a></td></tr>
         </tbody>
       </table>
     </div>

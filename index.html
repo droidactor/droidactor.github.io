@@ -16,7 +16,10 @@
   worked example to copy from:
     - replace its <span class="badge soon">Coming soon</span> with the Google Play badge:
       <a class="play-badge"> around assets/google-play-badge-{en,ko}.png, pointing at
-      play.google.com/store/apps/details?id=<package>. -en on this tree, -ko under /ko/.
+      play.google.com/store/apps/details?id=<package>&hl=en (hl=ko under /ko/).
+      Write the separator as &amp;hl= inside an HTML attribute; never &amp; inside a
+      <script type="application/ld+json"> block, which is not entity-decoded.
+      The badge PNG is -en on this tree, -ko under /ko/.
     - here, in /ko/index.html, and on both product pages for that app — where the spec
       table's Status row also stops saying "Not yet published on Google Play"
     - also at the end of .manual-actions on both user manuals for that app, and in the
@@ -124,7 +127,7 @@
           Korean jamo-decomposed key transmission.
         </p>
         <div class="foot">
-          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_keyboard"><img
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_keyboard&amp;hl=en"><img
             src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
           <a href="/apps/bt-keyboard/">Details</a>
           <a href="#privacy-keyboard">Privacy</a>
@@ -141,7 +144,7 @@
           mis-tap while you are speaking.
         </p>
         <div class="foot">
-          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_ppt"><img
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_ppt&amp;hl=en"><img
             src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
           <a href="/apps/bt-ppt/">Details</a>
           <a href="#privacy-ppt">Privacy</a>
@@ -157,7 +160,7 @@
           horizontal scrolling and adjustable pointer sensitivity.
         </p>
         <div class="foot">
-          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_mouse2"><img
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_mouse2&amp;hl=en"><img
             src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
           <a href="/apps/bt-mouse/">Details</a>
           <a href="#privacy-mouse">Privacy</a>
@@ -173,7 +176,7 @@
           answer, listing each as IP, kind and note. Built for walking into an unfamiliar site.
         </p>
         <div class="foot">
-          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.wifi_scout"><img
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.wifi_scout&amp;hl=en"><img
             src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
           <a href="/apps/wifi-scout/">Details</a>
           <a href="#privacy-wifi">Privacy</a>
@@ -189,7 +192,7 @@
           Can be entered straight from a <span class="dotori">Dotori</span> WiFi Scanner result via deep link.
         </p>
         <div class="foot">
-          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout"><img
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout&amp;hl=en"><img
             src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
           <a href="/apps/ssh-scout/">Details</a>
           <a href="#privacy-ssh">Privacy</a>
@@ -221,7 +224,7 @@
           control protocol. Text entry is out of scope for the first version.
         </p>
         <div class="foot">
-          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv"><img
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv&amp;hl=en"><img
             src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
           <a href="/apps/lgtv/">Details</a>
           <a href="#privacy-lgtv">Privacy</a>
@@ -247,7 +250,7 @@
   <section id="privacy">
     <h2>Privacy policy</h2>
     <p class="lead">
-      Effective date: 19 August 2026 · Developer: droidactor (individual developer) ·
+      Effective date: 31 August 2026 · Developer: droidactor (individual developer) ·
       Contact: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> ·
       Applies to every app listed in section 7 below.
       <br><a href="/ko/#privacy" hreflang="ko" lang="ko">한국어 개인정보 처리방침</a>
@@ -466,9 +469,10 @@
         If you export a diagnostic file, it is written only to a location you pick in
         Android's document picker, and it is redacted as it is created: the host Bluetooth address is
         replaced with <code>redacted_at_creation</code>, and the host display name, input strings and
-        clipboard content are excluded entirely. Ad slots are gated on session state rather than on which
-        screen you are viewing — idle and connected allow ads, while connecting, recovering and isolated
-        states do not — and no ad is placed on the trackpad or keyboard surfaces.
+        clipboard content are excluded entirely. Ad slots are gated per screen, and the session
+        state can override that — home, history, settings, diagnostic results and the connected input
+        screen allow ads, while pairing, connecting, the guided test and recovery do not. The slot sits
+        above the control area, so no ad is drawn over the trackpad or the keys.
       </p>
       <p><a href="/apps/bt-keyboard/">More about <span class="dotori">Dotori</span> Bluetooth Keyboard</a></p>
     </div>
@@ -478,9 +482,9 @@
       <p>
         The app sends only five fixed key actions over Bluetooth HID and has no text entry
         at all. Otherwise it behaves exactly as <span class="dotori">Dotori</span> Bluetooth Keyboard above: paired host address stored locally
-        and masked, no location permission, nothing transmitted to us. Ads are shown on the Home, host
-        picker, pairing, settings and about screens only — <strong>never on the presenter screen or while
-        connecting</strong>, so a running presentation is never interrupted.
+        and masked, no location permission, nothing transmitted to us. One ad banner sits at the
+        top of every screen, the presenter view included, and <strong>its height is reserved before an
+        ad loads</strong> so the controls below never shift mid-talk. There are no full-screen ads.
       </p>
       <p><a href="/apps/bt-ppt/">More about <span class="dotori">Dotori</span> Bluetooth PPT Remote</a></p>
     </div>
