@@ -537,18 +537,38 @@ Tech Notes 배포 다음 요청일에는 허브 2개를 실제 URL 테스트한 
       요청이 3분 뒤 크롤을 유발했고, Googlebot이 그 페이지의 `hreflang`·내부 링크를 따라
       `/ko/tech-notes/` 까지 스스로 발견·색인했다. 참조 페이지 칸이 그 경로를 그대로 보여준다.
       **같은 URL을 다시 요청하지 않는다** — 이미 색인된 URL의 요청은 할당량만 소모한다.
-- [ ] `https://droidactor.github.io/tech-notes/bt-keyboard/`
-- [ ] `https://droidactor.github.io/ko/tech-notes/bt-keyboard/`
-- [ ] `https://droidactor.github.io/tech-notes/bt-ppt/`
-- [ ] `https://droidactor.github.io/ko/tech-notes/bt-ppt/`
-- [ ] `https://droidactor.github.io/tech-notes/bt-mouse/`
-- [ ] `https://droidactor.github.io/ko/tech-notes/bt-mouse/`
-- [ ] `https://droidactor.github.io/tech-notes/wifi-scout/`
-- [ ] `https://droidactor.github.io/ko/tech-notes/wifi-scout/`
-- [ ] `https://droidactor.github.io/tech-notes/ssh-scout/`
-- [ ] `https://droidactor.github.io/ko/tech-notes/ssh-scout/`
+- [x] `https://droidactor.github.io/tech-notes/bt-keyboard/` — 2026-08-31 요청 접수
+- [x] `https://droidactor.github.io/ko/tech-notes/bt-keyboard/` — 2026-08-31 요청 접수
+- [x] `https://droidactor.github.io/tech-notes/bt-ppt/` — 2026-08-31 요청 접수
+- [x] `https://droidactor.github.io/ko/tech-notes/bt-ppt/` — 2026-08-31 요청 접수
+- [x] `https://droidactor.github.io/tech-notes/bt-mouse/` — 2026-08-31 요청 접수
+- [x] `https://droidactor.github.io/ko/tech-notes/bt-mouse/` — 2026-08-31 요청 접수
+- [x] `https://droidactor.github.io/tech-notes/wifi-scout/` — 2026-08-31 요청 접수
+- [x] `https://droidactor.github.io/ko/tech-notes/wifi-scout/` — 2026-08-31 요청 접수
+- [x] `https://droidactor.github.io/tech-notes/ssh-scout/` — 2026-08-31 요청 접수
+- [x] `https://droidactor.github.io/ko/tech-notes/ssh-scout/` — 2026-08-31 요청 접수
 - [ ] `https://droidactor.github.io/tech-notes/lgtv/`
 - [ ] `https://droidactor.github.io/ko/tech-notes/lgtv/`
+
+**2026-08-31 — 위 12개 중 10개를 요청했고 전부 접수됐다. 일일 할당량 10개를 정확히 소진했다.**
+`lgtv` 한·영 2개만 남겼다 — 같은 제품의 `/apps/lgtv/` 가 §13 의 중복 판정을 받고 있어 결과 해석이
+오염될 수 있으므로 뒤로 미뤘다. 다음 요청일 1순위다.
+
+**10개 전부가 검사 시점에 `Google에는 아직 알려지지 않은 URL입니다` 였다.** `크롤링 허용 여부`·
+`페이지 가져오기`·`최근 크롤링`·`사용자 선언 표준 URL` 이 모두 `해당사항 없음` 이고
+`Sitemaps: 감지된 참조 사이트맵이 없습니다` / `참조 페이지: 감지된 페이지 없음` 이다.
+**즉 색인이 안 된 것이 아니라 Google 이 이 URL 들의 존재 자체를 모른다.** 8-24 가 다룬
+`크롤링됨 - 현재 색인이 생성되지 않음`(크롤은 됐고 색인에서 멈춤)과는 **다른 단계**다.
+
+**한 건은 8-24 보고서와 어긋난다.** `/ko/tech-notes/bt-keyboard/` 는 8-24 의 `크롤링됨 - 현재 색인이
+생성되지 않음` 8건 목록에 들어 있었는데(§6 2026-08-24 성과 4번), 8-31 URL 검사는 같은 URL 을
+`아직 알려지지 않은 URL` 이라고 답한다. **보고서(데이터 기준 8-21)와 실시간 검사가 다른 값을 준다는
+사실만 기록한다** — 어느 쪽이 맞는지는 GSC 가 말하지 않으므로 다음 세션이 추정을 사실로 인용하지 않는다.
+
+`ko/tech-notes/bt-ppt/` 는 첫 시도에서 `색인 생성 요청을 제출하는 중에 문제가 발생했습니다. 나중에
+다시 시도해 주세요` 를 받았고 **간격을 두고 재시도해 접수됐다.** 8-14 의 `할당량 초과 / 내일 다시
+제출해 주세요` 와는 **다른 메시지이고 다른 원인**이다(그때는 12번째였고 오늘은 4번째였다).
+**연속 제출이 빠르면 이 일시적 오류가 난다** — 요청 사이에 20초 이상 두면 재현되지 않았다.
 
 **bt-keyboard 상세 노트 6개는 위 12개보다 후순위다.** §9 의 2개(Google TV HID, 8-14 배포)와 §10 의
 4개(각인 드리프트·HID 세션 공유, 8-16 배포)를 말한다. 허브·앱별 Tech Notes 가 먼저 색인되면 그
@@ -911,8 +931,9 @@ Chrome 으로 Play Console·Search Console 을 **읽기 전용**으로 조회해
 ### 2026-08-31 — 색인 38 의 정체 확정, §13.5 판정 완료, 배포 1건
 
 **배포 `4bb277f` 1건**("Play 스토어 링크에 hl 파라미터 부착과 bt-keyboard·bt-ppt 광고 표기 정정",
-45개 파일)과 **GSC 조회**를 했다. **색인 생성 요청은 0건**이다 — 할당량 부족이 아니라 조작이 막혔다
-(아래 성과 6번).
+45개 파일), **GSC 조회**, **색인 생성 요청 10건**(전부 접수, 일일 할당량 정확히 소진)을 했다.
+세션 중반까지는 `foreground` 확보가 막혀 요청이 불가능했고(성과 6번), 사람이 Chrome 창을 활성화한
+뒤에 풀렸다.
 
 1. **8-24 다음 작업 1번의 답 — 색인 38 개의 전량 목록을 CSV 로 확보했고, 증가 16 의 정체가 정확히
    갈렸다.** 8-17 CSV(데이터 기준 8-10, 22개)와 같은 축으로 비교한다.
@@ -997,10 +1018,12 @@ Chrome 으로 Play Console·Search Console 을 **읽기 전용**으로 조회해
    클립보드 붙여넣기가 필요한 작업이 전부 불가능했다.** 읽기와 `invoke`(UIA 패턴 호출)는 정상이므로
    위 1~3번은 그 경로만으로 얻었다 — CSV 내보내기는 메뉴 `invoke` 로, URL 검사는 검색창에 남아 있던
    **최근 검사 기록 항목을 `invoke`** 해서 열었다.
-   **막힌 것은 둘이다: ① §5 링크 보고서 이동 ② 색인 생성 요청.** URL 검사 입력창은 웹 콘텐츠라
-   `ValuePattern.SetValue` 가 거부되고(실측: read-back 이 빈 문자열) 남는 경로인 `-ViaClipboard` 는
-   물리 입력이라 foreground 를 요구한다. **다음 세션은 조작을 시작하기 전에 Chrome 창을 사람이 한 번
-   활성화했는지 확인한다.**
+   URL 검사 입력창은 웹 콘텐츠라 `ValuePattern.SetValue` 가 거부되고(실측: read-back 이 빈 문자열)
+   남는 경로인 `-ViaClipboard` 는 물리 입력이라 foreground 를 요구한다.
+   **§5 링크 보고서는 우회로 뚫었고**(주소창 → 자동완성 `invoke`, 아래 7번) **색인 생성 요청만 남아
+   있다가, 사람이 Chrome 창을 활성화한 뒤 풀려 10건을 접수했다**(§4.3).
+   **다음 세션은 조작을 시작하기 전에 Chrome 창이 활성화돼 있는지 먼저 확인한다** — 읽기만 하다가
+   중간에 막히면 그때까지의 절차를 다시 밟아야 한다.
    덧붙여 **GSC URL 검사 딥링크로 임의의 URL 을 검사할 수 없다 — `id` 는 URL 이 아니라 불투명한
    해시다.** `?resource_id=…&id=https%3A%2F%2F…%2Fapps%2Flgtv%2F` 로 만들어 넣으면 `404` 가 오고,
    실제로 열린 검사 화면의 주소는 `?resource_id=https%3A%2F%2Fdroidactor.github.io%2F&id=`
@@ -1015,6 +1038,16 @@ Chrome 으로 Play Console·Search Console 을 **읽기 전용**으로 조회해
    16일이 지났는데도 그대로다. **같은 날 URL 검사는 `/apps/lgtv/` 의 참조 페이지를 `/lgtv/` 로 잡고
    있으므로 두 화면이 충돌한다** — Google 은 내부 링크를 보는데 링크 보고서만 비어 있다. §5 에
    적었고, **이 항목을 근거로 사이트를 고치지 않는다.**
+
+9. **색인 생성 요청 10건을 접수했다 — 전부 Tech Notes 앱별 허브이고, 전부 `Google에 알려지지 않은
+   URL` 이었다**(§4.3). `(ko/)tech-notes/{bt-keyboard, bt-ppt, bt-mouse, wifi-scout, ssh-scout}/` 10개다.
+   **이 상태가 8-24 가 다룬 것과 다른 단계라는 점이 이 세션의 세 번째 발견이다** — `크롤링됨 - 현재
+   색인이 생성되지 않음` 은 크롤은 됐고 색인에서 멈춘 것이지만, 이 10개는 `최근 크롤링`·`페이지
+   가져오기`·`사용자 선언 표준 URL` 이 전부 `해당사항 없음` 이다. **Google 이 존재 자체를 모른다.**
+   sitemap 미수집(§4.2)과 링크 보고서 0(§5)이 겹친 결과가 이 형태로 드러난 것으로 보이나,
+   **인과는 GSC 가 말하지 않으므로 추정이다.**
+   `lgtv` 한·영 2개는 일부러 남겼다 — 같은 제품의 `/apps/lgtv/` 가 §13 의 중복 판정을 받고 있어
+   결과 해석이 오염된다.
 
 8. **8-24 다음 작업 10번도 닫았다 — 처리방침 앵커 ↔ 스토어 등록 대조가 `9/9` 정확이다**(§12).
    **Play Console 에 들어갈 필요가 없었다** — 스토어 등록정보의 처리방침 URL 은 공개 값이라
@@ -1033,17 +1066,22 @@ Chrome 으로 Play Console·Search Console 을 **읽기 전용**으로 조회해
    외부 0 / 내부 0 으로 **8-15 와 동일**하다. 색인이 38 로 늘고 16일이 지났는데도 그대로이고,
    같은 날 URL 검사는 `/apps/lgtv/` 의 참조 페이지를 `/lgtv/` 로 **잡고 있다** — 두 화면이 충돌한다.
    **이 속성에서 링크 보고서가 채워지지 않는 것으로 보고, 이 항목을 근거로 사이트를 고치지 않는다.**
-3. **색인 생성 요청 — §4.3 의 미체크 22개가 그대로다.** 8-24·8-31 두 세션 연속으로 계획만 남았다.
-   허브가 미색인이면 상세의 발견 사슬이 끊긴다는 근거(§4.3)와, 위 2번이 밝힌 **Tech Notes 18개 전량
-   미색인**이 겹치므로 `(ko/)tech-notes/{bt-keyboard, …}/` 허브 12개가 1순위다.
-   요청 전에 **§4.3 의 `[x]` 목록으로 이미 요청한 URL 인지 확인**한다(8-24 의 실무 규칙).
+3. ~~색인 생성 요청 — §4.3 의 미체크 22개가 그대로다.~~ **10건을 요청해 전부 접수됐다(§4.3).**
+   `(ko/)tech-notes/{bt-keyboard, bt-ppt, bt-mouse, wifi-scout, ssh-scout}/` 10개다.
+   **남은 것은 12개** — `(ko/)tech-notes/lgtv/` 2개(오늘 일부러 미룬 것, 다음 요청일 1순위)와
+   §4.3 우선순위 2 의 10개(`(ko/)apps/{ssh-scout, yt-downloader}/`, `(ko/)manual/{bt-ppt, bt-mouse,
+   ssh-scout}/`). 전부 위 2번의 미색인 42 안에 있다.
+   **요청 사이에 20초 이상 둔다** — 간격이 짧으면 `제출하는 중에 문제가 발생했습니다` 가 난다(§4.3).
 4. ~~새 처리방침 앵커 3개에 대응하는 앱의 처리방침 URL 을 확인한다.~~ **같은 날 완료했다 — §12.**
    **게시된 앱 기준 `9/9` 정확**이고 `#privacy-unit`·`#privacy-ytdl` 은 앱이 미게시라 대조 대상이
    아니다. **Play Console 에 들어갈 필요가 없었다** — 스토어 등록정보의 처리방침 URL 은 공개 값이라
    `details?id=<pkg>&hl=en` HTML 에서 읽힌다. 다음에도 이 경로를 먼저 쓴다.
-5. **sitemap 에 이미지 확장(`<image:image>`)을 넣을지 정한다.** 8-27~8-29 에 스크린샷 57장이 늘었는데
-   (webp 55 + png 2) sitemap 에 이미지 항목이 0개다. `robots.txt` 는 `Allow: /` 이므로 크롤 자체는
-   막히지 않는다 — **넣지 않아도 결함은 아니고, 이미지 검색 유입을 노릴지의 선택이다.**
+5. **sitemap 이미지 확장(`<image:image>`)은 보류한다 — 2026-08-31 사용자 결정이다.**
+   8-27~8-29 에 스크린샷 57장이 늘었는데(webp 55 + png 2) sitemap 에 이미지 항목이 0개다.
+   `robots.txt` 는 `Allow: /` 이므로 크롤 자체는 막히지 않아 **넣지 않아도 결함이 아니다.**
+   **판단 시점을 미색인 42개가 줄어드는 것을 본 뒤로 정했다** — 지금 이미지 항목을 더하면 sitemap 이
+   커지는데 그 수집이 아직 성공한 적이 없다(§4.2). **다음 세션이 이 항목을 미결로 되살려 임의로
+   넣지 않는다.** 미색인 수가 의미 있게 줄면 그때 다시 꺼낸다.
 6. **sitemap 은 관찰만 한다** — 재제출하지 않는다(§4.2, §7). 위 3번 표의 `Sitemaps: 일시적인 처리 오류`
    는 8-24 의 `감지된 참조 사이트맵이 없습니다` 에서 바뀐 값이므로, 상태가 스스로 움직이고 있다는
    기록으로만 남긴다.
