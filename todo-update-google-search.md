@@ -425,6 +425,13 @@ GSC 는 버튼을 누른 직후 성공 대화상자를 먼저 띄우고, 서버�
 
 - 버튼 라벨이 `색인 생성 요청` 이 아니라 **`색인 생성 요청 / 다시 요청`** 이었다(요청 이력이 있는
   URL 에 GSC 가 붙이는 표시다).
+  **2026-09-02 실측이 이 근거를 무너뜨린다 — 라벨은 요청 이력의 표시가 아니다.** 요청 이력이 전혀
+  없는 URL(`/tech-notes/lgtv/`, `Google에는 아직 알려지지 않은 URL`)에서도 **UIA 가 읽는 버튼
+  이름은 똑같이 `색인 생성 요청다시 요청`** 이고, 같은 순간의 화면 스크린샷에서 **눈에 보이는
+  라벨은 `색인 생성 요청` 하나뿐**이다. 버튼 안에 숨은 대체 라벨이 함께 들어 있어 접근성 트리에서만
+  이어 붙어 나오는 것이다. **다음 세션은 이 라벨로 요청 이력을 판정하지 않는다** — 이력은 이 절의
+  `[x]` 목록으로만 판정한다. (8-24 의 재요청이 실효가 없다는 결론 자체는 성공 모달 본문
+  "여러 번 제출해도 대기열 위치나 우선순위가 변경되지 않습니다" 가 따로 뒷받침하므로 그대로 선다.)
 - 성공 모달 본문이 **"URL이 우선순위 크롤링 대기열에 추가되었습니다. 페이지를 여러 번 제출해도
   대기열 위치나 우선순위가 변경되지 않습니다."** 였다.
 
@@ -494,16 +501,25 @@ GSC 는 버튼을 누른 직후 성공 대화상자를 먼저 띄우고, 서버�
 
 우선순위 1과 같은 기준을 적용한다. 이미 발견·crawl됐거나 정상적으로 색인 대기 중인 URL은 요청하지 않는다.
 
-- [ ] `https://droidactor.github.io/apps/ssh-scout/`
-- [ ] `https://droidactor.github.io/ko/apps/ssh-scout/`
+- [x] `https://droidactor.github.io/apps/ssh-scout/` — 2026-09-02 요청 접수
+- [x] `https://droidactor.github.io/ko/apps/ssh-scout/` — 2026-09-02 요청 접수
 - [ ] `https://droidactor.github.io/apps/yt-downloader/`
 - [ ] `https://droidactor.github.io/ko/apps/yt-downloader/`
-- [ ] `https://droidactor.github.io/manual/bt-ppt/`
-- [ ] `https://droidactor.github.io/ko/manual/bt-ppt/`
-- [ ] `https://droidactor.github.io/manual/bt-mouse/`
-- [ ] `https://droidactor.github.io/ko/manual/bt-mouse/`
-- [ ] `https://droidactor.github.io/manual/ssh-scout/`
-- [ ] `https://droidactor.github.io/ko/manual/ssh-scout/`
+- [x] `https://droidactor.github.io/manual/bt-ppt/` — 2026-09-02 요청 접수
+- [x] `https://droidactor.github.io/ko/manual/bt-ppt/` — 2026-09-02 요청 접수
+- [x] `https://droidactor.github.io/manual/bt-mouse/` — 2026-09-02 요청 접수
+- [x] `https://droidactor.github.io/ko/manual/bt-mouse/` — 2026-09-02 요청 접수
+- [x] `https://droidactor.github.io/manual/ssh-scout/` — 2026-09-02 요청 접수
+- [x] `https://droidactor.github.io/ko/manual/ssh-scout/` — 2026-09-02 요청 접수
+
+**2026-09-02 — 이 10개 중 8개를 요청했고 전부 접수됐다.** 남긴 것은 `(ko/)apps/yt-downloader/` 2개다.
+같은 날 1순위였던 `(ko/)tech-notes/lgtv/` 2개를 먼저 쓰고 남은 8칸을 여기에 배정했는데, 그 8칸을
+**출시 앱 기준으로 갈랐다** — `yt-downloader` 는 6종 중 유일한 미출시 앱이다(§4.3 우선순위 1 의
+"출시 앱 먼저" 가 8-14 오후에 소멸했다는 기록은 그때 5종이 한꺼번에 프로덕션에 오른 상황을 가리키고,
+`yt-downloader` 하나가 남은 것은 그 뒤로 바뀌지 않았다). **다음 요청일 1순위는 이 2개다.**
+8개 전부 검사 시점에 `URL이 Google에 등록되어 있지 않음` + `Google에는 아직 알려지지 않은 URL입니다`
+였다 — 8-31 의 Tech Notes 10개와 같은 단계이고, 8-24 가 다룬 `크롤링됨 - 현재 색인이 생성되지 않음`
+과는 다른 단계다.
 
 #### Tech Notes — 별도 요청 묶음: 허브 2개 우선, 상세 12개 조건부
 
@@ -547,8 +563,8 @@ Tech Notes 배포 다음 요청일에는 허브 2개를 실제 URL 테스트한 
 - [x] `https://droidactor.github.io/ko/tech-notes/wifi-scout/` — 2026-08-31 요청 접수
 - [x] `https://droidactor.github.io/tech-notes/ssh-scout/` — 2026-08-31 요청 접수
 - [x] `https://droidactor.github.io/ko/tech-notes/ssh-scout/` — 2026-08-31 요청 접수
-- [ ] `https://droidactor.github.io/tech-notes/lgtv/`
-- [ ] `https://droidactor.github.io/ko/tech-notes/lgtv/`
+- [x] `https://droidactor.github.io/tech-notes/lgtv/` — 2026-09-02 요청 접수
+- [x] `https://droidactor.github.io/ko/tech-notes/lgtv/` — 2026-09-02 요청 접수
 
 **2026-08-31 — 위 12개 중 10개를 요청했고 전부 접수됐다. 일일 할당량 10개를 정확히 소진했다.**
 `lgtv` 한·영 2개만 남겼다 — 같은 제품의 `/apps/lgtv/` 가 §13 의 중복 판정을 받고 있어 결과 해석이
@@ -1072,6 +1088,8 @@ Chrome 으로 Play Console·Search Console 을 **읽기 전용**으로 조회해
    §4.3 우선순위 2 의 10개(`(ko/)apps/{ssh-scout, yt-downloader}/`, `(ko/)manual/{bt-ppt, bt-mouse,
    ssh-scout}/`). 전부 위 2번의 미색인 42 안에 있다.
    **요청 사이에 20초 이상 둔다** — 간격이 짧으면 `제출하는 중에 문제가 발생했습니다` 가 난다(§4.3).
+   **2026-09-02 에 이 12개 중 10개를 요청해 전부 접수됐다** — 남은 것은 `(ko/)apps/yt-downloader/`
+   2개뿐이다(아래 2026-09-02 절). 간격 규칙은 그대로 지켰고 일시적 오류는 한 번도 나지 않았다.
 4. ~~새 처리방침 앵커 3개에 대응하는 앱의 처리방침 URL 을 확인한다.~~ **같은 날 완료했다 — §12.**
    **게시된 앱 기준 `9/9` 정확**이고 `#privacy-unit`·`#privacy-ytdl` 은 앱이 미게시라 대조 대상이
    아니다. **Play Console 에 들어갈 필요가 없었다** — 스토어 등록정보의 처리방침 URL 은 공개 값이라
@@ -1090,6 +1108,84 @@ Chrome 으로 Play Console·Search Console 을 **읽기 전용**으로 조회해
    특히 `4bb277f` 는 **40개 파일이 링크 부착뿐이고 4개만 본문이 바뀐 혼합 커밋**이므로, 이 커밋을
    근거로 블로그 16개·매뉴얼 12개의 `dateModified` 를 당기지 않는다(§14).
 
+
+### 2026-09-02 — 색인 생성 요청 10건 접수, 배포 0건
+
+**색인 생성 요청 10건을 전부 접수시켜 일일 할당량을 정확히 소진했다.** 배포는 없었고 sitemap 은
+건드리지 않았다(§7). 8-31 이 남긴 "다음 작업 3번"(남은 12개)을 10개까지 밀어낸 것이 이 세션의 전부다.
+
+1. **요청 10건 — 8-31 이 남긴 12개 중 10개다.** 1순위였던 `(ko/)tech-notes/lgtv/` 2개를 먼저 쓰고,
+   §4.3 우선순위 2 의 10개 중 8개를 이었다. **10개 전부 `색인 생성 요청됨` 을 받았고, 대화상자를 닫은
+   뒤 할당량 초과가 뒤따른 건은 0건이다**(§4.3 의 성공 판정 규칙대로 닫은 다음까지 확인했다).
+
+   | 묶음 | URL |
+   |---|---|
+   | Tech Notes(1순위) | `(ko/)tech-notes/lgtv/` 2 |
+   | 제품 | `(ko/)apps/ssh-scout/` 2 |
+   | 매뉴얼 | `(ko/)manual/{bt-ppt, bt-mouse, ssh-scout}/` 6 |
+
+   **10개 전부 검사 시점에 `URL이 Google에 등록되어 있지 않음` + `Google에는 아직 알려지지 않은
+   URL입니다` 였다.** `Sitemaps: 감지된 참조 사이트맵이 없습니다` / `참조 페이지: 감지된 페이지 없음` /
+   `최근 크롤링`·`크롤링 허용 여부`·`페이지 가져오기` 전부 `해당사항 없음` 이다. **8-31 의 Tech Notes
+   10개와 같은 단계**이고, 8-24 가 다룬 `크롤링됨 - 현재 색인이 생성되지 않음` 과는 다른 단계다.
+   **오늘 요청한 10개는 전부 2026-08-14 배포분**(§2.2 매뉴얼 6 + §2.3 Tech Notes 2 + §2.1 제품 2)
+   **이고 그날 이후 계속 sitemap 에 실려 있었다 — 19일이 지나도록 Google 은 존재 자체를 모른다.**
+
+2. **남긴 2개는 `(ko/)apps/yt-downloader/` 다 — 미출시 앱이라 뒤로 미뤘다.** 8칸을 나눌 때 출시 여부로
+   갈랐고, 6종 중 미출시는 `yt-downloader` 하나뿐이다. **다음 요청일 1순위다.**
+
+3. **요청 전 live 사전 점검 — 12개 전부 통과했다.** `curl` 로 12/12 가 `200` + self canonical +
+   `noindex` 없음이다. GSC 의 실시간 테스트가 요청 버튼에 딸려 도는 것(§4.3)과 별개로, **요청 대상이
+   페이지 쪽 결함이 아님을 요청 전에 사이트 쪽에서 먼저 확정**해 두면 접수 실패의 해석이 갈리지 않는다.
+
+4. **8-31 성과 6번의 `foreground` 차단은 재현되지 않았다 — 사람 개입 없이 10건 전부 자동으로 넣었다.**
+   시작 시점의 foreground 는 Chrome 이 아니라 WezTerm(이 세션의 터미널)이었는데도 `uia` lease 가
+   Chrome 창을 정상적으로 앞으로 끌어왔다. **8-31 의 실패 원인은 확인되지 않았고 이번에 재현되지도
+   않았으므로, "Chrome 을 미리 활성화해 둬야 한다" 를 전제로 삼지 않는다** — 다만 실패하면 사람에게
+   창 활성화를 요청하는 8-31 의 우회로는 그대로 유효하다.
+
+5. **조작 경로는 8-31 기록 그대로 재현됐다.** 검사창(`ComboBox`, class `Ax4B8 ZAGvjd`)은 웹 콘텐츠라
+   `ValuePattern.SetValue` 가 거부된다(실측: read-back 이 빈 문자열). 남는 경로는
+   `set-text -ViaClipboard` 뿐이고 물리 입력이라 foreground 를 요구한다. **`-ViaClipboard` + `key enter`
+   를 `uia batch` 하나로 묶으면 URL 당 foreground 점유가 1회로 준다** — 10개를 개별 실행하면 20회다.
+   요청 버튼 클릭(`invoke`)과 대화상자 닫기는 UIA 패턴 호출이라 foreground 가 필요 없다.
+
+6. **결과 카드 갱신이 60초를 넘는 경우가 있다.** 10번째(`/ko/manual/ssh-scout/`)에서 60초 폴링이
+   직전 URL 의 카드만 보고 시간 초과했는데, 그 직후 스크린샷에는 새 URL 의 카드가 정상으로 떠 있었다.
+   **"카드에 새 URL 이 안 뜬다" 를 곧바로 실패로 읽지 않는다** — 화면을 한 번 확인한 뒤 판정한다.
+
+7. **요청 버튼의 UIA 이름 `색인 생성 요청다시 요청` 은 요청 이력의 표시가 아니다**(§4.3 에 적었다).
+   요청 이력이 없는 URL 에서도 같은 이름이 읽히고, 같은 순간 화면의 라벨은 `색인 생성 요청` 하나다.
+   **8-24 가 재요청 사실을 뒤늦게 알아챈 근거 두 개 중 하나가 이것으로 무효가 된다** — 남는 근거는
+   성공 모달 본문("여러 번 제출해도 대기열 위치나 우선순위가 변경되지 않습니다") 하나이고, 이력 판정은
+   §4.3 의 `[x]` 목록으로만 한다.
+
+8. **§4.3 의 우선순위 목록이 미색인 42개를 다 덮지 않는다는 것이 이 세션에서 분명해졌다.**
+   오늘까지의 요청으로 목록에 남은 미요청은 `(ko/)apps/yt-downloader/` 2 + bt-keyboard 상세 노트 6
+   (§9 2 + §10 4) 뿐인데, 8-31 이 확정한 미색인 42 안에는 **§4.3 의 어느 우선순위에도 들어 있지 않은
+   URL 이 7개** 더 있다 — `/blog/`, `/ko/blog/`(허브 2), `(ko/)blog/use-android-phone-as-bluetooth-mouse/`
+   와 `(ko/)blog/use-android-phone-as-powerpoint-remote/`(블로그 글 4), `/ko/`(국문 홈 1).
+   **이 7개는 경로 개편으로 생긴 URL 이 아니라 §2.4 의 "변경되지 않은 URL" 쪽**이라 이 문서의 요청
+   계획이 처음부터 대상으로 잡지 않았다. 블로그 16개 중 12개가 색인된 것과 대조하면 **같은 묶음 안에서
+   4개만 빠진 것**이고, `/ko/` 홈은 영문 `/` 가 색인된 것과 대조된다. **원인은 확인하지 않았다** —
+   다음 세션이 추정을 사실로 인용하지 않는다.
+
+**다음 작업:**
+
+1. **`(ko/)apps/yt-downloader/` 2개를 요청한다** — 다음 요청일 1순위다. 오늘 미출시라는 이유로만
+   미룬 것이고 다른 결격 사유는 없다(live `200` + self canonical + `noindex` 없음을 오늘 확인했다).
+2. **bt-keyboard 상세 노트 6개**(§9 2 + §10 4)를 그 다음에 둔다. 다만 **8-31·9-02 에 요청한 앱별
+   Tech Notes 허브 12개가 색인되는지 먼저 본다** — 허브가 색인되면 내부 링크로 딸려 발견될 수 있어
+   할당량을 아낀다(§4.3 의 같은 원칙). 허브가 2주 안에 색인되지 않으면 상세를 직접 요청한다.
+3. **8-31·9-02 요청분 20개의 색인 반영 여부를 확인한다.** 8-31 의 Tech Notes 허브 10 + 오늘의 10 이다.
+   URL 검사는 할당량을 소모하지 않으므로 요청일과 무관하게 돌린다. **`아직 알려지지 않은 URL` →
+   `크롤링됨 - 현재 색인이 생성되지 않음` 으로 단계가 올라갔는지**가 이번 요청이 먹혔는지의 첫 신호다.
+4. **위 8번의 7개(`/blog/`·`/ko/blog/`·블로그 글 4·`/ko/`)를 어떻게 할지 정한다.** 요청 계획에 넣을지
+   여부가 아직 결정된 적이 없다. **임의로 요청에 태우지 않는다** — 할당량이 위 1·2 번과 경합한다.
+5. sitemap 이미지 확장은 계속 보류한다 — 8-31 사용자 결정이고 조건(미색인 42 가 줄어드는 것)이 아직
+   충족되지 않았다.
+6. sitemap 은 관찰만 한다 — 재제출하지 않는다(§4.2, §7).
+7. 옛 URL 은 계속 요청하지 않고 Googlebot 의 재크롤을 기다린다(§4.4, §7, §13.4).
 
 ### 7일 후
 
