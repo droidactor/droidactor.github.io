@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotori Roman Numerals — user manual</title>
+<meta name="description" content="How to convert both ways, type into the overline part for values past 3999, read the breakdown, and what the app accepts as non-standard.">
+<link rel="canonical" href="https://droidactor.github.io/manual/roman/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/manual/roman/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/manual/roman/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/manual/roman/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/manual/roman/">
+<meta property="og:title" content="Dotori Roman Numerals — user manual">
+<meta property="og:description" content="Convert both ways, use the overline part, and read the breakdown.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="Language">
+      <a class="lang-btn" href="/manual/roman/" aria-current="page" hreflang="en">EN</a>
+      <a class="lang-btn" href="/ko/manual/roman/" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">droidactor</a><span>/</span><a href="/manual/">Manuals</a><span>/</span><span class="dotori">Dotori</span> Roman Numerals
+  </nav>
+
+  <article class="manual">
+    <div class="hero product">
+      <div class="icon" aria-hidden="true">🏛️</div>
+      <h1><span class="dotori">Dotori</span> Roman Numerals — user manual</h1>
+      <div class="pkg">com.droidactor.roman</div>
+    </div>
+
+    <h2 id="convert">Converting</h2>
+    <p>The screen has two boxes — <strong>Arabic</strong> on top, <strong>Roman</strong> below — and one
+      keypad underneath. Tap a box to edit that side; the keypad changes to match, and the other box
+      follows every key you press.</p>
+    <ul>
+      <li>Type <code>1990</code> on the Arabic side and <code>MCMXC</code> appears below.</li>
+      <li>Type <code>MCMXC</code> on the Roman side and <code>1990</code> appears above.</li>
+      <li><strong>Tapping a box never changes its contents.</strong> The side you last edited is the one
+        the other is derived from, so you can look at what you typed without it being rewritten.</li>
+      <li>Tap a digit or letter to put the cursor there and edit from that point. <code>AC</code> clears
+        both boxes; the backspace key removes the character before the cursor.</li>
+    </ul>
+
+    <h2 id="overline">Values past 3999 — the overline</h2>
+    <p>A bar over a group of letters multiplies that group by 1000. <code>IV</code> with a bar is 4000;
+      <code>M</code> with a bar is 1,000,000. The app covers <strong>1 to 3,999,999</strong>.</p>
+    <p>The Roman keypad has two buttons at the top — <strong>Plain</strong> and
+      <strong>Overline ×1000</strong>. They choose which part your next letters go into:</p>
+    <ol>
+      <li>Press <strong>Overline ×1000</strong> and type <code>IV</code> — the value is 4000.</li>
+      <li>Press <strong>Plain</strong> and type <code>XII</code> — the value becomes 4012.</li>
+    </ol>
+    <div class="note"><p>Each part keeps its own cursor, so you can go back to the overlined part and
+      correct it without losing your place in the other.</p></div>
+
+    <h2 id="nonstandard">What the app accepts</h2>
+    <p>Forms like <code>IIII</code>, <code>VV</code> or <code>IC</code> are not standard, but the app
+      still reads them — clock faces really do use <code>IIII</code>. Each symbol is subtracted when the
+      next one is larger and added otherwise, so <code>IIV</code> reads as 5 (1 − 1 + 5).
+      <strong>Other tools may read it differently.</strong></p>
+    <p>Whenever your input is not the standard spelling, the status line shows the standard one next to
+      it. That is a note, not an error — the value is still converted.</p>
+
+    <h2 id="breakdown">The breakdown</h2>
+    <p>Under the boxes is <em>Show how it breaks down</em>. Open it and the current value is split into
+      the parts that make it: 1990 becomes <code>M</code> (1000) + <code>CM</code> (900) +
+      <code>XC</code> (90). It follows what you type, and stays open until you close it.</p>
+
+    <h2 id="help">The help page</h2>
+    <p>The <strong>?</strong> button in the header opens a page covering the seven symbols, the six
+      subtractive pairs, how often a symbol may repeat, the overline rule, and how this app reads
+      non-standard input. <strong>Every example there is tappable</strong> — press one and it loads into
+      the converter so you can see it convert.</p>
+
+    <h2 id="settings">Settings</h2>
+    <ul>
+      <li><strong>Theme:</strong> dark or light. This is an app setting, not the phone's.</li>
+      <li><strong>Language:</strong> follow the system, or choose Korean or English.</li>
+      <li><strong>Screen orientation:</strong> follow the system, auto-rotate in this app, or lock to
+        portrait or landscape. In landscape the boxes and the keypad sit side by side.</li>
+      <li><strong>Privacy options:</strong> reopen your ad consent choices.</li>
+    </ul>
+
+    <h2 id="troubleshooting">Troubleshooting</h2>
+    <div class="scroll"><table class="troubleshooting"><thead><tr><th>Symptom</th><th>What to check</th></tr></thead><tbody>
+      <tr><td>A key does nothing</td><td>The Arabic side takes at most 7 digits and each Roman part at most 20 letters. At the limit further letters are refused — the key still responds, but the value does not change.</td></tr>
+      <tr><td>“This app covers 1 to 3,999,999”</td><td>The value is outside the range. Roman numerals have no zero and no negatives, and the overlined part on its own cannot exceed MMMCMXCIX (3999).</td></tr>
+      <tr><td>“That is not a Roman numeral”</td><td>The Roman box contains something outside I V X L C D M.</td></tr>
+      <tr><td>Letters go into the wrong part</td><td>Check which of <strong>Plain</strong> / <strong>Overline ×1000</strong> is selected — it decides where the next letter lands.</td></tr>
+      <tr><td>The cursor is not where you expect</td><td>Tap the digit or letter you want to edit next to it. Editing one box moves the other box's cursor to the end of its new value.</td></tr>
+    </tbody></table></div>
+
+    <h2 id="limits">Requirements, limits, and privacy</h2>
+    <ul><li>Android 8.0 or newer</li><li>Works offline — conversion never uses the network</li><li>No account, no sign-in</li></ul>
+    <p>Nothing you type is stored or sent anywhere; it is gone when the app closes. The app keeps only
+      the theme, display language and screen orientation you chose. See the
+      <a href="/#privacy-roman">full privacy policy</a>.</p>
+    <div class="manual-actions"><a href="/apps/roman/">Product page</a></div>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/manual/">All manuals</a> · <a href="/apps/roman/">Product page</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/blog/">Field notes</a> · <a href="/ko/manual/roman/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

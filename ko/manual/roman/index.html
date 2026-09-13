@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>도토리 로마 숫자 변환기 — 사용 설명서</title>
+<meta name="description" content="양방향 변환, 3999를 넘는 값을 위한 윗줄 구간 입력, 분해 보기, 그리고 이 앱이 비표준 표기를 어떻게 읽는지.">
+<link rel="canonical" href="https://droidactor.github.io/ko/manual/roman/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/manual/roman/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/manual/roman/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/manual/roman/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/manual/roman/">
+<meta property="og:title" content="도토리 로마 숫자 변환기 — 사용 설명서">
+<meta property="og:description" content="양방향 변환, 윗줄 구간 입력, 분해 보기.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="언어">
+      <a class="lang-btn" href="/manual/roman/" hreflang="en">EN</a>
+      <a class="lang-btn" href="/ko/manual/roman/" aria-current="page" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로">
+    <a href="/ko/">droidactor</a><span>/</span><a href="/ko/manual/">사용 설명서</a><span>/</span><span class="dotori">도토리</span> 로마 숫자 변환기
+  </nav>
+
+  <article class="manual">
+    <div class="hero product">
+      <div class="icon" aria-hidden="true">🏛️</div>
+      <h1><span class="dotori">도토리</span> 로마 숫자 변환기 — 사용 설명서</h1>
+      <div class="pkg">com.droidactor.roman</div>
+    </div>
+
+    <h2 id="convert">변환하기</h2>
+    <p>화면에는 상자 둘 — 위가 <strong>아라비아 숫자</strong>, 아래가 <strong>로마 숫자</strong> — 과
+      그 아래 키패드 하나가 있습니다. 편집할 상자를 누르면 키패드가 그 쪽에 맞게 바뀌고, 키를 누를
+      때마다 반대쪽이 따라옵니다.</p>
+    <ul>
+      <li>아라비아 쪽에 <code>1990</code> 을 치면 아래에 <code>MCMXC</code> 가 나옵니다.</li>
+      <li>로마 쪽에 <code>MCMXC</code> 를 치면 위에 <code>1990</code> 이 나옵니다.</li>
+      <li><strong>상자를 눌러도 그 내용은 바뀌지 않습니다.</strong> 마지막으로 편집한 쪽이 기준이라,
+        무엇을 썼는지 확인하려고 눌러도 그것이 고쳐 쓰이지 않습니다.</li>
+      <li>글자를 누르면 그 자리로 커서가 가고 거기서부터 고칠 수 있습니다. <code>AC</code> 는 양쪽을
+        지우고, 백스페이스는 커서 앞 글자를 지웁니다.</li>
+    </ul>
+
+    <h2 id="overline">3999 를 넘는 값 — 윗줄</h2>
+    <p>글자 묶음 위에 그은 줄은 그 묶음을 1000배 합니다. 윗줄 <code>IV</code> 는 4000,
+      윗줄 <code>M</code> 은 1,000,000 입니다. 이 앱은 <strong>1부터 3,999,999까지</strong> 다룹니다.</p>
+    <p>로마 키패드 맨 위에는 <strong>일반</strong> 과 <strong>윗줄 ×1000</strong> 두 버튼이 있습니다.
+      다음에 칠 글자가 어느 구간에 들어갈지를 정합니다.</p>
+    <ol>
+      <li><strong>윗줄 ×1000</strong> 을 누르고 <code>IV</code> 를 치면 값은 4000 입니다.</li>
+      <li><strong>일반</strong> 을 누르고 <code>XII</code> 를 치면 값은 4012 가 됩니다.</li>
+    </ol>
+    <div class="note"><p>구간마다 커서가 따로 있어서, 윗줄 구간으로 돌아가 고치더라도 다른 구간에서
+      하던 자리를 잃지 않습니다.</p></div>
+
+    <h2 id="nonstandard">이 앱이 받아들이는 것</h2>
+    <p><code>IIII</code>·<code>VV</code>·<code>IC</code> 같은 표기는 표준이 아니지만 이 앱은 읽어
+      냅니다 — 시계 문자판이 실제로 <code>IIII</code> 를 씁니다. 다음 글자가 더 크면 빼고 아니면
+      더하는 규칙이라 <code>IIV</code> 는 5(1 − 1 + 5)로 읽습니다.
+      <strong>다른 도구는 달리 읽을 수도 있습니다.</strong></p>
+    <p>입력이 표준형이 아니면 상태 줄에 표준형을 함께 보여 줍니다. 오류가 아니라 안내이며 값은 그대로
+      변환됩니다.</p>
+
+    <h2 id="breakdown">분해 보기</h2>
+    <p>상자 아래의 <em>어떻게 쪼개지는지 보기</em> 를 펼치면 지금 값이 그것을 이루는 항으로 나뉩니다.
+      1990 은 <code>M</code>(1000) + <code>CM</code>(900) + <code>XC</code>(90) 입니다. 입력에 따라
+      갱신되고, 닫을 때까지 펼쳐진 채로 있습니다.</p>
+
+    <h2 id="help">도움말</h2>
+    <p>헤더의 <strong>?</strong> 버튼을 누르면 일곱 글자, 뺄셈이 되는 여섯 쌍, 같은 글자를 몇 번까지
+      쓰는지, 윗줄 규칙, 그리고 이 앱이 비표준 입력을 읽는 방식을 담은 페이지가 열립니다.
+      <strong>모든 예시는 누를 수 있습니다</strong> — 누르면 변환기에 그 값이 들어가 실제로 변환되는
+      것을 볼 수 있습니다.</p>
+
+    <h2 id="settings">설정</h2>
+    <ul>
+      <li><strong>테마:</strong> 어둡게 또는 밝게. 폰 설정이 아니라 앱 설정입니다.</li>
+      <li><strong>언어:</strong> 시스템 설정을 따르거나 한국어·영어를 고릅니다.</li>
+      <li><strong>화면 방향:</strong> 시스템 따르기, 이 앱에서 자동 회전, 세로 고정, 가로 고정.
+        가로에서는 값 상자와 키패드가 좌우로 나란히 놓입니다.</li>
+      <li><strong>개인정보 옵션:</strong> 광고 동의 선택을 다시 엽니다.</li>
+    </ul>
+
+    <h2 id="troubleshooting">문제 해결</h2>
+    <div class="scroll"><table class="troubleshooting"><thead><tr><th>증상</th><th>확인할 것</th></tr></thead><tbody>
+      <tr><td>키를 눌러도 값이 안 바뀜</td><td>아라비아 쪽은 7자리, 로마 쪽은 구간마다 20자가 상한입니다. 상한에서는 더 이상 들어가지 않습니다 — 키는 반응하지만 값이 바뀌지 않습니다.</td></tr>
+      <tr><td>“이 앱은 1부터 3,999,999까지 다룹니다”</td><td>값이 범위를 벗어났습니다. 로마 숫자에는 0도 음수도 없고, 윗줄 구간 자체는 MMMCMXCIX(3999)를 넘을 수 없습니다.</td></tr>
+      <tr><td>“로마 숫자가 아닙니다”</td><td>로마 상자에 I V X L C D M 이 아닌 것이 들어 있습니다.</td></tr>
+      <tr><td>글자가 엉뚱한 구간에 들어감</td><td><strong>일반</strong> / <strong>윗줄 ×1000</strong> 중 어느 쪽이 선택돼 있는지 보세요. 그것이 다음 글자가 갈 자리를 정합니다.</td></tr>
+      <tr><td>커서가 생각한 자리에 없음</td><td>고칠 글자를 직접 누르면 그 옆으로 갑니다. 한쪽을 편집하면 반대쪽 커서는 새 값의 끝으로 갑니다.</td></tr>
+    </tbody></table></div>
+
+    <h2 id="limits">요구 사항·제한·개인정보</h2>
+    <ul><li>Android 8.0 이상</li><li>오프라인 동작 — 변환에 네트워크를 쓰지 않습니다</li><li>계정도 로그인도 없습니다</li></ul>
+    <p>입력한 숫자는 저장되거나 전송되지 않으며 앱을 닫으면 사라집니다. 앱이 기억하는 것은 고른 테마,
+      표시 언어, 화면 방향뿐입니다. <a href="/ko/#privacy-roman">개인정보 처리방침 전문</a>을 보세요.</p>
+    <div class="manual-actions"><a href="/ko/apps/roman/">제품 페이지</a></div>
+  </article>
+  <footer><p>droidactor 의 안드로이드 앱.</p><p><a href="/ko/manual/">전체 설명서</a> · <a href="/ko/apps/roman/">제품 페이지</a> · <a href="/ko/tech-notes/">기술 노트</a> · <a href="/ko/blog/">현장 기록</a> · <a href="/manual/roman/" hreflang="en">EN</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

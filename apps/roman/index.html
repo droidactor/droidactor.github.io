@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotori Roman Numerals — convert both ways, past 3999</title>
+<meta name="description" content="Convert Arabic and Roman numerals both ways as you type. Numbers up to 3,999,999 using the classical overline, non-standard forms read and corrected, and a help page that teaches the rules.">
+<link rel="canonical" href="https://droidactor.github.io/apps/roman/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/roman/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/roman/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/roman/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/apps/roman/">
+<meta property="og:title" content="Dotori Roman Numerals — convert both ways, past 3999">
+<meta property="og:description" content="Arabic and Roman numerals converted both ways as you type, with the overline notation that goes past 3999.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Dotori Roman Numerals",
+  "url": "https://droidactor.github.io/apps/roman/",
+  "identifier": "com.droidactor.roman",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Android 8.0 (API 26) and newer",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "description": "Converts between Arabic and Roman numerals in both directions as you type, covering 1 to 3,999,999 with the classical overline, and explains the notation.",
+  "featureList": [
+    "Both directions, updated on every key",
+    "A keypad built for each side",
+    "Overline notation for values past 3999",
+    "Reads non-standard forms and shows the standard spelling",
+    "Help page with the symbols, subtractive pairs and overline rule",
+    "Works offline"
+  ],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "droidactor", "url": "https://droidactor.github.io/" },
+  "privacyPolicy": "https://droidactor.github.io/#privacy-roman"
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="Language">
+      <a class="lang-btn" href="/apps/roman/" aria-current="page" hreflang="en">EN</a>
+      <a class="lang-btn" href="/ko/apps/roman/" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">droidactor</a><span>/</span><a href="/apps/">Apps</a><span>/</span><span class="dotori">Dotori</span> Roman Numerals
+  </nav>
+
+  <div class="hero product">
+    <div class="icon" aria-hidden="true">🏛️</div>
+    <h1><span class="dotori">Dotori</span> Roman Numerals</h1>
+    <div class="pkg">com.droidactor.roman</div>
+    <p>
+      Converts between ordinary numbers and Roman numerals, in both directions, as you type. Tap either
+      box to choose the side you are editing; the other one follows every key.
+    </p>
+    <div class="status">
+      <span class="badge soon">Coming soon</span>
+      <a href="/manual/roman/">User manual</a>
+      <a href="#privacy">Privacy</a>
+    </div>
+  </div>
+
+  <section>
+    <h2>What it does</h2>
+    <div class="feature">
+      <div>
+        <h3>Both directions, live</h3>
+        <p>Type 1990 and MCMXC appears; type MCMXC and 1990 appears. Whichever box you last edited is the
+          one the other is derived from, so switching boxes never rewrites what you typed.</p>
+      </div>
+      <div>
+        <h3>A keypad for each side</h3>
+        <p>Digits on the Arabic side, the seven Roman letters on the other — laid out in value order,
+          I V X / L C D / M. There is no system keyboard, so half the screen is never covered.</p>
+      </div>
+      <div>
+        <h3>Past 3999, written the classical way</h3>
+        <p>A bar over a group multiplies it by 1000, so 4000 is IV with a bar. The app draws that bar
+          itself rather than relying on a font, and covers 1 to 3,999,999.</p>
+      </div>
+      <div>
+        <h3>Non-standard forms are read, not rejected</h3>
+        <p>IIII, VV and IC all give a value, and the standard spelling is shown next to it. Clock faces
+          really do use IIII, so refusing it would be unhelpful.</p>
+      </div>
+      <div>
+        <h3>See how it breaks down</h3>
+        <p>Open the breakdown and 1990 becomes M (1000) + CM (900) + XC (90). It updates as you type.</p>
+      </div>
+      <div>
+        <h3>A help page that teaches</h3>
+        <p>The seven symbols, the six subtractive pairs, the repetition limits, the overline rule, and
+          exactly how this app reads non-standard input. Every example is tappable — press one and it
+          loads into the converter.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Requirements</h2>
+    <div class="scroll">
+      <table class="spec">
+        <tbody>
+          <tr><th>Platform</th><td>Android (Kotlin, Jetpack Compose)</td></tr>
+          <tr><th>Package name</th><td><code>com.droidactor.roman</code></td></tr>
+          <tr><th>Minimum Android</th><td>Android 8.0 (API 26)</td></tr>
+          <tr><th>Target Android</th><td>API 36</td></tr>
+          <tr><th>Range</th><td>1 to 3,999,999</td></tr>
+          <tr><th>Network</th><td>Not used for conversion — the app works offline</td></tr>
+          <tr><th>Permissions</th><td>Vibration only. No location, contacts, storage, camera or microphone</td></tr>
+          <tr><th>Price</th><td>Free, supported by ads (Google AdMob)</td></tr>
+          <tr><th>Accounts</th><td>None. No sign-in, no registration.</td></tr>
+          <tr><th>Status</th><td>Not yet published on Google Play</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Known limits</h2>
+    <div class="note">
+      <p>The app starts at 1 — Roman numerals have no symbol for zero and no way to write a negative
+        number or a fraction. There is no text selection or clipboard support yet. The overline is drawn
+        rather than typed, so a screen reader states it in words instead: <em>“overlined I V times one
+        thousand, then X I I, value 4012”</em>.</p>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <h2>Privacy</h2>
+    <p>
+      Conversion happens entirely on your phone. Nothing you type is stored or sent anywhere — close the
+      app and the numbers are gone. The only things kept are the three settings you choose: theme,
+      display language and screen orientation.
+    </p>
+    <p><a href="/#privacy-roman">Full privacy policy for this app</a></p>
+  </section>
+
+  <section>
+    <h2>Support</h2>
+    <p>
+      Bug reports, questions and feature requests go to
+      <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Other apps</h2>
+    <div class="also">
+      <a href="/apps/bt-keyboard/"><span class="dotori">Dotori</span> Bluetooth Keyboard</a>
+      <a href="/apps/bt-ppt/"><span class="dotori">Dotori</span> Bluetooth PPT Remote</a>
+      <a href="/apps/bt-mouse/"><span class="dotori">Dotori</span> Bluetooth Mouse</a>
+      <a href="/apps/wifi-scout/"><span class="dotori">Dotori</span> WiFi Scanner</a>
+      <a href="/apps/ssh-scout/"><span class="dotori">Dotori</span> SSH Terminal</a>
+      <a href="/apps/yt-downloader/"><span class="dotori">Dotori</span> YouTube Downloader</a>
+      <a href="/apps/lgtv/"><span class="dotori">Dotori</span> LG TV Remote</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Android apps by droidactor.</p>
+    <p><a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/blog/">Field notes</a> · <a href="/ko/apps/roman/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
