@@ -6,7 +6,7 @@
   (#privacy-keyboard / #privacy-ppt / #privacy-mouse / #privacy-numpad / #privacy-roman / #privacy-currency /
    #privacy-wifi / #privacy-ssh /
    #privacy-ytdl / #privacy-lgtv / #privacy-gas / #privacy-apartment / #privacy-calendar /
-   #privacy-unit)는 스토어 등록 주소이므로 이름을 바꾸지 않는다.
+   #privacy-unitconverter / #privacy-unit)는 스토어 등록 주소이므로 이름을 바꾸지 않는다.
 -->
 <html lang="ko">
 <head>
@@ -60,7 +60,8 @@
         { "@type": "ListItem", "position": 7, "name": "도토리 로마 숫자 변환기", "url": "https://droidactor.github.io/ko/apps/roman/" },
         { "@type": "ListItem", "position": 8, "name": "도토리 환율 계산기", "url": "https://droidactor.github.io/ko/apps/currency/" },
         { "@type": "ListItem", "position": 9, "name": "도토리 YouTube Downloader", "url": "https://droidactor.github.io/ko/apps/yt-downloader/" },
-        { "@type": "ListItem", "position": 10, "name": "도토리 LG TV 리모컨", "url": "https://droidactor.github.io/ko/apps/lgtv/" }
+        { "@type": "ListItem", "position": 10, "name": "도토리 LG TV 리모컨", "url": "https://droidactor.github.io/ko/apps/lgtv/" },
+        {"@type": "ListItem", "position": 11, "name": "도토리 단위 변환기", "url": "https://droidactor.github.io/ko/apps/unit/"}
       ]
     }
   ]
@@ -247,6 +248,19 @@
           <a href="#privacy-lgtv">개인정보</a>
         </div>
       </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true">📏</div>
+        <h3><a href="/ko/apps/unit/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 단위 변환기</a></h3>
+        <div class="pkg">com.droidactor.unit</div>
+        <p class="desc">
+          8가지 종류 중 하나를 골라 여러 단위를 한 화면에서 비교합니다. 자동 단위 선택과 한국 전통 도량형을 지원합니다. 첫 실행부터 오프라인으로 환산합니다.
+        </p>
+        <div class="foot">
+          <span class="badge soon">출시 예정</span>
+          <a href="/ko/apps/unit/">자세히</a>
+          <a href="#privacy-unit">개인정보</a>
+        </div>
+      </article>
 
     </div>
   </section>
@@ -275,9 +289,9 @@
     <div class="note">
       <p>
         <strong>요약.</strong> 이 앱들에는 계정도, 저희가 운영하는 백엔드도 없습니다. 개인정보를
-        수집·저장·전송하지 않습니다 — 보낼 서버 자체가 없습니다. 앱이 기록하는 것은 모두 기기에만 남고,
-        앱이 스스로 저장한 것은 앱을 삭제하면 함께 사라집니다 — 한 가지 예외는 6절에 적었습니다. 관여하는
-        제3자는 광고를 게재하는 Google 하나뿐입니다.
+        수집·저장·전송하지 않습니다 — 보낼 서버 자체가 없습니다. 앱 데이터는 기기에서 사용하며,
+        앱 삭제는 로컬 앱 저장소를 지웁니다. 캘린더 기록과 Android 백업 사본은 6·7절에 설명했습니다.
+        광고는 Google이, 시스템 백업 사본은 Android 또는 백업 제공자가 처리합니다.
       </p>
     </div>
 
@@ -287,12 +301,13 @@
       입력받지 않습니다. 분석 도구, 크래시 리포팅 서비스, 앱 데이터를 받는 서버 모두 운영하지 않습니다.
     </p>
 
-    <h3>2. 기기에만 남는 것</h3>
+    <h3>2. 기기에서 처리하는 데이터</h3>
     <p>
       이 앱들은 성질상 기술적 식별자를 다룹니다 — 스캔은 IP 주소를 찾고, HID 리모컨은 블루투스
       host 와 페어링합니다. 사용자가 앱에 입력한 내용도 함께 보관합니다. 이들은 기능 동작을 위해 기기
-      안에서 쓰이며, 저희 서버로 전송되지 않고 광고 SDK 에도 전달되지 않습니다. 아래 마지막 항목만이
-      기기를 벗어날 수 있고, 그것도 사용자가 동기화되는 캘린더를 골랐을 때뿐입니다:
+      안에서 쓰이며, 저희 서버로 전송되지 않고 광고 SDK에도 전달되지 않습니다. 캘린더 일정은 사용자가
+      고른 캘린더를 통해 동기화될 수 있습니다. 도토리 단위 변환기의 저장된 앱 데이터는 Android 백업이나
+      기기 이전에도 포함될 수 있으며, 자세한 내용은 7절에 설명했습니다:
     </p>
     <ul>
       <li>스캔으로 발견한 네트워크 식별자 — IP 주소, hostname, 열린 포트, 장비 종류</li>
@@ -300,7 +315,7 @@
         의도적으로 마스킹해 표시합니다.</li>
       <li>SSH 자격증명과 TOFU 호스트키(<span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> SSH 터미널) — Android 의 보호된 앱 저장소에 보관</li>
       <li>온드로이드 캘린더에서 등록한 음력 기념일 — 사용자가 지정한 기기 캘린더에 기록됩니다.
-        이 목록의 다른 항목과 달리 앱보다 오래 남습니다. 앱을 지워도 사라지지 않으므로, 더 필요하지
+        앱을 지워도 그 캘린더의 일정은 사라지지 않으므로, 더 필요하지
         않으면 캘린더 앱에서 직접 지워야 합니다.</li>
       <li>사용자가 지정한 설정값</li>
     </ul>
@@ -324,14 +339,14 @@
       적용되며, 이 절 끝에 링크를 두었습니다.
     </p>
     <p>
-      저희가 지키는 두 가지 원칙이 있습니다. 첫째, Google User Messaging Platform 으로
-      <strong>동의가 확인되기 전에는 광고 SDK 를 초기화하지 않습니다</strong> — 동의 창이 어떤 광고 요청보다도
-      먼저입니다. 둘째, 2절의 기술적 식별자는 광고 SDK 에 전달하지 않습니다. 스캔한 네트워크나 페어링한 host 에
+      저희가 지키는 두 가지 원칙이 있습니다. 첫째, 해당 개인정보 선택 절차 이후
+      <strong>Google User Messaging Platform이 광고 요청을 허용할 때만 광고 SDK를 초기화합니다.</strong>
+      동의 창은 필요한 경우 표시합니다. 둘째, 2절의 기술적 식별자는 광고 SDK 에 전달하지 않습니다. 스캔한 네트워크나 페어링한 host 에
       관한 어떤 정보도 광고주에게 가지 않습니다.
     </p>
     <p>
       Bluetooth Keyboard, PPT Remote, Bluetooth Mouse, Bluetooth Numpad, WiFi Scanner,
-      SSH Terminal, LG TV Remote 등의 앱은 유료 광고를 요청할 수 없거나 채우지 못한 배너 자리에 다른 자사 앱을
+      SSH Terminal, LG TV Remote, Unit Converter 등의 앱은 유료 광고를 요청할 수 없거나 채우지 못한 배너 자리에 다른 자사 앱을
       소개하는 <strong>추천</strong> 카드를 표시할 수 있습니다. 이 카드는 Mobile Ads SDK 를 사용하지
       않으며 앱·네트워크·기기 정보를 수집하거나 전송하지 않습니다. 탭하면 먼저 앱 안의 설명이 열리고,
       사용자가 <strong>자세히 보기</strong>를 선택한 경우에만 <code>droidactor.github.io</code>의 공식
@@ -414,7 +429,7 @@
           </tr>
           <tr>
             <td><code>VIBRATE</code></td>
-            <td><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> LG TV 리모컨<br><a href="#privacy-roman"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 로마 숫자 변환기</a><br><a href="#privacy-currency"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 환율 계산기</a></td>
+            <td><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> LG TV 리모컨<br><a href="#privacy-roman"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 로마 숫자 변환기</a><br><a href="#privacy-currency"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 환율 계산기</a><br><a href="#privacy-unit"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 단위 변환기</a></td>
             <td>사용자가 햅틱 피드백을 켰을 때 짧은 키 입력 진동을 주기 위해서입니다. 이 normal 권한은
               진동이나 입력 이력을 읽는 권한이 아닙니다.</td>
           </tr>
@@ -453,14 +468,20 @@
     <h3 id="data-deletion">6. 사용자의 권리와 데이터 삭제</h3>
     <p>
       저희가 보유한 개인정보가 없으므로, 저희 쪽에 열람·정정·삭제를 요청할 대상이 없습니다.
-      앱이 저장한 것은 전부 기기에 있습니다 — <strong>앱을 삭제하면 앱이 스스로 저장한 것은 모두 함께
+      로컬 앱 데이터는 <strong>앱을 삭제하면 앱 전용 저장소에서
       지워지고</strong>, Android 설정에서 앱 저장공간을 지우면 삭제 없이 초기화됩니다. Google 이 처리하는
       광고 데이터는 기기의 광고 설정과 앱 안의 개인정보 옵션에서 관리하실 수 있습니다.
     </p>
     <p>
-      <strong>한 가지 예외가 있습니다.</strong> 온드로이드 캘린더에서 기기 캘린더에 저장한 음력 기념일은
+      <strong>캘린더 기록.</strong> 온드로이드 캘린더에서 기기 캘린더에 저장한 음력 기념일은
       앱의 저장공간이 아니라 그 캘린더의 일정입니다. 앱을 지운 뒤에도 캘린더에 남으므로, 더 필요하지 않으면
       캘린더 앱에서 직접 지워야 합니다.
+    </p>
+
+    <p>
+      <strong>Android 백업.</strong> 도토리 단위 변환기는 Android 백업을 허용하므로 저장된 앱 데이터가
+      포함될 수 있습니다. 앱을 지워도 백업 사본까지 삭제되는 것은 아니며, 기기나 백업 계정 설정에서
+      따로 관리해야 할 수 있습니다. 아래 앱별 사항을 확인해 주세요.
     </p>
 
     <h3>7. 앱별 사항</h3>
@@ -698,6 +719,31 @@
     </div>
 
     <div class="policy" id="privacy-unit">
+      <h3><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 단위 변환기<span class="pkg-inline">com.droidactor.unit</span></h3>
+      <p>
+        모든 환산은 첫 실행부터 연결 없이 기기 안에서 이뤄집니다. 환산 기능은 네트워크 연결을 열거나 환산표를 내려받지 않습니다. 앱은 입력한 숫자·환산 결과·선택한
+        단위를 개발자나 광고 SDK로 전송하지 않습니다. 개발자 환산 서버도 앱 계정·로그인도 없습니다.
+      </p>
+      <p>
+        겉모습·언어·화면 방향·환산 설정 등은 기기의 앱 전용 저장소에 보관합니다. Android 설정과 기기에 따라 시스템 백업이나 기기 이전에 저장된 앱 데이터가 포함될
+        수 있으며, 그 사본은 Android 또는 백업 제공자가 관리합니다. 앱 데이터 삭제나 앱 제거로 로컬 앱 데이터는 지워지지만, 백업 사본은 기기나 백업 계정
+        설정에서 따로 관리해야 할 수 있습니다. 앱 제거가 모든 백업 사본이나 광고 서비스 기록의 삭제를 뜻하지는 않습니다.
+      </p>
+      <p>
+        앱이 직접 선언하는 권한은 선택적 키패드 진동을 위한 <code>VIBRATE</code> 하나입니다. 환산을 위해 위치·연락처·저장소·카메라·마이크 접근은 요청하지
+        않습니다. <code>INTERNET</code> 등 네트워크·광고 관련 권한은 광고 라이브러리의 매니페스트 병합으로 추가되며, 해당 통신은 환산이 아니라 광고·동의
+        서비스에서 사용합니다.
+      </p>
+      <p>
+        Google Mobile Ads 배너 하나를 표시하며 <strong>전면광고는 없습니다.</strong> 광고 데이터는 3절에 설명되어 있습니다. Google
+        UMP가 지역에 필요한 개인정보 선택을 관리하고, 해당 절차 이후 UMP가 광고 요청을 허용할 때 광고를 요청합니다. 설정에서 제공되는 개인정보 옵션을 다시 열 수
+        있습니다. 온라인 광고·동의 관리에는 연결이 필요할 수 있지만 환산은 오프라인으로 계속 사용할 수 있습니다. 맞춤 광고를 거절해도 모든 SDK 통신이 중단된다는 뜻은
+        아닙니다.
+      </p>
+      <p><a href="/ko/apps/unit/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 단위 변환기 자세히 보기</a></p>
+    </div>
+
+    <div class="policy" id="privacy-unitconverter">
       <h3>단위 변환기<span class="pkg-inline">com.app.unitconverter</span></h3>
       <p>
         입력한 숫자를 다른 단위로 변환합니다. 그 숫자는 기기에만 남습니다. 계정도 로그인도 저희 서버도

@@ -749,4 +749,22 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/manual/roman/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/manual/roman/"/>
   </url>
+  <url>
+    <loc>https://droidactor.github.io/apps/unit/</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/unit/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/unit/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/unit/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/apps/unit/</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/unit/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/unit/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/unit/"/>
+  </url>
 </urlset>

@@ -7,7 +7,7 @@
     1. the "Developer website" URL registered on Google Play / App Store
     2. the privacy policy for every app (per-app anchors: #privacy-keyboard, #privacy-ppt,
        #privacy-mouse, #privacy-numpad, #privacy-roman, #privacy-currency, #privacy-ssh, #privacy-wifi, #privacy-ytdl, #privacy-lgtv, #privacy-gas,
-       #privacy-apartment, #privacy-calendar, #privacy-unit — usable as per-app policy URLs)
+       #privacy-apartment, #privacy-calendar, #privacy-unitconverter, #privacy-unit — usable as per-app policy URLs)
     3. the host for /app-ads.txt (that file lives at the repo root, not here)
 
   Do not rename the #privacy-* anchors — they are registered on the store listings.
@@ -32,7 +32,7 @@
     - the store URL is fixed by the package name alone, so it can be written before the app
       is public — but it 404s for the public until then, which is why the badge goes up only
       once the app is actually live on production
-  Still Coming soon: numpad, roman, currency, yt-downloader
+  Still Coming soon: numpad, roman, currency, yt-downloader, unit
 -->
 <html lang="en">
 <head>
@@ -86,7 +86,8 @@
         { "@type": "ListItem", "position": 7, "name": "Dotori Roman Numerals", "url": "https://droidactor.github.io/apps/roman/" },
         { "@type": "ListItem", "position": 8, "name": "Dotori Currency Converter", "url": "https://droidactor.github.io/apps/currency/" },
         { "@type": "ListItem", "position": 9, "name": "Dotori YouTube Downloader", "url": "https://droidactor.github.io/apps/yt-downloader/" },
-        { "@type": "ListItem", "position": 10, "name": "Dotori LG TV Remote", "url": "https://droidactor.github.io/apps/lgtv/" }
+        { "@type": "ListItem", "position": 10, "name": "Dotori LG TV Remote", "url": "https://droidactor.github.io/apps/lgtv/" },
+        {"@type": "ListItem", "position": 11, "name": "Dotori Unit Converter", "url": "https://droidactor.github.io/apps/unit/"}
       ]
     }
   ]
@@ -275,6 +276,19 @@
           <a href="#privacy-lgtv">Privacy</a>
         </div>
       </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true">📏</div>
+        <h3><a href="/apps/unit/"><span class="dotori">Dotori</span> Unit Converter</a></h3>
+        <div class="pkg">com.droidactor.unit</div>
+        <p class="desc">
+          Choose from eight categories and compare units on one screen, with automatic unit selection and Korean traditional measures. Conversion works offline from first use.
+        </p>
+        <div class="foot">
+          <span class="badge soon">Coming soon</span>
+          <a href="/apps/unit/">Details</a>
+          <a href="#privacy-unit">Privacy</a>
+        </div>
+      </article>
 
     </div>
   </section>
@@ -305,9 +319,9 @@
       <p>
         <strong>The short version.</strong> These apps have no accounts and no backend of
         ours. We do not collect, store or transmit your personal information — there is no server on our
-        side to send it to. Everything an app records stays on your device, and what an app stores
-        itself is removed when you uninstall it — section 6 notes the one exception. The one third
-        party involved is Google, which serves the ads.
+        side to send it to. App data is used on your device, and uninstalling removes local app
+        storage. Calendar records and Android backup copies are covered in sections 6 and 7.
+        Google serves the ads; Android or your backup provider handles any system backup copies.
       </p>
     </div>
 
@@ -318,13 +332,14 @@
       receives app data.
     </p>
 
-    <h3>2. What stays on your device</h3>
+    <h3>2. Data processed on your device</h3>
     <p>
       These apps work with technical identifiers by nature — a scan finds IP addresses, an
       HID remote pairs with a Bluetooth host — and they also hold what you type into them. All of it
       is used on the device to make the feature work, is never sent to a server of ours, and is never
-      passed to the advertising SDK. The last item below is the only one that can leave the device,
-      and only because you chose a calendar that syncs:
+      passed to the advertising SDK. Calendar entries may sync through the calendar you choose.
+      For Dotori Unit Converter, Android backup or device transfer may also include stored app
+      data, as described in section 7:
     </p>
     <ul>
       <li>Network identifiers found by scanning — IP addresses, hostnames, open ports, device kind</li>
@@ -333,8 +348,8 @@
       <li>SSH credentials and TOFU host keys (<span class="dotori">Dotori</span> SSH Terminal), held in Android's protected
         app storage</li>
       <li>Lunar anniversaries you add in <span lang="ko">온드로이드 캘린더</span> — written to the
-        device calendar you pick. Unlike the rest of this list they outlive the app: uninstalling it
-        does not remove them, so delete them in your calendar app if you no longer want them.</li>
+        device calendar you pick. Uninstalling the app does not remove these calendar entries,
+        so delete them in your calendar app if you no longer want them.</li>
       <li>Your own settings and preferences</li>
     </ul>
     <p>We do not store device serial numbers or device IDs anywhere.</p>
@@ -360,14 +375,14 @@
       section.
     </p>
     <p>
-      Two rules we hold ourselves to. First, <strong>the ad SDK is not initialised until
-      your consent has been resolved</strong> through Google's User Messaging Platform — the consent form
-      comes before any ad request. Second, the technical identifiers in section 2 are never handed to the
+      Two rules we hold ourselves to. First, <strong>the ad SDK is initialised only when
+      Google's User Messaging Platform permits ad requests</strong> after the applicable privacy
+      flow. A consent form is shown when required. Second, the technical identifiers in section 2 are never handed to the
       ad SDK; nothing about the network you scanned or the host you paired with reaches an advertiser.
     </p>
     <p>
       In apps including Bluetooth Keyboard, PPT Remote, Bluetooth Mouse, Bluetooth Numpad, WiFi Scanner,
-      SSH Terminal and LG TV Remote, a banner slot that cannot request or fill a paid ad may instead
+      SSH Terminal, LG TV Remote and Unit Converter, a banner slot that cannot request or fill a paid ad may instead
       show a first-party card labelled <strong>Promo</strong> for one of our other apps. This card
       does not use the Mobile Ads SDK and does not collect or send app, network or device data. A tap
       first opens an in-app description; the official product page on
@@ -453,7 +468,7 @@
           </tr>
           <tr>
             <td><code>VIBRATE</code></td>
-            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> LG TV Remote<br><a href="#privacy-roman"><span class="dotori">Dotori</span> Roman Numerals</a><br><a href="#privacy-currency"><span class="dotori">Dotori</span> Currency Converter</a></td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> LG TV Remote<br><a href="#privacy-roman"><span class="dotori">Dotori</span> Roman Numerals</a><br><a href="#privacy-currency"><span class="dotori">Dotori</span> Currency Converter</a><br><a href="#privacy-unit"><span class="dotori">Dotori</span> Unit Converter</a></td>
             <td>To provide the short key-press vibration when you enable haptic feedback. This
               normal permission does not expose vibration or input history.</td>
           </tr>
@@ -494,16 +509,22 @@
     <h3 id="data-deletion">6. Your rights, and deleting your data</h3>
     <p>
       Because we hold no personal data of yours, there is nothing on our side to request
-      access to, correct or delete. Everything the app stored lives on your device:
+      access to, correct or delete. For local app data,
       <strong>uninstalling the app removes the app's own storage</strong>, and clearing the app's
       storage in Android Settings resets it without uninstalling. For the advertising data Google
       processes, use the ad settings on your device and the privacy options inside the app.
     </p>
     <p>
-      <strong>One exception.</strong> Lunar anniversaries you saved from
+      <strong>Calendar records.</strong> Lunar anniversaries you saved from
       <span lang="ko">온드로이드 캘린더</span> into a calendar on your device are entries in that
       calendar, not in the app's own storage. They stay after the app is gone, so delete them in your
       calendar app if you no longer want them.
+    </p>
+
+    <p>
+      <strong>Android backup.</strong> Dotori Unit Converter allows Android backup, which may
+      include stored app data. Uninstalling does not necessarily remove backup copies; manage
+      them through your device or backup-account settings. See its per-app notes below.
     </p>
 
     <h3>7. Per-app notes</h3>
@@ -766,6 +787,40 @@
     </div>
 
     <div class="policy" id="privacy-unit">
+      <h3><span class="dotori">Dotori</span> Unit Converter<span class="pkg-inline">com.droidactor.unit</span></h3>
+      <p>
+        Every conversion runs on your device, including on first use without a connection. The
+        conversion feature opens no network connection and downloads no conversion tables. The app
+        does not send the numbers you enter, conversion results or selected units to the developer
+        or the advertising SDK. There is no developer conversion server, app account or login.
+      </p>
+      <p>
+        Preferences such as appearance, language, screen orientation and conversion settings are
+        stored privately on the device. Android backup or device transfer may include stored app
+        data, depending on your Android settings and device; Android or your backup provider manages
+        those copies. Clearing app data or uninstalling removes local app data, but backup copies
+        may need to be managed separately in your device or backup-account settings. Removing the
+        app does not promise deletion of backup copies or advertising-service records.
+      </p>
+      <p>
+        The app directly declares only <code>VIBRATE</code>, for optional keypad feedback. It does
+        not request location, contacts, storage, camera or microphone access for conversion.
+        Advertising libraries supply network-related and advertising permissions through manifest
+        merging, including <code>INTERNET</code>; those connections belong to advertising and
+        consent services, not conversion.
+      </p>
+      <p>
+        Google Mobile Ads displays one banner. <strong>There are no interstitial ads.</strong>
+        Advertising data is described in section 3. Google UMP manages the privacy choices
+        applicable to your region, and ads are requested when UMP permits them after that flow. You
+        can reopen available privacy options in Settings. Online ads and consent management can need
+        a connection; conversion remains available offline. Declining personalised advertising does
+        not mean that all SDK communication stops.
+      </p>
+      <p><a href="/apps/unit/"><span class="dotori">Dotori</span> Unit Converter — details</a></p>
+    </div>
+
+    <div class="policy" id="privacy-unitconverter">
       <h3><span lang="ko">단위 변환기</span><span class="pkg-inline">com.app.unitconverter</span></h3>
       <p>
         The app converts the numbers you type from one unit to another. Those numbers stay on your
