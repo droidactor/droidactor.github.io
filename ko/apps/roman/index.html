@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>도토리 로마 숫자 변환기 — 3999를 넘는 표기까지</title>
-<meta name="description" content="아라비아 숫자와 로마 숫자를 입력하는 즉시 양방향 변환합니다. 윗줄 표기로 3,999,999까지 다루고, 비표준 표기도 읽어 표준형을 함께 보여 주며, 규칙을 가르치는 도움말이 있습니다.">
+<meta name="description" content="아라비아 숫자와 로마 숫자를 입력하는 즉시 양방향 변환합니다. 윗줄 표기로 3,999,999,999까지 다루고, 비표준 표기도 읽어 표준형을 함께 보여 주며, 규칙을 가르치는 도움말이 있습니다.">
 <link rel="canonical" href="https://droidactor.github.io/ko/apps/roman/">
 <link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/roman/">
 <link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/roman/">
@@ -30,7 +30,7 @@
   "operatingSystem": "Android 8.0 (API 26) 이상",
   "inLanguage": "ko",
   "isAccessibleForFree": true,
-  "description": "아라비아 숫자와 로마 숫자를 입력하는 즉시 양방향으로 변환하고, 윗줄 표기로 1부터 3,999,999까지 다루며 표기 규칙을 설명합니다.",
+  "description": "아라비아 숫자와 로마 숫자를 입력하는 즉시 양방향으로 변환하고, 윗줄 표기로 1부터 3,999,999,999까지 다루며 표기 규칙을 설명합니다.",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
   "author": { "@type": "Organization", "name": "droidactor", "url": "https://droidactor.github.io/" },
   "privacyPolicy": "https://droidactor.github.io/ko/#privacy-roman"
@@ -85,8 +85,9 @@
       </div>
       <div>
         <h3>3999 를 넘는 수도 고전 방식대로</h3>
-        <p>글자 묶음 위에 그은 줄은 그 묶음을 1000배 합니다. 4000 은 윗줄 IV 입니다. 이 줄은 글꼴에
-          맡기지 않고 앱이 직접 그리며, 1부터 3,999,999까지 다룹니다.</p>
+        <p>글자 묶음 위에 그은 줄은 그 묶음을 1000배 하고, 줄이 둘이면 한 번 더 곱합니다. 4000 은 한 줄
+          IV, 4,000,000 은 두 줄 IV 입니다. 이 줄들은 글꼴에 맡기지 않고 앱이 직접 그리며, 1부터
+          3,999,999,999까지 다룹니다.</p>
       </div>
       <div>
         <h3>비표준 표기도 거절하지 않습니다</h3>
@@ -114,7 +115,7 @@
           <tr><th>패키지명</th><td><code>com.droidactor.roman</code></td></tr>
           <tr><th>최소 Android</th><td>Android 8.0 (API 26)</td></tr>
           <tr><th>대상 Android</th><td>API 36</td></tr>
-          <tr><th>지원 범위</th><td>1 ~ 3,999,999</td></tr>
+          <tr><th>지원 범위</th><td>1 ~ 3,999,999,999</td></tr>
           <tr><th>네트워크</th><td>변환에는 쓰지 않습니다 — 오프라인으로 동작합니다</td></tr>
           <tr><th>권한</th><td>진동뿐입니다. 위치·연락처·저장소·카메라·마이크 권한은 요청하지 않습니다</td></tr>
           <tr><th>가격</th><td>무료, 광고 지원 (Google AdMob)</td></tr>
@@ -130,7 +131,7 @@
     <div class="note">
       <p>1부터 시작합니다 — 로마 숫자에는 0을 나타내는 글자가 없고 음수나 소수를 적는 방법도 없습니다.
         선택 영역과 클립보드는 아직 없습니다. 윗줄은 글자가 아니라 그림이라 화면 낭독기에는 말로
-        알려 줍니다: <em>“윗줄 I V 곱하기 천, 이어서 X I I. 값 4012”</em>.</p>
+        알려 줍니다: <em>“I V 한 줄, 곱하기 천, X I I. 값 4012”</em>.</p>
     </div>
   </section>
 

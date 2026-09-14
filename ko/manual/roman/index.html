@@ -56,12 +56,15 @@
     </ul>
 
     <h2 id="overline">3999 를 넘는 값 — 윗줄</h2>
-    <p>글자 묶음 위에 그은 줄은 그 묶음을 1000배 합니다. 윗줄 <code>IV</code> 는 4000,
-      윗줄 <code>M</code> 은 1,000,000 입니다. 이 앱은 <strong>1부터 3,999,999까지</strong> 다룹니다.</p>
-    <p>로마 키패드 맨 위에는 <strong>일반</strong> 과 <strong>윗줄 ×1000</strong> 두 버튼이 있습니다.
+    <p>글자 묶음 위에 그은 줄은 그 묶음을 1000배 하고, 줄이 둘이면 한 번 더 곱합니다. 한 줄
+      <code>IV</code> 는 4000, 두 줄 <code>IV</code> 는 4,000,000 입니다. 두 줄 표기는 고대 로마의
+      표준이 아니라 후대의 관례이고 어느 글꼴에도 없어서, 앱이 모든 줄을 직접 그립니다. 다루는 범위는
+      <strong>1부터 3,999,999,999까지</strong>입니다.</p>
+    <p>로마 키패드 맨 위에는 <strong>×1M</strong> · <strong>×1K</strong> · <strong>일반</strong> 세 버튼이 있습니다.
       다음에 칠 글자가 어느 구간에 들어갈지를 정합니다.</p>
     <ol>
-      <li><strong>윗줄 ×1000</strong> 을 누르고 <code>IV</code> 를 치면 값은 4000 입니다.</li>
+      <li><strong>×1K</strong> 를 누르고 <code>IV</code> 를 치면 값은 4000 입니다.</li>
+      <li><strong>×1M</strong> 을 누르고 <code>IV</code> 를 치면 값은 4,000,000 입니다.</li>
       <li><strong>일반</strong> 을 누르고 <code>XII</code> 를 치면 값은 4012 가 됩니다.</li>
     </ol>
     <div class="note"><p>구간마다 커서가 따로 있어서, 윗줄 구간으로 돌아가 고치더라도 다른 구간에서
@@ -98,9 +101,9 @@
     <h2 id="troubleshooting">문제 해결</h2>
     <div class="scroll"><table class="troubleshooting"><thead><tr><th>증상</th><th>확인할 것</th></tr></thead><tbody>
       <tr><td>키를 눌러도 값이 안 바뀜</td><td>아라비아 쪽은 7자리, 로마 쪽은 구간마다 20자가 상한입니다. 상한에서는 더 이상 들어가지 않습니다 — 키는 반응하지만 값이 바뀌지 않습니다.</td></tr>
-      <tr><td>“이 앱은 1부터 3,999,999까지 다룹니다”</td><td>값이 범위를 벗어났습니다. 로마 숫자에는 0도 음수도 없고, 윗줄 구간 자체는 MMMCMXCIX(3999)를 넘을 수 없습니다.</td></tr>
+      <tr><td>“이 앱은 1부터 3,999,999,999까지 다룹니다”</td><td>값이 범위를 벗어났습니다. 로마 숫자에는 0도 음수도 없고, 윗줄 구간 자체는 MMMCMXCIX(3999)를 넘을 수 없습니다.</td></tr>
       <tr><td>“로마 숫자가 아닙니다”</td><td>로마 상자에 I V X L C D M 이 아닌 것이 들어 있습니다.</td></tr>
-      <tr><td>글자가 엉뚱한 구간에 들어감</td><td><strong>일반</strong> / <strong>윗줄 ×1000</strong> 중 어느 쪽이 선택돼 있는지 보세요. 그것이 다음 글자가 갈 자리를 정합니다.</td></tr>
+      <tr><td>글자가 엉뚱한 구간에 들어감</td><td><strong>×1M</strong> / <strong>×1K</strong> / <strong>일반</strong> 중 어느 것이 선택돼 있는지 보세요. 그것이 다음 글자가 갈 자리를 정합니다.</td></tr>
       <tr><td>커서가 생각한 자리에 없음</td><td>고칠 글자를 직접 누르면 그 옆으로 갑니다. 한쪽을 편집하면 반대쪽 커서는 새 값의 끝으로 갑니다.</td></tr>
     </tbody></table></div>
 

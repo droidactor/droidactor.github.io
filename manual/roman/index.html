@@ -56,12 +56,15 @@
     </ul>
 
     <h2 id="overline">Values past 3999 — the overline</h2>
-    <p>A bar over a group of letters multiplies that group by 1000. <code>IV</code> with a bar is 4000;
-      <code>M</code> with a bar is 1,000,000. The app covers <strong>1 to 3,999,999</strong>.</p>
+    <p>A bar over a group of letters multiplies that group by 1000, and a second bar multiplies it
+      again. <code>IV</code> with one bar is 4000; <code>IV</code> with two bars is 4,000,000. Two bars
+      are a later convention rather than ancient Roman practice, and no font carries them, so the app
+      draws every bar itself. It covers <strong>1 to 3,999,999,999</strong>.</p>
     <p>The Roman keypad has two buttons at the top — <strong>Plain</strong> and
-      <strong>Overline ×1000</strong>. They choose which part your next letters go into:</p>
+      <strong>×1K</strong> and <strong>×1M</strong>. They choose which part your next letters go into:</p>
     <ol>
-      <li>Press <strong>Overline ×1000</strong> and type <code>IV</code> — the value is 4000.</li>
+      <li>Press <strong>×1K</strong> and type <code>IV</code> — the value is 4000.</li>
+      <li>Press <strong>×1M</strong> and type <code>IV</code> — the value is 4,000,000.</li>
       <li>Press <strong>Plain</strong> and type <code>XII</code> — the value becomes 4012.</li>
     </ol>
     <div class="note"><p>Each part keeps its own cursor, so you can go back to the overlined part and
@@ -98,9 +101,9 @@
     <h2 id="troubleshooting">Troubleshooting</h2>
     <div class="scroll"><table class="troubleshooting"><thead><tr><th>Symptom</th><th>What to check</th></tr></thead><tbody>
       <tr><td>A key does nothing</td><td>The Arabic side takes at most 7 digits and each Roman part at most 20 letters. At the limit further letters are refused — the key still responds, but the value does not change.</td></tr>
-      <tr><td>“This app covers 1 to 3,999,999”</td><td>The value is outside the range. Roman numerals have no zero and no negatives, and the overlined part on its own cannot exceed MMMCMXCIX (3999).</td></tr>
+      <tr><td>“This app covers 1 to 3,999,999,999”</td><td>The value is outside the range. Roman numerals have no zero and no negatives, and the overlined part on its own cannot exceed MMMCMXCIX (3999).</td></tr>
       <tr><td>“That is not a Roman numeral”</td><td>The Roman box contains something outside I V X L C D M.</td></tr>
-      <tr><td>Letters go into the wrong part</td><td>Check which of <strong>Plain</strong> / <strong>Overline ×1000</strong> is selected — it decides where the next letter lands.</td></tr>
+      <tr><td>Letters go into the wrong part</td><td>Check which of <strong>Plain</strong> / <strong>×1K</strong> / <strong>×1M</strong> is selected — it decides where the next letter lands.</td></tr>
       <tr><td>The cursor is not where you expect</td><td>Tap the digit or letter you want to edit next to it. Editing one box moves the other box's cursor to the end of its new value.</td></tr>
     </tbody></table></div>
 
