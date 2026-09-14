@@ -54,16 +54,16 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | 파일 | 역할 |
 |---|---|
 | `index.html` · `ko/index.html` | 앱 목록 + 지원 연락처 + **개인정보 처리방침 전문**. 처리방침 앵커의 정본이다 |
-| `apps/index.html` · `ko/apps/index.html` | 7종 제품 목록 허브. 제품 상세와 6종 매뉴얼로 연결하고, 출시된 6종은 카드에 스크린샷 2장을 싣는다(각 장이 그 앱의 Play 스토어 링크) |
+| `apps/index.html` · `ko/apps/index.html` | 10종 제품 목록 허브. 제품 상세와 7종 매뉴얼로 연결하고, 출시된 6종은 카드에 스크린샷 2장을 싣는다(각 장이 그 앱의 Play 스토어 링크) |
 | `apps/<앱>/index.html` · `ko/apps/<앱>/index.html` | 제품 상세. 기능·요구사항·개인정보 요약을 담고, 처리방침 **전문은 홈 앵커로 링크**한다(중복 금지) |
-| `manual/index.html` · `ko/manual/index.html` | `yt-downloader`를 제외한 6종 사용 설명서 목록 허브 |
-| `manual/<앱>/index.html` · `ko/manual/<앱>/index.html` | 6종 앱의 한·영 사용 설명서. 실제 UI 문구·검증 앱 버전·빠른 시작·설정·문제 해결을 담고 해당 제품·기술 글과 상호 링크한다. `yt-downloader`는 대상이 아니다 |
+| `manual/index.html` · `ko/manual/index.html` | 7종 사용 설명서 목록 허브. `yt-downloader`·`numpad`·`currency` 는 대상이 아니다 |
+| `manual/<앱>/index.html` · `ko/manual/<앱>/index.html` | 7종 앱의 한·영 사용 설명서. 실제 UI 문구·검증 앱 버전·빠른 시작·설정·문제 해결을 담고 해당 제품·기술 글과 상호 링크한다. `yt-downloader`·`numpad`·`currency` 는 대상이 아니다 |
 | `tech-notes/index.html` · `ko/tech-notes/index.html` | `yt-downloader`를 제외한 6종 개발 기술 노트 목록 허브 |
 | `tech-notes/<앱>/index.html` · `ko/tech-notes/<앱>/index.html` | 6종 앱의 한·영 기술 노트. 소스 기준 버전과 구조·protocol·핵심 설계 결정·안전 경계·확인된 제약을 기록하고 제품·매뉴얼·현장 노트와 연결한다 |
 | `blog/index.html` · `ko/blog/index.html` | 글 목록. **손으로 관리한다** — 이 리포에 생성기는 없다. 열 편쯤 넘어 손이 아프면 그때가 도입 신호다 |
 | `blog/_post-template.html` | 글 템플릿. slug·경로·JSON-LD·CTA 규약을 머리주석에 담고 있으며 **글 추가 절차의 정본**이다 |
 | `assets/site.css` | 전 페이지 공용. 외부 CDN·폰트·스크립트 없음(자기완결) |
-| `sitemap.xml` | 홈 2 + 앱 허브 2 + 제품 14 + 매뉴얼 허브 2 + 매뉴얼 12 + 기술 노트 허브 2 + 기술 노트 18 + 블로그 18 = 70개 URL. 모든 한·영 쌍에 `xhtml:link` hreflang 3개를 둔다 |
+| `sitemap.xml` | 홈 2 + 앱 허브 2 + 제품 20 + 매뉴얼 허브 2 + 매뉴얼 14 + 기술 노트 허브 2 + 기술 노트 12 + 기술 노트 상세 6 + 블로그 허브 2 + 블로그 16 = 78개 URL. 모든 한·영 쌍에 `xhtml:link` hreflang 3개를 둔다 |
 | `robots.txt` | 전체 허용 + sitemap 위치 |
 | `404.html` | 루트 절대경로만 쓴다 — 어느 깊이의 주소에서든 서빙되기 때문이다. `noindex` |
 | `app-ads.txt` | **AdMob 콘솔이 생성한 줄을 그대로** 넣는다 — 손으로 만들지 않는다 |
@@ -79,7 +79,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | 개발자 웹사이트 | `https://droidactor.github.io/` |
 | 개인정보 처리방침 (영문) | `https://droidactor.github.io/#privacy` |
 | 개인정보 처리방침 (국문) | `https://droidactor.github.io/ko/#privacy` |
-| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `gas` · `apartment` · `calendar` · `unit` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unit` 은 이 표가 정본) |
+| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unit` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unit` 은 이 표가 정본) |
 | app-ads.txt 검증 | `https://droidactor.github.io/app-ads.txt` |
 
 **`#privacy-*` 앵커 이름은 바꾸지 않는다.** 스토어 리스팅에 이미 등록된 주소다. 국문 처리방침이 필요하면

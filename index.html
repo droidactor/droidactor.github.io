@@ -6,7 +6,7 @@
   This page serves three purposes:
     1. the "Developer website" URL registered on Google Play / App Store
     2. the privacy policy for every app (per-app anchors: #privacy-keyboard, #privacy-ppt,
-       #privacy-mouse, #privacy-numpad, #privacy-ssh, #privacy-wifi, #privacy-ytdl, #privacy-lgtv, #privacy-gas,
+       #privacy-mouse, #privacy-numpad, #privacy-roman, #privacy-currency, #privacy-ssh, #privacy-wifi, #privacy-ytdl, #privacy-lgtv, #privacy-gas,
        #privacy-apartment, #privacy-calendar, #privacy-unit — usable as per-app policy URLs)
     3. the host for /app-ads.txt (that file lives at the repo root, not here)
 
@@ -32,7 +32,7 @@
     - the store URL is fixed by the package name alone, so it can be written before the app
       is public — but it 404s for the public until then, which is why the badge goes up only
       once the app is actually live on production
-  Still Coming soon: yt-downloader
+  Still Coming soon: numpad, roman, currency, yt-downloader
 -->
 <html lang="en">
 <head>
@@ -80,11 +80,13 @@
         { "@type": "ListItem", "position": 1, "name": "Dotori Bluetooth Keyboard", "url": "https://droidactor.github.io/apps/bt-keyboard/" },
         { "@type": "ListItem", "position": 2, "name": "Dotori Bluetooth PPT Remote", "url": "https://droidactor.github.io/apps/bt-ppt/" },
         { "@type": "ListItem", "position": 3, "name": "Dotori Bluetooth Mouse", "url": "https://droidactor.github.io/apps/bt-mouse/" },
-        { "@type": "ListItem", "position": 4, "name": "Dotori WiFi Scanner", "url": "https://droidactor.github.io/apps/wifi-scout/" },
-        { "@type": "ListItem", "position": 5, "name": "Dotori SSH Terminal", "url": "https://droidactor.github.io/apps/ssh-scout/" },
-        { "@type": "ListItem", "position": 6, "name": "Dotori YouTube Downloader", "url": "https://droidactor.github.io/apps/yt-downloader/" },
-        { "@type": "ListItem", "position": 7, "name": "Dotori LG TV Remote", "url": "https://droidactor.github.io/apps/lgtv/" },
-        { "@type": "ListItem", "position": 8, "name": "Dotori Roman Numerals", "url": "https://droidactor.github.io/apps/roman/" }
+        { "@type": "ListItem", "position": 4, "name": "Dotori Bluetooth Numpad", "url": "https://droidactor.github.io/apps/numpad/" },
+        { "@type": "ListItem", "position": 5, "name": "Dotori WiFi Scanner", "url": "https://droidactor.github.io/apps/wifi-scout/" },
+        { "@type": "ListItem", "position": 6, "name": "Dotori SSH Terminal", "url": "https://droidactor.github.io/apps/ssh-scout/" },
+        { "@type": "ListItem", "position": 7, "name": "Dotori Roman Numerals", "url": "https://droidactor.github.io/apps/roman/" },
+        { "@type": "ListItem", "position": 8, "name": "Dotori Currency Converter", "url": "https://droidactor.github.io/apps/currency/" },
+        { "@type": "ListItem", "position": 9, "name": "Dotori YouTube Downloader", "url": "https://droidactor.github.io/apps/yt-downloader/" },
+        { "@type": "ListItem", "position": 10, "name": "Dotori LG TV Remote", "url": "https://droidactor.github.io/apps/lgtv/" }
       ]
     }
   ]
@@ -167,6 +169,20 @@
           <a href="#privacy-mouse">Privacy</a>
         </div>
       </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true">🔢</div>
+        <h3><a href="/apps/numpad/"><span class="dotori">Dotori</span> Bluetooth Numpad</a></h3>
+        <div class="pkg">com.droidactor.bt_numpad</div>
+        <p class="desc">
+          The 17 keys a tenkeyless keyboard leaves out, sent over Bluetooth HID. Reads the host's own
+          Num Lock and Caps Lock lights instead of guessing.
+        </p>
+        <div class="foot">
+          <span class="badge soon">Coming soon</span>
+          <a href="/apps/numpad/">Details</a>
+          <a href="#privacy-numpad">Privacy</a>
+        </div>
+      </article>
 
       <article class="card">
         <div class="icon" aria-hidden="true">📡</div>
@@ -212,6 +228,20 @@
           <span class="badge soon">Coming soon</span>
           <a href="/apps/roman/">Details</a>
           <a href="#privacy-roman">Privacy</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true">💱</div>
+        <h3><a href="/apps/currency/"><span class="dotori">Dotori</span> Currency Converter</a></h3>
+        <div class="pkg">com.droidactor.currency</div>
+        <p class="desc">
+          Converts 30 currencies at once at the European Central Bank's official daily rates. Edit any
+          row and the rest follow; the stored rates keep working offline.
+        </p>
+        <div class="foot">
+          <span class="badge soon">Coming soon</span>
+          <a href="/apps/currency/">Details</a>
+          <a href="#privacy-currency">Privacy</a>
         </div>
       </article>
       <article class="card">
@@ -394,8 +424,10 @@
             <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code></td>
             <td>All (apps that use the internet themselves declare it; apps that only carry ads get it through the ad SDK)</td>
             <td>To reach the devices or sources you asked for, and to fetch ads. The HID
-              remotes send your input over Bluetooth, not over the internet, and the calculator,
-              converter and calendar apps use the internet for nothing but fetching ads.</td>
+              remotes send your input over Bluetooth, not over the internet. <a href="#privacy-currency"><span class="dotori">Dotori</span> Currency
+              Converter</a> fetches the daily exchange-rate table, and the amounts you type are not
+              part of that request. Every other app here uses the internet for nothing but fetching
+              ads.</td>
           </tr>
           <tr>
             <td><code>ACCESS_WIFI_STATE</code></td>
@@ -421,7 +453,7 @@
           </tr>
           <tr>
             <td><code>VIBRATE</code></td>
-            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> LG TV Remote</td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> LG TV Remote<br><a href="#privacy-roman"><span class="dotori">Dotori</span> Roman Numerals</a><br><a href="#privacy-currency"><span class="dotori">Dotori</span> Currency Converter</a></td>
             <td>To provide the short key-press vibration when you enable haptic feedback. This
               normal permission does not expose vibration or input history.</td>
           </tr>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Android apps — droidactor</title>
-<meta name="description" content="Seven focused droidactor Android apps for Bluetooth input, local networks, SSH, downloads, and LG webOS TV control.">
+<meta name="description" content="Ten focused droidactor Android apps for Bluetooth input, local networks, SSH, downloads, LG webOS TV control, Roman numerals, and currency conversion.">
 <link rel="canonical" href="https://droidactor.github.io/apps/">
 <link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/">
 <link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/">
@@ -28,20 +28,23 @@
       "@id": "https://droidactor.github.io/apps/#apps",
       "url": "https://droidactor.github.io/apps/",
       "name": "droidactor Android apps",
-      "description": "Seven focused Android apps by droidactor.",
+      "description": "Ten focused Android apps by droidactor.",
       "inLanguage": "en",
       "publisher": { "@id": "https://droidactor.github.io/#publisher" },
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 7,
+        "numberOfItems": 10,
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "url": "https://droidactor.github.io/apps/bt-keyboard/", "name": "Dotori Bluetooth Keyboard" },
           { "@type": "ListItem", "position": 2, "url": "https://droidactor.github.io/apps/bt-ppt/", "name": "Dotori Bluetooth PPT Remote" },
           { "@type": "ListItem", "position": 3, "url": "https://droidactor.github.io/apps/bt-mouse/", "name": "Dotori Bluetooth Mouse" },
-          { "@type": "ListItem", "position": 4, "url": "https://droidactor.github.io/apps/wifi-scout/", "name": "Dotori WiFi Scanner" },
-          { "@type": "ListItem", "position": 5, "url": "https://droidactor.github.io/apps/ssh-scout/", "name": "Dotori SSH Terminal" },
-          { "@type": "ListItem", "position": 6, "url": "https://droidactor.github.io/apps/yt-downloader/", "name": "Dotori YouTube Downloader" },
-          { "@type": "ListItem", "position": 7, "url": "https://droidactor.github.io/apps/lgtv/", "name": "Dotori LG TV Remote" }
+          { "@type": "ListItem", "position": 4, "url": "https://droidactor.github.io/apps/numpad/", "name": "Dotori Bluetooth Numpad" },
+          { "@type": "ListItem", "position": 5, "url": "https://droidactor.github.io/apps/wifi-scout/", "name": "Dotori WiFi Scanner" },
+          { "@type": "ListItem", "position": 6, "url": "https://droidactor.github.io/apps/ssh-scout/", "name": "Dotori SSH Terminal" },
+          { "@type": "ListItem", "position": 7, "url": "https://droidactor.github.io/apps/yt-downloader/", "name": "Dotori YouTube Downloader" },
+          { "@type": "ListItem", "position": 8, "url": "https://droidactor.github.io/apps/lgtv/", "name": "Dotori LG TV Remote" },
+          { "@type": "ListItem", "position": 9, "url": "https://droidactor.github.io/apps/roman/", "name": "Dotori Roman Numerals" },
+          { "@type": "ListItem", "position": 10, "url": "https://droidactor.github.io/apps/currency/", "name": "Dotori Currency Converter" }
         ]
       }
     },
@@ -72,15 +75,15 @@
 
   <div class="hero">
     <h1>Android apps</h1>
-    <p>Seven small tools, each built around one focused job. Open a product page for requirements, privacy, support, and store status.</p>
+    <p>Ten small tools, each built around one focused job. Open a product page for requirements, privacy, support, and store status.</p>
   </div>
 
   <section id="apps">
     <h2>Choose an app</h2>
-    <p class="lead">Six apps also have step-by-step manuals and engineering notes. YouTube Downloader remains a product page only. Each screenshot opens that app’s Google Play listing.</p>
+    <p class="lead">Seven apps also have a step-by-step manual, six of those engineering notes as well. YouTube Downloader, Bluetooth Numpad and Currency Converter are product pages only. Each screenshot opens that app’s Google Play listing.</p>
     <!-- Card screenshots. Two per published app, each one a link to that app's store listing —
-         the same shot-links-to-store pattern the blog posts use. yt-downloader has none: it is
-         not on Play yet, so the link would 404, and there is no capture of it either.
+         the same shot-links-to-store pattern the blog posts use. roman, numpad, currency and yt-downloader have none: they are
+         not on Play yet, so the link would 404, and there is no capture of them either.
          The images are the WebP thumbnails under /assets/shots/, shared with the product pages
          rather than sized for this page alone — see README "고칠 때" for how they are made and
          why the 1080px PNGs the blog posts show are not used here. -->
@@ -88,11 +91,13 @@
       <article class="card"><div class="icon" aria-hidden="true">⌨️</div><h3><a href="/apps/bt-keyboard/"><span class="dotori">Dotori</span> Bluetooth Keyboard</a></h3><p class="pkg">com.droidactor.bt_keyboard</p><p class="desc">Use a phone as a Bluetooth HID keyboard and trackpad for a PC, TV, or tablet.</p><div class="card-shots"><a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_keyboard&amp;hl=en" aria-label="Portrait keyboard and trackpad screen — get the app on Google Play"><img src="/assets/shots/bt-keyboard/en-US/01-portrait-keyboard-trackpad.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Portrait keyboard and trackpad screen"></a><a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_keyboard&amp;hl=en" aria-label="Host profile and keyboard settings — get the app on Google Play"><img src="/assets/shots/bt-keyboard/en-US/04-settings.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Host profile and keyboard settings"></a></div><div class="foot"><a href="/apps/bt-keyboard/">Product page</a><a href="/manual/bt-keyboard/">User manual</a><a href="/tech-notes/bt-keyboard/">Tech notes</a></div></article>
       <article class="card"><div class="icon" aria-hidden="true">📽️</div><h3><a href="/apps/bt-ppt/"><span class="dotori">Dotori</span> Bluetooth PPT Remote</a></h3><p class="pkg">com.droidactor.bt_ppt</p><p class="desc">Control the five essential PowerPoint slideshow actions over Bluetooth HID.</p><div class="card-shots"><a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_ppt&amp;hl=en" aria-label="Presentation remote control screen — get the app on Google Play"><img src="/assets/shots/bt-ppt/en-US/01-presenter-control.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Presentation remote control screen"></a><a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_ppt&amp;hl=en" aria-label="Presentation remote connection settings — get the app on Google Play"><img src="/assets/shots/bt-ppt/en-US/03-settings.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Presentation remote connection settings"></a></div><div class="foot"><a href="/apps/bt-ppt/">Product page</a><a href="/manual/bt-ppt/">User manual</a><a href="/tech-notes/bt-ppt/">Tech notes</a></div></article>
       <article class="card"><div class="icon" aria-hidden="true">🖱️</div><h3><a href="/apps/bt-mouse/"><span class="dotori">Dotori</span> Bluetooth Mouse</a></h3><p class="pkg">com.droidactor.bt_mouse2</p><p class="desc">Use a phone as a Bluetooth HID mouse with clicks and two-axis scrolling.</p><div class="card-shots"><a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_mouse2&amp;hl=en" aria-label="Mouse control screen with trackpad and buttons — get the app on Google Play"><img src="/assets/shots/bt-mouse/en-US/06-mouse-control.webp" width="800" height="1733" loading="lazy" decoding="async" alt="Mouse control screen with trackpad and buttons"></a><a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_mouse2&amp;hl=en" aria-label="Bluetooth mouse pointer settings — get the app on Google Play"><img src="/assets/shots/bt-mouse/en-US/02-settings.webp" width="800" height="1733" loading="lazy" decoding="async" alt="Bluetooth mouse pointer settings"></a></div><div class="foot"><a href="/apps/bt-mouse/">Product page</a><a href="/manual/bt-mouse/">User manual</a><a href="/tech-notes/bt-mouse/">Tech notes</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true">🔢</div><h3><a href="/apps/numpad/"><span class="dotori">Dotori</span> Bluetooth Numpad</a></h3><p class="pkg">com.droidactor.bt_numpad</p><p class="desc">Send the 17 keys a tenkeyless keyboard leaves out over Bluetooth HID.</p><div class="foot"><a href="/apps/numpad/">Product page</a></div></article>
       <article class="card"><div class="icon" aria-hidden="true">📡</div><h3><a href="/apps/wifi-scout/"><span class="dotori">Dotori</span> WiFi Scanner</a></h3><p class="pkg">com.droidactor.wifi_scout</p><p class="desc">Discover and identify responding devices on the local Wi-Fi network.</p><div class="card-shots"><a href="https://play.google.com/store/apps/details?id=com.droidactor.wifi_scout&amp;hl=en" aria-label="Wi-Fi scan range and gateway — get the app on Google Play"><img src="/assets/shots/wifi-scout/en-US/01-home.webp" width="800" height="1733" loading="lazy" decoding="async" alt="Wi-Fi scan range and gateway"></a><a href="https://play.google.com/store/apps/details?id=com.droidactor.wifi_scout&amp;hl=en" aria-label="Discovered devices with type and evidence — get the app on Google Play"><img src="/assets/shots/wifi-scout/en-US/02-scan-results.webp" width="800" height="1733" loading="lazy" decoding="async" alt="Discovered devices with type and evidence"></a></div><div class="foot"><a href="/apps/wifi-scout/">Product page</a><a href="/manual/wifi-scout/">User manual</a><a href="/tech-notes/wifi-scout/">Tech notes</a></div></article>
       <article class="card"><div class="icon" aria-hidden="true">▣</div><h3><a href="/apps/ssh-scout/"><span class="dotori">Dotori</span> SSH Terminal</a></h3><p class="pkg">com.droidactor.ssh_scout</p><p class="desc">Find SSH hosts, verify host keys, save connections, and open a terminal.</p><div class="card-shots"><a href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout&amp;hl=en" aria-label="Direct SSH connection screen — get the app on Google Play"><img src="/assets/shots/ssh-scout/en-US/01-direct-connection.webp" width="800" height="1733" loading="lazy" decoding="async" alt="Direct SSH connection screen"></a><a href="https://play.google.com/store/apps/details?id=com.droidactor.ssh_scout&amp;hl=en" aria-label="Connected SSH terminal session — get the app on Google Play"><img src="/assets/shots/ssh-scout/en-US/03-terminal.webp" width="800" height="1733" loading="lazy" decoding="async" alt="Connected SSH terminal session"></a></div><div class="foot"><a href="/apps/ssh-scout/">Product page</a><a href="/manual/ssh-scout/">User manual</a><a href="/tech-notes/ssh-scout/">Tech notes</a></div></article>
       <article class="card"><div class="icon" aria-hidden="true">⬇️</div><h3><a href="/apps/yt-downloader/"><span class="dotori">Dotori</span> YouTube Downloader</a></h3><p class="pkg">com.droidactor.ytdownloader</p><p class="desc">Download videos and playlists directly from the source to a location you choose.</p><div class="foot"><a href="/apps/yt-downloader/">Product page</a></div></article>
       <article class="card"><div class="icon" aria-hidden="true">📺</div><h3><a href="/apps/lgtv/"><span class="dotori">Dotori</span> LG TV Remote</a></h3><p class="pkg">com.droidactor.lgtv</p><p class="desc">Control an LG webOS TV over the local network with keys and a trackpad.</p><div class="card-shots"><a href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv&amp;hl=en" aria-label="LG TV remote main screen — get the app on Google Play"><img src="/assets/shots/lgtv/en-US/01-remote.webp" width="800" height="1422" loading="lazy" decoding="async" alt="LG TV remote main screen"></a><a href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv&amp;hl=en" aria-label="LG TV remote trackpad and feedback settings — get the app on Google Play"><img src="/assets/shots/lgtv/en-US/04-settings.webp" width="800" height="1422" loading="lazy" decoding="async" alt="LG TV remote trackpad and feedback settings"></a></div><div class="foot"><a href="/apps/lgtv/">Product page</a><a href="/manual/lgtv/">User manual</a><a href="/tech-notes/lgtv/">Tech notes</a></div></article>
       <article class="card"><div class="icon" aria-hidden="true">🏛️</div><h3><a href="/apps/roman/"><span class="dotori">Dotori</span> Roman Numerals</a></h3><p class="pkg">com.droidactor.roman</p><p class="desc">Convert Arabic and Roman numerals both ways, past 3999 with the overline.</p><div class="foot"><a href="/apps/roman/">Product page</a><a href="/manual/roman/">User manual</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true">💱</div><h3><a href="/apps/currency/"><span class="dotori">Dotori</span> Currency Converter</a></h3><p class="pkg">com.droidactor.currency</p><p class="desc">Convert your whole list of currencies at once at the European Central Bank’s official daily rates.</p><div class="foot"><a href="/apps/currency/">Product page</a></div></article>
     </div>
   </section>
 

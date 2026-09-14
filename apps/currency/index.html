@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotori Currency Converter — 30 currencies at ECB rates</title>
+<meta name="description" content="Convert 30 currencies at once using the European Central Bank's official daily reference rates. Edit any row and the rest follow, your main currency stays pinned, and the stored rates keep working offline.">
+<link rel="canonical" href="https://droidactor.github.io/apps/currency/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/currency/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/currency/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/currency/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/apps/currency/">
+<meta property="og:title" content="Dotori Currency Converter — 30 currencies at ECB rates">
+<meta property="og:description" content="One amount, every currency on your list, at the European Central Bank's official daily reference rates.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Dotori Currency Converter",
+  "url": "https://droidactor.github.io/apps/currency/",
+  "identifier": "com.droidactor.currency",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Android 8.0 (API 26) and newer",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "description": "Converts one amount into every currency on your list at once, using the European Central Bank's official daily reference rates, and keeps working offline with the rates it already has.",
+  "featureList": [
+    "30 currencies converted at once from whichever row you edit",
+    "Your main currency pinned to the top and always visible",
+    "European Central Bank official daily reference rates",
+    "Falls back to ExchangeRate-API and says so on screen",
+    "Rate date always shown — the date of the rates, not of the download",
+    "Works offline with the stored rates"
+  ],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "droidactor", "url": "https://droidactor.github.io/" },
+  "privacyPolicy": "https://droidactor.github.io/#privacy-currency"
+}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="Language">
+      <a class="lang-btn" href="/apps/currency/" aria-current="page" hreflang="en">EN</a>
+      <a class="lang-btn" href="/ko/apps/currency/" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">droidactor</a><span>/</span><a href="/apps/">Apps</a><span>/</span><span class="dotori">Dotori</span> Currency Converter
+  </nav>
+
+  <div class="hero product">
+    <div class="icon" aria-hidden="true">💱</div>
+    <h1><span class="dotori">Dotori</span> Currency Converter</h1>
+    <div class="pkg">com.droidactor.currency</div>
+    <p>
+      Turns one amount into every currency on your list at once. Type into any row and the rest
+      follow — there is no "from" and "to" to set up, and no swap button to hunt for.
+    </p>
+    <div class="status">
+      <span class="badge soon">Coming soon</span>
+      <a href="#privacy">Privacy</a>
+    </div>
+  </div>
+
+  <section>
+    <h2>What it does</h2>
+    <div class="feature">
+      <div>
+        <h3>Every row at once</h3>
+        <p>Whichever row you are editing is the one the others are derived from. Tap another row and
+          start typing, and the direction simply reverses — nothing to switch, nothing to undo.</p>
+      </div>
+      <div>
+        <h3>Your currency stays put</h3>
+        <p>The main currency sits at the top and stays visible however far you scroll, and it cannot be
+          removed by accident. Everything under it is yours to add and remove in Settings, and you can
+          promote any of them to be the main one.</p>
+      </div>
+      <div>
+        <h3>Rates from the central bank</h3>
+        <p>The European Central Bank's official daily reference rates, fetched straight from the ECB.
+          The app never asks the server to do the conversion — it takes the whole table and divides on
+          the device, because asking for a small currency as the base costs precision.</p>
+      </div>
+      <div>
+        <h3>It tells you what it is showing</h3>
+        <p>The rate date is always on screen, and it is the date of the rates — never the moment they
+          were downloaded. The ECB publishes once each working day, so a date from a few days ago is
+          normal rather than a fault.</p>
+      </div>
+      <div>
+        <h3>A fallback that announces itself</h3>
+        <p>If the ECB cannot be reached the app uses ExchangeRate-API instead and says so in the same
+          line, with a link. It never mixes figures from two sources in one calculation.</p>
+      </div>
+      <div>
+        <h3>Offline, and exact</h3>
+        <p>The last rates received are stored on the phone and keep converting without a connection.
+          Amounts are computed at full precision and rounded only for display, following each
+          currency's own convention — yen and won to whole units, most others to two decimals.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Requirements</h2>
+    <div class="scroll">
+      <table class="spec">
+        <tbody>
+          <tr><th>Platform</th><td>Android (Kotlin, Jetpack Compose)</td></tr>
+          <tr><th>Package name</th><td><code>com.droidactor.currency</code></td></tr>
+          <tr><th>Minimum Android</th><td>Android 8.0 (API 26)</td></tr>
+          <tr><th>Target Android</th><td>API 36</td></tr>
+          <tr><th>Currencies</th><td>30, the set published by the European Central Bank</td></tr>
+          <tr><th>Network</th><td>Needed once to fetch rates; conversion afterwards works offline</td></tr>
+          <tr><th>Permissions</th><td>Internet and vibration only. No location, contacts, storage, camera or microphone</td></tr>
+          <tr><th>Price</th><td>Free, supported by ads (Google AdMob)</td></tr>
+          <tr><th>Accounts</th><td>None. No sign-in, no registration.</td></tr>
+          <tr><th>Status</th><td>Not yet published on Google Play</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Known limits</h2>
+    <div class="note">
+      <p>These are reference rates for information. Banks, card networks and exchange counters add
+        their own margin and fees, so the amount you actually pay or receive will differ. The app does
+        not transfer money, exchange currency, or broker investments.</p>
+      <p>The currency list is the one the ECB publishes, so currencies outside it — and cryptocurrencies —
+        are not available. There is no rate history or chart: the app shows the current table only.</p>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <h2>Privacy</h2>
+    <p>
+      The amounts you type never leave your phone. The app asks the rate server for the whole table of
+      the day and does every conversion on the device, so neither the amount nor the currencies you
+      picked are sent anywhere. There is no account, no sign-in, and no developer server.
+    </p>
+    <p><a href="/#privacy-currency">Full privacy policy for this app</a></p>
+  </section>
+
+  <section>
+    <h2>Support</h2>
+    <p>
+      Bug reports, questions and feature requests go to
+      <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Other apps</h2>
+    <div class="also">
+      <a href="/apps/bt-keyboard/"><span class="dotori">Dotori</span> Bluetooth Keyboard</a>
+      <a href="/apps/bt-ppt/"><span class="dotori">Dotori</span> Bluetooth PPT Remote</a>
+      <a href="/apps/bt-mouse/"><span class="dotori">Dotori</span> Bluetooth Mouse</a>
+      <a href="/apps/numpad/"><span class="dotori">Dotori</span> Bluetooth Numpad</a>
+      <a href="/apps/wifi-scout/"><span class="dotori">Dotori</span> WiFi Scanner</a>
+      <a href="/apps/ssh-scout/"><span class="dotori">Dotori</span> SSH Terminal</a>
+      <a href="/apps/yt-downloader/"><span class="dotori">Dotori</span> YouTube Downloader</a>
+      <a href="/apps/lgtv/"><span class="dotori">Dotori</span> LG TV Remote</a>
+      <a href="/apps/roman/"><span class="dotori">Dotori</span> Roman Numerals</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Android apps by droidactor.</p>
+    <p><a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/blog/">Field notes</a> · <a href="/ko/apps/currency/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
