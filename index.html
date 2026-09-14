@@ -6,7 +6,7 @@
   This page serves three purposes:
     1. the "Developer website" URL registered on Google Play / App Store
     2. the privacy policy for every app (per-app anchors: #privacy-keyboard, #privacy-ppt,
-       #privacy-mouse, #privacy-ssh, #privacy-wifi, #privacy-ytdl, #privacy-lgtv, #privacy-gas,
+       #privacy-mouse, #privacy-numpad, #privacy-ssh, #privacy-wifi, #privacy-ytdl, #privacy-lgtv, #privacy-gas,
        #privacy-apartment, #privacy-calendar, #privacy-unit — usable as per-app policy URLs)
     3. the host for /app-ads.txt (that file lives at the repo root, not here)
 
@@ -265,7 +265,7 @@
   <section id="privacy">
     <h2>Privacy policy</h2>
     <p class="lead">
-      Effective date: 31 August 2026 · Developer: droidactor (individual developer) ·
+      Effective date: 14 September 2026 · Developer: droidactor (individual developer) ·
       Contact: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> ·
       Applies to every app listed in section 7 below.
       <br><a href="/ko/#privacy" hreflang="ko" lang="ko">한국어 개인정보 처리방침</a>
@@ -336,8 +336,8 @@
       ad SDK; nothing about the network you scanned or the host you paired with reaches an advertiser.
     </p>
     <p>
-      In six of the apps (Bluetooth Keyboard, PPT Remote, Bluetooth Mouse, WiFi Scanner,
-      SSH Terminal and LG TV Remote), a banner slot that cannot request or fill a paid ad may instead
+      In apps including Bluetooth Keyboard, PPT Remote, Bluetooth Mouse, Bluetooth Numpad, WiFi Scanner,
+      SSH Terminal and LG TV Remote, a banner slot that cannot request or fill a paid ad may instead
       show a first-party card labelled <strong>Promo</strong> for one of our other apps. This card
       does not use the Mobile Ads SDK and does not collect or send app, network or device data. A tap
       first opens an in-app description; the official product page on
@@ -366,9 +366,14 @@
         <tbody>
           <tr>
             <td><code>BLUETOOTH_CONNECT</code><br><code>BLUETOOTH_ADVERTISE</code></td>
-            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse</td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a></td>
             <td>To appear as a HID keyboard/mouse to a nearby host and send your key and
               pointer input to it. Required by Android for any Bluetooth pairing.</td>
+          </tr>
+          <tr>
+            <td><code>BLUETOOTH</code><br><code>BLUETOOTH_ADMIN</code></td>
+            <td><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a></td>
+            <td>Legacy Bluetooth permissions for connecting to a host over Bluetooth HID on Android 11 and earlier.</td>
           </tr>
           <tr>
             <td><code>NEARBY_WIFI_DEVICES</code><br><span class="badge">neverForLocation</span></td>
@@ -400,12 +405,17 @@
           </tr>
           <tr>
             <td><code>FOREGROUND_SERVICE</code></td>
-            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><span class="dotori">Dotori</span> YouTube Downloader</td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a><br><span class="dotori">Dotori</span> YouTube Downloader</td>
             <td>So a HID session or a download keeps running while you use another app.</td>
           </tr>
           <tr>
+            <td><code>FOREGROUND_SERVICE_CONNECTED_DEVICE</code></td>
+            <td><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a></td>
+            <td>Declares the foreground service type used to maintain a HID session with a connected host.</td>
+          </tr>
+          <tr>
             <td><code>POST_NOTIFICATIONS</code></td>
-            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><span class="dotori">Dotori</span> YouTube Downloader</td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a><br><span class="dotori">Dotori</span> YouTube Downloader</td>
             <td>To show the notification that accompanies a running HID session or download. Only
               the apps listed declare it, and we send no promotional notifications.</td>
           </tr>
@@ -417,10 +427,11 @@
           </tr>
           <tr>
             <td><code>com.droidactor.hid.session.permission.RELEASE</code><br><span class="badge">signature</span></td>
-            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse</td>
-            <td>To let our HID companion apps ask each other to release an active Bluetooth HID
-              session before another one starts. Android grants it only to apps signed with the same
-              certificate; it does not provide access to input content.</td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a></td>
+            <td>To let Dotori HID apps signed with the same certificate query connection status and
+              release or share a session. With a shared connection, requests to send keys you press are
+              passed to the app that owns the connection. Android grants this permission only to apps
+              with the same signature; it does not let them intercept input in other apps.</td>
           </tr>
           <tr>
             <td><code>READ_CALENDAR</code><br><code>WRITE_CALENDAR</code></td>
@@ -518,6 +529,42 @@
         Google may process advertising data as described in the general policy above.
       </p>
       <p><a href="/apps/bt-mouse/">More about <span class="dotori">Dotori</span> Bluetooth Mouse</a></p>
+    </div>
+
+    <div class="policy" id="privacy-numpad">
+      <h3><span class="dotori">Dotori</span> Bluetooth Numpad<span class="pkg-inline">com.droidactor.bt_numpad</span></h3>
+      <p>
+        Numeric keypad presses, including digits, symbols, Enter and Num Lock, are sent over Bluetooth
+        HID to the host you select. There is no account or login, and input content and connection
+        history are not sent to a developer server. The app has no sentence entry or clipboard-reading
+        feature and requests no location permission.
+      </p>
+      <p>
+        For reconnection, the app stores verified host Bluetooth addresses, display names, last
+        connection verification times and app settings on your device. Addresses are masked on screen.
+        Host lock reports are used in memory during the connection for the Num Lock LED and key legends;
+        a new connection does not reuse the previous state. If needed to learn the initial state, the
+        app toggles Num Lock, waits for a response, then sends it again to attempt restoration. Key input,
+        host information and lock state are not passed to the ad SDK.
+      </p>
+      <p>
+        When sharing a connection owned by another Dotori HID app with the same signature, key-send
+        requests go to that app, which sends them to the host over Bluetooth. No developer server is
+        involved in this process.
+      </p>
+      <p>
+        The app displays a banner outside the keypad controls and has no full-screen ads. Google AdMob
+        data processing and first-party promo cards follow section 3 above. Ads are requested after
+        the required consent process; available consent choices can be managed through the privacy
+        options in Settings.
+      </p>
+      <p>
+        Clearing app storage in Android Settings or uninstalling the app deletes its stored host
+        records and settings. When removal of a Bluetooth pairing is detected, the app also deletes
+        that host record. The operating system's pairing can be removed separately in Android's
+        Bluetooth settings.
+      </p>
+      <p><a href="/ko/#privacy-numpad" hreflang="ko" lang="ko">넘패드 개인정보 처리방침 한국어</a></p>
     </div>
 
     <div class="policy" id="privacy-wifi">
