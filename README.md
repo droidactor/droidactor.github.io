@@ -63,7 +63,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | `blog/index.html` · `ko/blog/index.html` | 글 목록. **손으로 관리한다** — 이 리포에 생성기는 없다. 열 편쯤 넘어 손이 아프면 그때가 도입 신호다 |
 | `blog/_post-template.html` | 글 템플릿. slug·경로·JSON-LD·CTA 규약을 머리주석에 담고 있으며 **글 추가 절차의 정본**이다 |
 | `assets/site.css` | 전 페이지 공용. 외부 CDN·폰트·스크립트 없음(자기완결) |
-| `sitemap.xml` | 홈 2 + 앱 허브 2 + 제품 20 + 매뉴얼 허브 2 + 매뉴얼 14 + 기술 노트 허브 2 + 기술 노트 12 + 기술 노트 상세 6 + 블로그 허브 2 + 블로그 16 = 78개 URL. 모든 한·영 쌍에 `xhtml:link` hreflang 3개를 둔다 |
+| `sitemap.xml` | 홈 2 + 앱 허브 2 + 제품 22 + 매뉴얼 허브 2 + 매뉴얼 14 + 기술 노트 허브 2 + 기술 노트 12 + 기술 노트 상세 6 + 블로그 허브 2 + 블로그 16 = 80개 URL. 모든 한·영 쌍에 `xhtml:link` hreflang 3개를 둔다 |
 | `robots.txt` | 전체 허용 + sitemap 위치 |
 | `404.html` | 루트 절대경로만 쓴다 — 어느 깊이의 주소에서든 서빙되기 때문이다. `noindex` |
 | `app-ads.txt` | **AdMob 콘솔이 생성한 줄을 그대로** 넣는다 — 손으로 만들지 않는다 |
@@ -82,7 +82,9 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
 | app-ads.txt 검증 | `https://droidactor.github.io/app-ads.txt` |
 
-**`#privacy-*` 앵커 이름은 바꾸지 않는다.** 스토어 리스팅에 이미 등록된 주소다. 국문 처리방침이 필요하면
+**`#privacy-*` 앵커는 이름을 바꾸지도, 앵커를 지우지도 않는다.** 스토어 리스팅에 이미 등록된 주소다 —
+구 앱 항목이라도 지우려면 그 앱의 Play Console 처리방침 URL 을 **먼저** 총칙으로 옮겨야 하고, 게시 중인
+앱이면 그 작업이 앵커 삭제보다 크다(2026-09-15 에 구 앱 4종으로 시도했다가 되돌렸다). 국문 처리방침이 필요하면
 같은 앵커를 `/ko/` 아래에서 쓴다(`/ko/#privacy-keyboard`). Play Console 은 스토어 등록정보 언어별로
 처리방침 URL 을 따로 넣을 수 있다.
 
@@ -263,6 +265,19 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
       "고칠 때 → 앱이 출시되면" 에 적었다. 홈 2곳은 세 앱이 같은 파일을 공유하므로 이번에 고친 파일은
       앱 전용 18개(제품·매뉴얼·블로그 각 2 × 3앱) + 홈 2개 = 20개다.
       남은 미출시 앱은 `yt-downloader` 하나뿐이다.
+- [x] **`badge soon` → 스토어 배지 교체 2차 (2026-09-15).** `numpad` · `roman` · `currency` · `unit`
+      4종을 출시 상태로 돌렸다. 고친 곳은 **14개 파일** — 제품 페이지 8(한·영 4앱, `<div class="status">`
+      배지 + 사양표 `Status`/`상태` 행) + 홈 2 + 앱 목록 2 + 매뉴얼 2 다. 매뉴얼은 4앱 중 `roman` 에만
+      있고(`manual/roman/` · `ko/manual/roman/`), **블로그 CTA 는 0곳이다** —
+      `grep -rl 'apps/{numpad,roman,currency,unit}/' blog/ ko/blog/` 가 한 편도 잡지 않는다.
+      앱 목록 2곳은 배지를 넣은 것이 아니라 `unit` 카드에만 남아 있던 `badge soon` 을 **뗀** 것이다
+      (이 페이지는 출시 앱에도 Play 배지를 두지 않고 링크만 둔다 — 다른 3앱 카드에는 애초에 배지가 없었다).
+      배지를 새로 넣은 10개 페이지에는 푸터 `<p class="tm">` 상표 고지를 함께 넣었다.
+      **`unit` 은 이 규칙의 유일한 예외다** — 실측 2026-09-15 에 `com.droidactor.currency` ·
+      `com.droidactor.roman` · `com.droidactor.bt_numpad` 는 로그아웃 `200` 인데
+      `com.droidactor.unit` 은 **`404`** 다. 아직 스토어에 없는데 "정식 출시된 걸로 간주하고 작업하라"는
+      지시(2026-09-15)를 받아 배지를 걸었다. 그때까지 `unit` 배지는 **죽은 링크**이고, 실제로 올라온 뒤
+      `200` 을 확인하면 이 예외 문단을 지운다. 남은 미출시 앱은 `yt-downloader` 와 `unit` 이다.
 - [x] **네이버 서치어드바이저 등록 · 소유확인 · 사이트맵 제출 (2026-08-10).** 웹마스터 도구에
       `https://droidactor.github.io/` 를 등록하고 HTML 파일 방식으로 소유확인을 마쳤다. 확인 파일을
       `687f2cd` 로 push 한 뒤 `https://droidactor.github.io/naver291cd179e909bd205a8a0bf7179d3588.html`
@@ -351,6 +366,8 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
     `../../assets/`, 국문은 `../../../assets/`. 파일은 영문 `-en`, 국문 `-ko` 를 쓴다
   - **교체 시점의 판정은 로그아웃 상태에서 스토어 URL 이 `200` 인지 하나뿐이다.** Console 이 "게시됨"
     으로 보여도 내부 테스트 트랙이면 테스터 외에는 `404` 라 배지가 죽은 링크가 된다
+    (2026-09-15 에 `unit` 만 이 판정을 건너뛰었다 — `404` 인 채로 배지를 걸라는 지시였다. 예외이지
+    선례가 아니다. 경위와 되돌릴 조건은 위 "남은 일" 의 2차 교체 항목에 적었다)
 - **6종 앱 매뉴얼을 고치면** 제품 소개나 블로그 설명과 섞지 않고 다음을 한 묶음으로 처리한다.
   1. `manual/<앱>/index.html`과 `ko/manual/<앱>/index.html`을 같은 목차·같은 기능 범위로 갱신
   2. 화면의 실제 버튼명은 앱 리소스 문자열, 동작·권한은 앱 코드와 `AndroidManifest.xml`을 근거로 확인

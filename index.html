@@ -32,7 +32,9 @@
     - the store URL is fixed by the package name alone, so it can be written before the app
       is public — but it 404s for the public until then, which is why the badge goes up only
       once the app is actually live on production
-  Still Coming soon: numpad, roman, currency, yt-downloader, unit
+  Still Coming soon: yt-downloader — and unit, whose badge went up by request on 2026-09-15
+  while its store page still 404s, so that one badge is a dead link on purpose. The revert
+  condition (confirm 200, then drop the exception) is in README "남은 일" → 2차 교체 항목.
 -->
 <html lang="en">
 <head>
@@ -179,7 +181,8 @@
           Num Lock and Caps Lock lights instead of guessing.
         </p>
         <div class="foot">
-          <span class="badge soon">Coming soon</span>
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.bt_numpad&amp;hl=en"><img
+            src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
           <a href="/apps/numpad/">Details</a>
           <a href="#privacy-numpad">Privacy</a>
         </div>
@@ -226,7 +229,8 @@
           values past 3999 and a help page that teaches the notation.
         </p>
         <div class="foot">
-          <span class="badge soon">Coming soon</span>
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.roman&amp;hl=en"><img
+            src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
           <a href="/apps/roman/">Details</a>
           <a href="#privacy-roman">Privacy</a>
         </div>
@@ -240,7 +244,8 @@
           row and the rest follow; the stored rates keep working offline.
         </p>
         <div class="foot">
-          <span class="badge soon">Coming soon</span>
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.currency&amp;hl=en"><img
+            src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
           <a href="/apps/currency/">Details</a>
           <a href="#privacy-currency">Privacy</a>
         </div>
@@ -284,7 +289,8 @@
           Choose from eight categories and compare units on one screen, with automatic unit selection and Korean traditional measures. Conversion works offline from first use.
         </p>
         <div class="foot">
-          <span class="badge soon">Coming soon</span>
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.unit&amp;hl=en"><img
+            src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a>
           <a href="/apps/unit/">Details</a>
           <a href="#privacy-unit">Privacy</a>
         </div>
@@ -618,6 +624,7 @@
         Bluetooth settings.
       </p>
       <p><a href="/ko/#privacy-numpad" hreflang="ko" lang="ko">넘패드 개인정보 처리방침 한국어</a></p>
+      <p><a href="/apps/numpad/">More about <span class="dotori">Dotori</span> Bluetooth Numpad</a></p>
     </div>
 
     <div class="policy" id="privacy-wifi">
@@ -698,6 +705,7 @@
         LG and webOS are trademarks of LG Electronics. This app is unofficial and not affiliated
         with LG Electronics.
       </p>
+      <p><a href="/apps/lgtv/">More about <span class="dotori">Dotori</span> LG TV Remote</a></p>
     </div>
 
     <div class="policy" id="privacy-roman">
@@ -711,6 +719,7 @@
         <strong>there are no interstitial ads</strong>, so nothing full-screen interrupts you while
         you are typing.
       </p>
+      <p><a href="/apps/roman/">More about <span class="dotori">Dotori</span> Roman Numerals</a></p>
     </div>
 
     <div class="policy" id="privacy-currency">
@@ -729,6 +738,7 @@
         for information; banks and exchange counters add their own margin, so what you actually pay
         will differ.
       </p>
+      <p><a href="/apps/currency/">More about <span class="dotori">Dotori</span> Currency Converter</a></p>
     </div>
 
     <div class="policy" id="privacy-gas">
@@ -817,7 +827,7 @@
         a connection; conversion remains available offline. Declining personalised advertising does
         not mean that all SDK communication stops.
       </p>
-      <p><a href="/apps/unit/"><span class="dotori">Dotori</span> Unit Converter — details</a></p>
+      <p><a href="/apps/unit/">More about <span class="dotori">Dotori</span> Unit Converter</a></p>
     </div>
 
     <div class="policy" id="privacy-unitconverter">
