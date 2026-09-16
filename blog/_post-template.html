@@ -4,6 +4,11 @@
   out of sitemap.xml on purpose.
 
   To author and publish a post:
+    0. Steps 2-5 are automated. From the blogger repository, `./pages.sh <app>/<slug>`
+       reads the two drafts and writes both pages, both index entries, the sitemap pair
+       and the lastmod bumps. Follow the steps below only when doing it by hand — and
+       note this template is behind the published posts (they also carry og:image, the
+       post-app card, a versioned stylesheet query and the footer trademark line).
     1. author and review ../blogs/<app>/<slug>/site.en.md and site.ko.md from the
        MyApps/Mobile repository root. All writing happens there; this repo receives
        only the publishing artifacts.
@@ -25,8 +30,15 @@
       file:// — that is expected and applies to the whole site. Check locally with
       `python -m http.server 8000`, as README says.
     - This site carries technical references: protocol/behavior explanations,
-      measurements with reproducible conditions, and detailed procedures. User-story
-      acquisition posts belong to Naver and their English versions belong to Blogger.
+      measurements with reproducible conditions, and detailed procedures. The same
+      subject may also run on Naver or Blogger — that is allowed. What the rules ask
+      for is a split of roles: this page carries the evidence (protocol, measurement,
+      reproduction, limits) while those channels carry the reader's situation and the
+      outcome. That policy lives in promotion/rules/site.md and the site README, not
+      here; this note only points at it.
+    - Never reuse one body across channels, even for the same subject. Two pages with
+      the same text compete to be the one Google indexes, and only one of them sits on
+      a domain we own.
     - The post opens with a technical conclusion and its applicability conditions.
       A reader who stops there should know both the answer and its limits.
     - Every post ends with one call to action pointing at one app. Not five.
