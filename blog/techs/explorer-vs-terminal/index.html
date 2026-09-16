@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explorer First, or the Terminal? — droidactor</title>
+<meta name="description" content="Explorer and the terminal are good at different things. Three bridges that remove the cost of crossing between them, instead of picking one.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/explorer-vs-terminal/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/explorer-vs-terminal/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/explorer-vs-terminal/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/explorer-vs-terminal/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/explorer-vs-terminal/">
+<meta property="og:title" content="Explorer First, or the Terminal?">
+<meta property="og:description" content="Explorer and the terminal are good at different things. Three bridges that remove the cost of crossing between them, instead of picking one.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Explorer First, or the Terminal?",
+      "description": "Explorer and the terminal are good at different things. Three bridges that remove the cost of crossing between them, instead of picking one.",
+      "url": "https://droidactor.github.io/blog/techs/explorer-vs-terminal/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/explorer-vs-terminal/",
+      "datePublished": "2026-08-29",
+      "dateModified": "2026-09-16",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Explorer First, or the Terminal?", "item": "https://droidactor.github.io/blog/techs/explorer-vs-terminal/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/explorer-vs-terminal/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/explorer-vs-terminal/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Explorer First, or the Terminal?</nav>
+  <div class="hero">
+    <h1>Explorer First, or the Terminal?</h1>
+    <p class="post-meta"><time datetime="2026-08-29">29 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>In short.</strong> There are two routes to handling files on Windows: open Explorer, or open a terminal. Which one is better has no answer. The time actually leaks somewhere else — when a single job makes you cross between the two. I settled it by removing the cost of crossing, and here are the three bridges I use.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.currency&amp;hl=en"><img src="/assets/banner/en/currency.webp" width="800" height="200" loading="lazy" decoding="async" alt="Dotori Currency Converter - 30 currencies at official ECB rates"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+
+    <h2>They are good at different things</h2>
+    <p>There are situations where Explorer is clearly faster. Skimming a folder you are opening for the first time. Hunting for a file whose name you cannot remember. Clicking a photo or a PDF to check it. For jobs that end with looking and pointing, there is no reason to build a command.</p>
+    <p>The situations where the terminal wins have a different character. Doing the same job a second time. Applying a condition, such as only this extension or only files changed since yesterday. Needing a record of what you did.</p>
+    <p>So the test comes down to one question. <strong>Will I do this again?</strong> For a one-off, Explorer is faster. For something you will repeat, it is better to give it a name in the terminal and keep it. Work done in Explorer leaves no trace. Doing the same thing next month means clicking your way through it again.</p>
+    <p>The trouble comes when one job straddles both sides. Picking yesterday's files out of twenty logs and attaching them to an email is like that. Picking is overwhelmingly faster in the terminal. Getting them into the mail window needs the clipboard or the mouse. At that point people reopen Explorer and start looking for the files by eye. The three things below remove that round trip.</p>
+
+    <h2>Crossing from the terminal to Explorer</h2>
+    <p>The first is opening the folder you are in as an Explorer window. One line does it.</p>
+    <pre><code>alias exp='start &quot;&quot; &quot;$(pwd)&quot;'</code></pre>
+    <p>No more digging back down to a folder in Explorer that you already reached with <code>cd</code>.</p>
+    <p>The second is picking files in the terminal and putting the result on the clipboard <strong>as files</strong>. It is the files themselves rather than text. <code>Ctrl+V</code> in Explorer or a mail composer pastes them directly.</p>
+    <pre><code>fcp() {
+  local w=()
+  for f in &quot;$@&quot;; do [ -e &quot;$f&quot; ] &amp;&amp; w+=(&quot;'$(cygpath -aw &quot;$f&quot;)'&quot;); done
+  [ ${#w[@]} -eq 0 ] &amp;&amp; { echo &quot;fcp: no files&quot; &gt;&amp;2; return 1; }
+  local list; list=$(IFS=,; echo &quot;${w[*]}&quot;)
+  powershell -NoProfile -Command &quot;Set-Clipboard -Path @($list)&quot;
+}</code></pre>
+    <p>The key part is <code>cygpath -aw</code>, which converts a Git Bash path into a Windows path. PowerShell does not understand <code>/tmp/a.txt</code>. Check what actually ended up on the clipboard and you see this.</p>
+    <pre><code>$ fcp a.txt b.txt
+$ # what went on the clipboard
+C:\Users\dualk\AppData\Local\Temp\src\a.txt
+C:\Users\dualk\AppData\Local\Temp\src\b.txt</code></pre>
+    <p>Now the earlier example is one line. <code>fcp $(ls -t *.log | head -5)</code> puts the five most recent logs on the clipboard. You paste them in the mail window.</p>
+
+    <h2>Crossing from Explorer to the terminal</h2>
+    <p>The other direction has two parts: bringing a folder over, and bringing files over.</p>
+    <p>For folders the context menu is shortest. Right-click a folder in Explorer and entries such as <code>Open WezTerm here</code> appear. They open a terminal in that folder. The Git Bash one is registered automatically when you install Git. These are the commands in my registry.</p>
+    <pre><code>Directory\shell\git_shell
+  &quot;C:\Program Files\Git\git-bash.exe&quot; &quot;--cd=%1&quot;
+
+Directory\shell\Open WezTerm here
+  &quot;C:\Program Files\WezTerm\wezterm-gui.exe&quot; start --cwd &quot;%V\&quot;</code></pre>
+    <p>There is one thing worth knowing here. <strong>Right-clicking a folder and right-clicking empty space inside a folder read different places</strong>. The first is <code>Directory\shell</code>, the second <code>Directory\Background\shell</code>. A program registered in only one of them appears in the menu sometimes and not others. On Windows 11 the context menu is shortened. Use &quot;Show more options&quot; or <code>Shift+F10</code> to see the full menu.</p>
+    <p>Bringing files over is <code>fpaste</code>. Press <code>Ctrl+C</code> in Explorer, call it in the terminal, and the files are copied into the current folder.</p>
+    <pre><code>fpaste() {
+  powershell -NoProfile -Command &quot;Add-Type -A System.Windows.Forms; [Windows.Forms.Clipboard]::GetFileDropList() | ForEach-Object { \$_ }&quot; |
+    tr -d &quot;\r&quot; | while IFS= read -r f; do
+      [ -n &quot;$f&quot; ] &amp;&amp; cp -r &quot;$(cygpath -u &quot;$f&quot;)&quot; &quot;${1:-.}&quot; &amp;&amp; echo &quot;pasted: $(basename &quot;$f&quot;)&quot;
+    done
+}</code></pre>
+    <p><code>GetFileDropList</code> pulls the file list out of the clipboard. <code>cygpath -u</code> turns the Windows paths back into Git Bash paths. File names with spaces come across intact.</p>
+    <pre><code>$ fpaste
+pasted: a b.txt
+pasted: c.txt</code></pre>
+    <p>Give <code>fcp</code> and <code>fpaste</code> a short alias each and your hands remember those first. I use <code>ccp</code> and <code>ccv</code>, named straight after <code>Ctrl+C</code> and <code>Ctrl+V</code>.</p>
+
+    <h2>Summary</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Direction</th><th>Command</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td>Terminal → Explorer</td><td><code>exp</code></td><td>Opens the current folder in an Explorer window</td></tr>
+          <tr><td>Terminal → anywhere</td><td><code>fcp file…</code></td><td>Puts the chosen files on the clipboard</td></tr>
+          <tr><td>Explorer → terminal</td><td>Right-click a folder</td><td><code>Open WezTerm here</code> opens a terminal in that folder</td></tr>
+          <tr><td>Explorer → terminal</td><td><code>fpaste</code></td><td>Brings files you copied with <code>Ctrl+C</code> into the current folder</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Explorer and the terminal are not competitors. One-off work is faster in Explorer. Work you will repeat is better named and kept in the terminal. What is left is the cost of crossing between them, and the three lines above nearly remove it.</p>
+    <p>If you add only one of the three, make it <code>exp</code>. It is one line, and from the day you add it you stop navigating back to folders in Explorer.</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>

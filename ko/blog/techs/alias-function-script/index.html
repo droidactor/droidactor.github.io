@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>alias 에서 함수로, 함수에서 스크립트로 — droidactor</title>
+<meta name="description" content="alias 가 왜 유용한지부터, if 문과 폴더 이동에서 막히는 지점까지. 함수와 스크립트 파일로 옮겨야 할 때를 가르는 기준.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/techs/alias-function-script/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/alias-function-script/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/alias-function-script/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/alias-function-script/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/techs/alias-function-script/">
+<meta property="og:title" content="alias 에서 함수로, 함수에서 스크립트로">
+<meta property="og:description" content="alias 가 왜 유용한지부터, if 문과 폴더 이동에서 막히는 지점까지. 함수와 스크립트 파일로 옮겨야 할 때를 가르는 기준.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "alias 에서 함수로, 함수에서 스크립트로",
+      "description": "alias 가 왜 유용한지부터, if 문과 폴더 이동에서 막히는 지점까지. 함수와 스크립트 파일로 옮겨야 할 때를 가르는 기준.",
+      "url": "https://droidactor.github.io/ko/blog/techs/alias-function-script/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/techs/alias-function-script/",
+      "datePublished": "2026-08-29",
+      "dateModified": "2026-09-16",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "alias 에서 함수로, 함수에서 스크립트로", "item": "https://droidactor.github.io/ko/blog/techs/alias-function-script/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="언어">
+    <a class="lang-btn" href="/blog/techs/alias-function-script/" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/alias-function-script/" aria-current="page" hreflang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>alias 에서 함수로, 함수에서 스크립트로</nav>
+  <div class="hero">
+    <h1>alias 에서 함수로, 함수에서 스크립트로</h1>
+    <p class="post-meta"><time datetime="2026-08-29">2026년 8월 29일</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>요약.</strong> 터미널에서 같은 명령을 두 번 치면 alias 를 만듭니다. 그런데 쓰다 보면 alias 로는 안 되는 일이 두 가지 나옵니다. if 문을 넣을 수 없고, 스크립트 안에서는 아예 동작하지 않습니다. 명령에 이름을 붙이는 방법은 alias 말고도 두 가지가 더 있습니다. 함수와 스크립트 파일입니다. 셋 중 어느 것을 쓸지 정하는 기준을, alias 가 무엇인지부터 짚어가며 정리했습니다.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_keyboard&amp;hl=ko"><img src="/assets/banner/bt-keyboard.webp" width="800" height="200" loading="lazy" decoding="async" alt="도토리 한글 키보드 - 폰을 PC·TV 의 블루투스 키보드로"></a>
+      <p>제가 만든 무료 앱입니다. 많이 써 주세요.</p>
+    </div>
+
+
+    <h2>alias 는 명령의 첫 단어를 바꿔줍니다</h2>
+    <p>alias 는 명령의 첫 단어를 미리 정해둔 다른 문자열로 바꿔주는 기능입니다. 셸이 명령줄을 읽을 때 글자를 갈아끼우고, 그 뒤는 원래 명령이 그대로 실행됩니다. 만드는 것도 한 줄이고 지우는 것도 <code>unalias</code> 한 줄입니다. 단순하지만 세 가지 일을 합니다.</p>
+    <p><strong>첫째, 타수를 줄입니다.</strong> 하루에 스무 번 치는 명령이 두 글자가 됩니다.</p>
+    <pre><code>alias gs='git status'
+alias la='ls -a'</code></pre>
+    <p><strong>둘째, 옵션을 외우지 않아도 됩니다.</strong> 타수 줄이는 것보다 이게 더 쓸모 있습니다. <code>-w</code> 는 공백만 바뀐 줄을 무시하는 옵션인데, 필요할 때마다 기억해 내는 것보다 이름 안에 넣어두는 편이 확실합니다.</p>
+    <pre><code>alias gdu='git --no-pager diff -w'
+alias rgrep='grep -rni'</code></pre>
+    <p><strong>셋째, 도구의 기본 동작을 바꿉니다.</strong> 같은 이름으로 다시 정의하는 방법입니다.</p>
+    <pre><code>alias lsd='lsd --group-dirs=first'</code></pre>
+    <p>자기가 자기를 부르니 무한히 반복될 것 같지만 그렇게 되지 않습니다. 글자를 갈아끼우는 일이 첫 단어에 한 번만 일어나기 때문입니다. 그래서 <code>lsd</code> 는 늘 폴더를 먼저 보여주는 명령이 됩니다.</p>
+    <pre><code>$ lsd
+zdir
+a.txt
+b.txt</code></pre>
+    <p>원래 동작이 필요할 때는 백슬래시를 앞에 붙입니다. <code>\lsd</code> 는 옵션이 붙지 않은 원본입니다. 지금 무엇이 걸려 있는지 보려면 <code>type lsd</code>, 전체 목록은 인자 없이 <code>alias</code> 입니다.</p>
+
+    <h2>if 문이 필요하거나 폴더를 옮겨야 하면 함수입니다</h2>
+    <p>글자를 갈아끼우는 것이 전부이니 못 하는 일도 있습니다. if 문을 넣을 수 없고, 인자를 명령 중간에 끼울 수도 없습니다. 이럴 때 함수로 바꿉니다.</p>
+    <p>제 <code>gd</code> 는 diff 를 보기 좋게 꾸며주는 delta 가 깔린 PC 와 없는 PC 를 함께 써야 해서 함수입니다.</p>
+    <pre><code>gd() {
+    if command -v delta &gt;/dev/null 2&gt;&amp;1; then
+        git -c core.pager=delta diff -w &quot;$@&quot;
+    else
+        git --no-pager diff -w &quot;$@&quot;
+    fi
+}</code></pre>
+    <p>두 번째는 우회할 방법이 아예 없습니다. 스크립트를 실행하면 별도 프로세스가 뜨는데, 그 프로세스는 자기를 부른 셸의 현재 폴더를 바꿀 수 없습니다. 스크립트 안에서 <code>cd</code> 한 결과는 그 프로세스와 함께 사라집니다.</p>
+    <pre><code>실행 전: /tmp/cdtest
+/tmp/cdtest/sub     &lt;- 스크립트가 cd 한 뒤 찍은 pwd
+실행 후: /tmp/cdtest &lt;- 부모 셸은 그대로</code></pre>
+    <p>그래서 파일 관리자 yazi 로 폴더를 옮겨 다닌 뒤 그 자리에 셸을 남기려면 함수여야 합니다. yazi 가 끝난 위치를 임시 파일로 받아, 그 경로로 셸에서 직접 <code>cd</code> 합니다.</p>
+    <pre><code>yz() {
+    local tmp=&quot;$(mktemp -t yazi-cwd.XXXXXX)&quot;
+    yazi &quot;$@&quot; --cwd-file=&quot;$tmp&quot;
+    local cwd
+    if cwd=&quot;$(cat -- &quot;$tmp&quot;)&quot; &amp;&amp; [ -n &quot;$cwd&quot; ] &amp;&amp; [ &quot;$cwd&quot; != &quot;$PWD&quot; ]; then
+        cd -- &quot;$cwd&quot;
+    fi
+    rm -f -- &quot;$tmp&quot;
+}</code></pre>
+    <p>같은 코드를 스크립트 파일로 만들면 <code>cd</code> 가 그 프로세스 안에서만 일어나 아무 효과가 없습니다.</p>
+
+    <h2>사람이 아니라 프로그램이 부를 것이면 파일로 만듭니다</h2>
+    <p>마지막은 조금 다른 이야기입니다. <strong>alias 는 사람이 직접 명령을 치는 셸에서만 동작합니다.</strong> 이런 셸을 대화형 셸이라고 부릅니다. 두 줄짜리 스크립트로 확인했습니다.</p>
+    <pre><code>$ cat t.sh
+alias hello='echo 안녕'
+hello
+
+$ bash t.sh
+t.sh: line 2: hello: command not found</code></pre>
+    <p>bash 매뉴얼에 그렇게 적혀 있습니다. &quot;Aliases are not expanded when the shell is not interactive.&quot; 예외는 <code>expand_aliases</code> 옵션뿐입니다. 스크립트 첫 줄에 <code>shopt -s expand_aliases</code> 를 넣으면 같은 코드가 정상 동작합니다.</p>
+    <p>그래서 Makefile 안의 명령, CI 작업, AI 코딩 에이전트가 부르는 명령은 alias 로 둘 수 없습니다. 사람이 치는 것이 아니라 프로그램이 부르는 것이라 그렇습니다. 이럴 때 파일로 만듭니다. 할 일은 세 줄입니다.</p>
+    <pre><code>mkdir -p ~/bin                      # 스크립트를 모아 둘 폴더
+chmod +x ~/bin/git-log-file.sh      # 실행 권한
+echo 'export PATH=&quot;$PATH:$HOME/bin&quot;' &gt;&gt; ~/.bashrc</code></pre>
+    <p>그 뒤로는 어느 폴더에 있든 <code>git-log-file.sh</code> 라는 이름만으로 부릅니다. 직접 칠 때나 Makefile 에서나 에이전트가 부를 때나 같은 명령입니다.</p>
+    <p>worktree 여러 개를 한 줄로 병합하는 글에서 다룬 병합 스크립트가 이렇게 파일로 둔 실물입니다. 제가 손으로도 치고 에이전트도 부르므로 파일이어야 했습니다.</p>
+    <p>셋 중 하나만 골라야 하는 것은 아닙니다. 파일로 만든 뒤 그것을 다시 alias 로 가리켜두면 치는 글자가 줄어듭니다.</p>
+    <pre><code>alias glf='~/bin/git-log-file.sh'</code></pre>
+
+    <h2>정리</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>방법</th><th>이럴 때 씁니다</th><th>사는 곳</th></tr></thead>
+        <tbody>
+          <tr><td>alias</td><td>첫 단어만 바꾸면 되는 일</td><td>직접 치는 셸</td></tr>
+          <tr><td>함수</td><td>if 문이 필요하거나 폴더를 옮겨야 하는 일</td><td>직접 치는 셸</td></tr>
+          <tr><td>스크립트 파일</td><td>스크립트·Makefile·CI·에이전트가 부르는 일</td><td>PATH 에 얹은 파일</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>alias 는 첫 단어를 바꿔주는 것이 전부입니다. 그래서 만들기 쉽고, 못 하는 일도 분명합니다. if 문이나 폴더 이동이 필요하면 함수로 바꾸고, 사람이 아니라 프로그램이 부를 것이면 파일로 만듭니다.</p>
+    <p>지금 바로 할 수 있는 것은 인자 없이 <code>alias</code> 를 쳐서 목록을 보는 것입니다. 그 중에 if 문을 넣고 싶었던 것과 스크립트에서 부르고 싶었던 것이 있다면, 그것부터 함수나 파일로 옮기면 됩니다.</p>
+
+  </article>
+
+  <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/apps/">전체 앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/tech-notes/">기술 노트</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play 및 Google Play 로고는 Google LLC 의 상표입니다.</p></footer>
+
+</div>
+
+</body>
+</html>

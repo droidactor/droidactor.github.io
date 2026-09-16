@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catching Disk Hogs With WinDirStat — droidactor</title>
+<meta name="description" content="The big files that the Recycle Bin and Disk Cleanup never catch, found at a glance as areas on a WinDirStat treemap.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/windirstat-find-disk-hogs/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/windirstat-find-disk-hogs/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/windirstat-find-disk-hogs/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/windirstat-find-disk-hogs/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/windirstat-find-disk-hogs/">
+<meta property="og:title" content="Catching Disk Hogs With WinDirStat">
+<meta property="og:description" content="The big files that the Recycle Bin and Disk Cleanup never catch, found at a glance as areas on a WinDirStat treemap.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Catching Disk Hogs With WinDirStat",
+      "description": "The big files that the Recycle Bin and Disk Cleanup never catch, found at a glance as areas on a WinDirStat treemap.",
+      "url": "https://droidactor.github.io/blog/techs/windirstat-find-disk-hogs/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/windirstat-find-disk-hogs/",
+      "datePublished": "2026-09-15",
+      "dateModified": "2026-09-16",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Catching Disk Hogs With WinDirStat", "item": "https://droidactor.github.io/blog/techs/windirstat-find-disk-hogs/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/windirstat-find-disk-hogs/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/windirstat-find-disk-hogs/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Catching Disk Hogs With WinDirStat</nav>
+  <div class="hero">
+    <h1>Catching Disk Hogs With WinDirStat</h1>
+    <p class="post-meta"><time datetime="2026-09-15">15 September 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>In short.</strong> When the bar for the C: drive turns red, most people empty the Recycle Bin first. A few hundred megabytes come back, and a few days later it is red again. The files actually eating the space are in neither the Recycle Bin nor the Disk Cleanup list. WinDirStat is a free program that sweeps a whole drive and draws <strong>file sizes as rectangle areas</strong>. A big file is a big rectangle, so you spot the culprit by eye.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_mouse2&amp;hl=en"><img src="/assets/banner/en/bt-mouse.webp" width="800" height="200" loading="lazy" decoding="async" alt="Dotori Bluetooth Mouse - Your phone as a Bluetooth mouse for PC"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+
+    <h2>Why emptying the Recycle Bin does not give the space back</h2>
+    <p>The Recycle Bin holds only <strong>files you deleted</strong>. What fills the drive is files you never deleted and do not remember creating. Disk Cleanup and Storage Sense are the same. They check <strong>a predetermined list</strong> and leave everything else alone. That list is temporary files, update leftovers and thumbnails.</p>
+    <p>What eats the space is mostly outside that list. Virtual machine disk images. Caches that developer tools downloaded. Game update files. Previous versions stacked up by a backup program.</p>
+    <p>They are all legitimate files, so cleanup tools do not see them as candidates for deletion. On my own C: drive, a single virtual disk file created by Claude Desktop was taking 7.5GB. Emptying the Recycle Bin a hundred times would never surface it.</p>
+
+    <h2>Install it with one winget line</h2>
+    <p>Windows 10 and 11 include winget out of the box. Open a terminal or a command prompt and one line is all it takes.</p>
+    <pre><code>winget install WinDirStat.WinDirStat</code></pre>
+    <p>The current stable version is 2.8.0, released on 2 August 2026. There is no homepage to hunt for an installer on, and no bundled adware to untick during setup. It is open source under the GPL, free for individuals and companies alike. Give it administrator rights when you run it and it sweeps other user accounts' folders too.</p>
+
+    <h2>Area is file size</h2>
+    <div class="screenshot-grid">
+      <figure><img src="/assets/blog/windirstat-treemap.png" width="800" height="553" loading="lazy" decoding="async" alt="WinDirStat 2.8.0 after scanning a C: drive. In the treemap below, one rectangle is one file and its area is the file size"></figure>
+    </div>
+    <p>The coloured rectangles filling the bottom half of the window are the treemap. The whole picture is one drive, and <strong>one rectangle is one file</strong>. Area is directly proportional to file size, and colour means file extension. So there are no numbers to read and compare. Whatever looks big is the file eating the most space. (The screenshot is from a Korean-language install; the layout is the same in English.)</p>
+    <p>The magenta vertical bar with the white outline is the 7.51GB virtual disk file mentioned above. Click a rectangle and that file is selected in the folder list at the top. Pick a folder in the list and you see what part of the treemap it occupies. The list on the right is a total per extension. &quot;Is it videos or installers&quot; is answered immediately as well.</p>
+
+    <h2>Finding it does not mean deleting it</h2>
+    <p>Not every big file is rubbish. You have to separate what can go from what must not be touched.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>What shows up large in the treemap</th><th>What to do</th></tr></thead>
+        <tbody>
+          <tr><td>Installers and old ISOs in Downloads</td><td>Safe to delete</td></tr>
+          <tr><td>Virtual machine or Docker images you no longer use</td><td>Delete from that program</td></tr>
+          <tr><td>Caches from games or video editors</td><td>Clear from that program's settings</td></tr>
+          <tr><td>pagefile.sys, hiberfil.sys</td><td>Do not delete; resize them in Windows settings</td></tr>
+          <tr><td>Files inside Windows and Program Files</td><td>Leave alone</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Big files created by an app are safer cleared from that app than deleted directly. The program then never fails looking for a file that is gone. Once you have checked a file, right-click it in the WinDirStat list. Open it in Explorer or delete it there.</p>
+
+    <h2>Summary</h2>
+    <p>The Recycle Bin and Disk Cleanup sweep only a fixed list. They miss the files that really eat space. WinDirStat draws file sizes as rectangle areas, so you see which file is the culprit at a glance. Installing it is one line: <code>winget install WinDirStat.WinDirStat</code>.</p>
+    <p>Open a terminal now, install it and scan the C: drive once. When the scan finishes, click the largest rectangle. The name of the file that has stolen your space for months appears at the bottom.</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>

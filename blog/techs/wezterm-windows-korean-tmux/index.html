@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WezTerm: One Terminal, CJK and tmux — droidactor</title>
+<meta name="description" content="The whole WezTerm configuration I actually use, with one file settling character width, screen splits and shell switching.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/wezterm-windows-korean-tmux/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/">
+<meta property="og:title" content="WezTerm: One Terminal, CJK and tmux">
+<meta property="og:description" content="The whole WezTerm configuration I actually use, with one file settling character width, screen splits and shell switching.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "WezTerm: One Terminal, CJK and tmux",
+      "description": "The whole WezTerm configuration I actually use, with one file settling character width, screen splits and shell switching.",
+      "url": "https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/",
+      "datePublished": "2026-08-23",
+      "dateModified": "2026-09-16",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "WezTerm on Windows", "item": "https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/wezterm-windows-korean-tmux/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/wezterm-windows-korean-tmux/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>WezTerm on Windows</nav>
+  <div class="hero">
+    <h1>WezTerm: One Terminal, CJK and tmux</h1>
+    <p class="post-meta"><time datetime="2026-08-23">23 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>In short.</strong> Developing on Windows, the terminal is always in the way. <code>ls</code> a directory with Korean file names in it and the columns go out of line. Start a full-screen tool such as lazygit or btop and the borders step sideways. You end up with four windows and alt+tab. To use tmux you have to go inside WSL. That leaves the PowerShell and .NET builds you need outside tmux.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_ppt&amp;hl=en"><img src="/assets/banner/en/bt-ppt.webp" width="800" height="200" loading="lazy" decoding="async" alt="Dotori Bluetooth PPT Remote - Your phone as a PC slideshow remote"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+    <p>I settled all of this with WezTerm. One configuration file (<code>.wezterm.lua</code>) in your home folder is the whole setup. That file behaves identically on Windows, macOS and Linux. Below is the configuration I actually use, broken into pieces. Copy them in order and you will have my environment.</p>
+
+    <h2>Installing and the configuration file</h2>
+    <p>On Windows, download the installer from the <a href="https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe">WezTerm releases page</a> or use winget.</p>
+    <pre><code>winget install wez.wezterm</code></pre>
+    <p>Create the configuration file in your home folder as <code>.wezterm.lua</code>. That is usually <code>C:\Users\&lt;name&gt;\.wezterm.lua</code>. The beginning and end of the file always look like this.</p>
+    <pre><code>local wezterm = require(&quot;wezterm&quot;)
+local act = wezterm.action
+local config = wezterm.config_builder()
+
+-- configuration goes in here
+
+return config</code></pre>
+    <p>It takes effect the moment you save. There is no need to restart the terminal. Edit the config and save, and the colours, font and keys of the open window change. That alone makes tinkering with the configuration feel different.</p>
+
+    <h2>Korean works without a single line of configuration</h2>
+    <p>These two lines are the only font settings in my config. There is no Korean font specified anywhere.</p>
+    <pre><code>config.font = wezterm.font(&quot;JetBrains Mono&quot;, { weight = &quot;Light&quot; })
+config.font_size = 13</code></pre>
+    <p>JetBrains Mono has no Korean glyphs. Korean still renders fine. WezTerm walks the font list per character. When a glyph is missing it falls back to a system font. You can check it yourself.</p>
+    <pre><code>wezterm ls-fonts --text &quot;한글 테스트 ABC&quot;</code></pre>
+    <p>This is the output on my machine.</p>
+    <pre><code>한  cells=2  x_adv=17  Malgun Gothic  C:\WINDOWS\FONTS\MALGUN.TTF
+글  cells=2  x_adv=17  Malgun Gothic  C:\WINDOWS\FONTS\MALGUN.TTF
+A   cells=1  x_adv=10  JetBrains Mono</code></pre>
+    <p>The number that matters is cells. Korean counts as two columns, Latin as one. Get that wrong and table borders shift and progress bars bend. The cursor no longer sits where the text does. Most of what CJK users suffer in a terminal comes from that single number. WezTerm computes it according to the character width standard.</p>
+    <p>Korean input needs no switch either. Change input mode and type: the syllable being composed appears right at the cursor. It never shows up somewhere else or disappears before it is finished.</p>
+    <p>You only have to set the shell's character set to UTF-8. I use Git Bash and give it these environment variables.</p>
+    <pre><code>LANG=ko_KR.UTF-8
+LC_ALL=ko_KR.UTF-8</code></pre>
+
+    <h2>The main point: tmux behaviour without tmux</h2>
+    <p>People use tmux mostly for one thing: splitting the screen to watch several things at once. WezTerm has that in the terminal itself. There is no tmux to install.</p>
+    <p>First pick the prefix key, the equivalent of tmux's <code>Ctrl+B</code>. Mine is <code>Ctrl+U</code>.</p>
+    <pre><code>config.leader = { key = &quot;u&quot;, mods = &quot;CTRL&quot;, timeout_milliseconds = 2000 }</code></pre>
+    <p>Now press <code>Ctrl+U</code>, let go, and press a letter within two seconds. This is my layout.</p>
+    <p><strong>Splitting</strong></p>
+    <ul>
+      <li><code>Ctrl+U</code> then <code>w</code> : split left/right (Width)</li>
+      <li><code>Ctrl+U</code> then <code>v</code> : split top/bottom (Vertical)</li>
+    </ul>
+    <p><strong>Moving between panes</strong></p>
+    <ul>
+      <li><code>Ctrl+U</code> then <code>h</code> : to the left pane</li>
+      <li><code>Ctrl+U</code> then <code>j</code> : to the pane below</li>
+      <li><code>Ctrl+U</code> then <code>k</code> : to the pane above</li>
+      <li><code>Ctrl+U</code> then <code>l</code> : to the right pane</li>
+    </ul>
+    <p><strong>Resizing</strong></p>
+    <ul>
+      <li><code>Ctrl+U</code> then an arrow key : grow by five cells in that direction</li>
+    </ul>
+    <p><strong>Tabs</strong></p>
+    <ul>
+      <li><code>Ctrl+U</code> then <code>c</code> : new tab (Create)</li>
+      <li><code>Ctrl+U</code> then <code>n</code> : next tab, <code>b</code> : previous tab</li>
+      <li><code>Ctrl+U</code> then <code>0-9</code> : straight to that tab</li>
+    </ul>
+    <p><strong>Other</strong></p>
+    <ul>
+      <li><code>Ctrl+U</code> then <code>u</code> : new window</li>
+      <li><code>Ctrl+U</code> then <code>d</code> : detach this pane into its own window (Detach)</li>
+      <li><code>Ctrl+U</code> then <code>x</code> : close this pane (it asks first)</li>
+    </ul>
+    <p>The movement keys are <code>h</code>/<code>j</code>/<code>k</code>/<code>l</code> to match vim, so your hands stay put. Splits are <code>w</code>/<code>v</code>. Remembering left/right as Width and top/bottom as Vertical keeps them straight.</p>
+    <p>The configuration looks like this. It is long but regular, so copy the block and change the letters.</p>
+    <pre><code>local keys = {}
+
+local function leader(key, action)
+    table.insert(keys, { mods = &quot;LEADER&quot;, key = key, action = action })
+end
+
+leader(&quot;w&quot;, act.SplitHorizontal({ domain = &quot;CurrentPaneDomain&quot; }))
+leader(&quot;v&quot;, act.SplitVertical({ domain = &quot;CurrentPaneDomain&quot; }))
+leader(&quot;h&quot;, act.ActivatePaneDirection(&quot;Left&quot;))
+leader(&quot;j&quot;, act.ActivatePaneDirection(&quot;Down&quot;))
+leader(&quot;k&quot;, act.ActivatePaneDirection(&quot;Up&quot;))
+leader(&quot;l&quot;, act.ActivatePaneDirection(&quot;Right&quot;))
+leader(&quot;LeftArrow&quot;,  act.AdjustPaneSize({ &quot;Left&quot;, 5 }))
+leader(&quot;RightArrow&quot;, act.AdjustPaneSize({ &quot;Right&quot;, 5 }))
+leader(&quot;UpArrow&quot;,    act.AdjustPaneSize({ &quot;Up&quot;, 5 }))
+leader(&quot;DownArrow&quot;,  act.AdjustPaneSize({ &quot;Down&quot;, 5 }))
+leader(&quot;c&quot;, act.SpawnTab(&quot;CurrentPaneDomain&quot;))
+leader(&quot;u&quot;, act.SpawnWindow)
+leader(&quot;n&quot;, act.ActivateTabRelative(1))
+leader(&quot;b&quot;, act.ActivateTabRelative(-1))
+leader(&quot;x&quot;, act.CloseCurrentPane({ confirm = true }))
+
+-- detach the current pane into its own window
+leader(&quot;d&quot;, wezterm.action_callback(function(_, pane)
+    pane:move_to_new_window()
+end))
+
+-- Ctrl+U then a digit jumps to that tab
+for i = 0, 9 do
+    table.insert(keys, { mods = &quot;LEADER&quot;, key = tostring(i), action = act.ActivateTab(i) })
+end
+
+config.keys = keys</code></pre>
+    <p>To number tabs from zero, add the first line below. The leftmost key in the number row becomes the first tab, which is easier on the hands. I also moved the tab bar to the bottom.</p>
+    <pre><code>config.tab_and_split_indices_are_zero_based = true
+config.tab_bar_at_bottom = true
+config.use_fancy_tab_bar = false</code></pre>
+
+    <h2>The screen tells you whether the prefix is armed</h2>
+    <p>There is a common annoyance with tmux. You do not know whether you pressed <code>Ctrl+B</code>, so a stray character lands in the terminal. I made a wave appear in the status bar while the prefix is live.</p>
+    <pre><code>wezterm.on(&quot;update-status&quot;, function(window, _)
+    local prefix = &quot;&quot;
+    if window:leader_is_active() then
+        prefix = &quot; &quot; .. utf8.char(0x1f30a)   -- wave emoji
+    end
+    window:set_left_status(wezterm.format({ { Text = prefix } }))
+end)</code></pre>
+    <p>Press <code>Ctrl+U</code> and a wave appears at the bottom left. Press the next key only while you can see it. It is a small device that cuts typos sharply.</p>
+
+    <h2>Where it is clearly better than tmux</h2>
+    <p>Each pane can run a different shell. Git Bash on the left, PowerShell at the top right, WSL Ubuntu at the bottom right. tmux is confined to the Linux world it runs inside. WezTerm's splitting is a terminal feature. Windows programs and Linux shells can share one window. For anyone developing on Windows that difference is decisive.</p>
+    <p>Copy and paste work with the OS clipboard directly. There is no copy mode to enter, no range to mark, no separate clipboard bridge to bolt on. Drag with the mouse and it is on the clipboard.</p>
+    <pre><code>config.selection_word_boundary = &quot; \t\n{}[]()\&quot;'`&quot;
+
+config.mouse_bindings = {
+    -- left click selects only (so links are not opened by accident)
+    {
+        event = { Up = { streak = 1, button = &quot;Left&quot; } },
+        mods = &quot;NONE&quot;,
+        action = act.CompleteSelection(&quot;ClipboardAndPrimarySelection&quot;),
+    },
+    -- open links with Ctrl+click
+    {
+        event = { Up = { streak = 1, button = &quot;Left&quot; } },
+        mods = &quot;CTRL&quot;,
+        action = act.OpenLinkAtMouseCursor,
+    },
+}</code></pre>
+    <p>For pasting I left both the terminal convention (<code>Ctrl+Shift+V</code>) and the general one (<code>Ctrl+V</code>) open. Either habit works. These entries go into the keys table built earlier.</p>
+    <pre><code>table.insert(keys, { key = &quot;c&quot;, mods = &quot;CTRL|SHIFT&quot;, action = act.CopyTo(&quot;Clipboard&quot;) })
+table.insert(keys, { key = &quot;v&quot;, mods = &quot;CTRL|SHIFT&quot;, action = act.PasteFrom(&quot;Clipboard&quot;) })
+table.insert(keys, { key = &quot;v&quot;, mods = &quot;CTRL&quot;,       action = act.PasteFrom(&quot;Clipboard&quot;) })
+table.insert(keys, { key = &quot;Insert&quot;, mods = &quot;SHIFT&quot;, action = act.PasteFrom(&quot;Clipboard&quot;) })</code></pre>
+    <p>Scrolling is just scrolling. Turn the wheel and it scrolls. I keep thirty thousand lines.</p>
+    <pre><code>config.scrollback_lines = 30000
+config.enable_scroll_bar = true</code></pre>
+    <p>When a long build log has made the window heavy, I clear the scrollback.</p>
+    <pre><code>table.insert(keys, {
+    key = &quot;k&quot;, mods = &quot;CTRL|SHIFT&quot;,
+    action = act.ClearScrollback(&quot;ScrollbackAndViewport&quot;),
+})</code></pre>
+    <p>I also made Ctrl plus the mouse wheel change the font size. Being able to write that behaviour in the config file says a lot about WezTerm's character. The configuration is Lua, a programming language. You write behaviour rather than fill in prepared values.</p>
+    <pre><code>local min_font_size, max_font_size = 8, 24
+
+local function zoom(delta)
+    return wezterm.action_callback(function(window)
+        local overrides = window:get_config_overrides() or {}
+        local size = overrides.font_size or config.font_size
+        overrides.font_size = math.max(min_font_size, math.min(size + delta, max_font_size))
+        window:set_config_overrides(overrides)
+    end)
+end
+
+-- these go inside the mouse_bindings table above
+{ event = { Down = { streak = 1, button = { WheelUp = 1 } } },   mods = &quot;CTRL&quot;, action = zoom(1) },
+{ event = { Down = { streak = 1, button = { WheelDown = 1 } } }, mods = &quot;CTRL&quot;, action = zoom(-1) },</code></pre>
+
+    <h2>Picking one of six shells from a menu</h2>
+    <p><code>Alt+L</code> brings up a shell menu, and the one you pick opens in a new tab. I have six registered.</p>
+    <pre><code>config.default_prog = { &quot;C:\Program Files\Git\bin\bash.exe&quot; }
+
+config.launch_menu = {
+    { label = &quot;Git Bash&quot;,       args = { &quot;C:\Program Files\Git\bin\bash.exe&quot; } },
+    { label = &quot;Clean Git Bash&quot;, args = { &quot;C:\Program Files\Git\bin\bash.exe&quot;, &quot;--noprofile&quot;, &quot;--norc&quot;, &quot;-i&quot; } },
+    { label = &quot;PowerShell&quot;,     args = { &quot;powershell.exe&quot; } },
+    { label = &quot;Command Prompt&quot;, args = { &quot;cmd.exe&quot; } },
+    { label = &quot;WSL Ubuntu&quot;,     args = { &quot;wsl.exe&quot;, &quot;-d&quot;, &quot;Ubuntu&quot; } },
+}
+
+table.insert(keys, { key = &quot;l&quot;, mods = &quot;ALT&quot;, action = act.ShowLauncher })</code></pre>
+    <p>The second entry, Clean Git Bash, is worth a look. <code>--noprofile --norc</code> means start the shell skipping every startup script. When something behaves oddly, it answers &quot;is this my .bashrc?&quot; in thirty seconds. You write the command and its arguments as an array, so you can keep as many variants as you like. I have one that starts with every environment variable cleared, too.</p>
+    <p>I also changed the new-tab button (+) so that it shows this menu instead of opening an empty tab.</p>
+    <pre><code>wezterm.on(&quot;new-tab-button-click&quot;, function(window, pane, button, default_action)
+    window:perform_action(act.ShowLauncher, pane)
+    return false   -- cancel the default action (creating an empty tab)
+end)</code></pre>
+
+    <h2>What I use most: driving the terminal from the command line</h2>
+    <p>WezTerm has a <code>wezterm cli</code> command that manipulates the open windows, tabs and panes from outside.</p>
+    <pre><code>wezterm cli list                                  list the open windows, tabs and panes
+wezterm cli split-pane --right                    split to the right and print the new pane id
+wezterm cli send-text --pane-id 3 &quot;make build&quot;    type text into pane 3
+wezterm cli get-text  --pane-id 3                 read what is visible in pane 3
+wezterm cli zoom-pane --pane-id 3                 zoom that pane
+wezterm cli kill-pane --pane-id 3                 close that pane</code></pre>
+    <p>This matters because the terminal becomes something a script can drive. <code>split-pane</code> prints the id of the pane it created, so you can capture it in a variable and keep going.</p>
+    <pre><code>ID=$(wezterm cli split-pane --right)
+wezterm cli send-text --pane-id &quot;$ID&quot; --no-paste &quot;make build&quot;
+wezterm cli send-text --pane-id &quot;$ID&quot; --no-paste $'\r'
+# a moment later
+wezterm cli get-text --pane-id &quot;$ID&quot; | tail -20</code></pre>
+    <p>Two pieces of practical knowledge here. First, you need <code>--no-paste</code>. Without it the text arrives as a paste. Modern shells do not run pasted content immediately; they leave it sitting on the input line.</p>
+    <p>Second, send Enter separately from the command. Sending CR (<code>$'\r'</code>) as its own call is more reliable than appending a newline to the command string. Not knowing these two can leave you stuck on &quot;the text went in but nothing ran&quot;.</p>
+    <p>The reading side has an option too. <code>get-text</code> gives you what is currently on screen by default. A negative <code>--start-line</code> reaches back into the scrollback. I use it when I need a whole build log.</p>
+    <pre><code>wezterm cli get-text --pane-id &quot;$ID&quot; --start-line -2000</code></pre>
+    <p>I use this to run several AI agents on one screen. Open a new pane and start another agent in it. Send instructions with <code>send-text</code> and read the reply with <code>get-text</code>. The next instruction is written from that.</p>
+    <p>I set two AIs to argue over a design. Or I split the roles so one writes code and the other only verifies it. The human's job is to watch from the side.</p>
+    <p>Terminals that allow this are not common. Plenty of them split the screen. Few open a channel that lets a program create the split from outside. Fewer still let it type in and read the result back.</p>
+
+    <h2>There is a way out when it freezes</h2>
+    <p>The terminal draws text on the GPU, which makes it very fast. In exchange, a bad graphics driver match can freeze the window. WezTerm lets you choose the rendering back end.</p>
+    <pre><code>config.front_end = &quot;WebGpu&quot;                        -- this is my default
+config.webgpu_power_preference = &quot;HighPerformance&quot;
+-- if it freezes, switch to &quot;OpenGL&quot;, and to &quot;Software&quot; if that still fails</code></pre>
+    <p>Software draws on the CPU, so it is a little slower but comes up in any environment. Knowing there is a guaranteed escape one config line away is a real comfort in practice. You can tune the refresh load as well.</p>
+    <pre><code>config.max_fps = 120
+config.animation_fps = 60
+config.status_update_interval = 1000</code></pre>
+    <p>I also turned off the confirmation when closing a window, since I open and close them constantly.</p>
+    <pre><code>config.exit_behavior = &quot;Close&quot;
+config.window_close_confirmation = &quot;NeverPrompt&quot;</code></pre>
+
+    <h2>Where tmux is still better</h2>
+    <p>To be fair about it: one of tmux's core features is that the session stays alive. Connect to a remote server, start something and drop the connection. It is still running when you attach again. WezTerm's screen splitting does not have that property. Close the window and the work inside it ends.</p>
+    <p>So for starting a job that takes hours on a server over SSH, tmux on that server is the right tool. And it does not conflict with WezTerm: connect to the server with WezTerm and use tmux inside it. The point of this post is not to abandon tmux. You no longer need to install tmux and go into WSL just to split the screen on your own PC.</p>
+
+    <h2>Wrapping up</h2>
+    <p>In short:</p>
+    <ul>
+      <li>Korean renders with the right width calculation. No Korean font in the config; the system font fills in</li>
+      <li>Making <code>Ctrl+U</code> the prefix reproduces tmux's splitting, movement, resizing and tabs almost exactly</li>
+      <li>Panes can mix Git Bash, PowerShell and WSL</li>
+      <li>The clipboard, the mouse and scrolling behave the way you expect</li>
+      <li><code>wezterm cli</code> lets a script drive the terminal itself</li>
+      <li>The config is Lua, so you write behaviour directly, and it applies the moment you save</li>
+      <li>The same single file behaves identically on Windows, macOS and Linux</li>
+    </ul>
+    <p>That last line matters more than it looks. I keep <code>.wezterm.lua</code> in a dotfiles repository. Setting up a new PC means installing with winget and copying that one file into my home folder. Years of hand-tuned key layout, colours and shell list come back in five minutes.</p>
+    <p>Program: WezTerm (wezterm.org)</p>
+    <p>Configuration file: a single <code>.wezterm.lua</code> in your home folder</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>git worktree: Branches as Folders — droidactor</title>
+<meta name="description" content="Three worktree commands remove the waste of stashing your work and rebuilding from scratch every time you switch branches.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/git-worktree-basics/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/git-worktree-basics/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/git-worktree-basics/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/git-worktree-basics/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/git-worktree-basics/">
+<meta property="og:title" content="git worktree: Branches as Folders">
+<meta property="og:description" content="Three worktree commands remove the waste of stashing your work and rebuilding from scratch every time you switch branches.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "git worktree: Branches as Folders",
+      "description": "Three worktree commands remove the waste of stashing your work and rebuilding from scratch every time you switch branches.",
+      "url": "https://droidactor.github.io/blog/techs/git-worktree-basics/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/git-worktree-basics/",
+      "datePublished": "2026-08-23",
+      "dateModified": "2026-09-16",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "git worktree", "item": "https://droidactor.github.io/blog/techs/git-worktree-basics/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/git-worktree-basics/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/git-worktree-basics/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>git worktree</nav>
+  <div class="hero">
+    <h1>git worktree: Branches as Folders</h1>
+    <p class="post-meta"><time datetime="2026-08-23">23 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>In short.</strong> You run <code>git stash</code> every time you move to another branch. Then you sit through a full rebuild when you come back. This post removes that waste. A worktree turns a branch switch into a folder change. Three commands get you started, and three traps are worth knowing before you do.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_numpad&amp;hl=en"><img src="/assets/banner/en/bt-numpad.webp" width="800" height="200" loading="lazy" decoding="async" alt="Dotori Bluetooth Numpad - Your phone as a 17-key number pad"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+
+    <h2>The cost of switching is in the build output, not the source</h2>
+    <p><code>git switch</code> swaps tracked files and nothing else. The expensive things are what sits beside them: <code>obj/</code>, <code>bin/</code>, <code>node_modules/</code>. When the whole source tree changes, the incremental build is invalidated. Moving to another branch to check one line then costs you minutes. Work in progress has to be pushed into a stash, and popping it afterwards brings conflicts.</p>
+    <p>Cloning the repository a second time solves that, but it duplicates the history and the objects too. A worktree attaches several working folders to one repository. Objects and refs are shared, and only the checkout is separate. It has been built in since Git 2.5 on 29 July 2015, with <code>add</code>, <code>list</code> and <code>prune</code>. There is nothing to install.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Approach</th><th>History</th><th>Build cache</th><th>Parallel work</th></tr></thead>
+        <tbody>
+          <tr><td>stash + switch</td><td>One copy</td><td>Invalidated on every switch</td><td>No</td></tr>
+          <tr><td>Extra clone</td><td>Duplicated per folder</td><td>Kept</td><td>Yes</td></tr>
+          <tr><td>worktree</td><td>Shared</td><td>Kept</td><td>Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Add more clones and you have to run <code>fetch</code> in each folder. A branch created in one of them is invisible in the others. A worktree shares refs, so a branch you created next door shows up right where you are.</p>
+
+    <h2>Three commands to start</h2>
+    <pre><code>git worktree add ../hotfix -b hotfix   # a new branch and a folder in one go
+git worktree list                      # which branch is attached to which folder
+git worktree remove ../hotfix          # clean up the folder (the branch stays)</code></pre>
+    <p>The first line creates the sibling folder <code>../hotfix</code> and checks a new branch out into it. Your original folder is untouched. The build output and the file you were editing stay exactly as they were. To pull out an existing branch, drop <code>-b</code>: <code>git worktree add ../review feature/login</code>. <code>list</code> prints one line per folder with its sha and branch.</p>
+    <pre><code>.../demo    dfd2991 [main]
+.../hotfix  dfd2991 [hotfix]</code></pre>
+
+    <h2>There are only three traps</h2>
+    <ol>
+      <li><strong>The same branch cannot live in two folders.</strong> Check out a branch that is already attached and Git refuses with <code>fatal: 'main' is already used by worktree at ...</code>. Branches and folders are one to one.</li>
+      <li><strong><code>remove</code> deletes the folder only.</strong> The branch stays behind, so delete it separately with <code>git branch -d</code>. The other way round, if you deleted the folder in Explorer, the registration is left behind and <code>git worktree prune</code> clears it.</li>
+      <li><strong>A linked worktree's <code>.git</code> is a file, not a folder.</strong> It holds one line: <code>gitdir: .../worktrees/hotfix</code>. Scripts and tools that assume a <code>.git</code> directory and build paths from it break here.</li>
+    </ol>
+
+    <h2>The bare layout takes away the main folder's privilege</h2>
+    <p>The default arrangement is &quot;main repository plus attached folders&quot;. That gives the main one a special position. Delete it and the rest are orphaned. You also have to remember which folder in the list is the original. To put every folder on equal footing, hide a bare repository and give each branch one folder.</p>
+    <pre><code>proj/
+  .bare/          # the bare repository (no working files here)
+  .git            # a file holding one line, &quot;gitdir: ./.bare&quot;
+  master/         # folder = branch
+  feature-login/</code></pre>
+    <p>Fetch with <code>git clone --bare &lt;url&gt; .bare</code> and create the <code>.git</code> pointer file. Then produce the first folder with <code>git worktree add master</code>. From then on branch names and folder names are one to one. <code>ls</code> alone shows everything you have open.</p>
+
+    <h2>Summary</h2>
+    <p>The real cost of a branch switch is not swapping source but invalidating build output. A worktree separates the folders and takes that cost to zero. <code>add</code>, <code>list</code> and <code>remove</code> are all you need. Remember that a branch and a folder are one to one, and that <code>.git</code> is a file, and nothing goes wrong.</p>
+    <p>Run <code>git worktree add ../hotfix -b hotfix</code> once in the repository you have open right now. The next post uses these folders as parallel work slots and merges them all in one line at the end.</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>

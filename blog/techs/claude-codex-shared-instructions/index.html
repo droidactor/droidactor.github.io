@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One Instruction File, Claude and Codex — droidactor</title>
+<meta name="description" content="Keep one original instead of copying CLAUDE.md and AGENTS.md, have the other paths point at it, and split per agent inside that single file.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/claude-codex-shared-instructions/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/claude-codex-shared-instructions/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/claude-codex-shared-instructions/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/claude-codex-shared-instructions/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/claude-codex-shared-instructions/">
+<meta property="og:title" content="One Instruction File, Claude and Codex">
+<meta property="og:description" content="Keep one original instead of copying CLAUDE.md and AGENTS.md, have the other paths point at it, and split per agent inside that single file.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "One Instruction File, Claude and Codex",
+      "description": "Keep one original instead of copying CLAUDE.md and AGENTS.md, have the other paths point at it, and split per agent inside that single file.",
+      "url": "https://droidactor.github.io/blog/techs/claude-codex-shared-instructions/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/claude-codex-shared-instructions/",
+      "datePublished": "2026-08-23",
+      "dateModified": "2026-09-16",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "One Instruction File, Claude and Codex", "item": "https://droidactor.github.io/blog/techs/claude-codex-shared-instructions/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/claude-codex-shared-instructions/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/claude-codex-shared-instructions/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>One Instruction File, Claude and Codex</nav>
+  <div class="hero">
+    <h1>One Instruction File, Claude and Codex</h1>
+    <p class="post-meta"><time datetime="2026-08-23">23 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>In short.</strong> Start using two AI coding agents and you end up with two instruction files. Claude Code reads <code>CLAUDE.md</code> and Codex reads <code>AGENTS.md</code>. The moment you maintain both, they begin to drift. This post covers the arrangement that keeps one original with every other path pointing at it. It also covers how to split per agent inside that file.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_numpad&amp;hl=en"><img src="/assets/banner/en/bt-numpad.webp" width="800" height="200" loading="lazy" decoding="async" alt="Dotori Bluetooth Numpad - Your phone as a 17-key number pad"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+
+    <h2>Copied instructions always drift apart</h2>
+    <p>The easiest fix is a copy. On the day you copy them the two files are identical. The problem is the day you edit only one of them. You usually notice the mismatch after an agent has broken a rule. By then it is not clear which side is current either.</p>
+    <p>I measured my own home directory. The instruction files at the two paths had the same md5. They were separate files, not a link. That means I had been keeping them in step by hand, and the next one-sided edit would split them. The file itself said it would &quot;later be merged with git if the two are not identical&quot;. That sentence admits what copy-based management costs.</p>
+    <p>There is one principle. <strong>Keep one original, and have every other path point at it</strong>. The whole job is that each tool points differently.</p>
+
+    <h2>The side with imports is the side that links</h2>
+    <p>The two tools do not look for files symmetrically.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Item</th><th>Claude Code</th><th>Codex CLI</th></tr></thead>
+        <tbody>
+          <tr><td>File it reads</td><td><code>CLAUDE.md</code> (it does not read <code>AGENTS.md</code>)</td><td><code>AGENTS.override.md</code> → <code>AGENTS.md</code> → fallback</td></tr>
+          <tr><td>Global path</td><td><code>~/.claude/CLAUDE.md</code></td><td><code>~/.codex/AGENTS.md</code></td></tr>
+          <tr><td>Importing another file</td><td><code>@path</code> supported, up to 4 hops</td><td>None (still a proposal)</td></tr>
+          <tr><td>Recognising other names</td><td>None</td><td><code>project_doc_fallback_filenames</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The direction is decided here. Claude Code can pull another file in from inside its own. Codex cannot, and instead extends the list of filenames it will read. So <strong>if you are starting fresh, make <code>AGENTS.md</code> the original</strong>. The side with imports can follow along in one line.</p>
+    <pre><code>@AGENTS.md
+
+## Claude Code only
+- Everything from here is read by Claude alone.</code></pre>
+    <p>Reduce <code>CLAUDE.md</code> to those two lines. The shared instructions then exist in one place, <code>AGENTS.md</code>. You can continue with Claude-only content underneath the import. That is what separates this from a symlink.</p>
+    <p>If the original in your setup is already <code>CLAUDE.md</code>, change the Codex side instead. One line in <code>~/.codex/config.toml</code>:</p>
+    <pre><code>project_doc_fallback_filenames = [&quot;CLAUDE.md&quot;]</code></pre>
+    <p>Codex picks exactly one file per directory. It looks for <code>AGENTS.override.md</code>, then <code>AGENTS.md</code>, then the fallback, and uses the first one it finds. So in a directory that has an <code>AGENTS.md</code> next to it, <code>CLAUDE.md</code> is not read. Do not put both files in the same folder and expect both to be picked up.</p>
+    <p>An <code>AGENTS.override.md</code> in the same place temporarily overrides that directory's instructions. The original is not deleted. When you want to run one project under different rules for a while, the original stays untouched.</p>
+    <p>The third option is a symlink. It settles the matter in the filesystem without touching either tool's configuration.</p>
+    <pre><code>ln -s AGENTS.md CLAUDE.md</code></pre>
+    <p>On Windows, creating a symlink requires administrator rights or developer mode. Claude Code's own documentation recommends the <code>@AGENTS.md</code> import over a symlink on Windows. Git stores symlinks in mode <code>120000</code>, so you can commit the link itself. It is quieter to put only the original in the repository and leave the link to each machine.</p>
+
+    <h2>If one file faces two agents, say so in the first line</h2>
+    <p>Once the arrangement is in place, one file is read by two models. That file does not tell the reader which of them is reading it. State the fact at the very top.</p>
+    <pre><code>- This file is read as Claude Code's `CLAUDE.md` and as Codex's `AGENTS.md`.
+  If and only if you are Codex:
+  - Read any `/xxxx` skill invocation in this document as `$xxxx`,
+    because in Codex CLI input `/xxxx` is handled as a slash command first.</code></pre>
+    <p>Those two lines become the premise for every conditional that follows. A model knows which tool it is, so a condition like &quot;if and only if you are Codex&quot; genuinely works. <strong>A difference in notation — a tool name, an invocation syntax — ends with one conditional line</strong>. There is no reason to split the document in two.</p>
+
+    <h2>Items that differ in capability go in a shared rule plus a per-tool section</h2>
+    <p>An item that differs in capability rather than notation cannot be handled by a conditional. How a subagent stops when it finds a contradiction in its instructions mid-task is one of those.</p>
+    <p>A Claude subagent has a live two-way channel with the main session, so it can ask on the spot. A Codex subagent is headless and one-shot, so it has no such channel. The action to take in the same situation is simply different. Writing the rule twice, though, splits the trigger conditions.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Part</th><th>Where it goes</th><th>Content</th></tr></thead>
+        <tbody>
+          <tr><td>Shared</td><td>One parent section</td><td>When to stop — the instruction contradicts the intent, a constraint makes the goal unreachable, an irreversible action has no prior agreement</td></tr>
+          <tr><td>Claude only</td><td>Child section</td><td>Message the main session while running and wait for a corrected instruction</td></tr>
+          <tr><td>Codex only</td><td>Child section</td><td>Stop immediately and return the reason with an <code>ESCALATION:</code> prefix at the top of the output. The main session re-runs it with a correction</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>The criteria go in the shared section and only the means go in the per-tool sections</strong>. Copy the trigger list into each per-tool section and one of them will be updated alone later. That brings the duplication problem you were avoiding back inside the file.</p>
+    <p>Once the per-tool sections pass three, the item is probably a tool difference, not an instruction. At that point it is better to align how you use one tool with the other than to grow the document.</p>
+
+    <h2>Summary</h2>
+    <ul>
+      <li>Do not copy instruction files. Keep one original and have the rest point at it.</li>
+      <li>The side with imports, Claude Code, is the side that links. The original is <code>AGENTS.md</code> and <code>CLAUDE.md</code> is a single <code>@AGENTS.md</code> line. If the original is already <code>CLAUDE.md</code>, match it with Codex's <code>project_doc_fallback_filenames</code>.</li>
+      <li>Inside one file, handle notation differences with a conditional and capability differences with a shared rule plus per-tool sections.</li>
+    </ul>
+    <p>If you changed the arrangement, confirm the load at the end. In Claude Code, run <code>/context</code> in a session and check that the file appears in the Memory files list. The link being in place while the file is not read is the most common failure.</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>

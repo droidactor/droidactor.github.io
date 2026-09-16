@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Real Symlinks in Git Bash on Windows — droidactor</title>
+<meta name="description" content="Why ln -s produces a copy instead of a link, and the four settings you need for real symbolic links in Git Bash.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/git-bash-windows-symlink/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/git-bash-windows-symlink/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/git-bash-windows-symlink/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/git-bash-windows-symlink/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/git-bash-windows-symlink/">
+<meta property="og:title" content="Real Symlinks in Git Bash on Windows">
+<meta property="og:description" content="Why ln -s produces a copy instead of a link, and the four settings you need for real symbolic links in Git Bash.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Real Symlinks in Git Bash on Windows",
+      "description": "Why ln -s produces a copy instead of a link, and the four settings you need for real symbolic links in Git Bash.",
+      "url": "https://droidactor.github.io/blog/techs/git-bash-windows-symlink/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/git-bash-windows-symlink/",
+      "datePublished": "2026-08-27",
+      "dateModified": "2026-09-16",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Real Symlinks in Git Bash on Windows", "item": "https://droidactor.github.io/blog/techs/git-bash-windows-symlink/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/git-bash-windows-symlink/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/git-bash-windows-symlink/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Real Symlinks in Git Bash on Windows</nav>
+  <div class="hero">
+    <h1>Real Symlinks in Git Bash on Windows</h1>
+    <p class="post-meta"><time datetime="2026-08-27">27 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>In short.</strong> You have probably run <code>ln -s</code> in Git Bash and ended up with a copy of the file rather than a link. Bring dotfiles that worked on Linux over to Windows and every link turns into a text file. Same cause. Four settings fix it. This post covers those four steps and the symptoms you get when one of them is missing.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_numpad&amp;hl=en"><img src="/assets/banner/en/bt-numpad.webp" width="800" height="200" loading="lazy" decoding="async" alt="Dotori Bluetooth Numpad - Your phone as a 17-key number pad"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+
+    <h2>A symbolic link is a signpost holding a target path</h2>
+    <p>A symbolic link is not a copy of a file. It is a special file holding a path string that says &quot;the real file is over there&quot;. You keep the original in one place. Several locations refer to it as if it were the same file. Edit the original and everything reached through the link sees the change at once.</p>
+    <p>Git stores symbolic links as they are. Where an ordinary file is recorded in mode <code>100644</code>, a link goes in as mode <code>120000</code>. Its content is a single target path string.</p>
+    <pre><code>$ git ls-files -s
+120000 c9c61fe1fb4b3b... 0	alias.txt
+100644 10622902e19e73... 0	real.txt</code></pre>
+    <p>The problem is on the Windows side. Windows has symbolic links too, but creating one requires the <code>SeCreateSymbolicLinkPrivilege</code> right. By default only administrators have it. Everything below exists to work around that constraint.</p>
+
+    <h2>All four steps have to line up before a link is created</h2>
+    <ol>
+      <li><strong>When installing Git</strong>, tick <code>Enable symbolic links</code> on the last screen.</li>
+      <li><strong>Run Git Bash as administrator.</strong></li>
+      <li>Put <code>export MSYS=winsymlinks:nativestrict</code> in the shell environment.</li>
+      <li>Add <code>symlinks = true</code> under <code>[core]</code> in <code>~/.gitconfig</code>.</li>
+    </ol>
+    <p>Steps 3 and 4 are two commands.</p>
+    <pre><code>echo 'export MSYS=winsymlinks:nativestrict' &gt;&gt; ~/.bashrc
+git config --global core.symlinks true</code></pre>
+    <p>The <code>MSYS</code> variable is the key one. Its default is <code>deepcopy</code>, so when it cannot create a link it quietly copies the file instead. <code>nativestrict</code> creates native links only and raises an error when the privilege is missing. Because it does not hide the failure, you see the cause immediately. Open a new terminal and check like this.</p>
+    <pre><code>$ ln -s real.txt alias.txt
+$ ls -l alias.txt
+lrwxrwxrwx 1 dualk 197609 8  Aug 27 16:59 alias.txt -&gt; real.txt</code></pre>
+    <p>A leading <code>l</code> and an arrow mean it worked. <code>-rw-r--r--</code> means you got a copy.</p>
+
+    <h2>Change the properties of the real exe, not the shortcut</h2>
+    <p>Right-clicking and running as administrator every time is a chore. Follow the Git Bash shortcut back to the actual executable. Give that file permanent administrator rights.</p>
+    <ol>
+      <li>Trace the Git Bash shortcut to the original <code>.exe</code>, right-click it and choose <code>Properties</code>.</li>
+      <li>On the <code>Compatibility</code> tab, tick <code>Run this program as an administrator</code>.</li>
+    </ol>
+    <p>If keeping an administrator shell open all the time bothers you, there is an alternative. <strong>Developer Mode</strong> lets an ordinary user account create symbolic links. It has been there since Windows 10 Creators Update (1703). Enable it under <code>Settings &gt; Privacy &amp; security &gt; For developers</code>, reboot, and step 3 alone is enough.</p>
+
+    <h2>Miss a setting and links quietly become text files</h2>
+    <p>The worst case is the one that produces no error. Clone a repository with <code>core.symlinks</code> off and the link is not created. In its place you get <strong>an ordinary file whose content is the path string</strong>.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>State</th><th>Start of <code>ls -l</code></th><th>Result of <code>cat alias.txt</code></th></tr></thead>
+        <tbody>
+          <tr><td>Working link</td><td><code>lrwxrwxrwx ... -&gt; real.txt</code></td><td>The content of the original file</td></tr>
+          <tr><td>Broken link</td><td><code>-rw-r--r--</code> (8 bytes)</td><td><code>real.txt</code> (a path string)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>What makes it worse is that <code>git status</code> comes back clean. Git does not see this as a change, so it can be committed without anyone noticing. The <code>core.symlinks=false</code> value from the clone is baked into that repository's <code>.git/config</code>. Turn the global setting on later and the local setting still wins. That one repository stays broken.</p>
+    <pre><code>git config --local --get core.symlinks    # if this prints false, that is the cause
+git config --local --unset core.symlinks  # remove the local setting
+git checkout -- .                          # lay the working tree out again</code></pre>
+
+    <h2>Summary</h2>
+    <p>A symbolic link is a file holding a target path. On Windows, creating one needs a separate privilege. All four have to line up. Install option, administrator rights, <code>MSYS=winsymlinks:nativestrict</code>, <code>core.symlinks=true</code>. Miss any one of them and you get a copy instead of an error, with <code>git status</code> staying quiet about it.</p>
+    <p>Open Git Bash now and run <code>echo $MSYS</code> and <code>git config --get core.symlinks</code>. If both come back empty, start with the two commands above.</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>

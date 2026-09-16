@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>worktree 여러 개를 한 줄로 병합하기 — droidactor</title>
+<meta name="description" content="worktree 를 병렬 작업 슬롯으로 쓰고, 끝에 스크립트 한 줄로 전부 일렬 병합하는 설계.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/techs/git-worktree-linear-merge/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/git-worktree-linear-merge/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/git-worktree-linear-merge/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/git-worktree-linear-merge/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/techs/git-worktree-linear-merge/">
+<meta property="og:title" content="worktree 여러 개를 한 줄로 병합하기">
+<meta property="og:description" content="worktree 를 병렬 작업 슬롯으로 쓰고, 끝에 스크립트 한 줄로 전부 일렬 병합하는 설계.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "worktree 여러 개를 한 줄로 병합하기",
+      "description": "worktree 를 병렬 작업 슬롯으로 쓰고, 끝에 스크립트 한 줄로 전부 일렬 병합하는 설계.",
+      "url": "https://droidactor.github.io/ko/blog/techs/git-worktree-linear-merge/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/techs/git-worktree-linear-merge/",
+      "datePublished": "2026-08-23",
+      "dateModified": "2026-09-16",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "worktree 여러 개를 한 줄로 병합하기", "item": "https://droidactor.github.io/ko/blog/techs/git-worktree-linear-merge/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="언어">
+    <a class="lang-btn" href="/blog/techs/git-worktree-linear-merge/" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/git-worktree-linear-merge/" aria-current="page" hreflang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>worktree 여러 개를 한 줄로 병합하기</nav>
+  <div class="hero">
+    <h1>worktree 여러 개를 한 줄로 병합하기</h1>
+    <p class="post-meta"><time datetime="2026-08-23">2026년 8월 23일</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>요약.</strong> worktree 를 세 개 넘게 벌려 놓으면 다음 문제가 옵니다. 이걸 어떻게 다시 합치느냐입니다. 저는 폴더마다 작업자를 한 명씩 앉히고 마지막에 스크립트 한 줄로 전부 일렬 병합합니다. 관건은 병합 방식이 아니라 실패했을 때 원자적으로 되돌아오는지입니다.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_numpad&amp;hl=ko"><img src="/assets/banner/bt-numpad.webp" width="800" height="200" loading="lazy" decoding="async" alt="도토리 블루투스 넘패드 - 폰을 PC 의 17키 숫자패드로"></a>
+      <p>제가 만든 무료 앱입니다. 많이 써 주세요.</p>
+    </div>
+
+
+    <h2>폴더 수가 곧 동시 작업 수입니다</h2>
+    <p>1편에서 worktree 는 브랜치 전환 비용을 없애는 도구였습니다. 폴더마다 독립된 빌드 트리라는 성질에는 다른 쓸모가 하나 더 있습니다. 여러 폴더를 동시에 돌려도 서로 간섭하지 않는다는 점입니다. 같은 저장소를 두 프로세스가 빌드하면 산출물 경로가 겹쳐 깨지는데, worktree 는 그 경로 자체가 다릅니다.</p>
+    <p>그래서 폴더를 작업 슬롯으로 씁니다. <code>docs</code> 폴더에 문서 작업자, <code>feature-login</code> 폴더에 기능 작업자를 두고 각자 자기 폴더에서 빌드와 테스트를 돌립니다. 사람은 <code>master</code> 폴더에서 리뷰만 합니다. AI 에이전트를 여러 개 병렬로 돌릴 때 특히 잘 맞습니다. 에이전트끼리 파일 락을 두고 싸울 일이 없고, 한쪽이 빌드를 깨도 다른 슬롯은 멀쩡합니다.</p>
+
+    <h2>병렬로 벌린 것은 merge 커밋 대신 한 줄로 모읍니다</h2>
+    <p>브랜치 다섯 개를 각각 master 로 merge 하면 그래프가 다이아몬드 다발이 됩니다. 나중에 히스토리를 읽으면 어떤 변경이 어떤 변경 위에서 검증됐는지 알 수 없습니다. 그래서 반대로 갑니다. 계보 순서대로 앞 브랜치의 새 tip 위에 <code>rebase --onto</code> 를 이어 붙이고, 다 끝나면 모든 브랜치를 그 최종 tip 으로 fast-forward 정렬합니다.</p>
+    <p>제 <code>--gw1</code> 플래그가 이 일을 합니다. 실행 전 계획은 이렇게 나옵니다.</p>
+    <pre><code>merge plan — linearize 3 worktrees onto 'master', then ff-all:
+  master               pull --ff-only: already up to date
+  master               (base, tip ce5b697f)
+  docs                 ff-advance chain to be09cdb1
+  feature/login        rebase --onto &lt;docs&gt; ce5b697f
+  then fast-forward every branch (incl. master) to the final tip
+  then push master → origin/master (fast-forward, never forced)</code></pre>
+    <p>실행 결과는 merge 커밋이 없는 직선 하나입니다. 모든 worktree 가 같은 커밋을 가리키므로, 어느 폴더에서 빌드해도 결과가 같습니다.</p>
+    <pre><code>* 8494e3f add login page
+* be09cdb write docs
+* ce5b697 init</code></pre>
+
+    <h2>자동화의 값은 원자성에서 나옵니다</h2>
+    <p>rebase 체인은 중간에서 충돌하면 절반만 재작성된 상태로 멈춥니다. 이 상태가 자동화의 최대 위험입니다. 그래서 실패하면 모든 브랜치를 진입 시점의 sha 로 되돌립니다. 충돌하는 브랜치 두 개를 만들어 실제로 돌려 보면 다음 한 줄과 <code>exit 1</code> 만 남고, 세 브랜치의 sha 가 실행 전과 동일했습니다.</p>
+    <pre><code>git-worktree: rebase conflict on 'feature/login' (onto previous tip) — rolled back
+to entry state (except the origin ff of 'master'). resolve 'feature/login' manually,
+then retry.</code></pre>
+    <p>되돌아온다는 보장이 있으니 dry-run 으로 결과를 추측하지 않고 그냥 실행해서 확인합니다. 3-way 충돌은 실제로 rebase 를 해봐야만 드러나므로 이쪽이 빠릅니다. 단계별로 실패를 어떻게 다룰지는 미리 정해 두었습니다.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>단계</th><th>실패 시</th></tr></thead>
+        <tbody>
+          <tr><td>기본 브랜치 origin 동기화 (맨 처음)</td><td>아무것도 건드리지 않고 전체 중단</td></tr>
+          <tr><td>rebase 체인 / ff 정렬</td><td>모든 브랜치를 진입 상태로 롤백</td></tr>
+          <tr><td>마지막 origin push</td><td>롤백하지 않음. 선형화는 그대로 유지</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>동기화를 맨 처음에 두는 이유는 낡은 base 위에 쌓으면 push 시점에 또 갈라지기 때문입니다. 반대로 마지막 push 실패에서 롤백하면, 네트워크나 권한 문제 때문에 애써 만든 선형 결과를 날립니다. 그래서 여기서는 git 의 거부 사유 원문과 재시도 명령만 남기고 종료 코드로만 실패를 알립니다. 원인을 고쳐 다시 돌리면 push 만 재시도됩니다.</p>
+
+    <h2>정리</h2>
+    <p>worktree 폴더는 병렬 작업 슬롯이고, 슬롯을 늘린 대가는 마지막 병합에서 치릅니다. 그 대가를 merge 커밋 다발이 아니라 rebase 체인 한 줄로 받으면 히스토리가 읽히고, 모든 폴더가 같은 커밋에서 다시 출발합니다. 자동화로 넘길 수 있는지는 속도가 아니라 실패 시 원자성으로 판단합니다.</p>
+    <p>다음에 브랜치 셋 이상을 동시에 굴리게 되면, 합칠 스크립트를 먼저 짜고 그 스크립트에 롤백을 넣으십시오.</p>
+
+  </article>
+
+  <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/apps/">전체 앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/tech-notes/">기술 노트</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play 및 Google Play 로고는 Google LLC 의 상표입니다.</p></footer>
+
+</div>
+
+</body>
+</html>

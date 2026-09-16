@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>git worktree - 브랜치를 폴더로 바꾸기 — droidactor</title>
+<meta name="description" content="브랜치 전환마다 stash 하고 빌드를 다시 돌리는 낭비를, worktree 명령 세 개로 없애는 방법.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/techs/git-worktree-basics/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/git-worktree-basics/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/git-worktree-basics/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/git-worktree-basics/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/techs/git-worktree-basics/">
+<meta property="og:title" content="git worktree - 브랜치를 폴더로 바꾸기">
+<meta property="og:description" content="브랜치 전환마다 stash 하고 빌드를 다시 돌리는 낭비를, worktree 명령 세 개로 없애는 방법.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "git worktree - 브랜치를 폴더로 바꾸기",
+      "description": "브랜치 전환마다 stash 하고 빌드를 다시 돌리는 낭비를, worktree 명령 세 개로 없애는 방법.",
+      "url": "https://droidactor.github.io/ko/blog/techs/git-worktree-basics/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/techs/git-worktree-basics/",
+      "datePublished": "2026-08-23",
+      "dateModified": "2026-09-16",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "git worktree", "item": "https://droidactor.github.io/ko/blog/techs/git-worktree-basics/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="언어">
+    <a class="lang-btn" href="/blog/techs/git-worktree-basics/" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/git-worktree-basics/" aria-current="page" hreflang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>git worktree</nav>
+  <div class="hero">
+    <h1>git worktree - 브랜치를 폴더로 바꾸기</h1>
+    <p class="post-meta"><time datetime="2026-08-23">2026년 8월 23일</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>요약.</strong> 브랜치를 옮길 때마다 <code>git stash</code> 를 하고, 돌아와서 빌드를 처음부터 다시 돌리고 있다면 이 글이 그 낭비를 없앱니다. worktree 는 브랜치 전환을 폴더 이동으로 바꿉니다. 시작에 필요한 명령은 세 개고, 미리 알아야 할 함정도 세 개입니다.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_numpad&amp;hl=ko"><img src="/assets/banner/bt-numpad.webp" width="800" height="200" loading="lazy" decoding="async" alt="도토리 블루투스 넘패드 - 폰을 PC 의 17키 숫자패드로"></a>
+      <p>제가 만든 무료 앱입니다. 많이 써 주세요.</p>
+    </div>
+
+
+    <h2>전환 비용은 소스가 아니라 빌드 산출물에 있습니다</h2>
+    <p><code>git switch</code> 가 갈아끼우는 것은 추적 파일뿐입니다. 정작 비싼 것은 그 옆에 남는 <code>obj/</code>, <code>bin/</code>, <code>node_modules/</code> 입니다. 소스가 통째로 바뀌면 증분 빌드가 무효화되므로, 한 줄 확인하러 브랜치를 옮겼다가 몇 분을 기다립니다. 작업 중이던 변경은 stash 로 밀어 넣어야 하고, 돌아와 pop 하다 충돌을 만납니다.</p>
+    <p>저장소를 하나 더 clone 하면 해결되지만 히스토리와 오브젝트가 그대로 복제됩니다. worktree 는 저장소 하나에 작업 폴더만 여러 개 붙입니다. 오브젝트와 refs 는 공유하고 체크아웃만 분리하는 구조입니다. 2015년 7월 29일 Git 2.5 에 <code>add</code>/<code>list</code>/<code>prune</code> 로 들어온 기본 기능이라 따로 설치할 것도 없습니다.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>방식</th><th>히스토리</th><th>빌드 캐시</th><th>동시 작업</th></tr></thead>
+        <tbody>
+          <tr><td>stash + switch</td><td>하나</td><td>전환마다 무효화</td><td>불가</td></tr>
+          <tr><td>저장소 추가 clone</td><td>폴더마다 복제</td><td>유지</td><td>가능</td></tr>
+          <tr><td>worktree</td><td>공유</td><td>유지</td><td>가능</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>clone 을 늘리면 <code>fetch</code> 도 폴더마다 따로 돌려야 하고, 한쪽에서 만든 브랜치가 다른 쪽에 보이지 않습니다. worktree 는 refs 를 공유하므로 옆 폴더에서 방금 만든 브랜치가 그 자리에서 보입니다.</p>
+
+    <h2>명령 세 개로 시작합니다</h2>
+    <pre><code>git worktree add ../hotfix -b hotfix   # 새 브랜치 + 폴더를 한 번에
+git worktree list                      # 어느 폴더에 어느 브랜치가 붙었는지
+git worktree remove ../hotfix          # 폴더 정리 (브랜치는 남습니다)</code></pre>
+    <p>첫 줄은 형제 폴더 <code>../hotfix</code> 를 만들고 거기에 새 브랜치를 체크아웃합니다. 원래 폴더는 손대지 않으므로 빌드 산출물도, 편집 중이던 파일도 그대로입니다. 이미 있는 브랜치를 꺼내려면 <code>-b</code> 를 빼고 <code>git worktree add ../review feature/login</code> 으로 씁니다. <code>list</code> 는 폴더마다 한 줄씩 sha 와 브랜치를 찍습니다.</p>
+    <pre><code>.../demo    dfd2991 [main]
+.../hotfix  dfd2991 [hotfix]</code></pre>
+
+    <h2>함정은 셋뿐입니다</h2>
+    <ol>
+      <li><strong>같은 브랜치를 두 폴더에 둘 수 없습니다.</strong> 이미 붙은 브랜치를 또 체크아웃하면 <code>fatal: 'main' is already used by worktree at ...</code> 로 거부합니다. 브랜치와 폴더는 일대일입니다.</li>
+      <li><strong><code>remove</code> 는 폴더만 지웁니다.</strong> 브랜치는 그대로 남으니 <code>git branch -d</code> 로 따로 지웁니다. 반대로 탐색기에서 폴더를 지웠으면 등록 정보가 남으므로 <code>git worktree prune</code> 으로 정리합니다.</li>
+      <li><strong>링크된 worktree 의 <code>.git</code> 은 폴더가 아니라 파일입니다.</strong> 안에는 <code>gitdir: .../worktrees/hotfix</code> 한 줄이 들어 있습니다. <code>.git</code> 디렉터리 존재를 가정하고 경로를 조립하는 스크립트나 툴은 여기서 깨집니다.</li>
+    </ol>
+
+    <h2>메인 폴더의 특권을 없애는 bare 레이아웃</h2>
+    <p>기본 사용법은 &quot;메인 저장소 + 딸린 폴더&quot; 라서 메인이 특별한 지위를 갖습니다. 메인을 지우면 나머지가 고아가 되고, 폴더 목록에서 어느 것이 원본인지 기억해야 합니다. 폴더를 전부 대등하게 두려면 bare 저장소를 숨기고 브랜치마다 폴더를 하나씩 두는 배치가 낫습니다.</p>
+    <pre><code>proj/
+  .bare/          # bare 저장소 (여기엔 작업 파일이 없습니다)
+  .git            # &quot;gitdir: ./.bare&quot; 한 줄이 든 파일
+  master/         # 폴더 = 브랜치
+  feature-login/</code></pre>
+    <p><code>git clone --bare &lt;url&gt; .bare</code> 로 받고, <code>.git</code> 포인터 파일을 만든 뒤 <code>git worktree add master</code> 로 첫 폴더를 냅니다. 이후 브랜치 이름과 폴더 이름이 일대일이라 <code>ls</code> 만으로 지금 벌여 놓은 작업이 전부 보입니다.</p>
+
+    <h2>정리</h2>
+    <p>브랜치 전환의 실제 비용은 소스 교체가 아니라 빌드 산출물 무효화입니다. worktree 는 폴더를 분리해 그 비용을 0으로 만들고, <code>add</code>/<code>list</code>/<code>remove</code> 세 명령이면 충분합니다. 브랜치와 폴더가 일대일이라는 제약, 그리고 <code>.git</code> 이 파일이라는 사실만 기억하면 사고가 없습니다.</p>
+    <p>지금 저장소에서 <code>git worktree add ../hotfix -b hotfix</code> 를 한 번 실행해 보십시오. 다음 편에서는 이렇게 벌려 놓은 폴더를 병렬 작업 슬롯으로 쓰고, 마지막에 한 줄로 병합하는 방법을 다룹니다.</p>
+
+  </article>
+
+  <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/apps/">전체 앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/tech-notes/">기술 노트</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play 및 Google Play 로고는 Google LLC 의 상표입니다.</p></footer>
+
+</div>
+
+</body>
+</html>

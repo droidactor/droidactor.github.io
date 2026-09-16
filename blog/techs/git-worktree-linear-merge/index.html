@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merging Many Worktrees Into One Line — droidactor</title>
+<meta name="description" content="Using worktrees as parallel work slots, then collapsing all of them into one straight line with a single script.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/git-worktree-linear-merge/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/git-worktree-linear-merge/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/git-worktree-linear-merge/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/git-worktree-linear-merge/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/git-worktree-linear-merge/">
+<meta property="og:title" content="Merging Many Worktrees Into One Line">
+<meta property="og:description" content="Using worktrees as parallel work slots, then collapsing all of them into one straight line with a single script.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Merging Many Worktrees Into One Line",
+      "description": "Using worktrees as parallel work slots, then collapsing all of them into one straight line with a single script.",
+      "url": "https://droidactor.github.io/blog/techs/git-worktree-linear-merge/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/git-worktree-linear-merge/",
+      "datePublished": "2026-08-23",
+      "dateModified": "2026-09-16",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Merging Many Worktrees Into One Line", "item": "https://droidactor.github.io/blog/techs/git-worktree-linear-merge/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/git-worktree-linear-merge/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/git-worktree-linear-merge/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Merging Many Worktrees Into One Line</nav>
+  <div class="hero">
+    <h1>Merging Many Worktrees Into One Line</h1>
+    <p class="post-meta"><time datetime="2026-08-23">23 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>In short.</strong> Once you have more than three worktrees open, the next problem arrives. How do you put them back together? I seat one worker in each folder and merge everything into one line with a single script at the end. What matters is not the merge strategy but whether a failure lands you back where you started.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_numpad&amp;hl=en"><img src="/assets/banner/en/bt-numpad.webp" width="800" height="200" loading="lazy" decoding="async" alt="Dotori Bluetooth Numpad - Your phone as a 17-key number pad"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+
+    <h2>The number of folders is the number of parallel jobs</h2>
+    <p>In the first post a worktree was a tool for removing the cost of switching branches. The property that each folder is an independent build tree has a second use. Several folders can run at the same time without interfering with each other. Two processes building the same repository collide over output paths and break. With worktrees those paths are different to begin with.</p>
+    <p>So I use folders as work slots. A documentation worker sits in the <code>docs</code> folder and a feature worker in <code>feature-login</code>. Each runs builds and tests in their own place. The human only reviews, from the <code>master</code> folder.</p>
+    <p>It suits running several AI agents in parallel especially well. The agents never fight over file locks. When one breaks the build, the other slots are fine.</p>
+
+    <h2>What was opened in parallel is collected in one line, not in merge commits</h2>
+    <p>Merge five branches into master one at a time and the graph turns into a bundle of diamonds. Read that history later and you cannot tell which change was verified on top of which. So I go the other way. The branches go in order of descent. Each is appended onto the new tip of the previous one with <code>rebase --onto</code>. When that is done, every branch is fast-forwarded to the final tip.</p>
+    <p>My <code>--gw1</code> flag does this. The plan it prints before running looks like this.</p>
+    <pre><code>merge plan — linearize 3 worktrees onto 'master', then ff-all:
+  master               pull --ff-only: already up to date
+  master               (base, tip ce5b697f)
+  docs                 ff-advance chain to be09cdb1
+  feature/login        rebase --onto &lt;docs&gt; ce5b697f
+  then fast-forward every branch (incl. master) to the final tip
+  then push master → origin/master (fast-forward, never forced)</code></pre>
+    <p>The result is one straight line with no merge commits. Every worktree points at the same commit, so a build in any folder gives the same result.</p>
+    <pre><code>* 8494e3f add login page
+* be09cdb write docs
+* ce5b697 init</code></pre>
+
+    <h2>The value of the automation comes from atomicity</h2>
+    <p>A rebase chain that hits a conflict halfway stops with half of the history rewritten. That state is the biggest risk in the whole thing. So on failure every branch is put back to the sha it had on entry. I built two conflicting branches and actually ran it. All that was left was the line below and <code>exit 1</code>. The shas of all three branches were identical to what they had been.</p>
+    <pre><code>git-worktree: rebase conflict on 'feature/login' (onto previous tip) — rolled back
+to entry state (except the origin ff of 'master'). resolve 'feature/login' manually,
+then retry.</code></pre>
+    <p>Because the rollback is guaranteed, I do not guess at the outcome with a dry run. I just run it and see. A three-way conflict only shows up when a rebase is actually attempted, so this is the faster route. How each stage handles failure is decided in advance.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Stage</th><th>On failure</th></tr></thead>
+        <tbody>
+          <tr><td>Syncing the default branch with origin (first)</td><td>Touch nothing, abort everything</td></tr>
+          <tr><td>Rebase chain / ff alignment</td><td>Roll every branch back to its entry state</td></tr>
+          <tr><td>Final push to origin</td><td>No rollback. The linearization stands</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The sync goes first because stacking on a stale base means diverging again at push time. At the other end, rolling back a failed push would throw away a linear result you worked for. A network or permission problem should not cost you that. So there the tool leaves git's own refusal message and a retry command. Failure is signalled through the exit code alone. Fix the cause, run it again, and only the push is retried.</p>
+
+    <h2>Summary</h2>
+    <p>Worktree folders are parallel work slots, and the price of adding slots is paid at the final merge. Pay that price as one rebase chain rather than a bundle of merge commits. The history stays readable, and every folder starts again from the same commit. Whether a job can be handed to automation is decided by atomicity on failure, not by speed.</p>
+    <p>Next time you run three or more branches at once, write the script that will combine them first. Put the rollback in that script.</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>

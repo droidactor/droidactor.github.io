@@ -4,11 +4,12 @@
   and carries the same sections.
 
   Before publishing, author and review both drafts at
-  MyApps/Mobile/../blogs/<app>/<slug>/site.{en,ko}.md. All writing happens there;
-  this repo receives only publishing artifacts. Then do all five steps below, or
-  the language pair drifts apart:
-    1. blog/<slug>/index.html      from _post-template.html, lang="en"
-    2. ko/blog/<slug>/index.html   from the same template,   lang="ko"
+  MyApps/Mobile/../blogs/<app|section>/<slug>/site.{en,ko}.md. All writing happens
+  there; this repo receives only publishing artifacts. Then do all five steps below,
+  or the language pair drifts apart. New posts live one level deeper, under a section
+  (/blog/techs/<slug>/); the first eight stay flat because their URLs are indexed:
+    1. blog/<section>/<slug>/index.html     from _post-template.html, lang="en"
+    2. ko/blog/<section>/<slug>/index.html  from the same template,   lang="ko"
     3. an <li> in the list below, and its twin in /ko/blog/index.html
     4. a <url> pair in /sitemap.xml for the post, plus the blog index pair
        (that pair is commented out until the first post ships — see sitemap.xml)
@@ -99,6 +100,76 @@
         <p>One sentence saying what the reader will be able to do after reading it.</p>
       </li>
       -->
+      <li>
+        <p class="meta"><time datetime="2026-09-15">15 September 2026</time> · IT &amp; Computer</p>
+        <h3><a href="/blog/techs/windirstat-find-disk-hogs/">Catching Disk Hogs With WinDirStat</a></h3>
+        <p>The big files that the Recycle Bin and Disk Cleanup never catch, found at a glance as areas on a WinDirStat treemap.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-09-02">2 September 2026</time> · IT &amp; Computer</p>
+        <h3><a href="/blog/techs/windows-package-manager/">Install Windows Programs From One Line</a></h3>
+        <p>Windows has apt-style installers too. Built-in winget is the axis, and here is when to reach for Chocolatey or Scoop.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-29">29 August 2026</time> · IT &amp; Computer</p>
+        <h3><a href="/blog/techs/makefile-as-command-list/">A Makefile Is a Command List</a></h3>
+        <p>Put commands that have nothing to do with building into a Makefile and use it as a per-folder command list. The pattern that turns targets into the help text, and three Windows traps.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-29">29 August 2026</time> · IT &amp; Computer</p>
+        <h3><a href="/blog/techs/explorer-vs-terminal/">Explorer First, or the Terminal?</a></h3>
+        <p>Explorer and the terminal are good at different things. Not a question of which to pick, but of building three bridges that remove the cost of crossing between them.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-29">29 August 2026</time> · IT &amp; Computer</p>
+        <h3><a href="/blog/techs/claude-desktop-vs-code-cli/">Your Terminal Setup Is the Agent's Hands</a></h3>
+        <p>A chat window and a terminal agent part ways over where the result ends up - in a conversation or in a file. Pick the terminal side and the commands you already built get used as they are.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-29">29 August 2026</time> · IT &amp; Computer</p>
+        <h3><a href="/blog/techs/alias-function-script/">From Alias to Function to Script</a></h3>
+        <p>Why an alias is useful, where it stops working with an if statement or a change of directory, and the test for moving up to a function or a script file.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-27">27 August 2026</time> · IT &amp; Computer</p>
+        <h3><a href="/blog/techs/git-bash-windows-symlink/">Real Symlinks in Git Bash on Windows</a></h3>
+        <p>Why ln -s produces a copy instead of a link, and the four settings you need for real symbolic links in Git Bash.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-26">26 August 2026</time> · IT &amp; Computer</p>
+        <h3><a href="/blog/techs/wezterm-unix-domain-persistence/">WezTerm 3: Sessions That Outlive Windows</a></h3>
+        <p>Close the window with a build running and the work keeps going, and the split layout you set up comes back exactly as it was.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-25">25 August 2026</time> · IT &amp; Computer</p>
+        <h3><a href="/blog/techs/wezterm-leader-cheatsheet/">WezTerm 2: Twenty Leader Shortcuts</a></h3>
+        <p>Past twenty leader shortcuts, your config and your memory stop matching. Put the key definitions in one table and generate the help screen from it.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-23">23 August 2026</time> · IT &amp; Computer</p>
+        <h3><a href="/blog/techs/what-to-delegate-to-ai/">What Should You Hand To an AI?</a></h3>
+        <p>AI is good at judgement and programs are good at repetition. One test that separates the two, and how to turn the program side into a tool the AI then calls.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-23">23 August 2026</time> · IT &amp; Computer</p>
+        <h3><a href="/blog/techs/wezterm-windows-korean-tmux/">WezTerm: One Terminal, CJK and tmux</a></h3>
+        <p>The whole WezTerm configuration I actually use, with one file settling character width, screen splits and shell switching.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-23">23 August 2026</time> · IT &amp; Computer</p>
+        <h3><a href="/blog/techs/git-worktree-linear-merge/">Merging Many Worktrees Into One Line</a></h3>
+        <p>Using worktrees as parallel work slots, then collapsing all of them into one straight line with a single script.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-23">23 August 2026</time> · IT &amp; Computer</p>
+        <h3><a href="/blog/techs/git-worktree-basics/">git worktree: Branches as Folders</a></h3>
+        <p>Three worktree commands remove the waste of stashing your work and rebuilding from scratch every time you switch branches.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-23">23 August 2026</time> · IT &amp; Computer</p>
+        <h3><a href="/blog/techs/claude-codex-shared-instructions/">One Instruction File, Claude and Codex</a></h3>
+        <p>Keep one original instead of copying CLAUDE.md and AGENTS.md, have the other paths point at it, and split per agent inside that single file.</p>
+      </li>
       <li>
         <p class="meta"><time datetime="2026-08-08">8 August 2026</time> · <span class="dotori">Dotori</span> Bluetooth Keyboard</p>
         <h3><a href="/blog/type-korean-over-bluetooth-hid/">Typing Korean over Bluetooth HID from an Android phone</a></h3>

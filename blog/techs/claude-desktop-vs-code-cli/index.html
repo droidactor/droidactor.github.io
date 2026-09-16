@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Terminal Setup Is the Agent's Hands — droidactor</title>
+<meta name="description" content="A chat window and a terminal agent differ in where the result lands — a conversation or a file. The terminal side reuses commands you already built.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/claude-desktop-vs-code-cli/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/claude-desktop-vs-code-cli/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/claude-desktop-vs-code-cli/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/claude-desktop-vs-code-cli/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/claude-desktop-vs-code-cli/">
+<meta property="og:title" content="Your Terminal Setup Is the Agent's Hands">
+<meta property="og:description" content="A chat window and a terminal agent differ in where the result lands — a conversation or a file. The terminal side reuses commands you already built.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Your Terminal Setup Is the Agent's Hands",
+      "description": "A chat window and a terminal agent differ in where the result lands — a conversation or a file. The terminal side reuses commands you already built.",
+      "url": "https://droidactor.github.io/blog/techs/claude-desktop-vs-code-cli/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/claude-desktop-vs-code-cli/",
+      "datePublished": "2026-08-29",
+      "dateModified": "2026-09-16",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Your Terminal Setup Is the Agent's Hands", "item": "https://droidactor.github.io/blog/techs/claude-desktop-vs-code-cli/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/claude-desktop-vs-code-cli/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/claude-desktop-vs-code-cli/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Your Terminal Setup Is the Agent's Hands</nav>
+  <div class="hero">
+    <h1>Your Terminal Setup Is the Agent's Hands</h1>
+    <p class="post-meta"><time datetime="2026-08-29">29 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>In short.</strong> You may be doing this several times a day. Open a file to ask an AI about the code, select all, paste it into a chat box. Then carry the answer back into the editor. There is a point where tools that need that round trip and tools that do not part ways. It is whether the result can stay in the conversation or has to end up in a file. Pick the side where it ends up in a file and the commands you built earlier get used as they are.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_ppt&amp;hl=en"><img src="/assets/banner/en/bt-ppt.webp" width="800" height="200" loading="lazy" decoding="async" alt="Dotori Bluetooth PPT Remote - Your phone as a PC slideshow remote"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+
+    <h2>The split is about where the result ends up</h2>
+    <p>A chat window knows only what I pasted. It cannot see what is in the file next door or whether the build passes. Its answer stays inside the conversation. That suits talking through a design, asking about a concept, or having one snippet looked over. There is little to paste and all you need is the conclusion.</p>
+    <p>An agent running in the terminal has a different character. Claude Code is one: it reads and edits files directly, runs builds and tests, and works with git. It digs through the repository and finds things without me pasting them.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th></th><th>Chat window</th><th>Terminal agent</th></tr></thead>
+        <tbody>
+          <tr><td>What it knows</td><td>What was pasted</td><td>The whole repository</td></tr>
+          <tr><td>Result</td><td>A conversation</td><td>Files and commits</td></tr>
+          <tr><td>How it is checked</td><td>A person copies it out and runs it</td><td>It builds and tests itself</td></tr>
+          <tr><td>What it suits</td><td>Design discussion, concept questions</td><td>Changes that will be committed</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The test is one line. <strong>If the result can end in the conversation, use the chat window. If it has to stay in the repository, use the terminal</strong>. Doing conversation-sized work in the terminal is overkill. The other way round, file-sized work in a chat window keeps a person shuttling text back and forth.</p>
+
+    <h2>The agent uses the commands I already made</h2>
+    <p>Once you pick the terminal side, something changes. The agent calls my own commands. Set up <code>make build</code> and it verifies its work with that. Keep a script as a file and it calls that file.</p>
+    <p>One thing gets in the way here. <strong>It cannot call an alias</strong>. The shell that comes up when an agent runs a command is not a shell a person types in. Aliases are not loaded. That is the behaviour confirmed in the earlier post about aliases. So commands you share with an agent go in <strong>files or Makefile targets</strong>, not aliases.</p>
+    <p>Once they are, one more thing becomes possible. Write those commands in the project's <code>CLAUDE.md</code> and the agent uses them.</p>
+    <pre><code>## Build and verification
+- Build: `make build`
+- Test: `make test`
+- Do not report a change as done if it has not been verified with these two.</code></pre>
+    <p>With those three lines the agent runs the build itself after editing code. It fixes the code again when the build breaks. Without them you get &quot;I fixed it&quot; and do the checking yourself. The target list from the post on using a Makefile as a command list pays off right here.</p>
+
+    <h2>Split accounts and settings by folder</h2>
+    <p>One practical addition. Want different accounts for work and personal projects, or simply separate settings? One environment variable does it. The official documentation states the purpose. Give it this variable and it stores &quot;settings, session history, and plugins&quot; in that folder.</p>
+    <p>Point it at a separate folder and the settings and session history go in there. The entry points are aliases.</p>
+    <pre><code>alias cck='CLAUDE_CONFIG_DIR=&quot;$HOME/claude/kwak&quot; claude'
+alias cch='CLAUDE_CONFIG_DIR=&quot;$HOME/claude/help&quot; claude'</code></pre>
+    <p>These are commands I type by hand, so an alias is right. What the previous section said to write down as files were the commands an agent calls. The same test applies, pointing the other way.</p>
+
+    <h2>Summary</h2>
+    <p>A chat window and a terminal agent part ways over where the result ends up. Split the work that can end in a conversation from the work that has to end in a file.</p>
+    <p>Once you decide on the terminal side, everything you built so far becomes the agent's hands. The bridges between Explorer and the terminal. Your functions and script files. Your Makefile targets. What you made for your own convenience is used by the agent too. The alias is the one exception.</p>
+    <p>One thing you can do now is write your build and test commands into <code>CLAUDE.md</code>, one line each. That line is the difference between &quot;I fixed it&quot; and &quot;I fixed it and checked&quot;.</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>

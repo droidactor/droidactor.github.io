@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WezTerm 3: Sessions That Outlive Windows — droidactor</title>
+<meta name="description" content="Close the window with a build running and the work keeps going, and the split layout you set up comes back exactly as it was.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/wezterm-unix-domain-persistence/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/">
+<meta property="og:title" content="WezTerm 3: Sessions That Outlive Windows">
+<meta property="og:description" content="Close the window with a build running and the work keeps going, and the split layout you set up comes back exactly as it was.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "WezTerm 3: Sessions That Outlive Windows",
+      "description": "Close the window with a build running and the work keeps going, and the split layout you set up comes back exactly as it was.",
+      "url": "https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/",
+      "datePublished": "2026-08-26",
+      "dateModified": "2026-09-16",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "WezTerm sessions", "item": "https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/wezterm-unix-domain-persistence/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/wezterm-unix-domain-persistence/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>WezTerm sessions</nav>
+  <div class="hero">
+    <h1>WezTerm 3: Sessions That Outlive Windows</h1>
+    <p class="post-meta"><time datetime="2026-08-26">26 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>In short.</strong> At the end of part 1 I wrote that &quot;WezTerm's splits do not have this property. Close the window and the work inside it ends.&quot; That was only true of the default configuration. One line of config and the work inside keeps running when you close the window. The split layout comes back with it. I am writing down exactly what I confirmed on my own PC.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.roman&amp;hl=en"><img src="/assets/banner/en/roman.webp" width="800" height="200" loading="lazy" decoding="async" alt="Dotori Roman Numerals - Arabic and Roman numerals, both ways"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+
+    <h2>Close the window and the build keeps going</h2>
+    <p>Start a command in a terminal window and closing the window kills the command. The window and the program are one thing.</p>
+    <p>The two can be separated. A separate server running in the background holds the program. The window becomes a pane of glass you look through. Take the glass away and the inside keeps running. Put it back and even the output that accumulated meanwhile is there.</p>
+    <p>It is easiest to picture with a situation. You split the screen three ways. <code>dotnet build</code> runs on the left, the log is at the top right, and a shell sits at the bottom right. The build takes about ten minutes. Close the window here and</p>
+    <ul>
+      <li>the build is not interrupted and carries on,</li>
+      <li>reopening later brings <strong>those three panes back, sizes included</strong>, and</li>
+      <li>the output from before you closed is still there.</li>
+    </ul>
+    <p>It is the same in three other cases. The terminal hangs, you edit the config and need a restart, or you close the window by mistake. Attach a new window and you are back where you were.</p>
+    <p>In part 1 I wrote that tmux is confined to the Linux world it runs inside. The server holding the work here is a Windows program, so that limit does not apply. Run Git Bash in one pane or a .NET build under PowerShell in another and both survive the same way.</p>
+
+    <h2>One line of config and two shortcuts</h2>
+    <p>Add one line to <code>~/.wezterm.lua</code> that defines a session. <code>mux</code> is a name I chose, so use whatever you like.</p>
+    <pre><code>config.unix_domains = { { name = &quot;mux&quot; } }</code></pre>
+    <p>That line alone changes nothing. WezTerm still opens as an ordinary window, and whether you enter the session is decided each time. So give it one shortcut in and one out. The <code>leader</code> helper from part 1 is used as is.</p>
+    <pre><code>leader(&quot;a&quot;, act.AttachDomain(&quot;mux&quot;))                -- attach to the session
+leader(&quot;e&quot;, act.DetachDomain(&quot;CurrentPaneDomain&quot;))  -- detach from the session</code></pre>
+    <p>You do not have to start the server yourself; it comes up on the first attach. If the session is empty it starts with a single pane. If a session is already in use it restores that layout.</p>
+
+    <h2>The order for closing and reviving</h2>
+    <ol>
+      <li>Save the config above. It takes effect the moment you save.</li>
+      <li>Attach with <code>Ctrl+U</code> then <code>a</code>. The first time it starts with one pane.</li>
+      <li>Split the screen and start the build as usual. The <code>Ctrl+U</code> then <code>w</code>, <code>v</code> from part 1 work unchanged.</li>
+      <li>Detach with <code>Ctrl+U</code> then <code>e</code>. Simply closing the window gives the same result.</li>
+      <li>Press <code>Ctrl+U</code> then <code>a</code> again. The layout you set up comes back.</li>
+    </ol>
+    <p>Here is what I confirmed. With the screen split three ways I closed the window and attached again. The size of each pane was identical to the character. The lines printed before closing were still there. The server process stayed up the whole time no window existed.</p>
+    <p>It is normal that closing the window in step 4 looks the same as pressing <code>e</code>. If the window holds nothing but session panes, detaching the session leaves nothing in that window.</p>
+    <p>Two things to watch. What holds the work is a server process running on your PC. It disappears when you shut down or restart the machine. Closing a window and turning off the computer are not the same thing. Closing the window does not end the session. To really stop the work, close each pane.</p>
+
+    <h2>Summary</h2>
+    <p>Separate the window from the program and a build carries on after you close the window. The split layout comes back too. The config is one line and getting in and out is two shortcuts. One of the points where I said tmux was still ahead in part 1 disappears with this.</p>
+    <p>Add the line and press <code>Ctrl+U</code> then <code>a</code>. Splitting the screen, detaching and coming back takes five minutes.</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>

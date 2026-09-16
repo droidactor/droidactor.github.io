@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install Windows Programs From One Line — droidactor</title>
+<meta name="description" content="Windows has apt-style installers too. Built-in winget is the axis, and here is when to reach for Chocolatey or Scoop.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/windows-package-manager/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/windows-package-manager/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/windows-package-manager/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/windows-package-manager/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/windows-package-manager/">
+<meta property="og:title" content="Install Windows Programs From One Line">
+<meta property="og:description" content="Windows has apt-style installers too. Built-in winget is the axis, and here is when to reach for Chocolatey or Scoop.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Install Windows Programs From One Line",
+      "description": "Windows has apt-style installers too. Built-in winget is the axis, and here is when to reach for Chocolatey or Scoop.",
+      "url": "https://droidactor.github.io/blog/techs/windows-package-manager/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/windows-package-manager/",
+      "datePublished": "2026-09-02",
+      "dateModified": "2026-09-16",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Install Windows Programs From One Line", "item": "https://droidactor.github.io/blog/techs/windows-package-manager/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/windows-package-manager/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/windows-package-manager/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Install Windows Programs From One Line</nav>
+  <div class="hero">
+    <h1>Install Windows Programs From One Line</h1>
+    <p class="post-meta"><time datetime="2026-09-02">2 September 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>In short.</strong> I typed <code>winget upgrade</code> once on this machine. Forty-two programs came back with updates pending. Wireshark, yt-dlp, tools whose names I had forgotten, one after another. Finding each homepage and downloading each installer would have taken half a day.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_numpad&amp;hl=en"><img src="/assets/banner/en/bt-numpad.webp" width="800" height="200" loading="lazy" decoding="async" alt="Dotori Bluetooth Numpad - Your phone as a 17-key number pad"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+    <p>Linux has <code>apt</code> and the Mac has <code>brew</code>. Windows has tools that do the same job, and there are three of them. This post covers what separates winget, Chocolatey and Scoop, and which one to pick. The conclusion first: start with winget and fill the gaps with the other two.</p>
+
+    <h2>winget is already on your machine</h2>
+    <p>winget is Microsoft's official tool. Windows 11 ships with it, and recent Windows 10 gets it bundled with App Installer from the Store. That means there is nothing to install. Open a terminal, type the following, and if you get a version you are ready.</p>
+    <pre><code>winget --version</code></pre>
+    <p>Three things are enough to use it. Find by name, install by id, upgrade everything at once.</p>
+    <pre><code>winget search git
+winget install Git.Git
+winget upgrade --all</code></pre>
+    <p>The results of <code>winget search</code> include an id column. It is safer to install by that id than by name. That stops a similarly named but unrelated package from being picked up.</p>
+
+    <h2>Chocolatey and Scoop fill the places winget leaves empty</h2>
+    <p>Chocolatey is the elder, around since 2011. Its community repository holds close to ten thousand packages. Each package carries its own install script, so it handles installation options in fine detail. The default install location is <code>C:\ProgramData\chocolatey</code> and it needs administrator rights. The open-source edition is Apache 2.0 licensed, so it is free to use at work. A separate paid business edition adds more features.</p>
+    <p>Scoop has the opposite character. It unpacks programs inside your user folder only (<code>C:\Users\&lt;user&gt;\scoop</code>). It needs no administrator rights and does not touch the registry. For anyone who cannot get administrator rights on a work machine, that is decisive.</p>
+    <p>Packages are grouped into &quot;buckets&quot;. When something is not in the default bucket you add another, as in <code>scoop bucket add extras</code>. The bucket sizes I measured on my machine were 1,637 in main, 2,372 in extras and 336 in java.</p>
+
+    <h2>One table separates the three</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Item</th><th>winget</th><th>Chocolatey</th><th>Scoop</th></tr></thead>
+        <tbody>
+          <tr><td>Separate install</td><td>Not needed</td><td>Needed</td><td>Needed</td></tr>
+          <tr><td>Administrator rights</td><td>Usually needed</td><td>Needed</td><td>Not needed</td></tr>
+          <tr><td>Install location</td><td>Same as a normal install</td><td><code>C:\ProgramData\chocolatey</code></td><td>User folder</td></tr>
+          <tr><td>What it does well</td><td>General programs</td><td>Install-option control, company rollouts</td><td>Developer tools, machines without rights</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Scoop installs in two lines from an ordinary, non-administrator PowerShell window. The first line permits script execution.</p>
+    <pre><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression</code></pre>
+
+    <h2>The payoff comes when you set up a new machine</h2>
+    <p>For installing one program, a command and a mouse are about the same. The gap opens when you get a new computer. winget exports the list of what is installed now to a file. That file restores all of it on the new machine.</p>
+    <pre><code>winget export -o apps.json
+winget import -i apps.json --accept-package-agreements --accept-source-agreements</code></pre>
+    <p>The exported <code>apps.json</code> is just a text file. Open it in Notepad and delete lines you do not want. The two options on the end skip the agreement prompts during installation. Without them the run stops at each program waiting for confirmation.</p>
+
+    <h2>Summary</h2>
+    <p>Windows installs and updates programs from the command line too. winget is already there, so there is nothing to prepare. Add Scoop when you have no administrator rights. Add Chocolatey when you need fine control over installation options. The three do not conflict, so keep them on one machine together.</p>
+    <p>Open a terminal now and type <code>winget upgrade</code>. It takes a few seconds to find out how many updates have been piling up.</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>

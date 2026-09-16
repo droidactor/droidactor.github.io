@@ -4,7 +4,7 @@
   out of sitemap.xml on purpose.
 
   To author and publish a post:
-    0. Steps 2-5 are automated. From the blogger repository, `./pages.sh <app>/<slug>`
+    0. Steps 2-5 are automated. From the blogger repository, `./pages.sh <app|section>/<slug>`
        reads the two drafts and writes both pages, both index entries, the sitemap pair
        and the lastmod bumps. Follow the steps below only when doing it by hand — and
        note this template is behind the published posts (they also carry og:image, the
@@ -12,20 +12,33 @@
     1. author and review ../blogs/<app>/<slug>/site.en.md and site.ko.md from the
        MyApps/Mobile repository root. All writing happens there; this repo receives
        only the publishing artifacts.
-    2. copy this template to blog/<slug>/index.html and ko/blog/<slug>/index.html,
+    2. copy this template to blog/<section>/<slug>/index.html and
+       ko/blog/<section>/<slug>/index.html (the first eight posts have no <section>/),
        then transfer the reviewed English/Korean drafts and set each lang attribute.
     3. replace every {{PLACEHOLDER}} — search for "{{" before publishing, none may remain
     4. DELETE the <meta name="robots" content="noindex, nofollow"> line
     5. add the entry to both blog indexes and the <url> pair to /sitemap.xml
 
   Conventions this template already encodes, so they are not decided per post:
+    - {{SLUG}} below is the slug alone. Under a section the URL carries <section>/<slug>,
+      so the paths in this file take that extra segment while {{SLUG}} does not.
     - <slug> is the SAME string in both languages. The URL pair is /blog/<slug>/ and
       /ko/blog/<slug>/, which is what makes the hreflang pair mechanical.
+    - A post MAY sit one level deeper, under a section: /blog/<section>/<slug>/ and
+      /ko/blog/<section>/<slug>/ (added 2026-09-16; the section names live in SECTIONS
+      in to_pages.py). The first eight posts stay flat because their URLs are already
+      indexed and GitHub Pages cannot serve a 301 here (.nojekyll). New posts take a
+      section. There is no section index page — the one list at /blog/ carries them all.
+    - The app card, the closing CTA, og:image and the JSON-LD "about" node appear only
+      when the draft names an app. Posts with no app (developer tooling, general notes)
+      drop all four rather than carrying an unrelated app card.
     - Slugs are English, lowercase, hyphenated, and name the technical question or task
       precisely — find-ls-plc-ip-address, not plc-post-1.
     - The stylesheet uses a RELATIVE path, like every other page in this repo, so the
-      file still renders when opened straight from disk. The depth is fixed per
-      language: ../../ from /blog/<slug>/, ../../../ from /ko/blog/<slug>/.
+      file still renders when opened straight from disk. The depth follows the URL:
+      ../../ from /blog/<slug>/ and ../../../ from /ko/blog/<slug>/, one more each
+      under a section (../../../ and ../../../../). Get this wrong and the page still
+      loads with no styling at all, which is easy to miss.
     - Links stay ROOT-ABSOLUTE (/apps/bt-keyboard/, /ko/blog/). They will not work under
       file:// — that is expected and applies to the whole site. Check locally with
       `python -m http.server 8000`, as README says.
@@ -41,7 +54,9 @@
       a domain we own.
     - The post opens with a technical conclusion and its applicability conditions.
       A reader who stops there should know both the answer and its limits.
-    - Every post ends with one call to action pointing at one app. Not five.
+    - A post that names an app ends with one call to action pointing at that one app.
+      Not five. A post with no app (see the section note above) ends without one —
+      do not attach an unrelated app just to have a CTA.
     - datePublished / dateModified are the DEPLOY date — the day the change reaches
       https://droidactor.github.io, not the day it was written locally. The same date
       goes into the <lastmod> pair in /sitemap.xml. If a page also shows a date on
@@ -68,7 +83,7 @@
 <meta property="og:title" content="{{TITLE}}">
 <meta property="og:description" content="{{DESCRIPTION}}">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="{{../../ for /blog/<slug>/ | ../../../ for /ko/blog/<slug>/}}assets/site.css">
+<link rel="stylesheet" href="{{../../ for /blog/<slug>/ | ../../../ for /ko/blog/<slug>/ | one more each under a section: ../../../ and ../../../../}}assets/site.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

@@ -508,7 +508,7 @@
   -->
   <url>
     <loc>https://droidactor.github.io/blog/</loc>
-    <lastmod>2026-09-15</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
@@ -517,12 +517,278 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/</loc>
-    <lastmod>2026-09-15</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/techs/windirstat-find-disk-hogs/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/windirstat-find-disk-hogs/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/windirstat-find-disk-hogs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/windirstat-find-disk-hogs/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/techs/windirstat-find-disk-hogs/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/windirstat-find-disk-hogs/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/windirstat-find-disk-hogs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/windirstat-find-disk-hogs/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/techs/windows-package-manager/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/windows-package-manager/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/windows-package-manager/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/windows-package-manager/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/techs/windows-package-manager/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/windows-package-manager/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/windows-package-manager/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/windows-package-manager/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/techs/makefile-as-command-list/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/makefile-as-command-list/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/makefile-as-command-list/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/makefile-as-command-list/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/techs/makefile-as-command-list/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/makefile-as-command-list/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/makefile-as-command-list/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/makefile-as-command-list/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/techs/explorer-vs-terminal/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/explorer-vs-terminal/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/explorer-vs-terminal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/explorer-vs-terminal/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/techs/explorer-vs-terminal/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/explorer-vs-terminal/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/explorer-vs-terminal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/explorer-vs-terminal/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/techs/claude-desktop-vs-code-cli/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/claude-desktop-vs-code-cli/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/claude-desktop-vs-code-cli/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/claude-desktop-vs-code-cli/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/techs/claude-desktop-vs-code-cli/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/claude-desktop-vs-code-cli/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/claude-desktop-vs-code-cli/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/claude-desktop-vs-code-cli/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/techs/alias-function-script/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/alias-function-script/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/alias-function-script/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/alias-function-script/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/techs/alias-function-script/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/alias-function-script/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/alias-function-script/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/alias-function-script/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/techs/git-bash-windows-symlink/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/git-bash-windows-symlink/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/git-bash-windows-symlink/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/git-bash-windows-symlink/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/techs/git-bash-windows-symlink/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/git-bash-windows-symlink/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/git-bash-windows-symlink/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/git-bash-windows-symlink/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/wezterm-unix-domain-persistence/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/techs/wezterm-unix-domain-persistence/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/wezterm-unix-domain-persistence/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/wezterm-leader-cheatsheet/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/techs/wezterm-leader-cheatsheet/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/wezterm-leader-cheatsheet/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/techs/what-to-delegate-to-ai/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/what-to-delegate-to-ai/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/what-to-delegate-to-ai/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/what-to-delegate-to-ai/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/techs/what-to-delegate-to-ai/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/what-to-delegate-to-ai/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/what-to-delegate-to-ai/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/what-to-delegate-to-ai/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/wezterm-windows-korean-tmux/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/techs/wezterm-windows-korean-tmux/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/wezterm-windows-korean-tmux/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/techs/git-worktree-linear-merge/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/git-worktree-linear-merge/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/git-worktree-linear-merge/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/git-worktree-linear-merge/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/techs/git-worktree-linear-merge/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/git-worktree-linear-merge/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/git-worktree-linear-merge/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/git-worktree-linear-merge/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/techs/git-worktree-basics/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/git-worktree-basics/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/git-worktree-basics/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/git-worktree-basics/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/techs/git-worktree-basics/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/git-worktree-basics/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/git-worktree-basics/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/git-worktree-basics/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/techs/claude-codex-shared-instructions/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/claude-codex-shared-instructions/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/claude-codex-shared-instructions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/claude-codex-shared-instructions/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/techs/claude-codex-shared-instructions/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/claude-codex-shared-instructions/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/claude-codex-shared-instructions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/claude-codex-shared-instructions/"/>
   </url>
 
   <url>

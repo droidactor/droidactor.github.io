@@ -3,10 +3,11 @@
   droidactor.github.io/ko/blog/ — 국문 글 목록. 영문 원본은 /blog/ 이며 섹션 구성이 같다.
 
   발행하기 전에 MyApps/Mobile 저장소 기준
-  ../blogs/<app>/<slug>/site.{en,ko}.md 에서 두 원고를 작성·검수한다. 글 작성은 모두 그쪽에서 하고
-  이 저장소에는 발행 산출물만 둔다. 그다음 아래 다섯 가지를 모두 해야 한다. 하나라도 빠지면 언어 쌍이 어긋난다:
-    1. blog/<slug>/index.html      _post-template.html 에서 복사, lang="en"
-    2. ko/blog/<slug>/index.html   같은 템플릿에서 복사, lang="ko"
+  ../blogs/<app|갈래>/<slug>/site.{en,ko}.md 에서 두 원고를 작성·검수한다. 글 작성은 모두 그쪽에서 하고
+  이 저장소에는 발행 산출물만 둔다. 그다음 아래 다섯 가지를 모두 해야 한다. 하나라도 빠지면 언어 쌍이 어긋난다.
+  새 글은 갈래 하위(/blog/techs/<slug>/)에 두고, 먼저 발행된 8편은 색인이 걸려 있어 평면에 그대로 둔다:
+    1. blog/<갈래>/<slug>/index.html     _post-template.html 에서 복사, lang="en"
+    2. ko/blog/<갈래>/<slug>/index.html  같은 템플릿에서 복사, lang="ko"
     3. 아래 목록에 <li> 추가, /blog/index.html 에도 같은 항목 추가
     4. /sitemap.xml 에 글 <url> 쌍 추가 + 블로그 목록 쌍
        (목록 쌍은 첫 글이 나갈 때까지 주석 처리돼 있다 — sitemap.xml 참조)
@@ -95,6 +96,76 @@
         <p>읽고 나면 무엇을 할 수 있게 되는지를 한 문장으로.</p>
       </li>
       -->
+      <li>
+        <p class="meta"><time datetime="2026-09-15">2026년 9월 15일</time> · IT·컴퓨터</p>
+        <h3><a href="/ko/blog/techs/windirstat-find-disk-hogs/">WinDirStat 으로 디스크 도둑 잡기, 범인은 면적으로 드러납니다</a></h3>
+        <p>휴지통과 디스크 정리로는 안 잡히는 큰 파일을, WinDirStat 의 트리맵에서 면적으로 한눈에 찾는 방법입니다.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-09-02">2026년 9월 2일</time> · IT·컴퓨터</p>
+        <h3><a href="/ko/blog/techs/windows-package-manager/">윈도우 프로그램 설치를 명령 한 줄로 끝내는 세 가지 도구</a></h3>
+        <p>윈도우에도 apt 같은 설치 도구가 있습니다. 기본 내장된 winget 을 축으로 Chocolatey·Scoop 을 언제 쓰는지 정리했습니다.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-29">2026년 8월 29일</time> · IT·컴퓨터</p>
+        <h3><a href="/ko/blog/techs/makefile-as-command-list/">Makefile 은 빌드 도구가 아니라 명령 목록입니다</a></h3>
+        <p>Makefile 에 빌드와 무관한 명령을 넣어 폴더별 명령 목록으로 씁니다. target 이 그대로 도움말이 되는 패턴과 윈도우 함정 세 개.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-29">2026년 8월 29일</time> · IT·컴퓨터</p>
+        <h3><a href="/ko/blog/techs/explorer-vs-terminal/">탐색기를 먼저 여시나요, 터미널을 먼저 여시나요</a></h3>
+        <p>탐색기와 터미널은 잘하는 일이 다릅니다. 어느 쪽을 고를지가 아니라, 오가는 비용을 없애는 다리 세 개를 만드는 이야기.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-29">2026년 8월 29일</time> · IT·컴퓨터</p>
+        <h3><a href="/ko/blog/techs/claude-desktop-vs-code-cli/">터미널에 쌓아 둔 것이 에이전트의 손발이 됩니다</a></h3>
+        <p>챗봇 창과 터미널 에이전트의 갈림길은 결과가 대화로 남는지 파일로 남는지입니다. 터미널 쪽을 고르면 만들어 둔 명령이 그대로 쓰입니다.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-29">2026년 8월 29일</time> · IT·컴퓨터</p>
+        <h3><a href="/ko/blog/techs/alias-function-script/">alias 에서 함수로, 함수에서 스크립트로</a></h3>
+        <p>alias 가 왜 유용한지부터, if 문과 폴더 이동에서 막히는 지점까지. 함수와 스크립트 파일로 옮겨야 할 때를 가르는 기준.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-27">2026년 8월 27일</time> · IT·컴퓨터</p>
+        <h3><a href="/ko/blog/techs/git-bash-windows-symlink/">Windows Git Bash 심볼릭 링크 설정하기</a></h3>
+        <p>ln -s 가 링크 대신 복사본을 만드는 이유와, Git Bash 에서 진짜 심볼릭 링크를 쓰기 위한 네 단계 설정.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-26">2026년 8월 26일</time> · IT·컴퓨터</p>
+        <h3><a href="/ko/blog/techs/wezterm-unix-domain-persistence/">WezTerm 사용법 3편 - 창을 닫아도 살아 있는 세션</a></h3>
+        <p>빌드를 걸어 둔 채 창을 닫아도 작업이 계속 돌고, 나눠 놓은 화면 구성 그대로 다시 불러오는 설정.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-25">2026년 8월 25일</time> · IT·컴퓨터</p>
+        <h3><a href="/ko/blog/techs/wezterm-leader-cheatsheet/">WezTerm 사용법 2편 - 리더 단축키 스무 개 관리하기</a></h3>
+        <p>리더 단축키가 스무 개를 넘으면 설정과 기억이 어긋납니다. 키 정의를 표 하나에 모아 도움말까지 같이 만드는 방법.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-23">2026년 8월 23일</time> · IT·컴퓨터</p>
+        <h3><a href="/ko/blog/techs/what-to-delegate-to-ai/">AI 에게 무엇을 맡길 것인가?</a></h3>
+        <p>AI 가 잘하는 것은 판단이고 프로그램이 잘하는 것은 반복입니다. 둘을 가르는 기준 하나와, 프로그램 쪽 일을 AI 로 도구화하는 방법.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-23">2026년 8월 23일</time> · IT·컴퓨터</p>
+        <h3><a href="/ko/blog/techs/wezterm-windows-korean-tmux/">Windows 터미널, WezTerm 하나로 끝냅니다 (한글 + tmux 없이 tmux)</a></h3>
+        <p>설정 파일 하나로 한글 폭 문제와 화면 분할과 셸 전환을 정리한, 제가 실제로 쓰는 WezTerm 설정 전체.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-23">2026년 8월 23일</time> · IT·컴퓨터</p>
+        <h3><a href="/ko/blog/techs/git-worktree-linear-merge/">worktree 여러 개를 한 줄로 병합하기</a></h3>
+        <p>worktree 를 병렬 작업 슬롯으로 쓰고, 끝에 스크립트 한 줄로 전부 일렬 병합하는 설계.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-23">2026년 8월 23일</time> · IT·컴퓨터</p>
+        <h3><a href="/ko/blog/techs/git-worktree-basics/">git worktree - 브랜치를 폴더로 바꾸기</a></h3>
+        <p>브랜치 전환마다 stash 하고 빌드를 다시 돌리는 낭비를, worktree 명령 세 개로 없애는 방법.</p>
+      </li>
+      <li>
+        <p class="meta"><time datetime="2026-08-23">2026년 8월 23일</time> · IT·컴퓨터</p>
+        <h3><a href="/ko/blog/techs/claude-codex-shared-instructions/">Claude Code 와 Codex 를 지침 파일 한 벌로 쓰기</a></h3>
+        <p>CLAUDE.md 와 AGENTS.md 를 복제하지 않고, 원본 하나를 가리키게 배치한 뒤 한 파일 안에서 에이전트별로 갈라 쓰는 방법.</p>
+      </li>
       <li>
         <p class="meta"><time datetime="2026-08-08">2026년 8월 8일</time> · <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드</p>
         <h3><a href="/ko/blog/type-korean-over-bluetooth-hid/">Android 폰에서 Bluetooth HID로 한글 입력하는 법</a></h3>

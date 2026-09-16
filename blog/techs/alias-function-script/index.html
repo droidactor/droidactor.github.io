@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Alias to Function to Script — droidactor</title>
+<meta name="description" content="Why an alias is useful, where it stops working with an if statement or a change of directory, and the test for moving up to a function or a script file.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/alias-function-script/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/alias-function-script/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/alias-function-script/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/alias-function-script/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/alias-function-script/">
+<meta property="og:title" content="From Alias to Function to Script">
+<meta property="og:description" content="Why an alias is useful, where it stops working with an if statement or a change of directory, and the test for moving up to a function or a script file.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "From Alias to Function to Script",
+      "description": "Why an alias is useful, where it stops working with an if statement or a change of directory, and the test for moving up to a function or a script file.",
+      "url": "https://droidactor.github.io/blog/techs/alias-function-script/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/alias-function-script/",
+      "datePublished": "2026-08-29",
+      "dateModified": "2026-09-16",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "From Alias to Function to Script", "item": "https://droidactor.github.io/blog/techs/alias-function-script/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/alias-function-script/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/alias-function-script/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>From Alias to Function to Script</nav>
+  <div class="hero">
+    <h1>From Alias to Function to Script</h1>
+    <p class="post-meta"><time datetime="2026-08-29">29 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>In short.</strong> Type the same command twice in a terminal and you make an alias. Use aliases for a while and two things turn up that they cannot do. You cannot put an if statement in one, and inside a script they do not work at all. There are two other ways to give a command a name — functions and script files. Here is the test for choosing among the three, starting from what an alias actually is.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_keyboard&amp;hl=en"><img src="/assets/banner/en/bt-keyboard.webp" width="800" height="200" loading="lazy" decoding="async" alt="Dotori Bluetooth Keyboard - Your phone as a keyboard for PC and TV"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+
+    <h2>An alias replaces the first word of a command</h2>
+    <p>An alias replaces the first word of a command with another string you decided in advance. The shell swaps the text as it reads the command line. The rest of the command runs as it always would. Creating one is a single line and removing it is a single <code>unalias</code>. It is simple, and it does three jobs.</p>
+    <p><strong>First, it cuts keystrokes.</strong> A command you type twenty times a day becomes two characters.</p>
+    <pre><code>alias gs='git status'
+alias la='ls -a'</code></pre>
+    <p><strong>Second, you no longer have to remember options.</strong> This is more useful than the keystrokes. <code>-w</code> ignores lines that changed only in whitespace. Putting it inside a name is more reliable than recalling it each time.</p>
+    <pre><code>alias gdu='git --no-pager diff -w'
+alias rgrep='grep -rni'</code></pre>
+    <p><strong>Third, it changes a tool's default behaviour</strong>, by redefining it under the same name.</p>
+    <pre><code>alias lsd='lsd --group-dirs=first'</code></pre>
+    <p>It calls itself, so it looks like it should recurse forever, and it does not. The text swap happens once, on the first word only. So <code>lsd</code> becomes a command that always lists folders first.</p>
+    <pre><code>$ lsd
+zdir
+a.txt
+b.txt</code></pre>
+    <p>When you need the original behaviour, put a backslash in front. <code>\lsd</code> is the unmodified command. To see what is currently bound, use <code>type lsd</code>; for the full list, run <code>alias</code> with no arguments.</p>
+
+    <h2>If you need an if statement, or a change of directory, use a function</h2>
+    <p>Swapping text is all it does, so there are things it cannot do. You cannot put in an if statement, and you cannot insert an argument in the middle of the command. That is when it becomes a function.</p>
+    <p>My <code>gd</code> is a function. Some of my machines have delta, which prettifies diffs, and some do not.</p>
+    <pre><code>gd() {
+    if command -v delta &gt;/dev/null 2&gt;&amp;1; then
+        git -c core.pager=delta diff -w &quot;$@&quot;
+    else
+        git --no-pager diff -w &quot;$@&quot;
+    fi
+}</code></pre>
+    <p>The second case has no way around it at all. Running a script starts a separate process. That process cannot change the current directory of the shell that called it. A <code>cd</code> inside a script disappears with the process.</p>
+    <pre><code>before: /tmp/cdtest
+/tmp/cdtest/sub     &lt;- pwd printed after the script's cd
+after:  /tmp/cdtest &lt;- the parent shell is unchanged</code></pre>
+    <p>Say you browse folders in the file manager yazi and want your shell left where you stopped. That has to be a function. You take the directory yazi ended in through a temporary file and <code>cd</code> there in the shell itself.</p>
+    <pre><code>yz() {
+    local tmp=&quot;$(mktemp -t yazi-cwd.XXXXXX)&quot;
+    yazi &quot;$@&quot; --cwd-file=&quot;$tmp&quot;
+    local cwd
+    if cwd=&quot;$(cat -- &quot;$tmp&quot;)&quot; &amp;&amp; [ -n &quot;$cwd&quot; ] &amp;&amp; [ &quot;$cwd&quot; != &quot;$PWD&quot; ]; then
+        cd -- &quot;$cwd&quot;
+    fi
+    rm -f -- &quot;$tmp&quot;
+}</code></pre>
+    <p>Put the same code in a script file and the <code>cd</code> happens inside that process only. It has no effect at all.</p>
+
+    <h2>If a program will call it rather than a person, make it a file</h2>
+    <p>The last one is a slightly different story. <strong>An alias only works in a shell where a person types commands directly</strong>. Such a shell is called an interactive shell. I confirmed it with a two-line script.</p>
+    <pre><code>$ cat t.sh
+alias hello='echo hi'
+hello
+
+$ bash t.sh
+t.sh: line 2: hello: command not found</code></pre>
+    <p>The bash manual says so — &quot;Aliases are not expanded when the shell is not interactive&quot;. The only exception is the <code>expand_aliases</code> option. Put <code>shopt -s expand_aliases</code> on the first line of the script and the same code works.</p>
+    <p>So commands inside a Makefile, CI jobs and commands an AI coding agent calls cannot be aliases. They are not typed by a person; they are called by a program. In those cases you make a file. Three lines of work.</p>
+    <pre><code>mkdir -p ~/bin                      # a folder to collect scripts in
+chmod +x ~/bin/git-log-file.sh      # execute permission
+echo 'export PATH=&quot;$PATH:$HOME/bin&quot;' &gt;&gt; ~/.bashrc</code></pre>
+    <p>From then on you call it by name, <code>git-log-file.sh</code>, from any folder. It is the same command whether you type it, a Makefile runs it, or an agent calls it.</p>
+    <p>The merge script from the post on merging worktrees is a real example of something kept as a file. I type it by hand and an agent also calls it, so it had to be a file.</p>
+    <p>You do not have to pick only one of the three. Make the file, then point an alias at it and the typing gets shorter again.</p>
+    <pre><code>alias glf='~/bin/git-log-file.sh'</code></pre>
+
+    <h2>Summary</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Method</th><th>Use it for</th><th>Where it lives</th></tr></thead>
+        <tbody>
+          <tr><td>alias</td><td>Jobs where replacing the first word is enough</td><td>A shell you type in</td></tr>
+          <tr><td>function</td><td>Jobs that need an if statement or a change of directory</td><td>A shell you type in</td></tr>
+          <tr><td>script file</td><td>Jobs called by scripts, Makefiles, CI or agents</td><td>A file on your PATH</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>An alias replaces the first word and nothing more. That is why it is easy to make, and why its limits are clear. When you need an if statement or a change of directory, move to a function. When a program rather than a person will call it, make it a file.</p>
+    <p>What you can do right now is type <code>alias</code> with no arguments and read the list. Some of them you wished had an if statement, or wanted to call from a script. Move those to a function or a file first.</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>터미널에 쌓아 둔 것이 에이전트의 손발이 됩니다 — droidactor</title>
+<meta name="description" content="챗봇 창과 터미널 에이전트의 갈림길은 결과가 대화로 남는지 파일로 남는지입니다. 터미널 쪽을 고르면 만들어 둔 명령이 그대로 쓰입니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/techs/claude-desktop-vs-code-cli/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/claude-desktop-vs-code-cli/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/claude-desktop-vs-code-cli/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/claude-desktop-vs-code-cli/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/techs/claude-desktop-vs-code-cli/">
+<meta property="og:title" content="터미널에 쌓아 둔 것이 에이전트의 손발이 됩니다">
+<meta property="og:description" content="챗봇 창과 터미널 에이전트의 갈림길은 결과가 대화로 남는지 파일로 남는지입니다. 터미널 쪽을 고르면 만들어 둔 명령이 그대로 쓰입니다.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "터미널에 쌓아 둔 것이 에이전트의 손발이 됩니다",
+      "description": "챗봇 창과 터미널 에이전트의 갈림길은 결과가 대화로 남는지 파일로 남는지입니다. 터미널 쪽을 고르면 만들어 둔 명령이 그대로 쓰입니다.",
+      "url": "https://droidactor.github.io/ko/blog/techs/claude-desktop-vs-code-cli/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/techs/claude-desktop-vs-code-cli/",
+      "datePublished": "2026-08-29",
+      "dateModified": "2026-09-16",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "터미널에 쌓아 둔 것이 에이전트의 손발이 됩니다", "item": "https://droidactor.github.io/ko/blog/techs/claude-desktop-vs-code-cli/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="언어">
+    <a class="lang-btn" href="/blog/techs/claude-desktop-vs-code-cli/" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/claude-desktop-vs-code-cli/" aria-current="page" hreflang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>터미널에 쌓아 둔 것이 에이전트의 손발이 됩니다</nav>
+  <div class="hero">
+    <h1>터미널에 쌓아 둔 것이 에이전트의 손발이 됩니다</h1>
+    <p class="post-meta"><time datetime="2026-08-29">2026년 8월 29일</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>요약.</strong> AI 에게 코드를 물어보려고 파일을 열어 전체 선택하고 대화창에 붙였다가, 받은 답을 다시 편집기로 옮겨 붙이는 일을 하루에 몇 번씩 하고 계실 수 있습니다. 그 왕복이 필요한 도구와 필요 없는 도구가 갈리는 지점이 있습니다. 결과가 대화로 남으면 되는지, 파일로 남아야 하는지입니다. 그리고 파일로 남는 쪽을 고르면 앞서 만들어 둔 명령들이 그대로 쓰입니다.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_ppt&amp;hl=ko"><img src="/assets/banner/bt-ppt.webp" width="800" height="200" loading="lazy" decoding="async" alt="도토리 PPT 리모컨 - 폰을 PC 의 발표 슬라이드 리모컨으로"></a>
+      <p>제가 만든 무료 앱입니다. 많이 써 주세요.</p>
+    </div>
+
+
+    <h2>결과가 어디에 남는지로 갈립니다</h2>
+    <p>챗봇 창은 제가 붙여넣은 것만 압니다. 옆 파일에 무엇이 있는지, 빌드가 통과하는지 알 수 없고, 답은 대화 안에 남습니다. 그래서 설계를 놓고 이야기할 때, 개념을 물을 때, 코드 조각 하나를 봐 달라고 할 때 잘 맞습니다. 붙여넣을 것이 적고 결론만 얻으면 되는 일입니다.</p>
+    <p>터미널에서 도는 에이전트는 성격이 다릅니다. 클로드 코드가 그렇고, 파일을 직접 읽고 고치고 빌드와 테스트를 돌리고 git 을 만집니다. 제가 붙여넣지 않아도 저장소를 뒤져 찾아냅니다.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th></th><th>챗봇 창</th><th>터미널 에이전트</th></tr></thead>
+        <tbody>
+          <tr><td>아는 범위</td><td>붙여넣은 것</td><td>저장소 전체</td></tr>
+          <tr><td>결과</td><td>대화</td><td>파일과 커밋</td></tr>
+          <tr><td>확인 방법</td><td>사람이 옮겨 붙여 실행</td><td>스스로 빌드·테스트</td></tr>
+          <tr><td>잘 맞는 일</td><td>설계 논의, 개념 질문</td><td>저장소에 커밋될 변경</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>기준은 한 줄입니다. <strong>결과가 대화로 끝나도 되면 챗봇 창, 저장소에 남아야 하면 터미널입니다.</strong> 대화로 끝날 일을 터미널에서 하면 과합니다. 반대로 파일로 남을 일을 챗봇에서 하면, 사람이 옮겨 붙이는 일을 계속 하게 됩니다.</p>
+
+    <h2>에이전트는 제가 만들어 둔 명령을 씁니다</h2>
+    <p>터미널 쪽을 고르면 그때부터 달라지는 것이 있습니다. 에이전트가 제 명령을 그대로 부릅니다. <code>make build</code> 를 만들어 두면 에이전트가 그것으로 자기 작업을 검증하고, 스크립트를 파일로 두면 그것을 부릅니다.</p>
+    <p>여기서 한 가지가 걸립니다. <strong>alias 는 부르지 못합니다.</strong> 에이전트가 명령을 실행할 때 뜨는 셸은 사람이 직접 치는 셸이 아니어서, alias 가 로드되지 않습니다. alias 를 다룬 앞 글에서 확인한 그 동작입니다. 그래서 에이전트와 같이 일할 명령은 alias 가 아니라 <strong>파일이나 Makefile 로 내려야</strong> 합니다.</p>
+    <p>내려두면 다음 한 가지가 더 가능해집니다. 프로젝트의 <code>CLAUDE.md</code> 에 그 명령을 적어두면 에이전트가 그것을 씁니다.</p>
+    <pre><code>## 빌드와 검증
+- 빌드: `make build`
+- 테스트: `make test`
+- 이 둘로 확인되지 않은 변경은 완료로 보고하지 않는다.</code></pre>
+    <p>이 세 줄이 있으면 에이전트가 코드를 고친 뒤 스스로 빌드를 돌리고, 깨지면 다시 고칩니다. 없으면 &quot;고쳤습니다&quot; 라는 말만 받고 확인은 제가 합니다. Makefile 을 명령 목록으로 쓰는 글에서 만든 target 목록이 여기서 값을 냅니다.</p>
+
+    <h2>계정과 설정은 폴더로 나눕니다</h2>
+    <p>한 가지 실용적인 것을 덧붙입니다. 회사 일과 개인 작업을 다른 계정으로 쓰거나 설정을 나누고 싶으면 환경변수 하나로 갈라집니다. 공식 문서에 그 용도가 적혀 있습니다 — 이 변수를 주면 &quot;settings, session history, and plugins&quot; 를 그 폴더에 저장합니다.</p>
+    <p>폴더를 따로 주면 설정과 세션 기록이 그 안에 들어갑니다. 진입점은 alias 로 만듭니다.</p>
+    <pre><code>alias cck='CLAUDE_CONFIG_DIR=&quot;$HOME/claude/kwak&quot; claude'
+alias cch='CLAUDE_CONFIG_DIR=&quot;$HOME/claude/help&quot; claude'</code></pre>
+    <p>이건 제가 손으로 치는 명령이므로 alias 가 맞습니다. 앞 절에서 파일로 내리라고 한 것은 에이전트가 부르는 명령이었습니다. 같은 기준이 방향만 반대로 적용됩니다.</p>
+
+    <h2>정리</h2>
+    <p>챗봇 창과 터미널 에이전트는 결과가 어디에 남는지로 갈립니다. 대화로 끝날 일과 파일로 남을 일을 나눠 쓰면 됩니다.</p>
+    <p>터미널 쪽을 쓰기로 하면, 그동안 만들어 둔 것이 그대로 에이전트의 손발이 됩니다. 탐색기와 터미널을 잇는 다리, 함수와 스크립트 파일, Makefile target 이 전부 그렇습니다. 사람이 편하려고 만든 것이 에이전트에게도 그대로 쓰이는데, 그중 alias 만 예외입니다.</p>
+    <p>지금 할 수 있는 것 하나는 <code>CLAUDE.md</code> 에 빌드·테스트 명령을 한 줄씩 적어 두는 것입니다. 그 한 줄이 &quot;고쳤습니다&quot; 와 &quot;고치고 확인했습니다&quot; 를 가릅니다.</p>
+
+  </article>
+
+  <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/apps/">전체 앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/tech-notes/">기술 노트</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play 및 Google Play 로고는 Google LLC 의 상표입니다.</p></footer>
+
+</div>
+
+</body>
+</html>

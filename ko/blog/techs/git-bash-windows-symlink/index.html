@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Windows Git Bash 심볼릭 링크 설정하기 — droidactor</title>
+<meta name="description" content="ln -s 가 링크 대신 복사본을 만드는 이유와, Git Bash 에서 진짜 심볼릭 링크를 쓰기 위한 네 단계 설정.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/techs/git-bash-windows-symlink/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/git-bash-windows-symlink/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/git-bash-windows-symlink/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/git-bash-windows-symlink/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/techs/git-bash-windows-symlink/">
+<meta property="og:title" content="Windows Git Bash 심볼릭 링크 설정하기">
+<meta property="og:description" content="ln -s 가 링크 대신 복사본을 만드는 이유와, Git Bash 에서 진짜 심볼릭 링크를 쓰기 위한 네 단계 설정.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Windows Git Bash 심볼릭 링크 설정하기",
+      "description": "ln -s 가 링크 대신 복사본을 만드는 이유와, Git Bash 에서 진짜 심볼릭 링크를 쓰기 위한 네 단계 설정.",
+      "url": "https://droidactor.github.io/ko/blog/techs/git-bash-windows-symlink/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/techs/git-bash-windows-symlink/",
+      "datePublished": "2026-08-27",
+      "dateModified": "2026-09-16",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Windows Git Bash 심볼릭 링크 설정하기", "item": "https://droidactor.github.io/ko/blog/techs/git-bash-windows-symlink/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="언어">
+    <a class="lang-btn" href="/blog/techs/git-bash-windows-symlink/" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/git-bash-windows-symlink/" aria-current="page" hreflang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>Windows Git Bash 심볼릭 링크 설정하기</nav>
+  <div class="hero">
+    <h1>Windows Git Bash 심볼릭 링크 설정하기</h1>
+    <p class="post-meta"><time datetime="2026-08-27">2026년 8월 27일</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>요약.</strong> Git Bash 에서 <code>ln -s</code> 를 실행했는데 링크가 아니라 파일 복사본이 생긴 적이 있으실 겁니다. 리눅스에서 잘 쓰던 dotfiles 를 Windows 로 가져왔더니 링크가 전부 텍스트 파일로 바뀌어 있는 경우도 같은 원인입니다. 설정 네 곳을 맞추면 해결됩니다. 이 글은 그 네 단계와, 설정을 빠뜨렸을 때 나타나는 증상을 다룹니다.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_numpad&amp;hl=ko"><img src="/assets/banner/bt-numpad.webp" width="800" height="200" loading="lazy" decoding="async" alt="도토리 블루투스 넘패드 - 폰을 PC 의 17키 숫자패드로"></a>
+      <p>제가 만든 무료 앱입니다. 많이 써 주세요.</p>
+    </div>
+
+
+    <h2>심볼릭 링크는 대상 경로를 적어 둔 이정표입니다</h2>
+    <p>심볼릭 링크는 파일의 사본이 아니라 &quot;실제 파일은 저기에 있다&quot; 는 경로 문자열을 담은 특수 파일입니다. 원본을 한 곳에만 두고 여러 위치에서 같은 파일처럼 참조할 때 씁니다. 원본을 고치면 링크로 접근한 쪽에도 즉시 반영됩니다.</p>
+    <p>Git 도 심볼릭 링크를 그대로 저장합니다. 일반 파일이 <code>100644</code> 모드로 기록되는 것과 달리 링크는 <code>120000</code> 모드로 들어가고, 내용은 대상 경로 문자열 하나입니다.</p>
+    <pre><code>$ git ls-files -s
+120000 c9c61fe1fb4b3b... 0	alias.txt
+100644 10622902e19e73... 0	real.txt</code></pre>
+    <p>문제는 Windows 쪽입니다. Windows 에도 심볼릭 링크가 있지만 생성하려면 <code>SeCreateSymbolicLinkPrivilege</code> 권한이 필요하고, 이 권한은 기본적으로 관리자에게만 부여됩니다. 아래 설정들은 전부 이 제약을 우회하기 위한 것입니다.</p>
+
+    <h2>네 단계를 모두 맞춰야 링크가 만들어집니다</h2>
+    <ol>
+      <li><strong>Git 설치 시</strong>, 맨 마지막 화면에서 <code>Enable symbolic links</code> 를 체크합니다.</li>
+      <li><strong>Git Bash 를 관리자 권한으로 실행</strong>합니다.</li>
+      <li><code>export MSYS=winsymlinks:nativestrict</code> 를 셸 환경에 넣습니다.</li>
+      <li><code>~/.gitconfig</code> 의 <code>[core]</code> 에 <code>symlinks = true</code> 를 추가합니다.</li>
+    </ol>
+    <p>3번과 4번은 명령 두 줄로 끝납니다.</p>
+    <pre><code>echo 'export MSYS=winsymlinks:nativestrict' &gt;&gt; ~/.bashrc
+git config --global core.symlinks true</code></pre>
+    <p><code>MSYS</code> 변수가 핵심입니다. 기본값은 <code>deepcopy</code> 라서 링크를 만들지 못하면 조용히 파일을 복사합니다. <code>nativestrict</code> 는 네이티브 링크만 만들고, 권한이 없으면 오류를 냅니다. 실패를 감추지 않기 때문에 원인을 바로 알 수 있습니다. 새 터미널을 연 뒤 아래처럼 확인합니다.</p>
+    <pre><code>$ ln -s real.txt alias.txt
+$ ls -l alias.txt
+lrwxrwxrwx 1 dualk 197609 8  8월 27 16:59 alias.txt -&gt; real.txt</code></pre>
+    <p>맨 앞 글자가 <code>l</code> 이고 화살표가 보이면 성공입니다. <code>-rw-r--r--</code> 로 나오면 복사본입니다.</p>
+
+    <h2>바로가기 대신 원본 exe 속성을 바꿉니다</h2>
+    <p>매번 우클릭해서 관리자로 실행하는 것은 번거롭습니다. Git Bash 바로가기를 따라가 원래 실행 파일을 찾은 뒤, 그 파일에 상시 관리자 권한을 걸어 둡니다.</p>
+    <ol>
+      <li>Git Bash 바로가기에서 원본 <code>.exe</code> 를 추적한 뒤 우클릭하고 <code>속성</code> 을 선택합니다.</li>
+      <li><code>호환성</code> 탭에서 <code>관리자 권한으로 실행</code> 을 체크합니다.</li>
+    </ol>
+    <p>관리자 권한 셸을 상시 띄우는 것이 부담스럽다면 대안이 있습니다. Windows 10 Creators Update(1703) 부터는 <strong>개발자 모드</strong>를 켜면 일반 사용자 계정도 심볼릭 링크를 만들 수 있습니다. <code>설정 &gt; 개인 정보 및 보안 &gt; 개발자용</code> 에서 켠 뒤 재부팅하면 3번 항목만으로 동작합니다.</p>
+
+    <h2>설정이 빠지면 링크가 조용히 텍스트 파일이 됩니다</h2>
+    <p>가장 곤란한 상황은 오류가 나지 않는 경우입니다. <code>core.symlinks</code> 가 꺼진 상태로 저장소를 클론하면, 링크 자리에 <strong>경로 문자열이 내용인 일반 파일</strong>이 놓입니다.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>상태</th><th><code>ls -l</code> 앞부분</th><th><code>cat alias.txt</code> 결과</th></tr></thead>
+        <tbody>
+          <tr><td>정상 링크</td><td><code>lrwxrwxrwx ... -&gt; real.txt</code></td><td>원본 파일의 내용</td></tr>
+          <tr><td>깨진 링크</td><td><code>-rw-r--r--</code> (8바이트)</td><td><code>real.txt</code> (경로 문자열)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>더 나쁜 점은 <code>git status</code> 가 깨끗하게 나온다는 것입니다. Git 은 이것을 변경으로 보지 않기 때문에 그대로 커밋되어도 알아채기 어렵습니다. 그리고 클론 시점의 <code>core.symlinks=false</code> 값은 그 저장소의 <code>.git/config</code> 에 박제됩니다. 나중에 전역 설정을 켜도 로컬 설정이 우선하므로 그 저장소만 계속 깨진 상태로 남습니다.</p>
+    <pre><code>git config --local --get core.symlinks    # false 가 나오면 이것이 원인입니다
+git config --local --unset core.symlinks  # 로컬 설정을 지웁니다
+git checkout -- .                          # 작업 트리를 다시 펼칩니다</code></pre>
+
+    <h2>정리</h2>
+    <p>심볼릭 링크는 대상 경로를 담은 파일이고, Windows 에서는 생성에 별도 권한이 필요합니다. 설치 옵션, 관리자 권한, <code>MSYS=winsymlinks:nativestrict</code>, <code>core.symlinks=true</code> 네 가지가 모두 맞아야 합니다. 하나라도 빠지면 오류 대신 복사본이 생기고 <code>git status</code> 도 조용합니다.</p>
+    <p>지금 Git Bash 를 열어 <code>echo $MSYS</code> 와 <code>git config --get core.symlinks</code> 를 실행해 보시기 바랍니다. 두 값이 비어 있다면 위 두 줄부터 실행하면 됩니다.</p>
+
+  </article>
+
+  <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/apps/">전체 앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/tech-notes/">기술 노트</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play 및 Google Play 로고는 Google LLC 의 상표입니다.</p></footer>
+
+</div>
+
+</body>
+</html>

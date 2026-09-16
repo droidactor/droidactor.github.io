@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Should You Hand To an AI? — droidactor</title>
+<meta name="description" content="AI is good at judgement, programs at repetition. One test that separates them, and how to turn the program side into a tool the AI calls.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/what-to-delegate-to-ai/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/what-to-delegate-to-ai/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/what-to-delegate-to-ai/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/what-to-delegate-to-ai/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/what-to-delegate-to-ai/">
+<meta property="og:title" content="What Should You Hand To an AI?">
+<meta property="og:description" content="AI is good at judgement, programs at repetition. One test that separates them, and how to turn the program side into a tool the AI calls.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "What Should You Hand To an AI?",
+      "description": "AI is good at judgement, programs at repetition. One test that separates them, and how to turn the program side into a tool the AI calls.",
+      "url": "https://droidactor.github.io/blog/techs/what-to-delegate-to-ai/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/what-to-delegate-to-ai/",
+      "datePublished": "2026-08-23",
+      "dateModified": "2026-09-16",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "What Should You Hand To an AI?", "item": "https://droidactor.github.io/blog/techs/what-to-delegate-to-ai/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/what-to-delegate-to-ai/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/what-to-delegate-to-ai/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>What Should You Hand To an AI?</nav>
+  <div class="hero">
+    <h1>What Should You Hand To an AI?</h1>
+    <p class="post-meta"><time datetime="2026-08-23">23 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>In short.</strong> You asked an AI to do the same job ten times and got ten slightly different results. That job does not belong to the AI. AI is good at judgement; programs are good at repetition. This post gives one test that separates the two. It also shows what to do with the work that lands on the program side.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_keyboard&amp;hl=en"><img src="/assets/banner/en/bt-keyboard.webp" width="800" height="200" loading="lazy" decoding="async" alt="Dotori Bluetooth Keyboard - Your phone as a keyboard for PC and TV"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+
+    <h2>There is one test - can the answer be fixed by a rule?</h2>
+    <p>Say the same input must always give the same answer. If you can write that answer down as a rule, it is a program. If the input differs every time and the answer depends on context, it is AI. That sounds abstract. In practice one question settles it: &quot;Can I write the pass condition in code right now?&quot;</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Question</th><th>Belongs to a program</th><th>Belongs to an AI</th></tr></thead>
+        <tbody>
+          <tr><td>Same input, same answer</td><td>Required</td><td>Not required</td></tr>
+          <tr><td>Stating the rule</td><td>Written in code</td><td>The exceptions never end</td></tr>
+          <tr><td>When it is wrong</td><td>A bug; fix it and it stops</td><td>A misjudgement; it can recur</td></tr>
+          <tr><td>Cost per run</td><td>Close to zero</td><td>Tokens on every call</td></tr>
+          <tr><td>Auditability</td><td>Left in a diff</td><td>Left only in a conversation</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The last two rows weigh the most in practice. When the rule lives in code, the diff shows who changed it and when. When the rule lives only in a prompt, nothing explains why today's verdict differs.</p>
+
+    <h2>Programs win at counting</h2>
+    <p>My blog skill has one script that measures the length of a draft. It converts a notation such as <code>1~2p</code> into a character count. Then it measures the finished draft against that target range. The conversion gives 1,615 to 3,570 characters. It gives the same number however many times you run it.</p>
+    <p>What happens if you hand that calculation to an AI is the point. In each conversation it estimates &quot;a page is roughly 1,700 characters&quot; again. PASS and SHORT are then separated on top of that estimate. The boundary moves from session to session, and the reason it moved is recorded nowhere. Counting, converting, looking up, comparing and searching all sit on the program side.</p>
+
+    <h2>The AI builds that tool too</h2>
+    <p>Deciding that a program is the better fit does not mean &quot;go and write it yourself&quot;. Have the AI write the script, and from then on the AI only calls it. Anything that runs straight from a shell will do. Pick whatever is already installed in the target environment from bash, PowerShell, batch or Python.</p>
+    <pre><code>python blogstat.py post.md --target &quot;1~2p&quot;   # PASS / SHORT / LONG, exit code 0 or 1</code></pre>
+    <p>With an exit code attached, the AI does not interpret the output; it just branches on it. One convention follows from this. <strong>Do not copy the numbers into the instruction document</strong>. Write the same number in two places, code and prose, and they will diverge. After that nobody knows which one is right. The document says only &quot;ask the script&quot;.</p>
+
+    <h2>AI wins at judgement</h2>
+    <p>The rule ends where the script reports SHORT. What to add is not a rule. Padding the same point fills the count and makes the writing worse. That distinction does not get written in code.</p>
+    <p>I saw the same boundary in a keyword research script. Fetching search volume and document counts is an API call, so it is a program. Is the person who typed that query looking for information, or trying to reach a particular site? That is a judgement. I approximated that judgement with a suffix rule and put it behind an option. It stays an approximation, and the final call belongs to a person or an AI.</p>
+    <p>Inferring a cause from an error log goes in the same column. So do weighing design alternatives and naming things.</p>
+
+    <h2>The answer is an order</h2>
+    <p>Real work usually mixes both qualities. So it is not a matter of choosing one side but of deciding the order.</p>
+    <ol>
+      <li>Split off the part that has hardened into a rule and make it a script.</li>
+      <li>Leave the AI only the judgements the script cannot make.</li>
+      <li>When the AI makes the same judgement three times, look again at whether it has become a rule.</li>
+    </ol>
+    <p>Step 3 is the entrance to the loop. A judgement that came out the same three times is already a rule. At that point it goes back down to step 1.</p>
+
+    <h2>Summary</h2>
+    <ul>
+      <li>If the same input must give the same answer it is a program; if the answer turns on context it is AI.</li>
+      <li>For the program side, have the AI write the script, and after that only call it.</li>
+      <li>Keep the rule in one place. Write the same number in the document and in the code and they will diverge.</li>
+    </ul>
+    <p>Open a recent conversation with an AI. Find the place where you repeated the same instruction twice or more. Asking for that instruction to be turned into a script is the next step.</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>

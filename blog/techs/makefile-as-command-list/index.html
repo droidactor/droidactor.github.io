@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Makefile Is a Command List — droidactor</title>
+<meta name="description" content="A Makefile as a per-folder command list, not a build tool. The pattern that turns targets into their own help text, and three Windows traps.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/makefile-as-command-list/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/makefile-as-command-list/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/makefile-as-command-list/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/makefile-as-command-list/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/makefile-as-command-list/">
+<meta property="og:title" content="A Makefile Is a Command List">
+<meta property="og:description" content="A Makefile as a per-folder command list, not a build tool. The pattern that turns targets into their own help text, and three Windows traps.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "A Makefile Is a Command List",
+      "description": "A Makefile as a per-folder command list, not a build tool. The pattern that turns targets into their own help text, and three Windows traps.",
+      "url": "https://droidactor.github.io/blog/techs/makefile-as-command-list/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/makefile-as-command-list/",
+      "datePublished": "2026-08-29",
+      "dateModified": "2026-09-16",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "A Makefile Is a Command List", "item": "https://droidactor.github.io/blog/techs/makefile-as-command-list/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/makefile-as-command-list/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/makefile-as-command-list/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>A Makefile Is a Command List</nav>
+  <div class="hero">
+    <h1>A Makefile Is a Command List</h1>
+    <p class="post-meta"><time datetime="2026-08-29">29 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>In short.</strong> Think of a Makefile as a tool for compiling C programs and you miss most of the places it belongs. The Makefile in my home folder has no compilation in it at all. It has things like turning UAC off, adding a firewall rule, and registering a drive-lock menu entry. What make actually does is <strong>attach a bundle of commands to one name</strong>. Building is only one use for that.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.lgtv&amp;hl=en"><img src="/assets/banner/en/lgtv.webp" width="800" height="200" loading="lazy" decoding="async" alt="Dotori LG TV Remote - Your phone as an LG TV remote"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+
+    <h2>Commands unrelated to building are fine</h2>
+    <p>These are the kind of targets in my Makefile.</p>
+    <pre><code>uac-off: ## Turn UAC off (requires a reboot)
+	@echo &quot;would disable UAC&quot;
+
+ping-open: ## Add a firewall rule allowing ICMP
+	@echo &quot;would add firewall rule&quot;</code></pre>
+    <p>These are commands I use maybe once a month. I cannot keep them in my head. Search for them again and the options differ from what I used last time. Bundle a command you found once under a name and next time it is just <code>make uac-off</code>.</p>
+    <p>You could write a shell script instead, and there is a reason to use make. <strong>A Makefile only applies in its own folder</strong>. An alias applies to the whole machine, so you have to watch out for name collisions. A script means remembering where you put it. You can keep one Makefile per project and standardise on <code>make build</code> everywhere. Step into a folder, type <code>make</code>, and you see what can be done in that project.</p>
+    <p>As the earlier post on aliases noted, commands inside a Makefile run in a shell called by a program. It is not a shell a person types in. So aliases cannot be used here; you write the command out in full or call a script file.</p>
+
+    <h2>The target list becomes the help text</h2>
+    <p>This is where the value comes from. Add <code>## description</code> at the end of a target line and you can scrape that list into help output. One block at the top of the Makefile.</p>
+    <pre><code>.DEFAULT_GOAL := help
+.PHONY: help
+
+help: ## List the available targets
+	@grep -hE '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
+		| awk 'BEGIN{FS=&quot;:.*?## &quot;}{printf &quot;  \033[36m%-14s\033[0m %s\n&quot;, $$1, $$2}'</code></pre>
+    <p>Thanks to <code>.DEFAULT_GOAL := help</code>, typing <code>make</code> with no arguments prints the help.</p>
+    <pre><code>$ make
+  help           List the available targets
+  uac-off        Turn UAC off (requires a reboot)
+  ping-open      Add a firewall rule allowing ICMP</code></pre>
+    <p><code>grep</code> picks out lines of the form <code>name: … ## description</code> and <code>awk</code> splits them on <code>## </code> and aligns them. So <strong>adding a target grows the help by itself</strong>. There is no separate document to copy descriptions into, and no document to go stale. A target without <code>## </code> does not appear in the list, so you can hide internal ones.</p>
+
+    <h2>Three things that catch you on Windows</h2>
+    <p>First, <strong>the indentation of a command line must be a tab.</strong> Use spaces and it stops like this.</p>
+    <pre><code>Mbad:9: *** missing separator (did you mean TAB instead of 8 spaces?).  Stop.</code></pre>
+    <p>Make does tell you clearly. If your editor converts tabs to spaces you will keep hitting it. Make an exception for that folder. The same thing happens when you copy a Makefile from the web.</p>
+    <p>Second, <strong>non-ASCII text in an <code>echo</code> on a command line comes out mangled</strong>. The encoding is mismatched on the path make takes to the shell. My own Makefile is in Korean, and this is what a Korean <code>echo</code> produced.</p>
+    <pre><code>$ make ko
+?쒓? 異쒕젰 ?쒕룄</code></pre>
+    <p>The same Korean in a <code>## description</code> is fine. In the real help output, &quot;Turn UAC off&quot; is written in Korean in my file and printed correctly. That is because <code>grep</code> and <code>awk</code> read and emit the file bytes directly. In short, <strong>non-ASCII is fine in the description comments and should stay out of <code>echo</code> bodies.</strong></p>
+    <p>Third, <strong>write <code>$</code> as <code>$$</code>.</strong> That is what <code>$$1</code>, <code>$$2</code> and <code>.*$$</code> are doing in the help block above. With a single <code>$</code>, make swallows it as its own variable and awk receives an empty value.</p>
+
+    <h2>Summary</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Item</th><th>Rule</th></tr></thead>
+        <tbody>
+          <tr><td>Indentation</td><td>Tabs only. Spaces give <code>missing separator</code></td></tr>
+          <tr><td>Non-ASCII</td><td>Fine in <code>## description</code>, keep <code>echo</code> bodies ASCII</td></tr>
+          <tr><td><code>$</code></td><td>Doubled, as <code>$$</code></td></tr>
+          <tr><td>Default target</td><td><code>.DEFAULT_GOAL := help</code> so plain <code>make</code> prints the list</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A Makefile is a list of what can be done in that folder. Put in the commands you use once a month. The ones that took a while to find, and the ones you have to explain to someone else.</p>
+    <p>Add the help block above to the project you are working on now. Turn one command you recently looked up into a target. The value shows immediately.</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>

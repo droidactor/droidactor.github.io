@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Windows 터미널, WezTerm 하나로 끝냅니다 (한글 + tmux 없이 tmux) — droidactor</title>
+<meta name="description" content="설정 파일 하나로 한글 폭 문제와 화면 분할과 셸 전환을 정리한, 제가 실제로 쓰는 WezTerm 설정 전체.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/techs/wezterm-windows-korean-tmux/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/wezterm-windows-korean-tmux/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/techs/wezterm-windows-korean-tmux/">
+<meta property="og:title" content="Windows 터미널, WezTerm 하나로 끝냅니다 (한글 + tmux 없이 tmux)">
+<meta property="og:description" content="설정 파일 하나로 한글 폭 문제와 화면 분할과 셸 전환을 정리한, 제가 실제로 쓰는 WezTerm 설정 전체.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Windows 터미널, WezTerm 하나로 끝냅니다 (한글 + tmux 없이 tmux)",
+      "description": "설정 파일 하나로 한글 폭 문제와 화면 분할과 셸 전환을 정리한, 제가 실제로 쓰는 WezTerm 설정 전체.",
+      "url": "https://droidactor.github.io/ko/blog/techs/wezterm-windows-korean-tmux/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/techs/wezterm-windows-korean-tmux/",
+      "datePublished": "2026-08-23",
+      "dateModified": "2026-09-16",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "WezTerm 설정", "item": "https://droidactor.github.io/ko/blog/techs/wezterm-windows-korean-tmux/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="언어">
+    <a class="lang-btn" href="/blog/techs/wezterm-windows-korean-tmux/" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/wezterm-windows-korean-tmux/" aria-current="page" hreflang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>WezTerm 설정</nav>
+  <div class="hero">
+    <h1>Windows 터미널, WezTerm 하나로 끝냅니다 (한글 + tmux 없이 tmux)</h1>
+    <p class="post-meta"><time datetime="2026-08-23">2026년 8월 23일</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>요약.</strong> Windows에서 개발하면 터미널이 늘 걸립니다. 한글 파일명이 섞인 디렉토리를 <code>ls</code> 하면 정렬이 어긋나고, lazygit이나 btop 같은 화면 꽉 채우는 도구를 띄우면 테두리가 계단처럼 밀립니다. 창을 네 개 띄워 놓고 alt+tab으로 헤매다가, tmux를 쓰려면 WSL 안으로 들어가야 하고, 그러면 정작 필요한 PowerShell과 닷넷 빌드는 tmux 밖에 남습니다.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_ppt&amp;hl=ko"><img src="/assets/banner/bt-ppt.webp" width="800" height="200" loading="lazy" decoding="async" alt="도토리 PPT 리모컨 - 폰을 PC 의 발표 슬라이드 리모컨으로"></a>
+      <p>제가 만든 무료 앱입니다. 많이 써 주세요.</p>
+    </div>
+
+    <p>저는 이 문제를 WezTerm으로 정리했습니다. 설정 파일 하나(<code>.wezterm.lua</code>)만 홈에 두면 끝이고, 그 파일은 Windows, 맥, 리눅스에서 똑같이 돕니다. 아래는 제가 실제로 쓰고 있는 설정을 조각 단위로 풀어 쓴 것입니다. 순서대로 복사해 넣으시면 제 환경과 같아집니다.</p>
+
+    <h2>설치와 설정 파일</h2>
+    <p>설치는 windows 의 경우 https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe 에서 다운받거나 다음 winget 명령을 사용할 수 있습니다.</p>
+    <pre><code>winget install wez.wezterm</code></pre>
+    <p>설정 파일은 홈 폴더에 <code>.wezterm.lua</code> 라는 이름으로 만듭니다. 보통은 <code>C:\Users\사용자이름\.wezterm.lua</code> 입니다. 파일의 처음과 끝은 늘 이 모양입니다.</p>
+    <pre><code>local wezterm = require(&quot;wezterm&quot;)
+local act = wezterm.action
+local config = wezterm.config_builder()
+
+-- 이 사이에 설정을 씁니다
+
+return config</code></pre>
+    <p>저장하면 즉시 반영됩니다. 터미널을 다시 띄울 필요가 없습니다. 설정을 고치고 저장하는 순간 열려 있던 창의 색과 글꼴과 키가 바뀝니다. 이것만으로도 설정을 만지는 재미가 다릅니다.</p>
+
+    <h2>한글은 설정 한 줄 없이 그냥 됩니다</h2>
+    <p>제 설정에서 글꼴 지정은 이 두 줄뿐입니다. 한글 글꼴은 어디에도 적지 않았습니다.</p>
+    <pre><code>config.font = wezterm.font(&quot;JetBrains Mono&quot;, { weight = &quot;Light&quot; })
+config.font_size = 13</code></pre>
+    <p>JetBrains Mono에는 한글 글리프가 없습니다. 그런데 한글이 잘 나옵니다. WezTerm이 글자마다 글꼴을 훑어서 없으면 시스템 글꼴로 대체하기 때문입니다. 궁금하시면 직접 확인해 보실 수 있습니다.</p>
+    <pre><code>wezterm ls-fonts --text &quot;한글 테스트 ABC&quot;</code></pre>
+    <p>제 PC에서의 출력입니다.</p>
+    <pre><code>한  cells=2  x_adv=17  Malgun Gothic  C:\WINDOWS\FONTS\MALGUN.TTF
+글  cells=2  x_adv=17  Malgun Gothic  C:\WINDOWS\FONTS\MALGUN.TTF
+A   cells=1  x_adv=10  JetBrains Mono</code></pre>
+    <p>여기서 중요한 건 cells 값입니다. 한글은 2칸, 영문은 1칸으로 계산합니다. 이게 어긋나면 표 테두리가 밀리고 진행 막대가 삐뚤어지고 커서 위치가 글자와 안 맞습니다. 한글 쓰는 사람이 터미널에서 겪는 고생의 대부분이 이 숫자 하나에서 나옵니다. WezTerm은 이걸 문자 폭 규격대로 계산합니다.</p>
+    <p>한글 입력도 따로 켜는 설정이 없습니다. 한/영 키로 바꿔서 그대로 타이핑하면 조합 중인 글자가 커서 자리에 그대로 보입니다. 조합 중 글자가 엉뚱한 데 뜨거나 완성 전에 사라지는 일이 없습니다.</p>
+    <p>셸 쪽 문자셋만 UTF-8로 맞춰 두시면 됩니다. 저는 Git Bash를 쓰는데 환경 변수로 이렇게 줍니다.</p>
+    <pre><code>LANG=ko_KR.UTF-8
+LC_ALL=ko_KR.UTF-8</code></pre>
+
+    <h2>여기가 본론입니다. tmux 없이 tmux처럼 씁니다</h2>
+    <p>tmux를 쓰는 이유는 대개 하나입니다. 화면을 나눠서 여러 개를 동시에 보고 싶은 것. WezTerm은 그 기능을 터미널 자체에 갖고 있습니다. tmux를 설치하지 않아도 됩니다.</p>
+    <p>먼저 tmux의 <code>Ctrl+B</code>에 해당하는 접두키(leader)를 정합니다. 저는 <code>Ctrl+U</code> 입니다.</p>
+    <pre><code>config.leader = { key = &quot;u&quot;, mods = &quot;CTRL&quot;, timeout_milliseconds = 2000 }</code></pre>
+    <p>이제 <code>Ctrl+U</code>를 누르고 손을 뗀 다음, 이어서 글자를 누릅니다. 2초 안에 누르면 됩니다. 제가 쓰는 배치는 이렇습니다.</p>
+    <p><strong>화면 나누기</strong></p>
+    <ul>
+      <li><code>Ctrl+U</code> 다음 <code>w</code> : 좌우로 나눔 (Width)</li>
+      <li><code>Ctrl+U</code> 다음 <code>v</code> : 위아래로 나눔 (Vertical)</li>
+    </ul>
+    <p><strong>나눈 칸 사이 이동</strong></p>
+    <ul>
+      <li><code>Ctrl+U</code> 다음 <code>h</code> : 왼쪽 칸으로</li>
+      <li><code>Ctrl+U</code> 다음 <code>j</code> : 아래 칸으로</li>
+      <li><code>Ctrl+U</code> 다음 <code>k</code> : 위 칸으로</li>
+      <li><code>Ctrl+U</code> 다음 <code>l</code> : 오른쪽 칸으로</li>
+    </ul>
+    <p><strong>칸 크기 조절</strong></p>
+    <ul>
+      <li><code>Ctrl+U</code> 다음 방향키 : 그 방향으로 5칸 늘림</li>
+    </ul>
+    <p><strong>탭</strong></p>
+    <ul>
+      <li><code>Ctrl+U</code> 다음 <code>c</code> : 새 탭 (Create)</li>
+      <li><code>Ctrl+U</code> 다음 <code>n</code> : 다음 탭, <code>b</code> : 이전 탭</li>
+      <li><code>Ctrl+U</code> 다음 <code>0~9</code> : 그 번호 탭으로 바로</li>
+    </ul>
+    <p><strong>기타</strong></p>
+    <ul>
+      <li><code>Ctrl+U</code> 다음 <code>u</code> : 새 창</li>
+      <li><code>Ctrl+U</code> 다음 <code>d</code> : 지금 이 칸을 떼어내서 독립 창으로 (Detach)</li>
+      <li><code>Ctrl+U</code> 다음 <code>x</code> : 이 칸 닫기 (물어봅니다)</li>
+    </ul>
+    <p>이동키를 <code>h</code>/<code>j</code>/<code>k</code>/<code>l</code>로 둔 건 vim과 같게 하려는 것입니다. 손이 자리를 안 옮깁니다. 나누기를 <code>w</code>/<code>v</code>로 둔 것도 좌우는 폭(Width), 위아래는 세로(Vertical)로 외우면 헷갈리지 않아서입니다.</p>
+    <p>설정 코드는 이렇게 씁니다. 길지만 규칙적이라 한 덩어리 복사해 놓고 글자만 고치면 됩니다.</p>
+    <pre><code>local keys = {}
+
+local function leader(key, action)
+    table.insert(keys, { mods = &quot;LEADER&quot;, key = key, action = action })
+end
+
+leader(&quot;w&quot;, act.SplitHorizontal({ domain = &quot;CurrentPaneDomain&quot; }))
+leader(&quot;v&quot;, act.SplitVertical({ domain = &quot;CurrentPaneDomain&quot; }))
+leader(&quot;h&quot;, act.ActivatePaneDirection(&quot;Left&quot;))
+leader(&quot;j&quot;, act.ActivatePaneDirection(&quot;Down&quot;))
+leader(&quot;k&quot;, act.ActivatePaneDirection(&quot;Up&quot;))
+leader(&quot;l&quot;, act.ActivatePaneDirection(&quot;Right&quot;))
+leader(&quot;LeftArrow&quot;,  act.AdjustPaneSize({ &quot;Left&quot;, 5 }))
+leader(&quot;RightArrow&quot;, act.AdjustPaneSize({ &quot;Right&quot;, 5 }))
+leader(&quot;UpArrow&quot;,    act.AdjustPaneSize({ &quot;Up&quot;, 5 }))
+leader(&quot;DownArrow&quot;,  act.AdjustPaneSize({ &quot;Down&quot;, 5 }))
+leader(&quot;c&quot;, act.SpawnTab(&quot;CurrentPaneDomain&quot;))
+leader(&quot;u&quot;, act.SpawnWindow)
+leader(&quot;n&quot;, act.ActivateTabRelative(1))
+leader(&quot;b&quot;, act.ActivateTabRelative(-1))
+leader(&quot;x&quot;, act.CloseCurrentPane({ confirm = true }))
+
+-- 현재 칸을 독립 창으로 떼어내기
+leader(&quot;d&quot;, wezterm.action_callback(function(_, pane)
+    pane:move_to_new_window()
+end))
+
+-- Ctrl+U 다음 숫자로 탭 직행
+for i = 0, 9 do
+    table.insert(keys, { mods = &quot;LEADER&quot;, key = tostring(i), action = act.ActivateTab(i) })
+end
+
+config.keys = keys</code></pre>
+    <p>탭 번호를 0부터 세게 하려면 아래 첫 줄을 넣습니다. 키보드 숫자열 맨 왼쪽이 첫 탭이 되어 손이 편합니다. 저는 탭 표시줄도 아래로 내려 두었습니다.</p>
+    <pre><code>config.tab_and_split_indices_are_zero_based = true
+config.tab_bar_at_bottom = true
+config.use_fancy_tab_bar = false</code></pre>
+
+    <h2>접두키를 눌렀는지 화면이 알려줍니다</h2>
+    <p>tmux를 쓰다 겪는 흔한 짜증이 있습니다. <code>Ctrl+B</code>를 눌렀는지 안 눌렀는지 몰라서 엉뚱한 글자가 터미널에 박히는 것. 저는 접두키가 살아 있는 동안 상태줄에 물결 표시가 뜨게 해 뒀습니다.</p>
+    <pre><code>wezterm.on(&quot;update-status&quot;, function(window, _)
+    local prefix = &quot;&quot;
+    if window:leader_is_active() then
+        prefix = &quot; &quot; .. utf8.char(0x1f30a)   -- 물결 이모지
+    end
+    window:set_left_status(wezterm.format({ { Text = prefix } }))
+end)</code></pre>
+    <p>이제 <code>Ctrl+U</code>를 누르면 왼쪽 아래에 물결이 뜹니다. 물결이 보일 때만 다음 글자를 누르면 됩니다. 사소한 장치인데 오타가 확 줄어듭니다.</p>
+
+    <h2>tmux보다 나은 지점이 분명합니다</h2>
+    <p>칸마다 다른 셸을 띄울 수 있습니다. 왼쪽 칸은 Git Bash, 오른쪽 위는 PowerShell, 오른쪽 아래는 WSL 우분투. tmux는 자기가 돌고 있는 그 리눅스 안쪽 세계에 갇히지만, WezTerm의 화면 분할은 터미널 기능이라 Windows 프로그램과 리눅스 셸을 한 창에 섞어 놓을 수 있습니다. Windows에서 개발하는 사람에게는 이 차이가 결정적입니다.</p>
+    <p>복사와 붙여넣기가 OS 클립보드와 그대로 통합니다. tmux에서 복사 모드로 들어가 범위를 표시하고 클립보드 연동 도구를 따로 붙이던 절차가 없습니다. 마우스로 긁으면 그 순간 클립보드에 들어갑니다.</p>
+    <pre><code>config.selection_word_boundary = &quot; \t\n{}[]()\&quot;'`&quot;
+
+config.mouse_bindings = {
+    -- 좌클릭은 선택만 (링크를 실수로 열지 않게)
+    {
+        event = { Up = { streak = 1, button = &quot;Left&quot; } },
+        mods = &quot;NONE&quot;,
+        action = act.CompleteSelection(&quot;ClipboardAndPrimarySelection&quot;),
+    },
+    -- 링크는 Ctrl+클릭으로
+    {
+        event = { Up = { streak = 1, button = &quot;Left&quot; } },
+        mods = &quot;CTRL&quot;,
+        action = act.OpenLinkAtMouseCursor,
+    },
+}</code></pre>
+    <p>붙여넣기는 터미널 관례(<code>Ctrl+Shift+V</code>)와 일반 관례(<code>Ctrl+V</code>)를 둘 다 열어 뒀습니다. 어느 쪽 습관이든 그냥 됩니다. 아래 항목들은 앞에서 만든 keys 테이블에 함께 넣습니다.</p>
+    <pre><code>table.insert(keys, { key = &quot;c&quot;, mods = &quot;CTRL|SHIFT&quot;, action = act.CopyTo(&quot;Clipboard&quot;) })
+table.insert(keys, { key = &quot;v&quot;, mods = &quot;CTRL|SHIFT&quot;, action = act.PasteFrom(&quot;Clipboard&quot;) })
+table.insert(keys, { key = &quot;v&quot;, mods = &quot;CTRL&quot;,       action = act.PasteFrom(&quot;Clipboard&quot;) })
+table.insert(keys, { key = &quot;Insert&quot;, mods = &quot;SHIFT&quot;, action = act.PasteFrom(&quot;Clipboard&quot;) })</code></pre>
+    <p>스크롤이 그냥 스크롤입니다. 휠을 굴리면 올라갑니다. 저는 3만 줄을 남겨 둡니다.</p>
+    <pre><code>config.scrollback_lines = 30000
+config.enable_scroll_bar = true</code></pre>
+    <p>빌드 로그를 한참 쏟아낸 뒤 화면이 무거워지면 스크롤백을 비웁니다.</p>
+    <pre><code>table.insert(keys, {
+    key = &quot;k&quot;, mods = &quot;CTRL|SHIFT&quot;,
+    action = act.ClearScrollback(&quot;ScrollbackAndViewport&quot;),
+})</code></pre>
+    <p>마우스 휠에 Ctrl을 얹으면 글자 크기가 바뀌게 해 뒀습니다. 이런 동작을 설정 파일에서 직접 만들 수 있다는 게 WezTerm의 성격을 잘 보여줍니다. 설정 파일이 Lua라는 프로그래밍 언어라서, 준비된 값을 채우는 게 아니라 동작 자체를 쓸 수 있습니다.</p>
+    <pre><code>local min_font_size, max_font_size = 8, 24
+
+local function zoom(delta)
+    return wezterm.action_callback(function(window)
+        local overrides = window:get_config_overrides() or {}
+        local size = overrides.font_size or config.font_size
+        overrides.font_size = math.max(min_font_size, math.min(size + delta, max_font_size))
+        window:set_config_overrides(overrides)
+    end)
+end
+
+-- 위 mouse_bindings 테이블 안에 함께 넣습니다
+{ event = { Down = { streak = 1, button = { WheelUp = 1 } } },   mods = &quot;CTRL&quot;, action = zoom(1) },
+{ event = { Down = { streak = 1, button = { WheelDown = 1 } } }, mods = &quot;CTRL&quot;, action = zoom(-1) },</code></pre>
+
+    <h2>셸 여섯 개를 목록에서 골라 띄웁니다</h2>
+    <p><code>Alt+L</code>을 누르면 셸 목록이 뜨고 거기서 골라 새 탭으로 띄웁니다. 저는 여섯 개를 등록해 뒀습니다.</p>
+    <pre><code>config.default_prog = { &quot;C:\\Program Files\\Git\\bin\\bash.exe&quot; }
+
+config.launch_menu = {
+    { label = &quot;Git Bash&quot;,       args = { &quot;C:\\Program Files\\Git\\bin\\bash.exe&quot; } },
+    { label = &quot;Clean Git Bash&quot;, args = { &quot;C:\\Program Files\\Git\\bin\\bash.exe&quot;, &quot;--noprofile&quot;, &quot;--norc&quot;, &quot;-i&quot; } },
+    { label = &quot;PowerShell&quot;,     args = { &quot;powershell.exe&quot; } },
+    { label = &quot;Command Prompt&quot;, args = { &quot;cmd.exe&quot; } },
+    { label = &quot;WSL Ubuntu&quot;,     args = { &quot;wsl.exe&quot;, &quot;-d&quot;, &quot;Ubuntu&quot; } },
+}
+
+table.insert(keys, { key = &quot;l&quot;, mods = &quot;ALT&quot;, action = act.ShowLauncher })</code></pre>
+    <p>두 번째 항목 Clean Git Bash를 눈여겨보시면 좋습니다. <code>--noprofile --norc</code>는 시작 스크립트를 전부 건너뛰고 셸을 띄우라는 뜻입니다. 뭔가 이상하게 동작할 때 &quot;내 .bashrc 때문인가&quot;를 30초 안에 판별할 수 있습니다. 실행할 명령과 인자를 배열로 그대로 적을 수 있어서 이런 변종을 얼마든지 만들어 둡니다. 저는 환경 변수를 전부 비우고 띄우는 항목도 하나 갖고 있습니다.</p>
+    <p>새 탭 버튼(+)을 눌렀을 때도 빈 탭을 바로 만들지 않고 이 목록이 뜨게 바꿨습니다.</p>
+    <pre><code>wezterm.on(&quot;new-tab-button-click&quot;, function(window, pane, button, default_action)
+    window:perform_action(act.ShowLauncher, pane)
+    return false   -- 기본 동작(빈 탭 생성) 취소
+end)</code></pre>
+
+    <h2>여기가 제가 가장 많이 쓰는 기능입니다. 명령줄로 터미널을 조작합니다</h2>
+    <p>WezTerm에는 <code>wezterm cli</code> 라는 명령이 있습니다. 지금 열려 있는 창과 탭과 칸을 밖에서 조작합니다.</p>
+    <pre><code>wezterm cli list                                  지금 열린 창·탭·칸 목록
+wezterm cli split-pane --right                    화면을 오른쪽으로 나누고 새 칸 번호를 출력
+wezterm cli send-text --pane-id 3 &quot;make build&quot;    3번 칸에 글자를 넣음
+wezterm cli get-text  --pane-id 3                 3번 칸에 보이는 내용을 읽어옴
+wezterm cli zoom-pane --pane-id 3                 그 칸만 크게
+wezterm cli kill-pane --pane-id 3                 그 칸 닫기</code></pre>
+    <p>이게 왜 큰가 하면, 터미널이 스크립트로 조작되는 대상이 되기 때문입니다. <code>split-pane</code>이 새로 만든 칸의 번호를 출력해 주니 그 번호를 변수에 받아 이어 쓸 수 있습니다.</p>
+    <pre><code>ID=$(wezterm cli split-pane --right)
+wezterm cli send-text --pane-id &quot;$ID&quot; --no-paste &quot;make build&quot;
+wezterm cli send-text --pane-id &quot;$ID&quot; --no-paste $'\r'
+# 잠시 뒤에
+wezterm cli get-text --pane-id &quot;$ID&quot; | tail -20</code></pre>
+    <p>여기서 두 가지가 실전 지식입니다. 첫째, <code>--no-paste</code>를 붙여야 합니다. 이 옵션이 없으면 글자가 &quot;붙여넣기&quot;로 전달되고, 요즘 셸은 붙여넣은 내용을 바로 실행하지 않고 입력줄에 얹어 둔 채 기다립니다. 둘째, 엔터는 명령과 따로 보냅니다. 명령 문자열 끝에 개행을 붙이는 것보다 CR(<code>$'\r'</code>)을 별도 호출로 보내는 쪽이 확실하게 실행됩니다. 이 두 가지를 몰라서 &quot;글자는 들어갔는데 실행이 안 된다&quot;로 한참 헤맬 수 있습니다.</p>
+    <p>읽어오는 쪽에도 옵션이 있습니다. <code>get-text</code>는 기본적으로 지금 화면에 보이는 만큼만 주는데, <code>--start-line</code>에 음수를 주면 스크롤백까지 거슬러 올라가 읽습니다. 빌드 로그 전체를 긁어야 할 때 씁니다.</p>
+    <pre><code>wezterm cli get-text --pane-id &quot;$ID&quot; --start-line -2000</code></pre>
+    <p>저는 이걸로 AI 에이전트 여러 개를 한 화면에서 돌립니다. 칸을 하나 새로 열어 다른 에이전트를 띄우고, <code>send-text</code>로 지시를 넣고, <code>get-text</code>로 그쪽이 뭐라고 답했는지 읽어서 다음 지시를 만듭니다. 설계를 두고 두 AI가 서로 반박하게 붙여 놓거나, 한쪽이 코드를 쓰고 다른 쪽은 검증만 하도록 역할을 갈라 놓는 식입니다. 사람이 하는 일은 옆에서 화면을 보는 것뿐입니다.</p>
+    <p>이런 게 가능한 터미널이 흔하지 않습니다. 화면 분할이 되는 터미널은 여럿이지만, 그 분할을 밖에서 프로그램이 만들고 글자를 넣고 결과를 읽어갈 수 있는 창구를 열어 둔 건 드뭅니다.</p>
+
+    <h2>멈추면 도망갈 문이 있습니다</h2>
+    <p>터미널이 GPU로 글자를 그리기 때문에 아주 빠릅니다. 대신 그래픽 드라이버 궁합이 안 맞으면 화면이 멈추는 일이 있습니다. WezTerm은 그리는 방식을 골라 쓸 수 있습니다.</p>
+    <pre><code>config.front_end = &quot;WebGpu&quot;                        -- 저는 이걸 기본으로 씁니다
+config.webgpu_power_preference = &quot;HighPerformance&quot;
+-- 멈춤이 생기면 &quot;OpenGL&quot;, 그래도 안 되면 &quot;Software&quot; 로 바꿉니다</code></pre>
+    <p>Software는 CPU로 그리므로 조금 느리지만 어떤 환경에서도 뜹니다. 문제가 나면 설정 한 줄로 확실히 도망갈 수 있다는 게 실무에서는 큰 안심입니다. 화면 갱신 부담도 조절합니다.</p>
+    <pre><code>config.max_fps = 120
+config.animation_fps = 60
+config.status_update_interval = 1000</code></pre>
+    <p>창을 닫을 때 물어보는 것도 껐습니다. 저는 창을 자주 여닫습니다.</p>
+    <pre><code>config.exit_behavior = &quot;Close&quot;
+config.window_close_confirmation = &quot;NeverPrompt&quot;</code></pre>
+
+    <h2>tmux가 여전히 나은 지점도 있습니다</h2>
+    <p>정직하게 적겠습니다. tmux의 핵심 기능 하나는 세션이 살아 있는 것입니다. 원격 서버에 접속해 작업을 걸어 두고 연결을 끊어도, 다시 붙으면 그대로 돌아가고 있습니다. WezTerm의 화면 분할에는 이 성질이 없습니다. 창을 닫으면 그 안의 작업도 끝납니다.</p>
+    <p>그래서 서버에 SSH로 붙어 몇 시간 걸리는 작업을 걸어 두는 용도라면 그 서버 안의 tmux를 쓰는 게 맞습니다. 그리고 그건 WezTerm과 부딪히지 않습니다. WezTerm으로 서버에 접속해서 그 안에서 tmux를 쓰면 됩니다. 이 글에서 드리는 말씀은 tmux를 버리라는 게 아니고, 내 PC에서 화면을 나눠 쓰려고 tmux를 설치하고 WSL 안으로 들어가는 일은 이제 안 해도 된다는 것입니다.</p>
+
+    <h2>마무리</h2>
+    <p>정리하면 이렇습니다.</p>
+    <ul>
+      <li>한글이 폭 계산까지 맞게 나옵니다. 설정에 한글 글꼴을 안 적어도 시스템 글꼴로 대체합니다</li>
+      <li><code>Ctrl+U</code>를 접두키로 두면 tmux의 분할·이동·크기조절·탭이 거의 그대로 재현됩니다</li>
+      <li>칸마다 Git Bash, PowerShell, WSL을 섞어 띄울 수 있습니다</li>
+      <li>클립보드와 마우스와 스크롤이 상식대로 동작합니다</li>
+      <li><code>wezterm cli</code>로 터미널 자체를 스크립트가 조작합니다</li>
+      <li>설정 파일이 Lua라서 동작을 직접 쓸 수 있고, 저장하면 즉시 반영됩니다</li>
+      <li>같은 파일 하나가 Windows, 맥, 리눅스에서 똑같이 돕니다</li>
+    </ul>
+    <p>마지막 줄이 의외로 큽니다. 저는 <code>.wezterm.lua</code>를 dotfiles 저장소에 넣어 두고, 새 PC를 셋업할 때 winget으로 설치한 다음 그 파일 하나만 홈에 복사합니다. 그러면 몇 년간 손으로 다듬은 키 배치와 색과 셸 목록이 5분 만에 돌아옵니다.</p>
+    <p>프로그램: WezTerm (wezterm.org)</p>
+    <p>설정 파일: 홈 폴더의 <code>.wezterm.lua</code> 하나</p>
+
+  </article>
+
+  <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/apps/">전체 앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/tech-notes/">기술 노트</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play 및 Google Play 로고는 Google LLC 의 상표입니다.</p></footer>
+
+</div>
+
+</body>
+</html>

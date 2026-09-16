@@ -30,7 +30,8 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
                         (bt-keyboard · bt-ppt · bt-mouse · wifi-scout · ssh-scout · lgtv)
 /tech-notes/<앱>/<slug>.html  주제별 상세 조사 글                    + /ko/tech-notes/<앱>/<slug>.html
 /blog/                  글 목록 — Field notes                        + /ko/blog/ (현장 노트)
-/blog/<slug>/           글 1편                                       + /ko/blog/<slug>/
+/blog/<slug>/           글 1편 — 먼저 발행된 8편                     + /ko/blog/<slug>/
+/blog/<갈래>/<slug>/    글 1편 — 새 글 (products · techs)            + /ko/blog/<갈래>/<slug>/
 /blog/_post-template.html  글 템플릿 — noindex · sitemap 제외. 페이지가 아니다
 /assets/site.css        전 페이지 공용 스타일
 /assets/shots/<앱>/<로케일>/  앱 허브·제품 페이지 공용 800px WebP 축소본. 발행 자산이 아니라 파생물이다
@@ -415,8 +416,12 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
   2. `bt-mouse/01-home` 은 `_screenshot` 에 없다. 발행본에서 뽑는다
   3. `_screenshot/bt-mouse/*/01-mouse-control.png` 의 발행명은 `06-mouse-control` 이다
 - **`/blog/<slug>/assets/<로케일>/` 는 그 글의 자산이 아니라 그 앱의 발행 자산 저장소다.** 글·매뉴얼·제품
-  페이지가 함께 참조한다. 그래서 글이 쓰지 않는 그림도 여기 둔다 — `06-mouse-control.png` 가 그 예로,
+  페이지가 함께 참조한다(실측: 제품 페이지 12개가 이 경로의 `icon.png` 를 쓴다).
+  그래서 글이 쓰지 않는 그림도 여기 둔다 — `06-mouse-control.png` 가 그 예로,
   마우스 조작 화면은 글에 실리지 않았지만 제품 페이지가 쓴다. **글에 없다고 지우지 않는다.**
+  **앱이 있는 글의 자산은 갈래와 무관하게 이 평면 경로에 그대로 둔다** — 생성기
+  (`to_pages.py` 의 `asset_root()`)가 앱 유무로 갈라 찾는다. 앱이 없는 글의 자산만 글 옆
+  (`blog/<갈래>/<slug>/assets/`)에 둔다. 그 글의 자산은 공유되지 않기 때문이다(2026-09-16).
 - **6종 앱 기술 노트를 고치면** 사용법이 아니라 구현 근거를 유지한다.
   1. `tech-notes/<앱>/index.html`과 `ko/tech-notes/<앱>/index.html`을 같은 목차·같은 기술 범위로 갱신
   2. 구조·protocol·수치·제약은 `MyApps/Mobile/master`의 현재 앱 소스와 test를 근거로 확인
@@ -426,12 +431,18 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
 - **블로그 글을 추가하면** 다섯 가지를 한 묶음으로 처리한다. 자리표시자와 세부 규약의 정본은
   `blog/_post-template.html` 머리주석이며, 작성 원고는 `MyApps/Mobile` 저장소 기준
   `../blogs/<app>/<slug>/site.{en,ko}.md`에서 가져온다.
-  1. `blog/<slug>/index.html`(`lang="en"`) · `ko/blog/<slug>/index.html`(`lang="ko"`) —
-     **slug 는 두 언어가 같은 문자열이다.** 그래야 hreflang 쌍이 기계적으로 맞는다
+  1. `blog/<갈래>/<slug>/index.html`(`lang="en"`) · `ko/blog/<갈래>/<slug>/index.html`(`lang="ko"`) —
+     **slug 는 두 언어가 같은 문자열이다.** 그래야 hreflang 쌍이 기계적으로 맞는다.
+     **갈래(`products`·`techs`)는 2026-09-16 에 생겼고 새 글에만 붙인다** — 먼저 발행된 8편은
+     `blog/<slug>/` 평면 그대로다. 그 URL 들은 Google·네이버 색인 요청을 마쳤는데 GitHub Pages 는
+     `.nojekyll` 이라 301 을 낼 수단이 없어, 옮기면 되돌릴 방법 없이 색인을 잃는다.
+     **앱을 가리키지 않는 글에는 앱 카드·CTA·`og:image` 가 붙지 않는다**(원고에 `app` 이 없을 때)
   2. 두 목록 페이지에 `<li>` 추가 — `blog/index.html`, `ko/blog/index.html`
   3. `sitemap.xml` 에 글 URL 2개. **첫 글이라면 주석 처리된 블로그 목록 쌍도 이때 함께 푼다**
   4. 손댄 페이지의 `<lastmod>` 갱신
-  5. 글 끝 CTA 는 **앱 하나만** 가리킨다. 다섯 개를 나열하면 아무 데도 가지 않는다
+  5. 글 끝 CTA 는 **앱 하나만** 가리킨다. 다섯 개를 나열하면 아무 데도 가지 않는다.
+     **앱을 가리키지 않는 글에는 CTA 자체가 없다**(원고에 `app` 이 없을 때. 2026-09-16) —
+     없다고 아무 앱이나 붙이지 않는다
 - **전역 네비게이션 항목이 늘면**(블로그나 매뉴얼처럼 새 섹션이 생기면) 푸터가 있는 **모든 페이지**를 고친다 —
   홈 2 + 허브 8 + 제품 14 + 매뉴얼 12 + 기술 노트 12 + 블로그 글 16 + `404.html`. 홈만 고치면 나머지 페이지에서 그 섹션에 닿을 길이 없고,
   크롤러도 홈 한 곳에서만 링크를 본다. 블로그를 붙일 때 실제로 여기서 한 번 빠뜨렸다.

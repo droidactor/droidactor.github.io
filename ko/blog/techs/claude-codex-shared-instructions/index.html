@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code 와 Codex 를 지침 파일 한 벌로 쓰기 — droidactor</title>
+<meta name="description" content="CLAUDE.md 와 AGENTS.md 를 복제하지 않고, 원본 하나를 가리키게 배치한 뒤 한 파일 안에서 에이전트별로 갈라 쓰는 방법.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/techs/claude-codex-shared-instructions/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/claude-codex-shared-instructions/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/claude-codex-shared-instructions/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/claude-codex-shared-instructions/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/techs/claude-codex-shared-instructions/">
+<meta property="og:title" content="Claude Code 와 Codex 를 지침 파일 한 벌로 쓰기">
+<meta property="og:description" content="CLAUDE.md 와 AGENTS.md 를 복제하지 않고, 원본 하나를 가리키게 배치한 뒤 한 파일 안에서 에이전트별로 갈라 쓰는 방법.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Claude Code 와 Codex 를 지침 파일 한 벌로 쓰기",
+      "description": "CLAUDE.md 와 AGENTS.md 를 복제하지 않고, 원본 하나를 가리키게 배치한 뒤 한 파일 안에서 에이전트별로 갈라 쓰는 방법.",
+      "url": "https://droidactor.github.io/ko/blog/techs/claude-codex-shared-instructions/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/techs/claude-codex-shared-instructions/",
+      "datePublished": "2026-08-23",
+      "dateModified": "2026-09-16",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Claude Code 와 Codex 를 지침 파일 한 벌로 쓰기", "item": "https://droidactor.github.io/ko/blog/techs/claude-codex-shared-instructions/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="언어">
+    <a class="lang-btn" href="/blog/techs/claude-codex-shared-instructions/" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/claude-codex-shared-instructions/" aria-current="page" hreflang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>Claude Code 와 Codex 를 지침 파일 한 벌로 쓰기</nav>
+  <div class="hero">
+    <h1>Claude Code 와 Codex 를 지침 파일 한 벌로 쓰기</h1>
+    <p class="post-meta"><time datetime="2026-08-23">2026년 8월 23일</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>요약.</strong> AI 코딩 에이전트를 두 개 쓰기 시작하면 지침 파일도 두 개가 됩니다. Claude Code 는 <code>CLAUDE.md</code> 를 읽고 Codex 는 <code>AGENTS.md</code> 를 읽기 때문입니다. 두 벌을 각각 관리하는 순간 어긋나기 시작합니다. 원본을 하나만 두고 나머지가 그것을 가리키게 하는 배치, 그리고 그 한 파일 안에서 에이전트별로 갈라 쓰는 방법을 정리했습니다.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_numpad&amp;hl=ko"><img src="/assets/banner/bt-numpad.webp" width="800" height="200" loading="lazy" decoding="async" alt="도토리 블루투스 넘패드 - 폰을 PC 의 17키 숫자패드로"></a>
+      <p>제가 만든 무료 앱입니다. 많이 써 주세요.</p>
+    </div>
+
+
+    <h2>복제한 지침은 반드시 갈라집니다</h2>
+    <p>가장 쉬운 해결은 복사입니다. 복사한 날은 두 파일이 같습니다. 문제는 한쪽만 고치는 날이 온다는 것입니다. 어긋난 것을 알아채는 시점은 대개 에이전트가 규칙을 어긴 다음이고, 그때는 어느 쪽이 최신인지도 불분명합니다.</p>
+    <p>제 홈 디렉터리를 실제로 재봤습니다. 두 경로의 지침 파일은 md5 가 같았지만 링크가 아니라 서로 다른 파일이었습니다. 지금까지 손으로 맞춰왔다는 뜻이고, 다음에 한쪽만 고치면 그대로 갈라집니다. 실제로 그 파일 안에는 &quot;동일하지 않다면 추후 git 으로 merge 되어 동일해질 파일&quot; 이라는 문장이 들어 있었습니다. 복제 관리의 한계를 자인한 문장입니다.</p>
+    <p>원칙은 하나입니다. <strong>원본은 한 개고, 나머지 경로는 그것을 가리킵니다.</strong> 가리키는 방법이 도구마다 다르다는 것이 이 작업의 전부입니다.</p>
+
+    <h2>임포트를 가진 쪽이 링크를 겁니다</h2>
+    <p>두 도구가 파일을 찾는 방식은 대칭이 아닙니다.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>항목</th><th>Claude Code</th><th>Codex CLI</th></tr></thead>
+        <tbody>
+          <tr><td>읽는 파일</td><td><code>CLAUDE.md</code> (<code>AGENTS.md</code> 는 읽지 않습니다)</td><td><code>AGENTS.override.md</code> → <code>AGENTS.md</code> → fallback</td></tr>
+          <tr><td>전역 경로</td><td><code>~/.claude/CLAUDE.md</code></td><td><code>~/.codex/AGENTS.md</code></td></tr>
+          <tr><td>다른 파일 임포트</td><td><code>@경로</code> 지원, 최대 4홉</td><td>없습니다 (제안 단계)</td></tr>
+          <tr><td>다른 이름 인식</td><td>없습니다</td><td><code>project_doc_fallback_filenames</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>방향이 여기서 갈립니다. Claude Code 는 파일 안에서 다른 파일을 끌어올 수 있고, Codex 는 그것이 없는 대신 읽을 파일 이름을 설정으로 늘립니다. 그래서 <strong>새로 시작한다면 원본은 <code>AGENTS.md</code> 로 두는 편이 낫습니다.</strong> 임포트를 가진 쪽이 한 줄로 따라오면 되기 때문입니다.</p>
+    <pre><code>@AGENTS.md
+
+## Claude Code 전용
+- 여기부터는 Claude 만 읽는 내용입니다.</code></pre>
+    <p><code>CLAUDE.md</code> 를 이렇게 두 줄로 만들면 공통 지침은 <code>AGENTS.md</code> 한 곳에만 존재합니다. 임포트 아래에 Claude 전용 내용을 이어 쓸 수 있다는 점이 symlink 와 다릅니다.</p>
+    <p>반대로 원본이 이미 <code>CLAUDE.md</code> 인 환경이라면 Codex 쪽 설정을 고칩니다. <code>~/.codex/config.toml</code> 에 한 줄입니다.</p>
+    <pre><code>project_doc_fallback_filenames = [&quot;CLAUDE.md&quot;]</code></pre>
+    <p>Codex 는 디렉터리마다 한 파일만 집습니다. <code>AGENTS.override.md</code>, <code>AGENTS.md</code>, fallback 순으로 보고 먼저 걸린 것 하나만 씁니다. 따라서 <code>AGENTS.md</code> 가 옆에 있는 디렉터리에서는 <code>CLAUDE.md</code> 가 읽히지 않습니다. 두 파일을 같은 폴더에 두고 둘 다 읽히기를 기대하면 안 됩니다.</p>
+    <p>같은 자리에 <code>AGENTS.override.md</code> 를 두면 원본을 지우지 않고 그 디렉터리의 지침만 임시로 덮습니다. 한쪽 프로젝트에서 잠깐 다른 규칙으로 돌려볼 때 원본을 건드리지 않아도 됩니다.</p>
+    <p>세 번째 수단이 symlink 입니다. 도구 설정을 건드리지 않고 파일시스템에서 끝내는 방법입니다.</p>
+    <pre><code>ln -s AGENTS.md CLAUDE.md</code></pre>
+    <p>Windows 에서는 symlink 생성에 관리자 권한이나 개발자 모드가 필요합니다. Claude Code 공식 문서도 Windows 에서는 symlink 대신 <code>@AGENTS.md</code> 임포트를 쓰라고 안내합니다. git 은 symlink 를 <code>120000</code> 모드로 저장하므로 링크 자체를 커밋할 수도 있지만, 저장소에는 원본만 넣고 링크는 각 머신의 로컬 배치로 두는 쪽이 조용합니다.</p>
+
+    <h2>파일이 두 에이전트를 상대한다면 첫 줄에서 밝힙니다</h2>
+    <p>배치가 끝나면 한 파일을 두 모델이 읽습니다. 그런데 그 파일은 자기가 지금 누구에게 읽히는지 알려주지 않습니다. 그래서 맨 앞에 그 사실을 명시합니다.</p>
+    <pre><code>- 이 파일은 Claude Code 의 `CLAUDE.md` 이면서 Codex 의 `AGENTS.md` 로도 읽힙니다.
+  자신이 Codex 인 경우에 한해:
+  - 문서에 나오는 `/xxxx` 형식의 skill 호출명은 `$xxxx` 로 해석합니다.
+    Codex CLI 입력에서 `/xxxx` 는 slash command 로 먼저 처리되기 때문입니다.</code></pre>
+    <p>이 두 줄이 뒤에 오는 모든 조건절의 전제가 됩니다. 모델은 자기가 어느 도구인지 알고 있으므로, &quot;자신이 Codex 인 경우에 한해&quot; 라는 조건이 실제로 작동합니다. 도구 이름이나 호출 문법처럼 <strong>표기만 다른 항목은 이렇게 조건절 한 줄로 끝냅니다.</strong> 문서를 두 벌로 쪼갤 이유가 없습니다.</p>
+
+    <h2>능력이 다른 항목은 공통 규칙과 전용 절로 나눕니다</h2>
+    <p>표기 차이가 아니라 능력 차이인 항목은 조건절로 처리되지 않습니다. subagent 가 작업 도중 지시의 모순을 발견했을 때 어떻게 멈추느냐가 그런 예입니다.</p>
+    <p>Claude subagent 는 메인 세션과 실시간 양방향 채널이 있어서 그 자리에서 되물을 수 있습니다. Codex subagent 는 headless 1-shot 이라 그 채널이 없습니다. 같은 상황에서 취할 행동 자체가 다릅니다. 그렇다고 규칙을 두 벌로 쓰면 트리거 조건이 갈라집니다.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>구분</th><th>어디에 쓰는가</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td>공통</td><td>상위 절 하나</td><td>언제 멈추는가 — 지시와 의도의 모순, 제약 때문에 목표 달성 불가, 비가역 작업인데 사전 합의 없음</td></tr>
+          <tr><td>Claude 전용</td><td>하위 절</td><td>진행 중 메인에 메시지를 보내 정정 지시를 받는다</td></tr>
+          <tr><td>Codex 전용</td><td>하위 절</td><td>즉시 중단하고 출력 맨 앞에 <code>ESCALATION:</code> 머리표로 사유를 반환한다. 메인이 정정 지시를 담아 재실행한다</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>판단 기준은 공통 절에, 실행 수단만 전용 절에 둡니다.</strong> 트리거 목록을 전용 절마다 복사하면 나중에 한쪽만 수정되어, 처음에 피하려던 복제 문제가 파일 안으로 들어옵니다.</p>
+    <p>전용 절이 세 개를 넘어가기 시작하면 그 항목은 지침이 아니라 도구 차이일 가능성이 큽니다. 그때는 문서를 늘리는 대신 한쪽 도구의 사용법을 다른 쪽에 맞추는 편이 낫습니다.</p>
+
+    <h2>정리</h2>
+    <ul>
+      <li>지침 파일은 복제하지 않습니다. 원본 하나를 두고 나머지가 가리키게 합니다.</li>
+      <li>임포트를 가진 Claude Code 쪽이 링크를 겁니다. 원본은 <code>AGENTS.md</code>, <code>CLAUDE.md</code> 는 <code>@AGENTS.md</code> 한 줄입니다. 원본이 이미 <code>CLAUDE.md</code> 라면 Codex 의 <code>project_doc_fallback_filenames</code> 로 맞춥니다.</li>
+      <li>한 파일 안에서 표기 차이는 조건절로, 능력 차이는 공통 규칙 + 전용 절로 나눕니다.</li>
+    </ul>
+    <p>배치를 바꿨다면 마지막으로 실제 로드를 확인합니다. Claude Code 는 세션에서 <code>/context</code> 를 실행해 Memory files 목록에 파일이 올라왔는지 봅니다. 링크는 걸렸는데 읽히지 않는 상태가 가장 흔한 실패입니다.</p>
+
+  </article>
+
+  <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/apps/">전체 앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/tech-notes/">기술 노트</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play 및 Google Play 로고는 Google LLC 의 상표입니다.</p></footer>
+
+</div>
+
+</body>
+</html>

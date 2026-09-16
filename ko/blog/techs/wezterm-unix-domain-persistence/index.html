@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WezTerm 사용법 3편 - 창을 닫아도 살아 있는 세션 — droidactor</title>
+<meta name="description" content="빌드를 걸어 둔 채 창을 닫아도 작업이 계속 돌고, 나눠 놓은 화면 구성 그대로 다시 불러오는 설정.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/techs/wezterm-unix-domain-persistence/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/wezterm-unix-domain-persistence/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/techs/wezterm-unix-domain-persistence/">
+<meta property="og:title" content="WezTerm 사용법 3편 - 창을 닫아도 살아 있는 세션">
+<meta property="og:description" content="빌드를 걸어 둔 채 창을 닫아도 작업이 계속 돌고, 나눠 놓은 화면 구성 그대로 다시 불러오는 설정.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "WezTerm 사용법 3편 - 창을 닫아도 살아 있는 세션",
+      "description": "빌드를 걸어 둔 채 창을 닫아도 작업이 계속 돌고, 나눠 놓은 화면 구성 그대로 다시 불러오는 설정.",
+      "url": "https://droidactor.github.io/ko/blog/techs/wezterm-unix-domain-persistence/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/techs/wezterm-unix-domain-persistence/",
+      "datePublished": "2026-08-26",
+      "dateModified": "2026-09-16",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "WezTerm 세션 유지", "item": "https://droidactor.github.io/ko/blog/techs/wezterm-unix-domain-persistence/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="언어">
+    <a class="lang-btn" href="/blog/techs/wezterm-unix-domain-persistence/" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/wezterm-unix-domain-persistence/" aria-current="page" hreflang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>WezTerm 세션 유지</nav>
+  <div class="hero">
+    <h1>WezTerm 사용법 3편 - 창을 닫아도 살아 있는 세션</h1>
+    <p class="post-meta"><time datetime="2026-08-26">2026년 8월 26일</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>요약.</strong> 1편 끝에 &quot;WezTerm의 화면 분할에는 이 성질이 없습니다. 창을 닫으면 그 안의 작업도 끝납니다&quot; 라고 적었습니다. 기본 설정에서만 맞는 말이었습니다. 설정 한 줄이면 창을 닫아도 그 안의 작업이 계속 돌고, 나눠 놓은 화면 구성까지 그대로 돌아옵니다. 제 PC에서 확인한 그대로 옮깁니다.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.roman&amp;hl=ko"><img src="/assets/banner/roman.webp" width="800" height="200" loading="lazy" decoding="async" alt="도토리 로마 숫자 변환기 - 아라비아 숫자와 로마 숫자를 서로 변환"></a>
+      <p>제가 만든 무료 앱입니다. 많이 써 주세요.</p>
+    </div>
+
+
+    <h2>창을 닫아도 빌드는 계속 돕니다</h2>
+    <p>터미널 창에 명령을 걸어 두면 창을 닫는 순간 명령도 같이 죽습니다. 창과 프로그램이 한 몸이기 때문입니다.</p>
+    <p>이 둘을 떼어 놓을 수 있습니다. 프로그램은 뒤에서 도는 별도의 서버가 붙들고 있고, 창은 그것을 들여다보는 유리창 역할만 맡습니다. 유리창을 치워도 안쪽은 계속 돕니다. 다시 갖다 대면 그동안 쌓인 출력까지 보입니다.</p>
+    <p>이런 상황을 생각하면 쉽습니다. 화면을 셋으로 나눠 왼쪽에서 <code>dotnet build</code> 를 돌리고, 오른쪽 위에서 로그를 보고, 오른쪽 아래에 셸을 하나 열어 뒀습니다. 빌드는 10분쯤 걸립니다. 여기서 창을 닫아도</p>
+    <ul>
+      <li>빌드는 중단되지 않고 계속 진행되며</li>
+      <li>나중에 다시 열면 <strong>그 세 칸 구성이 크기까지 그대로</strong> 돌아오고</li>
+      <li>닫기 전에 찍혔던 출력도 남아 있습니다</li>
+    </ul>
+    <p>터미널이 멈춰서 다시 띄워야 할 때, 설정을 고쳐 재시작해야 할 때, 실수로 창을 닫았을 때 모두 같습니다. 창만 새로 붙이면 하던 자리로 돌아갑니다.</p>
+    <p>1편에서 tmux 는 자기가 도는 리눅스 안쪽 세계에 갇힌다고 적었습니다. 여기서 작업을 붙들어 두는 서버는 Windows 프로그램이라 그 제약이 없습니다. 칸마다 Git Bash 를 띄우든 PowerShell 로 닷넷 빌드를 돌리든 똑같이 살아남습니다.</p>
+
+    <h2>설정 한 줄과 단축키 둘</h2>
+    <p><code>~/.wezterm.lua</code> 에 세션을 정의하는 줄을 하나 넣습니다. <code>mux</code> 는 제가 붙인 이름이라 원하는 대로 바꿔도 됩니다.</p>
+    <pre><code>config.unix_domains = { { name = &quot;mux&quot; } }</code></pre>
+    <p>이 줄만으로는 아무것도 달라지지 않습니다. WezTerm 은 평소처럼 평범한 창으로 열리고, 세션에 들어갈지는 그때그때 고릅니다. 그래서 드나드는 단축키를 하나씩 답니다. 1편에서 만든 <code>leader</code> 함수를 그대로 씁니다.</p>
+    <pre><code>leader(&quot;a&quot;, act.AttachDomain(&quot;mux&quot;))            -- 세션에 붙기
+leader(&quot;e&quot;, act.DetachDomain(&quot;CurrentPaneDomain&quot;))  -- 세션에서 빠져나오기</code></pre>
+    <p>서버는 따로 띄우지 않아도 처음 붙을 때 알아서 뜹니다. 세션이 비어 있으면 칸 하나짜리로 시작하고, 이미 쓰던 세션이 있으면 그 구성을 그대로 불러옵니다.</p>
+
+    <h2>닫고 되살리는 순서</h2>
+    <ol>
+      <li>위 설정을 저장합니다. 저장하는 순간 반영됩니다.</li>
+      <li><code>Ctrl+U</code> 다음 <code>a</code> 로 세션에 붙습니다. 처음에는 칸 하나짜리로 시작합니다.</li>
+      <li>평소대로 화면을 나누고 빌드를 겁니다. 1편의 <code>Ctrl+U</code> 다음 <code>w</code>, <code>v</code> 를 그대로 씁니다.</li>
+      <li><code>Ctrl+U</code> 다음 <code>e</code> 로 빠져나옵니다. 그냥 창을 닫아도 결과는 같습니다.</li>
+      <li>다시 <code>Ctrl+U</code> 다음 <code>a</code>. 나눠 둔 구성이 그대로 뜹니다.</li>
+    </ol>
+    <p>제가 확인한 결과입니다. 화면을 셋으로 나눠 둔 상태에서 창을 닫고 다시 붙였더니 각 칸의 크기가 닫기 전과 한 글자도 다르지 않았고, 닫기 전에 출력된 줄도 그대로 남아 있었습니다. 창이 하나도 없는 동안에도 서버 프로세스는 계속 떠 있었습니다.</p>
+    <p>4번에서 창을 닫는 쪽과 <code>e</code> 를 누르는 쪽이 같아 보이는 것은 정상입니다. 세션 칸으로만 채워진 창이라면 세션을 떼어내는 순간 그 창에 남는 것이 없기 때문입니다.</p>
+    <p>주의할 점은 둘입니다. 작업을 붙들고 있는 것은 PC에서 도는 서버 프로세스이므로, PC를 끄거나 다시 시작하면 사라집니다. 창을 닫는 것과 컴퓨터를 끄는 것은 다릅니다. 그리고 창을 닫아도 세션은 끝나지 않으니, 걸어 둔 작업을 정말 끝낼 때는 각 칸을 닫아야 합니다.</p>
+
+    <h2>정리</h2>
+    <p>창과 프로그램을 떼어 놓으면 창을 닫아도 빌드가 이어지고, 나눠 둔 화면 구성 그대로 다시 불러옵니다. 설정은 한 줄이고, 드나드는 것은 단축키 둘입니다. 1편에서 tmux 쪽이 낫다고 꼽았던 지점 하나가 이걸로 사라집니다.</p>
+    <p>한 줄을 넣고 <code>Ctrl+U</code> 다음 <code>a</code> 를 눌러 보십시오. 화면을 나눈 다음 빠져나왔다 다시 들어오는 데까지 5분이면 됩니다.</p>
+
+  </article>
+
+  <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/apps/">전체 앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/tech-notes/">기술 노트</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play 및 Google Play 로고는 Google LLC 의 상표입니다.</p></footer>
+
+</div>
+
+</body>
+</html>

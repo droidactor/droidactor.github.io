@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WezTerm 2: Twenty Leader Shortcuts — droidactor</title>
+<meta name="description" content="Past twenty leader shortcuts, your config and your memory stop matching. Put the key definitions in one table and generate the help screen from it.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/wezterm-leader-cheatsheet/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/">
+<meta property="og:title" content="WezTerm 2: Twenty Leader Shortcuts">
+<meta property="og:description" content="Past twenty leader shortcuts, your config and your memory stop matching. Put the key definitions in one table and generate the help screen from it.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "WezTerm 2: Twenty Leader Shortcuts",
+      "description": "Past twenty leader shortcuts, your config and your memory stop matching. Put the key definitions in one table and generate the help screen from it.",
+      "url": "https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/",
+      "datePublished": "2026-08-25",
+      "dateModified": "2026-09-16",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "WezTerm shortcuts", "item": "https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/wezterm-leader-cheatsheet/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/wezterm-leader-cheatsheet/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>WezTerm shortcuts</nav>
+  <div class="hero">
+    <h1>WezTerm 2: Twenty Leader Shortcuts</h1>
+    <p class="post-meta"><time datetime="2026-08-25">25 August 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>In short.</strong> In part 1 I made <code>Ctrl+U</code> the prefix key and put splits, movement and tabs behind it. Use it for a while and the next problem arrives. Past twenty keys, what your hands remember and what the config file says drift apart. This post puts the key definitions in one table. That table produces both the real bindings and the help screen. It also covers the price of having a prefix key at all.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_keyboard&amp;hl=en"><img src="/assets/banner/en/bt-keyboard.webp" width="800" height="200" loading="lazy" decoding="async" alt="Dotori Bluetooth Keyboard - Your phone as a keyboard for PC and TV"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+
+    <h2>Put the key definitions in one table</h2>
+    <p>Line up <code>leader(&quot;w&quot;, ...)</code> calls the way part 1 did and there is nowhere to write the description. So bundle key, description and action into one three-column entry. The bindings are generated from that list. The description becomes data rather than a comment.</p>
+    <pre><code>local leader_bindings = {
+  { &quot;w&quot;, &quot;Split left/right (Width)&quot;, act.SplitHorizontal({ domain = &quot;CurrentPaneDomain&quot; }) },
+  { &quot;v&quot;, &quot;Split top/bottom (Vertical)&quot;, act.SplitVertical({ domain = &quot;CurrentPaneDomain&quot; }) },
+  { &quot;h&quot;, &quot;Move to the left pane&quot;, act.ActivatePaneDirection(&quot;Left&quot;) },
+  { &quot;/&quot;, &quot;Command palette&quot;, act.ActivateCommandPalette },
+}
+
+for _, b in ipairs(leader_bindings) do
+  table.insert(keys, { mods = &quot;LEADER&quot;, key = b[1], action = b[3] })
+end</code></pre>
+    <p>Now put the same list on screen. Bind <code>act.InputSelector</code> to <code>LEADER + .</code> and the entries appear as an overlay, running the action of whichever one you pick. Add a key and the help grows with it, so the two cannot drift.</p>
+    <pre><code>act.InputSelector({
+  title = &quot;LEADER (Ctrl+U) shortcuts&quot;,
+  fuzzy = true,
+  fuzzy_description = &quot;Search shortcuts (↑↓ move · Enter run · Esc close) : &quot;,
+  choices = cheatsheet_choices,   -- { id = key, label = &quot;key   description&quot; }
+  action = wezterm.action_callback(function(win, p, id)
+    for _, b in ipairs(leader_bindings) do
+      if b[1] == id then win:perform_action(b[3], p) end
+    end
+  end),
+})</code></pre>
+    <p>Some keys do not fit in the table. Tab numbers are generated by a <code>for i = 0, 9</code> loop, which would add ten entries. Those belong in the help as a single informational line and must be kept out of the executable set. Give them an empty <code>id</code> and filter that out in the callback. They show in the list, but pressing them does nothing. Pad the columns with <code>string.format</code> and the keys and descriptions line up vertically.</p>
+    <pre><code>table.insert(choices, { id = &quot;&quot;, label = string.format(&quot;%-12s%s&quot;, &quot;0 - 9&quot;, &quot;Tab by number (info only)&quot;) })
+-- first line of the callback
+if not id or id == &quot;&quot; then return end</code></pre>
+
+    <h2>Two ways the help screen caused misfires</h2>
+    <p>Do not leave out <code>fuzzy = true</code>. The default mode of <code>InputSelector</code> attaches a quick-select character to each row. That character comes in order from the default <code>alphabet</code> field, <code>1234567890abc…</code>. It has nothing to do with the shortcut printed on the screen.</p>
+    <p>In my list the fourth entry was &quot;close pane&quot;. Press <code>4</code> to jump to tab 4 and the pane closes. The help screen was producing misfires, so I pinned it to search mode.</p>
+    <p>The second one is when <code>choices</code> is built. Build that list inside the key handler and every press of <code>LEADER + .</code> registers a new event handler through <code>action_callback</code>, and they pile up. The list is fixed anyway, so build it once at config load time and keep it in a variable.</p>
+
+    <h2>For what you will not memorise, there is the command palette</h2>
+    <p>You have to decide what gets a shortcut and what does not. Attach every action you use a few times a day to the leader and the list passes twenty again. I handed the rest to the command palette and kept a single <code>LEADER + /</code>.</p>
+    <p>The palette is a modal overlay that searches every command WezTerm knows. Typing narrows it with a fuzzy match, and what you used often floats to the top. Its default key is <code>Ctrl+Shift+P</code>, so it does not need to go on the leader either. Some things already exist in the defaults, such as <code>Ctrl+Shift+Z</code> for zooming a pane to full screen. I left those where they were.</p>
+
+    <h2>A combination spent on the leader is lost in the shell</h2>
+    <p>Once you pick a prefix key, that combination never reaches the shell. The moment you claim <code>Ctrl+U</code>, the <code>Ctrl+U</code> that deleted everything before the cursor in bash is gone. Pick your leader from combinations your hands reach for less often in the shell. Pick it at the start, because changing it later is hard.</p>
+    <p>While the leader is armed, even keys that are not bound get swallowed. The official documentation puts it the same way: they are not passed through to the terminal. That is why the ripple indicator in part 1 is not decoration. Without it, the key you press to check whether you are in the waiting state simply disappears. After two seconds the wait clears on its own.</p>
+
+    <h2>Summary</h2>
+    <p>Put key, description and action in one table and the bindings and the help read the same source. Pin <code>InputSelector</code> to <code>fuzzy = true</code> and build the list once at load time. Leave commands you rarely use to the command palette rather than the leader.</p>
+    <p>Is your key list from part 1 already past ten lines? Move those lines into a three-column table and bind <code>LEADER + .</code>.</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>
