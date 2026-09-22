@@ -158,5 +158,7 @@ grep -rc 'badge soon' --include="*.html" . | grep -v ':0'
 bash .claude/skills/play-release/scripts/play.sh check roman   # MyApps/Mobile 에서
 ```
 
-`sitemap.xml` 주소 자체는 그대로이므로 삭제·재제출하지 말고 Search Console 의 재수집을 기다린다
-(`todo-update-google-search.md` 와 같은 원칙).
+`sitemap.xml` 주소 자체는 그대로이므로 Search Console 의 재수집을 기다린다 — **행 삭제·재제출은
+사용자의 명시 지시가 있을 때만 한다**(`todo-update-google-search.md` §3.2). 그 지시로 9-12 에 1회
+삭제·재제출을, 9-20 에 복사본 `sitemap-all.xml` 제출을 집행한 전례가 있고 **둘 다 이 문서의 기본
+방침을 뒤집은 것이 아니라 그때마다 받은 예외다.**
