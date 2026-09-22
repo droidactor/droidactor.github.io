@@ -517,12 +517,89 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/trending/economy/gift-tax-exemption-limit/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/trending/economy/deposit-protection-combination/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/trending/economy/crypto-tax-timing/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/trending/economy/nonghyup-short-term-deposit/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/trending/economy/civil-servant-pay-raise-2027/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/trending/economy/tontine-pension-explained/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/trending/economy/parking-account-rates/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/trending/economy/irp-account-opening/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/trending/economy/early-reemployment-allowance/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/trending/economy/us-stock-market-hours/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/trending/economy/severance-pay-calculation-check/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <url>
