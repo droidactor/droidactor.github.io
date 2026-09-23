@@ -91,7 +91,8 @@
         { "@type": "ListItem", "position": 10, "name": "Dotori LG TV Remote", "url": "https://droidactor.github.io/apps/lgtv/" },
         {"@type": "ListItem", "position": 11, "name": "Dotori Unit Converter", "url": "https://droidactor.github.io/apps/unit/"},
         {"@type": "ListItem", "position": 12, "name": "Dotori Receipt Scanner", "url": "https://droidactor.github.io/apps/receipt/"},
-        {"@type": "ListItem", "position": 13, "name": "Dotori Business Card Scanner", "url": "https://droidactor.github.io/apps/namecard/"}
+        {"@type": "ListItem", "position": 13, "name": "Dotori Business Card Scanner", "url": "https://droidactor.github.io/apps/namecard/"},
+        {"@type": "ListItem", "position": 14, "name": "Dotori ID Photo Maker", "url": "https://droidactor.github.io/apps/idphoto/"}
       ]
     }
   ]
@@ -311,6 +312,13 @@
         <p class="desc">Read Korean and English business cards on your device, review each detail, then add it to Contacts or share a vCard. Card data stays in the app.</p>
         <div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/namecard/">Details</a><a href="/#privacy-namecard">Privacy</a></div>
       </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true"><img src="/assets/icons/idphoto.png" width="48" height="48" alt="" decoding="async"></div>
+        <h3><a href="/apps/idphoto/"><span class="dotori">Dotori</span> ID Photo Maker</a></h3>
+        <div class="pkg">com.droidactor.idphoto</div>
+        <p class="desc">Crop a portrait to Korean passport, driver’s license and ID card sizes on your device, then save it to your gallery or as a 4×6 print sheet.</p>
+        <div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/idphoto/">Details</a><a href="/#privacy-idphoto">Privacy</a></div>
+      </article>
 
     </div>
   </section>
@@ -341,7 +349,7 @@
       <p>
         <strong>The short version.</strong> These apps have no accounts and no backend of
         ours. App content stays on your device or is exchanged only with the device, host or source you choose
-        (sections 2 and 7); it is not sent to a developer-operated server or included in advertising requests. Google SDKs separately process advertising and, for Receipt Scanner and Business Card Scanner, ML Kit
+        (sections 2 and 7); it is not sent to a developer-operated server or included in advertising requests. Google SDKs separately process advertising and, for Receipt Scanner, Business Card Scanner and ID Photo Maker, ML Kit
         diagnostic data as described in sections 3 and 7. Uninstalling removes local app storage;
         calendar entries, shared exports and backup copies have separate lifecycles in sections 6 and 7.
       </p>
@@ -351,7 +359,7 @@
     <p>
       We operate no app account, analytics backend, crash-reporting service or server that receives app content.
       This does not describe all third-party SDK processing: Google Mobile Ads handles advertising data,
-      and Receipt Scanner and Business Card Scanner use ML Kit diagnostics. See sections 3 and 7 for those separate data flows.
+      and Receipt Scanner, Business Card Scanner and ID Photo Maker use ML Kit diagnostics. See sections 3 and 7 for those separate data flows.
     </p>
 
     <h3>2. Data processed on your device</h3>
@@ -361,7 +369,7 @@
       is used on the device to make the feature work, is never sent to a server of ours, and is never
       passed to the advertising SDK. Calendar entries may sync through the calendar you choose.
       For Dotori Unit Converter, Android backup or device transfer may also include stored app
-      data, as described in section 7. Receipt Scanner and Business Card Scanner settings may also be included in Android backup, but their receipt or card databases and images are excluded:
+      data, as described in section 7. Receipt Scanner and Business Card Scanner settings may also be included in Android backup, but their receipt or card databases and images are excluded. ID Photo Maker does not allow Android backup, and its working photos are also excluded from device transfer:
     </p>
     <ul>
       <li>Network identifiers found by scanning — IP addresses, hostnames, open ports, device kind</li>
@@ -373,7 +381,8 @@
         device calendar you pick. Uninstalling the app does not remove these calendar entries,
         so delete them in your calendar app if you no longer want them.</li>
       <li>Receipt Scanner records and images, kept locally; confirmed summaries are shared as CSV only when you choose to share</li>
-      <li>Business Card Scanner records and card images — another person's contact details, kept locally; a confirmed card goes to your contacts app or is shared as a vCard only when you choose</li>
+      <li>Business Card Scanner records and card images — another person's contact details, kept locally; a saved card goes to your contacts app or is shared as a vCard only when you choose</li>
+      <li>ID Photo Maker working photos — a person's face; a photo you take or choose is copied to temporary app storage only until it is decoded, then held in memory only while you edit; a new JPEG is written to your gallery only when you save, and shared only when you choose</li>
       <li>Your own settings and preferences</li>
     </ul>
     <p>The apps have no developer-operated backend, so the developer never receives device serial numbers or device IDs. SDK identifier handling is described in sections 3 and 7.</p>
@@ -406,7 +415,7 @@
     </p>
     <p>
       In apps including Bluetooth Keyboard, PPT Remote, Bluetooth Mouse, Bluetooth Numpad, WiFi Scanner,
-      SSH Terminal, LG TV Remote, Unit Converter, Receipt Scanner and Business Card Scanner, a banner slot that cannot request or fill a paid ad may instead
+      SSH Terminal, LG TV Remote, Unit Converter, Receipt Scanner, Business Card Scanner and ID Photo Maker, a banner slot that cannot request or fill a paid ad may instead
       show a first-party card labelled <strong>Promo</strong> for one of our other apps. This card
       does not use the Mobile Ads SDK and does not collect or send app, network or device data. A tap
       first opens an in-app description; the official product page on
@@ -475,7 +484,7 @@
             <td>To reach the devices or sources you asked for, and to fetch ads. The HID
               remotes send your input over Bluetooth, not over the internet. <a href="#privacy-currency"><span class="dotori">Dotori</span> Currency
               Converter</a> fetches the daily exchange-rate table, and the amounts you type are not
-              part of that request. Receipt Scanner also uses ML Kit diagnostics; scanner setup and cloud photo providers may need a connection, while recognition stays on the device. Business Card Scanner works the same way and also downloads optional entity-recognition models from Google over Wi-Fi only; card contents are not part of that download.</td>
+              part of that request. Receipt Scanner also uses ML Kit diagnostics; scanner setup and cloud photo providers may need a connection, while recognition stays on the device. Business Card Scanner works the same way and also downloads optional entity-recognition models from Google over Wi-Fi only; card contents are not part of that download. ID Photo Maker also uses ML Kit diagnostics; its face-detection and background models are bundled in the app, so photos are processed on the device without downloading a model.</td>
           </tr>
           <tr>
             <td><code>ACCESS_WIFI_STATE</code></td>
@@ -568,11 +577,17 @@
       calendar, not in the app's own storage. They stay after the app is gone, so delete them in your
       calendar app if you no longer want them.
     </p>
+    <p>
+      <strong>Saved photos.</strong> Photos that <span class="dotori">Dotori</span> ID Photo Maker saves to your gallery
+      (<code>Pictures/DotoriIdPhoto</code>) are gallery files, not the app's own storage. They stay after
+      the app is gone and may be backed up by your gallery or cloud photo service, so delete them in the
+      gallery if you no longer want them.
+    </p>
 
     <p>
       <strong>Android backup.</strong> Dotori Unit Converter allows Android backup, which may
       include stored app data. Uninstalling does not necessarily remove backup copies; manage
-      them through your device or backup-account settings. Receipt Scanner settings may also be backed up by Android, but receipt databases and images are excluded. Business Card Scanner works the same way: its settings may be backed up, but card databases and images are excluded. See the per-app notes below.
+      them through your device or backup-account settings. Receipt Scanner settings may also be backed up by Android, but receipt databases and images are excluded. Business Card Scanner works the same way: its settings may be backed up, but card databases and images are excluded. ID Photo Maker does not allow Android backup, and its working photos are excluded from device transfer as well. See the per-app notes below.
     </p>
 
     <h3>7. Per-app notes</h3>
@@ -887,10 +902,10 @@
     <div class="policy" id="privacy-namecard">
       <h3><span class="dotori">Dotori</span> Business Card Scanner<span class="pkg-inline">com.droidactor.namecard</span></h3>
       <p>Dotori Business Card Scanner reads Korean and English business card images on your device using OCR, extraction rules and, when available, on-device entity and barcode recognition. The v1 release does not include generative AI. There is no app account or developer-operated server. Card images and recognized text are not uploaded for recognition or passed to advertising requests.</p>
-      <p>A business card holds another person's personal information. Records and retained images stay in the app's private storage. Records can contain name, other spellings of the name, company, department, title, phone numbers, email addresses, websites, address, link candidates from a QR code and your memo. Full OCR text is not stored. A retained image shows everything printed on the card and is not automatically anonymized.</p>
+      <p>A business card holds another person's personal information. Records and retained images stay in the app's private storage. Records can contain name, other spellings of the name, company, department, title, phone numbers, email addresses, websites, address, link candidates from a QR code and your memo. A card is recorded only when you save or export it. Text the app could not place in a field, and second candidates for company, department, title or address, are pre-filled into the memo; they are saved with the card, and exported in its note, unless you remove them. Full OCR text is not stored. A saved record keeps the field values, phone labels, extensions and normalized values, and which fields you edited. A retained image shows everything printed on the card and is not automatically anonymized.</p>
       <p>Images are retained by default. Turning retention off affects future cards and does not remove earlier retained images. Deleting a card removes its app record and retained image. This does not delete the original gallery image, contacts you have already saved, or vCard files you have already shared.</p>
-      <p>Card databases, images and temporary input files are excluded from cloud backup. Card databases and images are also configured to be excluded from Android device-to-device transfer, but manufacturer migration tools may behave differently. The app offers no cloud sync or restore. A confirmed card is passed to your contacts app only when you choose "Add to contacts": the contacts app opens with the details filled in, and you finish saving there. The app does not request contacts permission and does not read your existing contacts. A confirmed card is shared as a vCard file only when you choose to share it; the receiving app then handles its copy.</p>
-      <p>Document Scanner setup may download components through Google Play services, and a cloud photo provider may need a connection. Optional entity-recognition models are downloaded from Google over Wi-Fi only; the download does not include card contents. A link found in a QR code is shown as a candidate and is not opened automatically. ML Kit collects technical diagnostics and usage information, including device/app information, installation identifiers, performance and feature events, as described in Google's <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit disclosure</a>.</p>
+      <p>Card databases, images and temporary input files are excluded from cloud backup. Card databases and images are also configured to be excluded from Android device-to-device transfer, but manufacturer migration tools may behave differently. The app offers no cloud sync or restore. A card is passed to your contacts app only when you choose "Add to Contacts", which saves the card first: the contacts app opens with the details filled in, and you finish saving there. The app does not request contacts permission and does not read your existing contacts. A card is shared as a vCard file only when you choose "Share vCard", which also saves it first; the receiving app then handles its copy.</p>
+      <p>Document Scanner setup may download components through Google Play services, and a cloud photo provider may need a connection. Optional entity-recognition models are downloaded from Google over Wi-Fi only; the download does not include card contents. A link found in a QR code is shown as a candidate and is not opened automatically. Only when you tap "Open link", and only for an http or https address, the app hands the link to Android to open, usually in a browser; the link is then handled under that app's own policy. ML Kit collects technical diagnostics and usage information, including device/app information, installation identifiers, performance and feature events, as described in Google's <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit disclosure</a>.</p>
       <p>The app displays an AdMob banner and uses Google UMP for applicable privacy choices, as described in section 3. Card contents are not supplied to the advertising SDK. Local deletion does not delete Google's diagnostic or advertising records. The app requests no dangerous permissions. Supporting libraries add the network, advertising and background-work permissions listed in section 4.</p>
       <p><a href="/apps/namecard/">Details: <span class="dotori">Dotori</span> Business Card Scanner</a></p>
     </div>
@@ -901,7 +916,8 @@
       <p>A photo you take or choose is copied to temporary app storage, decoded, and the temporary file is removed. The photo being edited stays in memory until you finish, start over or close the app, and working photos are excluded from cloud backup and device transfer. If you process someone else's photo, make sure you have their permission.</p>
       <p>Saving writes a new JPEG to your gallery (<code>Pictures/DotoriIdPhoto</code>) and never overwrites the original. Saved files do not copy the original photo's metadata, such as GPS location. Your gallery or cloud photo service may back up saved photos under its own settings; delete them in the gallery when you no longer need them. A saved photo is passed to another app only when you choose to share it.</p>
       <p>Camera access is requested only when you choose to take a photo. Choosing a photo uses the system photo picker (or the system file picker on older devices) and needs no broad photo or storage access. ML Kit collects technical diagnostics and usage information, including device/app information and installation identifiers, as described in Google's <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit disclosure</a>.</p>
-      <p>The app displays an AdMob banner on the home screen and uses Google UMP for applicable privacy choices, as described in section 3. Photos are not supplied to the advertising SDK. Clearing app data or uninstalling does not delete photos saved to the gallery or Google's diagnostic or advertising records. Supporting libraries add the network, advertising and background-work permissions listed in section 4.</p>
+      <p>The app displays an AdMob banner on the home screen and uses Google UMP for applicable privacy choices, as described in section 3. Photos are not supplied to the advertising SDK. Clearing app data or uninstalling does not delete photos saved to the gallery or Google's diagnostic or advertising records. Supporting libraries add the network, advertising and background-work permissions listed in section 4. You can reopen the advertising privacy options from the app's Photo guide screen.</p>
+      <p><a href="/apps/idphoto/">Details: <span class="dotori">Dotori</span> ID Photo Maker</a></p>
     </div>
 
     <div class="policy" id="privacy-unitconverter">

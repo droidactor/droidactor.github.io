@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Android에서 한국 증명사진 규격에 맞춰 사진 자르기 — droidactor</title>
+<meta name="description" content="여권·운전면허증·주민등록증 규격(35×45mm)에 맞춰 폰에서 사진을 자르고, 신분증용은 원본 배경을 유지한 채 413×531 파일이나 4×6 인화 배치로 저장하는 방법, 앱이 대신 확인하지 않는 머리 길이 규정까지 정리했습니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/products/make-korean-id-photos-on-android/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/make-korean-id-photos-on-android/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/make-korean-id-photos-on-android/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/make-korean-id-photos-on-android/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/products/make-korean-id-photos-on-android/">
+<meta property="og:title" content="Android에서 한국 증명사진 규격에 맞춰 사진 자르기">
+<meta property="og:description" content="여권·운전면허증·주민등록증 규격(35×45mm)에 맞춰 폰에서 사진을 자르고, 신분증용은 원본 배경을 유지한 채 413×531 파일이나 4×6 인화 배치로 저장하는 방법, 앱이 대신 확인하지 않는 머리 길이 규정까지 정리했습니다.">
+<meta property="og:image" content="https://droidactor.github.io/blog/make-korean-id-photos-on-android/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Android에서 한국 증명사진 규격에 맞춰 사진 자르기",
+      "description": "여권·운전면허증·주민등록증 규격(35×45mm)에 맞춰 폰에서 사진을 자르고, 신분증용은 원본 배경을 유지한 채 413×531 파일이나 4×6 인화 배치로 저장하는 방법, 앱이 대신 확인하지 않는 머리 길이 규정까지 정리했습니다.",
+      "url": "https://droidactor.github.io/ko/blog/products/make-korean-id-photos-on-android/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/products/make-korean-id-photos-on-android/",
+      "image": "https://droidactor.github.io/blog/make-korean-id-photos-on-android/assets/icon.png",
+      "datePublished": "2026-09-23",
+      "dateModified": "2026-09-23",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "도토리 증명사진",
+        "url": "https://droidactor.github.io/ko/apps/idphoto/",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Android"
+      },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "폰으로 증명사진 규격 맞추기", "item": "https://droidactor.github.io/ko/blog/products/make-korean-id-photos-on-android/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="언어">
+    <a class="lang-btn" href="/blog/products/make-korean-id-photos-on-android/" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/products/make-korean-id-photos-on-android/" aria-current="page" hreflang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>폰으로 증명사진 규격 맞추기</nav>
+  <div class="hero">
+    <h1>Android에서 한국 증명사진 규격에 맞춰 사진 자르기</h1>
+    <p class="post-meta"><time datetime="2026-09-23">2026년 9월 23일</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>요약.</strong> 용도를 고르고 한 사람의 사진을 촬영하거나 선택한 뒤, 저장할 사진의 위·아래 경계를 직접 정합니다. 앱은 가로세로 비율을 유지하고, 얼굴이 정확히 한 명인지 먼저 확인하며, 용도에 맞는 크기의 JPEG나 4×6인치 인화 배치를 저장합니다. 얼굴 검출은 앱에 포함된 모델로 기기 안에서 하고 사진을 올리지 않습니다. 외교부 여권 사진 규정은 배경 편집을, 운전면허 안내는 편집·합성한 사진을 금지하고, 주민등록증 사진에는 앱이 같은 규칙을 적용하므로 세 신분증 사진은 항상 원본 배경을 유지합니다. 앱은 해상도와 파일 크기를 검사할 뿐, 머리 길이를 측정하거나 접수를 보장하지 않습니다.</p>
+    </div>
+
+    <a class="post-app" href="https://play.google.com/store/apps/details?id=com.droidactor.idphoto&amp;hl=ko">
+      <img src="/blog/make-korean-id-photos-on-android/assets/icon.png" width="512" height="512" alt="도토리 증명사진 앱 아이콘" decoding="async">
+      <div class="post-app-text">
+        <p><strong><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 증명사진</strong>여권·운전면허증·주민등록증 규격에 맞게 사진을 자르고 갤러리에 저장하세요.</p>
+        <span class="play-badge"><img
+          src="../../../../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></span>
+      </div>
+    </a>
+
+
+
+    <h2>앱이 맞추는 규격</h2>
+    <p>시작 화면에서 고르는 용도는 다섯 가지입니다. 용도마다 사진 크기, 저장 파일, 배경을 바꿀 수 있는지가 정해집니다.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>용도</th><th>사진 크기</th><th>저장 파일</th><th>배경</th></tr></thead>
+        <tbody>
+          <tr><td>여권</td><td>35 × 45 mm</td><td>413 × 531 px JPEG, 500KB 이하</td><td>원본만. 규정은 흰색 배경을 요구하고 배경 제거·합성을 금지합니다</td></tr>
+          <tr><td>운전면허증</td><td>35 × 45 mm</td><td>413 × 531 px JPEG, 500KB 이하</td><td>원본만. 편집·합성하지 않은 사진이어야 합니다</td></tr>
+          <tr><td>주민등록증</td><td>35 × 45 mm</td><td>413 × 531 px JPEG</td><td>원본만. 흰색을 권장하고 옅은 단일색도 가능합니다</td></tr>
+          <tr><td>일반 증명·프로필 · 35 × 45 mm</td><td>35 × 45 mm</td><td>413 × 531 px JPEG</td><td>원본·흰색·하늘색</td></tr>
+          <tr><td>일반 사진 · 30 × 40 mm</td><td>30 × 40 mm</td><td>354 × 472 px JPEG</td><td>원본·흰색·하늘색</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>픽셀 크기는 밀리미터를 300dpi로 환산한 값이고, 저장 파일에도 300dpi가 기록됩니다. 500KB 상한은 앱이 온라인 제출용으로 표시하는 두 용도에만 적용합니다. 주민등록증은 온라인 제출 파일 규격을 따로 확인하지 못했으므로 같은 크기의 파일을 상한 없이 저장합니다. 일반 용도 두 가지는 앱의 편의 프리셋이며 공인 규격이 아닙니다.</p>
+    <p>공식 규정은 2026년 9월 23일에 외교부 <a href="https://www.passport.go.kr/home/kor/contents.do?menuPos=32">여권 사진 규정</a>과 <a href="https://www.passport.go.kr/home/kor/contents.do?menuPos=12">온라인 신청 안내</a>, 도로교통공단 <a href="https://www.safedriving.or.kr/etGuide/selectEtGuide04.do">운전면허 안내</a>, 행정안전부 <a href="https://www.mois.go.kr/frt/sub/a06/b06/IDCard_5/screen.do">주민등록증 안내</a>로 확인했습니다. 규정은 바뀔 수 있으므로 제출기관의 최신 안내를 함께 확인합니다.</p>
+
+    <h2>편집 전에 얼굴이 한 명인지 먼저 확인한다</h2>
+    <ul>
+      <li><strong>사진 촬영</strong>은 얼굴 타원 가이드, <strong>3초 타이머</strong>, <strong>카메라 전환</strong>이 있는 카메라 화면을 엽니다. 카메라 권한은 이때에만 요청합니다.</li>
+      <li><strong>사진 선택</strong>은 시스템 사진 선택기를 쓰며, 사진·저장소 전체 접근 권한이 필요 없습니다.</li>
+      <li>촬영하거나 선택한 직후 기기 안에서 얼굴을 찾습니다. 얼굴이 없거나 여러 명이거나 검출기 자체가 동작하지 못하면 편집 화면으로 들어가지 않고, 이유를 안내한 뒤 시작 화면에 머뭅니다.</li>
+      <li>입력 사진은 32MB까지 받습니다. 원본에 기록된 회전 정보를 픽셀에 반영하므로 옆으로 누운 사진이 누운 채로 저장되지 않습니다.</li>
+    </ul>
+
+    <h2>구도는 직접 정하고, 비율은 앱이 지킨다</h2>
+    <p>미리보기에 저장될 사진 틀이 보입니다. 틀의 위·아래 선은 저장할 사진의 경계이며 머리 길이 측정선이 아닙니다.</p>
+    <ul>
+      <li>오른쪽 손잡이를 끌면 위 경계나 아래 경계가 움직입니다. 반대쪽 경계는 그대로 두고 너비가 용도별 비율에 맞춰 따라 변합니다.</li>
+      <li>사진 틀 안쪽을 끌면 크기를 유지한 채 틀이 상하좌우로 움직입니다. 틀은 원본 사진 밖으로 나가지 않고, 사진을 뒤집을 수도 없습니다.</li>
+      <li>처음 틀은 검출한 얼굴을 기준으로 잡습니다. 얼굴을 가운데 두고, 남는 높이를 정수리 위 1 : 턱 아래 2로 나눕니다. 신분증 세 용도는 머리가 사진 높이의 약 34/45(여권 규정의 중앙값), 일반 사진은 어깨가 더 보이도록 60%가 되게 겨냥합니다. 실사진으로 검증하지 않은 추정값이므로 출발점으로만 봅니다.</li>
+      <li>얼굴이 기울었거나 돌아갔거나 눈을 감았을 수 있으면 빨간 글씨로 <strong>정면·기울기·눈 뜸을 확인하세요.</strong> 가 나옵니다. 안내일 뿐 저장을 막지는 않습니다.</li>
+    </ul>
+    <p>여권은 35 × 45 mm 사진에서 정수리(머리카락 제외)부터 턱까지가 32~36mm여야 하고, 6개월 이내에 찍은 사진이어야 합니다. 앱은 머리 길이를 측정하지 않으므로 직접 확인합니다. <strong>?</strong> 버튼을 누르면 도움말과 <strong>외교부 여권 사진 규정</strong> 링크가 나옵니다.</p>
+
+    <h2>저장 전에 두 가지를 확인한다</h2>
+    <p>두 항목을 체크하기 전에는 <strong>갤러리에 저장</strong>이 비활성이고, 버튼 위 한 줄이 아직 남은 항목을 알려 줍니다.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>항목</th><th>나오는 용도</th><th>체크가 풀리는 때</th></tr></thead>
+        <tbody>
+          <tr><td><strong>구도·여백 확인</strong></td><td>모든 용도</td><td>경계나 틀을 움직였을 때</td></tr>
+          <tr><td><strong>여권 사진 규정 확인</strong></td><td>여권</td><td>구도를 바꿔도 풀리지 않음</td></tr>
+          <tr><td><strong>신분증 사진 규정 확인</strong></td><td>운전면허증·주민등록증</td><td>구도를 바꿔도 풀리지 않음</td></tr>
+          <tr><td><strong>배경 경계 확인</strong></td><td>일반 용도 두 가지</td><td>배경을 바꿨을 때</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>잘라 낸 영역의 원본 픽셀이 출력 크기보다 적어도 저장이 막히고 <strong>사진 영역을 키우거나 큰 원본을 선택하세요.</strong> 가 나옵니다. 부족한 해상도를 확대 보간으로 숨기지 않습니다.</p>
+
+    <h2>배경 — 신분증은 원본, 일반 사진은 선택</h2>
+    <p>외교부 여권 사진 규정은 배경 제거와 흰 배경 합성을 금지하고, 도로교통공단 운전면허 안내는 편집·합성하지 않은 사진을 요구합니다. 주민등록증 사진에는 앱이 같은 규칙을 적용하므로, 신분증 세 용도 모두 배경 도구를 보여 주지 않고, 저장 파일에는 항상 원본 픽셀을 씁니다. 대신 밝은 단색 벽 앞, 고른 조명에서 촬영합니다.</p>
+    <p>일반 용도에서는 <strong>배경</strong>에서 <strong>원본</strong>·<strong>흰색</strong>·<strong>하늘색</strong>을 고릅니다. 기기 안의 Selfie 분할 모델로 사람을 분리해 단색 위에 합성합니다. 머리카락·어깨 경계가 매끄럽지 않을 수 있으며, <strong>배경 경계 확인</strong>이 바로 그 부분을 보라는 항목입니다. 분리에 실패하면 현재 사진을 유지하고 다시 시도할 수 있습니다.</p>
+
+    <h2>저장되는 것</h2>
+    <ul>
+      <li><strong>갤러리에 저장</strong>은 <code>Pictures/DotoriIdPhoto</code>에 새 JPEG를 씁니다. 여권·운전면허증은 버튼 위에 <strong>온라인 제출용 · JPEG 500KB 이하</strong>가 표시됩니다. 앱은 JPEG 품질을 95부터 60까지 단계적으로 낮춰 보고, 그래도 크기를 맞추지 못하면 화질을 더 떨어뜨리지 않고 저장을 실패로 끝냅니다.</li>
+      <li><strong>4×6인치 인화 배치 저장</strong>은 1200 × 1800 px(300dpi 기준 4 × 6인치) 한 장에 35 × 45 mm는 6매, 30 × 40 mm는 9매를 배치합니다. 사진마다 1px 바깥에 연회색 재단선과 재단 표시가 있고 사진 픽셀은 바뀌지 않습니다. 확대·잘림 없이 실제 크기로 인화합니다.</li>
+      <li>저장 후 대화상자에 픽셀 크기·파일 크기·폴더가 나오고, <strong>공유</strong>로 원하는 앱에 파일을 보낼 수 있습니다. <strong>갤러리 보기</strong>는 폰의 갤러리 앱을 엽니다.</li>
+      <li>원본 사진은 덮어쓰지 않으며, 저장 파일에는 위치(GPS) 같은 원본 사진의 메타데이터를 복사하지 않습니다.</li>
+    </ul>
+
+    <h2>얼굴 사진은 개인정보다</h2>
+    <ul>
+      <li>앱 계정과 개발자가 운영하는 사진 서버가 없습니다. 얼굴 검출과 배경 분리는 앱에 포함된 ML Kit 모델로 기기 안에서 하므로 모델을 내려받을 필요가 없습니다. 클라우드 사진 공급자에서 사진을 고를 때는 연결이 필요할 수 있습니다.</li>
+      <li>고른 사진은 임시 파일로 복사해 디코딩한 뒤 임시 파일을 곧바로 지웁니다. 편집 중인 사진은 메모리에만 있고, 작업 파일은 Android 백업과 기기 이전에서 제외합니다. 백그라운드에서 Android가 앱을 종료하면 편집은 처음부터 다시 합니다.</li>
+      <li>저장한 사진은 그때부터 갤러리가 관리합니다. 갤러리나 클라우드 사진 서비스가 자체 설정으로 백업할 수 있고, 앱을 삭제해도 지워지지 않습니다. 갤러리에서 지워도 이미 공유한 사본은 회수되지 않습니다.</li>
+      <li>다른 사람의 사진을 처리할 때는 그 사람의 동의를 받습니다.</li>
+      <li>사진은 광고 요청에 들어가지 않습니다. 시작 화면에 AdMob 배너와 Google 동의 절차가 있고, 촬영·편집 화면에는 광고가 없습니다. 도움말의 <strong>개인정보 옵션</strong>에서 선택을 다시 열 수 있습니다. ML Kit 진단과 광고의 데이터 처리는 <a href="/ko/#privacy-idphoto">개인정보 처리방침</a>에 따로 적혀 있습니다.</li>
+    </ul>
+
+    <h2>v1의 알려진 제약</h2>
+    <ul>
+      <li>한국 규격만 다룹니다. 해외 여권·비자 사진은 대상이 아닙니다.</li>
+      <li>머리 길이 측정, 합격 판정, 접수 보장이 없습니다. 최종 접수 여부는 제출기관이 판단합니다.</li>
+      <li>뷰티 필터·보정·톤 변경 기능이 없습니다.</li>
+      <li>한 번에 사진 한 장만 편집하고, 이전 편집을 모아 두는 보관함이 없습니다.</li>
+      <li>배경 교체는 일반 용도에만 있고, 품질은 사람을 얼마나 깔끔하게 분리하느냐에 달려 있습니다.</li>
+      <li>틀 이동에는 아직 별도의 접근성 조작 경로가 없습니다.</li>
+    </ul>
+    <p>이 내용은 2026년 9월 23일 기준 앱 1.0.0을 설명합니다.</p>
+
+    <div class="note">
+      <p><strong><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 증명사진</strong>은 폰 안에서 여권·운전면허증·주민등록증 규격에 맞춰 사진을 자르고, 신분증 용도는 원본 배경을 그대로 두며, 제출용 파일이나 4×6 인화 배치로 저장합니다.
+        <a href="/ko/apps/idphoto/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 증명사진 자세히 보기</a></p>
+      <p><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.idphoto&amp;hl=ko"><img
+        src="../../../../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></a></p>
+    </div>
+
+    <h2>관련 글</h2>
+    <ul>
+      <li><a href="/ko/apps/idphoto/">도토리 증명사진</a></li>
+      <li><a href="/ko/tech-notes/idphoto/">증명사진 규격·구도·파일 출력 (기술 노트)</a></li>
+    </ul>
+
+  </article>
+
+  <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/apps/">전체 앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/tech-notes/">기술 노트</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play 및 Google Play 로고는 Google LLC 의 상표입니다.</p></footer>
+
+</div>
+
+</body>
+</html>

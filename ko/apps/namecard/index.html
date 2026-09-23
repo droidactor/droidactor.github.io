@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>도토리 명함 스캐너 — 읽고 확인하는 명함 기록</title>
-<meta name="description" content="한국어·영어 명함을 기기 안에서 읽고 항목을 직접 확인하세요. 확정한 명함은 연락처 앱에 추가하거나 vCard로 공유하며 명함 서버와 계정은 없습니다.">
+<meta name="description" content="한국어·영어 명함을 기기 안에서 읽고 항목을 직접 확인하세요. 저장한 명함은 연락처 앱에 추가하거나 vCard로 공유하며 명함 서버와 계정은 없습니다.">
 <link rel="canonical" href="https://droidactor.github.io/ko/apps/namecard/">
 <link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/namecard/">
 <link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/namecard/">
@@ -16,7 +16,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:url" content="https://droidactor.github.io/ko/apps/namecard/">
 <meta property="og:title" content="도토리 명함 스캐너 — 읽고 확인하는 명함 기록">
-<meta property="og:description" content="한국어·영어 명함을 기기 안에서 읽고 항목을 직접 확인하세요. 확정한 명함은 연락처 앱에 추가하거나 vCard로 공유하며 명함 서버와 계정은 없습니다.">
+<meta property="og:description" content="한국어·영어 명함을 기기 안에서 읽고 항목을 직접 확인하세요. 저장한 명함은 연락처 앱에 추가하거나 vCard로 공유하며 명함 서버와 계정은 없습니다.">
 <meta property="og:image" content="https://droidactor.github.io/assets/icons/namecard.png">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="../../../assets/site.css">
@@ -32,11 +32,19 @@
   "isAccessibleForFree": true,
   "operatingSystem": "Android 8.0 (API 26) 이상",
   "inLanguage": "ko",
-  "description": "한국어·영어 명함을 기기 안에서 읽고 항목을 직접 확인하세요. 확정한 명함은 연락처 앱에 추가하거나 vCard로 공유하며 명함 서버와 계정은 없습니다.",
+  "description": "한국어·영어 명함을 기기 안에서 읽고 항목을 직접 확인하세요. 저장한 명함은 연락처 앱에 추가하거나 vCard로 공유하며 명함 서버와 계정은 없습니다.",
   "image": "https://droidactor.github.io/assets/icons/namecard.png",
+  "screenshot": [
+    "https://droidactor.github.io/assets/shots/namecard/ko-KR/00-intro.webp",
+    "https://droidactor.github.io/assets/shots/namecard/ko-KR/01-home.webp",
+    "https://droidactor.github.io/assets/shots/namecard/ko-KR/02-review.webp",
+    "https://droidactor.github.io/assets/shots/namecard/ko-KR/03-help.webp",
+    "https://droidactor.github.io/assets/shots/namecard/ko-KR/04-settings.webp",
+    "https://droidactor.github.io/assets/shots/namecard/ko-KR/05-light-theme.webp"
+],
   "featureList": [
     "촬영하거나 사진에서 선택",
-    "명함은 사용자가 확정",
+    "모든 칸을 직접 검토",
     "전화번호는 인쇄된 그대로",
     "연락처에 추가하거나 vCard 공유",
     "이미지 보관 선택",
@@ -73,18 +81,29 @@
     <div class="icon" aria-hidden="true"><img src="../../../assets/icons/namecard.png" width="80" height="80" alt="" decoding="async"></div>
     <h1><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 명함 스캐너</h1>
     <div class="pkg">com.droidactor.namecard</div>
-    <p>명함 한 면을 촬영하거나 사진에서 선택하고, 추출된 항목을 확인해 명함을 확정하세요. 한국어·영어를 기기 안에서 읽으며, 연락처 앱에 추가하거나 vCard로 공유하는 시점은 사용자가 정합니다.</p>
+    <p>명함 한 면을 촬영하거나 사진에서 선택하고, 추출된 항목을 확인해 명함을 저장하세요. 한국어·영어를 기기 안에서 읽으며, 연락처 앱에 추가하거나 vCard로 공유하는 시점은 사용자가 정합니다.</p>
     <div class="status"><span class="badge soon">출시 예정</span><a href="/ko/tech-notes/namecard/">기술 노트</a><a href="#privacy">개인정보</a></div>
   </div>
   <section>
     <h2>이런 앱입니다</h2>
     <div class="feature">
       <div><h3>촬영하거나 사진에서 선택</h3><p>문서 스캐너를 사용하거나 이미지 한 장을 선택합니다. 이름·회사·부서·직함·전화번호·이메일·웹사이트·주소 후보를 명함 이미지와 대조합니다.</p></div>
-      <div><h3>명함은 사용자가 확정</h3><p>인식에는 오류가 있을 수 있습니다. 불분명한 값은 직접 수정하고 메모를 더하거나, 아직 확인하지 못한 명함은 초안으로 남깁니다. 연락처 QR은 인쇄 내용과 나란히 후보로 보여줍니다. v1은 생성형 AI를 포함하지 않습니다.</p></div>
+      <div><h3>모든 칸을 직접 검토</h3><p>인식에는 오류가 있을 수 있습니다. 칸을 누르면 바로 고칠 수 있습니다. 어느 칸에도 들어가지 않은 글자와 회사·부서·직함·주소의 두 번째 후보는 메모에 미리 채워 두므로 남기거나 지울 수 있습니다. 명함은 저장을 누르거나 내보낼 때만 기록되며, 필수 칸은 이름 하나입니다. 연락처 QR은 인쇄 내용과 나란히 후보로 보여줍니다. v1은 생성형 AI를 포함하지 않습니다.</p></div>
       <div><h3>전화번호는 인쇄된 그대로</h3><p>휴대·사무실·직통·대표·팩스 라벨을 번호마다 따로 유지합니다. 국가번호는 명함에 인쇄돼 있거나 설정에서 기본 국가를 고른 경우에만 붙입니다.</p></div>
-      <div><h3>연락처에 추가하거나 vCard 공유</h3><p>명함을 확정한 뒤 항목이 채워진 연락처 앱의 새 연락처 화면을 열어 직접 저장하거나, 원하는 앱으로 vCard 파일을 공유합니다. 기존 연락처는 읽지 않습니다.</p></div>
-      <div><h3>이미지 보관 선택</h3><p>명함 이미지는 기본적으로 앱 안에 보관합니다. 보관을 끄면 새 명함부터 적용하며, 이미 보관한 이미지는 명함과 함께 삭제하기 전까지 남습니다.</p></div>
+      <div><h3>연락처에 추가하거나 vCard 공유</h3><p>이름이 채워지면 항목이 입력된 연락처 앱의 새 연락처 화면을 열어 직접 저장하거나, 원하는 앱으로 vCard 파일을 공유합니다. 기존 연락처는 읽지 않습니다.</p></div>
+      <div><h3>이미지 보관 선택</h3><p>명함 이미지는 기본적으로 앱 안에 보관합니다. 보관을 끄면 새 명함부터 적용하며, 이미 보관한 이미지는 명함과 함께 삭제하기 전까지 남습니다. 목록에서 여러 명함을 체크해 한꺼번에 삭제할 수 있습니다.</p></div>
       <div><h3>기기 안에서 인식</h3><p>계정이나 개발자 운영 명함 서버가 없습니다. 보조 인식 모델은 Wi-Fi에서 내려받고, 스캐너 준비에는 Play services 다운로드가, 클라우드 사진 공급자에는 연결이 필요할 수 있습니다. SDK 진단·광고는 명함 인식과 별개입니다.</p></div>
+    </div>
+  </section>
+  <section id="screenshots">
+    <h2>앱 화면</h2>
+    <div class="screenshot-grid">
+      <figure><img src="/assets/shots/namecard/ko-KR/00-intro.webp" width="800" height="1422" loading="lazy" decoding="async" alt="도토리 명함 스캐너 인트로"><figcaption>도토리 명함 스캐너 인트로</figcaption></figure>
+      <figure><img src="/assets/shots/namecard/ko-KR/01-home.webp" width="800" height="1422" loading="lazy" decoding="async" alt="검토한 명함을 목록에 모아 보세요."><figcaption>검토한 명함을 목록에 모아 보세요.</figcaption></figure>
+      <figure><img src="/assets/shots/namecard/ko-KR/02-review.webp" width="800" height="1422" loading="lazy" decoding="async" alt="보관한 명함 이미지와 저장된 항목을 대조하세요."><figcaption>보관한 명함 이미지와 저장된 항목을 대조하세요.</figcaption></figure>
+      <figure><img src="/assets/shots/namecard/ko-KR/03-help.webp" width="800" height="1422" loading="lazy" decoding="async" alt="촬영·검토·공유 방법을 확인하세요."><figcaption>촬영·검토·공유 방법을 확인하세요.</figcaption></figure>
+      <figure><img src="/assets/shots/namecard/ko-KR/04-settings.webp" width="800" height="1422" loading="lazy" decoding="async" alt="이미지 보관·기본 국가·테마·언어를 설정하세요."><figcaption>이미지 보관·기본 국가·테마·언어를 설정하세요.</figcaption></figure>
+      <figure><img src="/assets/shots/namecard/ko-KR/05-light-theme.webp" width="800" height="1422" loading="lazy" decoding="async" alt="같은 명함 목록을 밝은 테마로 볼 수 있습니다."><figcaption>같은 명함 목록을 밝은 테마로 볼 수 있습니다.</figcaption></figure>
     </div>
   </section>
   <section>
@@ -106,7 +125,7 @@
   </section>
   <section>
     <h2>알려진 한계</h2>
-    <div class="note"><p>명함을 확정하기 전에 인식 결과를 확인하세요. v1은 이미지 한 장에 명함 한 면만 처리하며 앞·뒷면 결합, 한 이미지의 여러 명함 분할, 목록 검색·정렬, 기존 연락처 중복 확인을 지원하지 않습니다. QR에서 찾은 링크를 자동으로 열지 않고, 연락처를 자동으로 저장하지 않으며, 클라우드 동기화·복원을 제공하지 않습니다. 첫 촬영부터 오프라인으로 작동한다고 보장하지 않습니다.</p></div>
+    <div class="note"><p>명함을 저장하기 전에 인식 결과를 확인하세요. v1은 이미지 한 장에 명함 한 면만 처리하며 앞·뒷면 결합, 한 이미지의 여러 명함 분할, 목록 검색·정렬, 기존 연락처 중복 확인을 지원하지 않습니다. QR에서 찾은 링크를 스스로 열지 않고(링크 행의 브라우저 아이콘 "링크 열기"를 누를 때만 http·https 링크를 엽니다), 연락처를 자동으로 저장하지 않으며, 클라우드 동기화·복원을 제공하지 않습니다. 첫 촬영부터 오프라인으로 작동한다고 보장하지 않습니다.</p></div>
   </section>
   <section id="privacy">
     <h2>개인정보</h2>
@@ -138,6 +157,7 @@
       <a href="/ko/apps/currency/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 환율 계산기</a>
       <a href="/ko/apps/unit/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 단위 변환기</a>
       <a href="/ko/apps/receipt/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너</a>
+      <a href="/ko/apps/idphoto/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 증명사진</a>
     </div>
   </section>
   <footer>

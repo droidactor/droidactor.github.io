@@ -34,9 +34,17 @@
   "inLanguage": "en",
   "description": "Read Korean and English business cards on your device, review each detail, then add the card to Contacts or share a vCard. No card server or account.",
   "image": "https://droidactor.github.io/assets/icons/namecard.png",
+  "screenshot": [
+    "https://droidactor.github.io/assets/shots/namecard/en-US/00-intro.webp",
+    "https://droidactor.github.io/assets/shots/namecard/en-US/01-home.webp",
+    "https://droidactor.github.io/assets/shots/namecard/en-US/02-review.webp",
+    "https://droidactor.github.io/assets/shots/namecard/en-US/03-help.webp",
+    "https://droidactor.github.io/assets/shots/namecard/en-US/04-settings.webp",
+    "https://droidactor.github.io/assets/shots/namecard/en-US/05-light-theme.webp"
+],
   "featureList": [
     "Scan or choose a photo",
-    "You confirm the card",
+    "You review every field",
     "Phone numbers stay as printed",
     "Add to Contacts or share a vCard",
     "Choose image retention",
@@ -73,18 +81,29 @@
     <div class="icon" aria-hidden="true"><img src="../../assets/icons/namecard.png" width="80" height="80" alt="" decoding="async"></div>
     <h1><span class="dotori">Dotori</span> Business Card Scanner</h1>
     <div class="pkg">com.droidactor.namecard</div>
-    <p>Scan one side of a business card or choose a photo, then check the suggested details before confirming the card. Korean and English text is read on your device, and you decide when a card goes to Contacts or is shared as a vCard.</p>
+    <p>Scan one side of a business card or choose a photo, then check the suggested details and save the card. Korean and English text is read on your device, and you decide when a card goes to Contacts or is shared as a vCard.</p>
     <div class="status"><span class="badge soon">Coming soon</span><a href="/tech-notes/namecard/">Tech notes</a><a href="#privacy">Privacy</a></div>
   </div>
   <section>
     <h2>What it does</h2>
     <div class="feature">
       <div><h3>Scan or choose a photo</h3><p>Use the document scanner or select one image. Review the suggested name, company, department, job title, phone numbers, email addresses, websites and address against the card image.</p></div>
-      <div><h3>You confirm the card</h3><p>Recognition can make mistakes. Correct unclear fields, add a memo, or keep an unfinished card as a draft. Contact QR codes are shown as candidates next to the printed details. The v1 release does not include generative AI.</p></div>
+      <div><h3>You review every field</h3><p>Recognition can make mistakes. Tap any field to correct it. Text that did not fit a field, and second candidates for company, department, title or address, are pre-filled into the memo so you can keep or remove them. A card is saved only when you tap Save or export it, and the name is the one required field. Contact QR codes are shown as candidates next to the printed details. The v1 release does not include generative AI.</p></div>
       <div><h3>Phone numbers stay as printed</h3><p>Each number keeps its label — mobile, office, direct, main or fax. A country code is added only when it is printed on the card or when you choose a default country in Settings.</p></div>
-      <div><h3>Add to Contacts or share a vCard</h3><p>After confirming a card, open your contacts app’s new-contact screen with the details filled in and finish saving there, or share a vCard file with an app you choose. The app does not read your existing contacts.</p></div>
-      <div><h3>Choose image retention</h3><p>Card images are kept in the app by default. Turning retention off applies to new cards; images already kept remain until you delete them with their cards.</p></div>
+      <div><h3>Add to Contacts or share a vCard</h3><p>Once the name is filled in, open your contacts app’s new-contact screen with the details filled in and finish saving there, or share a vCard file with an app you choose. The app does not read your existing contacts.</p></div>
+      <div><h3>Choose image retention</h3><p>Card images are kept in the app by default. Turning retention off applies to new cards; images already kept remain until you delete them with their cards. Check several cards in the list to delete them together.</p></div>
       <div><h3>Local recognition</h3><p>No account or developer-operated card server. Optional recognition models download over Wi-Fi, scanner setup may need a Play services download, and cloud photo providers may need a connection. SDK diagnostics and ads are separate from card recognition.</p></div>
+    </div>
+  </section>
+  <section id="screenshots">
+    <h2>Screens</h2>
+    <div class="screenshot-grid">
+      <figure><img src="/assets/shots/namecard/en-US/00-intro.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Business card scanner introduction"><figcaption>Business card scanner introduction</figcaption></figure>
+      <figure><img src="/assets/shots/namecard/en-US/01-home.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Keep reviewed business cards in one list."><figcaption>Keep reviewed business cards in one list.</figcaption></figure>
+      <figure><img src="/assets/shots/namecard/en-US/02-review.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Compare saved details with the retained card image."><figcaption>Compare saved details with the retained card image.</figcaption></figure>
+      <figure><img src="/assets/shots/namecard/en-US/03-help.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Read the guide to scanning, checking and sharing cards."><figcaption>Read the guide to scanning, checking and sharing cards.</figcaption></figure>
+      <figure><img src="/assets/shots/namecard/en-US/04-settings.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Choose image retention, default country, theme and language."><figcaption>Choose image retention, default country, theme and language.</figcaption></figure>
+      <figure><img src="/assets/shots/namecard/en-US/05-light-theme.webp" width="800" height="1422" loading="lazy" decoding="async" alt="View the same saved cards in the light theme."><figcaption>View the same saved cards in the light theme.</figcaption></figure>
     </div>
   </section>
   <section>
@@ -106,7 +125,7 @@
   </section>
   <section>
     <h2>Known limits</h2>
-    <div class="note"><p>Check every result before confirming it. V1 reads one card side per image: it does not combine front and back images, split several cards in one image, search or sort the list, or check for duplicates in your existing contacts. It does not open links found in QR codes, save contacts automatically, or provide cloud sync or restore. First-use offline scanning is not guaranteed.</p></div>
+    <div class="note"><p>Check every result before saving it. V1 reads one card side per image: it does not combine front and back images, split several cards in one image, search or sort the list, or check for duplicates in your existing contacts. It does not open links found in QR codes on its own (the browser icon on the link row, named Open link, opens only http and https links, and only when you tap it), save contacts automatically, or provide cloud sync or restore. First-use offline scanning is not guaranteed.</p></div>
   </section>
   <section id="privacy">
     <h2>Privacy</h2>
@@ -138,6 +157,7 @@
       <a href="/apps/currency/"><span class="dotori">Dotori</span> Currency Converter</a>
       <a href="/apps/unit/"><span class="dotori">Dotori</span> Unit Converter</a>
       <a href="/apps/receipt/"><span class="dotori">Dotori</span> Receipt Scanner</a>
+      <a href="/apps/idphoto/"><span class="dotori">Dotori</span> ID Photo Maker</a>
     </div>
   </section>
   <footer>

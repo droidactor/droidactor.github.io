@@ -311,7 +311,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/manual/lgtv/"/>
   </url>
 
-  <!-- Tech notes. Eight app-specific engineering notes plus the bilingual index pair. -->
+  <!-- Tech notes. Nine app-specific engineering notes plus the bilingual index pair. -->
   <url>
     <loc>https://droidactor.github.io/tech-notes/</loc>
     <lastmod>2026-09-23</lastmod>
@@ -558,6 +558,25 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/namecard/"/>
   </url>
 
+  <url>
+    <loc>https://droidactor.github.io/tech-notes/idphoto/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/idphoto/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/idphoto/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/idphoto/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/tech-notes/idphoto/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/idphoto/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/idphoto/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/idphoto/"/>
+  </url>
+
   <!--
     Blog. One <url> pair per post, newest first, under the index pair.
     blog/_post-template.html is deliberately absent: it carries noindex and is not a page.
@@ -579,6 +598,25 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/products/make-korean-id-photos-on-android/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/make-korean-id-photos-on-android/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/make-korean-id-photos-on-android/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/make-korean-id-photos-on-android/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/products/make-korean-id-photos-on-android/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/make-korean-id-photos-on-android/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/make-korean-id-photos-on-android/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/make-korean-id-photos-on-android/"/>
   </url>
 
   <url>
@@ -1240,5 +1278,23 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/namecard/"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/namecard/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/namecard/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/apps/idphoto/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/idphoto/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/idphoto/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/idphoto/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/apps/idphoto/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/idphoto/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/idphoto/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/idphoto/"/>
   </url>
 </urlset>

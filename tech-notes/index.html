@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tech notes — droidactor</title>
-<meta name="description" content="Engineering notes for eight droidactor Android apps: architecture, protocols, design decisions, safety boundaries, and verified limitations.">
+<meta name="description" content="Engineering notes for nine droidactor Android apps: architecture, protocols, design decisions, safety boundaries, and verified limitations.">
 <link rel="canonical" href="https://droidactor.github.io/tech-notes/">
 <link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/">
 <link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/">
@@ -16,7 +16,7 @@
 <meta property="og:locale:alternate" content="ko_KR">
 <meta property="og:url" content="https://droidactor.github.io/tech-notes/">
 <meta property="og:title" content="Tech notes — droidactor">
-<meta property="og:description" content="Architecture, protocols, design decisions, and verified limitations behind eight droidactor Android apps.">
+<meta property="og:description" content="Architecture, protocols, design decisions, and verified limitations behind nine droidactor Android apps.">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="../assets/site.css">
 <script type="application/ld+json">
@@ -28,12 +28,12 @@
       "@id": "https://droidactor.github.io/tech-notes/#notes",
       "url": "https://droidactor.github.io/tech-notes/",
       "name": "droidactor tech notes",
-      "description": "Engineering notes for eight droidactor Android apps.",
+      "description": "Engineering notes for nine droidactor Android apps.",
       "inLanguage": "en",
       "publisher": { "@id": "https://droidactor.github.io/#publisher" },
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 8,
+        "numberOfItems": 9,
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "url": "https://droidactor.github.io/tech-notes/bt-keyboard/", "name": "Dotori Bluetooth Keyboard tech notes" },
           { "@type": "ListItem", "position": 2, "url": "https://droidactor.github.io/tech-notes/bt-ppt/", "name": "Dotori Bluetooth PPT Remote tech notes" },
@@ -42,7 +42,8 @@
           { "@type": "ListItem", "position": 5, "url": "https://droidactor.github.io/tech-notes/ssh-scout/", "name": "Dotori SSH Terminal tech notes" },
           { "@type": "ListItem", "position": 6, "url": "https://droidactor.github.io/tech-notes/lgtv/", "name": "Dotori LG TV Remote tech notes" },
           { "@type": "ListItem", "position": 7, "url": "https://droidactor.github.io/tech-notes/receipt/", "name": "Dotori Receipt Scanner tech notes" },
-          { "@type": "ListItem", "position": 8, "url": "https://droidactor.github.io/tech-notes/namecard/", "name": "Dotori Business Card Scanner tech notes" }
+          { "@type": "ListItem", "position": 8, "url": "https://droidactor.github.io/tech-notes/namecard/", "name": "Dotori Business Card Scanner tech notes" },
+          { "@type": "ListItem", "position": 9, "url": "https://droidactor.github.io/tech-notes/idphoto/", "name": "Dotori ID Photo Maker tech notes" }
         ]
       }
     },
@@ -73,7 +74,7 @@
 
   <div class="hero">
     <h1>Tech notes</h1>
-    <p>Architecture, protocols, design decisions, safety boundaries, and limitations recorded while building eight droidactor Android apps.</p>
+    <p>Architecture, protocols, design decisions, safety boundaries, and limitations recorded while building nine droidactor Android apps.</p>
   </div>
 
   <section id="notes">
@@ -88,6 +89,7 @@
       <article class="card"><div class="icon" aria-hidden="true">📺</div><h3><a href="/tech-notes/lgtv/"><span class="dotori">Dotori</span> LG TV Remote</a></h3><p class="pkg">SSAP · pointer · WoL</p><p class="desc">Measured webOS behavior, pairing and client keys, separate control channels, read-back, and network power-on.</p><div class="foot"><a href="/tech-notes/lgtv/">Open tech notes</a><a href="/manual/lgtv/">User manual</a></div></article>
       <article class="card"><div class="icon" aria-hidden="true">🧾</div><h3><a href="/tech-notes/receipt/"><span class="dotori">Dotori</span> Receipt Scanner</a></h3><p class="pkg">On-device OCR · exact money</p><p class="desc">Korean and English amount rules, per-currency money with stored scale, confirmed-only totals and CSV, and backup exclusion.</p><div class="foot"><a href="/tech-notes/receipt/">Open tech notes</a><a href="/apps/receipt/">Product page</a></div></article>
       <article class="card"><div class="icon" aria-hidden="true">📇</div><h3><a href="/tech-notes/namecard/"><span class="dotori">Dotori</span> Business Card Scanner</a></h3><p class="pkg">Field rules · QR · vCard</p><p class="desc">Card field rules, Entity Extraction and QR as candidates with conflict handling, contact insert intents, and vCard export.</p><div class="foot"><a href="/tech-notes/namecard/">Open tech notes</a><a href="/apps/namecard/">Product page</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true">🪪</div><h3><a href="/tech-notes/idphoto/"><span class="dotori">Dotori</span> ID Photo Maker</a></h3><p class="pkg">Face check · crop · 300 dpi</p><p class="desc">Korean ID photo sizes, the one-face entry check, user-dragged crop edges, general-only backgrounds, and byte-limited JPEG and print output.</p><div class="foot"><a href="/tech-notes/idphoto/">Open tech notes</a><a href="/apps/idphoto/">Product page</a></div></article>
     </div>
   </section>
 
