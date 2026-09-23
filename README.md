@@ -14,7 +14,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 ```
 /                       영문 홈 (앱 목록 · 지원 · 개인정보 처리방침 전문)
 /ko/                    국문 홈 (같은 구성, 같은 앵커)
-/apps/                  제품 목록 — 7종 앱                            + /ko/apps/
+/apps/                  제품 목록 — 13종 앱                           + /ko/apps/
 /apps/bt-keyboard/      제품 페이지 — Dotori Bluetooth Keyboard      + /ko/apps/bt-keyboard/
 /apps/bt-ppt/           제품 페이지 — Dotori Bluetooth PPT Remote    + /ko/apps/bt-ppt/
 /apps/bt-mouse/         제품 페이지 — Dotori Bluetooth Mouse         + /ko/apps/bt-mouse/
@@ -22,12 +22,18 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 /apps/ssh-scout/        제품 페이지 — Dotori SSH Terminal             + /ko/apps/ssh-scout/
 /apps/yt-downloader/    제품 페이지 — Dotori YouTube Downloader      + /ko/apps/yt-downloader/
 /apps/lgtv/             제품 페이지 — Dotori LG TV Remote            + /ko/apps/lgtv/
+/apps/numpad/           제품 페이지 — Dotori Bluetooth Numpad        + /ko/apps/numpad/
+/apps/roman/            제품 페이지 — Dotori Roman Numerals          + /ko/apps/roman/
+/apps/currency/         제품 페이지 — Dotori Currency Converter      + /ko/apps/currency/
+/apps/unit/             제품 페이지 — Dotori Unit Converter          + /ko/apps/unit/
+/apps/receipt/          제품 페이지 — Dotori Receipt Scanner         + /ko/apps/receipt/
+/apps/namecard/         제품 페이지 — Dotori Business Card Scanner   + /ko/apps/namecard/
 /manual/                사용 설명서 목록 — 6종 앱                     + /ko/manual/
 /manual/<앱>/           6종 앱 영문 사용 설명서                       + /ko/manual/<앱>/
                         (bt-keyboard · bt-ppt · bt-mouse · wifi-scout · ssh-scout · lgtv)
-/tech-notes/            개발 기술 노트 목록 — 6종 앱                 + /ko/tech-notes/
-/tech-notes/<앱>/       6종 앱 영문 기술 노트                        + /ko/tech-notes/<앱>/
-                        (bt-keyboard · bt-ppt · bt-mouse · wifi-scout · ssh-scout · lgtv)
+/tech-notes/            개발 기술 노트 목록 — 8종 앱                 + /ko/tech-notes/
+/tech-notes/<앱>/       8종 앱 영문 기술 노트                        + /ko/tech-notes/<앱>/
+                        (bt-keyboard · bt-ppt · bt-mouse · wifi-scout · ssh-scout · lgtv · receipt · namecard)
 /tech-notes/<앱>/<slug>.html  주제별 상세 조사 글                    + /ko/tech-notes/<앱>/<slug>.html
 /blog/                  글 목록 — Field notes                        + /ko/blog/ (현장 노트)
 /blog/<slug>/           글 1편 — 먼저 발행된 8편                     + /ko/blog/<slug>/
@@ -55,16 +61,16 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | 파일 | 역할 |
 |---|---|
 | `index.html` · `ko/index.html` | 앱 목록 + 지원 연락처 + **개인정보 처리방침 전문**. 처리방침 앵커의 정본이다 |
-| `apps/index.html` · `ko/apps/index.html` | 10종 제품 목록 허브. 제품 상세와 7종 매뉴얼로 연결하고, 출시된 6종은 카드에 스크린샷 2장을 싣는다(각 장이 그 앱의 Play 스토어 링크) |
+| `apps/index.html` · `ko/apps/index.html` | 13종 제품 목록 허브. 제품 상세와 7종 매뉴얼로 연결하고, 출시된 6종은 카드에 스크린샷 2장을 싣는다(각 장이 그 앱의 Play 스토어 링크) |
 | `apps/<앱>/index.html` · `ko/apps/<앱>/index.html` | 제품 상세. 기능·요구사항·개인정보 요약을 담고, 처리방침 **전문은 홈 앵커로 링크**한다(중복 금지) |
 | `manual/index.html` · `ko/manual/index.html` | 7종 사용 설명서 목록 허브. `yt-downloader`·`numpad`·`currency` 는 대상이 아니다 |
 | `manual/<앱>/index.html` · `ko/manual/<앱>/index.html` | 7종 앱의 한·영 사용 설명서. 실제 UI 문구·검증 앱 버전·빠른 시작·설정·문제 해결을 담고 해당 제품·기술 글과 상호 링크한다. `yt-downloader`·`numpad`·`currency` 는 대상이 아니다 |
-| `tech-notes/index.html` · `ko/tech-notes/index.html` | `yt-downloader`를 제외한 6종 개발 기술 노트 목록 허브 |
-| `tech-notes/<앱>/index.html` · `ko/tech-notes/<앱>/index.html` | 6종 앱의 한·영 기술 노트. 소스 기준 버전과 구조·protocol·핵심 설계 결정·안전 경계·확인된 제약을 기록하고 제품·매뉴얼·현장 노트와 연결한다 |
+| `tech-notes/index.html` · `ko/tech-notes/index.html` | 기존 6종(`bt-keyboard`·`bt-ppt`·`bt-mouse`·`wifi-scout`·`ssh-scout`·`lgtv`)과 `receipt`·`namecard` 의 8종 개발 기술 노트 목록 허브 |
+| `tech-notes/<앱>/index.html` · `ko/tech-notes/<앱>/index.html` | 8종 앱의 한·영 기술 노트. 소스 기준 버전과 구조·protocol·핵심 설계 결정·안전 경계·확인된 제약을 기록하고 제품·매뉴얼·현장 노트와 연결한다 |
 | `blog/index.html` · `ko/blog/index.html` | 글 목록. **손으로 관리한다** — 이 리포에 생성기는 없다. 열 편쯤 넘어 손이 아프면 그때가 도입 신호다 |
 | `blog/_post-template.html` | 글 템플릿. slug·경로·JSON-LD·CTA 규약을 머리주석에 담고 있으며 **글 추가 절차의 정본**이다 |
 | `assets/site.css` | 전 페이지 공용. 외부 CDN·폰트·스크립트 없음(자기완결) |
-| `sitemap.xml` | 홈 2 + 앱 허브 2 + 제품 22 + 매뉴얼 허브 2 + 매뉴얼 14 + 기술 노트 허브 2 + 기술 노트 12 + 기술 노트 상세 6 + 블로그 허브 2 + 블로그 16 = 80개 URL. 모든 한·영 쌍에 `xhtml:link` hreflang 3개를 둔다 |
+| `sitemap.xml` | 홈 2 + 앱 허브 2 + 제품 26 + 매뉴얼 허브 2 + 매뉴얼 14 + 기술 노트 허브 2 + 기술 노트 16 + 기술 노트 상세 8 + 블로그 허브 2 + 블로그 55 = 129개 URL(2026-09-23 기준). 모든 한·영 쌍에 `xhtml:link` hreflang 3개를 둔다 |
 | `robots.txt` | 전체 허용 + sitemap 위치 |
 | `404.html` | 루트 절대경로만 쓴다 — 어느 깊이의 주소에서든 서빙되기 때문이다. `noindex` |
 | `app-ads.txt` | **AdMob 콘솔이 생성한 줄을 그대로** 넣는다 — 손으로 만들지 않는다 |
@@ -80,7 +86,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | 개발자 웹사이트 | `https://droidactor.github.io/` |
 | 개인정보 처리방침 (영문) | `https://droidactor.github.io/#privacy` |
 | 개인정보 처리방침 (국문) | `https://droidactor.github.io/ko/#privacy` |
-| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
+| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
 | app-ads.txt 검증 | `https://droidactor.github.io/app-ads.txt` |
 
 **`#privacy-*` 앵커는 이름을 바꾸지도, 앵커를 지우지도 않는다.** 스토어 리스팅에 이미 등록된 주소다 —
@@ -99,8 +105,8 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 - `robots.txt` · `sitemap.xml`
 - 페이지마다 `canonical`, `og:*`, `hreflang`(en / ko / x-default 상호 참조), JSON-LD
   (홈 = `WebSite`+`Organization`+`ItemList`, 제품 = `SoftwareApplication`)
-- 홈 2개, 앱 허브 2개, 제품 14개, 매뉴얼 허브 2개와 6종 한·영 매뉴얼 12개, 기술 노트 허브 2개와
-  6종 한·영 기술 노트 12개, 주제별 한·영 상세 조사 글 2개. 매뉴얼과 기술 노트는 `TechArticle`, 제품은 `SoftwareApplication`으로
+- 홈 2개, 앱 허브 2개, 제품 26개, 매뉴얼 허브 2개와 6종 한·영 매뉴얼 12개, 기술 노트 허브 2개와
+  8종 한·영 기술 노트 16개, 주제별 한·영 상세 조사 글 8개. 매뉴얼과 기술 노트는 `TechArticle`, 제품은 `SoftwareApplication`으로
   역할을 분리하고 같은 언어끼리 상호 링크한다.
 - `/blog/` · `/ko/blog/` — 제품 페이지보다 깊은 **기술 설명·정량 실측·원리·재현 가능한 상세 사용법**을
   싣는다. 측정 수치는 환경·방법·시점을 함께 적고, 적용 범위와 제약을 생략하지 않는다.
@@ -422,7 +428,7 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
   **앱이 있는 글의 자산은 갈래와 무관하게 이 평면 경로에 그대로 둔다** — 생성기
   (`to_pages.py` 의 `asset_root()`)가 앱 유무로 갈라 찾는다. 앱이 없는 글의 자산만 글 옆
   (`blog/<갈래>/<slug>/assets/`)에 둔다. 그 글의 자산은 공유되지 않기 때문이다(2026-09-16).
-- **6종 앱 기술 노트를 고치면** 사용법이 아니라 구현 근거를 유지한다.
+- **8종 앱 기술 노트를 고치면** 사용법이 아니라 구현 근거를 유지한다.
   1. `tech-notes/<앱>/index.html`과 `ko/tech-notes/<앱>/index.html`을 같은 목차·같은 기술 범위로 갱신
   2. 구조·protocol·수치·제약은 `MyApps/Mobile/master`의 현재 앱 소스와 test를 근거로 확인
   3. 머리의 source 기준 버전과 `dateModified`, `sitemap.xml`의 `<lastmod>`를 함께 갱신

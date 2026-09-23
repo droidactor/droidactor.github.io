@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Android apps — droidactor</title>
-<meta name="description" content="Twelve focused droidactor Android apps for Bluetooth input, local networks, SSH, downloads, LG webOS TV control, Roman numerals, currency conversion, unit conversion, and receipt scanning.">
+<meta name="description" content="Thirteen focused droidactor Android apps for Bluetooth input, local networks, SSH, downloads, LG webOS TV control, Roman numerals, currency conversion, unit conversion, receipt scanning, and business card scanning.">
 <link rel="canonical" href="https://droidactor.github.io/apps/">
 <link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/">
 <link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/">
@@ -16,7 +16,7 @@
 <meta property="og:locale:alternate" content="ko_KR">
 <meta property="og:url" content="https://droidactor.github.io/apps/">
 <meta property="og:title" content="Android apps — droidactor">
-<meta property="og:description" content="Twelve Android tools for Bluetooth input, networks, SSH, downloads, TV control, Roman numerals, currency conversion, unit conversion, and receipt scanning.">
+<meta property="og:description" content="Thirteen Android tools for Bluetooth input, networks, SSH, downloads, TV control, Roman numerals, currency conversion, unit conversion, receipt scanning, and business card scanning.">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="../assets/site.css">
 <script type="application/ld+json">
@@ -28,12 +28,12 @@
       "@id": "https://droidactor.github.io/apps/#apps",
       "url": "https://droidactor.github.io/apps/",
       "name": "droidactor Android apps",
-      "description": "Twelve focused Android apps by droidactor.",
+      "description": "Thirteen focused Android apps by droidactor.",
       "inLanguage": "en",
       "publisher": { "@id": "https://droidactor.github.io/#publisher" },
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 12,
+        "numberOfItems": 13,
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "url": "https://droidactor.github.io/apps/bt-keyboard/", "name": "Dotori Bluetooth Keyboard" },
           { "@type": "ListItem", "position": 2, "url": "https://droidactor.github.io/apps/bt-ppt/", "name": "Dotori Bluetooth PPT Remote" },
@@ -46,7 +46,8 @@
           { "@type": "ListItem", "position": 9, "url": "https://droidactor.github.io/apps/roman/", "name": "Dotori Roman Numerals" },
           { "@type": "ListItem", "position": 10, "url": "https://droidactor.github.io/apps/currency/", "name": "Dotori Currency Converter" },
           {"@type": "ListItem", "position": 11, "name": "Dotori Unit Converter", "url": "https://droidactor.github.io/apps/unit/"},
-          {"@type": "ListItem", "position": 12, "name": "Dotori Receipt Scanner", "url": "https://droidactor.github.io/apps/receipt/"}
+          {"@type": "ListItem", "position": 12, "name": "Dotori Receipt Scanner", "url": "https://droidactor.github.io/apps/receipt/"},
+          {"@type": "ListItem", "position": 13, "name": "Dotori Business Card Scanner", "url": "https://droidactor.github.io/apps/namecard/"}
         ]
       }
     },
@@ -77,14 +78,14 @@
 
   <div class="hero">
     <h1>Android apps</h1>
-    <p>Twelve small tools, each built around one focused job. Open a product page for requirements, privacy, support, and store status.</p>
+    <p>Thirteen small tools, each built around one focused job. Open a product page for requirements, privacy, support, and store status.</p>
   </div>
 
   <section id="apps">
     <h2>Choose an app</h2>
-    <p class="lead">Seven apps also have a step-by-step manual, six of those engineering notes as well. YouTube Downloader, Bluetooth Numpad, Currency Converter, Unit Converter and Receipt Scanner are product pages only. Each screenshot opens that app’s Google Play listing.</p>
+    <p class="lead">Seven apps also have a step-by-step manual, six of those engineering notes as well. Receipt Scanner and Business Card Scanner have engineering notes without a manual. YouTube Downloader, Bluetooth Numpad, Currency Converter and Unit Converter are product pages only. Each screenshot opens that app’s Google Play listing.</p>
     <!-- Card screenshots. Two per published app, each one a link to that app's store listing —
-         the same shot-links-to-store pattern the blog posts use. roman, numpad, currency, unit, yt-downloader and receipt have none: they are
+         the same shot-links-to-store pattern the blog posts use. roman, numpad, currency, unit, yt-downloader, receipt and namecard have none: they are
          not on Play yet, so the link would 404, and there is no capture of them either.
          The images are the WebP thumbnails under /assets/shots/, shared with the product pages
          rather than sized for this page alone — see README "고칠 때" for how they are made and
@@ -106,7 +107,14 @@
         <h3><a href="/apps/receipt/"><span class="dotori">Dotori</span> Receipt Scanner</a></h3>
         <p class="pkg">com.droidactor.receipt</p>
         <p class="desc">Read Korean and English receipts on your device, review amounts and currencies, and share confirmed records as CSV. This month’s totals stay separate by currency.</p>
-        <div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/receipt/">Product page</a></div>
+        <div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/receipt/">Product page</a><a href="/tech-notes/receipt/">Tech notes</a></div>
+      </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true"><img src="/assets/icons/namecard.png" width="48" height="48" alt="" decoding="async"></div>
+        <h3><a href="/apps/namecard/"><span class="dotori">Dotori</span> Business Card Scanner</a></h3>
+        <p class="pkg">com.droidactor.namecard</p>
+        <p class="desc">Read Korean and English business cards on your device, review each detail, then add it to Contacts or share a vCard. Card data stays in the app.</p>
+        <div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/namecard/">Product page</a><a href="/tech-notes/namecard/">Tech notes</a></div>
       </article>
     </div>
   </section>

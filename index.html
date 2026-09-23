@@ -90,7 +90,8 @@
         { "@type": "ListItem", "position": 9, "name": "Dotori YouTube Downloader", "url": "https://droidactor.github.io/apps/yt-downloader/" },
         { "@type": "ListItem", "position": 10, "name": "Dotori LG TV Remote", "url": "https://droidactor.github.io/apps/lgtv/" },
         {"@type": "ListItem", "position": 11, "name": "Dotori Unit Converter", "url": "https://droidactor.github.io/apps/unit/"},
-        {"@type": "ListItem", "position": 12, "name": "Dotori Receipt Scanner", "url": "https://droidactor.github.io/apps/receipt/"}
+        {"@type": "ListItem", "position": 12, "name": "Dotori Receipt Scanner", "url": "https://droidactor.github.io/apps/receipt/"},
+        {"@type": "ListItem", "position": 13, "name": "Dotori Business Card Scanner", "url": "https://droidactor.github.io/apps/namecard/"}
       ]
     }
   ]
@@ -303,6 +304,13 @@
         <p class="desc">Read Korean and English receipts on your device, review amounts and currencies, and share confirmed records as CSV. This month’s totals stay separate by currency.</p>
         <div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/receipt/">Details</a><a href="/#privacy-receipt">Privacy</a></div>
       </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true"><img src="/assets/icons/namecard.png" width="48" height="48" alt="" decoding="async"></div>
+        <h3><a href="/apps/namecard/"><span class="dotori">Dotori</span> Business Card Scanner</a></h3>
+        <div class="pkg">com.droidactor.namecard</div>
+        <p class="desc">Read Korean and English business cards on your device, review each detail, then add it to Contacts or share a vCard. Card data stays in the app.</p>
+        <div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/namecard/">Details</a><a href="/#privacy-namecard">Privacy</a></div>
+      </article>
 
     </div>
   </section>
@@ -333,7 +341,7 @@
       <p>
         <strong>The short version.</strong> These apps have no accounts and no backend of
         ours. App content stays on your device or is exchanged only with the device, host or source you choose
-        (sections 2 and 7); it is not sent to a developer-operated server or included in advertising requests. Google SDKs separately process advertising and, for Receipt Scanner, ML Kit
+        (sections 2 and 7); it is not sent to a developer-operated server or included in advertising requests. Google SDKs separately process advertising and, for Receipt Scanner and Business Card Scanner, ML Kit
         diagnostic data as described in sections 3 and 7. Uninstalling removes local app storage;
         calendar entries, shared exports and backup copies have separate lifecycles in sections 6 and 7.
       </p>
@@ -343,7 +351,7 @@
     <p>
       We operate no app account, analytics backend, crash-reporting service or server that receives app content.
       This does not describe all third-party SDK processing: Google Mobile Ads handles advertising data,
-      and Receipt Scanner uses ML Kit diagnostics. See sections 3 and 7 for those separate data flows.
+      and Receipt Scanner and Business Card Scanner use ML Kit diagnostics. See sections 3 and 7 for those separate data flows.
     </p>
 
     <h3>2. Data processed on your device</h3>
@@ -353,7 +361,7 @@
       is used on the device to make the feature work, is never sent to a server of ours, and is never
       passed to the advertising SDK. Calendar entries may sync through the calendar you choose.
       For Dotori Unit Converter, Android backup or device transfer may also include stored app
-      data, as described in section 7. Receipt Scanner settings may also be included in Android backup, but receipt databases and images are excluded:
+      data, as described in section 7. Receipt Scanner and Business Card Scanner settings may also be included in Android backup, but their receipt or card databases and images are excluded:
     </p>
     <ul>
       <li>Network identifiers found by scanning — IP addresses, hostnames, open ports, device kind</li>
@@ -365,6 +373,7 @@
         device calendar you pick. Uninstalling the app does not remove these calendar entries,
         so delete them in your calendar app if you no longer want them.</li>
       <li>Receipt Scanner records and images, kept locally; confirmed summaries are shared as CSV only when you choose to share</li>
+      <li>Business Card Scanner records and card images — another person's contact details, kept locally; a confirmed card goes to your contacts app or is shared as a vCard only when you choose</li>
       <li>Your own settings and preferences</li>
     </ul>
     <p>The apps have no developer-operated backend, so the developer never receives device serial numbers or device IDs. SDK identifier handling is described in sections 3 and 7.</p>
@@ -397,7 +406,7 @@
     </p>
     <p>
       In apps including Bluetooth Keyboard, PPT Remote, Bluetooth Mouse, Bluetooth Numpad, WiFi Scanner,
-      SSH Terminal, LG TV Remote, Unit Converter and Receipt Scanner, a banner slot that cannot request or fill a paid ad may instead
+      SSH Terminal, LG TV Remote, Unit Converter, Receipt Scanner and Business Card Scanner, a banner slot that cannot request or fill a paid ad may instead
       show a first-party card labelled <strong>Promo</strong> for one of our other apps. This card
       does not use the Mobile Ads SDK and does not collect or send app, network or device data. A tap
       first opens an in-app description; the official product page on
@@ -457,11 +466,11 @@
           </tr>
           <tr>
             <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code></td>
-            <td>All, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a>. Receipt Scanner gets these declarations through the advertising library.</td>
+            <td>All, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a> and <a href="#privacy-namecard"><span class="dotori">Dotori</span> Business Card Scanner</a>. Both get these declarations through the advertising library.</td>
             <td>To reach the devices or sources you asked for, and to fetch ads. The HID
               remotes send your input over Bluetooth, not over the internet. <a href="#privacy-currency"><span class="dotori">Dotori</span> Currency
               Converter</a> fetches the daily exchange-rate table, and the amounts you type are not
-              part of that request. Receipt Scanner also uses ML Kit diagnostics; scanner setup and cloud photo providers may need a connection, while recognition stays on the device.</td>
+              part of that request. Receipt Scanner also uses ML Kit diagnostics; scanner setup and cloud photo providers may need a connection, while recognition stays on the device. Business Card Scanner works the same way and also downloads optional entity-recognition models from Google over Wi-Fi only; card contents are not part of that download.</td>
           </tr>
           <tr>
             <td><code>ACCESS_WIFI_STATE</code></td>
@@ -509,7 +518,7 @@
           </tr>
           <tr>
             <td><code>AD_ID</code></td>
-            <td>Every ad-supported app, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a> (not <span class="dotori">Dotori</span> YouTube Downloader)</td>
+            <td>Every ad-supported app, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a> and <a href="#privacy-namecard"><span class="dotori">Dotori</span> Business Card Scanner</a> (not <span class="dotori">Dotori</span> YouTube Downloader)</td>
             <td>Ad delivery and measurement by the Google Mobile Ads SDK
               (<code>com.google.android.gms.permission.AD_ID</code>). The SDK declares this itself through
               manifest merging, so it is present in the installed app even where an app's own manifest does
@@ -558,7 +567,7 @@
     <p>
       <strong>Android backup.</strong> Dotori Unit Converter allows Android backup, which may
       include stored app data. Uninstalling does not necessarily remove backup copies; manage
-      them through your device or backup-account settings. Receipt Scanner settings may also be backed up by Android, but receipt databases and images are excluded. See the per-app notes below.
+      them through your device or backup-account settings. Receipt Scanner settings may also be backed up by Android, but receipt databases and images are excluded. Business Card Scanner works the same way: its settings may be backed up, but card databases and images are excluded. See the per-app notes below.
     </p>
 
     <h3>7. Per-app notes</h3>
@@ -875,9 +884,10 @@
       <p>Dotori Business Card Scanner reads Korean and English business card images on your device using OCR, extraction rules and, when available, on-device entity and barcode recognition. The v1 release does not include generative AI. There is no app account or developer-operated server. Card images and recognized text are not uploaded for recognition or passed to advertising requests.</p>
       <p>A business card holds another person's personal information. Records and retained images stay in the app's private storage. Records can contain name, other spellings of the name, company, department, title, phone numbers, email addresses, websites, address, link candidates from a QR code and your memo. Full OCR text is not stored. A retained image shows everything printed on the card and is not automatically anonymized.</p>
       <p>Images are retained by default. Turning retention off affects future cards and does not remove earlier retained images. Deleting a card removes its app record and retained image. This does not delete the original gallery image, contacts you have already saved, or vCard files you have already shared.</p>
-      <p>Card databases, images and temporary input files are excluded from cloud backup. The app offers no cloud sync or restore. A confirmed card is passed to your contacts app only when you choose "Add to contacts": the contacts app opens with the details filled in, and you finish saving there. The app does not request contacts permission and does not read your existing contacts. A confirmed card is shared as a vCard file only when you choose to share it; the receiving app then handles its copy.</p>
+      <p>Card databases, images and temporary input files are excluded from cloud backup. Card databases and images are also configured to be excluded from Android device-to-device transfer, but manufacturer migration tools may behave differently. The app offers no cloud sync or restore. A confirmed card is passed to your contacts app only when you choose "Add to contacts": the contacts app opens with the details filled in, and you finish saving there. The app does not request contacts permission and does not read your existing contacts. A confirmed card is shared as a vCard file only when you choose to share it; the receiving app then handles its copy.</p>
       <p>Document Scanner setup may download components through Google Play services, and a cloud photo provider may need a connection. Optional entity-recognition models are downloaded from Google over Wi-Fi only; the download does not include card contents. A link found in a QR code is shown as a candidate and is not opened automatically. ML Kit collects technical diagnostics and usage information, including device/app information, installation identifiers, performance and feature events, as described in Google's <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit disclosure</a>.</p>
       <p>The app displays an AdMob banner and uses Google UMP for applicable privacy choices, as described in section 3. Card contents are not supplied to the advertising SDK. Local deletion does not delete Google's diagnostic or advertising records. The app requests no dangerous permissions. Supporting libraries add the network, advertising and background-work permissions listed in section 4.</p>
+      <p><a href="/apps/namecard/">Details: <span class="dotori">Dotori</span> Business Card Scanner</a></p>
     </div>
 
     <div class="policy" id="privacy-unitconverter">

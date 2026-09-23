@@ -311,10 +311,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/manual/lgtv/"/>
   </url>
 
-  <!-- Tech notes. Six app-specific engineering notes plus the bilingual index pair. -->
+  <!-- Tech notes. Eight app-specific engineering notes plus the bilingual index pair. -->
   <url>
     <loc>https://droidactor.github.io/tech-notes/</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/"/>
@@ -323,7 +323,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/tech-notes/</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/"/>
@@ -518,6 +518,44 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/lgtv/"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/lgtv/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/lgtv/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/tech-notes/receipt/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/receipt/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/receipt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/receipt/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/tech-notes/receipt/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/receipt/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/receipt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/receipt/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/tech-notes/namecard/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/namecard/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/namecard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/namecard/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/tech-notes/namecard/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/namecard/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/namecard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/namecard/"/>
   </url>
 
   <!--
@@ -1146,5 +1184,23 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/receipt/"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/receipt/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/receipt/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/apps/namecard/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/namecard/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/namecard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/namecard/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/apps/namecard/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/namecard/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/namecard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/namecard/"/>
   </url>
 </urlset>
