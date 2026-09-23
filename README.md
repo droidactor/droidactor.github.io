@@ -70,7 +70,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | `blog/index.html` · `ko/blog/index.html` | 글 목록. **손으로 관리한다** — 이 리포에 생성기는 없다. 열 편쯤 넘어 손이 아프면 그때가 도입 신호다 |
 | `blog/_post-template.html` | 글 템플릿. slug·경로·JSON-LD·CTA 규약을 머리주석에 담고 있으며 **글 추가 절차의 정본**이다 |
 | `assets/site.css` | 전 페이지 공용. 외부 CDN·폰트·스크립트 없음(자기완결) |
-| `sitemap.xml` | 홈 2 + 앱 허브 2 + 제품 26 + 매뉴얼 허브 2 + 매뉴얼 14 + 기술 노트 허브 2 + 기술 노트 16 + 기술 노트 상세 8 + 블로그 허브 2 + 블로그 55 = 129개 URL(2026-09-23 기준). 모든 한·영 쌍에 `xhtml:link` hreflang 3개를 둔다 |
+| `sitemap.xml` | 홈 2 + 앱 허브 2 + 제품 26 + 매뉴얼 허브 2 + 매뉴얼 14 + 기술 노트 허브 2 + 기술 노트 16 + 기술 노트 상세 8 + 블로그 허브 2 + 블로그 59 = 133개 URL(2026-09-23 기준). 모든 한·영 쌍에 `xhtml:link` hreflang 3개를 둔다 |
 | `robots.txt` | 전체 허용 + sitemap 위치 |
 | `404.html` | 루트 절대경로만 쓴다 — 어느 깊이의 주소에서든 서빙되기 때문이다. `noindex` |
 | `app-ads.txt` | **AdMob 콘솔이 생성한 줄을 그대로** 넣는다 — 손으로 만들지 않는다 |

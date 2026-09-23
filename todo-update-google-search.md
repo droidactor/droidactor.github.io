@@ -648,49 +648,64 @@ URL 표는 더 최신을 담는다(실측: 9-04 자 보고서의 표에 9-05 크
 **배포 뒤 §1 의 수치가 낡는다** — §1 은 2026-09-22 실측 기준이고 sitemap `<loc>` **119** 로 적혀
 있다. 이 2개가 나가면 **121** 이 된다. §2.5 의 판독 조건과 묶어 다음 판독 때 함께 고친다.
 
-### 2.9 대기 — 2026-09-23 신규 앱 페이지 8개 (receipt 2 는 배포됨 · namecard·기술 노트 6 은 배포 전)
+### 2.9 대기 — 2026-09-23 신규 페이지 12개 (앱 8 · 블로그 4 — A~D 배포됨 · E·F 배포 전)
 
-**2026-09-23 사용자 지시로 등록했다.** 같은 날 만든 앱 둘(`receipt`·`namecard`)의 제품 페이지와 기술 노트다.
-**4개 쌍 모두 en·ko 짝이 있으므로 사전 점검은 §2.8 과 같은 5조건** — `200` · self canonical 문자열 일치 ·
-`hreflang` 3종 · `robots` meta 0개 · live sitemap 포함 — 을 그대로 게이트로 삼는다. §4.2 원장에는 8개 중
-**하나도 없다**(2026-09-23 16:32 대조, `receipt`·`namecard` 문자열 0건) — 전부 신규 요청 대상이다.
+**2026-09-23 사용자 지시로 등록했다.** 같은 날 만든 앱 둘(`receipt`·`namecard`)의 제품 페이지·기술 노트·블로그 글이다
+(블로그 E·F 는 같은 날 두 번째 지시로 더했다). **6개 쌍 모두 en·ko 짝이 있으므로 사전 점검은 §2.8 과 같은 5조건** — `200` · self canonical 문자열 일치 ·
+`hreflang` 3종 · `robots` meta 0개 · live sitemap 포함 — 을 그대로 게이트로 삼는다. §4.2 원장에는 12개 중
+**하나도 없다**(2026-09-23 16:32 대조, `receipt`·`namecard` 문자열 0건. 블로그 slug 는 이날 처음 생겼다) — 전부 신규 요청 대상이다.
 
 | 묶음 | 경로 | 배포 | 사전 점검 |
 |---|---|---|---|
 | A. receipt 제품 | `/apps/receipt/` · `/ko/apps/receipt/` | **완료** — `a5a0b16`·`fb5400f`(origin/main) | **2/2 통과** — 16:32 live 실측 `200` · canonical 일치 · `hreflang` 3 · `robots` 0 · live sitemap(123) 포함 |
-| B. namecard 제품 | `/apps/namecard/` · `/ko/apps/namecard/` | **미커밋** — 16:32 live `404` | 저장소 파일에서 canonical·`hreflang` 3·`robots` 0 확인. `200`·live sitemap 은 배포 뒤 잰다 |
-| C. receipt 기술 노트 | `/tech-notes/receipt/` · `/ko/tech-notes/receipt/` | **미커밋** | B 와 같다 |
-| D. namecard 기술 노트 | `/tech-notes/namecard/` · `/ko/tech-notes/namecard/` | **미커밋** | B 와 같다 |
+| B. namecard 제품 | `/apps/namecard/` · `/ko/apps/namecard/` | **완료** — `644b707` | **2/2 통과** — 16:44 live 실측 `200` · canonical 일치 · `hreflang` 3 · `robots` 0 · live sitemap(129) 포함 |
+| C. receipt 기술 노트 | `/tech-notes/receipt/` · `/ko/tech-notes/receipt/` | **완료** — `644b707` | **2/2 통과** — B 와 같은 16:44 실측 |
+| D. namecard 기술 노트 | `/tech-notes/namecard/` · `/ko/tech-notes/namecard/` | **완료** — `644b707` | **2/2 통과** — B 와 같은 16:44 실측 |
+| E. receipt 블로그 | `/blog/products/scan-receipts-on-android-without-uploading/` · `/ko/blog/products/scan-receipts-on-android-without-uploading/` | **미커밋** | 저장소 파일에서 canonical 일치·`hreflang` 3·`robots` 0 확인. `200`·live sitemap 은 배포 뒤 잰다 |
+| F. namecard 블로그 | `/blog/products/scan-business-cards-into-android-contacts/` · `/ko/blog/products/scan-business-cards-into-android-contacts/` | **미커밋** | E 와 같다 |
 
-**B·C·D 는 배포 전이다 — 지금 요청하면 `404` 를 요청하는 것이다(§2.7 의 착수 시점 교훈).**
-배포 → live 검증 → 사전 점검 → 요청 순서를 지킨다. 배포되면 저장소 `sitemap.xml` 이 **123 → 129**
-(제품 2 + 기술 노트 4)가 된다.
+**B·C·D 는 `644b707` 로 배포돼 live sitemap 이 129 가 됐다**(16:44 실측, live `sitemap-all.xml` 과 바이트 동일).
+**E·F 는 배포 전이다 — 지금 요청하면 `404` 를 요청하는 것이다(§2.7 의 착수 시점 교훈).**
+배포 → live 검증 → 사전 점검 → 요청 순서를 지킨다. 저장소 `sitemap.xml` 은 이미 **133** 이고(`sitemap-all.xml` 과 `cmp` 동일), 배포되면 **live sitemap 이 129 → 133** 이 된다.
+E·F 는 첫 `products` 갈래 글이다 — 갈래 허브 `/blog/products/` 는 `index.html` 이 없고(§2.2 4번과 같은 구조)
+요청 대상이 아니다.
 
-**함께 바뀐 기존 페이지는 요청하지 않는다.** 이번 변경으로 `(ko/)apps/`·`(ko/)tech-notes/` 허브, 홈 두 개,
+**함께 바뀐 기존 페이지는 요청하지 않는다.** 이번 변경으로 `(ko/)apps/`·`(ko/)tech-notes/`·`(ko/)blog/` 허브, 홈 두 개,
 기존 제품 페이지 전부(역방향 링크 한 줄)의 `lastmod` 가 움직였지만 — 허브는 §4.2 에 이미 요청 이력이
-있고(`(ko/)apps/` 8-14, `/tech-notes/` 8-14), `/ko/tech-notes/`·홈은 이미 색인돼 있다. **§4.1 의 반복 요청
+있고(`(ko/)apps/` 8-14, `/tech-notes/` 8-14, `/blog/` 9-05, `/ko/blog/` 9-10), `/ko/tech-notes/`·홈은 이미 색인돼 있다. **§4.1 의 반복 요청
 금지를 그대로 적용한다.** 새 페이지는 이 허브들의 내부 링크로도 발견된다.
 
 **`sitemap-all.xml` 이 이미 갈라져 있다 — §7.4 실험의 전제가 깨진 상태다.** 2026-09-23 16:32 실측에서
 live `sitemap.xml` 은 `<loc>` **123**, live `sitemap-all.xml` 은 **121** 이다. 원인은 A 의 배포 커밋
 `a5a0b16` 이 `sitemap.xml` 에만 receipt 쌍을 넣고 복사본을 갱신하지 않은 것이다(HEAD 에서도 두 파일이
-다르다 — §5.2 의 "`--stat` 전체로 먼저 읽기" 를 그 커밋이 건너뛰었다). **B·C·D 를 배포하는 커밋에서
-`sitemap-all.xml` 을 `sitemap.xml` 과 바이트 동일하게 맞추고 `cmp` 로 확인한다.** §7.4.1 의 관찰은
+다르다 — §5.2 의 "`--stat` 전체로 먼저 읽기" 를 그 커밋이 건너뛰었다). **`644b707` 에서 두 파일을 다시 바이트 동일하게 맞췄고 16:44 live 에서도 `cmp` 동일이다.**
+**E·F 를 배포하는 커밋에서도 `sitemap-all.xml` 을 함께 맞춘다**(저장소에는 이미 맞춰 두었다, 133). §7.4.1 의 관찰은
 두 파일이 달랐던 구간(`a5a0b16` 배포 ~ 동기화 배포)을 빼고 읽는다.
 
 **요청 시점 — 할당량은 롤링 24시간으로 센다(§4.1).** 16:32 기준 지난 24시간 접수는 **12건**
 (9-22 18:55~19:03 의 10 + 9-23 09:18 의 2)이므로 지금은 요청하지 않는다.
 - **가장 이른 시점은 2026-09-23 19:04 이후**다(9-22 배치가 창에서 빠진다). 확실하게 하려면 **2026-09-24 09:00 이후**다.
 - **순서** — ① §2.8 의 미완 1건 `/ko/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html` 을 먼저 닫는다
-  ② A 2건 ③ 배포가 끝났으면 B → C → D(각 쌍은 영문 → 국문, sitemap 순). 합계 **9건**이라 창 안의
-  9-23 아침 2건과 더해도 한도(§4.1)에 걸릴 수 있다 — **10번째에 닿기 전에 멈추고, `할당량` 문구가 나오면 즉시 중단한다.**
-  남은 것은 다음 창으로 넘긴다.
+  ② A 2건 ③ B → C → D ④ 배포가 끝났으면 E → F(각 쌍은 영문 → 국문, sitemap 순). 합계 **13건**이라 **한 창에 끝나지 않고
+  최소 두 창으로 나뉜다**(§4.1 의 10건 기준). 한 창에서 넣을 수 있는 수는 "10 − 지난 24시간 접수 수" 다 — 9-23 19:04
+  이후라도 창 안에 9-23 아침 2건이 남아 있으므로 첫 창은 **8건까지**(①~③ 9건 중 D 의 국문 1건이 넘친다),
+  09:18 기준 24h 가 지난 9-24 09:19 이후면 10건까지다. **10번째에 닿기 전에 멈추고, `할당량` 문구가 나오면
+  즉시 중단한다.** 남은 것은 다음 창으로 넘긴다.
 - 매 건 §6.6.1 절차를 그대로 돌리고, 요청 전 `아직 알려지지 않은 URL` 인지(= 그새 색인되지 않았는지) 본다.
 - 접수된 것만 §4.2 원장에 올리고, 이 절의 표를 갱신한다. 관찰 창은 §4.3 편차를 감안해 접수일 +5~14일로 잡는다.
 
 **namecard 문구는 후속 수정이 예고돼 있다.** name-card 워킹트리에 초안/확정 구분을 없애는 미커밋 앱 변경이
-진행 중이고(2026-09-23 확인), 그것이 커밋되면 D 와 B 의 "초안" "확정" 문장을 고친다. **그 수정은
+진행 중이고(2026-09-23 확인), 그것이 커밋되면 D·B·F 의 "초안" "확정" 문장을 고친다(F 는 원고 `site.{en,ko}.md` 를 먼저 고쳐 재생성). **그 수정은
 `dateModified`·`lastmod` 갱신 대상일 뿐 재요청 사유가 아니다**(§4.1 반복 금지).
+
+**namecard 스크린샷이 준비되면 페이지를 갱신해야 한다 — 지금은 스크린샷 없이 게시했다.**
+2026-09-23 기준 원본 `MyApps/Mobile/_screenshot/` 에 namecard 폴더가 없어 제품 페이지 B 에 `Screens`/`화면`
+절과 JSON-LD `screenshot` 이 없고, 블로그 글(`/blog/products/scan-business-cards-into-android-contacts/`
+en·ko)에도 그림이 없다. 원본이 생기면 사이트 `README.md` "고칠 때" 의 스크린샷 규칙대로 한 묶음으로 고친다 —
+① `assets/shots/namecard/{en-US,ko-KR}/*.webp` 축소본 생성 ② `(ko/)apps/namecard/` 에 화면 절·JSON-LD
+`screenshot` ③ 앱 허브 카드 샷(스토어 `200` 일 때만) ④ 블로그 발행 자산 `blog/scan-business-cards-into-android-contacts/assets/{en-US,ko-KR}/`
+에 1080px PNG 를 두고 원고 `site.{en,ko}.md` 에 그림을 넣어 재생성 ⑤ 손댄 페이지의 `dateModified`·`lastmod` 갱신.
+**이것도 본문 갱신이지 재요청 사유가 아니다** — 이미 접수된 URL 이면 다시 요청하지 않는다(§4.1).
 
 ---
 
@@ -1506,11 +1521,16 @@ sitemap 미수집이 겹쳐 **새 URL 쪽에 신호가 약하다.**
 | 2026-09-16 `cbb10d8` | **기술 글 14편 한·영** — `/blog/techs/<slug>/` | **+28** | **108** |
 | 2026-09-20 `a88c1bc` | `sitemap-all.xml` 복사본 배포(§7.4.1) | 0 | 108 |
 | 2026-09-22 `7f70c03` | **경제 트렌딩 글 11편 국문 전용** — `/ko/blog/trending/economy/<slug>/` | **+11** | **119** |
+| 2026-09-23 `be21861` | bt-keyboard 음성 입력 상세 노트 한·영(§2.8) | +2 | 121 |
+| 2026-09-23 `a5a0b16` | 영수증 스캐너 제품 한·영(§2.9 A) — **이 커밋은 `sitemap-all.xml` 을 갱신하지 않았다** | +2 | 123 |
+| 2026-09-23 `644b707` | 명함 스캐너 제품 + 두 앱 기술 노트 한·영(§2.9 B·C·D). `sitemap-all.xml` 재동기화 | +6 | 129 |
+| 2026-09-23 (미배포) | 두 앱 블로그 글 한·영 — `/blog/products/<slug>/`, 첫 `products` 갈래 글(§2.9 E·F) | +4 | 133 |
 
 **9-15 에 성격이 다른 배포가 둘 있었다** — 앞은 `(ko/)apps/unit/` 2개를 더한 것이고, 뒤는
 **신규 앱 4종(roman·currency·numpad·unit)의 Play 출시를 반영한 것으로 신규 URL 이 0개**다.
-그 뒤 배포로 "미출시 앱의 URL" 분류가 전부 닫혔다 — **현재 6+4 = 10종이 출시 상태이고 미출시는
-`yt-downloader` 하나뿐이다.** 날짜만 보고 둘을 섞지 않는다.
+그 뒤 배포로 "미출시 앱의 URL" 분류가 전부 닫혔다 — **9-15 시점 6+4 = 10종이 출시 상태였고 미출시는
+`yt-downloader` 하나뿐이었다.** 9-23 에 `receipt`·`namecard` 가 추가돼 다시 미출시 앱이 셋이 됐다
+(두 앱은 스토어 로그아웃 `404`. 사이트는 "곧 출시" 가정으로 블로그 CTA 에 스토어 배지를 이미 걸었다 — 2026-09-23 사용자 지시). 날짜만 보고 둘을 섞지 않는다.
 
 **단일 커밋 기준 최대 증가는 `cbb10d8` 의 +28 이다**(경로 개편 `f300f26` 은 +16이고, 8-14 하루 전체를
 합쳐야 +32 로 앞선다).

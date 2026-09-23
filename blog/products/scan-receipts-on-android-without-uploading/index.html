@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scanning receipts on Android without uploading them — droidactor</title>
+<meta name="description" content="How an Android app can read Korean and English receipts on the device, which fields you confirm yourself, and which steps may still use the network.">
+<link rel="canonical" href="https://droidactor.github.io/blog/products/scan-receipts-on-android-without-uploading/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/scan-receipts-on-android-without-uploading/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/scan-receipts-on-android-without-uploading/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/scan-receipts-on-android-without-uploading/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/products/scan-receipts-on-android-without-uploading/">
+<meta property="og:title" content="Scanning receipts on Android without uploading them">
+<meta property="og:description" content="How an Android app can read Korean and English receipts on the device, which fields you confirm yourself, and which steps may still use the network.">
+<meta property="og:image" content="https://droidactor.github.io/blog/scan-receipts-on-android-without-uploading/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Scanning receipts on Android without uploading them",
+      "description": "How an Android app can read Korean and English receipts on the device, which fields you confirm yourself, and which steps may still use the network.",
+      "url": "https://droidactor.github.io/blog/products/scan-receipts-on-android-without-uploading/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/products/scan-receipts-on-android-without-uploading/",
+      "image": "https://droidactor.github.io/blog/scan-receipts-on-android-without-uploading/assets/icon.png",
+      "datePublished": "2026-09-23",
+      "dateModified": "2026-09-23",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori Receipt Scanner",
+        "url": "https://droidactor.github.io/apps/receipt/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Scanning receipts without uploading", "item": "https://droidactor.github.io/blog/products/scan-receipts-on-android-without-uploading/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/products/scan-receipts-on-android-without-uploading/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/products/scan-receipts-on-android-without-uploading/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Scanning receipts without uploading</nav>
+  <div class="hero">
+    <h1>Scanning receipts on Android without uploading them</h1>
+    <p class="post-meta"><time datetime="2026-09-23">23 September 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>Short answer.</strong> A receipt can be read without sending it anywhere: a bundled ML Kit text recognizer turns the image into lines, app-owned Korean and English rules propose the store, date, amount and currency, and nothing counts until you confirm those four fields against the image. &quot;On-device&quot; describes recognition only. The document scanner is a Google Play services module that may need a download, and a cloud photo provider needs its own connection.</p>
+    </div>
+
+    <a class="post-app" href="https://play.google.com/store/apps/details?id=com.droidactor.receipt&amp;hl=en">
+      <img src="/blog/scan-receipts-on-android-without-uploading/assets/icon.png" width="512" height="512" alt="Dotori Receipt Scanner app icon" decoding="async">
+      <div class="post-app-text">
+        <p><strong><span class="dotori">Dotori</span> Receipt Scanner</strong>Scan Korean and English receipts, review amounts, and share records as CSV.</p>
+        <span class="play-badge"><img
+          src="../../../assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></span>
+      </div>
+    </a>
+
+
+    <p>This note describes version 1 of Dotori Receipt Scanner on Android 8.0 (API 26) and newer. It reads one Korean or English receipt per image and keeps a summary per receipt: store, date, amount, currency and a few optional fields. There is no app account and no developer-operated receipt server. Implementation details such as row assembly, the money type and the backup rules are in the <a href="/tech-notes/receipt/">tech notes</a>; this page covers the flow and how to check the result.</p>
+
+    <h2>What stays on the phone, and what does not</h2>
+    <p>&quot;The app does not send receipts to a server&quot; and &quot;getting the image never uses the network&quot; are two different statements. Only the first one holds for every step.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Step</th><th>Where it runs</th><th>Network</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Scan</strong> (document scanner)</td><td>A Google Play services module with its own camera access</td><td>May need a module download first</td></tr>
+          <tr><td><strong>From photos</strong> (Photo Picker)</td><td>The Android system picker; only the chosen file is handed over</td><td>Only if you pick from a cloud photo provider</td></tr>
+          <tr><td>Text recognition</td><td>ML Kit Text Recognition v2 with the Korean model, bundled in the app</td><td>None</td></tr>
+          <tr><td>Field extraction</td><td>Korean and English label rules owned by the app</td><td>None</td></tr>
+          <tr><td>Records and images</td><td>App-private storage, excluded from cloud backup</td><td>None</td></tr>
+          <tr><td>Ads and ML Kit diagnostics</td><td>Separate SDKs with separate data practices</td><td>Yes, but receipt images and text are not passed to ad requests</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The app itself requests no dangerous permissions: the scanner uses its own camera access and the picker grants only the selected image. Because the scanner module can arrive through Play services, the very first capture is not guaranteed to work offline.</p>
+
+    <h2>From receipt to confirmed record</h2>
+    <ol>
+      <li>On the home screen, tap <strong>Scan</strong> to crop and straighten one receipt with the document scanner, or <strong>From photos</strong> to use an image you already have. Cancelling the scanner is not an error and does not open the picker on its own.</li>
+      <li>The app shows <em>Reading the receipt…</em>, then saves the result as a draft immediately, so leaving the screen does not lose it.</li>
+      <li>On <strong>Review</strong>, a value marked <strong>!</strong> needs a look. Tap the <strong>!</strong> to confirm it, or edit the value; an edited value also counts as confirmed and later recognition does not overwrite it.</li>
+      <li>The receipt can be confirmed once <strong>Store</strong>, <strong>Date</strong>, <strong>Amount</strong> and <strong>Currency</strong> are confirmed. It counts in totals only when <strong>Type</strong> is also confirmed as <strong>Purchase</strong> or <strong>Refund</strong>.</li>
+      <li>Tap <strong>Confirm</strong>, or <strong>Keep draft</strong> if you want to check it later. Drafts stay out of totals and exports until you confirm them.</li>
+    </ol>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.receipt&amp;hl=en" aria-label="Monthly totals kept separate by currency — get the app on Google Play"><img src="/blog/scan-receipts-on-android-without-uploading/assets/en-US/01-home.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Monthly totals kept separate by currency"></a><figcaption>Confirmed receipts add to this month’s totals, shown separately for each currency.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.receipt&amp;hl=en" aria-label="Receipt review screen — get the app on Google Play"><img src="/blog/scan-receipts-on-android-without-uploading/assets/en-US/02-review.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Receipt review screen"></a><figcaption>Check each suggested field against the image, then confirm or keep a draft.</figcaption></figure>
+    </div>
+
+    <h2>What to check against the image</h2>
+    <p>The rules propose candidates; they do not decide the accounting. These are the cases where a proposed value deserves a second look.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>What you see</th><th>Why</th><th>What to do</th></tr></thead>
+        <tbody>
+          <tr><td>The amount is not the one you paid</td><td>Only total labels such as 합계, 결제금액, Grand total and Amount paid are candidates. Subtotal, Balance due, tip, change, discounts and points are not</td><td>Pick the paid total from the image</td></tr>
+          <tr><td>The currency is marked for review</td><td><code>$</code> and <code>¥</code> stay ambiguous, and the receipt's language is never taken as its currency</td><td>Type the three-letter code, such as <code>USD</code> or <code>KRW</code></td></tr>
+          <tr><td>The currency is already filled in</td><td><strong>Main currency</strong> in Settings is only offered first when the receipt does not say</td><td>Confirm it against the receipt anyway</td></tr>
+          <tr><td>A date like <code>04/05</code> is marked</td><td>It reads differently as MM/DD and DD/MM. <strong>Date format hint</strong> only decides which reading is offered first</td><td>Confirm the date in <code>YYYY-MM-DD</code></td></tr>
+          <tr><td>The date or year is missing</td><td>A missing date is never filled in from today or the capture time</td><td>Enter it yourself or keep a draft</td></tr>
+          <tr><td>An amount has an unusual number of decimals</td><td>Amounts are kept exactly; <code>12.345</code> is not rounded to <code>12.35</code></td><td>Correct it to what the receipt means</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A foreign card slip can print both the shop currency and the card currency. The app keeps the one amount and currency pair you confirm and does not add or split them.</p>
+
+    <h2>What the totals and CSV contain</h2>
+    <p>The home screen shows the current month per currency: spent, refunded and net. There is no exchange-rate conversion. Only confirmed receipts with a confirmed type count; drafts and receipts left as <strong>Not sure</strong> stay out until you classify them.</p>
+    <p><strong>Export CSV</strong> shares one row per confirmed receipt through the Android share sheet:</p>
+    <pre><code>schema_version,date,time,merchant,currency,amount,transaction_type,tax,payment_method,memo</code></pre>
+    <ul>
+      <li>The amount is a plain decimal string with a dot, no grouping and no symbol, next to its ISO currency code. Tax is written only when its currency matches the amount's.</li>
+      <li>The file is UTF-8 with a BOM and CRLF rows. Text that starts with <code>=</code>, <code>+</code>, <code>-</code> or <code>@</code> is prefixed so a spreadsheet does not run it as a formula.</li>
+      <li>The CSV holds summary fields and your memo, not purchased items. It is an export, not a backup: there is no import or restore.</li>
+    </ul>
+
+    <h2>Images, backup and deletion</h2>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.receipt&amp;hl=en" aria-label="How this works help screen — get the app on Google Play"><img src="/blog/scan-receipts-on-android-without-uploading/assets/en-US/03-help.png" width="1080" height="1920" loading="lazy" decoding="async" alt="How this works help screen"></a><figcaption>A short guide to scanning, confirming values and how totals are counted.</figcaption></figure>
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.receipt&amp;hl=en" aria-label="Receipt image retention, theme and language settings — get the app on Google Play"><img src="/blog/scan-receipts-on-android-without-uploading/assets/en-US/04-settings.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Receipt image retention, theme and language settings"></a><figcaption>Choose whether to keep receipt images, plus theme and language.</figcaption></figure>
+    </div>
+    <ul>
+      <li>Receipt images are kept inside the app by default so you can compare a record with it later. Nothing is written to the gallery.</li>
+      <li>Turning off <strong>Keep receipt images</strong> applies to receipts recognized afterwards. Images kept earlier stay until you delete their records.</li>
+      <li>Deleting a receipt removes its kept image too. It does not remove the original in your gallery or CSV copies you have already shared.</li>
+      <li>Card details are stored only as the last four digits, but a kept image still shows everything printed on the receipt. Images are not anonymised.</li>
+      <li>Records and images are excluded from cloud backup and are configured to be excluded from device-to-device transfer (manufacturer migration tools may behave differently). Version 1 has no restore or sync.</li>
+    </ul>
+
+    <h2>Limits of version 1</h2>
+    <p>Version 1 uses OCR and extraction rules, without generative AI. It does not extract individual items, classify purchases into categories, calculate taxes, search records, show totals for months before the current one, flag duplicate receipts, read multi-page or PDF receipts, or sync and restore records. Recognition can make mistakes, so every result is a draft until you confirm it.</p>
+
+    <div class="note">
+      <p><strong><span class="dotori">Dotori</span> Receipt Scanner</strong> reads Korean and English receipts on the device, leaves every value for you to confirm, totals each currency separately and shares confirmed records as CSV.
+        <a href="/apps/receipt/">More about <span class="dotori">Dotori</span> Receipt Scanner</a></p>
+      <p><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.receipt&amp;hl=en"><img
+        src="../../../assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a></p>
+    </div>
+
+    <h2>Related notes</h2>
+    <ul>
+      <li><a href="/apps/receipt/">Dotori Receipt Scanner product page</a></li>
+      <li><a href="/tech-notes/receipt/">On-device receipt extraction and exact money (tech notes)</a></li>
+      <li><a href="/apps/namecard/">Dotori Business Card Scanner</a></li>
+    </ul>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>

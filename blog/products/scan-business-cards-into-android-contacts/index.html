@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scanning business cards into Android Contacts — droidactor</title>
+<meta name="description" content="Read a Korean or English business card on-device, confirm each field, then open the new-contact screen or share a vCard. QR and print conflicts stay shown.">
+<link rel="canonical" href="https://droidactor.github.io/blog/products/scan-business-cards-into-android-contacts/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/scan-business-cards-into-android-contacts/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/scan-business-cards-into-android-contacts/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/scan-business-cards-into-android-contacts/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/products/scan-business-cards-into-android-contacts/">
+<meta property="og:title" content="Scanning business cards into Android Contacts">
+<meta property="og:description" content="Read a Korean or English business card on-device, confirm each field, then open the new-contact screen or share a vCard. QR and print conflicts stay shown.">
+<meta property="og:image" content="https://droidactor.github.io/blog/scan-business-cards-into-android-contacts/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Scanning business cards into Android Contacts",
+      "description": "Read a Korean or English business card on-device, confirm each field, then open the new-contact screen or share a vCard. QR and print conflicts stay shown.",
+      "url": "https://droidactor.github.io/blog/products/scan-business-cards-into-android-contacts/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/products/scan-business-cards-into-android-contacts/",
+      "image": "https://droidactor.github.io/blog/scan-business-cards-into-android-contacts/assets/icon.png",
+      "datePublished": "2026-09-23",
+      "dateModified": "2026-09-23",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori Business Card Scanner",
+        "url": "https://droidactor.github.io/apps/namecard/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Android"
+      },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Business cards into Contacts", "item": "https://droidactor.github.io/blog/products/scan-business-cards-into-android-contacts/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/products/scan-business-cards-into-android-contacts/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/products/scan-business-cards-into-android-contacts/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Business cards into Contacts</nav>
+  <div class="hero">
+    <h1>Scanning business cards into Android Contacts</h1>
+    <p class="post-meta"><time datetime="2026-09-23">23 September 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>Short answer.</strong> Recognise the card on the device, keep every value as a draft, and hand only a card you confirmed to the contacts app's own new-contact screen or to a vCard file. The app needs no contacts permission because it never writes to Contacts itself; the final save happens in the contacts app. When a contact QR code disagrees with the printed text, the printed value stays in the field and the QR value is offered beside it. This applies to one side of one Korean or English card per image.</p>
+    </div>
+
+    <a class="post-app" href="https://play.google.com/store/apps/details?id=com.droidactor.namecard&amp;hl=en">
+      <img src="/blog/scan-business-cards-into-android-contacts/assets/icon.png" width="512" height="512" alt="Dotori Business Card Scanner app icon" decoding="async">
+      <div class="post-app-text">
+        <p><strong><span class="dotori">Dotori</span> Business Card Scanner</strong>Scans Korean and English business cards so you can review the details, then add them to Contacts or share a vCard.</p>
+        <span class="play-badge"><img
+          src="../../../assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></span>
+      </div>
+    </a>
+
+
+
+    <h2>What runs on the phone, and under which conditions</h2>
+    <p>The input is one image of one card side. <strong>Scan</strong> uses the phone's document scanner, which crops and straightens the card; <strong>From photos</strong> takes one image you already have. Text recognition and contact QR scanning run on the same image on the device, in parallel. Korean and English rules are applied together, so there is no recognition-language setting to pick first.</p>
+    <p>Three conditions matter before the first scan:</p>
+    <ul>
+      <li>There is no app account and no developer-operated card server. Card images and text are not uploaded for recognition.</li>
+      <li>The text and QR models are bundled. Optional helper models download over Wi-Fi only; until they are ready, basic recognition and manual editing still work, and the home screen says that the models are being prepared.</li>
+      <li>The document scanner may need a Google Play services download the first time, and a cloud photo provider may need a connection. Offline scanning on first use is therefore not promised.</li>
+    </ul>
+
+    <h2>Every value is a draft until you confirm it</h2>
+    <p>Names, companies and job titles are guessed from the layout, so the review screen marks each recognized value with a <strong>!</strong> icon at the end of its row. Tapping <strong>!</strong> or editing the value confirms that field. Nothing becomes confirmed on its own — not even a value that came from a QR code.</p>
+    <ul>
+      <li>The name is the gate. <strong>Confirm</strong>, <strong>Add to Contacts</strong> and <strong>Share vCard</strong> stay disabled until the name is confirmed, and the line at the top of the screen says so.</li>
+      <li>After the name is confirmed, the same line lists the fields still marked for a check. You can confirm the card anyway; the list is a reminder, not a block.</li>
+      <li>A card whose name could not be read can be kept with <strong>Keep draft</strong> and completed by hand later. The app never moves the company name into the empty name slot.</li>
+      <li>Right after recognition, focusing a field highlights the line or lines it was read from on the card image. That evidence is not saved, so a reopened card shows only its image and fields.</li>
+    </ul>
+
+    <h2>When the QR code and the printed card disagree</h2>
+    <p>A contact QR code is decoded reliably, but that does not mean it is current or belongs to the same person as the print. The app therefore treats it as a strong candidate that never wins automatically.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>What differs</th><th>What the review screen shows</th></tr></thead>
+        <tbody>
+          <tr><td>Name, company, job title or address</td><td>The printed value stays in the field. The QR value appears as a chip under the row. Tapping the chip switches to it and counts as your confirmation; the printed value remains as a chip.</td></tr>
+          <tr><td>A phone number, email or website</td><td>A value that exists only in the QR code becomes a separate entry to review. Remove the ones you do not want.</td></tr>
+          <tr><td>Same number, different label</td><td>The number keeps its printed label, and a small line under it reads, for example, &quot;QR says Office&quot;.</td></tr>
+          <tr><td>Several contact QR codes</td><td>None is merged. A note at the top says how many were found, and you enter the values you want from the card.</td></tr>
+          <tr><td>A URL QR code</td><td>It appears in the <strong>Link (QR)</strong> field. It is never opened or followed, and it is not exported as the contact's website.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>If text recognition fails but exactly one contact QR code is found, the app can still build a draft from the QR code. Fields filled from QR have no highlight on the image, because there is no printed line behind them — compare them with the card yourself.</p>
+
+    <h2>Phone numbers stay as printed</h2>
+    <p>Each number keeps its label — mobile, office, direct, main or fax. Tapping the label button cycles through them if the guess is wrong, and <strong>Add phone</strong> adds a number that was missed.</p>
+    <p>A country code is added only when it is printed on the card or when you choose one under <strong>Default country for phone numbers</strong> in Settings. A Korean card does not get +82 just for being Korean, because it may list an overseas office. When a code is added, the formatted number appears in small text under the row; otherwise the printed form is what gets exported.</p>
+
+    <h2>What reaches the contacts app and the vCard</h2>
+    <p>Pressing <strong>Add to Contacts</strong> or <strong>Share vCard</strong> first saves the card as confirmed, then opens the target.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th></th><th>Add to Contacts</th><th>Share vCard</th></tr></thead>
+        <tbody>
+          <tr><td>Where it goes</td><td>Your contacts app's new-contact screen, filled in</td><td>A .vcf file shared with an app you choose</td></tr>
+          <tr><td>Phones and emails</td><td>The first of each in dedicated fields; the rest in the note</td><td>All of them</td></tr>
+          <tr><td>Websites</td><td>In the note</td><td>All of them</td></tr>
+          <tr><td>Other name, department, memo, extensions</td><td>In the note</td><td>In the note</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Opening the new-contact screen is not the same as saving. You finish — or cancel — in the contacts app. The vCard is version 3.0 in UTF-8, and its file name carries a timestamp rather than the person's name. The field mapping, escaping and line folding are described in the <a href="/tech-notes/namecard/">tech notes</a>.</p>
+
+    <h2>A business card is someone else's personal information</h2>
+    <p>Cards are kept in a local list inside the app. Card images are kept by default so you can look at the card again; the image still shows everything printed on it, and the app does not redact it.</p>
+    <ul>
+      <li>Turning <strong>Keep card images</strong> off applies to new cards. Images already kept stay until you delete those cards.</li>
+      <li>Deleting a card removes its record and retained image. It does not remove the original photo in your gallery, a contact you already saved, or a vCard you already shared.</li>
+      <li>Card records and images are excluded from Android cloud backup and are configured to be excluded from device-to-device transfer; manufacturer migration tools may behave differently. The full recognized text is not saved with a record.</li>
+      <li>Card contents are not placed in ad requests. The app shows an AdMob banner with Google's consent flow. ML Kit diagnostics and AdMob/UMP have their own data practices, described in the privacy policy.</li>
+    </ul>
+
+    <h2>Known limits of version 1</h2>
+    <ul>
+      <li>One side of one card per image. Front and back images are not combined, and several cards in one image are not split.</li>
+      <li>No duplicate check against your existing contacts — that would need permission to read them. No search or sorting in the card list, and no cloud sync or restore.</li>
+      <li>Compound Korean titles written as one word, such as 개발팀장, are not yet recognized as titles, and all-caps Latin names can be missed as an other name. The review screen is where you catch these.</li>
+      <li>Extensions are shown but cannot yet be edited as a separate field, and no message appears on a phone without a contacts app.</li>
+      <li>Recognition can make mistakes. Compare every value with the card before you confirm it.</li>
+    </ul>
+    <p>These points describe app version 1.0.0 as of 23 September 2026.</p>
+
+    <div class="note">
+      <p><strong><span class="dotori">Dotori</span> Business Card Scanner</strong> reads the card on your phone, keeps every value as a draft until you confirm it, and hands the confirmed card to your contacts app or a vCard file.
+        <a href="/apps/namecard/">More about <span class="dotori">Dotori</span> Business Card Scanner</a></p>
+      <p><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.namecard&amp;hl=en"><img
+        src="../../../assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a></p>
+    </div>
+
+    <h2>Related notes</h2>
+    <ul>
+      <li><a href="/apps/namecard/">Dotori Business Card Scanner</a></li>
+      <li><a href="/tech-notes/namecard/">Business card fields, QR candidates, and contact export (tech notes)</a></li>
+      <li><a href="/apps/receipt/">Dotori Receipt Scanner</a></li>
+    </ul>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>
