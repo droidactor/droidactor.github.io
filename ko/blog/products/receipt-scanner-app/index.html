@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>영수증 스캔 앱으로 금액을 직접 확인하고 CSV로 모으기 — droidactor</title>
+<meta name="description" content="한국어·영어 영수증을 기기 안에서 읽고, 상호·날짜·금액·통화를 직접 확인한 뒤 확정하는 영수증 스캐너. 합계는 통화별로 따로 내고, 확정 기록은 CSV로 공유합니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/products/receipt-scanner-app/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/receipt-scanner-app/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/receipt-scanner-app/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/receipt-scanner-app/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/products/receipt-scanner-app/">
+<meta property="og:title" content="영수증 스캔 앱으로 금액을 직접 확인하고 CSV로 모으기">
+<meta property="og:description" content="한국어·영어 영수증을 기기 안에서 읽고, 상호·날짜·금액·통화를 직접 확인한 뒤 확정하는 영수증 스캐너. 합계는 통화별로 따로 내고, 확정 기록은 CSV로 공유합니다.">
+<meta property="og:image" content="https://droidactor.github.io/blog/receipt-scanner-app/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260817-blog-play-link">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "영수증 스캔 앱으로 금액을 직접 확인하고 CSV로 모으기",
+      "description": "한국어·영어 영수증을 기기 안에서 읽고, 상호·날짜·금액·통화를 직접 확인한 뒤 확정하는 영수증 스캐너. 합계는 통화별로 따로 내고, 확정 기록은 CSV로 공유합니다.",
+      "url": "https://droidactor.github.io/ko/blog/products/receipt-scanner-app/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/products/receipt-scanner-app/",
+      "image": "https://droidactor.github.io/blog/receipt-scanner-app/assets/icon.png",
+      "datePublished": "2026-09-24",
+      "dateModified": "2026-09-24",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "도토리 영수증 스캐너",
+        "url": "https://droidactor.github.io/ko/apps/receipt/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "영수증 스캔 앱으로 금액을 직접 확인하고 CSV로 모으기", "item": "https://droidactor.github.io/ko/blog/products/receipt-scanner-app/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="언어">
+    <a class="lang-btn" href="/blog/products/receipt-scanner-app/" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/products/receipt-scanner-app/" aria-current="page" hreflang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>영수증 스캔 앱으로 금액을 직접 확인하고 CSV로 모으기</nav>
+  <div class="hero">
+    <h1>영수증 스캔 앱으로 금액을 직접 확인하고 CSV로 모으기</h1>
+    <p class="post-meta"><time datetime="2026-09-24">2026년 9월 24일</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>요약.</strong> 지갑에서 꺼낸 영수증이 한 주 만에 열 장을 넘깁니다. 해외에서 쓴 달러 영수증까지 섞이면, 월말에 합계를 내려고 해도 원화와 달러를 한 칸에 더할 수가 없습니다. 도토리 영수증 스캐너는 영수증을 찍으면 상호·날짜·금액·통화를 읽어 오고, 그 값을 사람이 확인한 뒤에만 기록으로 확정합니다. 합계는 통화마다 따로 내고, 확정한 기록은 CSV 파일로 꺼낼 수 있습니다.</p>
+    </div>
+
+    <a class="post-app" href="https://play.google.com/store/apps/details?id=com.droidactor.receipt&amp;hl=ko">
+      <img src="/blog/receipt-scanner-app/assets/icon.png" width="512" height="512" alt="도토리 영수증 스캐너 앱 아이콘" decoding="async">
+      <div class="post-app-text">
+        <p><strong><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너</strong>한국어·영어 영수증을 인식하고 금액을 확인하세요. 확정 기록은 CSV로 공유할 수 있습니다.</p>
+        <span class="play-badge"><img
+          src="../../../../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></span>
+      </div>
+    </a>
+
+
+
+    <h2>찍으면 읽고, 확정은 사람이 합니다</h2>
+    <p>홈 화면에서 <strong>촬영</strong>을 누르면 폰의 문서 스캐너가 영수증 한 장을 잘라 반듯하게 폅니다. 이미 찍어 둔 사진이 있으면 <strong>사진에서 선택</strong>을 쓰면 됩니다. 이미지 한 장에 영수증 한 장이 기준입니다.</p>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.receipt&amp;hl=ko" aria-label="도토리 영수증 스캐너 검토 화면 - 상호, 날짜, 금액, 통화, 세금 칸이 영수증 이미지 아래 나란히 있다 — Google Play에서 앱 받기"><img src="/assets/shots/receipt/ko-KR/02-review.webp" width="800" height="1422" loading="lazy" decoding="async" alt="도토리 영수증 스캐너 검토 화면 - 상호, 날짜, 금액, 통화, 세금 칸이 영수증 이미지 아래 나란히 있다"></a></figure>
+    </div>
+    <p>앱이 읽은 값은 초안입니다. 검토 화면에서 상호·날짜·금액·통화를 영수증 이미지와 하나씩 대조하고, 틀린 칸은 눌러서 바로 고칩니다. 살펴볼 값에는 느낌표가 붙고, 확인하면 체크 표시로 바뀝니다. 아직 확인할 시간이 없으면 <strong>초안 보관</strong>으로 남겨 두었다가 나중에 마저 봐도 됩니다. 세금액·결제수단·메모 같은 부가 정보도 같이 적어 둘 수 있습니다.</p>
+
+    <h2>합계는 통화별로 따로 냅니다</h2>
+    <p>이 앱은 환율 환산을 하지 않습니다. 원화 28,000원과 9.72달러를 억지로 한 숫자로 합치지 않고, 이번 달 합계를 KRW 한 줄, USD 한 줄로 나눠 보여 줍니다. 통화는 $나 ¥ 같은 기호만 보고 정하지 않고, 기록마다 확인하게 되어 있습니다.</p>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.receipt&amp;hl=ko" aria-label="홈 화면 - 9월 합계가 KRW 44500, USD 40.80으로 따로 표시되고 아래에 영수증 목록이 있다 — Google Play에서 앱 받기"><img src="/assets/shots/receipt/ko-KR/01-home.webp" width="800" height="1422" loading="lazy" decoding="async" alt="홈 화면 - 9월 합계가 KRW 44500, USD 40.80으로 따로 표시되고 아래에 영수증 목록이 있다"></a></figure>
+    </div>
+    <p>합계에 들어가는 기준도 정해져 있습니다.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>기록 상태</th><th>월 합계</th></tr></thead>
+        <tbody>
+          <tr><td>확정한 구매</td><td>더합니다</td></tr>
+          <tr><td>확정한 환불</td><td>뺍니다</td></tr>
+          <tr><td>초안</td><td>빠집니다</td></tr>
+          <tr><td>종류(구매·환불)를 확인하지 않은 기록</td><td>빠집니다</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>그래서 합계에 보이는 숫자는 전부 사람이 한 번 본 기록입니다. 인식이 틀린 금액이 모르는 사이에 합계에 섞이는 일이 없습니다.</p>
+
+    <h2>확정 기록은 CSV로 꺼냅니다</h2>
+    <p>홈 화면의 <strong>CSV 내보내기</strong>를 누르면 확정한 기록을 CSV 파일로 만들어 원하는 앱으로 보냅니다. 엑셀이나 구글 시트에서 열어 경비 정리나 가계부 옮기기에 쓰면 됩니다. 담기는 것은 상호·날짜·금액 같은 요약 칸이고, 영수증의 품목 하나하나는 들어가지 않습니다. CSV는 백업이 아니라서, 이 파일로 앱에 기록을 되살릴 수는 없습니다.</p>
+    <p>인식은 기기 안에서 합니다. 앱 계정이 없고, 영수증 이미지나 인식한 글자를 인식용 서버에 올리지 않습니다. 영수증 이미지는 기본으로 앱 안에 남겨 나중에 다시 대조할 수 있고, 설정에서 끄면 그 뒤로 찍는 영수증부터 이미지 없이 저장합니다. 카드 번호는 끝 네 자리만 칸에 보관합니다. 해외 영수증의 09/10 같은 날짜가 9월 10일인지 10월 9일인지 헷갈리면, 설정에서 월 먼저(MM/DD)와 일 먼저(DD/MM) 중 하나로 정해 두면 됩니다.</p>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.receipt&amp;hl=ko" aria-label="설정 화면 - 날짜 순서, 영수증 이미지 보관 스위치, 테마와 언어 선택 — Google Play에서 앱 받기"><img src="/assets/shots/receipt/ko-KR/04-settings.webp" width="800" height="1422" loading="lazy" decoding="async" alt="설정 화면 - 날짜 순서, 영수증 이미지 보관 스위치, 테마와 언어 선택"></a></figure>
+    </div>
+    <p>다만 할 수 없는 일도 분명합니다. 품목별 추출, 회계·세금 계산, 환율 환산은 넣지 않았습니다. 처음 스캐너를 준비할 때는 Google Play 서비스에서 구성요소를 내려받을 수 있어 연결이 필요할 수 있습니다.</p>
+
+    <h2>정리</h2>
+    <p>영수증을 찍으면 값을 읽어 오되, 확정은 사람이 합니다. 합계는 통화별로 나눠 내고, 확정 기록은 CSV로 꺼냅니다.</p>
+    <p><a href="https://play.google.com/store/apps/details?id=com.droidactor.receipt&amp;hl=ko">도토리 영수증 스캐너</a>를 설치하시고, 오늘 지갑에 들어온 영수증 한 장부터 찍어 보십시오.</p>
+
+    <div class="note">
+      <p><strong><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너</strong>는 한국어·영어 영수증을 기기 안에서 읽고, 모든 값을 사용자가 확정하게 하며, 통화마다 따로 합계를 내고 확정 기록을 CSV 로 공유합니다.
+        <a href="/ko/apps/receipt/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너 자세히 보기</a></p>
+      <p><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.receipt&amp;hl=ko"><img
+        src="../../../../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></a></p>
+    </div>
+
+  </article>
+
+  <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/apps/">전체 앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/tech-notes/">기술 노트</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play 및 Google Play 로고는 Google LLC 의 상표입니다.</p></footer>
+
+</div>
+
+</body>
+</html>
