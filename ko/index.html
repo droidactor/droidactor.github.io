@@ -6,7 +6,7 @@
   (#privacy-keyboard / #privacy-ppt / #privacy-mouse / #privacy-numpad / #privacy-roman / #privacy-currency /
    #privacy-wifi / #privacy-ssh /
    #privacy-ytdl / #privacy-lgtv / #privacy-gas / #privacy-apartment / #privacy-calendar /
-   #privacy-unitconverter / #privacy-unit / #privacy-receipt / #privacy-namecard)는 스토어 등록 주소이므로 이름을 바꾸지 않는다.
+   #privacy-unitconverter / #privacy-unit / #privacy-receipt / #privacy-namecard / #privacy-idphoto)는 스토어 등록 주소이므로 이름을 바꾸지 않는다.
 -->
 <html lang="ko">
 <head>
@@ -426,8 +426,13 @@
             <td>사용자가 음성 입력을 켤 때 마이크 접근을 요청합니다. 음성은 기기 안에서 인식하며 오디오를 서버나 연결된 호스트로 보내지 않습니다.</td>
           </tr>
           <tr>
+            <td><code>CAMERA</code></td>
+            <td><a href="#privacy-idphoto">도토리 증명사진</a></td>
+            <td>사용자가 사진 촬영을 고를 때만 요청합니다. 촬영한 사진은 기기 안에서 처리하며 서버로 보내지 않습니다.</td>
+          </tr>
+          <tr>
             <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code></td>
-            <td>전체. <a href="#privacy-receipt"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너</a>·<a href="#privacy-namecard"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 명함 스캐너</a> 포함. 두 앱에서는 광고 라이브러리 병합으로 선언됩니다.</td>
+            <td>전체. <a href="#privacy-receipt"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너</a>·<a href="#privacy-namecard"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 명함 스캐너</a>·<a href="#privacy-idphoto"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 증명사진</a> 포함. 이 앱들에서는 광고 라이브러리 병합으로 선언됩니다.</td>
             <td>사용자가 지정한 장비·원본에 접속하고 광고를 받아오기 위해서입니다. HID 리모컨은
               입력을 인터넷이 아니라 블루투스로 보냅니다. <a href="#privacy-currency"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 환율 계산기</a>는 그 날의 환율 표를
               받아옵니다 — 입력한 금액은 그 요청에 담기지 않습니다. 영수증 스캐너는 ML Kit 진단 통신도 사용하며 스캐너 준비·클라우드 사진 공급자에 연결이 필요할 수 있습니다. 인식은 기기 안에서 처리합니다. 명함 스캐너도 같으며, 선택적인 개체 인식 모델을 Wi-Fi에서만 Google로부터 내려받습니다 — 이 다운로드에 명함 내용은 담기지 않습니다.</td>
@@ -476,7 +481,7 @@
           </tr>
           <tr>
             <td><code>AD_ID</code></td>
-            <td>광고를 게재하는 앱 전체. <a href="#privacy-receipt"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너</a>·<a href="#privacy-namecard"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 명함 스캐너</a> 포함(<span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> YouTube Downloader 제외)</td>
+            <td>광고를 게재하는 앱 전체. <a href="#privacy-receipt"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너</a>·<a href="#privacy-namecard"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 명함 스캐너</a>·<a href="#privacy-idphoto"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 증명사진</a> 포함(<span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> YouTube Downloader 제외)</td>
             <td>Google Mobile Ads SDK 의 광고 제공·측정을 위한 권한입니다
               (<code>com.google.android.gms.permission.AD_ID</code>). SDK 가 매니페스트 병합으로 스스로
               선언하므로, 앱 자체 매니페스트에 적혀 있지 않아도 설치된 앱에는 포함됩니다. Android 설정에서
@@ -810,6 +815,15 @@
       <p>Document Scanner 준비에는 Google Play services의 구성요소 다운로드가, 클라우드 사진 공급자에는 연결이 필요할 수 있습니다. 선택적인 개체 인식 모델은 Wi-Fi에서만 Google로부터 내려받으며, 이 다운로드에 명함 내용은 담기지 않습니다. QR 코드에서 찾은 링크는 후보로만 보여주고 자동으로 열지 않습니다. ML Kit는 기기·앱 정보, 설치 식별자, 성능·기능 이벤트 등 기술 진단·사용 정보를 수집하며, 자세한 내용은 Google의 <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit 데이터 공개</a>에 있습니다.</p>
       <p>앱은 AdMob 배너와 지역에 필요한 Google UMP 개인정보 선택을 사용하며 광고 처리는 3절과 같습니다. 명함 내용을 광고 SDK에 제공하지 않습니다. 로컬 데이터 삭제가 Google의 진단·광고 기록을 삭제하는 것은 아닙니다. 앱은 위험 권한을 요청하지 않습니다. 보조 라이브러리는 4절의 네트워크·광고·백그라운드 작업 권한을 추가합니다.</p>
       <p><a href="/ko/apps/namecard/">제품 페이지: <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 명함 스캐너</a></p>
+    </div>
+
+    <div class="policy" id="privacy-idphoto">
+      <h3><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 증명사진<span class="pkg-inline">com.droidactor.idphoto</span></h3>
+      <p>도토리 증명사진은 촬영하거나 선택한 인물 사진을 여권·운전면허증·주민등록증·일반 증명사진 규격으로 자릅니다. 얼굴 검출과 (일반 사진에 한해) 배경 분리는 앱에 포함된 ML Kit 모델로 기기 안에서 처리합니다. 생성형 AI를 포함하지 않습니다. 앱 계정과 개발자 운영 서버가 없으며, 사진을 처리용으로 서버에 올리거나 광고 요청에 넣지 않습니다.</p>
+      <p>촬영하거나 선택한 사진은 앱 임시 저장소로 복사해 디코딩한 뒤 임시 파일을 바로 지웁니다. 편집 중인 사진은 편집을 마치거나 새로 시작하거나 앱을 닫을 때까지 메모리에만 있으며, 작업 사진은 클라우드 백업과 기기 이전에서 제외합니다. 다른 사람의 사진을 처리할 때는 그 사람의 동의를 받으세요.</p>
+      <p>저장하면 갤러리(<code>Pictures/DotoriIdPhoto</code>)에 새 JPEG를 쓰며 원본을 덮어쓰지 않습니다. 저장한 파일에는 GPS 위치 같은 원본 사진의 메타데이터를 복사하지 않습니다. 저장한 사진은 갤러리나 클라우드 사진 서비스가 그 설정에 따라 백업할 수 있으니, 필요 없으면 갤러리에서 지우세요. 저장한 사진은 사용자가 공유를 선택할 때만 다른 앱으로 전달합니다.</p>
+      <p>카메라 권한은 사진 촬영을 고를 때만 요청합니다. 사진 선택은 시스템 사진 선택기(오래된 기기에서는 시스템 파일 선택기)를 쓰므로 사진·저장소 전체 접근이 필요하지 않습니다. ML Kit는 기기·앱 정보, 설치 식별자 등 기술 진단·사용 정보를 수집하며, 자세한 내용은 Google의 <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit 데이터 공개</a>에 있습니다.</p>
+      <p>앱은 홈 화면에 AdMob 배너와 지역에 필요한 Google UMP 개인정보 선택을 사용하며 광고 처리는 3절과 같습니다. 사진을 광고 SDK에 제공하지 않습니다. 앱 데이터 삭제나 앱 제거는 갤러리에 저장한 사진이나 Google의 진단·광고 기록을 삭제하지 않습니다. 보조 라이브러리는 4절의 네트워크·광고·백그라운드 작업 권한을 추가합니다.</p>
     </div>
 
     <div class="policy" id="privacy-unitconverter">

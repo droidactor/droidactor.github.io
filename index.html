@@ -7,7 +7,7 @@
     1. the "Developer website" URL registered on Google Play / App Store
     2. the privacy policy for every app (per-app anchors: #privacy-keyboard, #privacy-ppt,
        #privacy-mouse, #privacy-numpad, #privacy-roman, #privacy-currency, #privacy-ssh, #privacy-wifi, #privacy-ytdl, #privacy-lgtv, #privacy-gas,
-       #privacy-apartment, #privacy-calendar, #privacy-unitconverter, #privacy-unit, #privacy-receipt, #privacy-namecard — usable as per-app policy URLs)
+       #privacy-apartment, #privacy-calendar, #privacy-unitconverter, #privacy-unit, #privacy-receipt, #privacy-namecard, #privacy-idphoto — usable as per-app policy URLs)
     3. the host for /app-ads.txt (that file lives at the repo root, not here)
 
   Do not rename the #privacy-* anchors — they are registered on the store listings.
@@ -465,8 +465,13 @@
             <td>Requests microphone access when you enable voice input. Speech is recognized on the device; audio is not sent to a server or the connected host.</td>
           </tr>
           <tr>
+            <td><code>CAMERA</code></td>
+            <td><a href="#privacy-idphoto"><span class="dotori">Dotori</span> ID Photo Maker</a></td>
+            <td>Requested only when you choose to take a photo. The captured photo is processed on the device and is not sent to a server.</td>
+          </tr>
+          <tr>
             <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code></td>
-            <td>All, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a> and <a href="#privacy-namecard"><span class="dotori">Dotori</span> Business Card Scanner</a>. Both get these declarations through the advertising library.</td>
+            <td>All, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a>, <a href="#privacy-namecard"><span class="dotori">Dotori</span> Business Card Scanner</a> and <a href="#privacy-idphoto"><span class="dotori">Dotori</span> ID Photo Maker</a>. These apps get these declarations through the advertising library.</td>
             <td>To reach the devices or sources you asked for, and to fetch ads. The HID
               remotes send your input over Bluetooth, not over the internet. <a href="#privacy-currency"><span class="dotori">Dotori</span> Currency
               Converter</a> fetches the daily exchange-rate table, and the amounts you type are not
@@ -518,7 +523,7 @@
           </tr>
           <tr>
             <td><code>AD_ID</code></td>
-            <td>Every ad-supported app, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a> and <a href="#privacy-namecard"><span class="dotori">Dotori</span> Business Card Scanner</a> (not <span class="dotori">Dotori</span> YouTube Downloader)</td>
+            <td>Every ad-supported app, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a>, <a href="#privacy-namecard"><span class="dotori">Dotori</span> Business Card Scanner</a> and <a href="#privacy-idphoto"><span class="dotori">Dotori</span> ID Photo Maker</a> (not <span class="dotori">Dotori</span> YouTube Downloader)</td>
             <td>Ad delivery and measurement by the Google Mobile Ads SDK
               (<code>com.google.android.gms.permission.AD_ID</code>). The SDK declares this itself through
               manifest merging, so it is present in the installed app even where an app's own manifest does
@@ -888,6 +893,15 @@
       <p>Document Scanner setup may download components through Google Play services, and a cloud photo provider may need a connection. Optional entity-recognition models are downloaded from Google over Wi-Fi only; the download does not include card contents. A link found in a QR code is shown as a candidate and is not opened automatically. ML Kit collects technical diagnostics and usage information, including device/app information, installation identifiers, performance and feature events, as described in Google's <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit disclosure</a>.</p>
       <p>The app displays an AdMob banner and uses Google UMP for applicable privacy choices, as described in section 3. Card contents are not supplied to the advertising SDK. Local deletion does not delete Google's diagnostic or advertising records. The app requests no dangerous permissions. Supporting libraries add the network, advertising and background-work permissions listed in section 4.</p>
       <p><a href="/apps/namecard/">Details: <span class="dotori">Dotori</span> Business Card Scanner</a></p>
+    </div>
+
+    <div class="policy" id="privacy-idphoto">
+      <h3><span class="dotori">Dotori</span> ID Photo Maker<span class="pkg-inline">com.droidactor.idphoto</span></h3>
+      <p>Dotori ID Photo Maker crops a portrait you take or choose to Korean passport, driver's license, resident registration card or general ID photo sizes. Face detection and, for general photos only, background segmentation run on your device with ML Kit models bundled in the app. The app does not include generative AI. There is no app account or developer-operated server. Photos are not uploaded for processing or passed to advertising requests.</p>
+      <p>A photo you take or choose is copied to temporary app storage, decoded, and the temporary file is removed. The photo being edited stays in memory until you finish, start over or close the app, and working photos are excluded from cloud backup and device transfer. If you process someone else's photo, make sure you have their permission.</p>
+      <p>Saving writes a new JPEG to your gallery (<code>Pictures/DotoriIdPhoto</code>) and never overwrites the original. Saved files do not copy the original photo's metadata, such as GPS location. Your gallery or cloud photo service may back up saved photos under its own settings; delete them in the gallery when you no longer need them. A saved photo is passed to another app only when you choose to share it.</p>
+      <p>Camera access is requested only when you choose to take a photo. Choosing a photo uses the system photo picker (or the system file picker on older devices) and needs no broad photo or storage access. ML Kit collects technical diagnostics and usage information, including device/app information and installation identifiers, as described in Google's <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit disclosure</a>.</p>
+      <p>The app displays an AdMob banner on the home screen and uses Google UMP for applicable privacy choices, as described in section 3. Photos are not supplied to the advertising SDK. Clearing app data or uninstalling does not delete photos saved to the gallery or Google's diagnostic or advertising records. Supporting libraries add the network, advertising and background-work permissions listed in section 4.</p>
     </div>
 
     <div class="policy" id="privacy-unitconverter">
