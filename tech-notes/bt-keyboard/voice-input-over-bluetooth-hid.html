@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voice typing on hosts without speech input: on-device recognition sent over Bluetooth HID — droidactor</title>
+<meta name="description" content="How Dotori Bluetooth Keyboard lets a PC, TV, or tablet without speech input receive dictated text: the phone recognizes speech on-device and types the confirmed sentence as Bluetooth HID keystrokes.">
+<link rel="canonical" href="https://droidactor.github.io/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html"><meta property="og:title" content="Voice typing on hosts without speech input"><meta property="og:description" content="The phone does the listening; the host only sees a Bluetooth keyboard typing the sentence you confirmed."><meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Voice typing on hosts without speech input: on-device recognition sent over Bluetooth HID","description":"Why and how Dotori Bluetooth Keyboard recognizes speech on the phone, keeps it off the network, and types only the sentence the user confirms as Bluetooth HID keystrokes.","url":"https://droidactor.github.io/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html","mainEntityOfPage":"https://droidactor.github.io/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html","datePublished":"2026-09-23","dateModified":"2026-09-23","inLanguage":"en","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"Dotori Bluetooth Keyboard","url":"https://droidactor.github.io/apps/bt-keyboard/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/"},{"@type":"ListItem","position":2,"name":"Tech notes","item":"https://droidactor.github.io/tech-notes/"},{"@type":"ListItem","position":3,"name":"Bluetooth HID","item":"https://droidactor.github.io/tech-notes/bt-keyboard/"},{"@type":"ListItem","position":4,"name":"Voice typing over HID","item":"https://droidactor.github.io/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html"}]}]}</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand"><a href="/">droid<span>actor</span></a></div><nav class="langs" aria-label="Language"><a class="lang-btn" href="/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html" aria-current="page" hreflang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html" hreflang="ko" lang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/tech-notes/">Tech notes</a><span>/</span><a href="/tech-notes/bt-keyboard/">Bluetooth HID</a><span>/</span>Voice typing over HID</nav>
+  <div class="hero manual-hero"><h1>Voice typing on hosts without speech input</h1><p>The phone listens and recognizes; the PC, TV, or tablet only sees a Bluetooth keyboard typing the sentence you approved.</p><p class="manual-meta">Source baseline: app 1.0.0 (8) · 23 September 2026</p></div>
+  <nav class="manual-toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#idea">The idea</a></li><li><a href="#benefits">Why it helps</a></li><li><a href="#requirements">Where it works</a></li><li><a href="#ondevice">On-device only</a></li><li><a href="#confirm">Why nothing is sent automatically</a></li><li><a href="#send">From sentence to keystrokes</a></li><li><a href="#safety">Session safety</a></li><li><a href="#limits">Limits</a></li><li><a href="#sources">Sources</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <div class="note" id="idea"><p><strong>The idea.</strong> Speech recognition does not have to run on the machine that receives the text. Dotori Bluetooth Keyboard already makes the phone a standard Bluetooth HID keyboard, so it can recognize speech on the phone and deliver the result the same way a person would: as ordinary key presses. The host needs no microphone, no dictation feature, no driver, and no companion app.</p></div>
+
+    <h2 id="benefits">Why it helps</h2>
+    <p>Many devices that accept a keyboard cannot take dictation, or cannot take it in the language you want. The phone in your hand usually can. Moving recognition to the phone turns every keyboard-capable host into a voice-capable one.</p>
+    <ul>
+      <li><strong>Hosts with no speech input at all.</strong> Smart TVs, set-top boxes, and many embedded or kiosk-style systems accept a Bluetooth keyboard but offer no dictation. Search boxes and login fields on a TV are exactly where typing with a remote hurts most — provided the TV lists the phone as a keyboard when pairing, which <a href="/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html">some Google TV models do not</a>.</li>
+      <li><strong>PCs you cannot change.</strong> A shared or managed work computer may have no microphone, may block new software, or may not offer dictation in your language. The phone needs nothing installed on the host.</li>
+      <li><strong>Any app that accepts typing.</strong> Because the host only receives key presses, the text lands wherever the cursor is — a browser, a terminal, a document, a chat window — without per-app integration.</li>
+      <li><strong>Your voice stays on the phone.</strong> The app uses only Android's on-device recognition API and never falls back to a network recognizer. It sends no audio to the developer or to the host; the host receives the final text and nothing else.</li>
+      <li><strong>You review before it is typed.</strong> Recognized sentences collect in a window on the phone. Nothing reaches the host until you press Send, so a misheard word never becomes a keystroke you have to undo on the other machine.</li>
+    </ul>
+
+    <h2 id="requirements">Where it works</h2>
+    <div class="scroll"><table class="spec"><tbody>
+      <tr><th>Phone OS</th><td>Android 12 (API 31) or later. On Android 11 and earlier the microphone key is not drawn at all, because the on-device recognizer API does not exist there.</td></tr>
+      <tr><th>Recognizer</th><td>The phone must provide an on-device speech recognizer (<code>SpeechRecognizer.isOnDeviceRecognitionAvailable</code>). If it does not, the app says so instead of falling back to an online recognizer.</td></tr>
+      <tr><th>Language model</th><td>The offline model for the chosen language must be installed. Recognition follows the app's current Korean/English state: <code>ko-KR</code> or <code>en-US</code>.</td></tr>
+      <tr><th>Permission</th><td>Microphone permission, requested the first time you press the microphone key. The app does not lock the feature after a refusal; if Android stops asking, turn the permission on in the app's system settings.</td></tr>
+      <tr><th>Host</th><td>Anything that pairs with the phone as a Bluetooth HID keyboard. Korean text additionally needs a host IME that the selected input profile can drive, for example Windows Korean 2-set.</td></tr>
+      <tr><th>Entry points</th><td>The microphone button before the help button on the portrait screen, the microphone key on the landscape custom keyboard, and the microphone button in sentence-input mode. All three open the same voice window, so the flow is identical in either orientation.</td></tr>
+    </tbody></table></div>
+    <p>On Android 13 and later the app asks the recognizer before listening whether the language model is installed, missing, or unsupported. A model that is missing or still downloading is reported with a Download action that asks the system to fetch it. Android 12 and 12L (API 31–32) have no such query, so readiness is learned from the first real attempt; if the model is not ready, the app tells you to check the offline speech-recognition languages in the phone's settings.</p>
+
+    <h2 id="ondevice">Technical view: on-device only, by construction</h2>
+    <p>The recognizer is created with <code>SpeechRecognizer.createOnDeviceSpeechRecognizer</code>, added in API 31. The app checks <code>isOnDeviceRecognitionAvailable</code> first and stops with an “engine unavailable” state when it is false. There is deliberately no code path to the ordinary <code>createSpeechRecognizer</code>, which may use a network service: sending what the user says off the device would change the premise of the feature, and the app has no backend of its own.</p>
+    <p>Supporting three API ranges (28–30, 31–32, 33+) in one binary needs care. The app's <code>minSdk</code> is 28, so phones on API 28–30 load the same classes. A method added in a newer API is resolved only when called and can sit behind an <code>SDK_INT</code> check; a newer <em>type</em> in a field or signature fails when the class loads, before any check runs. The controller therefore implements only <code>RecognitionListener</code> (API 1), and the API 33 types <code>RecognitionSupport</code> and <code>RecognitionSupportCallback</code> live in a single isolated object that is touched only inside an API 33 branch. A contract test keeps those names out of every other voice file.</p>
+    <div class="note"><p><strong>Language tags are compared loosely.</strong> The recognizer may report <code>ko_KR</code> where the app asked for <code>ko-KR</code>, in any letter case. Comparing strings exactly would report an installed language as missing, so tags are normalized before the installed / pending / supported lists are matched. A failed support query is treated as “unknown” and the app simply tries, rather than declaring the language unsupported.</p></div>
+
+    <h2 id="confirm">Why nothing is sent automatically</h2>
+    <p>Partial recognition results are unstable: the recognizer revises earlier words as more audio arrives. On a normal phone keyboard that is harmless because the text is still editable. Over HID it is not — a key press that has reached the host cannot be recalled by the phone. So recognized text is shown, never typed, until the user confirms it.</p>
+    <p>At the same time, asking for confirmation after every sentence interrupts dictation. The controller resolves this with continuous listening:</p>
+    <ul>
+      <li>When the recognizer returns a final result and closes its session, the sentence is appended to a buffer (with a space between sentences) and listening restarts immediately.</li>
+      <li>The window shows the buffer plus the current partial. The Send button is always there while listening and sends the whole buffer; a very long buffer may be shortened on screen, but it is sent in full.</li>
+      <li>Silence and speech timeouts are normal pauses, not failures, and do not count toward the restart limit. Immediate repeated failures — for example another app holding the microphone — stop listening after five restarts without a result. Sentences already collected stay in the window and can still be sent; press the microphone again to resume listening.</li>
+      <li>When the app restarts the session after a send, the cancel it issues was observed to produce an error callback of its own; the app ignores that one error so it cannot trigger a restart loop.</li>
+    </ul>
+
+    <h2 id="send">From confirmed sentence to keystrokes</h2>
+    <p>Voice adds no new transmission path. A confirmed sentence goes through the same sentence-send routine as typed sentence input: the text is normalized, split into Korean and English runs, modern Hangul syllables are decomposed into 2-set jamo keys, and the plan includes the IME switches the host profile needs. If any character cannot be encoded, nothing is sent — the host never receives half a sentence — and the text stays in the voice window so it does not have to be spoken again.</p>
+    <p>HID typing is paced key by key, so a long sentence takes seconds to arrive. While it is being sent the button shows “Sending…” and cannot be pressed again, which prevents the same sentence from being typed twice. Once the sentence is accepted for sending, the buffer is cleared and a fresh recognition session starts, so a partial that was still inside the recognizer is not delivered a second time. Clearing happens at acceptance, not at delivery: if the HID transfer later fails partway, that sentence does not return to the window.</p>
+    <p>The recognition language is taken from the Korean/English state the app already maintains for the host IME. The host remains the owner of IME state; if the display and the host drift apart, the existing fix — long-pressing the Korean/English key to realign the display — applies to voice as well, <a href="/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html">for the same reasons as typed input</a>.</p>
+
+    <h2 id="safety">Session safety</h2>
+    <ul>
+      <li><strong>Host changes discard the buffer, but do not interrupt.</strong> When the input session changes — another host, a new connection generation, or a protocol epoch — the sentences collected so far are dropped. Listening itself continues, because the connection becoming ready would otherwise cut the user off mid-sentence; a sentence being spoken at the moment of the change can therefore still land in the new buffer, and nothing is typed until you press Send.</li>
+      <li><strong>Leaving the app stops listening.</strong> The recognizer is released when the screen goes away and cancelled on <code>ON_STOP</code>. <code>ON_PAUSE</code> is not used, because the microphone permission dialog pauses the activity and would cancel the request the user just approved.</li>
+      <li><strong>Late results after leaving or cancelling are dropped.</strong> When the window is cancelled or the screen goes away, the recognizer's listener is detached before it is cancelled, so a result that arrives afterwards is never delivered.</li>
+    </ul>
+
+    <h2 id="limits">Limits</h2>
+    <ul>
+      <li>Accuracy, punctuation, and supported languages depend on the phone's on-device recognizer and its installed models, not on the app.</li>
+      <li>The app does not know which field has focus on the host; text goes wherever the host cursor is.</li>
+      <li>Only characters that the selected key map and the modern-Hangul plan can encode are sent.</li>
+      <li>Typing speed is bounded by HID pacing, so dictating a long paragraph is slower to deliver than it is to speak.</li>
+      <li>Phones without an on-device recognizer, or on Android 11 and earlier, cannot use the feature.</li>
+    </ul>
+
+    <h2 id="sources">Official sources</h2>
+    <ul>
+      <li><a href="https://developer.android.com/reference/android/speech/SpeechRecognizer">Android SDK: SpeechRecognizer (createOnDeviceSpeechRecognizer, isOnDeviceRecognitionAvailable, checkRecognitionSupport, triggerModelDownload)</a></li>
+      <li><a href="https://developer.android.com/reference/android/speech/RecognitionSupport">Android SDK: RecognitionSupport</a></li>
+      <li><a href="https://developer.android.com/reference/android/speech/RecognizerIntent">Android SDK: RecognizerIntent</a></li>
+      <li><a href="https://developer.android.com/reference/android/speech/RecognitionListener">Android SDK: RecognitionListener</a></li>
+      <li><a href="https://developer.android.com/reference/android/bluetooth/BluetoothHidDevice">Android SDK: BluetoothHidDevice</a></li>
+    </ul>
+    <div class="manual-actions"><a href="/tech-notes/bt-keyboard/">Bluetooth HID tech notes</a><a href="/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html">Why Korean/English labels drift</a><a href="/apps/bt-keyboard/">Product page</a><a href="/manual/bt-keyboard/">User manual</a></div>
+  </article>
+  <footer><p>Android apps by droidactor.</p><p><a href="/tech-notes/">All tech notes</a> · <a href="/tech-notes/bt-keyboard/">Bluetooth HID</a> · <a href="/ko/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>

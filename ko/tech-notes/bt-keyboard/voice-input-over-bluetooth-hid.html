@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>음성 입력이 없는 기기에 말로 입력하기: 온디바이스 인식을 Bluetooth HID로 보내는 방법 — droidactor</title>
+<meta name="description" content="음성 입력을 지원하지 않는 PC·TV·태블릿에서도 말로 입력할 수 있게, 도토리 한글 키보드가 폰에서 음성을 온디바이스로 인식하고 확인한 문장만 Bluetooth HID 키 입력으로 보내는 방식을 정리합니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html">
+<meta name="color-scheme" content="dark light"><meta property="og:type" content="article"><meta property="og:site_name" content="droidactor"><meta property="og:locale" content="ko_KR"><meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html"><meta property="og:title" content="음성 입력이 없는 기기에 말로 입력하기"><meta property="og:description" content="듣고 인식하는 일은 폰이 하고, 상대 기기는 사용자가 확인한 문장을 치는 Bluetooth 키보드만 봅니다."><meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"음성 입력이 없는 기기에 말로 입력하기: 온디바이스 인식을 Bluetooth HID로 보내는 방법","description":"도토리 한글 키보드가 음성을 폰에서만 인식하고 네트워크로 보내지 않으며, 사용자가 확인한 문장만 Bluetooth HID 키 입력으로 보내는 이유와 방법입니다.","url":"https://droidactor.github.io/ko/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html","mainEntityOfPage":"https://droidactor.github.io/ko/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html","datePublished":"2026-09-23","dateModified":"2026-09-23","inLanguage":"ko","author":{"@id":"https://droidactor.github.io/#publisher"},"publisher":{"@id":"https://droidactor.github.io/#publisher"},"about":{"@type":"SoftwareApplication","name":"도토리 한글 키보드","url":"https://droidactor.github.io/ko/apps/bt-keyboard/","operatingSystem":"Android"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"droidactor","item":"https://droidactor.github.io/ko/"},{"@type":"ListItem","position":2,"name":"기술 노트","item":"https://droidactor.github.io/ko/tech-notes/"},{"@type":"ListItem","position":3,"name":"Bluetooth HID","item":"https://droidactor.github.io/ko/tech-notes/bt-keyboard/"},{"@type":"ListItem","position":4,"name":"음성으로 HID 입력하기","item":"https://droidactor.github.io/ko/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html"}]}]}</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand"><a href="/ko/">droid<span>actor</span></a></div><nav class="langs" aria-label="언어"><a class="lang-btn" href="/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html" hreflang="en" lang="en">EN</a><a class="lang-btn" href="/ko/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html" aria-current="page" hreflang="ko">한국어</a></nav></div></header>
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/tech-notes/">기술 노트</a><span>/</span><a href="/ko/tech-notes/bt-keyboard/">Bluetooth HID</a><span>/</span>음성으로 HID 입력하기</nav>
+  <div class="hero manual-hero"><h1>음성 입력이 없는 기기에 말로 입력하기</h1><p>듣고 인식하는 일은 폰이 하고, PC·TV·태블릿은 사용자가 확인한 문장을 치는 Bluetooth 키보드만 봅니다.</p><p class="manual-meta">소스 기준: 앱 1.0.0 (8) · 2026년 9월 23일</p></div>
+  <nav class="manual-toc" aria-label="이 페이지의 내용"><strong>이 페이지의 내용</strong><ol><li><a href="#idea">핵심 아이디어</a></li><li><a href="#benefits">무엇이 좋아지나</a></li><li><a href="#requirements">사용 가능 환경</a></li><li><a href="#ondevice">온디바이스 전용 구조</a></li><li><a href="#confirm">자동으로 보내지 않는 이유</a></li><li><a href="#send">문장이 키 입력이 되기까지</a></li><li><a href="#safety">세션 안전성</a></li><li><a href="#limits">제약</a></li><li><a href="#sources">출처</a></li></ol></nav>
+  <article class="manual-body post-body">
+    <div class="note" id="idea"><p><strong>핵심 아이디어.</strong> 음성 인식이 꼭 글자를 받는 기기에서 돌아야 할 이유는 없습니다. 도토리 한글 키보드는 이미 폰을 표준 Bluetooth HID 키보드로 만들므로, 음성은 폰에서 인식하고 결과는 사람이 치듯 평범한 키 입력으로 보내면 됩니다. 상대 기기에는 마이크도, 받아쓰기 기능도, 드라이버도, 전용 앱도 필요하지 않습니다.</p></div>
+
+    <h2 id="benefits">무엇이 좋아지나</h2>
+    <p>키보드는 받지만 받아쓰기는 못 하는 기기, 혹은 원하는 언어로는 받아쓰기가 안 되는 기기가 많습니다. 반면 손에 든 폰은 대개 할 수 있습니다. 인식을 폰으로 옮기면 키보드를 받는 모든 기기가 음성으로도 입력받는 기기가 됩니다.</p>
+    <ul>
+      <li><strong>음성 입력이 아예 없는 기기.</strong> 스마트 TV, 셋톱박스, 여러 임베디드·키오스크형 기기는 Bluetooth 키보드는 받지만 받아쓰기는 없습니다. 리모컨으로 한 글자씩 고르기가 가장 괴로운 TV 검색창·로그인 칸이 바로 이 경우입니다. 다만 TV 가 페어링 목록에 폰을 키보드로 보여줘야 하며, <a href="/ko/tech-notes/bt-keyboard/why-google-tv-does-not-detect-bluetooth-hid.html">일부 Google TV 는 그렇지 않습니다</a>.</li>
+      <li><strong>손댈 수 없는 PC.</strong> 공용·회사 관리 PC는 마이크가 없거나, 새 소프트웨어 설치가 막혀 있거나, 받아쓰기가 원하는 언어를 지원하지 않을 수 있습니다. 이 방식은 상대 기기에 아무것도 설치하지 않습니다.</li>
+      <li><strong>타이핑을 받는 모든 앱.</strong> 상대 기기가 받는 것은 키 입력뿐이므로 앱별 연동 없이 커서가 있는 곳 — 브라우저, 터미널, 문서, 채팅 창 — 에 그대로 입력됩니다.</li>
+      <li><strong>목소리는 폰 밖으로 나가지 않습니다.</strong> 앱은 Android 의 온디바이스 인식 API 만 쓰고 네트워크 인식기로 넘어가지 않습니다. 음성을 개발자에게도 상대 기기에도 보내지 않으며, 상대 기기는 최종 문장만 받습니다.</li>
+      <li><strong>보내기 전에 확인합니다.</strong> 인식된 문장은 폰의 창에 쌓이고, 전송을 누르기 전에는 아무것도 상대 기기로 가지 않습니다. 잘못 알아들은 단어가 다른 기기에서 지워야 하는 키 입력이 되지 않습니다.</li>
+    </ul>
+
+    <h2 id="requirements">사용 가능 환경</h2>
+    <div class="scroll"><table class="spec"><tbody>
+      <tr><th>폰 OS</th><td>Android 12(API 31) 이상. Android 11 이하에는 온디바이스 인식 API 자체가 없어 마이크 키를 아예 그리지 않습니다.</td></tr>
+      <tr><th>인식기</th><td>폰이 온디바이스 음성 인식기를 제공해야 합니다(<code>SpeechRecognizer.isOnDeviceRecognitionAvailable</code>). 없으면 온라인 인식기로 넘어가지 않고 그 사실을 알립니다.</td></tr>
+      <tr><th>언어 모델</th><td>선택한 언어의 오프라인 모델이 설치돼 있어야 합니다. 인식 언어는 앱의 현재 한/영 상태를 따라 <code>ko-KR</code> 또는 <code>en-US</code>입니다.</td></tr>
+      <tr><th>권한</th><td>마이크 권한. 처음 마이크 키를 누를 때 묻습니다. 거부해도 앱이 기능을 잠그지는 않으며, Android 가 더 묻지 않으면 시스템의 앱 설정에서 마이크 권한을 켭니다.</td></tr>
+      <tr><th>상대 기기</th><td>폰을 Bluetooth HID 키보드로 페어링하는 모든 기기. 한글은 선택한 입력 프로필이 다룰 수 있는 IME(예: Windows 한국어 두벌식)가 추가로 필요합니다.</td></tr>
+      <tr><th>진입점</th><td>세로 화면의 물음표 앞 마이크 버튼, 가로 커스텀 키보드의 🎤 키, 문장 입력 모드의 마이크 버튼. 셋 모두 같은 음성 창을 열므로 가로·세로 어디서든 흐름이 같습니다.</td></tr>
+    </tbody></table></div>
+    <p>Android 13 이상에서는 듣기 전에 인식기에게 그 언어 모델이 설치됨·없음·미지원 중 어디에 해당하는지 먼저 묻습니다. 모델이 없거나 아직 내려받는 중이면 시스템에 내려받기를 요청하는 버튼을 함께 보여줍니다. Android 12·12L(API 31–32)에는 이 조회 API 가 없어 첫 실제 시도로 판정하고, 모델이 준비되지 않았으면 폰 설정에서 오프라인 음성 인식 언어를 확인하라고 안내합니다.</p>
+
+    <h2 id="ondevice">기술 관점: 구조적으로 온디바이스 전용</h2>
+    <p>인식기는 API 31 에 추가된 <code>SpeechRecognizer.createOnDeviceSpeechRecognizer</code>로 만듭니다. 먼저 <code>isOnDeviceRecognitionAvailable</code>을 확인하고, false 면 “인식기 없음” 상태로 끝냅니다. 네트워크 서비스를 쓸 수 있는 일반 <code>createSpeechRecognizer</code>로 가는 경로는 일부러 두지 않았습니다. 사용자가 말한 내용이 기기 밖으로 나가는 것은 이 기능의 전제를 바꾸는 일이고, 앱에는 자체 백엔드도 없습니다.</p>
+    <p>한 바이너리로 세 API 구간(28–30, 31–32, 33+)을 지원하려면 주의가 필요합니다. 앱의 <code>minSdk</code>는 28 이라 API 28–30 폰도 같은 클래스를 로딩합니다. 새 API 의 <em>메서드</em>는 호출 시점에 해석되므로 <code>SDK_INT</code> 분기 뒤에 둘 수 있지만, 새 API 의 <em>타입</em>이 필드나 시그니처에 있으면 분기에 닿기도 전에 클래스 로딩에서 실패합니다. 그래서 컨트롤러는 API 1 부터 있는 <code>RecognitionListener</code>만 구현하고, API 33 타입인 <code>RecognitionSupport</code>·<code>RecognitionSupportCallback</code>은 API 33 분기 안에서만 건드리는 격리된 객체 하나에만 둡니다. 계약 시험이 다른 음성 파일에 그 이름이 새지 않았는지 지킵니다.</p>
+    <div class="note"><p><strong>언어 태그는 느슨하게 비교합니다.</strong> 앱이 <code>ko-KR</code>로 요청해도 인식기는 <code>ko_KR</code>처럼, 대소문자도 섞어 돌려줄 수 있습니다. 문자열을 그대로 비교하면 설치된 언어를 미설치로 오판하므로 설치·내려받는 중·지원 목록과 맞춰보기 전에 표기를 정규화합니다. 지원 여부 조회가 실패하면 미지원으로 단정하지 않고 “알 수 없음”으로 보고 그냥 시도합니다.</p></div>
+
+    <h2 id="confirm">자동으로 보내지 않는 이유</h2>
+    <p>중간 인식 결과(partial)는 불안정합니다. 음성이 더 들어오면 인식기가 앞 단어까지 고쳐 씁니다. 일반 폰 키보드라면 글자가 아직 편집 중이라 문제없지만 HID 에서는 다릅니다 — 상대 기기에 도착한 키 입력은 폰이 되돌릴 수 없습니다. 그래서 인식된 글자는 사용자가 확정하기 전까지 보여주기만 하고 치지는 않습니다.</p>
+    <p>한편 문장마다 확인을 요구하면 말하는 흐름이 끊깁니다. 컨트롤러는 연속 인식으로 이 둘을 함께 풉니다.</p>
+    <ul>
+      <li>인식기가 최종 결과를 내고 세션을 닫으면 그 문장을 버퍼에 이어 붙이고(문장 사이 공백 포함) 곧바로 다시 듣기 시작합니다.</li>
+      <li>창에는 버퍼와 지금 인식 중인 조각이 함께 보입니다. 듣는 동안 전송 버튼이 항상 있고 버퍼 전체가 전송됩니다. 버퍼가 아주 길면 화면에는 일부만 보여도 전송은 전부 합니다.</li>
+      <li>무음·발화 시간 초과는 실패가 아니라 숨 고르기이므로 재시작 한도에 세지 않습니다. 다른 앱이 마이크를 붙잡은 경우처럼 즉시 실패가 반복되면 결과 없이 다섯 번 재시작한 뒤 듣기를 멈춥니다. 이미 쌓인 문장은 창에 남아 그대로 보낼 수 있고, 다시 들으려면 마이크를 누릅니다.</li>
+      <li>전송 뒤 세션을 새로 열 때 앱이 부르는 취소가 그 자체로 오류 콜백을 한 번 만드는 것이 실측됐습니다. 이 한 번은 무시해 재시작 루프가 생기지 않게 합니다.</li>
+    </ul>
+
+    <h2 id="send">확정된 문장이 키 입력이 되기까지</h2>
+    <p>음성은 새 전송 경로를 만들지 않습니다. 확정된 문장은 직접 친 문장 입력과 같은 문장 전송 경로를 탑니다. 글자를 정규화하고 한글·영문 구간으로 나눈 뒤 현대 완성형 한글 음절을 두벌식 자모 키로 분해하고, 호스트 프로필에 필요한 IME 전환까지 계획에 넣습니다. 인코딩할 수 없는 글자가 하나라도 있으면 아무것도 보내지 않습니다 — 상대 기기가 문장의 절반만 받는 일은 없고, 문장은 음성 창에 남아 있어 다시 말할 필요가 없습니다.</p>
+    <p>HID 입력은 키마다 간격을 두므로 긴 문장은 도착까지 몇 초가 걸립니다. 보내는 동안 버튼은 “전송 중…”으로 바뀌고 다시 누를 수 없어 같은 문장이 두 번 입력되지 않습니다. 문장이 전송에 접수되면 버퍼를 비우고 인식 세션을 새로 열어, 아직 인식기 안에 남아 있던 조각이 다시 실려 오지 않게 합니다. 비우는 시점은 도착이 아니라 접수이므로, HID 전송이 도중에 실패해도 그 문장은 창으로 돌아오지 않습니다.</p>
+    <p>인식 언어는 앱이 호스트 IME 에 대해 이미 들고 있는 한/영 상태에서 가져옵니다. IME 상태의 주인은 여전히 호스트이고, 화면 표시와 호스트가 어긋나면 한/영 키를 길게 눌러 표시를 맞추는 기존 방법이 음성에도 그대로 적용됩니다. <a href="/ko/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html">직접 입력할 때와 같은 이유</a>입니다.</p>
+
+    <h2 id="safety">세션 안전성</h2>
+    <ul>
+      <li><strong>상대 기기가 바뀌면 버퍼는 버리되 끊지 않습니다.</strong> 입력 세션이 바뀌면 — 다른 호스트, 새 연결 세대, 프로토콜 epoch — 그때까지 쌓인 문장을 버립니다. 듣기 자체는 계속합니다. 그러지 않으면 연결이 준비되는 순간 말하던 문장이 잘리기 때문이며, 그래서 바뀌는 순간 말하던 문장은 새 버퍼에 들어갈 수 있습니다. 어느 경우든 전송을 누르기 전에는 아무것도 입력되지 않습니다.</li>
+      <li><strong>앱을 떠나면 듣기를 멈춥니다.</strong> 화면이 사라지면 인식기를 놓고, <code>ON_STOP</code>에서 취소합니다. <code>ON_PAUSE</code>를 쓰지 않는 이유는 마이크 권한 대화상자가 PAUSE 를 만들어, 방금 허용한 요청을 스스로 취소하게 되기 때문입니다.</li>
+      <li><strong>떠나거나 취소한 뒤의 늦은 결과는 버립니다.</strong> 창을 취소하거나 화면을 떠날 때 인식기의 리스너를 먼저 떼고 취소하므로, 그 뒤에 도착한 결과는 전달되지 않습니다.</li>
+    </ul>
+
+    <h2 id="limits">제약</h2>
+    <ul>
+      <li>인식 정확도, 문장 부호, 지원 언어는 앱이 아니라 폰의 온디바이스 인식기와 설치된 모델이 결정합니다.</li>
+      <li>상대 기기에서 어느 입력 칸에 초점이 있는지는 알 수 없습니다. 글자는 호스트 커서가 있는 곳으로 갑니다.</li>
+      <li>선택한 키 맵과 현대 한글 계획이 인코딩할 수 있는 글자만 보냅니다.</li>
+      <li>입력 속도는 HID 간격에 묶이므로 긴 문단은 말하는 것보다 입력되는 데 더 오래 걸립니다.</li>
+      <li>온디바이스 인식기가 없는 폰, Android 11 이하 폰에서는 쓸 수 없습니다.</li>
+    </ul>
+
+    <h2 id="sources">공식 출처</h2>
+    <ul>
+      <li><a href="https://developer.android.com/reference/android/speech/SpeechRecognizer">Android SDK: SpeechRecognizer (createOnDeviceSpeechRecognizer, isOnDeviceRecognitionAvailable, checkRecognitionSupport, triggerModelDownload)</a></li>
+      <li><a href="https://developer.android.com/reference/android/speech/RecognitionSupport">Android SDK: RecognitionSupport</a></li>
+      <li><a href="https://developer.android.com/reference/android/speech/RecognizerIntent">Android SDK: RecognizerIntent</a></li>
+      <li><a href="https://developer.android.com/reference/android/speech/RecognitionListener">Android SDK: RecognitionListener</a></li>
+      <li><a href="https://developer.android.com/reference/android/bluetooth/BluetoothHidDevice">Android SDK: BluetoothHidDevice</a></li>
+    </ul>
+    <div class="manual-actions"><a href="/ko/tech-notes/bt-keyboard/">Bluetooth HID 기술 노트</a><a href="/ko/tech-notes/bt-keyboard/why-korean-english-key-labels-drift.html">한/영 각인이 어긋나는 이유</a><a href="/ko/apps/bt-keyboard/">제품 페이지</a><a href="/ko/manual/bt-keyboard/">사용 설명서</a></div>
+  </article>
+  <footer><p>droidactor의 Android 앱입니다.</p><p><a href="/ko/tech-notes/">전체 기술 노트</a> · <a href="/ko/tech-notes/bt-keyboard/">Bluetooth HID</a> · <a href="/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p></footer>
+</div>
+</body>
+</html>
