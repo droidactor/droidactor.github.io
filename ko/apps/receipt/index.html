@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>도토리 영수증 스캐너 — 읽고 확인하는 영수증 기록</title>
+<meta name="description" content="한국어·영어 영수증을 기기 안에서 읽고 금액·통화를 직접 확인하세요. 확정 기록을 CSV로 공유하며 영수증 서버와 계정은 없습니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/apps/receipt/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/receipt/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/receipt/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/receipt/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/apps/receipt/">
+<meta property="og:title" content="도토리 영수증 스캐너 — 읽고 확인하는 영수증 기록">
+<meta property="og:description" content="한국어·영어 영수증을 기기 안에서 읽고 금액·통화를 직접 확인하세요. 확정 기록을 CSV로 공유하며 영수증 서버와 계정은 없습니다.">
+<meta property="og:image" content="https://droidactor.github.io/assets/icons/receipt.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "도토리 영수증 스캐너",
+  "url": "https://droidactor.github.io/ko/apps/receipt/",
+  "identifier": "com.droidactor.receipt",
+  "privacyPolicy": "https://droidactor.github.io/ko/#privacy-receipt",
+  "applicationCategory": "UtilitiesApplication",
+  "isAccessibleForFree": true,
+  "operatingSystem": "Android 8.0 (API 26) 이상",
+  "inLanguage": "ko",
+  "description": "한국어·영어 영수증을 기기 안에서 읽고 금액·통화를 직접 확인하세요. 확정 기록을 CSV로 공유하며 영수증 서버와 계정은 없습니다.",
+  "image": "https://droidactor.github.io/assets/icons/receipt.png",
+  "featureList": [
+    "촬영하거나 사진에서 선택",
+    "기록은 사용자가 확정",
+    "통화별로 따로 집계",
+    "확정 기록 공유",
+    "이미지 보관 선택",
+    "기기 안에서 인식"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "droidactor",
+    "url": "https://droidactor.github.io/"
+  }
+}
+</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="언어">
+      <a class="lang-btn" href="/apps/receipt/" hreflang="en">EN</a>
+      <a class="lang-btn" href="/ko/apps/receipt/" aria-current="page" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+  <nav class="crumb" aria-label="위치">
+    <a href="/ko/">droidactor</a><span>/</span><a href="/ko/apps/">앱</a><span>/</span><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너
+  </nav>
+  <div class="hero product">
+    <div class="icon" aria-hidden="true"><img src="../../../assets/icons/receipt.png" width="80" height="80" alt="" decoding="async"></div>
+    <h1><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너</h1>
+    <div class="pkg">com.droidactor.receipt</div>
+    <p>영수증 한 장을 촬영하거나 사진에서 선택하고, 추출된 내용을 확인해 기록을 확정하세요. 한국어·영어를 기기 안에서 읽고 통화별로 따로 정리합니다.</p>
+    <div class="status"><span class="badge soon">출시 예정</span><a href="#privacy">개인정보</a></div>
+  </div>
+  <section>
+    <h2>이런 앱입니다</h2>
+    <div class="feature">
+      <div><h3>촬영하거나 사진에서 선택</h3><p>문서 스캐너를 사용하거나 이미지 한 장을 선택합니다. 상호·거래일·금액·통화 후보를 영수증 이미지와 대조합니다.</p></div>
+      <div><h3>기록은 사용자가 확정</h3><p>인식에는 오류가 있을 수 있습니다. 불분명한 값은 직접 수정하고 아직 확인하지 못한 기록은 초안으로 남깁니다. v1은 OCR과 추출 규칙을 사용하며 생성형 AI는 포함하지 않습니다.</p></div>
+      <div><h3>통화별로 따로 집계</h3><p>이번 달 지출·환불·순액을 통화별로 보여줍니다. 초안과 거래 종류가 미확인인 기록은 합계에서 빼며 환율 환산은 하지 않습니다.</p></div>
+      <div><h3>확정 기록 공유</h3><p>사용자가 선택할 때 확정 영수증 요약을 CSV로 공유합니다. 개별 구매 품목이 아닌 요약 필드와 메모를 담으며 백업·복원 형식은 아닙니다.</p></div>
+      <div><h3>이미지 보관 선택</h3><p>이미지는 기본적으로 앱 안에 보관합니다. 보관을 끄면 이후 영수증부터 적용하며, 이전에 보관한 이미지는 기록과 함께 삭제하기 전까지 남습니다.</p></div>
+      <div><h3>기기 안에서 인식</h3><p>계정이나 개발자 운영 영수증 서버가 없습니다. 스캐너 준비에는 Play services 다운로드가, 클라우드 사진 공급자에는 연결이 필요할 수 있습니다. SDK 진단·광고는 영수증 인식과 별개입니다.</p></div>
+    </div>
+  </section>
+  <section>
+    <h2>사양</h2>
+    <div class="scroll">
+      <table class="spec">
+        <tbody>
+          <tr><th>플랫폼</th><td>Android</td></tr>
+          <tr><th>최소 Android</th><td>Android 8.0 (API 26)</td></tr>
+          <tr><th>입력</th><td>한국어·영어 영수증 이미지 한 장, 문서 스캐너 또는 사진 선택기</td></tr>
+          <tr><th>통화</th><td>다중 통화, 통화별 분리 집계. 환율 환산 없음</td></tr>
+          <tr><th>권한</th><td>앱이 위험 권한을 요청하지 않습니다. 네트워크·광고·보조 라이브러리 권한은 별개입니다.</td></tr>
+          <tr><th>계정</th><td>앱 계정·로그인 없음</td></tr>
+          <tr><th>광고</th><td>AdMob 배너와 Google UMP 개인정보 선택</td></tr>
+          <tr><th>상태</th><td>출시 예정</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section>
+    <h2>알려진 한계</h2>
+    <div class="note"><p>기록을 확정하기 전에 인식 결과를 확인하세요. v1은 개별 품목 추출·카테고리 분류·세금 계산·목록 검색·지난달 이전 집계·중복 알림·클라우드 동기화·복원을 지원하지 않습니다. 첫 촬영부터 오프라인으로 작동한다고 보장하지 않습니다.</p></div>
+  </section>
+  <section id="privacy">
+    <h2>개인정보</h2>
+    <p>영수증 이미지와 인식 텍스트는 기기에서 처리하며 인식을 위해 업로드하거나 광고 요청에 넣지 않습니다. 영수증 저장 데이터는 클라우드 백업에서 제외합니다. 기록을 지우면 보관 이미지도 지우지만 갤러리 원본이나 이미 공유한 CSV 사본은 남습니다. 정형 카드 필드에는 끝 네 자리만 저장하며 이미지에는 다른 인쇄 정보가 남을 수 있습니다. ML Kit 진단과 AdMob/UMP의 데이터 처리는 별개입니다.</p>
+    <p><a href="/ko/#privacy-receipt">이 앱의 개인정보 처리방침 전문</a></p>
+  </section>
+  <section>
+    <h2>문의</h2>
+    <p>질문과 의견은 다음 주소로 보내 주세요: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a>.</p>
+  </section>
+  <section>
+    <h2>다른 앱</h2>
+    <div class="also">
+      <a href="/ko/apps/bt-keyboard/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드</a>
+      <a href="/ko/apps/bt-ppt/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨</a>
+      <a href="/ko/apps/bt-mouse/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스</a>
+      <a href="/ko/apps/numpad/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a>
+      <a href="/ko/apps/wifi-scout/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 와이파이 스캐너</a>
+      <a href="/ko/apps/ssh-scout/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> SSH 터미널</a>
+      <a href="/ko/apps/yt-downloader/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> YouTube Downloader</a>
+      <a href="/ko/apps/lgtv/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> LG TV 리모컨</a>
+      <a href="/ko/apps/roman/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 로마 숫자 변환기</a>
+      <a href="/ko/apps/currency/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 환율 계산기</a>
+      <a href="/ko/apps/unit/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 단위 변환기</a>
+    </div>
+  </section>
+  <footer>
+    <p>droidactor가 만드는 Android 앱.</p>
+    <p><a href="/ko/apps/">앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/tech-notes/">기술 노트</a> · <a href="/ko/blog/">현장 노트</a> · <a href="/apps/receipt/" hreflang="en" lang="en">English</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+</div>
+</body>
+</html>

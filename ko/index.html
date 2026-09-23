@@ -6,7 +6,7 @@
   (#privacy-keyboard / #privacy-ppt / #privacy-mouse / #privacy-numpad / #privacy-roman / #privacy-currency /
    #privacy-wifi / #privacy-ssh /
    #privacy-ytdl / #privacy-lgtv / #privacy-gas / #privacy-apartment / #privacy-calendar /
-   #privacy-unitconverter / #privacy-unit)는 스토어 등록 주소이므로 이름을 바꾸지 않는다.
+   #privacy-unitconverter / #privacy-unit / #privacy-receipt)는 스토어 등록 주소이므로 이름을 바꾸지 않는다.
 -->
 <html lang="ko">
 <head>
@@ -61,7 +61,8 @@
         { "@type": "ListItem", "position": 8, "name": "도토리 환율 계산기", "url": "https://droidactor.github.io/ko/apps/currency/" },
         { "@type": "ListItem", "position": 9, "name": "도토리 YouTube Downloader", "url": "https://droidactor.github.io/ko/apps/yt-downloader/" },
         { "@type": "ListItem", "position": 10, "name": "도토리 LG TV 리모컨", "url": "https://droidactor.github.io/ko/apps/lgtv/" },
-        {"@type": "ListItem", "position": 11, "name": "도토리 단위 변환기", "url": "https://droidactor.github.io/ko/apps/unit/"}
+        {"@type": "ListItem", "position": 11, "name": "도토리 단위 변환기", "url": "https://droidactor.github.io/ko/apps/unit/"},
+        {"@type": "ListItem", "position": 12, "name": "도토리 영수증 스캐너", "url": "https://droidactor.github.io/ko/apps/receipt/"}
       ]
     }
   ]
@@ -265,6 +266,13 @@
           <a href="#privacy-unit">개인정보</a>
         </div>
       </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true"><img src="/assets/icons/receipt.png" width="48" height="48" alt="" decoding="async"></div>
+        <h3><a href="/ko/apps/receipt/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너</a></h3>
+        <div class="pkg">com.droidactor.receipt</div>
+        <p class="desc">한국어·영어 영수증을 기기 안에서 읽고 금액·통화를 확인합니다. 통화별 이번 달 합계와 확정 기록 CSV 공유를 제공합니다.</p>
+        <div class="foot"><span class="badge soon">출시 예정</span><a href="/ko/apps/receipt/">제품 페이지</a><a href="/ko/#privacy-receipt">개인정보</a></div>
+      </article>
 
     </div>
   </section>
@@ -284,7 +292,7 @@
   <section id="privacy">
     <h2>개인정보 처리방침</h2>
     <p class="lead">
-      시행일: 2026년 9월 14일 · 개발자: droidactor (개인 개발자) ·
+      시행일: 2026년 9월 23일 · 개발자: droidactor (개인 개발자) ·
       문의: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> ·
       아래 7절에 열거된 모든 앱에 적용됩니다.
       <br><a href="/#privacy" hreflang="en" lang="en">Privacy policy in English</a>
@@ -292,17 +300,18 @@
 
     <div class="note">
       <p>
-        <strong>요약.</strong> 이 앱들에는 계정도, 저희가 운영하는 백엔드도 없습니다. 개인정보를
-        수집·저장·전송하지 않습니다 — 보낼 서버 자체가 없습니다. 앱 데이터는 기기에서 사용하며,
-        앱 삭제는 로컬 앱 저장소를 지웁니다. 캘린더 기록과 Android 백업 사본은 6·7절에 설명했습니다.
-        광고는 Google이, 시스템 백업 사본은 Android 또는 백업 제공자가 처리합니다.
+        <strong>요약.</strong> 이 앱들에는 계정도, 저희가 운영하는 백엔드도 없습니다. 앱 내용은 기기에 보관하거나 사용자가 선택한 기기·호스트·원본 서비스와만 주고받으며(2·7절),
+        개발자 운영 서버로 보내거나 광고 요청에 넣지 않습니다. Google SDK는 이와 별도로 광고 데이터를 처리하고,
+        영수증 스캐너에서는 ML Kit 진단 데이터도 처리합니다(3·7절). 앱 삭제는 로컬 앱 저장소를 지우며,
+        캘린더 기록·공유 파일·백업 사본의 별도 수명은 6·7절에 설명했습니다.
       </p>
     </div>
 
     <h3>1. 수집하는 정보</h3>
     <p>
-      없습니다. 이 페이지의 어떤 앱도 회원가입·로그인을 요구하지 않고, 이름·이메일·전화번호를
-      입력받지 않습니다. 분석 도구, 크래시 리포팅 서비스, 앱 데이터를 받는 서버 모두 운영하지 않습니다.
+      앱 계정, 자체 분석 백엔드, 크래시 리포팅 서비스, 앱 내용을 받는 서버를 운영하지 않습니다.
+      이것이 제3자 SDK의 전체 데이터 처리를 뜻하지는 않습니다. Google Mobile Ads는 광고 데이터를,
+      영수증 스캐너의 ML Kit는 진단 데이터를 처리하며 별도의 흐름은 3·7절에 설명합니다.
     </p>
 
     <h3>2. 기기에서 처리하는 데이터</h3>
@@ -311,7 +320,7 @@
       host 와 페어링합니다. 사용자가 앱에 입력한 내용도 함께 보관합니다. 이들은 기능 동작을 위해 기기
       안에서 쓰이며, 저희 서버로 전송되지 않고 광고 SDK에도 전달되지 않습니다. 캘린더 일정은 사용자가
       고른 캘린더를 통해 동기화될 수 있습니다. 도토리 단위 변환기의 저장된 앱 데이터는 Android 백업이나
-      기기 이전에도 포함될 수 있으며, 자세한 내용은 7절에 설명했습니다:
+      기기 이전에도 포함될 수 있으며, 자세한 내용은 7절에 설명했습니다. 영수증 스캐너의 설정값도 Android 백업에 포함될 수 있지만 영수증 DB와 이미지는 제외합니다:
     </p>
     <ul>
       <li>스캔으로 발견한 네트워크 식별자 — IP 주소, hostname, 열린 포트, 장비 종류</li>
@@ -321,13 +330,14 @@
       <li>온드로이드 캘린더에서 등록한 음력 기념일 — 사용자가 지정한 기기 캘린더에 기록됩니다.
         앱을 지워도 그 캘린더의 일정은 사라지지 않으므로, 더 필요하지
         않으면 캘린더 앱에서 직접 지워야 합니다.</li>
+      <li>영수증 스캐너의 기기 내 기록과 이미지 — 확정 요약은 사용자가 공유를 선택할 때만 CSV로 전달합니다</li>
       <li>사용자가 지정한 설정값</li>
     </ul>
-    <p>기기 시리얼 번호나 device ID 는 어디에도 저장하지 않습니다.</p>
+    <p>앱에는 개발자 운영 백엔드가 없으므로 개발자는 기기 시리얼 번호나 device ID를 받지 않습니다. SDK 식별자 처리는 3·7절에 설명합니다.</p>
 
     <h3>3. 광고와 동의</h3>
     <p>
-      이 앱들은 무료이며, 광고를 게재하는 앱은 <strong>Google AdMob</strong>(Google Mobile Ads
+      광고를 게재하는 앱은 <strong>Google AdMob</strong>(Google Mobile Ads
       SDK)을 통해 광고를 표시합니다. <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> YouTube Downloader 는 광고를 게재하지 않습니다. Google 의 데이터 공개 문서에 따르면 이 SDK 는 광고 제공, 측정·분석, 부정행위 방지를 위해
       다음 정보를 자동으로 수집하거나 Google 및 광고 서비스 제공자와 공유할 수 있습니다.
     </p>
@@ -350,7 +360,7 @@
     </p>
     <p>
       Bluetooth Keyboard, PPT Remote, Bluetooth Mouse, Bluetooth Numpad, WiFi Scanner,
-      SSH Terminal, LG TV Remote, Unit Converter 등의 앱은 유료 광고를 요청할 수 없거나 채우지 못한 배너 자리에 다른 자사 앱을
+      SSH Terminal, LG TV Remote, Unit Converter, 영수증 스캐너 등의 앱은 유료 광고를 요청할 수 없거나 채우지 못한 배너 자리에 다른 자사 앱을
       소개하는 <strong>추천</strong> 카드를 표시할 수 있습니다. 이 카드는 Mobile Ads SDK 를 사용하지
       않으며 앱·네트워크·기기 정보를 수집하거나 전송하지 않습니다. 탭하면 먼저 앱 안의 설명이 열리고,
       사용자가 <strong>자세히 보기</strong>를 선택한 경우에만 <code>droidactor.github.io</code>의 공식
@@ -402,12 +412,16 @@
               권한이 아닙니다.</td>
           </tr>
           <tr>
+            <td><code>RECORD_AUDIO</code></td>
+            <td><a href="#privacy-keyboard">도토리 한글 키보드</a></td>
+            <td>사용자가 음성 입력을 켤 때 마이크 접근을 요청합니다. 음성은 기기 안에서 인식하며 오디오를 서버나 연결된 호스트로 보내지 않습니다.</td>
+          </tr>
+          <tr>
             <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code></td>
-            <td>전체 (인터넷을 직접 쓰는 앱은 스스로 선언, 광고만 싣는 앱은 광고 SDK 경유)</td>
+            <td>전체. <a href="#privacy-receipt"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너</a> 포함. 영수증 스캐너에서는 광고 라이브러리 병합으로 선언됩니다.</td>
             <td>사용자가 지정한 장비·원본에 접속하고 광고를 받아오기 위해서입니다. HID 리모컨은
               입력을 인터넷이 아니라 블루투스로 보냅니다. <a href="#privacy-currency"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 환율 계산기</a>는 그 날의 환율 표를
-              받아옵니다 — 입력한 금액은 그 요청에 담기지 않습니다. 그 밖의 앱은 모두 광고를 받아오는
-              것 외에는 인터넷을 쓰지 않습니다.</td>
+              받아옵니다 — 입력한 금액은 그 요청에 담기지 않습니다. 영수증 스캐너는 ML Kit 진단 통신도 사용하며 스캐너 준비·클라우드 사진 공급자에 연결이 필요할 수 있습니다. 인식은 기기 안에서 처리합니다.</td>
           </tr>
           <tr>
             <td><code>ACCESS_WIFI_STATE</code></td>
@@ -417,8 +431,8 @@
           </tr>
           <tr>
             <td><code>FOREGROUND_SERVICE</code></td>
-            <td><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스<br><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> YouTube Downloader</td>
-            <td>다른 앱을 쓰는 동안 HID 세션이나 다운로드가 계속 동작하기 위해서입니다.</td>
+            <td>광고를 게재하는 앱 전체 및 YouTube Downloader</td>
+            <td>HID 세션이나 다운로드가 다른 앱을 쓰는 동안 계속 동작하는 데 사용합니다. 광고 게재 앱에는 광고 SDK의 WorkManager에서도 병합되며, 이 선언만으로 상시 실행 서비스가 있다는 뜻은 아닙니다.</td>
           </tr>
           <tr>
             <td><code>FOREGROUND_SERVICE_CONNECTED_DEVICE</code></td>
@@ -453,11 +467,26 @@
           </tr>
           <tr>
             <td><code>AD_ID</code></td>
-            <td>광고를 게재하는 앱 전체(<span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> YouTube Downloader 제외)</td>
+            <td>광고를 게재하는 앱 전체. <a href="#privacy-receipt"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너</a> 포함(<span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> YouTube Downloader 제외)</td>
             <td>Google Mobile Ads SDK 의 광고 제공·측정을 위한 권한입니다
               (<code>com.google.android.gms.permission.AD_ID</code>). SDK 가 매니페스트 병합으로 스스로
               선언하므로, 앱 자체 매니페스트에 적혀 있지 않아도 설치된 앱에는 포함됩니다. Android 설정에서
               광고 ID 를 재설정하거나 삭제할 수 있습니다.</td>
+          </tr>
+          <tr>
+            <td><code>ACCESS_ADSERVICES_AD_ID</code><br><code>ACCESS_ADSERVICES_ATTRIBUTION</code><br><code>ACCESS_ADSERVICES_TOPICS</code></td>
+            <td>광고를 게재하는 앱 전체(YouTube Downloader 제외)</td>
+            <td>Google Mobile Ads에서 병합한 광고 관련 선언입니다. 개발자에게 앱 내용 접근을 허용하지 않습니다.</td>
+          </tr>
+          <tr>
+            <td><code>WAKE_LOCK</code></td>
+            <td>광고를 게재하는 앱 전체(YouTube Downloader 제외)</td>
+            <td>광고 SDK의 백그라운드 작업 의존성에서 작업 실행을 위해 선언합니다. 앱 내용을 읽는 권한이 아닙니다.</td>
+          </tr>
+          <tr>
+            <td><code>&lt;package&gt;.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code></td>
+            <td>AndroidX를 사용하는 앱</td>
+            <td>내부 수신자 격리를 위한 AndroidX의 signature 보호 권한이며, 접두사는 각 앱의 패키지명입니다.</td>
           </tr>
         </tbody>
       </table>
@@ -485,13 +514,14 @@
     <p>
       <strong>Android 백업.</strong> 도토리 단위 변환기는 Android 백업을 허용하므로 저장된 앱 데이터가
       포함될 수 있습니다. 앱을 지워도 백업 사본까지 삭제되는 것은 아니며, 기기나 백업 계정 설정에서
-      따로 관리해야 할 수 있습니다. 아래 앱별 사항을 확인해 주세요.
+      따로 관리해야 할 수 있습니다. 영수증 스캐너도 설정값은 Android 백업에 포함될 수 있으나 영수증 DB와 이미지는 제외합니다. 아래 앱별 사항을 확인해 주세요.
     </p>
 
     <h3>7. 앱별 사항</h3>
 
     <div class="policy" id="privacy-keyboard">
       <h3><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<span class="pkg-inline">com.droidactor.bt_keyboard</span></h3>
+      <p>음성 입력을 켜면 마이크 권한을 요청하고 기기 내 음성 인식기를 사용합니다. 기기 내 인식기를 사용할 수 없으면 서버 기반 인식으로 전환하지 않습니다. 오디오는 서버나 연결된 호스트로 보내지 않으며, 사용자가 확인해 전송한 인식 문장만 기존 블루투스 키보드 경로로 호스트에 전달합니다.</p>
       <p>
         입력한 키와 포인터 이동은 페어링한 host 로 블루투스를 통해서만 전달되며, 다른 곳으로는
         가지 않습니다. 키 입력은 기록·저장되지 않고 저희에게 전송되지도 않습니다 — 앱은 현재 눌려 있는 키를
@@ -749,6 +779,17 @@
         아닙니다.
       </p>
       <p><a href="/ko/apps/unit/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 단위 변환기 자세히 보기</a></p>
+    </div>
+
+    <div class="policy" id="privacy-receipt">
+      <h3><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너<span class="pkg-inline">com.droidactor.receipt</span></h3>
+      <p>도토리 영수증 스캐너는 OCR과 추출 규칙으로 한국어·영어 영수증 이미지를 기기 안에서 읽습니다. v1 출시에는 생성형 AI를 포함하지 않습니다. 앱 계정과 개발자 운영 영수증 서버가 없으며, 인식을 위해 이미지·인식 텍스트를 서버에 올리거나 광고 요청에 넣지 않습니다.</p>
+      <p>기록과 보관 이미지는 앱 전용 저장소에 둡니다. 상호·사업자번호·거래일·거래 시각·거래 종류(구매/환불)·금액·통화·세금액·결제 정보·메모 등을 기록할 수 있습니다. OCR 전문은 저장하지 않습니다. 정형 카드 필드는 끝 네 자리만 저장하지만 보관 이미지에는 다른 인쇄 정보가 남을 수 있습니다. 이미지를 자동으로 비식별화하지 않습니다.</p>
+      <p>이미지는 기본 보관합니다. 보관을 끄면 이후 영수증부터 적용하고 과거 보관 이미지는 지우지 않습니다. 보관하지 않는 검토 이미지는 검토 종료 시 삭제하며, 중단되어 남은 임시 이미지는 다음 시작 때 정리합니다. 영수증 삭제는 앱 기록과 보관 이미지에 적용하며, 갤러리 원본이나 이미 공유한 사본은 삭제하지 않습니다.</p>
+      <p>영수증 DB·이미지·임시 입력 파일은 클라우드 백업에서 제외합니다. Android 기기 간 이전에서도 영수증 DB·이미지를 제외하도록 설정했으나 제조사 이전 도구의 동작은 다를 수 있습니다. 앱은 클라우드 동기화·복원을 제공하지 않습니다. 확정 기록 요약은 사용자가 공유를 선택할 때만 CSV로 전달하며, 선택한 수신 앱이 사본을 처리합니다. 수신 앱이 읽을 수 있도록 내보내기 파일을 임시 보관한 뒤 정리합니다. CSV는 백업 형식이 아닙니다.</p>
+      <p>Document Scanner 준비에는 Google Play services의 구성요소 다운로드가, 클라우드 사진 공급자에는 연결이 필요할 수 있습니다. 이 입력 경로와 SDK 통신은 기기 내 인식과 구분됩니다. ML Kit는 기기·앱 정보, 설치 식별자, 성능·기능 이벤트 등 기술 진단·사용 정보를 수집합니다. Google은 <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit 데이터 공개</a>에 나열된 진단 데이터의 HTTPS 전송과 제3자 미전달을 설명합니다.</p>
+      <p>앱은 AdMob 배너와 지역에 필요한 Google UMP 개인정보 선택을 사용하며 광고 처리는 3절과 같습니다. 영수증 내용을 광고 SDK에 제공하지 않습니다. 로컬 데이터 삭제가 Google의 진단·광고 기록을 삭제하는 것은 아닙니다. 앱은 위험 권한을 요청하지 않으며, 스캐너·선택 사진 입력을 위해 앱이 카메라나 광범위한 사진·저장소 접근을 요청하지 않습니다. 보조 라이브러리는 4절의 네트워크·광고·백그라운드 작업 권한을 추가합니다.</p>
+      <p><a href="/ko/apps/receipt/">제품 페이지: <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너</a></p>
     </div>
 
     <div class="policy" id="privacy-unitconverter">

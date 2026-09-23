@@ -7,7 +7,7 @@
     1. the "Developer website" URL registered on Google Play / App Store
     2. the privacy policy for every app (per-app anchors: #privacy-keyboard, #privacy-ppt,
        #privacy-mouse, #privacy-numpad, #privacy-roman, #privacy-currency, #privacy-ssh, #privacy-wifi, #privacy-ytdl, #privacy-lgtv, #privacy-gas,
-       #privacy-apartment, #privacy-calendar, #privacy-unitconverter, #privacy-unit — usable as per-app policy URLs)
+       #privacy-apartment, #privacy-calendar, #privacy-unitconverter, #privacy-unit, #privacy-receipt — usable as per-app policy URLs)
     3. the host for /app-ads.txt (that file lives at the repo root, not here)
 
   Do not rename the #privacy-* anchors — they are registered on the store listings.
@@ -89,7 +89,8 @@
         { "@type": "ListItem", "position": 8, "name": "Dotori Currency Converter", "url": "https://droidactor.github.io/apps/currency/" },
         { "@type": "ListItem", "position": 9, "name": "Dotori YouTube Downloader", "url": "https://droidactor.github.io/apps/yt-downloader/" },
         { "@type": "ListItem", "position": 10, "name": "Dotori LG TV Remote", "url": "https://droidactor.github.io/apps/lgtv/" },
-        {"@type": "ListItem", "position": 11, "name": "Dotori Unit Converter", "url": "https://droidactor.github.io/apps/unit/"}
+        {"@type": "ListItem", "position": 11, "name": "Dotori Unit Converter", "url": "https://droidactor.github.io/apps/unit/"},
+        {"@type": "ListItem", "position": 12, "name": "Dotori Receipt Scanner", "url": "https://droidactor.github.io/apps/receipt/"}
       ]
     }
   ]
@@ -295,6 +296,13 @@
           <a href="#privacy-unit">Privacy</a>
         </div>
       </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true"><img src="/assets/icons/receipt.png" width="48" height="48" alt="" decoding="async"></div>
+        <h3><a href="/apps/receipt/"><span class="dotori">Dotori</span> Receipt Scanner</a></h3>
+        <div class="pkg">com.droidactor.receipt</div>
+        <p class="desc">Read Korean and English receipts on your device, review amounts and currencies, and share confirmed records as CSV. This month’s totals stay separate by currency.</p>
+        <div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/receipt/">Details</a><a href="/#privacy-receipt">Privacy</a></div>
+      </article>
 
     </div>
   </section>
@@ -315,7 +323,7 @@
   <section id="privacy">
     <h2>Privacy policy</h2>
     <p class="lead">
-      Effective date: 14 September 2026 · Developer: droidactor (individual developer) ·
+      Effective date: 23 September 2026 · Developer: droidactor (individual developer) ·
       Contact: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> ·
       Applies to every app listed in section 7 below.
       <br><a href="/ko/#privacy" hreflang="ko" lang="ko">한국어 개인정보 처리방침</a>
@@ -324,18 +332,18 @@
     <div class="note">
       <p>
         <strong>The short version.</strong> These apps have no accounts and no backend of
-        ours. We do not collect, store or transmit your personal information — there is no server on our
-        side to send it to. App data is used on your device, and uninstalling removes local app
-        storage. Calendar records and Android backup copies are covered in sections 6 and 7.
-        Google serves the ads; Android or your backup provider handles any system backup copies.
+        ours. App content stays on your device or is exchanged only with the device, host or source you choose
+        (sections 2 and 7); it is not sent to a developer-operated server or included in advertising requests. Google SDKs separately process advertising and, for Receipt Scanner, ML Kit
+        diagnostic data as described in sections 3 and 7. Uninstalling removes local app storage;
+        calendar entries, shared exports and backup copies have separate lifecycles in sections 6 and 7.
       </p>
     </div>
 
     <h3>1. What we collect</h3>
     <p>
-      Nothing. No app on this page asks you to register, sign in, or provide a name, email
-      address or phone number. We operate no analytics, no crash reporting service and no server that
-      receives app data.
+      We operate no app account, analytics backend, crash-reporting service or server that receives app content.
+      This does not describe all third-party SDK processing: Google Mobile Ads handles advertising data,
+      and Receipt Scanner uses ML Kit diagnostics. See sections 3 and 7 for those separate data flows.
     </p>
 
     <h3>2. Data processed on your device</h3>
@@ -345,7 +353,7 @@
       is used on the device to make the feature work, is never sent to a server of ours, and is never
       passed to the advertising SDK. Calendar entries may sync through the calendar you choose.
       For Dotori Unit Converter, Android backup or device transfer may also include stored app
-      data, as described in section 7:
+      data, as described in section 7. Receipt Scanner settings may also be included in Android backup, but receipt databases and images are excluded:
     </p>
     <ul>
       <li>Network identifiers found by scanning — IP addresses, hostnames, open ports, device kind</li>
@@ -356,13 +364,14 @@
       <li>Lunar anniversaries you add in <span lang="ko">온드로이드 캘린더</span> — written to the
         device calendar you pick. Uninstalling the app does not remove these calendar entries,
         so delete them in your calendar app if you no longer want them.</li>
+      <li>Receipt Scanner records and images, kept locally; confirmed summaries are shared as CSV only when you choose to share</li>
       <li>Your own settings and preferences</li>
     </ul>
-    <p>We do not store device serial numbers or device IDs anywhere.</p>
+    <p>The apps have no developer-operated backend, so the developer never receives device serial numbers or device IDs. SDK identifier handling is described in sections 3 and 7.</p>
 
     <h3>3. Advertising and consent</h3>
     <p>
-      These apps are free, and the ones that carry ads show them through
+      The apps that carry ads show them through
       <strong>Google AdMob</strong> (the Google Mobile Ads SDK). <span class="dotori">Dotori</span> YouTube
       Downloader carries no ads. Per Google's own data disclosure, that SDK may automatically collect the following
       and share it with Google and advertising providers — for ad delivery, measurement and analytics, and
@@ -388,7 +397,7 @@
     </p>
     <p>
       In apps including Bluetooth Keyboard, PPT Remote, Bluetooth Mouse, Bluetooth Numpad, WiFi Scanner,
-      SSH Terminal, LG TV Remote and Unit Converter, a banner slot that cannot request or fill a paid ad may instead
+      SSH Terminal, LG TV Remote, Unit Converter and Receipt Scanner, a banner slot that cannot request or fill a paid ad may instead
       show a first-party card labelled <strong>Promo</strong> for one of our other apps. This card
       does not use the Mobile Ads SDK and does not collect or send app, network or device data. A tap
       first opens an in-app description; the official product page on
@@ -442,13 +451,17 @@
               to your location and none to any network you are not already on.</td>
           </tr>
           <tr>
+            <td><code>RECORD_AUDIO</code></td>
+            <td><a href="#privacy-keyboard">Dotori Bluetooth Keyboard</a></td>
+            <td>Requests microphone access when you enable voice input. Speech is recognized on the device; audio is not sent to a server or the connected host.</td>
+          </tr>
+          <tr>
             <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code></td>
-            <td>All (apps that use the internet themselves declare it; apps that only carry ads get it through the ad SDK)</td>
+            <td>All, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a>. Receipt Scanner gets these declarations through the advertising library.</td>
             <td>To reach the devices or sources you asked for, and to fetch ads. The HID
               remotes send your input over Bluetooth, not over the internet. <a href="#privacy-currency"><span class="dotori">Dotori</span> Currency
               Converter</a> fetches the daily exchange-rate table, and the amounts you type are not
-              part of that request. Every other app here uses the internet for nothing but fetching
-              ads.</td>
+              part of that request. Receipt Scanner also uses ML Kit diagnostics; scanner setup and cloud photo providers may need a connection, while recognition stays on the device.</td>
           </tr>
           <tr>
             <td><code>ACCESS_WIFI_STATE</code></td>
@@ -458,8 +471,8 @@
           </tr>
           <tr>
             <td><code>FOREGROUND_SERVICE</code></td>
-            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a><br><span class="dotori">Dotori</span> YouTube Downloader</td>
-            <td>So a HID session or a download keeps running while you use another app.</td>
+            <td>All ad-supported apps, plus YouTube Downloader</td>
+            <td>Used to keep a HID session or download running while you use another app. Ad-supported apps also merge this declaration through the advertising SDK’s WorkManager dependency; the declaration alone does not mean that a service runs continuously.</td>
           </tr>
           <tr>
             <td><code>FOREGROUND_SERVICE_CONNECTED_DEVICE</code></td>
@@ -496,11 +509,26 @@
           </tr>
           <tr>
             <td><code>AD_ID</code></td>
-            <td>Every ad-supported app (not <span class="dotori">Dotori</span> YouTube Downloader)</td>
+            <td>Every ad-supported app, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a> (not <span class="dotori">Dotori</span> YouTube Downloader)</td>
             <td>Ad delivery and measurement by the Google Mobile Ads SDK
               (<code>com.google.android.gms.permission.AD_ID</code>). The SDK declares this itself through
               manifest merging, so it is present in the installed app even where an app's own manifest does
               not list it. You can reset or delete the advertising ID in Android Settings.</td>
+          </tr>
+          <tr>
+            <td><code>ACCESS_ADSERVICES_AD_ID</code><br><code>ACCESS_ADSERVICES_ATTRIBUTION</code><br><code>ACCESS_ADSERVICES_TOPICS</code></td>
+            <td>All ad-supported apps (not YouTube Downloader)</td>
+            <td>Advertising-related declarations merged from Google Mobile Ads. They do not give the developer access to app content.</td>
+          </tr>
+          <tr>
+            <td><code>WAKE_LOCK</code></td>
+            <td>All ad-supported apps (not YouTube Downloader)</td>
+            <td>Declared by the advertising SDK’s background-work dependencies to support their scheduled work; no permission to read app content.</td>
+          </tr>
+          <tr>
+            <td><code>&lt;package&gt;.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code></td>
+            <td>Apps that use AndroidX</td>
+            <td>Signature-protected AndroidX permission for internal receiver isolation; the prefix is each app’s package name.</td>
           </tr>
         </tbody>
       </table>
@@ -530,13 +558,14 @@
     <p>
       <strong>Android backup.</strong> Dotori Unit Converter allows Android backup, which may
       include stored app data. Uninstalling does not necessarily remove backup copies; manage
-      them through your device or backup-account settings. See its per-app notes below.
+      them through your device or backup-account settings. Receipt Scanner settings may also be backed up by Android, but receipt databases and images are excluded. See the per-app notes below.
     </p>
 
     <h3>7. Per-app notes</h3>
 
     <div class="policy" id="privacy-keyboard">
       <h3><span class="dotori">Dotori</span> Bluetooth Keyboard<span class="pkg-inline">com.droidactor.bt_keyboard</span></h3>
+      <p>Enabling voice input requests microphone permission and uses an on-device speech recognizer. If on-device recognition is unavailable, the app does not fall back to server-based recognition. Audio is not sent to a server or the connected host; only recognized text that you confirm and send reaches the host through the existing Bluetooth keyboard path.</p>
       <p>
         What you type and where you move the pointer goes over Bluetooth to the host you
         paired with, and nowhere else. Keystrokes are not logged, stored or transmitted to us — the app
@@ -828,6 +857,17 @@
         not mean that all SDK communication stops.
       </p>
       <p><a href="/apps/unit/">More about <span class="dotori">Dotori</span> Unit Converter</a></p>
+    </div>
+
+    <div class="policy" id="privacy-receipt">
+      <h3><span class="dotori">Dotori</span> Receipt Scanner<span class="pkg-inline">com.droidactor.receipt</span></h3>
+      <p>Dotori Receipt Scanner reads Korean and English receipt images on your device using OCR and extraction rules. The v1 release does not include generative AI. There is no app account or developer-operated receipt server. Receipt images and recognized text are not uploaded for recognition or passed to advertising requests.</p>
+      <p>Records and retained images stay in the app's private storage. Records can contain merchant, business registration number, transaction date and time, transaction type (purchase/refund), amount, currency, tax, payment details and your memo. Full OCR text is not stored. Structured card fields store only the last four digits, but a retained image may contain other printed information. Images are not automatically anonymized.</p>
+      <p>Images are retained by default. Turning retention off affects future receipts and does not remove earlier retained images. Images used temporarily for review without retention are removed when review finishes; abandoned temporary images are cleaned up on a subsequent start. Deleting a receipt removes its app record and retained image. This does not delete the original gallery image or copies already shared.</p>
+      <p>Receipt databases, images and temporary input files are excluded from cloud backup. Receipt databases and images are also configured to be excluded from Android device-to-device transfer, but manufacturer migration tools may behave differently. The app offers no cloud sync or restore. Confirmed record summaries are shared as CSV only when you choose to share them; the receiving app then handles its copy. Export files are temporarily retained for the receiving app and later cleaned up. CSV is not a backup format.</p>
+      <p>Document Scanner setup may download components through Google Play services, and a cloud photo provider may need a connection. These input paths and SDK communications are separate from local recognition. ML Kit collects technical diagnostics and usage information, including device/app information, installation identifiers, performance and feature events. Google documents HTTPS transmission and no third-party transfer of the diagnostic data listed in its <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit disclosure</a>.</p>
+      <p>The app displays an AdMob banner and uses Google UMP for applicable privacy choices, as described in section 3. Receipt contents are not supplied to the advertising SDK. Local deletion does not delete Google's diagnostic or advertising records. The app requests no dangerous permissions; scanner and selected-photo input do not require the app to request camera or broad photo/storage access. Supporting libraries add the network, advertising and background-work permissions listed in section 4.</p>
+      <p><a href="/apps/receipt/">Details: <span class="dotori">Dotori</span> Receipt Scanner</a></p>
     </div>
 
     <div class="policy" id="privacy-unitconverter">

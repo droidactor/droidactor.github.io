@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotori Receipt Scanner — Scan, review and keep receipts</title>
+<meta name="description" content="Read Korean and English receipts on your device, review amounts and currencies, and share confirmed records as CSV. No receipt server or account.">
+<link rel="canonical" href="https://droidactor.github.io/apps/receipt/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/receipt/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/receipt/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/receipt/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/apps/receipt/">
+<meta property="og:title" content="Dotori Receipt Scanner — Scan, review and keep receipts">
+<meta property="og:description" content="Read Korean and English receipts on your device, review amounts and currencies, and share confirmed records as CSV. No receipt server or account.">
+<meta property="og:image" content="https://droidactor.github.io/assets/icons/receipt.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Dotori Receipt Scanner",
+  "url": "https://droidactor.github.io/apps/receipt/",
+  "identifier": "com.droidactor.receipt",
+  "privacyPolicy": "https://droidactor.github.io/#privacy-receipt",
+  "applicationCategory": "UtilitiesApplication",
+  "isAccessibleForFree": true,
+  "operatingSystem": "Android 8.0 (API 26) and newer",
+  "inLanguage": "en",
+  "description": "Read Korean and English receipts on your device, review amounts and currencies, and share confirmed records as CSV. No receipt server or account.",
+  "image": "https://droidactor.github.io/assets/icons/receipt.png",
+  "featureList": [
+    "Capture or choose a photo",
+    "You confirm the record",
+    "Separate currencies",
+    "Share confirmed records",
+    "Choose image retention",
+    "Local recognition"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "droidactor",
+    "url": "https://droidactor.github.io/"
+  }
+}
+</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/">droid<span>actor</span></a></div>
+    <nav class="langs" aria-label="Language">
+      <a class="lang-btn" href="/apps/receipt/" aria-current="page" hreflang="en">EN</a>
+      <a class="lang-btn" href="/ko/apps/receipt/" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">droidactor</a><span>/</span><a href="/apps/">Apps</a><span>/</span><span class="dotori">Dotori</span> Receipt Scanner
+  </nav>
+  <div class="hero product">
+    <div class="icon" aria-hidden="true"><img src="../../assets/icons/receipt.png" width="80" height="80" alt="" decoding="async"></div>
+    <h1><span class="dotori">Dotori</span> Receipt Scanner</h1>
+    <div class="pkg">com.droidactor.receipt</div>
+    <p>Scan one receipt or choose a photo, then check the suggested details before confirming your record. Korean and English text is read on your device, with currencies kept separate.</p>
+    <div class="status"><span class="badge soon">Coming soon</span><a href="#privacy">Privacy</a></div>
+  </div>
+  <section>
+    <h2>What it does</h2>
+    <div class="feature">
+      <div><h3>Capture or choose a photo</h3><p>Use the document scanner or select one image. Review the merchant, transaction date, amount and currency against the receipt image.</p></div>
+      <div><h3>You confirm the record</h3><p>Recognition can make mistakes. Correct unclear fields yourself and keep unfinished records as drafts. The v1 release uses OCR and extraction rules, without generative AI.</p></div>
+      <div><h3>Separate currencies</h3><p>Review this month’s spending, refunds and net amounts by currency. Drafts and unclassified transactions stay out of totals. There is no exchange-rate conversion.</p></div>
+      <div><h3>Share confirmed records</h3><p>Choose when to share confirmed receipt summaries as CSV. Export includes summary fields and your memo, not individual purchased items. CSV is not a backup or restore format.</p></div>
+      <div><h3>Choose image retention</h3><p>Images are kept in the app by default. Turning retention off applies to future receipts; previously retained images remain until you delete them with their records.</p></div>
+      <div><h3>Local recognition</h3><p>No account or developer-operated receipt server. Scanner setup may need a Play services download, and cloud photo providers may need a connection. SDK diagnostics and ads are separate from receipt recognition.</p></div>
+    </div>
+  </section>
+  <section>
+    <h2>Requirements</h2>
+    <div class="scroll">
+      <table class="spec">
+        <tbody>
+          <tr><th>Platform</th><td>Android</td></tr>
+          <tr><th>Minimum Android</th><td>Android 8.0 (API 26)</td></tr>
+          <tr><th>Input</th><td>One Korean or English receipt image; document scanner or photo picker</td></tr>
+          <tr><th>Currencies</th><td>Multiple currencies, kept separate; no exchange-rate conversion</td></tr>
+          <tr><th>Permissions</th><td>No dangerous permissions requested by the app. Network, advertising and supporting library permissions are separate.</td></tr>
+          <tr><th>Accounts</th><td>No app account or login</td></tr>
+          <tr><th>Advertising</th><td>AdMob banner with Google UMP privacy choices</td></tr>
+          <tr><th>Status</th><td>Coming soon</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section>
+    <h2>Known limits</h2>
+    <div class="note"><p>Check every result before confirming it. V1 does not extract individual items, classify purchases into categories, calculate taxes, search records, show totals for earlier months, flag duplicates, or provide cloud sync or restore. First-use offline capture is not guaranteed.</p></div>
+  </section>
+  <section id="privacy">
+    <h2>Privacy</h2>
+    <p>Receipt images and recognized text are processed on the device and are not uploaded for recognition or passed to advertising requests. Receipt storage is excluded from cloud backup. Deleting a record removes its retained image, but not your gallery original or CSV copies already shared. Structured card fields keep only the last four digits; images may still contain other printed information. ML Kit diagnostics and AdMob/UMP have separate data practices.</p>
+    <p><a href="/#privacy-receipt">Full privacy policy for this app</a></p>
+  </section>
+  <section>
+    <h2>Support</h2>
+    <p>Questions and feedback: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a>.</p>
+  </section>
+  <section>
+    <h2>Other apps</h2>
+    <div class="also">
+      <a href="/apps/bt-keyboard/"><span class="dotori">Dotori</span> Bluetooth Keyboard</a>
+      <a href="/apps/bt-ppt/"><span class="dotori">Dotori</span> Bluetooth PPT Remote</a>
+      <a href="/apps/bt-mouse/"><span class="dotori">Dotori</span> Bluetooth Mouse</a>
+      <a href="/apps/numpad/"><span class="dotori">Dotori</span> Bluetooth Numpad</a>
+      <a href="/apps/wifi-scout/"><span class="dotori">Dotori</span> WiFi Scanner</a>
+      <a href="/apps/ssh-scout/"><span class="dotori">Dotori</span> SSH Terminal</a>
+      <a href="/apps/yt-downloader/"><span class="dotori">Dotori</span> YouTube Downloader</a>
+      <a href="/apps/lgtv/"><span class="dotori">Dotori</span> LG TV Remote</a>
+      <a href="/apps/roman/"><span class="dotori">Dotori</span> Roman Numerals</a>
+      <a href="/apps/currency/"><span class="dotori">Dotori</span> Currency Converter</a>
+      <a href="/apps/unit/"><span class="dotori">Dotori</span> Unit Converter</a>
+    </div>
+  </section>
+  <footer>
+    <p>Android apps by droidactor.</p>
+    <p><a href="/apps/">Apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/blog/">Field notes</a> · <a href="/ko/apps/receipt/" hreflang="ko" lang="ko">한국어</a> · <a href="/app-ads.txt">app-ads.txt</a></p>
+  </footer>
+</div>
+</body>
+</html>
