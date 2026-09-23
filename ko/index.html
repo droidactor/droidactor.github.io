@@ -6,7 +6,7 @@
   (#privacy-keyboard / #privacy-ppt / #privacy-mouse / #privacy-numpad / #privacy-roman / #privacy-currency /
    #privacy-wifi / #privacy-ssh /
    #privacy-ytdl / #privacy-lgtv / #privacy-gas / #privacy-apartment / #privacy-calendar /
-   #privacy-unitconverter / #privacy-unit / #privacy-receipt)는 스토어 등록 주소이므로 이름을 바꾸지 않는다.
+   #privacy-unitconverter / #privacy-unit / #privacy-receipt / #privacy-namecard)는 스토어 등록 주소이므로 이름을 바꾸지 않는다.
 -->
 <html lang="ko">
 <head>
@@ -790,6 +790,16 @@
       <p>Document Scanner 준비에는 Google Play services의 구성요소 다운로드가, 클라우드 사진 공급자에는 연결이 필요할 수 있습니다. 이 입력 경로와 SDK 통신은 기기 내 인식과 구분됩니다. ML Kit는 기기·앱 정보, 설치 식별자, 성능·기능 이벤트 등 기술 진단·사용 정보를 수집합니다. Google은 <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit 데이터 공개</a>에 나열된 진단 데이터의 HTTPS 전송과 제3자 미전달을 설명합니다.</p>
       <p>앱은 AdMob 배너와 지역에 필요한 Google UMP 개인정보 선택을 사용하며 광고 처리는 3절과 같습니다. 영수증 내용을 광고 SDK에 제공하지 않습니다. 로컬 데이터 삭제가 Google의 진단·광고 기록을 삭제하는 것은 아닙니다. 앱은 위험 권한을 요청하지 않으며, 스캐너·선택 사진 입력을 위해 앱이 카메라나 광범위한 사진·저장소 접근을 요청하지 않습니다. 보조 라이브러리는 4절의 네트워크·광고·백그라운드 작업 권한을 추가합니다.</p>
       <p><a href="/ko/apps/receipt/">제품 페이지: <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너</a></p>
+    </div>
+
+    <div class="policy" id="privacy-namecard">
+      <h3><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 명함 스캐너<span class="pkg-inline">com.droidactor.namecard</span></h3>
+      <p>도토리 명함 스캐너는 OCR과 추출 규칙, 그리고 사용할 수 있을 때 기기 내 개체·바코드 인식으로 한국어·영어 명함 이미지를 기기 안에서 읽습니다. v1 출시에는 생성형 AI를 포함하지 않습니다. 앱 계정과 개발자 운영 서버가 없으며, 인식을 위해 명함 이미지·인식 텍스트를 서버에 올리거나 광고 요청에 넣지 않습니다.</p>
+      <p>명함에는 다른 사람의 개인정보가 담겨 있습니다. 기록과 보관 이미지는 앱 전용 저장소에 둡니다. 이름·다른 표기 이름·회사·부서·직함·전화번호·이메일·웹사이트·주소·QR 코드의 링크 후보·메모 등을 기록할 수 있습니다. OCR 전문은 저장하지 않습니다. 보관 이미지에는 명함에 인쇄된 내용이 모두 남으며 자동으로 비식별화하지 않습니다.</p>
+      <p>이미지는 기본 보관합니다. 보관을 끄면 이후 명함부터 적용하고 과거 보관 이미지는 지우지 않습니다. 명함 삭제는 앱 기록과 보관 이미지에 적용하며, 갤러리 원본이나 이미 저장한 연락처, 이미 공유한 vCard 파일은 삭제하지 않습니다.</p>
+      <p>명함 DB·이미지·임시 입력 파일은 클라우드 백업에서 제외합니다. 앱은 클라우드 동기화·복원을 제공하지 않습니다. 확정한 명함은 사용자가 "연락처에 추가"를 고를 때만 연락처 앱으로 전달하며, 항목이 채워진 연락처 앱 화면에서 사용자가 저장을 마칩니다. 앱은 연락처 권한을 요청하지 않으며 기존 연락처를 읽지 않습니다. 확정한 명함은 사용자가 공유를 선택할 때만 vCard 파일로 전달하며, 선택한 수신 앱이 사본을 처리합니다.</p>
+      <p>Document Scanner 준비에는 Google Play services의 구성요소 다운로드가, 클라우드 사진 공급자에는 연결이 필요할 수 있습니다. 선택적인 개체 인식 모델은 Wi-Fi에서만 Google로부터 내려받으며, 이 다운로드에 명함 내용은 담기지 않습니다. QR 코드에서 찾은 링크는 후보로만 보여주고 자동으로 열지 않습니다. ML Kit는 기기·앱 정보, 설치 식별자, 성능·기능 이벤트 등 기술 진단·사용 정보를 수집하며, 자세한 내용은 Google의 <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit 데이터 공개</a>에 있습니다.</p>
+      <p>앱은 AdMob 배너와 지역에 필요한 Google UMP 개인정보 선택을 사용하며 광고 처리는 3절과 같습니다. 명함 내용을 광고 SDK에 제공하지 않습니다. 로컬 데이터 삭제가 Google의 진단·광고 기록을 삭제하는 것은 아닙니다. 앱은 위험 권한을 요청하지 않습니다. 보조 라이브러리는 4절의 네트워크·광고·백그라운드 작업 권한을 추가합니다.</p>
     </div>
 
     <div class="policy" id="privacy-unitconverter">

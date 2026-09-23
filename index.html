@@ -7,7 +7,7 @@
     1. the "Developer website" URL registered on Google Play / App Store
     2. the privacy policy for every app (per-app anchors: #privacy-keyboard, #privacy-ppt,
        #privacy-mouse, #privacy-numpad, #privacy-roman, #privacy-currency, #privacy-ssh, #privacy-wifi, #privacy-ytdl, #privacy-lgtv, #privacy-gas,
-       #privacy-apartment, #privacy-calendar, #privacy-unitconverter, #privacy-unit, #privacy-receipt — usable as per-app policy URLs)
+       #privacy-apartment, #privacy-calendar, #privacy-unitconverter, #privacy-unit, #privacy-receipt, #privacy-namecard — usable as per-app policy URLs)
     3. the host for /app-ads.txt (that file lives at the repo root, not here)
 
   Do not rename the #privacy-* anchors — they are registered on the store listings.
@@ -868,6 +868,16 @@
       <p>Document Scanner setup may download components through Google Play services, and a cloud photo provider may need a connection. These input paths and SDK communications are separate from local recognition. ML Kit collects technical diagnostics and usage information, including device/app information, installation identifiers, performance and feature events. Google documents HTTPS transmission and no third-party transfer of the diagnostic data listed in its <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit disclosure</a>.</p>
       <p>The app displays an AdMob banner and uses Google UMP for applicable privacy choices, as described in section 3. Receipt contents are not supplied to the advertising SDK. Local deletion does not delete Google's diagnostic or advertising records. The app requests no dangerous permissions; scanner and selected-photo input do not require the app to request camera or broad photo/storage access. Supporting libraries add the network, advertising and background-work permissions listed in section 4.</p>
       <p><a href="/apps/receipt/">Details: <span class="dotori">Dotori</span> Receipt Scanner</a></p>
+    </div>
+
+    <div class="policy" id="privacy-namecard">
+      <h3><span class="dotori">Dotori</span> Business Card Scanner<span class="pkg-inline">com.droidactor.namecard</span></h3>
+      <p>Dotori Business Card Scanner reads Korean and English business card images on your device using OCR, extraction rules and, when available, on-device entity and barcode recognition. The v1 release does not include generative AI. There is no app account or developer-operated server. Card images and recognized text are not uploaded for recognition or passed to advertising requests.</p>
+      <p>A business card holds another person's personal information. Records and retained images stay in the app's private storage. Records can contain name, other spellings of the name, company, department, title, phone numbers, email addresses, websites, address, link candidates from a QR code and your memo. Full OCR text is not stored. A retained image shows everything printed on the card and is not automatically anonymized.</p>
+      <p>Images are retained by default. Turning retention off affects future cards and does not remove earlier retained images. Deleting a card removes its app record and retained image. This does not delete the original gallery image, contacts you have already saved, or vCard files you have already shared.</p>
+      <p>Card databases, images and temporary input files are excluded from cloud backup. The app offers no cloud sync or restore. A confirmed card is passed to your contacts app only when you choose "Add to contacts": the contacts app opens with the details filled in, and you finish saving there. The app does not request contacts permission and does not read your existing contacts. A confirmed card is shared as a vCard file only when you choose to share it; the receiving app then handles its copy.</p>
+      <p>Document Scanner setup may download components through Google Play services, and a cloud photo provider may need a connection. Optional entity-recognition models are downloaded from Google over Wi-Fi only; the download does not include card contents. A link found in a QR code is shown as a candidate and is not opened automatically. ML Kit collects technical diagnostics and usage information, including device/app information, installation identifiers, performance and feature events, as described in Google's <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit disclosure</a>.</p>
+      <p>The app displays an AdMob banner and uses Google UMP for applicable privacy choices, as described in section 3. Card contents are not supplied to the advertising SDK. Local deletion does not delete Google's diagnostic or advertising records. The app requests no dangerous permissions. Supporting libraries add the network, advertising and background-work permissions listed in section 4.</p>
     </div>
 
     <div class="policy" id="privacy-unitconverter">
