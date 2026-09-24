@@ -342,6 +342,9 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
 
 ## 고칠 때
 
+- **`sitemap.xml` 을 고치면 마지막에 `cp sitemap.xml sitemap-all.xml` 로 복사본을 맞춘다.** 두 파일은
+  바이트 동일해야 한다(제출 경로 실험, `todo-update-google-search.md` §7.4). 손 편집으로 한쪽만 고쳐
+  갈라진 적이 있다(`a5a0b16`). `blogger` 저장소의 `pages.sh` 는 두 파일을 함께 쓰고, 이미 다르면 멈춘다.
 - **앱을 추가하면** 다음을 한 묶음으로 처리한다. 하나라도 빠지면 링크가 깨지거나 색인에서 누락된다.
   1. 홈 카드 2개 — `index.html`, `ko/index.html` 의 `<article class="card">`
   2. 처리방침 앱별 항목 2개 — 같은 두 파일의 `<div class="policy" id="privacy-…">`
