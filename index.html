@@ -480,7 +480,7 @@
           </tr>
           <tr>
             <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code></td>
-            <td>All, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a>, <a href="#privacy-namecard"><span class="dotori">Dotori</span> Business Card Scanner</a> and <a href="#privacy-idphoto"><span class="dotori">Dotori</span> ID Photo Maker</a>. These apps get these declarations through the advertising library.</td>
+            <td>All, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a>, <a href="#privacy-namecard"><span class="dotori">Dotori</span> Business Card Scanner</a> and <a href="#privacy-idphoto"><span class="dotori">Dotori</span> ID Photo Maker</a> and <a href="#privacy-hangul"><span class="dotori">Dotori</span> Hangul Origins</a>. These apps get these declarations through the advertising library.</td>
             <td>To reach the devices or sources you asked for, and to fetch ads. The HID
               remotes send your input over Bluetooth, not over the internet. <a href="#privacy-currency"><span class="dotori">Dotori</span> Currency
               Converter</a> fetches the daily exchange-rate table, and the amounts you type are not
@@ -532,7 +532,7 @@
           </tr>
           <tr>
             <td><code>AD_ID</code></td>
-            <td>Every ad-supported app, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a>, <a href="#privacy-namecard"><span class="dotori">Dotori</span> Business Card Scanner</a> and <a href="#privacy-idphoto"><span class="dotori">Dotori</span> ID Photo Maker</a> (not <span class="dotori">Dotori</span> YouTube Downloader)</td>
+            <td>Every ad-supported app, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a>, <a href="#privacy-namecard"><span class="dotori">Dotori</span> Business Card Scanner</a> and <a href="#privacy-idphoto"><span class="dotori">Dotori</span> ID Photo Maker</a> and <a href="#privacy-hangul"><span class="dotori">Dotori</span> Hangul Origins</a> (not <span class="dotori">Dotori</span> YouTube Downloader)</td>
             <td>Ad delivery and measurement by the Google Mobile Ads SDK
               (<code>com.google.android.gms.permission.AD_ID</code>). The SDK declares this itself through
               manifest merging, so it is present in the installed app even where an app's own manifest does
@@ -918,6 +918,13 @@
       <p>Camera access is requested only when you choose to take a photo. Choosing a photo uses the system photo picker (or the system file picker on older devices) and needs no broad photo or storage access. ML Kit collects technical diagnostics and usage information, including device/app information and installation identifiers, as described in Google's <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit disclosure</a>.</p>
       <p>The app displays an AdMob banner on the home screen and uses Google UMP for applicable privacy choices, as described in section 3. Photos are not supplied to the advertising SDK. Clearing app data or uninstalling does not delete photos saved to the gallery or Google's diagnostic or advertising records. Supporting libraries add the network, advertising and background-work permissions listed in section 4. You can reopen the advertising privacy options from the app's Photo guide screen.</p>
       <p><a href="/apps/idphoto/">Details: <span class="dotori">Dotori</span> ID Photo Maker</a></p>
+    </div>
+
+    <div class="policy" id="privacy-hangul">
+      <h3><span class="dotori">Dotori</span> Hangul Origins<span class="pkg-inline">com.droidactor.hangul</span></h3>
+      <p>Dotori Hangul Origins teaches the Korean alphabet with lessons, animations, quizzes and a letter chart, all built into the app. There is no app account, no sign-in and no developer-operated server. The only things it keeps on your phone are your quiz results (the best score for each step) and the settings you choose: theme, display language and screen orientation. Removing the app removes them. What you draw in the tracing area stays in memory only and is not saved.</p>
+      <p>The letter and word sounds are audio clips bundled with the app and play without a connection. For a syllable you build yourself, the app asks your phone&rsquo;s own text-to-speech engine to read it aloud, if a Korean voice is installed; only that syllable is passed to the engine, which works under its provider&rsquo;s terms. Source links and dictionary lookups open in your browser only when you tap them; a dictionary lookup sends the Korean word you chose to the National Institute of Korean Language&rsquo;s dictionary site as part of the address.</p>
+      <p>The app displays an AdMob banner at the top of the screen and uses Google UMP for applicable privacy choices, as described in section 3 &mdash; <strong>there are no interstitial ads</strong>. Your progress and drawings are not supplied to the advertising SDK. The app requests no dangerous permissions and no location permission; supporting libraries add the network, advertising and background-work permissions listed in section 4. You can reopen the advertising privacy options in the app&rsquo;s Settings.</p>
     </div>
 
     <div class="policy" id="privacy-unitconverter">
