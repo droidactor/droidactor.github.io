@@ -1,6 +1,6 @@
 # Google Search Console 운영 문서 — droidactor.github.io
 
-최초 작성 2026-08-14(`f300f26` 경로 개편 후속) · **마지막 정리 2026-09-17** · **마지막 갱신 2026-09-23**
+최초 작성 2026-08-14(`f300f26` 경로 개편 후속) · **마지막 정리 2026-09-17** · **마지막 갱신 2026-09-28**
 
 **이 문서는 "다음에 무엇을 하는가" 를 담는다. 날짜별 작업 로그는 더 이상 담지 않는다.**
 2026-08-14 ~ 09-17 의 전체 로그(세션별 판독 내역, 배포별 검증 표, 철회된 해석의 경위)는
@@ -201,7 +201,7 @@
 
 ## 2. 지금 열려 있는 일
 
-**열려 있는 요청 배치는 §2.9(남은 5건)·§2.10(6건, 2026-09-24 배포)·§2.11(6건, 2026-09-24 배포) 셋이다.** §2.7 은 2026-09-23 09:18 에 **11/11 로 끝났고**,
+**열려 있는 요청 배치는 없다.** §2.10·§2.11 이 2026-09-26 21:01:28 에 끝났다(7/7 접수). §2.9 는 2026-09-25 09:04:26 에 **12/12 로 끝났다.** **남은 것은 §2.3 관찰 창과 §2.5 판독 조건뿐이다 — 새 페이지를 배포하기 전에는 요청할 대상이 없다**(§4.2). 할당량 창 기준 시각은 9-26 21:01:28(다음 창 9-27 21:02 이후). §2.7 은 2026-09-23 09:18 에 **11/11 로 끝났고**,
 §2.8 은 아침에 국문 1건이 할당량 거절로 남았다가 **같은 날 19:06 에 접수돼 2/2 로 끝났다.**
 **그 거절과 19:06 접수가 이 문서의 할당량 이해를 바꿨다 — §4.1 의 '롤링 24시간' 절을 먼저 읽는다.**
 
@@ -355,6 +355,8 @@ roman 매뉴얼의 hero 가 `hero product` 라 다른 12개(`hero manual-hero`)�
 | **기술 글 국문 8**(§2.1 3일차) | 2026-09-19 | **9-24~10-03.** 요청 전 8/8 미색인. **6/8 색인**(§2.3.2·§2.3.3) |
 | **경제 트렌딩 국문 10**(§2.7 1일차) | 2026-09-22 | **9-27~10-06.** 요청 전 10/10 이 `아직 알려지지 않은 URL` 이었다(배포 당일) |
 | **경제 트렌딩 1 + voice-input 2 + receipt·namecard 7**(§2.7 2일차 · §2.8 · §2.9 첫 창) | 2026-09-23 | **9-28~10-07.** 요청 전 전부 `아직 알려지지 않은 URL` |
+| **namecard 국문 1 + 블로그 E·F 4 + idphoto G·H·I영 5**(§2.9 두 번째 창 · §2.10) | 2026-09-25 | **9-30~10-09.** 요청 전 10/10 `아직 알려지지 않은 URL` |
+| **idphoto I국 1 + 홍보글 J·K·L 6**(§2.10 · §2.11) | 2026-09-26 | **10-01~10-10.** 요청 전 7/7 `아직 알려지지 않은 URL` |
 | `(ko/)apps/unit/` 2개 | 2026-09-16 | **9-21~9-30. 2026-09-22 보고서(기준일 9-18)에서 2/2 색인으로 닫혔다** — 최종 크롤링 `2026-09-16` |
 | **9-10 요청분 5개** — `/ko/blog/` + `(ko/)blog/use-android-phone-as-{bluetooth-mouse, powerpoint-remote}/` 4 | 2026-09-10 | **9-16 기준 6일이 지나도 단계가 오르지 않았다.** `/ko/blog/` 는 요청일에 크롤이 붙고 색인 전 단계에 머물러 있고, **블로그 글 4개는 크롤조차 붙지 않았다. 원인 미확인** |
 | 8-31 요청분 미발견 8개 | 2026-08-31 | 위 §2.2 2번의 결정 대기 |
@@ -647,7 +649,7 @@ URL 표는 더 최신을 담는다(실측: 9-04 자 보고서의 표에 9-05 크
 **배포 뒤 §1 의 수치가 낡는다** — §1 은 2026-09-22 실측 기준이고 sitemap `<loc>` **119** 로 적혀
 있다. 이 2개가 나가면 **121** 이 된다. §2.5 의 판독 조건과 묶어 다음 판독 때 함께 고친다.
 
-### 2.9 진행 중 — 2026-09-23 신규 페이지 12개 (앱 8 · 블로그 4 — 전부 배포 · 요청 7/12)
+### 2.9 완료 — 2026-09-23 신규 페이지 12개 (앱 8 · 블로그 4 — 전부 배포 · 요청 12/12, 2026-09-25 종료)
 
 **2026-09-23 사용자 지시로 등록했다.** 같은 날 만든 앱 둘(`receipt`·`namecard`)의 제품 페이지·기술 노트·블로그 글이다
 (블로그 E·F 는 같은 날 두 번째 지시로 더했다). **6개 쌍 모두 en·ko 짝이 있으므로 사전 점검은 §2.8 과 같은 5조건** — `200` · self canonical 문자열 일치 ·
@@ -659,9 +661,9 @@ URL 표는 더 최신을 담는다(실측: 9-04 자 보고서의 표에 9-05 크
 | A. receipt 제품 | `/apps/receipt/` · `/ko/apps/receipt/` | **완료** — `a5a0b16`·`fb5400f`(origin/main) | **2/2 통과** — 16:32 live 실측 `200` · canonical 일치 · `hreflang` 3 · `robots` 0 · live sitemap(123) 포함 | **2/2** — 19:06:29 · 19:07:08 |
 | B. namecard 제품 | `/apps/namecard/` · `/ko/apps/namecard/` | **완료** — `644b707` | **2/2 통과** — 16:44 live 실측 `200` · canonical 일치 · `hreflang` 3 · `robots` 0 · live sitemap(129) 포함 | **2/2** — 19:07:38 · 19:08:14 |
 | C. receipt 기술 노트 | `/tech-notes/receipt/` · `/ko/tech-notes/receipt/` | **완료** — `644b707` | **2/2 통과** — B 와 같은 16:44 실측 | **2/2** — 19:08:44 · 19:09:17 |
-| D. namecard 기술 노트 | `/tech-notes/namecard/` · `/ko/tech-notes/namecard/` | **완료** — `644b707` | **2/2 통과** — B 와 같은 16:44 실측 | **1/2** — 영문 19:09:50. **국문 미요청** |
-| E. receipt 블로그 | `/blog/products/scan-receipts-on-android-without-uploading/` · `/ko/blog/products/scan-receipts-on-android-without-uploading/` | **완료** — `4791381`(18:07 커밋, origin/main) | **2/2 통과** — 18:28 live 실측 `200` · canonical 일치 · `hreflang` 3 · `robots` 0 · live sitemap(133) 포함 | **0/2** |
-| F. namecard 블로그 | `/blog/products/scan-business-cards-into-android-contacts/` · `/ko/blog/products/scan-business-cards-into-android-contacts/` | **완료** — `4791381` | **2/2 통과** — E 와 같은 18:28 실측 | **0/2** |
+| D. namecard 기술 노트 | `/tech-notes/namecard/` · `/ko/tech-notes/namecard/` | **완료** — `644b707` | **2/2 통과** — B 와 같은 16:44 실측 | **2/2** — 영문 9-23 19:09:50 · 국문 **9-25 09:01:08** |
+| E. receipt 블로그 | `/blog/products/scan-receipts-on-android-without-uploading/` · `/ko/blog/products/scan-receipts-on-android-without-uploading/` | **완료** — `4791381`(18:07 커밋, origin/main) | **2/2 통과** — 18:28 live 실측 `200` · canonical 일치 · `hreflang` 3 · `robots` 0 · live sitemap(133) 포함 | **2/2** — 9-25 09:02:07 · 09:03:05 |
+| F. namecard 블로그 | `/blog/products/scan-business-cards-into-android-contacts/` · `/ko/blog/products/scan-business-cards-into-android-contacts/` | **완료** — `4791381` | **2/2 통과** — E 와 같은 18:28 실측 | **2/2** — 9-25 09:03:47 · 09:04:26 |
 
 **E·F 는 `4791381` 로 배포돼 live sitemap 이 133 이 됐다**(2026-09-23 18:28 실측 — live `sitemap.xml`·live
 `sitemap-all.xml`·저장소 `sitemap.xml` 셋이 `cmp` 동일). 같은 실측에서 A~F 12개와 §2.8 의 쌍까지 **14/14 가
@@ -689,7 +691,9 @@ live `sitemap.xml` 은 `<loc>` **123**, live `sitemap-all.xml` 은 **121** 이�
 간격 20초 이상을 지켰다. **이 시점 지난 24시간 접수는 10건(9-23 09:18 의 2 + 이 8)이다.**
 **관찰 창은 9-28~10-07 이다. 재요청하지 않는다.**
 
-**남은 5건 — 두 번째 창.** 순서는 그대로 ④ D 국문 `/ko/tech-notes/namecard/` ⑤ E 영문 → 국문 ⑥ F 영문 → 국문.
+**두 번째 창 집행 기록(2026-09-25 09:01:08~09:04:26 KST, Aside).** 9-24 저녁 창은 실행되지 않았고, 9-25 09:00 에 창 안이 0건인 상태(마지막 접수 9-23 19:09:50)로 시작했다. 5/5 가 §5.4 게이트 2개를 통과해 접수됐고 요청 전 5/5 가 `아직 알려지지 않은 URL`, 닫은 뒤 재조회에서 `할당량` 문구 0회다. **관찰 창은 9-30~10-09.** 아래는 계획 당시 기록이다.
+
+**남은 5건 — 두 번째 창(계획).** 순서는 그대로 ④ D 국문 `/ko/tech-notes/namecard/` ⑤ E 영문 → 국문 ⑥ F 영문 → 국문.
 **할당량은 롤링 24시간으로 센다(§4.1).** 창에서 빠지는 시각은 이렇다 —
 - **2026-09-24 09:19 이후**: 9-23 아침 2건(09:18:11 직전 · 09:18:40)이 빠져 창 안이 8건 → **2건까지**(④ + E 영문).
 - **2026-09-24 19:10 이후**: 이 첫 창 8건(마지막 19:09:50)이 전부 빠진다 → **5건 모두** 한 번에 넣을 수 있다.
@@ -705,16 +709,15 @@ live `sitemap.xml` 은 `<loc>` **123**, live `sitemap-all.xml` 은 **121** 이�
 고친다(F 는 원고 `site.{en,ko}.md` 를 먼저 고쳐 재생성). **그 수정은
 `dateModified`·`lastmod` 갱신 대상일 뿐 재요청 사유가 아니다**(§4.1 반복 금지).
 
-**namecard 스크린샷이 준비되면 페이지를 갱신해야 한다 — 지금은 스크린샷 없이 게시했다.**
-2026-09-23 기준 원본 `MyApps/Mobile/_screenshot/` 에 namecard 폴더가 없어 제품 페이지 B 에 `Screens`/`화면`
-절과 JSON-LD `screenshot` 이 없고, 블로그 글(`/blog/products/scan-business-cards-into-android-contacts/`
-en·ko)에도 그림이 없다. 원본이 생기면 사이트 `README.md` "고칠 때" 의 스크린샷 규칙대로 한 묶음으로 고친다 —
-① `assets/shots/namecard/{en-US,ko-KR}/*.webp` 축소본 생성 ② `(ko/)apps/namecard/` 에 화면 절·JSON-LD
-`screenshot` ③ 앱 허브 카드 샷(스토어 `200` 일 때만) ④ 블로그 발행 자산 `blog/scan-business-cards-into-android-contacts/assets/{en-US,ko-KR}/`
-에 1080px PNG 를 두고 원고 `site.{en,ko}.md` 에 그림을 넣어 재생성 ⑤ 손댄 페이지의 `dateModified`·`lastmod` 갱신.
-**이것도 본문 갱신이지 재요청 사유가 아니다** — 이미 접수된 URL 이면 다시 요청하지 않는다(§4.1).
+**namecard 스크린샷 반영 — 2026-09-28 에 닫았다.** 원본 정본은 `F:\Git\kwak\mobile\_screenshot\namecard-usb\{en-US,ko-KR}\`
+(USB 실기기 캡처, `capture-manifest.json`)이고 `_screenshot/namecard/` 는 그 전의 에뮬레이터 판이다(국문이 00~02 뿐).
+① 축소본 `assets/shots/namecard/` 와 ② 제품 페이지 B 의 화면 절·JSON-LD `screenshot` 은 `13b1fa4` 로 이미 배포됐다
+(`namecard-usb/publish-assets.py`). ④ 첫 블로그 글 F(`scan-business-cards-into-android-contacts`)는 2026-09-28 에
+`blog/scan-business-cards-into-android-contacts/assets/{en-US,ko-KR}/` 에 1080px PNG 4장(01~04)을 두고 원고
+`blogs/namecard/.../site.{en,ko}.md` 에 그림을 넣어 재생성했다(캡션은 제품 페이지 문구 그대로). ③ 허브 카드 샷은 **출시 배지 교체와
+한 묶음으로 남긴다** — 스토어는 로그아웃 `200` 이지만 허브·홈은 아직 `Coming soon` 이다. **본문 갱신이지 재요청 사유가 아니다**(§4.1).
 
-### 2.10 대기 — 2026-09-23 idphoto(도토리 증명사진) 신규 페이지 6개 (2026-09-24 배포 · 요청 0/6)
+### 2.10 완료 — 2026-09-23 idphoto(도토리 증명사진) 신규 페이지 6개 (2026-09-24 배포 · 요청 6/6, 2026-09-26 종료)
 
 **2026-09-23 사용자 지시로 등록했다**("현재 play console 등록 작업 중… photo work tree 작업 내용 참조해서 진행").
 §2.9 와 같은 날 만든 세 번째 앱이다. 처리방침 `#privacy-idphoto` 는 `921d0e7` 로 먼저 배포됐다 — **홈 안의
@@ -723,33 +726,32 @@ en·ko)에도 그림이 없다. 원본이 생기면 사이트 `README.md` "고�
 
 | 묶음 | 경로 | 배포 | 사전 점검 | 요청 |
 |---|---|---|---|---|
-| G. idphoto 제품 | `/apps/idphoto/` · `/ko/apps/idphoto/` | **완료** — `13b1fa4`(2026-09-24 08:05 커밋, origin/main) | **2/2 통과** — 2026-09-24 08:46 live 실측 `200` · canonical 일치 · `hreflang` 3 · `robots` 0 · live sitemap 포함 | 0/2 |
-| H. idphoto 기술 노트 | `/tech-notes/idphoto/` · `/ko/tech-notes/idphoto/` | **완료** — `13b1fa4` | **2/2 통과** — G 와 같은 08:46 실측 | 0/2 |
-| I. idphoto 블로그 | `/blog/products/make-korean-id-photos-on-android/` · `/ko/blog/products/make-korean-id-photos-on-android/` | **완료** — `13b1fa4` | **2/2 통과** — G 와 같은 08:46 실측 | 0/2 |
+| G. idphoto 제품 | `/apps/idphoto/` · `/ko/apps/idphoto/` | **완료** — `13b1fa4`(2026-09-24 08:05 커밋, origin/main) | **2/2 통과** — 2026-09-24 08:46 live 실측 `200` · canonical 일치 · `hreflang` 3 · `robots` 0 · live sitemap 포함 | **2/2** — 9-25 09:05:08 · 09:05:50 |
+| H. idphoto 기술 노트 | `/tech-notes/idphoto/` · `/ko/tech-notes/idphoto/` | **완료** — `13b1fa4` | **2/2 통과** — G 와 같은 08:46 실측 | **2/2** — 9-25 09:06:33 · 09:07:12 |
+| I. idphoto 블로그 | `/blog/products/make-korean-id-photos-on-android/` · `/ko/blog/products/make-korean-id-photos-on-android/` | **완료** — `13b1fa4` | **2/2 통과** — G 와 같은 08:46 실측 | **2/2** — 영문 9-25 09:07:56 · 국문 **9-26 20:57:23** |
 
 - `13b1fa4` 배포로 live sitemap 이 **133 → 139** 가 됐다(그 커밋에서 `sitemap.xml`·`sitemap-all.xml` 은 `cmp` 동일).
   이어 §2.11 의 `184bf68` 이 **145** 로 올렸다.
 - `13b1fa4` 는 `assets/shots/idphoto/{en-US,ko-KR}/*.webp`(800px 축소본 5장씩)도 함께 배포했다 — 이 저장소의
   페이지가 아니라 **네이버·Blogger·Medium 용 블로그 원고와 §2.11 의 `id-photo-app` 글이 참조하는 자산**이다.
-  G·H·I 는 여전히 스크린샷 없이 게시돼 있다(아래 문단의 갱신은 그대로 남아 있다).
+  G·H·I 의 스크린샷은 2026-09-28 에 반영했다(아래 문단).
+- **2026-09-25 집행 — 계획대로 G·H·I 영문 5건을 §2.9 잔여 5건 뒤에 넣었다**(09:05:08~09:07:56, 5/5 접수, 요청 전 전부 `아직 알려지지 않은 URL`, `할당량` 0회). 사전 점검은 같은 날 07:5x live 재실측으로 17/17(§2.9 잔여·§2.10·§2.11 전부) 5조건 통과. **I 국문 `/ko/blog/products/make-korean-id-photos-on-android/` 은 §2.11 과 함께 다음 창이다.**
 - **순서는 §2.9 의 남은 5건 뒤다.** §2.9 가 권장한 "9-24 19:10 이후 5건" 을 먼저 넣고, 이 6건은 그 창에 남는
   여유(10 − 5 = 5건)만큼 G → H → I 순(각 쌍 영문 → 국문)으로 넣는다. **I 국문 1건은 다음 창으로 넘어간다.**
   배포 → live 검증 → 사전 점검 → 요청 순서와 §6.6.1 절차, `할당량` 즉시 중단 규칙은 §2.9 와 같다.
 - **함께 바뀐 기존 페이지는 요청하지 않는다** — 허브·홈·기존 제품 페이지의 역방향 링크 한 줄은 §2.9 와 같은 이유(§4.1)다.
 
-**idphoto 스크린샷이 준비되면 페이지를 갱신해야 한다 — 지금은 스크린샷 없이 게시한다.** 2026-09-23 기준
-사용자가 스크린샷을 준비 중이고(Play Console 스토어 등록정보 최종 저장도 스크린샷 2장이 없어 보류 상태다 —
-photo 워크트리 `apps/id-photo/play/README.md`). 2026-09-23 19:28~19:40 에 `_screenshot/idphoto/{en-US,ko-KR}/01~04.png` 가
-생겼지만 사용자가 아직 준비 중이라 사이트에는 반영하지 않는다 — 사용자의 확정 신호를 기다린다. 준비되면 namecard 항목(§2.9)과
-같은 ①~⑤ 묶음으로 고친다 — `assets/shots/idphoto/` 축소본, `(ko/)apps/idphoto/` 화면 절·JSON-LD `screenshot`,
-허브 카드 샷(스토어 `200` 일 때만), 블로그 자산 `blog/make-korean-id-photos-on-android/assets/{en-US,ko-KR}/` 와 원고
-재생성, `lastmod`. **원고 재생성은 photo 브랜치가 master 에 병합되기 전에는 `--apps` 를 지정한다** — 생성기의 기본
-`apps.tsv` 는 `F:\Git\kwak\mobile\master\apps.tsv` 이고 거기 idphoto 행이 아직 주석이므로
-`bash F:/Git/kwak/blogger/pages.sh idphoto/make-korean-id-photos-on-android --apps 'F:\Git\kwak\mobile\photo\apps.tsv'` 로 돌린다.
-**스크린샷 속 인물은 AI 생성 가상 인물이다**(App content 초안의 AI 애셋 선언) — 캡션에 그 사실을
-밝혀 Console 선언과 맞춘다. **이것도 본문 갱신이지 재요청 사유가 아니다**(§4.1).
+**idphoto 스크린샷 반영 — 2026-09-28 사용자 결정("지금 사진 그대로 반영")으로 닫았다.** 원본은 `_screenshot/idphoto/{en-US,ko-KR}/00~04`
+(9-23 촬영)이다. **알려진 어긋남 — `02-passport-crop`·`04-background`(그리고 `03-saved` 배경)에 9-24 앱 변경으로 없어진
+`구도·여백 확인`/`Framing and margins checked`·`Background edges checked` 확인란이 찍혀 있다.** 본문은 "확인란 없음" 으로 고쳐져
+있으므로 사진과 본문이 어긋나는 것을 감수한 결정이다. **재촬영하면 같은 파일명으로 축소본·발행 PNG 를 교체한다**(홍보글 L 도 같은 두 장을 쓴다).
+② 제품 페이지 G 에 화면 절(01~04, 캡션 끝에 AI 가상 인물 고지 한 줄)과 JSON-LD `screenshot` 을 넣었고, ④ 첫 블로그 글 I 는
+`blog/make-korean-id-photos-on-android/assets/{en-US,ko-KR}/` 에 1080px PNG 4장을 두고 원고(`blogs/idphoto/.../site.{en,ko}.md`,
+`--apps 'F:\Git\kwak\mobile\photo\apps.tsv'`)에 그림과 AI 고지를 넣어 재생성했다. ③ 허브 카드 샷은 namecard 와 같은 이유로 남긴다.
+**홍보글 L(`id-photo-app`)에는 AI 고지가 없다** — 그 글은 `blogger` 원고 쌍에서 나오고 네이버·Medium 에도 나갔으므로 따로 정한다.
+**본문 갱신이지 재요청 사유가 아니다**(§4.1).
 
-### 2.11 대기 — 2026-09-24 세 앱 제품 홍보글 신규 페이지 6개 (배포 완료 · 요청 0/6)
+### 2.11 완료 — 2026-09-24 세 앱 제품 홍보글 신규 페이지 6개 (배포 완료 · 요청 6/6, 2026-09-26 종료)
 
 **2026-09-24 사용자 지시로 등록했다**("신규 추가 page 를 색인 요청 목록 대상으로 추가"). `blogger` 저장소의
 `{ko,en}/products/2026-09-24-*.md` 원고 쌍을 `pages.sh` 로 생성한 글이다 — 같은 원고가 네이버·Medium 에도
@@ -759,10 +761,11 @@ photo 워크트리 `apps/id-photo/play/README.md`). 2026-09-23 19:28~19:40 에 `
 
 | 묶음 | 경로 | 배포 | 사전 점검 | 요청 |
 |---|---|---|---|---|
-| J. receipt 홍보글 | `/blog/products/receipt-scanner-app/` · `/ko/blog/products/receipt-scanner-app/` | **완료** — `184bf68`(2026-09-24 08:40 커밋, origin/main) | **2/2 통과** — 2026-09-24 08:46 live 실측 `200` · canonical 일치 · `hreflang` 3 · `robots` 0 · live sitemap(145) 포함 | 0/2 |
-| K. namecard 홍보글 | `/blog/products/business-card-scanner-app/` · `/ko/blog/products/business-card-scanner-app/` | **완료** — `184bf68` | **2/2 통과** — J 와 같은 08:46 실측 | 0/2 |
-| L. idphoto 홍보글 | `/blog/products/id-photo-app/` · `/ko/blog/products/id-photo-app/` | **완료** — `184bf68` | **2/2 통과** — J 와 같은 08:46 실측 | 0/2 |
+| J. receipt 홍보글 | `/blog/products/receipt-scanner-app/` · `/ko/blog/products/receipt-scanner-app/` | **완료** — `184bf68`(2026-09-24 08:40 커밋, origin/main) | **2/2 통과** — 2026-09-24 08:46 live 실측 `200` · canonical 일치 · `hreflang` 3 · `robots` 0 · live sitemap(145) 포함 | **2/2** — 9-26 20:58:05 · 20:58:44 |
+| K. namecard 홍보글 | `/blog/products/business-card-scanner-app/` · `/ko/blog/products/business-card-scanner-app/` | **완료** — `184bf68` | **2/2 통과** — J 와 같은 08:46 실측 | **2/2** — 9-26 20:59:27 · 21:00:06 |
+| L. idphoto 홍보글 | `/blog/products/id-photo-app/` · `/ko/blog/products/id-photo-app/` | **완료** — `184bf68` | **2/2 통과** — J 와 같은 08:46 실측 | **2/2** — 9-26 21:00:49 · 21:01:28 |
 
+- **2026-09-26 집행 기록(20:57:23~21:01:28 KST, Aside).** §2.10 I 국문 1건 + J·K·L 6건 = **7/7 접수.** 직전 20:5x live 재실측에서 7/7 이 5조건 통과(sitemap 145, `sitemap-all.xml` `cmp` 동일). 요청 전 7/7 `아직 알려지지 않은 URL`, 닫은 뒤 재조회와 마지막 화면 어디에도 `할당량` 문구 0회. Aside 세션은 이번에도 초기화돼 있어 함수를 재정의했다(§6.6.1). **관찰 창은 10-01~10-10.**
 - **`184bf68` 이 `sitemap-all.xml` 을 갱신하지 않았다** — `pages.sh` 는 `sitemap.xml` 만 고친다. 그래서 live 에서
   `sitemap.xml` 145 / `sitemap-all.xml` 139 로 갈라졌다(08:46 실측, §2.9 의 `a5a0b16` 과 같은 사고). 저장소에서
   `sitemap-all.xml` 을 `sitemap.xml` 복사본으로 되맞춰 `d7a7bfd`(2026-09-24)로 배포했다(145, `cmp` 동일). §7.4.1 의
@@ -773,6 +776,8 @@ photo 워크트리 `apps/id-photo/play/README.md`). 2026-09-23 19:28~19:40 에 `
   5건으로 차고 I 국문 1건이 다음 창으로 넘어간다. **이 6건은 그다음 창에서 I 국문 1건과 함께 넣는다**(1 + 6 = 7건,
   한도 10 안). 순서는 J → K → L(각 쌍 영문 → 국문)이다. 그 창이 열리는 시각은 9-24 저녁 창의 실제 마지막 접수
   시각 + 24시간으로 다시 계산한다(§4.1 '롤링 24시간').
+  **재계산 결과(2026-09-25) — 9-24 저녁 창은 열리지 않았고 그 10건은 9-25 09:01~09:07 에 들어갔다. 따라서 다음 창은
+  2026-09-26 09:08 이후(9-25 마지막 접수 09:07:56 + 24h)이고, 그때 I 국문 1 + J·K·L 6 = 7건을 한 번에 넣는다.**
 - 배포 → live 검증 → 사전 점검 → 요청 순서와 §6.6.1 절차, `할당량` 즉시 중단 규칙은 §2.9 와 같다. 요청 전에
   `아직 알려지지 않은 URL` 인지 다시 본다.
 - **함께 바뀐 기존 페이지는 요청하지 않는다** — `(ko/)blog/` 목록의 `<li>` 세 줄과 `lastmod` 는 §2.9 와 같은 이유(§4.1)다.
@@ -896,7 +901,7 @@ permanent redirect 신호로 처리한다.
 
 ### 4.2 요청 이력 원장 — 재요청 금지 판정의 유일한 근거
 
-**고유 URL 114개가 요청됐다**(9-23 아침 2건 + 저녁 8건 포함). 아래에 없는 URL 만 새로 요청할 수 있다.
+**고유 URL 131개가 요청됐다**(9-23 아침 2건 + 저녁 8건, 9-25 10건, 9-26 7건 포함). 아래에 없는 URL 만 새로 요청할 수 있다.
 **거절된 요청은 접수가 아니므로 이 표에 올리지 않는다** — 9-23 09:19:35 의 국문 `voice-input` 거절이 그렇고,
 그 URL 은 같은 날 19:06:05 에 접수돼 저녁 행에 올라 있다.
 
@@ -918,6 +923,8 @@ permanent redirect 신호로 처리한다.
 | 2026-09-22 | **10** | 경제 트렌딩 국문 10 `/ko/blog/trending/economy/{gift-tax-exemption-limit, deposit-protection-combination, crypto-tax-timing, nonghyup-short-term-deposit, civil-servant-pay-raise-2027, tontine-pension-explained, parking-account-rates, irp-account-opening, early-reemployment-allowance, us-stock-market-hours}/` — **11개 중 10개. 나머지 `severance-pay-calculation-check` 는 9-23 예정**(§2.7). **저녁 배치(18:55~19:03 KST)이고 Aside 로 요청한 첫 배치다** |
 | 2026-09-23 | **2** (+거절 1) | `/ko/blog/trending/economy/severance-pay-calculation-check/` (09:18:11 직전, §2.7 을 11/11 로 닫았다) · `/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html` (09:18:40, §2.8) — **3건째 `/ko/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html` 는 09:19:35 에 `할당량 초과` 로 거절됐고 접수가 아니다.** 요청 전 3건 모두 `아직 알려지지 않은 URL` 이었다. **전날 10건을 쓴 뒤 날이 바뀌었는데도 막힌 첫 사례이고 그 해석은 §4.1 의 롤링 창 절에 있다** |
 | 2026-09-23 저녁 | **8** | `/ko/tech-notes/bt-keyboard/voice-input-over-bluetooth-hid.html` (19:06:05, 아침 거절분 — §2.8 을 2/2 로 닫았다) · `(ko/)apps/receipt/` 2 · `(ko/)apps/namecard/` 2 · `(ko/)tech-notes/receipt/` 2 · `/tech-notes/namecard/` 1 (19:06:29~19:09:50, §2.9). **`/ko/tech-notes/namecard/` 와 블로그 E·F 4건은 아직 요청하지 않았다.** 요청 전 8건 모두 `아직 알려지지 않은 URL` |
+| 2026-09-25 | **10** | `/ko/tech-notes/namecard/` (09:01:08, §2.9 D 를 닫았다) · `(ko/)blog/products/scan-receipts-on-android-without-uploading/` 2 · `(ko/)blog/products/scan-business-cards-into-android-contacts/` 2 (§2.9 를 12/12 로 닫았다) · `(ko/)apps/idphoto/` 2 · `(ko/)tech-notes/idphoto/` 2 · `/blog/products/make-korean-id-photos-on-android/` 1 (§2.10, ~09:07:56). **`/ko/blog/products/make-korean-id-photos-on-android/` 와 §2.11 J·K·L 6건은 9-26 행이다.** 요청 전 10건 모두 `아직 알려지지 않은 URL`, `할당량` 0회. Aside |
+| 2026-09-26 저녁 | **7** | `/ko/blog/products/make-korean-id-photos-on-android/` (20:57:23, §2.10 을 6/6 으로 닫았다) · `(ko/)blog/products/receipt-scanner-app/` 2 · `(ko/)blog/products/business-card-scanner-app/` 2 · `(ko/)blog/products/id-photo-app/` 2 (~21:01:28, §2.11 을 6/6 으로 닫았다). 요청 전 7건 모두 `아직 알려지지 않은 URL`, `할당량` 0회. Aside |
 
 **2026-09-22 오후에 이 표를 URL 단위로 전개해 검산했다 — 그 시점 고유 94개로 기재와 정확히 일치했다.**
 같은 시점에 94개를 sitemap 미색인 30개(§1.2.1)와 대조한 결과 **요청 이력이 없는 URL 은 0개**였다.
@@ -951,6 +958,8 @@ sitemap 108 중 이력이 없는 것은 14개인데(홈 `/`, 기존 블로그 �
 | **9-19 국문 8(3일차)** | 9-19 | **요청 2~4분 뒤 8/8 크롤. D+1(9-20) 실시간 검사에서 6/8 색인. D+3(9-22)에도 6/8** |
 | **9-22 경제 트렌딩 국문 10** | 9-22 | **요청 직후는 미판독. 배포 당일 요청이라 요청 전 10/10 이 미발견이었다. 관찰 창 9-27~10-06** |
 | **9-23 voice-input 2 + receipt·namecard 7** | 9-23 | **요청 직후는 미판독. 배포 당일 요청이라 요청 전 전부 미발견. 관찰 창 9-28~10-07** |
+| **9-25 namecard 국문 1 + receipt·namecard 블로그 4 + idphoto 5** | 9-25 | **요청 직후는 미판독. 배포 1~2일 뒤 요청인데도 요청 전 10/10 미발견. 관찰 창 9-30~10-09** |
+| **9-26 idphoto 블로그 국문 1 + 홍보글 J·K·L 6** | 9-26 | **요청 직후는 미판독. 배포 2일 뒤 요청인데도 요청 전 7/7 미발견. 관찰 창 10-01~10-10** |
 
 **편차가 크다. "요청하면 며칠 내 색인된다" 로 일반화하지 않는다.** 같은 표 안에 **D+1 에 9/10**
 (9-18 묶음)과 **10일째 미발견 8건**(8-31 묶음)이 함께 있다.

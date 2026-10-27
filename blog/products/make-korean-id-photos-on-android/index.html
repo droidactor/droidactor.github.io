@@ -32,7 +32,7 @@
       "mainEntityOfPage": "https://droidactor.github.io/blog/products/make-korean-id-photos-on-android/",
       "image": "https://droidactor.github.io/blog/make-korean-id-photos-on-android/assets/icon.png",
       "datePublished": "2026-09-23",
-      "dateModified": "2026-09-23",
+      "dateModified": "2026-09-28",
       "inLanguage": "en",
       "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
       "about": {
@@ -106,6 +106,10 @@
     </div>
     <p>Pixel sizes are the millimetres at 300 dpi, and saved files carry a 300 dpi tag. The 500 KB cap applies to the two purposes the app marks for online submission. No separate online file rule was confirmed for the resident registration card, so that purpose saves a file of the same size without the cap. The two general purposes are app presets, not official standards.</p>
     <p>The official rules were checked on 23 September 2026 against the <a href="https://www.passport.go.kr/home/kor/contents.do?menuPos=32">passport photo rules</a> and <a href="https://www.passport.go.kr/home/kor/contents.do?menuPos=12">online passport application</a> of the Ministry of Foreign Affairs, the <a href="https://www.safedriving.or.kr/etGuide/selectEtGuide04.do">driver's license guide</a> of the Korea Road Traffic Authority, and the <a href="https://www.mois.go.kr/frt/sub/a06/b06/IDCard_5/screen.do">ID card page</a> of the Ministry of the Interior and Safety. Rules change, so read the current guidance of the office you submit to.</p>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.idphoto&amp;hl=en" aria-label="The home screen, listing passport, driver's license, resident registration card and two general sizes — get the app on Google Play"><img src="/blog/make-korean-id-photos-on-android/assets/en-US/01-home.png" width="1080" height="1920" loading="lazy" decoding="async" alt="The home screen, listing passport, driver's license, resident registration card and two general sizes"></a><figcaption>Choose passport, driver’s license, ID card or a general size.</figcaption></figure>
+    </div>
+    <p><em>The people in these screenshots are AI-generated, not real people.</em></p>
 
     <h2>One face is checked before editing starts</h2>
     <ul>
@@ -124,17 +128,18 @@
       <li>A red <strong>Check pose and open eyes.</strong> appears when the face looks tilted or turned, or an eye may be closed. It is a hint and does not block saving.</li>
     </ul>
     <p>For a Korean passport, the head from crown (excluding hair) to chin must measure 32–36 mm on the 35 × 45 mm photo, and the photo must be taken within the last six months. The app does not measure the head. Check it yourself; the <strong>?</strong> button opens the help with a link to the official passport photo guide.</p>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.idphoto&amp;hl=en" aria-label="The passport crop screen, with top and bottom handles beside the face — get the app on Google Play"><img src="/blog/make-korean-id-photos-on-android/assets/en-US/02-passport-crop.png" width="1080" height="1920" loading="lazy" decoding="async" alt="The passport crop screen, with top and bottom handles beside the face"></a><figcaption>Drag the top and bottom handles to set the passport photo edges.</figcaption></figure>
+    </div>
 
-    <h2>Two confirmations before saving</h2>
-    <p><strong>Save to gallery</strong> stays disabled until two boxes are ticked, and the line above the button says what is still missing.</p>
+    <h2>A rules check for the ID purposes</h2>
+    <p><strong>Save to gallery</strong> stays disabled for the three ID purposes until the rules box is ticked, and the line above the button says what is still missing. The general purposes save without a box. There is no box for framing either: you set it on the live preview, and a box that clears on every drag only gets ticked out of habit.</p>
     <div class="scroll">
       <table>
         <thead><tr><th>Box</th><th>Shown for</th><th>Cleared when</th></tr></thead>
         <tbody>
-          <tr><td><strong>Framing and margins checked</strong></td><td>Every purpose</td><td>You move an edge or the frame</td></tr>
-          <tr><td><strong>Passport photo rules checked</strong></td><td>Korean passport</td><td>Not cleared by crop changes</td></tr>
-          <tr><td><strong>ID photo rules checked</strong></td><td>Driver's license and resident registration card</td><td>Not cleared by crop changes</td></tr>
-          <tr><td><strong>Background edges checked</strong></td><td>The two general purposes</td><td>You change the background</td></tr>
+          <tr><td><strong>Passport photo rules checked</strong></td><td>Korean passport</td><td>Not cleared by crop changes; a new photo or purpose clears it</td></tr>
+          <tr><td><strong>ID photo rules checked</strong></td><td>Driver's license and resident registration card</td><td>Not cleared by crop changes; a new photo or purpose clears it</td></tr>
         </tbody>
       </table>
     </div>
@@ -142,7 +147,10 @@
 
     <h2>Backgrounds: original for IDs, optional for general photos</h2>
     <p>The Korean passport rules forbid removing the background or compositing a white one, and the driver's license guide asks for a photo that has not been edited or composited. The app applies the same rule to ID card photos, so all three ID purposes work the same way: the background tools are not shown, and the saved file always uses the original pixels. Take the photo against a plain, light wall in even light instead.</p>
-    <p>For the general purposes, <strong>Background</strong> offers <strong>Original</strong>, <strong>White</strong> and <strong>Blue</strong> (a light blue). The person is separated with an on-device selfie segmentation model and blended onto the color. Hair and shoulder edges can come out imperfect, which is what <strong>Background edges checked</strong> asks you to look at. If the separation fails, the current photo is kept and you can try again.</p>
+    <p>For the general purposes, <strong>Background</strong> offers <strong>Original</strong>, <strong>White</strong> and <strong>Blue</strong> (a light blue). The person is separated with an on-device selfie segmentation model and blended onto the color. The mask edge follows the photo's own color edges, but hair and shoulder edges can still come out imperfect, and an object touching the body, such as a chair back, can be kept as part of the person. Zoom into the preview before saving. If the separation fails, the current photo is kept and you can try again.</p>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.idphoto&amp;hl=en" aria-label="The background choice for a general photo, with original, white and light blue buttons — get the app on Google Play"><img src="/blog/make-korean-id-photos-on-android/assets/en-US/04-background.png" width="1080" height="1920" loading="lazy" decoding="async" alt="The background choice for a general photo, with original, white and light blue buttons"></a><figcaption>Switch a general photo’s background to original, white or light blue.</figcaption></figure>
+    </div>
 
     <h2>What gets saved</h2>
     <ul>
@@ -151,6 +159,9 @@
       <li>The dialog after saving shows the pixel size, the file size and the folder, with <strong>Share</strong> to send the file to an app you choose. <strong>Open gallery</strong> opens the phone's gallery app.</li>
       <li>The original photo is never overwritten, and saved files do not copy its metadata, such as GPS location.</li>
     </ul>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.idphoto&amp;hl=en" aria-label="The saved dialog showing 413 × 531 px, the file size and the Pictures/DotoriIdPhoto folder — get the app on Google Play"><img src="/blog/make-korean-id-photos-on-android/assets/en-US/03-saved.png" width="1080" height="1920" loading="lazy" decoding="async" alt="The saved dialog showing 413 × 531 px, the file size and the Pictures/DotoriIdPhoto folder"></a><figcaption>The saved file reports its pixel size, file size and folder.</figcaption></figure>
+    </div>
 
     <h2>A face photo is personal information</h2>
     <ul>

@@ -32,7 +32,7 @@
       "mainEntityOfPage": "https://droidactor.github.io/blog/products/scan-business-cards-into-android-contacts/",
       "image": "https://droidactor.github.io/blog/scan-business-cards-into-android-contacts/assets/icon.png",
       "datePublished": "2026-09-23",
-      "dateModified": "2026-09-23",
+      "dateModified": "2026-09-28",
       "inLanguage": "en",
       "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
       "about": {
@@ -98,6 +98,9 @@
       <li>The text and QR models are bundled. Optional helper models download over Wi-Fi only; until they are ready, basic recognition and manual editing still work, and the home screen says that the models are being prepared.</li>
       <li>The document scanner may need a Google Play services download the first time, and a cloud photo provider may need a connection. Offline scanning on first use is therefore not promised.</li>
     </ul>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.namecard&amp;hl=en" aria-label="Keep reviewed business cards in one list. — get the app on Google Play"><img src="/blog/scan-business-cards-into-android-contacts/assets/en-US/01-home.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Keep reviewed business cards in one list."></a><figcaption>Keep reviewed business cards in one list.</figcaption></figure>
+    </div>
 
     <h2>Every value is a guess until you check it</h2>
     <p>Names, companies and job titles are guessed from the layout, so compare each recognized value with the card image. Tap any field to edit it in place. There is no check mark to tap on each row, and a value that came from a QR code is a candidate like any other.</p>
@@ -108,6 +111,9 @@
       <li>A degree such as 공학박사 or Ph.D. is not taken as a name. It is added to the job title as &quot;title / degree&quot;.</li>
       <li>Right after recognition, focusing a field highlights the line or lines it was read from on the card image. That evidence is not saved, so a reopened card shows only its image and fields.</li>
     </ul>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.namecard&amp;hl=en" aria-label="Compare saved details with the retained card image. — get the app on Google Play"><img src="/blog/scan-business-cards-into-android-contacts/assets/en-US/02-review.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Compare saved details with the retained card image."></a><figcaption>Compare saved details with the retained card image.</figcaption></figure>
+    </div>
 
     <h2>When the QR code and the printed card disagree</h2>
     <p>A contact QR code is decoded reliably, but that does not mean it is current or belongs to the same person as the print. The app therefore treats it as a strong candidate that never wins automatically.</p>
@@ -143,6 +149,9 @@
       </table>
     </div>
     <p>Opening the new-contact screen is not the same as saving. You finish — or cancel — in the contacts app. The vCard is version 3.0 in UTF-8, and its file name carries a timestamp rather than the person's name. The field mapping, escaping and line folding are described in the <a href="/tech-notes/namecard/">tech notes</a>.</p>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.namecard&amp;hl=en" aria-label="Read the guide to scanning, checking and sharing cards. — get the app on Google Play"><img src="/blog/scan-business-cards-into-android-contacts/assets/en-US/03-help.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Read the guide to scanning, checking and sharing cards."></a><figcaption>Read the guide to scanning, checking and sharing cards.</figcaption></figure>
+    </div>
 
     <h2>A business card is someone else's personal information</h2>
     <p>Cards are kept in a local list inside the app. Card images are kept by default so you can look at the card again; the image still shows everything printed on it, and the app does not redact it.</p>
@@ -152,6 +161,9 @@
       <li>Card records and images are excluded from Android cloud backup and are configured to be excluded from device-to-device transfer; manufacturer migration tools may behave differently. The full recognized text is not saved with a record.</li>
       <li>Card contents are not placed in ad requests. The app shows an AdMob banner with Google's consent flow. ML Kit diagnostics and AdMob/UMP have their own data practices, described in the privacy policy.</li>
     </ul>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.namecard&amp;hl=en" aria-label="Choose image retention, default country, theme and language. — get the app on Google Play"><img src="/blog/scan-business-cards-into-android-contacts/assets/en-US/04-settings.png" width="1080" height="1920" loading="lazy" decoding="async" alt="Choose image retention, default country, theme and language."></a><figcaption>Choose image retention, default country, theme and language.</figcaption></figure>
+    </div>
 
     <h2>Known limits of version 1</h2>
     <ul>

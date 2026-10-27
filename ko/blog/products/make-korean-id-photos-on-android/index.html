@@ -32,7 +32,7 @@
       "mainEntityOfPage": "https://droidactor.github.io/ko/blog/products/make-korean-id-photos-on-android/",
       "image": "https://droidactor.github.io/blog/make-korean-id-photos-on-android/assets/icon.png",
       "datePublished": "2026-09-23",
-      "dateModified": "2026-09-23",
+      "dateModified": "2026-09-28",
       "inLanguage": "ko",
       "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
       "about": {
@@ -106,6 +106,10 @@
     </div>
     <p>픽셀 크기는 밀리미터를 300dpi로 환산한 값이고, 저장 파일에도 300dpi가 기록됩니다. 500KB 상한은 앱이 온라인 제출용으로 표시하는 두 용도에만 적용합니다. 주민등록증은 온라인 제출 파일 규격을 따로 확인하지 못했으므로 같은 크기의 파일을 상한 없이 저장합니다. 일반 용도 두 가지는 앱의 편의 프리셋이며 공인 규격이 아닙니다.</p>
     <p>공식 규정은 2026년 9월 23일에 외교부 <a href="https://www.passport.go.kr/home/kor/contents.do?menuPos=32">여권 사진 규정</a>과 <a href="https://www.passport.go.kr/home/kor/contents.do?menuPos=12">온라인 신청 안내</a>, 도로교통공단 <a href="https://www.safedriving.or.kr/etGuide/selectEtGuide04.do">운전면허 안내</a>, 행정안전부 <a href="https://www.mois.go.kr/frt/sub/a06/b06/IDCard_5/screen.do">주민등록증 안내</a>로 확인했습니다. 규정은 바뀔 수 있으므로 제출기관의 최신 안내를 함께 확인합니다.</p>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.idphoto&amp;hl=ko" aria-label="도토리 증명사진 첫 화면 - 여권, 운전면허증, 주민등록증, 일반 35×45mm, 일반 30×40mm 중에서 용도를 고른다 — Google Play에서 앱 받기"><img src="/blog/make-korean-id-photos-on-android/assets/ko-KR/01-home.png" width="1080" height="1920" loading="lazy" decoding="async" alt="도토리 증명사진 첫 화면 - 여권, 운전면허증, 주민등록증, 일반 35×45mm, 일반 30×40mm 중에서 용도를 고른다"></a><figcaption>여권·운전면허증·주민등록증·일반 규격 중에서 용도를 고르세요.</figcaption></figure>
+    </div>
+    <p><em>화면 속 인물은 실제 인물이 아니라 AI로 생성한 가상 인물입니다.</em></p>
 
     <h2>편집 전에 얼굴이 한 명인지 먼저 확인한다</h2>
     <ul>
@@ -124,17 +128,18 @@
       <li>얼굴이 기울었거나 돌아갔거나 눈을 감았을 수 있으면 빨간 글씨로 <strong>정면·기울기·눈 뜸을 확인하세요.</strong> 가 나옵니다. 안내일 뿐 저장을 막지는 않습니다.</li>
     </ul>
     <p>여권은 35 × 45 mm 사진에서 정수리(머리카락 제외)부터 턱까지가 32~36mm여야 하고, 6개월 이내에 찍은 사진이어야 합니다. 앱은 머리 길이를 측정하지 않으므로 직접 확인합니다. <strong>?</strong> 버튼을 누르면 도움말과 <strong>외교부 여권 사진 규정</strong> 링크가 나옵니다.</p>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.idphoto&amp;hl=ko" aria-label="여권 용도의 자르기 화면 - 얼굴 위아래에 상단, 하단 손잡이가 있다 — Google Play에서 앱 받기"><img src="/blog/make-korean-id-photos-on-android/assets/ko-KR/02-passport-crop.png" width="1080" height="1920" loading="lazy" decoding="async" alt="여권 용도의 자르기 화면 - 얼굴 위아래에 상단, 하단 손잡이가 있다"></a><figcaption>상단·하단 손잡이를 끌어 여권 사진의 위아래를 정하세요.</figcaption></figure>
+    </div>
 
-    <h2>저장 전에 두 가지를 확인한다</h2>
-    <p>두 항목을 체크하기 전에는 <strong>갤러리에 저장</strong>이 비활성이고, 버튼 위 한 줄이 아직 남은 항목을 알려 줍니다.</p>
+    <h2>신분증 용도는 규정 확인 하나</h2>
+    <p>신분증 세 용도는 규정 확인을 체크하기 전에는 <strong>갤러리에 저장</strong>이 비활성이고, 버튼 위 한 줄이 아직 남은 항목을 알려 줍니다. 일반 용도는 체크 없이 저장합니다. 구도 확인 체크도 두지 않습니다. 구도는 미리보기를 보며 직접 맞추고, 끌 때마다 풀리는 체크는 결국 습관처럼 누르게 되기 때문입니다.</p>
     <div class="scroll">
       <table>
         <thead><tr><th>항목</th><th>나오는 용도</th><th>체크가 풀리는 때</th></tr></thead>
         <tbody>
-          <tr><td><strong>구도·여백 확인</strong></td><td>모든 용도</td><td>경계나 틀을 움직였을 때</td></tr>
-          <tr><td><strong>여권 사진 규정 확인</strong></td><td>여권</td><td>구도를 바꿔도 풀리지 않음</td></tr>
-          <tr><td><strong>신분증 사진 규정 확인</strong></td><td>운전면허증·주민등록증</td><td>구도를 바꿔도 풀리지 않음</td></tr>
-          <tr><td><strong>배경 경계 확인</strong></td><td>일반 용도 두 가지</td><td>배경을 바꿨을 때</td></tr>
+          <tr><td><strong>여권 사진 규정 확인</strong></td><td>여권</td><td>구도를 바꿔도 풀리지 않음. 새 사진·용도 변경 때 풀림</td></tr>
+          <tr><td><strong>신분증 사진 규정 확인</strong></td><td>운전면허증·주민등록증</td><td>구도를 바꿔도 풀리지 않음. 새 사진·용도 변경 때 풀림</td></tr>
         </tbody>
       </table>
     </div>
@@ -142,7 +147,10 @@
 
     <h2>배경 — 신분증은 원본, 일반 사진은 선택</h2>
     <p>외교부 여권 사진 규정은 배경 제거와 흰 배경 합성을 금지하고, 도로교통공단 운전면허 안내는 편집·합성하지 않은 사진을 요구합니다. 주민등록증 사진에는 앱이 같은 규칙을 적용하므로, 신분증 세 용도 모두 배경 도구를 보여 주지 않고, 저장 파일에는 항상 원본 픽셀을 씁니다. 대신 밝은 단색 벽 앞, 고른 조명에서 촬영합니다.</p>
-    <p>일반 용도에서는 <strong>배경</strong>에서 <strong>원본</strong>·<strong>흰색</strong>·<strong>하늘색</strong>을 고릅니다. 기기 안의 Selfie 분할 모델로 사람을 분리해 단색 위에 합성합니다. 머리카락·어깨 경계가 매끄럽지 않을 수 있으며, <strong>배경 경계 확인</strong>이 바로 그 부분을 보라는 항목입니다. 분리에 실패하면 현재 사진을 유지하고 다시 시도할 수 있습니다.</p>
+    <p>일반 용도에서는 <strong>배경</strong>에서 <strong>원본</strong>·<strong>흰색</strong>·<strong>하늘색</strong>을 고릅니다. 기기 안의 Selfie 분할 모델로 사람을 분리해 단색 위에 합성합니다. 마스크 경계는 사진 자체의 색 경계를 따라가지만, 머리카락·어깨 경계가 여전히 매끄럽지 않을 수 있고 의자 등받이처럼 몸에 붙은 물체가 사람의 일부로 남을 수 있습니다. 저장 전에 미리보기를 확대해 확인하세요. 분리에 실패하면 현재 사진을 유지하고 다시 시도할 수 있습니다.</p>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.idphoto&amp;hl=ko" aria-label="일반 증명·프로필 용도의 배경 선택 화면 - 원본, 흰색, 하늘색 버튼이 있다 — Google Play에서 앱 받기"><img src="/blog/make-korean-id-photos-on-android/assets/ko-KR/04-background.png" width="1080" height="1920" loading="lazy" decoding="async" alt="일반 증명·프로필 용도의 배경 선택 화면 - 원본, 흰색, 하늘색 버튼이 있다"></a><figcaption>일반 규격 사진은 배경을 원본·흰색·하늘색으로 바꿀 수 있습니다.</figcaption></figure>
+    </div>
 
     <h2>저장되는 것</h2>
     <ul>
@@ -151,6 +159,9 @@
       <li>저장 후 대화상자에 픽셀 크기·파일 크기·폴더가 나오고, <strong>공유</strong>로 원하는 앱에 파일을 보낼 수 있습니다. <strong>갤러리 보기</strong>는 폰의 갤러리 앱을 엽니다.</li>
       <li>원본 사진은 덮어쓰지 않으며, 저장 파일에는 위치(GPS) 같은 원본 사진의 메타데이터를 복사하지 않습니다.</li>
     </ul>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.idphoto&amp;hl=ko" aria-label="저장 완료 대화상자 - 413 × 531 px, 파일 용량, Pictures/DotoriIdPhoto 폴더를 보여 준다 — Google Play에서 앱 받기"><img src="/blog/make-korean-id-photos-on-android/assets/ko-KR/03-saved.png" width="1080" height="1920" loading="lazy" decoding="async" alt="저장 완료 대화상자 - 413 × 531 px, 파일 용량, Pictures/DotoriIdPhoto 폴더를 보여 준다"></a><figcaption>저장한 파일의 픽셀 크기·용량·저장 폴더를 알려 줍니다.</figcaption></figure>
+    </div>
 
     <h2>얼굴 사진은 개인정보다</h2>
     <ul>

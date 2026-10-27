@@ -109,15 +109,24 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 - 홈 2개, 앱 허브 2개, 제품 28개, 매뉴얼 허브 2개와 6종 한·영 매뉴얼 12개, 기술 노트 허브 2개와
   9종 한·영 기술 노트 18개, 주제별 한·영 상세 조사 글 8개. 매뉴얼과 기술 노트는 `TechArticle`, 제품은 `SoftwareApplication`으로
   역할을 분리하고 같은 언어끼리 상호 링크한다.
-- `/blog/` · `/ko/blog/` — 제품 페이지보다 깊은 **기술 설명·정량 실측·원리·재현 가능한 상세 사용법**을
-  싣는다. 측정 수치는 환경·방법·시점을 함께 적고, 적용 범위와 제약을 생략하지 않는다.
-- 모든 사용자 유입형 사용 사례를 이 사이트에 먼저 만들지 않는다. Naver는 한국어 사용 사례의 원본,
-  Blogger는 그 원고의 영어판을 맡으며, 사이트 글이 없는 Naver/Blogger 주제도 허용한다. 같은 주제를
-  다루더라도 사이트는 기술 근거, Naver/Blogger는 사용 상황과 결과로 역할을 분리한다.
-- 블로그 원고는 `MyApps/Mobile` 저장소 기준 `../blogs/<app>/<slug>/`에서 작성하고, 이 저장소에는 발행
-  HTML과 발행 자산만 둔다. 발행 후 본문 수정도 `site.{en,ko}.md` 원고를 먼저 고친 뒤 HTML에 반영한다.
+- `/blog/` · `/ko/blog/` 는 글을 두 곳에서 받는다(2026-09-16).
+  - **사이트 전용 기술 글** — 제품 페이지보다 깊은 **기술 설명·정량 실측·원리·재현 가능한 상세 사용법**.
+    측정 수치는 환경·방법·시점을 함께 적고, 적용 범위와 제약을 생략하지 않는다. 원고는 `MyApps/Mobile`
+    저장소 기준 `../blogs/<app|갈래>/<slug>/site.{en,ko}.md` 다.
+  - **`blogger` 저장소의 원고 쌍** — 네이버·Blogger·Medium 으로 나가는 `blogger` 저장소(`F:\Git\kwak\blogger`)의
+    `<ko|en>/<갈래>/` 원고를 사본 없이 그대로 `blog/<갈래>/<slug>/` 에 싣는다. `blog/techs/` 14편(2026-09-16)과
+    `blog/products/` 의 제품 홍보글 3쌍(2026-09-24 receipt·namecard·idphoto)이 여기서 왔다. ko·en 의 `date`·`slug`·
+    `app`·`section`·`banner` 가 같은 쌍만 실을 수 있고(`to_pages.py` 의 `SHARED`), 그 전 제품 글은 날짜·slug 가
+    다르거나 `app` 이 없어 싣지 않았다.
+- **먼저 발행된 평면 8편(`/blog/<slug>/`)에는 원고가 없다.** HTML 로 직접 쓰던 시절의 글이라, 고칠 일이 생기면 그 글만
+  발행본에서 원고를 복원한 뒤 생성기를 쓴다(`blogger` 저장소 `CLAUDE.md` "사이트 페이지 만들기").
+- 네이버·Blogger·Medium 의 제품 홍보글은 사이트 글이 없어도 된다. 사이트 전용 기술 글을 그쪽으로 그대로
+  옮기지 않는다.
+- 이 저장소에는 발행 HTML과 발행 자산만 둔다. 원고가 있는 글은 발행 후 본문 수정도 원고를 먼저 고친 뒤 HTML에
+  반영한다. 생성기는 `blogger` 저장소의 `pages.sh`(`to_pages.py`)다.
   채널별 역할은 `MyApps/Mobile/promotion/README.md` §2, 발행 순서는 같은 문서
-  §5, 채널별 세부 규약은 `promotion/rules/*.md`가 정본이고, 근거는 `docs/todo-promotion.md` §3·§7이다.
+  §5, 채널별 세부 규약은 `promotion/rules/*.md`가 정본이다. 앱 출시 후 작업 순서는 `MyApps/Mobile` 의
+  `/post-release` 스킬이고, 2026-08 계획과 그 뒤 실무가 바꾼 결정은 `docs/todo-promotion.md` §0 이다.
 
 **남은 것은 사람이 해야 한다 — Google Search Console 등록.** 이게 없으면 색인까지 몇 주가 걸린다.
 
@@ -440,7 +449,8 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
   5. 미출시 기능이나 source에서 확인하지 않은 동작을 확정형으로 기록하지 않는다
 - **블로그 글을 추가하면** 다섯 가지를 한 묶음으로 처리한다. 자리표시자와 세부 규약의 정본은
   `blog/_post-template.html` 머리주석이며, 작성 원고는 `MyApps/Mobile` 저장소 기준
-  `../blogs/<app>/<slug>/site.{en,ko}.md`에서 가져온다.
+  `../blogs/<app|갈래>/<slug>/site.{en,ko}.md`(사이트 전용 글) 또는 `blogger` 저장소의 `<ko|en>/<갈래>/` 원고 쌍
+  (techs·products — 위 "검색 노출" 절의 두 원천)에서 가져온다. 생성기 `pages.sh` 가 아래 1~4 의 기계적인 부분을 한다.
   1. `blog/<갈래>/<slug>/index.html`(`lang="en"`) · `ko/blog/<갈래>/<slug>/index.html`(`lang="ko"`) —
      **slug 는 두 언어가 같은 문자열이다.** 그래야 hreflang 쌍이 기계적으로 맞는다.
      **갈래(`products`·`techs`)는 2026-09-16 에 생겼고 새 글에만 붙인다** — 먼저 발행된 8편은

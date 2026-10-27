@@ -32,7 +32,7 @@
       "mainEntityOfPage": "https://droidactor.github.io/ko/blog/products/scan-business-cards-into-android-contacts/",
       "image": "https://droidactor.github.io/blog/scan-business-cards-into-android-contacts/assets/icon.png",
       "datePublished": "2026-09-23",
-      "dateModified": "2026-09-23",
+      "dateModified": "2026-09-28",
       "inLanguage": "ko",
       "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
       "about": {
@@ -98,6 +98,9 @@
       <li>글자·QR 인식 모델은 앱에 들어 있습니다. 보조 모델은 Wi-Fi에서만 내려받고, 준비되기 전에도 기본 인식과 수동 편집은 동작합니다. 준비 중이면 시작 화면에 안내가 나옵니다.</li>
       <li>문서 스캐너는 처음에 Google Play 서비스 다운로드가 필요할 수 있고, 클라우드 사진 공급자는 연결을 요구할 수 있습니다. 그래서 첫 사용부터 완전 오프라인 동작은 약속하지 않습니다.</li>
     </ul>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.namecard&amp;hl=ko" aria-label="검토한 명함을 목록에 모아 보세요. — Google Play에서 앱 받기"><img src="/blog/scan-business-cards-into-android-contacts/assets/ko-KR/01-home.png" width="1080" height="1920" loading="lazy" decoding="async" alt="검토한 명함을 목록에 모아 보세요."></a><figcaption>검토한 명함을 목록에 모아 보세요.</figcaption></figure>
+    </div>
 
     <h2>확인하기 전까지 모든 값은 추정이다</h2>
     <p>이름·회사·직함은 배치로 추정하므로 인식한 값을 명함 이미지와 대조합니다. 칸을 누르면 그 자리에서 바로 고칩니다. 행마다 눌러야 하는 확인 표시는 없고, QR에서 온 값도 다른 값과 같은 후보입니다.</p>
@@ -108,6 +111,9 @@
       <li>공학박사·Ph.D. 같은 학위는 이름으로 보지 않고 직함에 &quot;직위 / 학위&quot;로 붙입니다.</li>
       <li>인식 직후에는 칸에 포커스를 두면 그 값을 읽은 줄(여러 줄일 수 있습니다)이 명함 이미지에 강조됩니다. 이 근거는 저장하지 않으므로, 저장한 명함을 다시 열면 이미지와 필드만 보입니다.</li>
     </ul>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.namecard&amp;hl=ko" aria-label="보관한 명함 이미지와 저장된 항목을 대조하세요. — Google Play에서 앱 받기"><img src="/blog/scan-business-cards-into-android-contacts/assets/ko-KR/02-review.png" width="1080" height="1920" loading="lazy" decoding="async" alt="보관한 명함 이미지와 저장된 항목을 대조하세요."></a><figcaption>보관한 명함 이미지와 저장된 항목을 대조하세요.</figcaption></figure>
+    </div>
 
     <h2>명함의 QR과 인쇄 내용이 다를 때</h2>
     <p>연락처 QR은 디코딩 오류가 적지만, 최신 정보이거나 인쇄된 사람과 같은 사람이라는 보장은 없습니다. 그래서 앱은 QR을 강한 후보로 다루되 자동으로 이기게 하지 않습니다.</p>
@@ -143,6 +149,9 @@
       </table>
     </div>
     <p>새 연락처 화면이 열린 것은 저장된 것이 아닙니다. 저장이나 취소는 연락처 앱에서 사용자가 합니다. vCard는 3.0·UTF-8이고 파일 이름에는 사람 이름 대신 시각이 들어갑니다. 필드 대응·이스케이프·줄 접기는 <a href="/ko/tech-notes/namecard/">기술 노트</a>에 있습니다.</p>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.namecard&amp;hl=ko" aria-label="촬영·검토·공유 방법을 확인하세요. — Google Play에서 앱 받기"><img src="/blog/scan-business-cards-into-android-contacts/assets/ko-KR/03-help.png" width="1080" height="1920" loading="lazy" decoding="async" alt="촬영·검토·공유 방법을 확인하세요."></a><figcaption>촬영·검토·공유 방법을 확인하세요.</figcaption></figure>
+    </div>
 
     <h2>명함은 다른 사람의 개인정보다</h2>
     <p>명함 기록은 앱 안의 기기 내 목록으로 보관합니다. 명함 이미지는 다시 볼 수 있도록 기본 보관하며, 보관한 이미지에는 명함에 인쇄된 내용이 그대로 남습니다. 앱이 이미지를 가려 주지는 않습니다.</p>
@@ -152,6 +161,9 @@
       <li>명함 기록과 이미지는 Android 클라우드 백업에서 제외하고, 기기 간 이전에서도 제외하도록 설정했습니다. 제조사 이전 도구의 동작은 다를 수 있습니다. OCR 전문은 기록에 저장하지 않습니다.</li>
       <li>명함 내용은 광고 요청에 들어가지 않습니다. 앱은 AdMob 배너와 Google 동의 절차를 포함합니다. ML Kit 진단 정보와 AdMob·UMP 의 데이터 처리는 개인정보 처리방침에 따로 적혀 있습니다.</li>
     </ul>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.namecard&amp;hl=ko" aria-label="이미지 보관·기본 국가·테마·언어를 설정하세요. — Google Play에서 앱 받기"><img src="/blog/scan-business-cards-into-android-contacts/assets/ko-KR/04-settings.png" width="1080" height="1920" loading="lazy" decoding="async" alt="이미지 보관·기본 국가·테마·언어를 설정하세요."></a><figcaption>이미지 보관·기본 국가·테마·언어를 설정하세요.</figcaption></figure>
+    </div>
 
     <h2>v1의 알려진 제약</h2>
     <ul>
