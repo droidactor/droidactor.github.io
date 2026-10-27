@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Android apps — droidactor</title>
-<meta name="description" content="droidactor Android apps for Bluetooth input, networking, everyday tools, Morse and Korean number learning.">
+<meta name="description" content="droidactor Android apps for Bluetooth input, networking, everyday tools, Morse, and learning Korean numbers and Hangul.">
 <link rel="canonical" href="https://droidactor.github.io/apps/">
 <link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/">
 <link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/">
@@ -16,7 +16,7 @@
 <meta property="og:locale:alternate" content="ko_KR">
 <meta property="og:url" content="https://droidactor.github.io/apps/">
 <meta property="og:title" content="Android apps — droidactor">
-<meta property="og:description" content="Android apps for Bluetooth input, networking, everyday tools, Morse and Korean number learning.">
+<meta property="og:description" content="Android apps for Bluetooth input, networking, everyday tools, Morse, and learning Korean numbers and Hangul.">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="../assets/site.css">
 <script type="application/ld+json">
@@ -28,14 +28,14 @@
       "@id": "https://droidactor.github.io/apps/#apps",
       "url": "https://droidactor.github.io/apps/",
       "name": "droidactor Android apps",
-      "description": "Android apps by droidactor for everyday tools, Morse and Korean number learning.",
+      "description": "Android apps by droidactor for everyday tools, Morse, and learning Korean numbers and Hangul.",
       "inLanguage": "en",
       "publisher": {
         "@id": "https://droidactor.github.io/#publisher"
       },
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 16,
+        "numberOfItems": 17,
         "itemListElement": [
   {
     "@type": "ListItem",
@@ -132,6 +132,12 @@
     "position": 16,
     "name": "Dotori Learn Korean Numbers",
     "url": "https://droidactor.github.io/apps/hannum/"
+  },
+  {
+    "@type": "ListItem",
+    "position": 17,
+    "name": "Dotori Learn Hangul",
+    "url": "https://droidactor.github.io/apps/hangul/"
   }
 ]
       }
@@ -173,16 +179,16 @@
 
   <div class="hero">
     <h1>Android apps</h1>
-    <p>Fourteen small tools, each built around one focused job. Open a product page for requirements, privacy, support, and store status.</p>
+    <p>Seventeen small tools, each built around one focused job. Open a product page for requirements, privacy, support, and store status.</p>
   </div>
 
   <section id="apps">
     <h2>Choose an app</h2>
-    <p class="lead">Seven apps also have a step-by-step manual, six of those engineering notes as well. Receipt Scanner, Business Card Scanner and ID Photo Maker have engineering notes without a manual. YouTube Downloader, Bluetooth Numpad, Currency Converter and Unit Converter are product pages only. Each screenshot opens that app’s Google Play listing.</p>
+    <p class="lead">Seven apps also have a step-by-step manual, six of those engineering notes as well. Receipt Scanner, Business Card Scanner and ID Photo Maker have engineering notes without a manual. YouTube Downloader, Bluetooth Numpad, Currency Converter, Unit Converter, Morse, Learn Korean Numbers and Learn Hangul are product pages only. Each screenshot opens that app’s Google Play listing.</p>
     <!-- Card screenshots. Two per published app, each one a link to that app's store listing —
          the same shot-links-to-store pattern the blog posts use. roman, numpad, currency and unit have none yet — they are
-         on Play and have captures, but no hub shots have been picked; yt-downloader, morse and
-         hannum are not on Play yet, so the link would 404.
+         on Play and have captures, but no hub shots have been picked; morse is on Play but its
+         thumbnails are not under /assets/shots/ yet; yt-downloader is not on Play yet, so the link would 404.
          The images are the WebP thumbnails under /assets/shots/, shared with the product pages
          rather than sized for this page alone — see README "고칠 때" for how they are made and
          why the 1080px PNGs the blog posts show are not used here. -->
@@ -222,14 +228,23 @@
         <div class="card-shots"><a href="https://play.google.com/store/apps/details?id=com.droidactor.idphoto&amp;hl=en" aria-label="Dotori ID Photo Maker intro screen — get the app on Google Play"><img src="/assets/shots/idphoto/en-US/00-intro.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Dotori ID Photo Maker intro screen"></a><a href="https://play.google.com/store/apps/details?id=com.droidactor.idphoto&amp;hl=en" aria-label="The home screen, listing passport, driver's license, resident registration card and two general sizes — get the app on Google Play"><img src="/assets/shots/idphoto/en-US/01-home.webp" width="800" height="1422" loading="lazy" decoding="async" alt="The home screen, listing passport, driver's license, resident registration card and two general sizes"></a></div>
         <div class="foot"><a href="/apps/idphoto/">Product page</a><a href="/tech-notes/idphoto/">Tech notes</a></div>
       </article>
-      <article class="card"><div class="icon" aria-hidden="true">·−·</div><h3><a href="/apps/morse/">Dotori Morse</a></h3><div class="pkg">com.droidactor.morse</div><p class="desc">Read International, Korean and Japanese Morse from sound, taps or text.</p><div class="foot"><span class="badge soon">Preparing for release</span><a href="/apps/morse/">Details</a><a href="/#privacy-morse">Privacy</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true">·−·</div><h3><a href="/apps/morse/">Dotori Morse</a></h3><div class="pkg">com.droidactor.morse</div><p class="desc">Read International, Korean and Japanese Morse from sound, taps or text.</p><div class="foot"><a href="/apps/morse/">Details</a><a href="/#privacy-morse">Privacy</a></div></article>
 
       <article class="card">
         <div class="icon" aria-hidden="true"><img src="/assets/icons/hannum.png" width="48" height="48" alt="" decoding="async"></div>
         <h3><a href="/apps/hannum/"><span class="dotori">Dotori</span> Learn Korean Numbers</a></h3>
         <p class="pkg">com.droidactor.hannum</p>
         <p class="desc">Understand Korean numbers through meaning, counters, audio and short practice.</p>
-        <div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/hannum/">Product details</a><a href="/#privacy-hannum">Privacy</a></div>
+        <div class="card-shots"><a href="https://play.google.com/store/apps/details?id=com.droidactor.hannum&amp;hl=en" aria-label="Compare 삼 분 for minutes and 세 분 for people — get the app on Google Play"><img src="/assets/shots/hannum/en-US/en-01-compare.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Compare 삼 분 for minutes and 세 분 for people."></a><a href="https://play.google.com/store/apps/details?id=com.droidactor.hannum&amp;hl=en" aria-label="Learn the two sets of numbers with examples and audio — get the app on Google Play"><img src="/assets/shots/hannum/en-US/en-03-lesson.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Learn the two sets of numbers with examples and audio."></a></div>
+        <div class="foot"><a href="/apps/hannum/">Product details</a><a href="/#privacy-hannum">Privacy</a></div>
+      </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true"><img src="/assets/icons/hangul.png" width="48" height="48" alt="" decoding="async"></div>
+        <h3><a href="/apps/hangul/"><span class="dotori">Dotori</span> Learn Hangul</a></h3>
+        <p class="pkg">com.droidactor.hangul</p>
+        <p class="desc">Learn the Korean alphabet from its 1446 design: letter shapes, sounds and real words.</p>
+        <div class="card-shots"><a href="https://play.google.com/store/apps/details?id=com.droidactor.hangul&amp;hl=en" aria-label="Six short steps based on the Hunminjeongeum Haerye of 1446 — get the app on Google Play"><img src="/assets/shots/hangul/en-US/01-home.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Six short steps based on the Hunminjeongeum Haerye of 1446."></a><a href="https://play.google.com/store/apps/details?id=com.droidactor.hangul&amp;hl=en" aria-label="ㄱ, a molar sound: an animation turns the speech organ into the letter — get the app on Google Play"><img src="/assets/shots/hangul/en-US/03-giyeok.webp" width="800" height="1422" loading="lazy" decoding="async" alt="ㄱ, a molar sound: an animation turns the speech organ into the letter."></a></div>
+        <div class="foot"><a href="/apps/hangul/">Product page</a><a href="/#privacy-hangul">Privacy</a></div>
       </article>
     </div>
   </section>

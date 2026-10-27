@@ -1371,4 +1371,18 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/hannum/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/hannum/"/>
   </url>
+  <url>
+    <loc>https://droidactor.github.io/apps/hangul/</loc>
+    <lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/hangul/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/hangul/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/hangul/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/apps/hangul/</loc>
+    <lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/hangul/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/hangul/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/hangul/"/>
+  </url>
 </urlset>

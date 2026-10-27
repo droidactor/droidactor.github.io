@@ -14,7 +14,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 ```
 /                       영문 홈 (앱 목록 · 지원 · 개인정보 처리방침 전문)
 /ko/                    국문 홈 (같은 구성, 같은 앵커)
-/apps/                  제품 목록 — 14종 앱                           + /ko/apps/
+/apps/                  제품 목록 — 17종 앱                           + /ko/apps/
 /apps/bt-keyboard/      제품 페이지 — Dotori Bluetooth Keyboard      + /ko/apps/bt-keyboard/
 /apps/bt-ppt/           제품 페이지 — Dotori Bluetooth PPT Remote    + /ko/apps/bt-ppt/
 /apps/bt-mouse/         제품 페이지 — Dotori Bluetooth Mouse         + /ko/apps/bt-mouse/
@@ -29,6 +29,9 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 /apps/receipt/          제품 페이지 — Dotori Receipt Scanner         + /ko/apps/receipt/
 /apps/namecard/         제품 페이지 — Dotori Business Card Scanner   + /ko/apps/namecard/
 /apps/idphoto/          제품 페이지 — Dotori ID Photo Maker          + /ko/apps/idphoto/
+/apps/morse/            제품 페이지 — Dotori Morse                   + /ko/apps/morse/
+/apps/hannum/           제품 페이지 — Dotori Learn Korean Numbers    + /ko/apps/hannum/
+/apps/hangul/           제품 페이지 — Dotori Learn Hangul            + /ko/apps/hangul/
 /manual/                사용 설명서 목록 — 6종 앱                     + /ko/manual/
 /manual/<앱>/           6종 앱 영문 사용 설명서                       + /ko/manual/<앱>/
                         (bt-keyboard · bt-ppt · bt-mouse · wifi-scout · ssh-scout · lgtv)
@@ -62,7 +65,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | 파일 | 역할 |
 |---|---|
 | `index.html` · `ko/index.html` | 앱 목록 + 지원 연락처 + **개인정보 처리방침 전문**. 처리방침 앵커의 정본이다 |
-| `apps/index.html` · `ko/apps/index.html` | 16종 제품 목록 허브. 제품 상세와 7종 매뉴얼로 연결하고, 출시 앱 중 9종은 카드에 스크린샷 2장을 싣는다(각 장이 그 앱의 Play 스토어 링크) |
+| `apps/index.html` · `ko/apps/index.html` | 17종 제품 목록 허브. 제품 상세와 7종 매뉴얼로 연결하고, 출시 앱 중 11종은 카드에 스크린샷 2장을 싣는다(각 장이 그 앱의 Play 스토어 링크) |
 | `apps/<앱>/index.html` · `ko/apps/<앱>/index.html` | 제품 상세. 기능·요구사항·개인정보 요약을 담고, 처리방침 **전문은 홈 앵커로 링크**한다(중복 금지) |
 | `manual/index.html` · `ko/manual/index.html` | 7종 사용 설명서 목록 허브. `yt-downloader`·`numpad`·`currency` 는 대상이 아니다 |
 | `manual/<앱>/index.html` · `ko/manual/<앱>/index.html` | 7종 앱의 한·영 사용 설명서. 실제 UI 문구·검증 앱 버전·빠른 시작·설정·문제 해결을 담고 해당 제품·기술 글과 상호 링크한다. `yt-downloader`·`numpad`·`currency` 는 대상이 아니다 |
@@ -87,7 +90,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | 개발자 웹사이트 | `https://droidactor.github.io/` |
 | 개인정보 처리방침 (영문) | `https://droidactor.github.io/#privacy` |
 | 개인정보 처리방침 (국문) | `https://droidactor.github.io/ko/#privacy` |
-| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
+| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` · `hangul` · `morse` · `hannum` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
 | app-ads.txt 검증 | `https://droidactor.github.io/app-ads.txt` |
 
 **`#privacy-*` 앵커는 이름을 바꾸지도, 앵커를 지우지도 않는다.** 스토어 리스팅에 이미 등록된 주소다 —
@@ -305,6 +308,31 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
       미뤄 둔 몫이고, receipt 는 같은 패턴으로 함께 넣었다.
       idphoto 가 얼굴이 나오는 샷을 쓰지 않은 이유: 인물이 찍힌 샷(02~04)은 AI 가상 인물이라 제품 페이지처럼
       고지 문장이 필요한데 허브 카드에는 캡션 자리가 없고, `02-passport-crop` 에는 앱에서 없어진 확인란도 찍혀 있다.
+- [x] **`badge soon` → 스토어 배지 교체 4차 (2026-10-27).** `morse` · `hannum` 2종이 로그아웃 `200` 인 것을
+      확인하고 출시 상태로 돌렸다. 고친 곳은 **8개 파일** — 홈 2 + 제품 페이지 4(`<div class="status">` 배지 +
+      푸터 `<p class="tm">`. 두 앱의 제품 페이지에는 사양표가 없어 `Status`/`상태` 행은 해당 없음) + 앱 목록 2 다.
+      매뉴얼과 블로그 CTA 는 두 앱 모두 없다(`grep -rlE 'apps/(morse|hannum)/' blog/ ko/blog/` 는 목록 페이지
+      `index.html` 둘만 잡는다). 앱 목록 2곳은 `badge soon` 을 떼고, `hannum` 에만 카드 샷 2장
+      (`01-compare`·`03-lesson` — 비교 화면과 수업 화면으로 기능이 겹치지 않게 골랐다)을 넣었다.
+      **`morse` 는 캡처(`_screenshot/morse/`)가 있지만 허브 샷을 넣지 않았다** — 그 축소본 10장이
+      `release-morse` 브랜치(`5726813`)에만 있고 main 의 `/assets/shots/morse/` 에는 아직 없어서다.
+      그 브랜치가 main 에 합쳐지면 허브 두 곳의 주석("morse is on Play but its thumbnails …")을 지우고 샷 2장을 넣는다
+      (아래 미완 항목).
+      남은 미출시 앱은 `yt-downloader` 하나다.
+- [ ] **morse 앱 허브 카드 샷 2장.** `release-morse`(`5726813`, `assets/shots/morse/{en-US,ko-KR}/` WebP 10장)가
+      main 에 합쳐진 뒤 `apps/index.html`·`ko/apps/index.html` 의 morse 카드에 "앱 허브의 카드 스크린샷" 규칙대로
+      샷 2장을 넣고, 두 허브 주석의 morse 문장을 지운다. 그 전에 넣으면 이미지가 404 다.
+- [x] **도토리 한글 배우기(`hangul`) 사이트 등재 (2026-10-27).** 2026-10-26 에 처리방침(`#privacy-hangul`)만 먼저 게시하고
+      홈·제품 페이지·허브 카드는 만들지 않은 채 출시됐다(로그아웃 `200`). "앱을 추가하면" 절차 1~8 을 한 번에 했다 —
+      홈 카드 2 + 홈·허브 JSON-LD `ItemList` 17번 4 + 제품 페이지 2(신규, 출시 배지·상표 고지 포함) + 허브 카드 2(샷
+      `01-home`·`03-giyeok`) + 역방향 링크(제품 페이지 32 · 블로그 목록 2 · `404.html`) + `sitemap.xml`·`sitemap-all.xml`
+      URL 2개. 권한은 새로 생기지 않았다(위험 권한 없음 — 처리방침 §4 표는 10-26 게시 때 이미 반영). 매뉴얼·블로그 CTA 는 없다.
+      **같은 게시에서 앱 이름을 바꿨다** — `Dotori Hangul Origins`/`도토리 훈민정음` → `Dotori Learn Hangul`/`도토리 한글 배우기`.
+      앱 저장소(`mobile/hangul`) `docs/hangul-app-design.md` §8 "1.0.0+2 반영 순서" 1단계 그대로, 두 홈에서 옛 이름 7곳씩을
+      바꾸고(영문 본문은 전체 이름) `#privacy-hangul` 의 기기 저장 설정에 발음 표기를 더했다. 아이콘
+      (`assets/icons/hangul.png`)도 새 '한글' 아이콘(`play/store-listing/icon-512.png`)이다. **Play 등록정보는 이 시점에
+      아직 옛 이름·옛 아이콘이다** — 같은 §8 의 3~4단계(Console 등록정보 교체와 1.0.0+2 검토 제출)가 남아 있다.
+      제품 페이지는 출시된 기능만 적었다 — 스토어 문안 초안에 있는 손글씨·사진 "한글 읽어 주기" 는 1.1 기능이라 넣지 않았다.
 - [x] **네이버 서치어드바이저 등록 · 소유확인 · 사이트맵 제출 (2026-08-10).** 웹마스터 도구에
       `https://droidactor.github.io/` 를 등록하고 HTML 파일 방식으로 소유확인을 마쳤다. 확인 파일을
       `687f2cd` 로 push 한 뒤 `https://droidactor.github.io/naver291cd179e909bd205a8a0bf7179d3588.html`
@@ -371,7 +399,8 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
   4. `sitemap.xml` 에 URL 2개 (hreflang 3줄씩)
   5. 새 권한이 생기면 처리방침 §4 권한 표에 행 추가 (두 언어 모두). 기존 권한을 쓰는 앱이라도
      그 행의 "해당 앱" 칸에 이름을 더한다
-  6. 홈 JSON-LD `ItemList` 에 `ListItem` 2개 (`index.html` · `ko/index.html`, position 은 카드 순서)
+  6. JSON-LD `ItemList` 에 `ListItem` 4개 — 홈 `index.html` · `ko/index.html` 과 허브 `apps/index.html` ·
+     `ko/apps/index.html`. position 은 카드 순서이고, 허브는 `numberOfItems` 도 올린다
   7. **역방향 링크** — 기존 모든 페이지의 `<div class="also">` 에 새 앱을 넣는다. 기존 한·영 제품 페이지 전부 + 앱·블로그 목록
      + `404.html` 이고, 새 제품 페이지 쪽에는 나머지 앱 전부를 넣는다. 여기를 빠뜨리면 홈 카드 외에는
      새 앱으로 들어가는 내부 링크가 없어 크롤러가 한 경로로만 본다(bt-mouse 를 붙일 때 실제로 빠뜨렸다)
@@ -503,13 +532,16 @@ AdMob 콘솔의 app-ads.txt 상태가 "확인됨" 으로 바뀌는 데 하루 �
 ## 도토리 모스 출시 준비 (2026-10-27)
 
 `apps/morse/`·`ko/apps/morse/`, 두 홈의 `#privacy-morse`, 홈/앱 허브 카드·JSON-LD·역방향 링크·sitemap을 함께 추가했습니다. Android 8.0+, 국제/한글/일본 와문, 소리·화면 누름·텍스트 입력입니다. 원시 마이크 음원은 저장·전송하지 않고 기록과 설정은 기기에 남으며 백업은 비활성입니다. 공개 스토어 URL이 200으로 확인되기 전에는 출시 준비 중 배지를 유지합니다. 스크린샷은 추가하거나 수정하지 않았습니다.
+→ 같은 날 저녁 스토어 `200` 을 확인해 출시 상태로 돌렸다("남은 일" 4차 교체). 허브 샷은 미완 항목으로 남았다.
 
 ## 한국어 숫자 학습 앱 (2026-10-27)
 
 /apps/hannum/ 과 /ko/apps/hannum/ 에 제품 안내를 두고, 양 언어 홈의 #privacy-hannum 에 앱별 처리방침을 게시한다. 패키지는 com.droidactor.hannum 이다. 공개 Play 페이지가 확인되기 전에는 출시 준비 중 표시를 유지한다.
+→ 같은 날 저녁 출시 상태로 돌렸다("남은 일" 4차 교체).
 
 ### Hannum 스토어 화면 (2026-10-27)
 
 - 사용자 후속 요청에 따라 실제 release 앱에서 한·영 4장씩 촬영했다. 원본은 공용 `_screenshot/hannum/{en-US,ko-KR}/`에 보관한다.
 - `assets/shots/hannum/`에는 같은 원본의 800px WebP를 두고, 한·영 제품 페이지의 화면 절·SoftwareApplication screenshot 배열·아이콘 og:image를 함께 반영했다.
 - 공개 Play 출시 전이므로 제품 페이지의 출시 준비 상태를 유지하고, 미출시 스토어로 연결하는 링크나 허브 샷은 추가하지 않는다.
+  → 같은 날 저녁 스토어 `200` 을 확인해 출시 상태로 돌리고 허브 샷을 넣었다("남은 일" 4차 교체).

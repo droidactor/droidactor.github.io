@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Android 앱 — droidactor</title>
-<meta name="description" content="블루투스 입력·네트워크·생활 도구·모스·한국어 숫자 학습을 위한 droidactor Android 앱입니다.">
+<meta name="description" content="블루투스 입력·네트워크·생활 도구·모스·한국어 숫자와 한글 학습을 위한 droidactor Android 앱입니다.">
 <link rel="canonical" href="https://droidactor.github.io/ko/apps/">
 <link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/">
 <link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/">
@@ -16,7 +16,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:url" content="https://droidactor.github.io/ko/apps/">
 <meta property="og:title" content="Android 앱 — droidactor">
-<meta property="og:description" content="블루투스 입력·네트워크·생활 도구·모스·한국어 숫자 학습을 위한 Android 앱입니다.">
+<meta property="og:description" content="블루투스 입력·네트워크·생활 도구·모스·한국어 숫자와 한글 학습을 위한 Android 앱입니다.">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="../../assets/site.css">
 <script type="application/ld+json">
@@ -28,14 +28,14 @@
       "@id": "https://droidactor.github.io/ko/apps/#apps",
       "url": "https://droidactor.github.io/ko/apps/",
       "name": "droidactor Android 앱",
-      "description": "생활 도구·모스·한국어 숫자 학습을 위한 droidactor Android 앱입니다.",
+      "description": "생활 도구·모스·한국어 숫자와 한글 학습을 위한 droidactor Android 앱입니다.",
       "inLanguage": "ko",
       "publisher": {
         "@id": "https://droidactor.github.io/#publisher"
       },
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 16,
+        "numberOfItems": 17,
         "itemListElement": [
   {
     "@type": "ListItem",
@@ -132,6 +132,12 @@
     "position": 16,
     "name": "도토리 한국어 숫자 읽기",
     "url": "https://droidactor.github.io/ko/apps/hannum/"
+  },
+  {
+    "@type": "ListItem",
+    "position": 17,
+    "name": "도토리 한글 배우기",
+    "url": "https://droidactor.github.io/ko/apps/hangul/"
   }
 ]
       }
@@ -173,16 +179,16 @@
 
   <div class="hero">
     <h1>Android 앱</h1>
-    <p>한 가지 용도에 집중해 만든 작은 도구 14종입니다. 제품 페이지에서 요구사항·개인정보·지원·스토어 상태를 확인할 수 있습니다.</p>
+    <p>한 가지 용도에 집중해 만든 작은 도구 17종입니다. 제품 페이지에서 요구사항·개인정보·지원·스토어 상태를 확인할 수 있습니다.</p>
   </div>
 
   <section id="apps">
     <h2>앱 선택</h2>
-    <p class="lead">7종에는 단계별 사용 설명서가, 그중 6종에는 개발 기술 노트도 있습니다. 영수증 스캐너·명함 스캐너·증명사진은 사용 설명서 없이 개발 기술 노트를 제공합니다. YouTube Downloader·블루투스 넘패드·환율 계산기·단위 변환기는 제품 페이지만 제공합니다. 스크린샷을 누르면 해당 앱의 Google Play 페이지가 열립니다.</p>
+    <p class="lead">7종에는 단계별 사용 설명서가, 그중 6종에는 개발 기술 노트도 있습니다. 영수증 스캐너·명함 스캐너·증명사진은 사용 설명서 없이 개발 기술 노트를 제공합니다. YouTube Downloader·블루투스 넘패드·환율 계산기·단위 변환기·모스·한국어 숫자 읽기·한글 배우기는 제품 페이지만 제공합니다. 스크린샷을 누르면 해당 앱의 Google Play 페이지가 열립니다.</p>
     <!-- 카드 스크린샷. 출시된 앱마다 2장이고 각 장이 그 앱의 스토어 페이지로 가는 링크다 —
          블로그 글이 쓰는 것과 같은 "샷을 누르면 스토어" 패턴이다. roman·numpad·currency·unit 은 아직 없다 —
-         Play 에 있고 캡처도 있지만 허브 샷을 고르지 않았다. yt-downloader·morse·hannum 은
-         아직 Play 에 없어 링크가 404 다.
+         Play 에 있고 캡처도 있지만 허브 샷을 고르지 않았다. morse 는 Play 에 있지만
+         축소본이 아직 /assets/shots/ 에 없다. yt-downloader 는 아직 Play 에 없어 링크가 404 다.
          그림은 /assets/shots/ 아래 WebP 축소본이고 제품 페이지와 같은 파일을 쓴다 — 이 페이지
          전용 크기가 아니다. 만드는 법과 블로그 글의 1080px PNG 를 쓰지 않는 이유는 README
          "고칠 때" 가 정본이다. -->
@@ -222,14 +228,23 @@
         <div class="card-shots"><a href="https://play.google.com/store/apps/details?id=com.droidactor.idphoto&amp;hl=ko" aria-label="도토리 증명사진 인트로 — Google Play에서 앱 받기"><img src="/assets/shots/idphoto/ko-KR/00-intro.webp" width="800" height="1422" loading="lazy" decoding="async" alt="도토리 증명사진 인트로"></a><a href="https://play.google.com/store/apps/details?id=com.droidactor.idphoto&amp;hl=ko" aria-label="도토리 증명사진 첫 화면 - 여권, 운전면허증, 주민등록증, 일반 35×45mm, 일반 30×40mm 중에서 용도를 고른다 — Google Play에서 앱 받기"><img src="/assets/shots/idphoto/ko-KR/01-home.webp" width="800" height="1422" loading="lazy" decoding="async" alt="도토리 증명사진 첫 화면 - 여권, 운전면허증, 주민등록증, 일반 35×45mm, 일반 30×40mm 중에서 용도를 고른다"></a></div>
         <div class="foot"><a href="/ko/apps/idphoto/">제품 페이지</a><a href="/ko/tech-notes/idphoto/">기술 노트</a></div>
       </article>
-      <article class="card"><div class="icon" aria-hidden="true">·−·</div><h3><a href="/ko/apps/morse/">도토리 모스</a></h3><div class="pkg">com.droidactor.morse</div><p class="desc">소리·두드리기·텍스트에서 국제·한글·일본어 모스를 읽습니다.</p><div class="foot"><span class="badge soon">출시 준비 중</span><a href="/ko/apps/morse/">자세히 보기</a><a href="/ko/#privacy-morse">개인정보</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true">·−·</div><h3><a href="/ko/apps/morse/">도토리 모스</a></h3><div class="pkg">com.droidactor.morse</div><p class="desc">소리·두드리기·텍스트에서 국제·한글·일본어 모스를 읽습니다.</p><div class="foot"><a href="/ko/apps/morse/">자세히 보기</a><a href="/ko/#privacy-morse">개인정보</a></div></article>
 
       <article class="card">
         <div class="icon" aria-hidden="true"><img src="/assets/icons/hannum.png" width="48" height="48" alt="" decoding="async"></div>
         <h3><a href="/ko/apps/hannum/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한국어 숫자 읽기</a></h3>
         <p class="pkg">com.droidactor.hannum</p>
         <p class="desc">세 마리·삼 분·세 분, 뜻과 단위에 따라 달라지는 한국어 숫자 읽기를 배웁니다.</p>
-        <div class="foot"><span class="badge soon">출시 준비 중</span><a href="/ko/apps/hannum/">제품 안내</a><a href="/ko/#privacy-hannum">개인정보</a></div>
+        <div class="card-shots"><a href="https://play.google.com/store/apps/details?id=com.droidactor.hannum&amp;hl=ko" aria-label="시간의 삼 분과 사람을 세는 세 분을 비교해요 — Google Play에서 앱 받기"><img src="/assets/shots/hannum/ko-KR/ko-01-compare.webp" width="800" height="1422" loading="lazy" decoding="async" alt="시간의 삼 분과 사람을 세는 세 분을 비교해요."></a><a href="https://play.google.com/store/apps/details?id=com.droidactor.hannum&amp;hl=ko" aria-label="예문과 음성으로 두 가지 숫자를 배워요 — Google Play에서 앱 받기"><img src="/assets/shots/hannum/ko-KR/ko-03-lesson.webp" width="800" height="1422" loading="lazy" decoding="async" alt="예문과 음성으로 두 가지 숫자를 배워요."></a></div>
+        <div class="foot"><a href="/ko/apps/hannum/">제품 안내</a><a href="/ko/#privacy-hannum">개인정보</a></div>
+      </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true"><img src="/assets/icons/hangul.png" width="48" height="48" alt="" decoding="async"></div>
+        <h3><a href="/ko/apps/hangul/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 배우기</a></h3>
+        <p class="pkg">com.droidactor.hangul</p>
+        <p class="desc">1446년 훈민정음 해례본을 따라 글자 모양의 원리부터 낱말 읽기까지 한글을 배웁니다.</p>
+        <div class="card-shots"><a href="https://play.google.com/store/apps/details?id=com.droidactor.hangul&amp;hl=ko" aria-label="1446년 『훈민정음 해례본』을 따라가는 짧은 여섯 단계 — Google Play에서 앱 받기"><img src="/assets/shots/hangul/ko-KR/01-home.webp" width="800" height="1422" loading="lazy" decoding="async" alt="1446년 『훈민정음 해례본』을 따라가는 짧은 여섯 단계."></a><a href="https://play.google.com/store/apps/details?id=com.droidactor.hangul&amp;hl=ko" aria-label="어금닛소리 ㄱ, 발음 기관이 글자로 바뀌는 애니메이션 — Google Play에서 앱 받기"><img src="/assets/shots/hangul/ko-KR/03-giyeok.webp" width="800" height="1422" loading="lazy" decoding="async" alt="어금닛소리 ㄱ, 발음 기관이 글자로 바뀌는 애니메이션."></a></div>
+        <div class="foot"><a href="/ko/apps/hangul/">제품 페이지</a><a href="/ko/#privacy-hangul">개인정보</a></div>
       </article>
     </div>
   </section>
