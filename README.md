@@ -62,7 +62,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | 파일 | 역할 |
 |---|---|
 | `index.html` · `ko/index.html` | 앱 목록 + 지원 연락처 + **개인정보 처리방침 전문**. 처리방침 앵커의 정본이다 |
-| `apps/index.html` · `ko/apps/index.html` | 14종 제품 목록 허브. 제품 상세와 7종 매뉴얼로 연결하고, 출시된 6종은 카드에 스크린샷 2장을 싣는다(각 장이 그 앱의 Play 스토어 링크) |
+| `apps/index.html` · `ko/apps/index.html` | 16종 제품 목록 허브. 제품 상세와 7종 매뉴얼로 연결하고, 출시 앱 중 9종은 카드에 스크린샷 2장을 싣는다(각 장이 그 앱의 Play 스토어 링크) |
 | `apps/<앱>/index.html` · `ko/apps/<앱>/index.html` | 제품 상세. 기능·요구사항·개인정보 요약을 담고, 처리방침 **전문은 홈 앵커로 링크**한다(중복 금지) |
 | `manual/index.html` · `ko/manual/index.html` | 7종 사용 설명서 목록 허브. `yt-downloader`·`numpad`·`currency` 는 대상이 아니다 |
 | `manual/<앱>/index.html` · `ko/manual/<앱>/index.html` | 7종 앱의 한·영 사용 설명서. 실제 UI 문구·검증 앱 버전·빠른 시작·설정·문제 해결을 담고 해당 제품·기술 글과 상호 링크한다. `yt-downloader`·`numpad`·`currency` 는 대상이 아니다 |
@@ -295,6 +295,16 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
       `com.droidactor.unit` 은 **`404`** 다. 아직 스토어에 없는데 "정식 출시된 걸로 간주하고 작업하라"는
       지시(2026-09-15)를 받아 배지를 걸었다. 그때까지 `unit` 배지는 **죽은 링크**이고, 실제로 올라온 뒤
       `200` 을 확인하면 이 예외 문단을 지운다. 남은 미출시 앱은 `yt-downloader` 와 `unit` 이다.
+- [x] **`badge soon` → 스토어 배지 교체 3차 (2026-10-27).** `receipt` · `namecard` · `idphoto` 3종이
+      로그아웃 `200` 인 것을 확인하고 출시 상태로 돌렸다. 고친 곳은 **10개 파일** — 홈 2 + 제품 페이지 6
+      (`<div class="status">` 배지 + 사양표 `Status`/`상태` 행 + 푸터 `<p class="tm">`) + 앱 목록 2 다.
+      매뉴얼은 세 앱 모두 없고, **블로그 CTA 6편×2언어는 처음 게시할 때부터 Play 배지가 걸려 있어 손댈
+      것이 없었다.** 앱 목록 2곳은 `badge soon` 을 떼고, 그 자리에 출시 앱 패턴대로 카드 샷 2장
+      (receipt·namecard 는 `01-home`·`02-review`, idphoto 는 `00-intro`·`01-home`)을 넣었다 —
+      namecard·idphoto 는 `todo-update-google-search.md` 가 "허브 카드 샷은 출시 배지 교체와 한 묶음" 으로
+      미뤄 둔 몫이고, receipt 는 같은 패턴으로 함께 넣었다.
+      idphoto 가 얼굴이 나오는 샷을 쓰지 않은 이유: 인물이 찍힌 샷(02~04)은 AI 가상 인물이라 제품 페이지처럼
+      고지 문장이 필요한데 허브 카드에는 캡션 자리가 없고, `02-passport-crop` 에는 앱에서 없어진 확인란도 찍혀 있다.
 - [x] **네이버 서치어드바이저 등록 · 소유확인 · 사이트맵 제출 (2026-08-10).** 웹마스터 도구에
       `https://droidactor.github.io/` 를 등록하고 HTML 파일 방식으로 소유확인을 마쳤다. 확인 파일을
       `687f2cd` 로 push 한 뒤 `https://droidactor.github.io/naver291cd179e909bd205a8a0bf7179d3588.html`
@@ -380,6 +390,8 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
      from-android` · `find-ls-plc-ip-address` · `identify-industrial-devices-by-port`)이라 6곳이다.
      `grep -rl 'apps/<앱>/' blog/ ko/blog/` 로 뽑는 것이 확실하다
   5. 손댄 페이지의 `sitemap.xml` `<lastmod>` 갱신
+  6. 앱 허브 2곳 — `apps/index.html`, `ko/apps/index.html` 카드의 `badge soon` 을 **뗀다**(이 페이지는 출시
+     앱에도 Play 배지를 두지 않는다). 그 앱 캡처가 있으면 아래 "앱 허브의 카드 스크린샷" 규칙대로 샷 2장을 넣는다
   - **배지를 새로 넣은 페이지에는 푸터 `<p class="tm">` 상표 고지가 반드시 함께 들어간다.** Google 의
     배지 가이드라인 요구사항이고, 배지만 넣고 고지를 빠뜨린 페이지가 생기기 쉽다
   - 이미지 경로는 페이지 깊이마다 다르다 — 홈 `assets/`(`/ko/` 는 `../assets/`), 그 외 영문은

@@ -715,7 +715,7 @@ live `sitemap.xml` 은 `<loc>` **123**, live `sitemap-all.xml` 은 **121** 이�
 (`namecard-usb/publish-assets.py`). ④ 첫 블로그 글 F(`scan-business-cards-into-android-contacts`)는 2026-09-28 에
 `blog/scan-business-cards-into-android-contacts/assets/{en-US,ko-KR}/` 에 1080px PNG 4장(01~04)을 두고 원고
 `blogs/namecard/.../site.{en,ko}.md` 에 그림을 넣어 재생성했다(캡션은 제품 페이지 문구 그대로). ③ 허브 카드 샷은 **출시 배지 교체와
-한 묶음으로 남긴다** — 스토어는 로그아웃 `200` 이지만 허브·홈은 아직 `Coming soon` 이다. **본문 갱신이지 재요청 사유가 아니다**(§4.1).
+한 묶음으로 2026-10-27 에 닫았다**(`01-home`·`02-review`, README "남은 일" 3차 교체 항목). **본문 갱신이지 재요청 사유가 아니다**(§4.1).
 
 ### 2.10 완료 — 2026-09-23 idphoto(도토리 증명사진) 신규 페이지 6개 (2026-09-24 배포 · 요청 6/6, 2026-09-26 종료)
 
@@ -747,7 +747,7 @@ live `sitemap.xml` 은 `<loc>` **123**, live `sitemap-all.xml` 은 **121** 이�
 있으므로 사진과 본문이 어긋나는 것을 감수한 결정이다. **재촬영하면 같은 파일명으로 축소본·발행 PNG 를 교체한다**(홍보글 L 도 같은 두 장을 쓴다).
 ② 제품 페이지 G 에 화면 절(01~04, 캡션 끝에 AI 가상 인물 고지 한 줄)과 JSON-LD `screenshot` 을 넣었고, ④ 첫 블로그 글 I 는
 `blog/make-korean-id-photos-on-android/assets/{en-US,ko-KR}/` 에 1080px PNG 4장을 두고 원고(`blogs/idphoto/.../site.{en,ko}.md`,
-`--apps 'F:\Git\kwak\mobile\photo\apps.tsv'`)에 그림과 AI 고지를 넣어 재생성했다. ③ 허브 카드 샷은 namecard 와 같은 이유로 남긴다.
+`--apps 'F:\Git\kwak\mobile\photo\apps.tsv'`)에 그림과 AI 고지를 넣어 재생성했다. ③ 허브 카드 샷은 namecard 와 함께 2026-10-27 에 닫았다 — 인물이 없는 `00-intro`·`01-home` 만 썼다(AI 고지 자리가 없어서다).
 **홍보글 L(`id-photo-app`)에는 AI 고지가 없다** — 그 글은 `blogger` 원고 쌍에서 나오고 네이버·Medium 에도 나갔으므로 따로 정한다.
 **본문 갱신이지 재요청 사유가 아니다**(§4.1).
 
