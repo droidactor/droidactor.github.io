@@ -14,7 +14,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 ```
 /                       영문 홈 (앱 목록 · 지원 · 개인정보 처리방침 전문)
 /ko/                    국문 홈 (같은 구성, 같은 앵커)
-/apps/                  제품 목록 — 17종 앱                           + /ko/apps/
+/apps/                  제품 목록 — 18종 앱                           + /ko/apps/
 /apps/bt-keyboard/      제품 페이지 — Dotori Bluetooth Keyboard      + /ko/apps/bt-keyboard/
 /apps/bt-ppt/           제품 페이지 — Dotori Bluetooth PPT Remote    + /ko/apps/bt-ppt/
 /apps/bt-mouse/         제품 페이지 — Dotori Bluetooth Mouse         + /ko/apps/bt-mouse/
@@ -32,6 +32,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 /apps/morse/            제품 페이지 — Dotori Morse                   + /ko/apps/morse/
 /apps/hannum/           제품 페이지 — Dotori Learn Korean Numbers    + /ko/apps/hannum/
 /apps/hangul/           제품 페이지 — Dotori Learn Hangul            + /ko/apps/hangul/
+/apps/seoulmetro/       제품 페이지 — Dotori Seoul Metro             + /ko/apps/seoulmetro/
 /manual/                사용 설명서 목록 — 6종 앱                     + /ko/manual/
 /manual/<앱>/           6종 앱 영문 사용 설명서                       + /ko/manual/<앱>/
                         (bt-keyboard · bt-ppt · bt-mouse · wifi-scout · ssh-scout · lgtv)
@@ -65,7 +66,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | 파일 | 역할 |
 |---|---|
 | `index.html` · `ko/index.html` | 앱 목록 + 지원 연락처 + **개인정보 처리방침 전문**. 처리방침 앵커의 정본이다 |
-| `apps/index.html` · `ko/apps/index.html` | 17종 제품 목록 허브. 제품 상세와 7종 매뉴얼로 연결하고, 출시 앱 중 11종은 카드에 스크린샷 2장을 싣는다(각 장이 그 앱의 Play 스토어 링크) |
+| `apps/index.html` · `ko/apps/index.html` | 18종 제품 목록 허브. 제품 상세와 7종 매뉴얼로 연결하고, 출시 앱 중 11종은 카드에 스크린샷 2장을 싣는다(각 장이 그 앱의 Play 스토어 링크) |
 | `apps/<앱>/index.html` · `ko/apps/<앱>/index.html` | 제품 상세. 기능·요구사항·개인정보 요약을 담고, 처리방침 **전문은 홈 앵커로 링크**한다(중복 금지) |
 | `manual/index.html` · `ko/manual/index.html` | 7종 사용 설명서 목록 허브. `yt-downloader`·`numpad`·`currency` 는 대상이 아니다 |
 | `manual/<앱>/index.html` · `ko/manual/<앱>/index.html` | 7종 앱의 한·영 사용 설명서. 실제 UI 문구·검증 앱 버전·빠른 시작·설정·문제 해결을 담고 해당 제품·기술 글과 상호 링크한다. `yt-downloader`·`numpad`·`currency` 는 대상이 아니다 |
@@ -90,7 +91,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | 개발자 웹사이트 | `https://droidactor.github.io/` |
 | 개인정보 처리방침 (영문) | `https://droidactor.github.io/#privacy` |
 | 개인정보 처리방침 (국문) | `https://droidactor.github.io/ko/#privacy` |
-| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` · `hangul` · `morse` · `hannum` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
+| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` · `hangul` · `morse` · `hannum` · `seoulmetro` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
 | app-ads.txt 검증 | `https://droidactor.github.io/app-ads.txt` |
 
 **`#privacy-*` 앵커는 이름을 바꾸지도, 앵커를 지우지도 않는다.** 스토어 리스팅에 이미 등록된 주소다 —
@@ -333,6 +334,25 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
       (`assets/icons/hangul.png`)도 새 '한글' 아이콘(`play/store-listing/icon-512.png`)이다. **Play 등록정보는 이 시점에
       아직 옛 이름·옛 아이콘이다** — 같은 §8 의 3~4단계(Console 등록정보 교체와 1.0.0+2 검토 제출)가 남아 있다.
       제품 페이지는 출시된 기능만 적었다 — 스토어 문안 초안에 있는 손글씨·사진 "한글 읽어 주기" 는 1.1 기능이라 넣지 않았다.
+- [x] **도토리 서울 지하철(`seoulmetro`) 사이트 등재 — 출시 전 (2026-10-28).** 처리방침(`#privacy-seoulmetro`)은 10-27 `9e1ea00` 으로
+      먼저 게시됐고, Play 프로덕션 승급 전에 "앱을 추가하면" 절차 1~8 을 한 번에 했다 — 홈 카드 2 + 홈·허브 JSON-LD `ItemList` 18번 4
+      (허브 `numberOfItems` 18) + 제품 페이지 2(신규. `badge soon` 과 사양표 `Status`/`상태` 행 "출시 준비 중", 스토어 링크·Play 배지·상표
+      고지 없음) + 허브 카드 2(`badge soon`, 샷 없음) + 역방향 링크(제품 페이지 34 · 블로그 목록 2 · `404.html`) + `sitemap.xml`·
+      `sitemap-all.xml` URL 2개(151→153)와 손댄 40 URL 의 `<lastmod>`. 아이콘(`assets/icons/seoulmetro.png`)은 앱 저장소(`mobile/metro`)
+      `apps/metro/seoul/play/store-listing/icon-512.png` 를 그대로 복사했다. `#privacy-seoulmetro` 본문은 고치지 않고 끝에 제품 링크만 더했다.
+      **권한은 새로 생기지 않았다** — 앱 매니페스트에 위험 권한이 없고, release 병합 매니페스트의 권한은 광고 SDK 가 넣는
+      `INTERNET`·`ACCESS_NETWORK_STATE`·`AD_ID`·`ACCESS_ADSERVICES_*`·`WAKE_LOCK`·`FOREGROUND_SERVICE` 와 AndroidX 수신자 권한뿐이다.
+      그래서 처리방침 §4 표는 앱 이름을 나열하는 두 행(`INTERNET`/`ACCESS_NETWORK_STATE`, `AD_ID`)에만 이름을 더했고, 처리방침을
+      고쳤으므로 머리의 시행일을 두 언어 모두 2026-10-28 로 올렸다. 매뉴얼·기술 노트·블로그 CTA 는 없다.
+      제품 페이지는 1.0.0+2 에 실제로 있는 기능만 적었다 — **역번호(표시·검색)는 쓰지 않았다**(이 버전에서 표시를 숨겼다. 앱 저장소
+      `apps/metro/seoul/play/release-checklist.md` 의 다음 버전 과제). 경로 탐색·실시간 도착·요금은 없다고 "알려진 한계" 에 적었다.
+      노선도 출처는 사양표 `Map source`/`노선도 출처` 행에 서울 열린데이터광장 OA-22535(공공누리 제1유형, 출처표시)로 밝혔다 — 앱
+      `seoul.map.json` 의 `source.attribution`(앱의 정보 및 출처 화면)과 같은 내용이다. `Screens`/`화면` 절은 만들지 않았다(캡처는 따로 넣는다).
+      미출시 앱은 다시 `yt-downloader`·`seoulmetro` 둘이 됐다.
+      **출시 뒤 남은 것** — 로그아웃 `200` 이 되면 "앱이 출시되면" 절차로 배지를 바꾼다(홈 2 · 제품 2 와 `Status`/`상태` 행 · 허브 2 의
+      `badge soon` 떼기 · 상표 고지). 캡처가 생기면 제품 페이지 화면 절·JSON-LD `screenshot` 과 허브 카드 샷 2장을 넣는다. 앱의 노선도
+      자산이 `geometry=official_pdf`(OA-22535)가 아닌 것으로 바뀌면(앱 저장소 release-checklist 의 OA-22535 이용조건 재확인 항목)
+      사양표의 노선도 출처 행을 함께 고친다.
 - [x] **네이버 서치어드바이저 등록 · 소유확인 · 사이트맵 제출 (2026-08-10).** 웹마스터 도구에
       `https://droidactor.github.io/` 를 등록하고 HTML 파일 방식으로 소유확인을 마쳤다. 확인 파일을
       `687f2cd` 로 push 한 뒤 `https://droidactor.github.io/naver291cd179e909bd205a8a0bf7179d3588.html`
