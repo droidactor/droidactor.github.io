@@ -485,3 +485,9 @@ AdMob 콘솔의 app-ads.txt 상태가 "확인됨" 으로 바뀌는 데 하루 �
 ## 한국어 숫자 학습 앱 (2026-10-27)
 
 /apps/hannum/ 과 /ko/apps/hannum/ 에 제품 안내를 두고, 양 언어 홈의 #privacy-hannum 에 앱별 처리방침을 게시한다. 패키지는 com.droidactor.hannum 이다. 공개 Play 페이지가 확인되기 전에는 출시 준비 중 표시를 유지한다.
+
+### Hannum 스토어 화면 (2026-10-27)
+
+- 사용자 후속 요청에 따라 실제 release 앱에서 한·영 4장씩 촬영했다. 원본은 공용 `_screenshot/hannum/{en-US,ko-KR}/`에 보관한다.
+- `assets/shots/hannum/`에는 같은 원본의 800px WebP를 두고, 한·영 제품 페이지의 화면 절·SoftwareApplication screenshot 배열·아이콘 og:image를 함께 반영했다.
+- 공개 Play 출시 전이므로 제품 페이지의 출시 준비 상태를 유지하고, 미출시 스토어로 연결하는 링크나 허브 샷은 추가하지 않는다.
