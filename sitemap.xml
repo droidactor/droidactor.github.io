@@ -1356,4 +1356,19 @@
   </url>
   <url><loc>https://droidactor.github.io/apps/morse/</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/morse/"/><xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/morse/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/morse/"/></url>
   <url><loc>https://droidactor.github.io/ko/apps/morse/</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/morse/"/><xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/morse/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/morse/"/></url>
+
+  <url>
+    <loc>https://droidactor.github.io/apps/hannum/</loc>
+    <lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/hannum/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/hannum/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/hannum/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/apps/hannum/</loc>
+    <lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/hannum/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/hannum/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/hannum/"/>
+  </url>
 </urlset>
