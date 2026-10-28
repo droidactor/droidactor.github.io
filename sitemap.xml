@@ -1399,4 +1399,16 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/seoulmetro/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/seoulmetro/"/>
   </url>
+  <url>
+    <loc>https://droidactor.github.io/apps/busanmetro/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/busanmetro/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/busanmetro/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/busanmetro/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/apps/busanmetro/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/busanmetro/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/busanmetro/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/busanmetro/"/>
+  </url>
 </urlset>
