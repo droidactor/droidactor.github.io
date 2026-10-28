@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+  Home page registered in the Google OAuth consent screen (Branding) of the Hermes Secretary
+  project. Not a droidactor Android app: kept out of the app hubs and sitemap, and noindex.
+  Bilingual on one page on purpose, both languages visible — nothing is hidden with CSS.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hermes Secretary — droidactor</title>
+<meta name="description" content="Hermes Secretary is a personal assistant that reads its owner's Gmail and Google Calendar with read-only access to prepare daily briefings.">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="dark light">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <h1>Hermes Secretary</h1>
+    <p>
+      Hermes Secretary is a personal assistant program that its developer runs on their own
+      computer. It reads the developer's own Gmail and Google Calendar with read-only access and
+      prepares a morning briefing and hourly change notices for the developer.
+    </p>
+    <p lang="ko">
+      Hermes Secretary 는 개발자가 자기 컴퓨터에서 직접 운영하는 개인 비서 프로그램입니다. 개발자 본인의
+      Gmail 과 Google Calendar 를 읽기 전용으로 조회해 아침 브리핑과 매시 변경 안내를 만듭니다.
+    </p>
+  </div>
+
+  <section>
+    <h2>What it accesses</h2>
+    <ul>
+      <li>Gmail — read-only (<code>https://www.googleapis.com/auth/gmail.readonly</code>)</li>
+      <li>Google Calendar — read-only (<code>https://www.googleapis.com/auth/calendar.readonly</code>)</li>
+    </ul>
+    <p>
+      It never sends, drafts, modifies, or deletes mail, and never creates, changes, or deletes
+      calendar events. It is not offered to the public; only the developer's own Google accounts
+      are connected.
+    </p>
+    <p lang="ko">
+      메일 발송·초안·변경·삭제와 일정 생성·변경·삭제는 하지 않습니다. 일반에 제공하는 서비스가 아니며,
+      개발자 본인의 Google 계정만 연결합니다.
+    </p>
+  </section>
+
+  <section>
+    <h2>Privacy</h2>
+    <div class="also">
+      <a href="/hermes-secretary/privacy.html">Privacy policy</a>
+      <a href="/hermes-secretary/privacy.html#ko" hreflang="ko" lang="ko">개인정보 처리방침</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Contact: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
