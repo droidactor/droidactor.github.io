@@ -380,7 +380,7 @@
       <p>
         <strong>The short version.</strong> These apps have no accounts and no backend of
         ours. App content stays on your device or is exchanged only with the device, host or source you choose
-        (sections 2 and 7); it is not sent to a developer-operated server or included in advertising requests. Google SDKs separately process advertising and, for Receipt Scanner, Business Card Scanner and ID Photo Maker, ML Kit
+        (sections 2 and 7); it is not sent to a developer-operated server or included in advertising requests. Google SDKs separately process advertising and, for Receipt Scanner, Business Card Scanner, ID Photo Maker and Learn Hangul, ML Kit
         diagnostic data as described in sections 3 and 7. Uninstalling removes local app storage;
         calendar entries, shared exports and backup copies have separate lifecycles in sections 6 and 7.
       </p>
@@ -390,7 +390,7 @@
     <p>
       We operate no app account, analytics backend, crash-reporting service or server that receives app content.
       This does not describe all third-party SDK processing: Google Mobile Ads handles advertising data,
-      and Receipt Scanner, Business Card Scanner and ID Photo Maker use ML Kit diagnostics. See sections 3 and 7 for those separate data flows.
+      and Receipt Scanner, Business Card Scanner, ID Photo Maker and Learn Hangul use ML Kit diagnostics. See sections 3 and 7 for those separate data flows.
     </p>
 
     <h3>2. Data processed on your device</h3>
@@ -414,6 +414,7 @@
       <li>Receipt Scanner records and images, kept locally; confirmed summaries are shared as CSV only when you choose to share</li>
       <li>Business Card Scanner records and card images — another person's contact details, kept locally; a saved card goes to your contacts app or is shared as a vCard only when you choose</li>
       <li>ID Photo Maker working photos — a person's face; a photo you take or choose is copied to temporary app storage only until it is decoded, then held in memory only while you edit; a new JPEG is written to your gallery only when you save, and shared only when you choose</li>
+      <li>Learn Hangul reading photos — a photo you take or choose for Read Korean for me is copied to temporary app storage, excluded from backup, only while it is being read, and deleted when you leave the reading screen</li>
       <li>Your own settings and preferences</li>
     </ul>
     <p>The apps have no developer-operated backend, so the developer never receives device serial numbers or device IDs. SDK identifier handling is described in sections 3 and 7.</p>
@@ -515,7 +516,7 @@
             <td>To reach the devices or sources you asked for, and to fetch ads. The HID
               remotes send your input over Bluetooth, not over the internet. <a href="#privacy-currency"><span class="dotori">Dotori</span> Currency
               Converter</a> fetches the daily exchange-rate table, and the amounts you type are not
-              part of that request. Receipt Scanner also uses ML Kit diagnostics; scanner setup and cloud photo providers may need a connection, while recognition stays on the device. Business Card Scanner works the same way and also downloads optional entity-recognition models from Google over Wi-Fi only; card contents are not part of that download. ID Photo Maker also uses ML Kit diagnostics; its face-detection and background models are bundled in the app, so photos are processed on the device without downloading a model.</td>
+              part of that request. Receipt Scanner also uses ML Kit diagnostics; scanner setup and cloud photo providers may need a connection, while recognition stays on the device. Business Card Scanner works the same way and also downloads optional entity-recognition models from Google over Wi-Fi only; card contents are not part of that download. ID Photo Maker also uses ML Kit diagnostics; its face-detection and background models are bundled in the app, so photos are processed on the device without downloading a model. Learn Hangul also uses ML Kit diagnostics; its Korean text recognition model is bundled, and the Korean handwriting model (about 25 MB) is downloaded from Google only when you choose to, on any network; handwriting and photos are not part of that download.</td>
           </tr>
           <tr>
             <td><code>ACCESS_WIFI_STATE</code></td>
@@ -953,9 +954,10 @@
 
     <div class="policy" id="privacy-hangul">
       <h3><span class="dotori">Dotori</span> Learn Hangul<span class="pkg-inline">com.droidactor.hangul</span></h3>
-      <p>Dotori Learn Hangul teaches the Korean alphabet with lessons, animations, quizzes and a letter chart, all built into the app. There is no app account, no sign-in and no developer-operated server. The only things it keeps on your phone are your quiz results (the best score for each step) and the settings you choose: theme, pronunciation notation (dictionary style, IPA or romanization), display language and screen orientation. Removing the app removes them from the phone; if you use Android backup, a copy may be kept and restored when you reinstall (section 6). What you draw in the tracing area stays in memory only and is not saved.</p>
-      <p>The letter and word sounds are audio clips bundled with the app and play without a connection. For a syllable you build yourself, the app asks your phone&rsquo;s own text-to-speech engine to read it aloud, if a Korean voice is installed; only that syllable is passed to the engine, which works under its provider&rsquo;s terms. Source links and dictionary lookups open in your browser only when you tap them; a dictionary lookup sends the Korean word you chose to the National Institute of Korean Language&rsquo;s dictionary site as part of the address.</p>
-      <p>The app displays an AdMob banner at the top of the screen and uses Google UMP for applicable privacy choices, as described in section 3 &mdash; <strong>there are no interstitial ads</strong>. Your progress and drawings are not supplied to the advertising SDK. The app requests no dangerous permissions and no location permission; supporting libraries add the network, advertising and background-work permissions listed in section 4. You can reopen the advertising privacy options in the app&rsquo;s Settings.</p>
+      <p>Effective date: 28 October 2026. Dotori Learn Hangul teaches the Korean alphabet with lessons, animations, quizzes and a letter chart, all built into the app, and can read aloud Korean you write by hand or photograph (Read Korean for me). There is no app account, no sign-in and no developer-operated server. Apart from a temporary photo copy while a photo is being read (below), the only things it keeps on your phone are your quiz results (the best score for each step) and the settings you choose: theme, pronunciation notation (dictionary style, IPA or romanization), display language and screen orientation. Removing the app removes them from the phone; if you use Android backup, a copy may be kept and restored when you reinstall (section 6). What you draw in the tracing area stays in memory only and is not saved.</p>
+      <p>Read Korean for me, and the tracing pad&rsquo;s check of what your writing was read as, recognize Korean on your phone with Google ML Kit. A photo is taken by your camera app under its own permission, or chosen in the system photo picker (or the system file picker on older devices), which passes the app only the photo you choose. The Korean text recognition model is bundled with the app; the Korean handwriting model (about 25 MB) is downloaded from Google only when you choose to download it. Photos, handwriting and recognized text are not saved and are not sent to a developer server; recognized text goes to the clipboard only when you tap Copy. While a photo is being read, the app keeps a temporary copy in its private storage so the work can continue after a trip to the camera app; the copy is excluded from backup and is deleted when you leave the reading screen, or the next time the app starts unless it reopens on the reading screen. ML Kit collects technical diagnostics and usage information, including device/app information, installation identifiers, performance and feature events. Google documents HTTPS transmission and no third-party transfer of the diagnostic data listed in its <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit disclosure</a>.</p>
+      <p>The letter and word sounds are audio clips bundled with the app and play without a connection. For a syllable you build yourself, and for recognized text you pick, the app asks your phone&rsquo;s own text-to-speech engine to read it aloud, if a Korean voice is installed; only that syllable or text is passed to the engine, which works under its provider&rsquo;s terms. Source links and dictionary lookups open in your browser only when you tap them; a dictionary lookup sends the Korean word you chose to the National Institute of Korean Language&rsquo;s dictionary site as part of the address.</p>
+      <p>The app displays an AdMob banner at the top of the screen and uses Google UMP for applicable privacy choices, as described in section 3 &mdash; <strong>there are no interstitial ads</strong>. Your progress, drawings, photos, handwriting and recognized text are not supplied to the advertising SDK. The app requests no dangerous permissions, no location permission and no camera, photo or storage permission; supporting libraries add the network, advertising and background-work permissions listed in section 4. You can reopen the advertising privacy options in the app&rsquo;s Settings.</p>
       <p><a href="/apps/hangul/">Product details</a></p>
     </div>
 
