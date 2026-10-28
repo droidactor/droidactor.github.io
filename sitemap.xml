@@ -601,6 +601,25 @@
   </url>
 
   <url>
+    <loc>https://droidactor.github.io/blog/products/learn-hangul-app/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/learn-hangul-app/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/learn-hangul-app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/learn-hangul-app/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/products/learn-hangul-app/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/learn-hangul-app/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/learn-hangul-app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/learn-hangul-app/"/>
+  </url>
+
+  <url>
     <loc>https://droidactor.github.io/blog/products/id-photo-app/</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>

@@ -498,6 +498,10 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
      `wifi-scout` → `_screenshot/wifi/`. 나머지 넷은 같다
   2. `bt-mouse/01-home` 은 `_screenshot` 에 없다. 발행본에서 뽑는다
   3. `_screenshot/bt-mouse/*/01-mouse-control.png` 의 발행명은 `06-mouse-control` 이다
+- **`assets/shots/<앱>/<로케일>/half/` 는 네이버 블로그 판 절반 크기 사본이다**(2026-10-28). 위의 800px webp 를
+  `blogger` 저장소 `to_naver.py`(`shots.py`)가 절반으로 줄여 만들고 네이버 글이 그 URL 을 참조하므로 **글·페이지에 없다고
+  지우지 않는다**. 800px 원본을 다시 만들었으면 `half/` 의 같은 이름을 지우고 `to_naver.py` 를 다시 돌린다(내용이 달라졌으면
+  그쪽이 멈춘다). 사이트 페이지와 Blogger 는 이 사본을 쓰지 않는다.
 - **`/blog/<slug>/assets/<로케일>/` 는 그 글의 자산이 아니라 그 앱의 발행 자산 저장소다.** 글·매뉴얼·제품
   페이지가 함께 참조한다(실측: 제품 페이지 12개가 이 경로의 `icon.png` 를 쓴다).
   그래서 글이 쓰지 않는 그림도 여기 둔다 — `06-mouse-control.png` 가 그 예로,
