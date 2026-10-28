@@ -14,7 +14,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 ```
 /                       영문 홈 (앱 목록 · 지원 · 개인정보 처리방침 전문)
 /ko/                    국문 홈 (같은 구성, 같은 앵커)
-/apps/                  제품 목록 — 19종 앱                           + /ko/apps/
+/apps/                  제품 목록 — 21종 앱                           + /ko/apps/
 /apps/bt-keyboard/      제품 페이지 — Dotori Bluetooth Keyboard      + /ko/apps/bt-keyboard/
 /apps/bt-ppt/           제품 페이지 — Dotori Bluetooth PPT Remote    + /ko/apps/bt-ppt/
 /apps/bt-mouse/         제품 페이지 — Dotori Bluetooth Mouse         + /ko/apps/bt-mouse/
@@ -34,6 +34,8 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 /apps/hangul/           제품 페이지 — Dotori Learn Hangul            + /ko/apps/hangul/
 /apps/seoulmetro/       제품 페이지 — Dotori Seoul Metro             + /ko/apps/seoulmetro/
 /apps/busanmetro/       제품 페이지 — Dotori Busan Metro             + /ko/apps/busanmetro/
+/apps/daegumetro/       제품 페이지 — Dotori Daegu Metro             + /ko/apps/daegumetro/
+/apps/gwangjumetro/     제품 페이지 — Dotori Gwangju Metro           + /ko/apps/gwangjumetro/
 /manual/                사용 설명서 목록 — 6종 앱                     + /ko/manual/
 /manual/<앱>/           6종 앱 영문 사용 설명서                       + /ko/manual/<앱>/
                         (bt-keyboard · bt-ppt · bt-mouse · wifi-scout · ssh-scout · lgtv)
@@ -69,7 +71,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | 파일 | 역할 |
 |---|---|
 | `index.html` · `ko/index.html` | 앱 목록 + 지원 연락처 + **개인정보 처리방침 전문**. 처리방침 앵커의 정본이다 |
-| `apps/index.html` · `ko/apps/index.html` | 19종 제품 목록 허브. 제품 상세와 7종 매뉴얼로 연결하고, 출시 앱 중 11종은 카드에 스크린샷 2장을 싣는다(각 장이 그 앱의 Play 스토어 링크) |
+| `apps/index.html` · `ko/apps/index.html` | 21종 제품 목록 허브. 제품 상세와 7종 매뉴얼로 연결하고, 출시 앱 중 11종은 카드에 스크린샷 2장을 싣는다(각 장이 그 앱의 Play 스토어 링크) |
 | `apps/<앱>/index.html` · `ko/apps/<앱>/index.html` | 제품 상세. 기능·요구사항·개인정보 요약을 담고, 처리방침 **전문은 홈 앵커로 링크**한다(중복 금지) |
 | `manual/index.html` · `ko/manual/index.html` | 7종 사용 설명서 목록 허브. `yt-downloader`·`numpad`·`currency` 는 대상이 아니다 |
 | `manual/<앱>/index.html` · `ko/manual/<앱>/index.html` | 7종 앱의 한·영 사용 설명서. 실제 UI 문구·검증 앱 버전·빠른 시작·설정·문제 해결을 담고 해당 제품·기술 글과 상호 링크한다. `yt-downloader`·`numpad`·`currency` 는 대상이 아니다 |
@@ -94,7 +96,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | 개발자 웹사이트 | `https://droidactor.github.io/` |
 | 개인정보 처리방침 (영문) | `https://droidactor.github.io/#privacy` |
 | 개인정보 처리방침 (국문) | `https://droidactor.github.io/ko/#privacy` |
-| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` · `hangul` · `morse` · `hannum` · `seoulmetro` · `busanmetro` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
+| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` · `hangul` · `morse` · `hannum` · `seoulmetro` · `busanmetro` · `daegumetro` · `gwangjumetro` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
 | app-ads.txt 검증 | `https://droidactor.github.io/app-ads.txt` |
 
 **`#privacy-*` 앵커는 이름을 바꾸지도, 앵커를 지우지도 않는다.** 스토어 리스팅에 이미 등록된 주소다 —

@@ -1430,4 +1430,30 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/busanmetro/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/busanmetro/"/>
   </url>
+
+  <url>
+    <loc>https://droidactor.github.io/apps/daegumetro/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/daegumetro/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/daegumetro/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/daegumetro/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/apps/daegumetro/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/daegumetro/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/daegumetro/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/daegumetro/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/apps/gwangjumetro/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/gwangjumetro/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/gwangjumetro/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/gwangjumetro/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/apps/gwangjumetro/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/gwangjumetro/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/gwangjumetro/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/gwangjumetro/"/>
+  </url>
 </urlset>
