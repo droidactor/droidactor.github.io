@@ -143,6 +143,11 @@ header.top {
 
 /* ---- language links (real URLs, not a JS toggle) ------------------------- */
 .langs { display: flex; gap: 4px; }
+.top-multilingual .wrap { flex-wrap: wrap; padding-block: 12px; }
+.langs-many { flex-wrap: wrap; justify-content: flex-end; gap: 8px 4px; }
+@media (max-width: 600px) {
+  .top-multilingual .langs-many { width: 100%; justify-content: flex-start; }
+}
 .lang-btn {
   font: inherit; font-size: 13px; line-height: 1;
   padding: 6px 10px; text-decoration: none;
@@ -371,6 +376,8 @@ a.post-app:hover { border-color: var(--accent-dim); }
    most ~341px wide (one card per row, 768px viewport), and capping there would letterbox
    the tall shots instead of shortening them. */
 .screenshot-grid img { max-height: 680px; object-fit: contain; }
+.screenshot-grid.play-qr { grid-template-columns: minmax(0, 360px); }
+.post-body a[href*="play.google.com/store/apps/details"] { overflow-wrap: anywhere; }
 /* A shot may link to the store listing — on the app hub every one of them does. Block so
    the inline baseline gap under the image disappears; the ring makes the shot read as
    clickable without moving the grid. .card-shots is folded in here so the two grids cannot

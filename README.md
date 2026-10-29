@@ -11,6 +11,27 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 영문(`/`)과 국문(`/ko/`)이 **별도 URL** 이다. 예전처럼 한 페이지에 두 언어를 넣고 CSS 로 감추지 않는다 —
 `display:none` 뒤의 텍스트는 검색엔진이 비중을 크게 낮춰서 한글 검색에 잡히지 않았다.
 
+### 다국어 홍보글 (2026-10-29)
+
+`hangul` 홍보글은 11개 언어다. 기존 `/blog/products/learn-hangul-app/`·`/ko/blog/products/learn-hangul-app/`를
+유지하고, `ja`·`zh-Hant`·`vi`·`es`·`fr`·`de`·`it`·`pt-BR`·`hi` 접두 경로에 같은 slug의 글과 `/blog/` 목록을 둔다.
+각 페이지의 본문·목록·접근성 안내는 해당 언어이며, 언어 선택·자기 canonical·상호 hreflang·사이트맵은 실제로 존재하는
+번역 전체를 가리킨다. QR과 설치 URL은 소개 다음, 본문 첫 절 앞에 둔다. QR은 모든 언어에서 `hl` 없는 공통 주소다.
+
+원고 정본은 `blogger` 저장소의 `<locale>/products/*-learn-hangul-app.md`다. 본문 사본을 만들지 않는다.
+기본 한·영 생성 경로는 유지하고, 번역 묶음은 `blogger` 저장소에서 명시해 생성한다:
+
+```sh
+./pages.sh en/products/2026-10-28-learn-hangul-app.md --locales en,ko,ja,zh-Hant,vi,es,fr,de,it,pt-BR,hi
+```
+
+생성기는 같은 slug의 원고를 언어별로 하나씩 찾고, 제목·날짜가 언어마다 달라도 공통 slug·app·section·banner는 대조한다.
+기존 번역 일부를 빠뜨린 재생성은 거부한다. 원래 발행일은 보존하고 수정일과 사이트맵 lastmod를 함께 갱신한다.
+새 언어 목록을 포함한 모든 글 목록과 `sitemap.xml`·`sitemap-all.xml`은 같은 작업에서 갱신된다.
+
+이번 확장은 **홍보글과 글 목록**이다. 제품 페이지·홈·매뉴얼은 기존 한·영 경로를 사용한다. 새 언어 글에서 아직 번역되지
+않은 제품 안내나 공용 목록으로 가는 링크는 실제 영어 페이지로 연결하고, 링크 문구에도 영어임을 표시한다.
+
 ```
 /                       영문 홈 (앱 목록 · 지원 · 개인정보 처리방침 전문)
 /ko/                    국문 홈 (같은 구성, 같은 앵커)
