@@ -2,7 +2,7 @@
   "city": "busan",
   "contentSha256": "6b77c0b704c8ddb667fe32846b54d22ca4daf93678a07d39915d604b801f0ee8",
   "dataDate": null,
-  "dataVersion": 2,
+  "dataVersion": 3,
   "effectiveFrom": null,
   "files": [
     {
@@ -23,6 +23,6 @@
   "schema": 1,
   "sha256": "93d2484e279fea321956d196fcc6df9f39219b0ff487eaee171ee1b484ccedd6",
   "size": 12041,
-  "url": "https://droidactor.github.io/data/metro/busan/busan-2.zip",
+  "url": "https://droidactor.github.io/data/metro/busan/busan-3.zip",
   "validUntil": null
 }
