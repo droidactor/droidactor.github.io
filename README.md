@@ -202,6 +202,12 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
 
 ## 남은 일
 
+- [x] **hannum 한·영 제품 홍보글 배포·색인 요청 (2026-10-30).** `8377b56`으로
+      `/blog/products/learn-korean-numbers/`·`/ko/blog/products/learn-korean-numbers/`와 배너·네이버용 축소본을 게시했다.
+      공개 HTTP200 확인 후 Google Search Console에서 두 신규 URL만 각각1회 요청했고,
+      영문23:07:25·국문23:08:12 KST에 ‘색인 생성 요청됨’·‘우선순위 크롤링 대기열’ 수락을 확인했다.
+      기존 제품·홈·목록 URL과 사이트맵은 재요청하지 않았다. 같은 홍보글 정본에 한·영 YouTube 영상 링크를 추가했다.
+
 - [x] Google Search Console 등록 + 소유권 확인 (2026-08-02, URL 접두어 속성 + HTML 파일 방식)
 - [x] **sitemap 재제출 (2026-08-06).** 최초 제출분(2026-08-02)이 `가져올 수 없음` 으로 굳어 있었다 —
       발견된 페이지 0, "마지막으로 읽은 날짜" 비어 있음. `sitemap.xml` 커밋(`efee63e`)과 제출이 같은
