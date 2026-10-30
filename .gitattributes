@@ -1,0 +1,4 @@
+
+# Signed update manifests/signatures/archives must preserve exact bytes.
+/data/metro/** -text
+/data/metro-test/** -text

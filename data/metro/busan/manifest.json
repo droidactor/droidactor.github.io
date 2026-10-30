@@ -1,0 +1,28 @@
+{
+  "city": "busan",
+  "contentSha256": "6b77c0b704c8ddb667fe32846b54d22ca4daf93678a07d39915d604b801f0ee8",
+  "dataDate": null,
+  "dataVersion": 2,
+  "effectiveFrom": null,
+  "files": [
+    {
+      "name": "busan.map.json",
+      "schema": 2,
+      "sha256": "74a0912df618ad2a96d34cfc4f1a332601f2b0b4ee5599bdce5fc2b4a5bf349c",
+      "size": 37970
+    },
+    {
+      "name": "busan.profile.json",
+      "schema": 1,
+      "sha256": "e53b539982eb37dfe2c7badb0d0df9ac7bc33210b1e67e48ac67ae118e286ebf",
+      "size": 212
+    }
+  ],
+  "maxAppVersionCode": null,
+  "minAppVersionCode": 1,
+  "schema": 1,
+  "sha256": "93d2484e279fea321956d196fcc6df9f39219b0ff487eaee171ee1b484ccedd6",
+  "size": 12041,
+  "url": "https://droidactor.github.io/data/metro/busan/busan-2.zip",
+  "validUntil": null
+}

@@ -7,3 +7,6 @@
 # 로컬 확인용 정적 서버 부산물
 .DS_Store
 Thumbs.db
+
+# Public, signed Metro data archives are deployment assets.
+!/data/metro/*/*.zip
