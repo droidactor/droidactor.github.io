@@ -30,7 +30,7 @@
       "url": "https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/",
       "mainEntityOfPage": "https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/",
       "datePublished": "2026-08-26",
-      "dateModified": "2026-09-16",
+      "dateModified": "2026-10-31",
       "inLanguage": "en",
       "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
       "author": { "@id": "https://droidactor.github.io/#publisher" },
@@ -61,7 +61,7 @@
   <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>WezTerm sessions</nav>
   <div class="hero">
     <h1>WezTerm 3: Sessions That Outlive Windows</h1>
-    <p class="post-meta"><time datetime="2026-08-26">26 August 2026</time></p>
+    <p class="post-meta"><time datetime="2026-08-26">26 August 2026</time> · Updated <time datetime="2026-10-31">31 October 2026</time></p>
   </div>
 
   <article class="post-body">
@@ -110,6 +110,10 @@ leader(&quot;e&quot;, act.DetachDomain(&quot;CurrentPaneDomain&quot;))  -- detac
     <h2>Summary</h2>
     <p>Separate the window from the program and a build carries on after you close the window. The split layout comes back too. The config is one line and getting in and out is two shortcuts. One of the points where I said tmux was still ahead in part 1 disappears with this.</p>
     <p>Add the line and press <code>Ctrl+U</code> then <code>a</code>. Splitting the screen, detaching and coming back takes five minutes.</p>
+
+    <h2>Attachment</h2>
+    <p><a href="/assets/downloads/wezterm.lua" download=".wezterm.lua">Download .wezterm.lua</a></p>
+    <p>This is the complete configuration I currently use. Save it as <code>.wezterm.lua</code> in your home folder. Back up any existing configuration first, and adjust the Git Bash and MSYS paths, fonts and shell list for your PC. This file is newer than the examples above, so some shortcuts differ. In the attached file, press <code>Ctrl+U</code> then <code>s</code> to attach to the session, or <code>Ctrl+U</code> then <code>.</code> to see all shortcuts.</p>
 
   </article>
 

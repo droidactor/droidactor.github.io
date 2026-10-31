@@ -30,7 +30,7 @@
       "url": "https://droidactor.github.io/ko/blog/techs/wezterm-unix-domain-persistence/",
       "mainEntityOfPage": "https://droidactor.github.io/ko/blog/techs/wezterm-unix-domain-persistence/",
       "datePublished": "2026-08-26",
-      "dateModified": "2026-09-16",
+      "dateModified": "2026-10-31",
       "inLanguage": "ko",
       "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
       "author": { "@id": "https://droidactor.github.io/#publisher" },
@@ -61,7 +61,7 @@
   <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>WezTerm 세션 유지</nav>
   <div class="hero">
     <h1>WezTerm 사용법 3편 - 창을 닫아도 살아 있는 세션</h1>
-    <p class="post-meta"><time datetime="2026-08-26">2026년 8월 26일</time></p>
+    <p class="post-meta"><time datetime="2026-08-26">2026년 8월 26일</time> · 수정 <time datetime="2026-10-31">2026년 10월 31일</time></p>
   </div>
 
   <article class="post-body">
@@ -110,6 +110,10 @@ leader(&quot;e&quot;, act.DetachDomain(&quot;CurrentPaneDomain&quot;))  -- 세�
     <h2>정리</h2>
     <p>창과 프로그램을 떼어 놓으면 창을 닫아도 빌드가 이어지고, 나눠 둔 화면 구성 그대로 다시 불러옵니다. 설정은 한 줄이고, 드나드는 것은 단축키 둘입니다. 1편에서 tmux 쪽이 낫다고 꼽았던 지점 하나가 이걸로 사라집니다.</p>
     <p>한 줄을 넣고 <code>Ctrl+U</code> 다음 <code>a</code> 를 눌러 보십시오. 화면을 나눈 다음 빠져나왔다 다시 들어오는 데까지 5분이면 됩니다.</p>
+
+    <h2>첨부</h2>
+    <p><a href="/assets/downloads/wezterm.lua" download=".wezterm.lua">.wezterm.lua 다운로드</a></p>
+    <p>현재 제가 사용하는 전체 설정 파일입니다. 내려받은 파일을 홈 폴더에 <code>.wezterm.lua</code>라는 이름으로 저장하세요. 기존 설정이 있다면 먼저 백업하고, Git Bash·MSYS 경로와 글꼴·셸 목록은 본인 PC에 맞게 조정하세요. 본문의 예제보다 최신 설정이므로 단축키가 다를 수 있습니다. 현재 파일에서 세션 접속은 <code>Ctrl+U</code> 다음 <code>s</code>이고, <code>Ctrl+U</code> 다음 <code>.</code>으로 전체 단축키를 확인할 수 있습니다.</p>
 
   </article>
 

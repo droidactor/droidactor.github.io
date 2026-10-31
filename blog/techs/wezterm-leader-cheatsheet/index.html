@@ -30,7 +30,7 @@
       "url": "https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/",
       "mainEntityOfPage": "https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/",
       "datePublished": "2026-08-25",
-      "dateModified": "2026-09-16",
+      "dateModified": "2026-10-31",
       "inLanguage": "en",
       "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
       "author": { "@id": "https://droidactor.github.io/#publisher" },
@@ -61,7 +61,7 @@
   <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>WezTerm shortcuts</nav>
   <div class="hero">
     <h1>WezTerm 2: Twenty Leader Shortcuts</h1>
-    <p class="post-meta"><time datetime="2026-08-25">25 August 2026</time></p>
+    <p class="post-meta"><time datetime="2026-08-25">25 August 2026</time> · Updated <time datetime="2026-10-31">31 October 2026</time></p>
   </div>
 
   <article class="post-body">
@@ -120,6 +120,10 @@ if not id or id == &quot;&quot; then return end</code></pre>
     <h2>Summary</h2>
     <p>Put key, description and action in one table and the bindings and the help read the same source. Pin <code>InputSelector</code> to <code>fuzzy = true</code> and build the list once at load time. Leave commands you rarely use to the command palette rather than the leader.</p>
     <p>Is your key list from part 1 already past ten lines? Move those lines into a three-column table and bind <code>LEADER + .</code>.</p>
+
+    <h2>Attachment</h2>
+    <p><a href="/assets/downloads/wezterm.lua" download=".wezterm.lua">Download .wezterm.lua</a></p>
+    <p>This is the complete configuration I currently use. Save it as <code>.wezterm.lua</code> in your home folder. Back up any existing configuration first, and adjust the Git Bash and MSYS paths, fonts and shell list for your PC. This file is newer than the examples above, so some shortcuts differ. In the attached file, press <code>Ctrl+U</code> then <code>s</code> to attach to the session, or <code>Ctrl+U</code> then <code>.</code> to see all shortcuts.</p>
 
   </article>
 
