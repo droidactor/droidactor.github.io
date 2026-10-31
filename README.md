@@ -207,7 +207,9 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
       `assets/shots/seoulmetro/{ko-KR,en-US}/`(ko 05 는 한국어 화면에 한글 카드가 없어 시간표), 앱 허브 카드 샷 2장을 넣었다.
       제품 페이지 한·영은 실제 앱에 맞게 고쳤다 — 화면 12개 언어, 역명 언어 선택(한국어·영어·내 언어), 첫차·막차와
       다음 열차·경로 막차, 자료 없는 환승 10분 가산, 검색 결과의 '보기' 버튼 제거. 홈 2곳의 배지는 앞선 `89022ef` 에서 끝났다.
-      **남은 것**: 제품 페이지 `Screens`/`화면` 절과 JSON-LD `screenshot`, 새 URL 2개 색인 요청.
+      새 URL 2개는 22:44 KST 에 색인 요청(대기열 추가 확인)했다. 같은 날 공개 v6 에 공식 요금 조회가 들어간 것을 확인해
+      "요금은 제공하지 않는다" 문장을 제품 페이지·홍보글에서 뺐다(기능 보완 중이라 요금은 소개하지 않는다).
+      **남은 것**: 제품 페이지 `Screens`/`화면` 절과 JSON-LD `screenshot`.
 - [x] **hannum 한·영 제품 홍보글 배포·색인 요청 (2026-10-30).** `8377b56`으로
       `/blog/products/learn-korean-numbers/`·`/ko/blog/products/learn-korean-numbers/`와 배너·네이버용 축소본을 게시했다.
       공개 HTTP200 확인 후 Google Search Console에서 두 신규 URL만 각각1회 요청했고,
