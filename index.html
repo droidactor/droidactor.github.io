@@ -103,7 +103,8 @@
         {"@type": "ListItem", "position": 18, "name": "Dotori Seoul Metro", "url": "https://droidactor.github.io/apps/seoulmetro/"},
         {"@type": "ListItem", "position": 19, "name": "Dotori Busan Metro", "url": "https://droidactor.github.io/apps/busanmetro/"},
         {"@type": "ListItem", "position": 20, "name": "Dotori Daegu Metro", "url": "https://droidactor.github.io/apps/daegumetro/"},
-        {"@type": "ListItem", "position": 21, "name": "Dotori Gwangju Metro", "url": "https://droidactor.github.io/apps/gwangjumetro/"}
+        {"@type": "ListItem", "position": 21, "name": "Dotori Gwangju Metro", "url": "https://droidactor.github.io/apps/gwangjumetro/"},
+        {"@type": "ListItem", "position": 22, "name": "Dotori Tokyo Metro", "url": "https://droidactor.github.io/apps/tokyometro/"}
       ]
     }
   ]
@@ -371,6 +372,12 @@
         <p class="desc">Explore Gwangju Metro Line 1. Search station names and use the map offline.</p><div class="foot"><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.gwangjumetro&amp;hl=en"><img src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a><a href="/apps/gwangjumetro/">Details</a><a href="/#privacy-gwangjumetro">Privacy</a></div>
       </article>
 
+      <article class="card">
+        <div class="icon" aria-hidden="true"><img src="/assets/icons/tokyometro.png" width="48" height="48" alt="" decoding="async"></div>
+        <h3><a href="/apps/tokyometro/">Dotori Tokyo Metro</a></h3><p class="pkg">com.droidactor.tokyometro</p>
+        <p class="desc">Explore 13 Tokyo subway lines, search multilingual station names and plan offline diagram routes.</p><div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/tokyometro/">Details</a><a href="/#privacy-tokyometro">Privacy</a></div>
+      </article>
+
     </div>
   </section>
 
@@ -494,6 +501,8 @@
           </tr>
         </thead>
         <tbody>
+<tr><td><code>ACCESS_COARSE_LOCATION</code><br><code>ACCESS_FINE_LOCATION</code></td><td><a href="#privacy-tokyometro">Dotori Tokyo Metro</a></td><td>Optional foreground nearest-station lookup, performed on the device. Only Toei stations with known coordinates are covered. No background location.</td></tr>
+
           <tr>
             <td><code>BLUETOOTH_CONNECT</code><br><code>BLUETOOTH_ADVERTISE</code></td>
             <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a></td>
@@ -1013,6 +1022,31 @@
       <p>With your permission, the app checks device location once at startup or when you select Current location to find a nearby station. Approximate location works too. Coordinates are processed on your device and are not sent to a developer server or included in advertising requests. If permission or a location fix is unavailable, the map starts at Banwoldang. There is no background location tracking.</p><p>The app uses a Google AdMob banner and UMP privacy choices. Google may collect and share IP-derived approximate location, app interactions, diagnostics and device identifiers for advertising, analytics and fraud prevention. Available privacy choices can be reopened in Settings. Clearing app data does not delete information already held by Google. <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK</a></p>
       <p><a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/apps/daegumetro/">Dotori Daegu Metro</a></p>
     </div>
+
+    <div class="policy" id="privacy-tokyometro">
+<h3>Dotori Tokyo Metro<span class="pkg-inline">com.droidactor.tokyometro</span></h3>
+<p>Effective date: 31 October 2026. Developer: droidactor. Package: com.droidactor.tokyometro.</p>
+<h4>Map and station information</h4>
+<p>Dotori Tokyo Metro displays a bundled subway map and searches bundled station names on your device. Search text, departure and arrival selections, selected stations, selected lines and label choices are processed locally. The app does not send these contents to a developer-operated server or include them in advertising requests. It has no account, cloud travel history, journey tracking or separate analytics service.</p>
+<h4>Location</h4>
+<p>Location access is optional. The app asks for Android&#x27;s precise or approximate location permission so that it can move the map to the station nearest to you. Only foreground location is used; the app does not request background location.</p>
+<p>When permission is granted, the app asks Android&#x27;s location service (provided through Google Play services) for your current position once each time the app starts, and again only when you tap Current location. It compares that position with the station coordinates bundled in the app to choose the nearest station, then moves the map there. Your coordinates are used for that moment only: the app does not store them, does not send them to a developer-operated server and does not include them in advertising requests. Android and Google Play services handle location according to your device settings and Google&#x27;s own policies.</p>
+<p>If you deny permission, turn off location services or no position is available, the map opens at Daimon Station and all other features keep working. You can change the permission at any time in Android&#x27;s app settings.</p>
+<p>The app does not request camera, microphone, contacts or broad storage access.</p>
+<h4>Local data</h4>
+<p>Map, search, diagram-journey and display state are held on the device. Language and label preferences are saved locally. The app keeps a local record of whether it has already asked for location permission; it does not keep a location history. The current map interface has no saved search-history service. Advertising components may keep consent information and operational data locally. Clearing app storage or uninstalling removes this app&#x27;s local data. Android automatic cloud backup is disabled; device-to-device transfer may still depend on the device manufacturer and system settings.</p>
+<h4>Advertising and privacy choices</h4>
+<p>Network access supports advertising, privacy messages and Google Play app updates; opening an advertisement or a policy link uses the selected external service. AdMob may collect and share IP-derived approximate location, app interactions, diagnostics and device identifiers for advertising, analytics and fraud prevention. Google documents TLS protection for these transmissions. These SDK practices are separate from the on-device nearest-station lookup, whose coordinates are never passed to the advertising SDK. See <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure" rel="noopener">Google&#x27;s SDK disclosure</a>.</p>
+<p>Google UMP manages privacy choices where applicable. Available choices can be reopened through Privacy choices in Settings. Android&#x27;s advertising settings also provide advertising-ID controls. These controls do not promise to stop every kind of advertising data processing. A promotional banner may link to another Dotori app when selected. No interstitial or rewarded ads are planned for this release.</p>
+<h4>Retention, deletion and contact</h4>
+<p>There is no developer account database to delete. Clearing local app data does not delete data already handled by Google. Google&#x27;s retention and account controls are described in its <a href="https://policies.google.com/privacy" rel="noopener">Privacy Policy</a>. We do not promise a fixed retention period or automatic deletion of data held by the advertising provider.</p>
+<p>Deletion information: https://droidactor.github.io/#data-deletion. Questions about this app or policy: droidactor@gmail.com. This utility is not specifically designed for children. Updates to this policy will be published at the app-specific URL above with a revised effective date.</p>
+<h4>App updates</h4>
+<p>The app checks for new app versions through Google Play and downloads an update after you accept it. Google Play runs its own processes and may use device metadata, the app version, and the list of installed modules and asset packs to determine update availability and size. Google documents encrypted transmission, no transfer to third parties, and deletion after a fixed retention period. The app does not attach your personal content to update requests. See <a href="https://developer.android.com/guide/playcore/in-app-updates#data-safety" rel="noopener">Google Play update data disclosures</a>.</p>
+<h4>Map data updates</h4>
+<p>The app includes the nine Tokyo Metro and four Toei subway lines, station search and diagram journeys. It has no remote map-data endpoint. Map data changes are delivered through app updates. No ODPT developer credentials are included in the app. Optional nearest-station lookup is limited to the Toei stations whose geographic coordinates are bundled; schematic map positions are not geographic coordinates.</p>
+<p><a href="/apps/tokyometro/">Dotori Tokyo Metro</a></p>
+</div>
 
     <div class="policy" id="privacy-gwangjumetro">
       <h3>Dotori Gwangju Metro<span class="pkg-inline">com.droidactor.gwangjumetro</span></h3>
