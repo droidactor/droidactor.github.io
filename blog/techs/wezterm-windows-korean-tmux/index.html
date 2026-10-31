@@ -74,12 +74,12 @@
       <p>A free app I built myself. Give it a try.</p>
     </div>
 
-    <p>I settled all of this with WezTerm. One configuration file (<code>.wezterm.lua</code>) in your home folder is the whole setup. That file behaves identically on Windows, macOS and Linux. Below is the configuration I actually use, broken into pieces. Copy them in order and you will have my environment.</p>
+    <p>I settled all of this with WezTerm. One configuration file (<a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>.wezterm.lua</code></a>) in your home folder is the whole setup. That file behaves identically on Windows, macOS and Linux. Below is the configuration I actually use, broken into pieces. Copy them in order and you will have my environment.</p>
 
     <h2>Installing and the configuration file</h2>
     <p>On Windows, download the installer from the <a href="https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe">WezTerm releases page</a> or use winget.</p>
     <pre><code>winget install wez.wezterm</code></pre>
-    <p>Create the configuration file in your home folder as <code>.wezterm.lua</code>. That is usually <code>C:\Users\&lt;name&gt;\.wezterm.lua</code>. The beginning and end of the file always look like this.</p>
+    <p>Create the configuration file in your home folder as <a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>.wezterm.lua</code></a>. That is usually <code>C:\Users\&lt;name&gt;\.wezterm.lua</code>. The beginning and end of the file always look like this.</p>
     <pre><code>local wezterm = require(&quot;wezterm&quot;)
 local act = wezterm.action
 local config = wezterm.config_builder()
@@ -307,13 +307,13 @@ config.window_close_confirmation = &quot;NeverPrompt&quot;</code></pre>
       <li>The config is Lua, so you write behaviour directly, and it applies the moment you save</li>
       <li>The same single file behaves identically on Windows, macOS and Linux</li>
     </ul>
-    <p>That last line matters more than it looks. I keep <code>.wezterm.lua</code> in a dotfiles repository. Setting up a new PC means installing with winget and copying that one file into my home folder. Years of hand-tuned key layout, colours and shell list come back in five minutes.</p>
+    <p>That last line matters more than it looks. I keep <a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>.wezterm.lua</code></a> in a dotfiles repository. Setting up a new PC means installing with winget and copying that one file into my home folder. Years of hand-tuned key layout, colours and shell list come back in five minutes.</p>
     <p>Program: WezTerm (wezterm.org)</p>
-    <p>Configuration file: a single <code>.wezterm.lua</code> in your home folder</p>
+    <p>Configuration file: a single <a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>.wezterm.lua</code></a> in your home folder</p>
 
     <h2>Attachment</h2>
     <p><a href="/assets/downloads/wezterm.lua" download=".wezterm.lua">Download .wezterm.lua</a></p>
-    <p>This is the complete configuration I currently use. Save it as <code>.wezterm.lua</code> in your home folder. Back up any existing configuration first, and adjust the Git Bash and MSYS paths, fonts and shell list for your PC. This file is newer than the examples above, so some shortcuts differ. In the attached file, press <code>Ctrl+U</code> then <code>s</code> to attach to the session, or <code>Ctrl+U</code> then <code>.</code> to see all shortcuts.</p>
+    <p>This is the complete configuration I currently use. Save it as <a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>.wezterm.lua</code></a> in your home folder. Back up any existing configuration first, and adjust the Git Bash and MSYS paths, fonts and shell list for your PC. This file is newer than the examples above, so some shortcuts differ. In the attached file, press <code>Ctrl+U</code> then <code>s</code> to attach to the session, or <code>Ctrl+U</code> then <code>.</code> to see all shortcuts.</p>
 
   </article>
 

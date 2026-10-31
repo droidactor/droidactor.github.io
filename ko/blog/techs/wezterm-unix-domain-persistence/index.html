@@ -88,7 +88,7 @@
     <p>1편에서 tmux 는 자기가 도는 리눅스 안쪽 세계에 갇힌다고 적었습니다. 여기서 작업을 붙들어 두는 서버는 Windows 프로그램이라 그 제약이 없습니다. 칸마다 Git Bash 를 띄우든 PowerShell 로 닷넷 빌드를 돌리든 똑같이 살아남습니다.</p>
 
     <h2>설정 한 줄과 단축키 둘</h2>
-    <p><code>~/.wezterm.lua</code> 에 세션을 정의하는 줄을 하나 넣습니다. <code>mux</code> 는 제가 붙인 이름이라 원하는 대로 바꿔도 됩니다.</p>
+    <p><a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>~/.wezterm.lua</code></a> 에 세션을 정의하는 줄을 하나 넣습니다. <code>mux</code> 는 제가 붙인 이름이라 원하는 대로 바꿔도 됩니다.</p>
     <pre><code>config.unix_domains = { { name = &quot;mux&quot; } }</code></pre>
     <p>이 줄만으로는 아무것도 달라지지 않습니다. WezTerm 은 평소처럼 평범한 창으로 열리고, 세션에 들어갈지는 그때그때 고릅니다. 그래서 드나드는 단축키를 하나씩 답니다. 1편에서 만든 <code>leader</code> 함수를 그대로 씁니다.</p>
     <pre><code>leader(&quot;a&quot;, act.AttachDomain(&quot;mux&quot;))            -- 세션에 붙기
@@ -113,7 +113,7 @@ leader(&quot;e&quot;, act.DetachDomain(&quot;CurrentPaneDomain&quot;))  -- 세�
 
     <h2>첨부</h2>
     <p><a href="/assets/downloads/wezterm.lua" download=".wezterm.lua">.wezterm.lua 다운로드</a></p>
-    <p>현재 제가 사용하는 전체 설정 파일입니다. 내려받은 파일을 홈 폴더에 <code>.wezterm.lua</code>라는 이름으로 저장하세요. 기존 설정이 있다면 먼저 백업하고, Git Bash·MSYS 경로와 글꼴·셸 목록은 본인 PC에 맞게 조정하세요. 본문의 예제보다 최신 설정이므로 단축키가 다를 수 있습니다. 현재 파일에서 세션 접속은 <code>Ctrl+U</code> 다음 <code>s</code>이고, <code>Ctrl+U</code> 다음 <code>.</code>으로 전체 단축키를 확인할 수 있습니다.</p>
+    <p>현재 제가 사용하는 전체 설정 파일입니다. 내려받은 파일을 홈 폴더에 <a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>.wezterm.lua</code></a>라는 이름으로 저장하세요. 기존 설정이 있다면 먼저 백업하고, Git Bash·MSYS 경로와 글꼴·셸 목록은 본인 PC에 맞게 조정하세요. 본문의 예제보다 최신 설정이므로 단축키가 다를 수 있습니다. 현재 파일에서 세션 접속은 <code>Ctrl+U</code> 다음 <code>s</code>이고, <code>Ctrl+U</code> 다음 <code>.</code>으로 전체 단축키를 확인할 수 있습니다.</p>
 
   </article>
 

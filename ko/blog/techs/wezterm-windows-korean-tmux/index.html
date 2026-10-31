@@ -74,12 +74,12 @@
       <p>제가 만든 무료 앱입니다. 많이 써 주세요.</p>
     </div>
 
-    <p>저는 이 문제를 WezTerm으로 정리했습니다. 설정 파일 하나(<code>.wezterm.lua</code>)만 홈에 두면 끝이고, 그 파일은 Windows, 맥, 리눅스에서 똑같이 돕니다. 아래는 제가 실제로 쓰고 있는 설정을 조각 단위로 풀어 쓴 것입니다. 순서대로 복사해 넣으시면 제 환경과 같아집니다.</p>
+    <p>저는 이 문제를 WezTerm으로 정리했습니다. 설정 파일 하나(<a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>.wezterm.lua</code></a>)만 홈에 두면 끝이고, 그 파일은 Windows, 맥, 리눅스에서 똑같이 돕니다. 아래는 제가 실제로 쓰고 있는 설정을 조각 단위로 풀어 쓴 것입니다. 순서대로 복사해 넣으시면 제 환경과 같아집니다.</p>
 
     <h2>설치와 설정 파일</h2>
     <p>설치는 windows 의 경우 https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe 에서 다운받거나 다음 winget 명령을 사용할 수 있습니다.</p>
     <pre><code>winget install wez.wezterm</code></pre>
-    <p>설정 파일은 홈 폴더에 <code>.wezterm.lua</code> 라는 이름으로 만듭니다. 보통은 <code>C:\Users\사용자이름\.wezterm.lua</code> 입니다. 파일의 처음과 끝은 늘 이 모양입니다.</p>
+    <p>설정 파일은 홈 폴더에 <a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>.wezterm.lua</code></a> 라는 이름으로 만듭니다. 보통은 <code>C:\Users\사용자이름\.wezterm.lua</code> 입니다. 파일의 처음과 끝은 늘 이 모양입니다.</p>
     <pre><code>local wezterm = require(&quot;wezterm&quot;)
 local act = wezterm.action
 local config = wezterm.config_builder()
@@ -305,13 +305,13 @@ config.window_close_confirmation = &quot;NeverPrompt&quot;</code></pre>
       <li>설정 파일이 Lua라서 동작을 직접 쓸 수 있고, 저장하면 즉시 반영됩니다</li>
       <li>같은 파일 하나가 Windows, 맥, 리눅스에서 똑같이 돕니다</li>
     </ul>
-    <p>마지막 줄이 의외로 큽니다. 저는 <code>.wezterm.lua</code>를 dotfiles 저장소에 넣어 두고, 새 PC를 셋업할 때 winget으로 설치한 다음 그 파일 하나만 홈에 복사합니다. 그러면 몇 년간 손으로 다듬은 키 배치와 색과 셸 목록이 5분 만에 돌아옵니다.</p>
+    <p>마지막 줄이 의외로 큽니다. 저는 <a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>.wezterm.lua</code></a>를 dotfiles 저장소에 넣어 두고, 새 PC를 셋업할 때 winget으로 설치한 다음 그 파일 하나만 홈에 복사합니다. 그러면 몇 년간 손으로 다듬은 키 배치와 색과 셸 목록이 5분 만에 돌아옵니다.</p>
     <p>프로그램: WezTerm (wezterm.org)</p>
-    <p>설정 파일: 홈 폴더의 <code>.wezterm.lua</code> 하나</p>
+    <p>설정 파일: 홈 폴더의 <a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>.wezterm.lua</code></a> 하나</p>
 
     <h2>첨부</h2>
     <p><a href="/assets/downloads/wezterm.lua" download=".wezterm.lua">.wezterm.lua 다운로드</a></p>
-    <p>현재 제가 사용하는 전체 설정 파일입니다. 내려받은 파일을 홈 폴더에 <code>.wezterm.lua</code>라는 이름으로 저장하세요. 기존 설정이 있다면 먼저 백업하고, Git Bash·MSYS 경로와 글꼴·셸 목록은 본인 PC에 맞게 조정하세요. 본문의 예제보다 최신 설정이므로 단축키가 다를 수 있습니다. 현재 파일에서 세션 접속은 <code>Ctrl+U</code> 다음 <code>s</code>이고, <code>Ctrl+U</code> 다음 <code>.</code>으로 전체 단축키를 확인할 수 있습니다.</p>
+    <p>현재 제가 사용하는 전체 설정 파일입니다. 내려받은 파일을 홈 폴더에 <a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>.wezterm.lua</code></a>라는 이름으로 저장하세요. 기존 설정이 있다면 먼저 백업하고, Git Bash·MSYS 경로와 글꼴·셸 목록은 본인 PC에 맞게 조정하세요. 본문의 예제보다 최신 설정이므로 단축키가 다를 수 있습니다. 현재 파일에서 세션 접속은 <code>Ctrl+U</code> 다음 <code>s</code>이고, <code>Ctrl+U</code> 다음 <code>.</code>으로 전체 단축키를 확인할 수 있습니다.</p>
 
   </article>
 

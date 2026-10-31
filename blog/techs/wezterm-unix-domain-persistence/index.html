@@ -88,7 +88,7 @@
     <p>In part 1 I wrote that tmux is confined to the Linux world it runs inside. The server holding the work here is a Windows program, so that limit does not apply. Run Git Bash in one pane or a .NET build under PowerShell in another and both survive the same way.</p>
 
     <h2>One line of config and two shortcuts</h2>
-    <p>Add one line to <code>~/.wezterm.lua</code> that defines a session. <code>mux</code> is a name I chose, so use whatever you like.</p>
+    <p>Add one line to <a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>~/.wezterm.lua</code></a> that defines a session. <code>mux</code> is a name I chose, so use whatever you like.</p>
     <pre><code>config.unix_domains = { { name = &quot;mux&quot; } }</code></pre>
     <p>That line alone changes nothing. WezTerm still opens as an ordinary window, and whether you enter the session is decided each time. So give it one shortcut in and one out. The <code>leader</code> helper from part 1 is used as is.</p>
     <pre><code>leader(&quot;a&quot;, act.AttachDomain(&quot;mux&quot;))                -- attach to the session
@@ -113,7 +113,7 @@ leader(&quot;e&quot;, act.DetachDomain(&quot;CurrentPaneDomain&quot;))  -- detac
 
     <h2>Attachment</h2>
     <p><a href="/assets/downloads/wezterm.lua" download=".wezterm.lua">Download .wezterm.lua</a></p>
-    <p>This is the complete configuration I currently use. Save it as <code>.wezterm.lua</code> in your home folder. Back up any existing configuration first, and adjust the Git Bash and MSYS paths, fonts and shell list for your PC. This file is newer than the examples above, so some shortcuts differ. In the attached file, press <code>Ctrl+U</code> then <code>s</code> to attach to the session, or <code>Ctrl+U</code> then <code>.</code> to see all shortcuts.</p>
+    <p>This is the complete configuration I currently use. Save it as <a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>.wezterm.lua</code></a> in your home folder. Back up any existing configuration first, and adjust the Git Bash and MSYS paths, fonts and shell list for your PC. This file is newer than the examples above, so some shortcuts differ. In the attached file, press <code>Ctrl+U</code> then <code>s</code> to attach to the session, or <code>Ctrl+U</code> then <code>.</code> to see all shortcuts.</p>
 
   </article>
 
