@@ -202,6 +202,12 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
 
 ## 남은 일
 
+- [x] **seoulmetro 출시 후 홍보 자료 게시 (2026-10-31).** 한·영 제품 홍보글 `/blog/products/seoul-subway-map-app/`·
+      `/ko/blog/products/seoul-subway-map-app/`, 블로그 배너 `assets/banner/{,en/}seoulmetro.webp`, 1.0.0+6 화면으로 다시 찍은
+      `assets/shots/seoulmetro/{ko-KR,en-US}/`(ko 05 는 한국어 화면에 한글 카드가 없어 시간표), 앱 허브 카드 샷 2장을 넣었다.
+      제품 페이지 한·영은 실제 앱에 맞게 고쳤다 — 화면 12개 언어, 역명 언어 선택(한국어·영어·내 언어), 첫차·막차와
+      다음 열차·경로 막차, 자료 없는 환승 10분 가산, 검색 결과의 '보기' 버튼 제거. 홈 2곳의 배지는 앞선 `89022ef` 에서 끝났다.
+      **남은 것**: 제품 페이지 `Screens`/`화면` 절과 JSON-LD `screenshot`, 새 URL 2개 색인 요청.
 - [x] **hannum 한·영 제품 홍보글 배포·색인 요청 (2026-10-30).** `8377b56`으로
       `/blog/products/learn-korean-numbers/`·`/ko/blog/products/learn-korean-numbers/`와 배너·네이버용 축소본을 게시했다.
       공개 HTTP200 확인 후 Google Search Console에서 두 신규 URL만 각각1회 요청했고,

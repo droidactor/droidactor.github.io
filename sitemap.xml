@@ -619,6 +619,25 @@
   </url>
 
   <url>
+    <loc>https://droidactor.github.io/blog/products/seoul-subway-map-app/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/seoul-subway-map-app/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/seoul-subway-map-app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/seoul-subway-map-app/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/products/seoul-subway-map-app/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/seoul-subway-map-app/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/seoul-subway-map-app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/seoul-subway-map-app/"/>
+  </url>
+
+  <url>
     <loc>https://droidactor.github.io/blog/products/morse-code-decoder-app/</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
