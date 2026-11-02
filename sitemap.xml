@@ -2071,4 +2071,16 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/tokyometro/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/tokyometro/"/>
   </url>
+  <url>
+    <loc>https://droidactor.github.io/apps/gps/</loc><lastmod>2026-11-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/gps/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/gps/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/gps/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/apps/gps/</loc><lastmod>2026-11-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/gps/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/gps/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/gps/"/>
+  </url>
 </urlset>
