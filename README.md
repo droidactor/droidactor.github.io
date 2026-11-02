@@ -15,6 +15,8 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 
 `hangul` 홍보글은 11개 언어다. 기존 `/blog/products/learn-hangul-app/`·`/ko/blog/products/learn-hangul-app/`를
 유지하고, `ja`·`zh-Hant`·`vi`·`es`·`fr`·`de`·`it`·`pt-BR`·`hi` 접두 경로에 같은 slug의 글과 `/blog/` 목록을 둔다.
+`seoulmetro` 홍보글(`seoul-subway-map-app`)도 2026-11-02 에 같은 11개 언어가 됐다. 번역 원고 날짜는 2026-11-02 이고,
+새 언어 스크린샷은 `assets/shots/seoulmetro/{es-ES,fr-FR,de-DE,it-IT,pt-BR,vi,hi-IN}/` 의 01·03·05 다(ja-JP·zh-TW 는 기존 그림).
 각 페이지의 본문·목록·접근성 안내는 해당 언어이며, 언어 선택·자기 canonical·상호 hreflang·사이트맵은 실제로 존재하는
 번역 전체를 가리킨다. QR과 설치 URL은 소개 다음, 본문 첫 절 앞에 둔다. QR은 모든 언어에서 `hl` 없는 공통 주소다.
 
