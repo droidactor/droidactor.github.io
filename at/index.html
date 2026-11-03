@@ -18,8 +18,8 @@
   Location share page for Dotori GPS (com.droidactor.gps).
   Link format (never change, links are permanent): /at/#1,<lat>,<lng>[,<encoded name>]
   The data after '#' stays in the browser and is never sent to the server.
-  No external requests, no analytics. Button URIs were verified on Android Chrome and the
-  KakaoTalk in-app browser (2026-11-03). Spec: mobile repo apps/gps/docs/gps-app-design.md §3-3.
+  No external requests, no analytics. Button URIs were verified on Android Chrome, Samsung Internet
+  and the KakaoTalk in-app browser (2026-11-03). Spec: mobile repo apps/gps/docs/gps-app-design.md §3-3.
 -->
 <style>
   :root { --bg: #ffffff; --fg: #1b1b1b; --muted: #666; --card: #f3f3f3; --line: #d0d0d0; --accent: #2f6fde; }
@@ -32,23 +32,34 @@
   main { max-width: 480px; margin: 0 auto; padding: 24px 16px 32px; }
   h1 { font-size: 22px; margin: 0 0 6px; word-break: break-word; }
   .coords { color: var(--muted); font-size: 15px; margin: 0 0 20px; font-variant-numeric: tabular-nums; }
-  .btn { display: block; width: 100%; padding: 14px 16px; margin: 0 0 10px; border: 1px solid var(--line);
-         border-radius: 12px; background: var(--card); color: var(--fg); font: inherit; font-size: 16px;
-         text-align: left; text-decoration: none; cursor: pointer; }
+  .brand { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; }
+  .promo { margin: 0 0 20px; padding: 0 0 14px; border-bottom: 1px solid var(--line); color: var(--muted);
+           font-size: 12px; line-height: 1.5; }
+  .brand .app { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; color: var(--fg);
+                text-decoration: none; }
+  .brand .app img { width: 36px; height: 36px; border-radius: 8px; flex: none; }
+  .brand .app span { display: flex; flex-direction: column; min-width: 0; }
+  .brand .app b { font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .brand .app small { font-size: 12px; color: var(--muted); }
+  .brand .play img { display: block; width: auto; height: 40px; }
+  @media (max-width: 360px) { .brand .play img { height: 32px; } }
+  .btn { display: flex; align-items: center; gap: 12px; width: 100%; padding: 12px 16px; margin: 0 0 10px;
+         border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--fg);
+         font: inherit; font-size: 16px; text-align: left; text-decoration: none; cursor: pointer; }
   .btn:active { opacity: .7; }
+  .btn img, .btn svg { width: 28px; height: 28px; border-radius: 6px; flex: none; }
   .note { color: var(--muted); font-size: 14px; min-height: 20px; margin: 4px 0 0; }
-  footer { margin-top: 28px; font-size: 13px; color: var(--muted); }
-  footer a { color: var(--accent); }
 </style>
 </head>
 <body>
 <main>
+  <header class="brand" id="brand"></header>
+  <p class="promo" id="promo"></p>
   <h1 id="title"></h1>
   <p class="coords" id="coords"></p>
   <div id="buttons"></div>
   <p class="note" id="note" aria-live="polite"></p>
   <noscript><p>JavaScript is required. · JavaScript가 필요합니다.</p></noscript>
-  <footer id="footer"></footer>
 </main>
 <script>
 (function () {
@@ -57,19 +68,61 @@
   var T = KO ? {
     shared: '공유된 위치', invalid: '잘못된 링크입니다.', copy: '좌표 복사', copied: '좌표를 복사했습니다.',
     kakao: '카카오맵에서 열기', naver: '네이버 지도에서 열기', tmapRoute: '티맵 길안내', tmapView: '티맵 지도에서 보기',
-    google: 'Google 지도에서 열기', footer: '도토리 GPS 기록기로 공유됨', product: '/ko/apps/gps/'
+    google: 'Google 지도에서 열기', appName: '도토리 GPS 기록기', sharedBy: '이 위치를 공유한 앱', product: '/ko/apps/gps/',
+    download: 'Google Play에서 다운로드',
+    promo: '이 페이지는 도토리 GPS 기록기의 위치 공유로 만들어졌습니다.',
+    install: '내 위치를 이렇게 보내려면 Android 앱을 설치해 보세요.'
   } : {
     shared: 'Shared location', invalid: 'This link is not valid.', copy: 'Copy coordinates', copied: 'Coordinates copied.',
     kakao: 'Open in KakaoMap', naver: 'Open in Naver Map', tmapRoute: 'Directions in TMAP', tmapView: 'View in TMAP',
-    google: 'Open in Google Maps', footer: 'Shared with Dotori GPS Tracker', product: '/apps/gps/'
+    google: 'Open in Google Maps', appName: 'Dotori GPS Tracker', sharedBy: 'Shared this location', product: '/apps/gps/',
+    download: 'Get it on Google Play',
+    promo: 'This page was made with location sharing in Dotori GPS Tracker.',
+    install: 'To send places like this, install the Android app.'
   };
   document.documentElement.lang = KO ? 'ko' : 'en';
 
-  var footer = document.getElementById('footer');
+  var ua = navigator.userAgent || '';
+  var android = /Android/i.test(ua);
+  var ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+
+  function icon(src) {
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = '';
+    return img;
+  }
+
+  // Top bar: the app that shared this link, and where to get it.
+  var brand = document.getElementById('brand');
   var link = document.createElement('a');
+  link.className = 'app';
   link.href = T.product;
-  link.textContent = T.footer;
-  footer.appendChild(link);
+  link.appendChild(icon('/assets/icons/gps.png'));
+  var appText = document.createElement('span');
+  var appName = document.createElement('b');
+  appName.textContent = T.appName;
+  var appNote = document.createElement('small');
+  appNote.textContent = T.sharedBy;
+  appText.appendChild(appName);
+  appText.appendChild(appNote);
+  link.appendChild(appText);
+  brand.appendChild(link);
+  // iOS cannot install the Android app, so the install hint is dropped there.
+  document.getElementById('promo').textContent = ios ? T.promo : T.promo + ' ' + T.install;
+  // Android-only app: no download badge on iOS. Same badge files and URL form as the product pages.
+  if (!ios) {
+    var play = document.createElement('a');
+    play.className = 'play';
+    play.href = 'https://play.google.com/store/apps/details?id=com.droidactor.gps&hl=' + (KO ? 'ko' : 'en');
+    var badge = document.createElement('img');
+    badge.src = '/assets/google-play-badge-' + (KO ? 'ko' : 'en') + '.png';
+    badge.width = 646;
+    badge.height = 250;
+    badge.alt = T.download;
+    play.appendChild(badge);
+    brand.appendChild(play);
+  }
 
   // Opening another shared link in a reused tab only changes the hash (no reload) — redraw from scratch.
   window.addEventListener('hashchange', function () { location.reload(); });
@@ -99,9 +152,6 @@
   title.textContent = label;
   document.getElementById('coords').textContent = p.lat + ', ' + p.lng;
 
-  var ua = navigator.userAgent || '';
-  var android = /Android/i.test(ua);
-  var ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
   var e = encodeURIComponent, name = e(label), c = p.lat + ',' + p.lng;
   var kakaoWeb = 'https://map.kakao.com/link/map/' + name + ',' + c;
   var googleWeb = 'https://www.google.com/maps/search/?api=1&query=' + c;
@@ -117,15 +167,23 @@
     return fallback || null;
   }
 
-  var kakao = [T.kakao, app('look?p=' + c, 'kakaomap', 'net.daum.android.map', kakaoWeb)];
+  // Icons are the apps' public Google Play listing icons (same files as the app's map menu, except Naver).
+  var I = '/assets/icons/maps/';
+  var kakao = [T.kakao, app('look?p=' + c, 'kakaomap', 'net.daum.android.map', kakaoWeb), I + 'kakao.png'];
   var naver = [T.naver, app('place?lat=' + p.lat + '&lng=' + p.lng + '&name=' + name + '&appname=com.droidactor.gps',
-    'nmap', 'com.nhn.android.nmap', null)];
+    'nmap', 'com.nhn.android.nmap', null), I + 'naver.png'];
   var tmapRoute = [T.tmapRoute, app('route?goalname=' + name + '&goalx=' + p.lng + '&goaly=' + p.lat,
-    'tmap', 'com.skt.tmap.ku', null)];
+    'tmap', 'com.skt.tmap.ku', null), I + 'tmap.png'];
   var tmapView = [T.tmapView, app('viewmap?x=' + p.lng + '&y=' + p.lat + '&name=' + name,
-    'tmap', 'com.skt.tmap.ku', null)];
-  var google = [T.google, googleWeb];
+    'tmap', 'com.skt.tmap.ku', null), I + 'tmap.png'];
+  var google = [T.google, googleWeb, I + 'google.jpg'];
   var order = KO ? [kakao, naver, tmapRoute, tmapView, google] : [google, kakao, naver, tmapRoute, tmapView];
+
+  function addText(el, text) {
+    var s = document.createElement('span');
+    s.textContent = text;
+    el.appendChild(s);
+  }
 
   var box = document.getElementById('buttons');
   order.forEach(function (b) {
@@ -133,7 +191,8 @@
     var a = document.createElement('a');
     a.className = 'btn';
     a.href = b[1];
-    a.textContent = b[0];
+    a.appendChild(icon(b[2]));
+    addText(a, b[0]);
     box.appendChild(a);
   });
 
@@ -141,7 +200,9 @@
   var copy = document.createElement('button');
   copy.type = 'button';
   copy.className = 'btn';
-  copy.textContent = T.copy;
+  // Material "content_copy" outline, drawn in the text color.
+  copy.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></svg>';
+  addText(copy, T.copy);
   copy.addEventListener('click', function () {
     var text = p.lat + ', ' + p.lng;
     function done() { note.textContent = T.copied; }
