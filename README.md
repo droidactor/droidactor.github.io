@@ -72,6 +72,9 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 /blog/_post-template.html  글 템플릿 — noindex · sitemap 제외. 페이지가 아니다
 /hermes-secretary/      개인 비서 Hermes Secretary 의 Google OAuth 동의 화면 등록용 홈페이지 + privacy.html
                         (처리방침, 한국어는 #ko). Android 앱이 아니다 — 앱 허브·sitemap 제외, noindex
+/at/                    공유된 위치 열기 — Dotori GPS 공유 링크(`#1,<위도>,<경도>[,<이름>]`)를 받아 지도 앱 버튼을 보인다.
+                        한 파일·외부 요청 없음·noindex·sitemap 제외. 링크 형식은 영구 약속이라 바꾸지 않는다
+                        (정본: mobile 저장소 `apps/gps/docs/gps-app-design.md` §3-3)
 /assets/site.css        전 페이지 공용 스타일
 /assets/shots/<앱>/<로케일>/  앱 허브·제품 페이지 공용 800px WebP 축소본. 발행 자산이 아니라 파생물이다
 /404.html               없는 주소 → 양 언어 홈으로 안내 (GitHub Pages 가 도메인 전역에 사용)

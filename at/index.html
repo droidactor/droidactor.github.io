@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="dark light">
+<link rel="icon" href="data:,">
+<title>Shared location · 공유된 위치</title>
+<meta name="description" content="Open a shared location in KakaoMap, Naver Map, TMAP or Google Maps.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shared location · 공유된 위치">
+<meta property="og:description" content="Open in KakaoMap, Naver Map, TMAP or Google Maps · 카카오맵·네이버 지도·티맵·Google 지도에서 열기">
+<meta property="og:url" content="https://droidactor.github.io/at/">
+<meta property="og:image" content="https://droidactor.github.io/assets/icons/gps.png">
+<!--
+  Location share page for Dotori GPS (com.droidactor.gps).
+  Link format (never change, links are permanent): /at/#1,<lat>,<lng>[,<encoded name>]
+  The data after '#' stays in the browser and is never sent to the server.
+  No external requests, no analytics. Button URIs were verified on Android Chrome and the
+  KakaoTalk in-app browser (2026-11-03). Spec: mobile repo apps/gps/docs/gps-app-design.md §3-3.
+-->
+<style>
+  :root { --bg: #ffffff; --fg: #1b1b1b; --muted: #666; --card: #f3f3f3; --line: #d0d0d0; --accent: #2f6fde; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #121212; --fg: #ececec; --muted: #a0a0a0; --card: #1f1f1f; --line: #3a3a3a; --accent: #8ab4ff; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif; }
+  main { max-width: 480px; margin: 0 auto; padding: 24px 16px 32px; }
+  h1 { font-size: 22px; margin: 0 0 6px; word-break: break-word; }
+  .coords { color: var(--muted); font-size: 15px; margin: 0 0 20px; font-variant-numeric: tabular-nums; }
+  .btn { display: block; width: 100%; padding: 14px 16px; margin: 0 0 10px; border: 1px solid var(--line);
+         border-radius: 12px; background: var(--card); color: var(--fg); font: inherit; font-size: 16px;
+         text-align: left; text-decoration: none; cursor: pointer; }
+  .btn:active { opacity: .7; }
+  .note { color: var(--muted); font-size: 14px; min-height: 20px; margin: 4px 0 0; }
+  footer { margin-top: 28px; font-size: 13px; color: var(--muted); }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1 id="title"></h1>
+  <p class="coords" id="coords"></p>
+  <div id="buttons"></div>
+  <p class="note" id="note" aria-live="polite"></p>
+  <noscript><p>JavaScript is required. · JavaScript가 필요합니다.</p></noscript>
+  <footer id="footer"></footer>
+</main>
+<script>
+(function () {
+  'use strict';
+  var KO = /^ko\b/i.test(navigator.language || '');
+  var T = KO ? {
+    shared: '공유된 위치', invalid: '잘못된 링크입니다.', copy: '좌표 복사', copied: '좌표를 복사했습니다.',
+    kakao: '카카오맵에서 열기', naver: '네이버 지도에서 열기', tmapRoute: '티맵 길안내', tmapView: '티맵 지도에서 보기',
+    google: 'Google 지도에서 열기', footer: '도토리 GPS 기록기로 공유됨', product: '/ko/apps/gps/'
+  } : {
+    shared: 'Shared location', invalid: 'This link is not valid.', copy: 'Copy coordinates', copied: 'Coordinates copied.',
+    kakao: 'Open in KakaoMap', naver: 'Open in Naver Map', tmapRoute: 'Directions in TMAP', tmapView: 'View in TMAP',
+    google: 'Open in Google Maps', footer: 'Shared with Dotori GPS Tracker', product: '/apps/gps/'
+  };
+  document.documentElement.lang = KO ? 'ko' : 'en';
+
+  var footer = document.getElementById('footer');
+  var link = document.createElement('a');
+  link.href = T.product;
+  link.textContent = T.footer;
+  footer.appendChild(link);
+
+  // Opening another shared link in a reused tab only changes the hash (no reload) — redraw from scratch.
+  window.addEventListener('hashchange', function () { location.reload(); });
+
+  // #1,<lat>,<lng>[,<encoded name>]. The app never leaves a raw '?' or '&' in the hash, so anything
+  // after one was appended by a relay (fbclid, utm_*) and is ignored.
+  function parse(hash) {
+    var f = hash.replace(/^#/, '').split(/[?&]/)[0].split(',');
+    if (f[0] !== '1' || f.length < 3) return null;
+    var num = /^-?\d{1,3}(\.\d+)?$/;
+    if (!num.test(f[1]) || !num.test(f[2])) return null;
+    var lat = Number(f[1]), lng = Number(f[2]);
+    if (Math.abs(lat) > 90 || Math.abs(lng) > 180) return null;
+    var name = '';
+    if (f.length > 3) { // a relay may have decoded %2C back to ',' — keep the rest as the name
+      try { name = decodeURIComponent(f.slice(3).join(',')).trim(); } catch (e) { name = ''; }
+    }
+    return { lat: lat.toFixed(6), lng: lng.toFixed(6), name: name };
+  }
+
+  var p = parse(location.hash);
+  var title = document.getElementById('title');
+  document.title = T.shared;
+  if (!p) { title.textContent = T.invalid; return; }
+
+  var label = p.name || T.shared;
+  title.textContent = label;
+  document.getElementById('coords').textContent = p.lat + ', ' + p.lng;
+
+  var ua = navigator.userAgent || '';
+  var android = /Android/i.test(ua);
+  var ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  var e = encodeURIComponent, name = e(label), c = p.lat + ',' + p.lng;
+  var kakaoWeb = 'https://map.kakao.com/link/map/' + name + ',' + c;
+  var googleWeb = 'https://www.google.com/maps/search/?api=1&query=' + c;
+
+  // Android: intent:// with package so a missing app falls back (web map or Play Store) instead of doing nothing.
+  function intent(path, scheme, pkg, fallback) {
+    return 'intent://' + path + '#Intent;scheme=' + scheme + ';package=' + pkg +
+      (fallback ? ';S.browser_fallback_url=' + e(fallback) : '') + ';end';
+  }
+  function app(path, scheme, pkg, fallback) {
+    if (android) return intent(path, scheme, pkg, fallback);
+    if (ios) return scheme + '://' + path;
+    return fallback || null;
+  }
+
+  var kakao = [T.kakao, app('look?p=' + c, 'kakaomap', 'net.daum.android.map', kakaoWeb)];
+  var naver = [T.naver, app('place?lat=' + p.lat + '&lng=' + p.lng + '&name=' + name + '&appname=com.droidactor.gps',
+    'nmap', 'com.nhn.android.nmap', null)];
+  var tmapRoute = [T.tmapRoute, app('route?goalname=' + name + '&goalx=' + p.lng + '&goaly=' + p.lat,
+    'tmap', 'com.skt.tmap.ku', null)];
+  var tmapView = [T.tmapView, app('viewmap?x=' + p.lng + '&y=' + p.lat + '&name=' + name,
+    'tmap', 'com.skt.tmap.ku', null)];
+  var google = [T.google, googleWeb];
+  var order = KO ? [kakao, naver, tmapRoute, tmapView, google] : [google, kakao, naver, tmapRoute, tmapView];
+
+  var box = document.getElementById('buttons');
+  order.forEach(function (b) {
+    if (!b[1]) return; // desktop: app-only maps have no web fallback
+    var a = document.createElement('a');
+    a.className = 'btn';
+    a.href = b[1];
+    a.textContent = b[0];
+    box.appendChild(a);
+  });
+
+  var note = document.getElementById('note');
+  var copy = document.createElement('button');
+  copy.type = 'button';
+  copy.className = 'btn';
+  copy.textContent = T.copy;
+  copy.addEventListener('click', function () {
+    var text = p.lat + ', ' + p.lng;
+    function done() { note.textContent = T.copied; }
+    function legacy() {
+      var t = document.createElement('textarea');
+      t.value = text;
+      t.setAttribute('readonly', '');
+      t.style.position = 'fixed';
+      t.style.opacity = '0';
+      document.body.appendChild(t);
+      t.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+      document.body.removeChild(t);
+      note.textContent = ok ? T.copied : text;
+    }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, legacy);
+    else legacy();
+  });
+  box.appendChild(copy);
+})();
+</script>
+</body>
+</html>
