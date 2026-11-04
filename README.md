@@ -124,7 +124,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | 개발자 웹사이트 | `https://droidactor.github.io/` |
 | 개인정보 처리방침 (영문) | `https://droidactor.github.io/#privacy` |
 | 개인정보 처리방침 (국문) | `https://droidactor.github.io/ko/#privacy` |
-| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` · `hangul` · `morse` · `hannum` · `seoulmetro` · `busanmetro` · `daegumetro` · `gwangjumetro` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
+| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` · `hangul` · `morse` · `hannum` · `seoulmetro` · `busanmetro` · `daegumetro` · `gwangjumetro` · `alarm` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
 | app-ads.txt 검증 | `https://droidactor.github.io/app-ads.txt` |
 
 **`#privacy-*` 앵커는 이름을 바꾸지도, 앵커를 지우지도 않는다.** 스토어 리스팅에 이미 등록된 주소다 —
@@ -626,3 +626,6 @@ AdMob 콘솔의 app-ads.txt 상태가 "확인됨" 으로 바뀌는 데 하루 �
   → 같은 날 저녁 스토어 `200` 을 확인해 출시 상태로 돌리고 허브 샷을 넣었다("남은 일" 4차 교체).
 
 2026-10-31 Tokyo Metro 출시 준비: 한·영 제품 페이지(`/apps/tokyometro/`, `/ko/apps/tokyometro/`)와 앱별 처리방침(`#privacy-tokyometro`)을 추가했다. 13개 노선의 지도·검색·노선도 경로를 제공하며 시간·운임·시간표는 제공하지 않는다. 가까운 역 찾기는 실제 좌표가 있는 도에이 역으로 제한된다. 공개 Play 200 확인 전까지 출시 준비 중 표시를 유지한다.
+
+
+- 2026-11-04: 도토리 알람 출시 준비. 한영 제품·홈·허브·개인정보처리방침 `#privacy-alarm`, 권한표, JSON-LD, 역방향 링크와 사이트맵을 추가했습니다. 공개 스토어 확인 전까지 Coming soon을 유지합니다.

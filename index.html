@@ -105,7 +105,8 @@
         {"@type": "ListItem", "position": 20, "name": "Dotori Daegu Metro", "url": "https://droidactor.github.io/apps/daegumetro/"},
         {"@type": "ListItem", "position": 21, "name": "Dotori Gwangju Metro", "url": "https://droidactor.github.io/apps/gwangjumetro/"},
         {"@type": "ListItem", "position": 22, "name": "Dotori Tokyo Metro", "url": "https://droidactor.github.io/apps/tokyometro/"},
-        {"@type": "ListItem", "position": 23, "name": "Dotori Korea Metro", "url": "https://droidactor.github.io/apps/koreametro/"}
+        {"@type": "ListItem", "position": 23, "name": "Dotori Korea Metro", "url": "https://droidactor.github.io/apps/koreametro/"},
+        {"@type": "ListItem", "position": 24, "name": "Dotori Alarm Clock", "url": "https://droidactor.github.io/apps/alarm/"}
       ]
     }
   ]
@@ -384,6 +385,11 @@
         <h3><a href="/apps/koreametro/">Dotori Korea Metro</a></h3><p class="pkg">com.droidactor.koreametro</p>
         <p class="desc">Choose the Seoul metropolitan area, Busan, Daegu or Gwangju in Settings. Keep maps, station search and routes together in one app.</p><div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/koreametro/">Details</a><a href="/#privacy-koreametro">Privacy</a></div>
       </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true"><img src="/assets/icons/alarm.png" width="48" height="48" alt="" decoding="async"></div>
+        <h3><a href="/apps/alarm/">Dotori Alarm Clock</a></h3><p class="pkg">com.droidactor.alarm</p>
+        <p class="desc">Set custom ring duration, snooze interval, progressive snooze shrink and snooze limit. Preview the first ring and upcoming snoozes before saving.</p><div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/alarm/">Details</a><a href="/#privacy-alarm">Privacy</a></div>
+      </article>
 
     </div>
   </section>
@@ -404,7 +410,7 @@
   <section id="privacy">
     <h2>Privacy policy</h2>
     <p class="lead">
-      Effective date: 3 November 2026 · Developer: droidactor (individual developer) ·
+      Effective date: 4 November 2026 · Developer: droidactor (individual developer) ·
       Contact: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> ·
       Applies to every app listed in section 7 below.
       <br><a href="/ko/#privacy" hreflang="ko" lang="ko">한국어 개인정보 처리방침</a>
@@ -549,7 +555,7 @@
           </tr>
           <tr>
             <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code></td>
-            <td>All, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a>, <a href="#privacy-namecard"><span class="dotori">Dotori</span> Business Card Scanner</a>, <a href="#privacy-idphoto"><span class="dotori">Dotori</span> ID Photo Maker</a> and <a href="#privacy-hangul"><span class="dotori">Dotori</span> Learn Hangul</a> · <a href="#privacy-hannum"><span class="dotori">Dotori</span> Learn Korean Numbers</a> · <a href="#privacy-seoulmetro"><span class="dotori">Dotori</span> Seoul Metro</a>. These apps get these declarations through the advertising library. · <a href="#privacy-koreametro">Dotori Korea Metro</a></td>
+            <td>All, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a>, <a href="#privacy-namecard"><span class="dotori">Dotori</span> Business Card Scanner</a>, <a href="#privacy-idphoto"><span class="dotori">Dotori</span> ID Photo Maker</a> and <a href="#privacy-hangul"><span class="dotori">Dotori</span> Learn Hangul</a> · <a href="#privacy-hannum"><span class="dotori">Dotori</span> Learn Korean Numbers</a> · <a href="#privacy-seoulmetro"><span class="dotori">Dotori</span> Seoul Metro</a>. These apps get these declarations through the advertising library. · <a href="#privacy-koreametro">Dotori Korea Metro</a> · <a href="#privacy-alarm">Dotori Alarm Clock</a></td>
             <td>To reach the devices or sources you asked for, and to fetch ads. The HID
               remotes send your input over Bluetooth, not over the internet. <a href="#privacy-currency"><span class="dotori">Dotori</span> Currency
               Converter</a> fetches the daily exchange-rate table, and the amounts you type are not
@@ -564,7 +570,7 @@
           <tr>
             <td><code>FOREGROUND_SERVICE</code></td>
             <td>All ad-supported apps, plus YouTube Downloader</td>
-            <td>Used to keep a HID session or download running while you use another app. Ad-supported apps also merge this declaration through the advertising SDK’s WorkManager dependency; the declaration alone does not mean that a service runs continuously.</td>
+            <td>Used to keep a HID session, alarm or download running while you use another app. Ad-supported apps also merge this declaration through the advertising SDK’s WorkManager dependency; the declaration alone does not mean that a service runs continuously.</td>
           </tr>
           <tr>
             <td><code>FOREGROUND_SERVICE_CONNECTED_DEVICE</code></td>
@@ -572,15 +578,20 @@
             <td>Declares the foreground service type used to maintain a HID session with a connected host.</td>
           </tr>
           <tr>
+            <td><code>USE_EXACT_ALARM</code><br><code>SCHEDULE_EXACT_ALARM</code><br><code>USE_FULL_SCREEN_INTENT</code><br><code>FOREGROUND_SERVICE_SYSTEM_EXEMPTED</code><br><code>RECEIVE_BOOT_COMPLETED</code></td>
+            <td><a href="#privacy-alarm"><span class="dotori">Dotori</span> Alarm Clock</a></td>
+            <td>To schedule exact alarm triggers, show the full-screen ringing interface over the lock screen, run the active ringing foreground service when an alarm fires, and restore enabled alarms after a device reboot or app update.</td>
+          </tr>
+          <tr>
             <td><code>POST_NOTIFICATIONS</code></td>
-            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a><br><span class="dotori">Dotori</span> YouTube Downloader</td>
-            <td>To show the notification that accompanies a running HID session or download. Only
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a><br><span class="dotori">Dotori</span> YouTube Downloader · <a href="#privacy-alarm">Dotori Alarm Clock</a></td>
+            <td>To show the notification that accompanies a running HID session, active or snoozed alarm, or download. Only
               the apps listed declare it, and we send no promotional notifications.</td>
           </tr>
           <tr>
             <td><code>VIBRATE</code></td>
-            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> LG TV Remote<br><a href="#privacy-roman"><span class="dotori">Dotori</span> Roman Numerals</a><br><a href="#privacy-currency"><span class="dotori">Dotori</span> Currency Converter</a><br><a href="#privacy-unit"><span class="dotori">Dotori</span> Unit Converter</a></td>
-            <td>To provide the short key-press vibration when you enable haptic feedback. This
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> LG TV Remote<br><a href="#privacy-roman"><span class="dotori">Dotori</span> Roman Numerals</a><br><a href="#privacy-currency"><span class="dotori">Dotori</span> Currency Converter</a><br><a href="#privacy-unit"><span class="dotori">Dotori</span> Unit Converter</a> · <a href="#privacy-alarm">Dotori Alarm Clock</a></td>
+            <td>To provide the short key-press vibration when you enable haptic feedback, or vibration while an alarm rings. This
               normal permission does not expose vibration or input history.</td>
           </tr>
           <tr>
@@ -601,7 +612,7 @@
           </tr>
           <tr>
             <td><code>AD_ID</code></td>
-            <td>Every ad-supported app, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a>, <a href="#privacy-namecard"><span class="dotori">Dotori</span> Business Card Scanner</a>, <a href="#privacy-idphoto"><span class="dotori">Dotori</span> ID Photo Maker</a> and <a href="#privacy-hangul"><span class="dotori">Dotori</span> Learn Hangul</a> · <a href="#privacy-hannum"><span class="dotori">Dotori</span> Learn Korean Numbers</a> · <a href="#privacy-seoulmetro"><span class="dotori">Dotori</span> Seoul Metro</a> (not <span class="dotori">Dotori</span> YouTube Downloader) · <a href="#privacy-koreametro">Dotori Korea Metro</a></td>
+            <td>Every ad-supported app, including <a href="#privacy-receipt"><span class="dotori">Dotori</span> Receipt Scanner</a>, <a href="#privacy-namecard"><span class="dotori">Dotori</span> Business Card Scanner</a>, <a href="#privacy-idphoto"><span class="dotori">Dotori</span> ID Photo Maker</a> and <a href="#privacy-hangul"><span class="dotori">Dotori</span> Learn Hangul</a> · <a href="#privacy-hannum"><span class="dotori">Dotori</span> Learn Korean Numbers</a> · <a href="#privacy-seoulmetro"><span class="dotori">Dotori</span> Seoul Metro</a> (not <span class="dotori">Dotori</span> YouTube Downloader) · <a href="#privacy-koreametro">Dotori Korea Metro</a> · <a href="#privacy-alarm">Dotori Alarm Clock</a></td>
             <td>Ad delivery and measurement by the Google Mobile Ads SDK
               (<code>com.google.android.gms.permission.AD_ID</code>). The SDK declares this itself through
               manifest merging, so it is present in the installed app even where an app's own manifest does
@@ -615,7 +626,7 @@
           <tr>
             <td><code>WAKE_LOCK</code></td>
             <td>All ad-supported apps (not YouTube Downloader)</td>
-            <td>Declared by the advertising SDK’s background-work dependencies to support their scheduled work; no permission to read app content.</td>
+            <td>Declared by the advertising SDK’s background-work dependencies to support their scheduled work; no permission to read app content. Dotori Alarm Clock also keeps the CPU awake while an alarm rings to maintain sound and vibration.</td>
           </tr>
           <tr>
             <td><code>&lt;package&gt;.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code></td>
@@ -1083,6 +1094,15 @@
       <p>When you request an online fare or facility lookup, the relevant station name or station identifier is sent over HTTPS to the official data provider used by that region. Coverage differs by region and line. The first version uses bundled datasets and is not configured to download remote data packs. External links open only when you choose them.</p>
       <p>The app uses a Google AdMob banner and UMP privacy choices. Google may collect and share IP-derived approximate location, app interactions, diagnostics and device identifiers for advertising, analytics and fraud prevention. Search text, selected routes, favorites and device coordinates are not passed to the advertising API. Available privacy choices can be reopened in Settings. Clearing app data does not delete information already held by Google. <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK disclosure</a></p>
       <p><a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/apps/koreametro/">Dotori Korea Metro</a></p>
+    </div>
+
+    <div class="policy" id="privacy-alarm">
+      <h3>Dotori Alarm Clock<span class="pkg-inline">com.droidactor.alarm</span></h3>
+      <p>Effective date: 4 November 2026. Dotori Alarm Clock schedules and rings alarms locally on your device. Alarm schedules, labels, ring duration, snooze interval, progressive snooze shrink, snooze limit, default settings, active/snoozed session state, and recent alarm completion results (up to 50 entries: dismissed, missed, cancelled or replaced) are stored in app-private storage on your device (including Direct Boot device-protected storage for reboot recovery). There is no account, sign-in, developer-operated server or separate analytics service. Alarm schedules, labels and completion results are never sent to a developer server or included in advertising requests.</p>
+      <p>When you choose a custom audio file for an alarm sound, you pick it through the Android system document picker (Storage Access Framework). The app holds a read-only URI permission for the file you selected and does not request broad storage or media library permissions. If the custom sound file cannot be played when an alarm fires (or before first unlock after reboot), the app falls back to the built-in default alarm tone. Android automatic cloud backup and device-to-device transfer are disabled.</p>
+      <p>The app uses exact alarm scheduling (<code>USE_EXACT_ALARM</code> / <code>SCHEDULE_EXACT_ALARM</code>), full-screen alarm notifications (<code>USE_FULL_SCREEN_INTENT</code>), a foreground ringing service (<code>FOREGROUND_SERVICE</code> / <code>FOREGROUND_SERVICE_SYSTEM_EXEMPTED</code>), boot recovery (<code>RECEIVE_BOOT_COMPLETED</code>), notifications (<code>POST_NOTIFICATIONS</code>), vibration (<code>VIBRATE</code>) and wake lock (<code>WAKE_LOCK</code>) to trigger alarms, show the lock-screen dismiss/snooze controls, and restore enabled alarms after a reboot or app update. It does not request location, camera, microphone or contacts permissions.</p>
+      <p>The app displays a Google AdMob banner on the main alarm list screen only (never on the ringing, snooze-waiting or dismiss screens) and uses Google UMP for applicable privacy choices. Google Mobile Ads may collect and share IP-derived approximate location, app interactions, diagnostics and device identifiers for advertising, analytics and fraud prevention (<a href="https://developers.google.com/admob/android/privacy/play-data-disclosure" rel="noopener">Google SDK disclosure</a>). Available privacy choices can be reopened in Settings when ads are enabled. A house promo card may open another Dotori product page when selected. The app also supports Google Play in-app updates (<a href="https://developer.android.com/guide/playcore/in-app-updates#data-safety" rel="noopener">Play update disclosures</a>). Clearing app storage or uninstalling removes local alarm data on the device.</p>
+      <p><a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/apps/alarm/">Dotori Alarm Clock</a></p>
     </div>
 
     <div class="policy" id="privacy-seoulmetro">
