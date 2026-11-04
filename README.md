@@ -209,6 +209,9 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
 
 ## 남은 일
 
+- [x] **도쿄 지하철(`tokyometro`) 출시 후 홍보 (2026-11-04).** 공개 Play `200`, 프로덕션5를 확인하고 홈·제품 한/영 배지와 허브 출시 상태·화면을 갱신했다. 현재 운임 조회·도쿄메트로/도에이 좌표 기반 가까운 역·신주쿠 기본역 및 기기 내 최근 기록/즐겨찾기에 맞춰 제품 설명·처리방침을 보완했다. QR·배너·현재 한/영 스크린샷·제품 홍보글 쌍(`tokyo-subway-map-app`)은 `db5d415`로 배포했고 공개 URL을 확인했다. 원고는 `blogger` 저장소의 2026-11-04 한/영 제품 글이 정본이며 네이버·Blogger·Medium도 발행했다.
+- [x] **도쿄 지하철 새 홍보글 Google 색인 요청 2건 (2026-11-04 11:08 KST).** `/ko/blog/products/tokyo-subway-map-app/`, `/blog/products/tokyo-subway-map-app/` 각 URL을 검사한 뒤 `색인 생성 요청됨`·우선순위 크롤링 대기열 추가 대화상자를 확인했다. 기존 제품 URL은 재요청하지 않았다. 보고서 최종 업데이트는 2026-10-23(색인116·미색인25)이므로 이번 요청 결과를 반영하지 않는다. 크롤·색인 완료는 아직 확인하지 않았다.
+
 - [x] **seoulmetro 출시 후 홍보 자료 게시 (2026-10-31).** 한·영 제품 홍보글 `/blog/products/seoul-subway-map-app/`·
       `/ko/blog/products/seoul-subway-map-app/`, 블로그 배너 `assets/banner/{,en/}seoulmetro.webp`, 1.0.0+6 화면으로 다시 찍은
       `assets/shots/seoulmetro/{ko-KR,en-US}/`(ko 05 는 한국어 화면에 한글 카드가 없어 시간표), 앱 허브 카드 샷 2장을 넣었다.
