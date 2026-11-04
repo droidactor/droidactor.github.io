@@ -3,6 +3,17 @@
 Developer site for the droidactor Android apps — app listing, per-app product pages, bilingual user
 manuals and tech notes, support contact, privacy policy, and the host for `app-ads.txt`.
 
+## Metro 빌드 데이터 보관
+
+`data/metro/<city>/`는 앱 다운로드와 원본 캐시 없는 재빌드를 위한 최종 데이터팩을 보관한다.
+`<city>-<version>.zip`·`<city>-<version>.manifest.json`·`<city>-<version>.manifest.json.sig`를 함께
+Git으로 관리하며 기존 버전의 바이트를 덮어쓰지 않는다. Mobile의 `make -C apps/metro data-archive`가
+현재 고정 해시를 검증해 여기에 추가하며 커밋·push는 수행하지 않는다. 서명 개인키와 수집 원본은 보관하지 않는다.
+
+`manifest.json`·`manifest.json.sig`는 앱이 확인하는 현재 버전 포인터다. 빌드용 버전을 보관하는 것만으로
+이 포인터를 바꾸지 않는다. Mobile 빌드는 로컬 checkout의 고정 버전을 우선 사용하고, 없으면 같은 버전별
+공개 URL에서 받으므로 다른 PC에서 쓰려면 보관 파일도 사이트 저장소에 커밋·게시해야 한다.
+
 `https://droidactor.github.io/` 로 게시되는 GitHub Pages 사이트다. Play Console · App Store Connect 에
 **개발자 웹사이트**로 등록하는 주소이며, AdMob 의 `app-ads.txt` 크롤러가 읽는 도메인 루트도 여기다.
 

@@ -1,0 +1,28 @@
+{
+  "city": "gwangju",
+  "contentSha256": "bbcb0b7ec8f5c43ce41672adec6adf3417114a866661643052416f82e91c6e8c",
+  "dataDate": null,
+  "dataVersion": 8,
+  "effectiveFrom": null,
+  "files": [
+    {
+      "name": "gwangju.map.json",
+      "schema": 3,
+      "sha256": "e404f5e715b5661ac51448d001a2fc80fb7856c2ac79c30769fe4fc80edfa8ca",
+      "size": 5052
+    },
+    {
+      "name": "gwangju.profile.json",
+      "schema": 1,
+      "sha256": "0e89b85659c51b2c742d66af072699111512cc7e75336ae975d1ab04351c8f62",
+      "size": 216
+    }
+  ],
+  "maxAppVersionCode": null,
+  "minAppVersionCode": 5,
+  "schema": 1,
+  "sha256": "270e0040a41ac6c351b8eefc06cc0df6fdec6d9082bbd0ccc0210207d7f50a8e",
+  "size": 2465,
+  "url": "https://droidactor.github.io/data/metro/gwangju/gwangju-8.zip",
+  "validUntil": null
+}

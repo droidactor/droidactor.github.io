@@ -1,0 +1,40 @@
+{
+  "city": "tokyo",
+  "contentSha256": "7bf719ea0ac1abc1d6d736c27ec2f7637388a1a2295e3978ee4263a3ec76f5dc",
+  "dataDate": "2026-10-31",
+  "dataVersion": 8,
+  "effectiveFrom": null,
+  "files": [
+    {
+      "name": "jp.holidays.json",
+      "schema": 1,
+      "sha256": "52e7bbd24688c7bb53227bc41af7fd4aa20589e8085ebedd313a9940339e7788",
+      "size": 1025
+    },
+    {
+      "name": "tokyo.first-last.json",
+      "schema": 2,
+      "sha256": "e361a6ffce6959855f7e515b506e7020801a959a1e3646167e87c191576a3e3e",
+      "size": 147436
+    },
+    {
+      "name": "tokyo.map.json",
+      "schema": 3,
+      "sha256": "ff7e348374d78295bb3c33340ddc8beb0065adfaa301deb13e66c964c748e6a9",
+      "size": 315521
+    },
+    {
+      "name": "tokyo.profile.json",
+      "schema": 1,
+      "sha256": "7be4719f74e2caec8c8802fb63a392e1a3872da78effe20631f3868facfc718b",
+      "size": 1377
+    }
+  ],
+  "maxAppVersionCode": null,
+  "minAppVersionCode": 1,
+  "schema": 1,
+  "sha256": "c48bcc3b4795802e92d54bcfbca5883cc15614467eb9c79ba02342baf5f79d1d",
+  "size": 42570,
+  "url": "https://droidactor.github.io/data/metro/tokyo/tokyo-8.zip",
+  "validUntil": null
+}
