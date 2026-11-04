@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WezTerm Shortcuts: Remember One Menu Key — droidactor</title>
+<meta name="description" content="Press Ctrl+U, then period, to search and run your configured shortcuts. Learn the keys you use often and look up the rest inside WezTerm.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/wezterm-shortcut-menu/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-shortcut-menu/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/wezterm-shortcut-menu/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/wezterm-shortcut-menu/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/wezterm-shortcut-menu/">
+<meta property="og:title" content="WezTerm Shortcuts: Remember One Menu Key">
+<meta property="og:description" content="Press Ctrl+U, then period, to search and run your configured shortcuts. Learn the keys you use often and look up the rest inside WezTerm.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20261029-multilingual-posts">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "WezTerm Shortcuts: Remember One Menu Key",
+      "description": "Press Ctrl+U, then period, to search and run your configured shortcuts. Learn the keys you use often and look up the rest inside WezTerm.",
+      "url": "https://droidactor.github.io/blog/techs/wezterm-shortcut-menu/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/wezterm-shortcut-menu/",
+      "datePublished": "2026-11-04",
+      "dateModified": "2026-11-04",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "WezTerm Shortcut Menu", "item": "https://droidactor.github.io/blog/techs/wezterm-shortcut-menu/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/wezterm-shortcut-menu/" aria-current="page" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/wezterm-shortcut-menu/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>WezTerm Shortcut Menu</nav>
+  <div class="hero">
+    <h1>WezTerm Shortcuts: Remember One Menu Key</h1>
+    <p class="post-meta"><time datetime="2026-11-04">4 November 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="note">
+      <p><strong>In short.</strong> You want to split a terminal pane, but pause to remember which key splits it left and right. Detaching a pane into another window is even harder to recall when you rarely use it. Opening the configuration file each time interrupts the work you were doing.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_keyboard&amp;hl=en"><img src="/assets/banner/en/bt-keyboard.webp" width="800" height="200" loading="lazy" decoding="async" alt="Dotori Bluetooth Keyboard - Your phone as a keyboard for PC and TV"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+    <p>In my WezTerm configuration, <strong>Ctrl+U followed by period (.)</strong> opens a shortcut cheat sheet. It shows each key beside its description and lets you run the selected action. Learn the shortcuts you use regularly and look up the others when you need them.</p>
+
+    <h2>Remember how to open the menu</h2>
+    <p>A leader key is a prefix that tells WezTerm to wait for another key. Mine is <code>Ctrl+U</code>. Press Ctrl and U together, release them, then press period. This is a sequence, rather than a three-key combination held down at once.</p>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/techs/wezterm-shortcut-menu/assets/ko/leader-menu.png" width="2243" height="1079" loading="lazy" decoding="async" alt="The shortcut menu opened with Ctrl+U, then period"></figure>
+    </div>
+    <p>The screenshot shows my Korean menu. <a href="https://droidactor.github.io/blog/techs/wezterm-shortcut-menu/assets/ko/leader-menu.png">Open the full-size image</a> if the text looks small. The labels come from the configuration file. You can translate them and keep the same key assignments.</p>
+    <p>The menu lists new tabs, detached panes, splits, navigation and resizing. The key appears on the left and its description on the right. Selecting an entry also runs the action. You do not have to close the help screen and retype the shortcut.</p>
+    <p>This menu comes from <strong>my configuration</strong>. It is not a default WezTerm shortcut. Another configuration may use a different leader key or have no such menu. The downloadable file linked below contains this setup.</p>
+
+    <h2>Search for the action when you forget its key</h2>
+    <p>After opening the menu, type words from the description. In this Korean menu, <code>분할</code> finds the split actions. Those labels also contain the English terms <code>Width</code> and <code>Vertical</code>. Use the up and down arrows to choose an entry, then Enter to run it.</p>
+    <ol>
+      <li>Press <code>Ctrl+U</code> and release it.</li>
+      <li>Press <code>.</code> to open the menu.</li>
+      <li>Type a word from the action's description.</li>
+      <li>Select the matching action with the arrow keys.</li>
+      <li>Press Enter to run it, or Esc to close the menu.</li>
+    </ol>
+    <p>Typing inside this menu filters the list. Seeing <code>w</code> beside a split action does not mean that pressing w there immediately runs it. Choose the row and press Enter. To use the shortcut directly, close the menu and press <code>Ctrl+U</code>, then <code>w</code>.</p>
+    <p>That gives you a way to learn the keys while working. Look up an action today, notice its shortcut, and try the shortcut next time. If you forget it again, the same menu is still available.</p>
+
+    <h2>Give the keys a meaning you can recall</h2>
+    <p>The descriptions include memory aids. <code>c</code> is Create for a new tab, and <code>d</code> is Detach for moving a pane to its own window. <code>a</code> is Attach for bringing another pane alongside the current one. <code>w</code> is Width for a left-right split, <code>v</code> is Vertical for a top-bottom split, and <code>z</code> is Zoom.</p>
+    <p>You do not need to memorize the whole list before using it. Start with the actions you keep looking up. The descriptions and keys stay together on screen. Each lookup gives you another chance to learn the association.</p>
+    <p>The first <code>(id)</code> row displays the current window, tab and pane identifiers. Select it and press Enter to copy them to the clipboard. Rows marked <code>(안내)</code>, meaning information, are reminders rather than executable menu entries. To switch tabs by number, close the menu. Then press the leader followed by the tab number.</p>
+    <p>My screenshot also includes Herdr integration. Labels saying <code>herdr 안이면 herdr로</code> mark actions forwarded to Herdr when running inside it. Otherwise, the ordinary WezTerm pane actions apply. Herdr-specific features require a separate installation and configuration.</p>
+
+    <h2>Keep the menu with the configuration</h2>
+    <p>The menu uses WezTerm's <code>InputSelector</code>. One list holds each key, its description and its action. Both the actual bindings and the help entries come from it. Editing them together helps keep the cheat sheet up to date.</p>
+    <p>You can inspect the <a href="/assets/downloads/wezterm.lua" download=".wezterm.lua">complete .wezterm.lua configuration</a>. Back up your existing configuration first. Review the shell paths and fonts for your PC before adopting it. The <a href="https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/">earlier article explains the implementation</a> if you want to build your own version.</p>
+    <p>For now, remember <code>Ctrl+U</code>, then <code>.</code>. Open the menu and use it to find one action you need.</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>
