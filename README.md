@@ -209,6 +209,8 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
 
 ## 남은 일
 
+- [ ] **알람 출시 후 홍보 자료 게시 (2026-11-04 준비).** 로그아웃 Play HTTP 200·앱 제목과 Console 프로덕션 `1 (1.0.0)` 활성·178개 국가/지역을 확인했습니다. 홈·제품 한영 Play 배지, 제품 상태표·상표 고지, 허브의 준비 중 표시 제거와 화면, 한영 스크린샷 8장·네이버용 절반 사본 3장, 공용 QR·배너, 한영 제품 홍보글(`alarm-snooze-schedule`) 및 목록·사이트맵을 로컬에 준비했습니다. 한영 제품·홍보글의 PC/모바일 표시와 이미지·JSON-LD·사이트맵 검수를 통과했습니다. **아직 커밋·push·외부 글 발행·색인 요청은 하지 않았습니다.** 원고는 `F:/Git/kwak/mobile/blogger/{ko,en}/products/2026-11-04-alarm-snooze-schedule.md`, 전체 상태는 Mobile alarm worktree의 `apps/alarm/play/README.md`가 정본입니다. 게시 후 새 홍보글 두 URL만 색인을 요청합니다.
+
 - [x] **GPS 출시 후 홍보 자료 게시 (2026-11-04).** 공개 Play `200`, 프로덕션 1.0.0+2·100%를 확인했습니다. 홈·제품 한영 공식 Play 배지와 앱 허브, 현재 검수 화면, 공용 QR·배너·한영 제품 홍보글(`save-places-record-routes`)을 `12189dd`로 배포했습니다. 공개 글 URL·QR 응답을 확인했고 네이버·Blogger·Medium 발행도 확인했습니다. 원고 정본은 `blogger` 저장소의 2026-11-04 한영 제품 글입니다.
 - [x] **GPS 최신 소스 화면 재촬영 (2026-11-04).** source HEAD `ff609b46`·GPS 소스 `a504f233`에서 release APK를 재빌드(157개 작업 모두 실행)하고 설치본 SHA-256 일치를 확인했습니다. 공공장소 합성 기록으로 한영 5장씩 다시 촬영해 `assets/shots/gps/`의 원본 10장과 네이버 half 3장을 교체했습니다. 빌드·촬영 출처는 Mobile의 `apps/gps/play/README.md`를 따릅니다.
 - [x] **GPS 새 홍보글 Google 색인 요청 2건 (2026-11-04).** `/blog/products/save-places-record-routes/`, `/ko/blog/products/save-places-record-routes/` 각각 URL 검사 후 `색인 생성 요청됨`·우선순위 크롤링 대기열 추가 문구를 확인했습니다. 기존 제품 URL은 재요청하지 않았으며 크롤·색인 완료는 아직 확인하지 않았습니다.
