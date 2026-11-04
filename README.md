@@ -124,7 +124,7 @@ manuals and tech notes, support contact, privacy policy, and the host for `app-a
 | 개발자 웹사이트 | `https://droidactor.github.io/` |
 | 개인정보 처리방침 (영문) | `https://droidactor.github.io/#privacy` |
 | 개인정보 처리방침 (국문) | `https://droidactor.github.io/ko/#privacy` |
-| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` · `hangul` · `morse` · `hannum` · `seoulmetro` · `busanmetro` · `daegumetro` · `gwangjumetro` · `alarm` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
+| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` · `hangul` · `morse` · `hannum` · `seoulmetro` · `busanmetro` · `daegumetro` · `gwangjumetro` · `tokyometro` · `gps` · `koreametro` · `alarm` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
 | app-ads.txt 검증 | `https://droidactor.github.io/app-ads.txt` |
 
 **`#privacy-*` 앵커는 이름을 바꾸지도, 앵커를 지우지도 않는다.** 스토어 리스팅에 이미 등록된 주소다 —
@@ -511,7 +511,7 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
   4. 제품 페이지의 매뉴얼 CTA와 해당 기술 글의 관련 글 링크가 양방향으로 살아 있는지 확인
   5. 스크린샷은 기존 블로그 자산을 참조한다. 발행된 자산 경로를 매뉴얼 때문에 이동하거나 복제하지 않는다
 - **앱 허브(`/apps/`·`/ko/apps/`)의 카드 스크린샷을 고치면** 다음을 지킨다.
-  1. 원본 정본은 `MyApps/Mobile/_screenshot/<앱>/<로케일>/` 이다. 사이트의 다른 샷과 같은 출처다
+  1. 원본은 `<Mobile-worktree>/../_screenshot/<앱>/<로케일>/`이다. 공용 루트의 실제 위치는 Mobile `CLAUDE.md`의 "스크린샷" 절을 따른다. 사이트의 다른 샷과 같은 출처다
   2. 허브는 **1080px 발행 PNG 를 직접 가리키지 않는다.** 카드에서 156~340px 폭으로 그려지는데
      발행본을 그대로 쓰면 페이지가 2.0MB 가 되고, 카드가 촘촘해 `loading="lazy"` 가 한 장도 미루지
      못한다(실측). 대신 `/assets/shots/<앱>/<로케일>/<이름>.webp` 를 쓴다 —
@@ -541,7 +541,7 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
      `twitter:card` 는 `summary` 로 둔다. 앱 샷은 1:2.17 이라 `summary_large_image` 에 넣으면 잘린다
   6. 제품 JSON-LD(`SoftwareApplication`)의 `screenshot` 배열도 그 페이지가 싣는 샷으로 함께 갱신한다
   7. `sitemap.xml` 의 해당 `<lastmod>` 갱신
-- **축소본을 만들거나 다시 만들 때**는 정본인 `MyApps/Mobile/_screenshot/<원본폴더>/<로케일>/` 에서 뽑는다.
+- **축소본을 만들거나 다시 만들 때**는 정본인 `<Mobile-worktree>/../_screenshot/<원본폴더>/<로케일>/`에서 뽑는다.
   `magick <src>.png -resize 800x -strip -quality 88 <dst>.webp` (가로 캡처만 `-resize 1200x`).
   허브와 제품 페이지가 이 한 벌을 공유하므로 같은 그림이 두 해상도로 갈리지 않는다. 이 명령의 정본은
   여기 한 곳이다 — 페이지 주석에 사본을 두지 않는다(720px 시절 사본이 갈린 적이 있다).
