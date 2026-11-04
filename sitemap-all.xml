@@ -9,7 +9,7 @@
 
   <url>
     <loc>https://droidactor.github.io/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/"/>
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/"/>
@@ -28,7 +28,7 @@
 
   <url>
     <loc>https://droidactor.github.io/apps/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/"/>
@@ -37,7 +37,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/apps/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/"/>
@@ -583,7 +583,7 @@
   -->
   <url>
     <loc>https://droidactor.github.io/blog/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
@@ -601,7 +601,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
@@ -616,6 +616,25 @@
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/products/tokyo-subway-map-app/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/tokyo-subway-map-app/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/tokyo-subway-map-app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/tokyo-subway-map-app/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/products/tokyo-subway-map-app/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/tokyo-subway-map-app/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/tokyo-subway-map-app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/tokyo-subway-map-app/"/>
   </url>
   <url>
     <loc>https://droidactor.github.io/ja/blog/</loc>
@@ -2060,13 +2079,13 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/gwangjumetro/"/>
   </url>
   <url>
-    <loc>https://droidactor.github.io/apps/tokyometro/</loc><lastmod>2026-11-03</lastmod>
+    <loc>https://droidactor.github.io/apps/tokyometro/</loc><lastmod>2026-11-04</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/tokyometro/"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/tokyometro/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/tokyometro/"/>
   </url>
   <url>
-    <loc>https://droidactor.github.io/ko/apps/tokyometro/</loc><lastmod>2026-11-03</lastmod>
+    <loc>https://droidactor.github.io/ko/apps/tokyometro/</loc><lastmod>2026-11-04</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/apps/tokyometro/"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/apps/tokyometro/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/apps/tokyometro/"/>
