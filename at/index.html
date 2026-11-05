@@ -8,10 +8,10 @@
 <meta name="color-scheme" content="dark light">
 <link rel="icon" href="data:,">
 <title>Shared location · 공유된 위치</title>
-<meta name="description" content="Open a shared location in KakaoMap, Naver Map, TMAP or Google Maps.">
+<meta name="description" content="Open a shared location in Google Maps, Apple Maps, KakaoMap, Naver Map or TMAP.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Shared location · 공유된 위치">
-<meta property="og:description" content="Open in KakaoMap, Naver Map, TMAP or Google Maps · 카카오맵·네이버 지도·티맵·Google 지도에서 열기">
+<meta property="og:description" content="Open in Google Maps, Apple Maps, KakaoMap, Naver Map or TMAP · Google 지도·Apple 지도·카카오맵·네이버 지도·티맵에서 열기">
 <meta property="og:url" content="https://droidactor.github.io/at/">
 <meta property="og:image" content="https://droidactor.github.io/assets/icons/gps.png">
 <!--
@@ -30,6 +30,11 @@
   body { margin: 0; background: var(--bg); color: var(--fg);
          font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif; }
   main { max-width: 480px; margin: 0 auto; padding: 24px 16px 32px; }
+  .languages { display: flex; justify-content: flex-end; gap: 4px; margin: 0 0 12px; }
+  .languages a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 12px;
+                 border-radius: 8px; color: var(--muted); font-size: 14px; text-underline-offset: 3px; }
+  .languages a[aria-current="page"] { background: var(--card); color: var(--fg); font-weight: 600; text-decoration: none; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   h1 { font-size: 22px; margin: 0 0 6px; word-break: break-word; }
   .coords { color: var(--muted); font-size: 15px; margin: 0 0 20px; font-variant-numeric: tabular-nums; }
   .brand { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; }
@@ -53,6 +58,10 @@
 </head>
 <body>
 <main>
+  <nav class="languages" aria-label="Language / 언어">
+    <a id="language-ko" lang="ko" hreflang="ko">한국어</a>
+    <a id="language-en" lang="en" hreflang="en">English</a>
+  </nav>
   <header class="brand" id="brand"></header>
   <p class="promo" id="promo"></p>
   <h1 id="title"></h1>
@@ -64,18 +73,36 @@
 <script>
 (function () {
   'use strict';
-  var KO = /^ko\b/i.test(navigator.language || '');
+  // A shared location stays language-neutral unless its recipient chooses a language.
+  // Promotional captures can use ?lang=en before the permanent #1,... location payload.
+  var languageKey = 'dotori-at-language';
+  function supportedLanguage(value) { return value === 'ko' || value === 'en' ? value : null; }
+  var savedLanguage = null;
+  try { savedLanguage = supportedLanguage(localStorage.getItem(languageKey)); } catch (err) { /* Storage can be blocked. */ }
+  var language = supportedLanguage(new URLSearchParams(location.search).get('lang')) || savedLanguage ||
+    (/^ko\b/i.test(navigator.language || '') ? 'ko' : 'en');
+  var KO = language === 'ko';
+  ['ko', 'en'].forEach(function (value) {
+    var choice = document.getElementById('language-' + value);
+    var url = new URL(location.href);
+    url.searchParams.set('lang', value);
+    choice.href = url.href; // Preserve coordinates, encoded names and relay parameters verbatim in the hash.
+    if (value === language) choice.setAttribute('aria-current', 'page');
+    choice.addEventListener('click', function () {
+      try { localStorage.setItem(languageKey, value); } catch (err) { /* The URL still carries the choice. */ }
+    });
+  });
   var T = KO ? {
     shared: '공유된 위치', invalid: '잘못된 링크입니다.', copy: '좌표 복사', copied: '좌표를 복사했습니다.',
     kakao: '카카오맵에서 열기', naver: '네이버 지도에서 열기', tmapRoute: '티맵 길안내', tmapView: '티맵 지도에서 보기',
-    google: 'Google 지도에서 열기', appName: '도토리 GPS 기록기', sharedBy: '이 위치를 공유한 앱', product: '/ko/apps/gps/',
+    google: 'Google 지도에서 열기', apple: 'Apple 지도에서 열기', appName: '도토리 GPS 기록기', sharedBy: '이 위치를 공유한 앱', product: '/ko/apps/gps/',
     download: 'Google Play에서 다운로드',
     promo: '이 페이지는 도토리 GPS 기록기의 위치 공유로 만들어졌습니다.',
     install: '내 위치를 이렇게 보내려면 Android 앱을 설치해 보세요.'
   } : {
     shared: 'Shared location', invalid: 'This link is not valid.', copy: 'Copy coordinates', copied: 'Coordinates copied.',
     kakao: 'Open in KakaoMap', naver: 'Open in Naver Map', tmapRoute: 'Directions in TMAP', tmapView: 'View in TMAP',
-    google: 'Open in Google Maps', appName: 'Dotori GPS Tracker', sharedBy: 'Shared this location', product: '/apps/gps/',
+    google: 'Open in Google Maps', apple: 'Open in Apple Maps', appName: 'Dotori GPS Tracker', sharedBy: 'Shared this location', product: '/apps/gps/',
     download: 'Get it on Google Play',
     promo: 'This page was made with location sharing in Dotori GPS Tracker.',
     install: 'To send places like this, install the Android app.'
@@ -167,7 +194,7 @@
     return fallback || null;
   }
 
-  // Icons are the apps' public Google Play listing icons (same files as the app's map menu, except Naver).
+  // Local listing icons: Google Play for Android maps, Apple's App Store for Apple Maps (id 915056765).
   var I = '/assets/icons/maps/';
   var kakao = [T.kakao, app('look?p=' + c, 'kakaomap', 'net.daum.android.map', kakaoWeb), I + 'kakao.png'];
   var naver = [T.naver, app('place?lat=' + p.lat + '&lng=' + p.lng + '&name=' + name + '&appname=com.droidactor.gps',
@@ -177,7 +204,10 @@
   var tmapView = [T.tmapView, app('viewmap?x=' + p.lng + '&y=' + p.lat + '&name=' + name,
     'tmap', 'com.skt.tmap.ku', null), I + 'tmap.png'];
   var google = [T.google, googleWeb, I + 'google.jpg'];
+  // HTTPS also offers a web map when the native Apple Maps app is unavailable.
+  var apple = [T.apple, 'https://maps.apple.com/?ll=' + e(c) + '&q=' + name, I + 'apple.png'];
   var order = KO ? [kakao, naver, tmapRoute, tmapView, google] : [google, kakao, naver, tmapRoute, tmapView];
+  order.splice(ios ? 0 : order.indexOf(google) + 1, 0, apple);
 
   function addText(el, text) {
     var s = document.createElement('span');
