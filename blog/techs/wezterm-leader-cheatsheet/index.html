@@ -18,7 +18,7 @@
 <meta property="og:title" content="WezTerm 2: Twenty Leader Shortcuts">
 <meta property="og:description" content="Past twenty leader shortcuts, your config and your memory stop matching. Put the key definitions in one table and generate the help screen from it.">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="../../../assets/site.css?v=20260817-blog-play-link">
+<link rel="stylesheet" href="../../../assets/site.css?v=20261029-multilingual-posts">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,7 +30,7 @@
       "url": "https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/",
       "mainEntityOfPage": "https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/",
       "datePublished": "2026-08-25",
-      "dateModified": "2026-10-31",
+      "dateModified": "2026-11-05",
       "inLanguage": "en",
       "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
       "author": { "@id": "https://droidactor.github.io/#publisher" },
@@ -52,7 +52,7 @@
 <header class="top"><div class="wrap">
   <div class="brand"><a href="/">droid<span>actor</span></a></div>
   <nav class="langs" aria-label="Language">
-    <a class="lang-btn" href="/blog/techs/wezterm-leader-cheatsheet/" aria-current="page" hreflang="en">EN</a>
+    <a class="lang-btn" href="/blog/techs/wezterm-leader-cheatsheet/" aria-current="page" hreflang="en" lang="en">EN</a>
     <a class="lang-btn" href="/ko/blog/techs/wezterm-leader-cheatsheet/" hreflang="ko" lang="ko">한국어</a>
   </nav>
 </div></header>
@@ -61,7 +61,7 @@
   <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>WezTerm shortcuts</nav>
   <div class="hero">
     <h1>WezTerm 2: Twenty Leader Shortcuts</h1>
-    <p class="post-meta"><time datetime="2026-08-25">25 August 2026</time> · Updated <time datetime="2026-10-31">31 October 2026</time></p>
+    <p class="post-meta"><time datetime="2026-08-25">25 August 2026</time> · Updated <time datetime="2026-11-05">5 November 2026</time></p>
   </div>
 
   <article class="post-body">
@@ -76,10 +76,12 @@
 
 
     <h2>Put the key definitions in one table</h2>
+    <p>The examples and attachment were aligned with my PC's configuration on November 5, 2026. The code below shows the core binding and menu structure. The complete file also includes window and session management, ID copying and Herdr integration.</p>
     <p>Line up <code>leader(&quot;w&quot;, ...)</code> calls the way part 1 did and there is nowhere to write the description. So bundle key, description and action into one three-column entry. The bindings are generated from that list. The description becomes data rather than a comment.</p>
     <pre><code>local leader_bindings = {
   { &quot;w&quot;, &quot;Split left/right (Width)&quot;, act.SplitHorizontal({ domain = &quot;CurrentPaneDomain&quot; }) },
   { &quot;v&quot;, &quot;Split top/bottom (Vertical)&quot;, act.SplitVertical({ domain = &quot;CurrentPaneDomain&quot; }) },
+  { &quot;z&quot;, &quot;Zoom / restore the current pane&quot;, act.TogglePaneZoomState },
   { &quot;h&quot;, &quot;Move to the left pane&quot;, act.ActivatePaneDirection(&quot;Left&quot;) },
   { &quot;/&quot;, &quot;Command palette&quot;, act.ActivateCommandPalette },
 }
@@ -88,42 +90,100 @@ for _, b in ipairs(leader_bindings) do
   table.insert(keys, { mods = &quot;LEADER&quot;, key = b[1], action = b[3] })
 end</code></pre>
     <p>Now put the same list on screen. Bind <code>act.InputSelector</code> to <code>LEADER + .</code> and the entries appear as an overlay, running the action of whichever one you pick. Add a key and the help grows with it, so the two cannot drift.</p>
-    <pre><code>act.InputSelector({
-  title = &quot;LEADER (Ctrl+U) shortcuts&quot;,
-  fuzzy = true,
-  fuzzy_description = &quot;Search shortcuts (↑↓ move · Enter run · Esc close) : &quot;,
-  choices = cheatsheet_choices,   -- { id = key, label = &quot;key   description&quot; }
-  action = wezterm.action_callback(function(win, p, id)
-    for _, b in ipairs(leader_bindings) do
-      if b[1] == id then win:perform_action(b[3], p) end
+    <p>These excerpts use <code>wezterm</code>, <code>act</code>, <code>config</code> and <code>keys</code> from the existing configuration. The leader is <code>config.leader = { key = &quot;u&quot;, mods = &quot;CTRL&quot;, timeout_milliseconds = 2000 }</code>. Create both callbacks below once when loading the configuration.</p>
+    <pre><code>local cheatsheet_choices = {}
+for _, b in ipairs(leader_bindings) do
+  table.insert(cheatsheet_choices, {
+    id = b[1], label = string.format(&quot;%-12s%s&quot;, b[1], b[2]),
+  })
+end
+table.insert(cheatsheet_choices, {
+  id = &quot;&quot;, label = &quot;1 - 9, 0    Tabs (1 = first, 0 = tenth; info only)&quot;,
+})
+
+local cheatsheet_pick = wezterm.action_callback(function(win, p, id)
+  if not id or id == &quot;&quot; then return end
+  for _, b in ipairs(leader_bindings) do
+    if b[1] == id then
+      win:perform_action(b[3], p)
+      return
     end
-  end),
-})</code></pre>
-    <p>Some keys do not fit in the table. Tab numbers are generated by a <code>for i = 0, 9</code> loop, which would add ten entries. Those belong in the help as a single informational line and must be kept out of the executable set. Give them an empty <code>id</code> and filter that out in the callback. They show in the list, but pressing them does nothing. Pad the columns with <code>string.format</code> and the keys and descriptions line up vertically.</p>
-    <pre><code>table.insert(choices, { id = &quot;&quot;, label = string.format(&quot;%-12s%s&quot;, &quot;0 - 9&quot;, &quot;Tab by number (info only)&quot;) })
--- first line of the callback
-if not id or id == &quot;&quot; then return end</code></pre>
+  end
+end)
+
+local open_cheatsheet = wezterm.action_callback(function(win, pane)
+  win:perform_action(act.InputSelector({
+    title = &quot;LEADER (Ctrl+U) shortcuts&quot;,
+    fuzzy = true,
+    fuzzy_description = &quot;Search shortcuts (↑↓ move · Enter run · Esc close) : &quot;,
+    choices = cheatsheet_choices,
+    action = cheatsheet_pick,
+  }), pane)
+end)
+
+table.insert(keys, { mods = &quot;LEADER&quot;, key = &quot;.&quot;, action = open_cheatsheet })
+-- Apply config.keys = keys after adding all existing bindings.</code></pre>
+    <p>Tab shortcuts are generated in a loop and get one informational menu row. The current configuration numbers tabs from 1: <code>1</code> selects the first tab, <code>9</code> the ninth, and <code>0</code> the tenth. <code>ActivateTab</code> takes a zero-based index, so the conversion is:</p>
+    <pre><code>for i = 0, 9 do
+  table.insert(keys, {
+    key = tostring(i), mods = &quot;LEADER&quot;,
+    action = act.ActivateTab((i + 9) % 10),
+  })
+end</code></pre>
+    <p>The informational row has an empty <code>id</code>, so selecting it runs nothing. Typing numbers inside the menu filters the list. Close it and press <code>Ctrl+U</code> followed by a number to switch tabs. The complete file also sets <code>tab_and_split_indices_are_zero_based = false</code> and uses <code>tab_index + 1</code> in its custom titles to display tabs from 1.</p>
 
     <h2>Two ways the help screen caused misfires</h2>
     <p>Do not leave out <code>fuzzy = true</code>. The default mode of <code>InputSelector</code> attaches a quick-select character to each row. That character comes in order from the default <code>alphabet</code> field, <code>1234567890abc…</code>. It has nothing to do with the shortcut printed on the screen.</p>
-    <p>In my list the fourth entry was &quot;close pane&quot;. Press <code>4</code> to jump to tab 4 and the pane closes. The help screen was producing misfires, so I pinned it to search mode.</p>
-    <p>The second one is when <code>choices</code> is built. Build that list inside the key handler and every press of <code>LEADER + .</code> registers a new event handler through <code>action_callback</code>, and they pile up. The list is fixed anyway, so build it once at config load time and keep it in a variable.</p>
+    <p>In an older version, the fourth entry was &quot;close pane&quot;. Pressing <code>4</code> to reach tab 4 selected that row instead. Starting in search mode prevents confusion between menu row numbers and tab numbers.</p>
+    <p>The second issue is when <code>action_callback</code> is called. Calling it inside a key handler registers another event handler each time the menu opens. Build the shortcut list and callbacks once at configuration load time. Creating an ordinary table such as <code>choices</code> does not itself register a handler.</p>
+    <p>The complete file reads the current GUI's <code>pid</code>, <code>window</code>, <code>tab</code> and <code>pane</code> IDs when opening the menu and adds an <code>(id)</code> row. Select it and press Enter to copy those identifiers. They differ from the tab bar's displayed numbers. Only the table containing those changing values is built on each opening; the selection callback is reused.</p>
+
+    <h2>Current keys and Herdr integration</h2>
+    <p>Press each key below after <code>Ctrl+U</code>. Arrow keys also require the leader first.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Key</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><code>c</code> / <code>u</code></td><td>New tab / new window</td></tr>
+          <tr><td><code>b</code> / <code>n</code></td><td>Previous tab / next tab</td></tr>
+          <tr><td><code>1</code> to <code>9</code>, <code>0</code></td><td>First through ninth tab, tenth tab</td></tr>
+          <tr><td><code>w</code> / <code>v</code></td><td>Split left/right / top/bottom</td></tr>
+          <tr><td><code>h</code> / <code>j</code> / <code>k</code> / <code>l</code></td><td>Move left / down / up / right between panes</td></tr>
+          <tr><td>Arrow keys</td><td>Resize the WezTerm pane by 5 cells; inside Herdr, use Herdr's resize increment</td></tr>
+          <tr><td><code>z</code></td><td>Zoom / restore the current pane</td></tr>
+          <tr><td><code>x</code></td><td>Close the current pane (WezTerm asks for confirmation)</td></tr>
+          <tr><td><code>y</code></td><td>Copy the current WezTerm pane's text, including scrollback</td></tr>
+          <tr><td><code>d</code> / <code>a</code></td><td>Move a pane to a new window / bring another tab or window's pane alongside this one</td></tr>
+          <tr><td><code>s</code> / <code>e</code></td><td>Attach to / detach from WezTerm's <code>mux</code> session</td></tr>
+          <tr><td><code>q</code></td><td>Detach the Herdr screen, leaving work on its server; no action in an ordinary pane</td></tr>
+          <tr><td><code>/</code> / <code>.</code></td><td>Command palette / shortcut menu</td></tr>
+          <tr><td><code>Ctrl+U</code></td><td>Send <code>Ctrl+U</code> to the inner program</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>In the complete file, <code>herdr = true</code> marks <code>w</code>, <code>v</code>, <code>z</code>, <code>x</code>, <code>q</code>, <code>h/j/k/l</code> and the arrow keys. When local Herdr is detected, they send its <code>Ctrl+B</code> prefix followed by the same key. Both direct shortcuts and menu selections use this routing. Tab, window and WezTerm session keys stay with WezTerm.</p>
+    <p>This assumes my matching Herdr configuration. Install Herdr separately and set its prefix to <code>Ctrl+B</code>, <code>w</code> to split left/right, <code>v</code> to split top/bottom, and arrows to resize. Detection uses local processes and does not work through SSH, inside WSL or in a WezTerm <code>mux</code> domain. Use Herdr's own prefix there. The <code>a</code> action also excludes <code>mux</code> and <code>SSHMUX</code> panes.</p>
+    <p>When Herdr is detected, the <code>(id)</code> row also includes its session, workspace, tab and pane IDs. ID lookup is skipped for <code>--remote</code>. Sessions selected only through environment variables cannot be identified and are queried as <code>default</code>. Herdr reports focus from the client that last interacted with that session, so another connected client can make these IDs differ from the current screen.</p>
 
     <h2>For what you will not memorise, there is the command palette</h2>
     <p>You have to decide what gets a shortcut and what does not. Attach every action you use a few times a day to the leader and the list passes twenty again. I handed the rest to the command palette and kept a single <code>LEADER + /</code>.</p>
-    <p>The palette is a modal overlay that searches every command WezTerm knows. Typing narrows it with a fuzzy match, and what you used often floats to the top. Its default key is <code>Ctrl+Shift+P</code>, so it does not need to go on the leader either. Some things already exist in the defaults, such as <code>Ctrl+Shift+Z</code> for zooming a pane to full screen. I left those where they were.</p>
+    <p>The palette is a modal overlay that searches every command WezTerm knows. Typing narrows it with a fuzzy match, and frequently used commands float to the top. Its default key is <code>Ctrl+Shift+P</code>. Pane zoom also has the default <code>Ctrl+Shift+Z</code>; my current configuration adds <code>LEADER + z</code> to use the same key with Herdr.</p>
 
-    <h2>A combination spent on the leader is lost in the shell</h2>
-    <p>Once you pick a prefix key, that combination never reaches the shell. The moment you claim <code>Ctrl+U</code>, the <code>Ctrl+U</code> that deleted everything before the cursor in bash is gone. Pick your leader from combinations your hands reach for less often in the shell. Pick it at the start, because changing it later is hard.</p>
+    <h2>Add a way to send the leader combination to the shell</h2>
+    <p>A single <code>Ctrl+U</code> activates the leader and does not reach the shell, so it cannot directly clear text before the cursor in bash. The current configuration sends it through when you press <code>Ctrl+U</code> again within the two-second timeout. Keep Ctrl pressed for that second U: pressing an unmodified <code>u</code> after the leader opens a new window instead.</p>
+    <pre><code>table.insert(keys, {
+  mods = &quot;LEADER|CTRL&quot;, key = &quot;u&quot;,
+  action = act.SendKey({ key = &quot;u&quot;, mods = &quot;CTRL&quot; }),
+})</code></pre>
     <p>While the leader is armed, even keys that are not bound get swallowed. The official documentation puts it the same way: they are not passed through to the terminal. That is why the ripple indicator in part 1 is not decoration. Without it, the key you press to check whether you are in the waiting state simply disappears. After two seconds the wait clears on its own.</p>
 
     <h2>Summary</h2>
-    <p>Put key, description and action in one table and the bindings and the help read the same source. Pin <code>InputSelector</code> to <code>fuzzy = true</code> and build the list once at load time. Leave commands you rarely use to the command palette rather than the leader.</p>
+    <p>Put key, description and action in one table and the bindings and help read the same source. Set <code>InputSelector</code> to <code>fuzzy = true</code> and create the shortcut list and callbacks once at load time. Read changing information such as current IDs when opening the menu.</p>
     <p>Is your key list from part 1 already past ten lines? Move those lines into a three-column table and bind <code>LEADER + .</code>.</p>
 
     <h2>Attachment</h2>
     <p><a href="/assets/downloads/wezterm.lua" download=".wezterm.lua">Download .wezterm.lua</a></p>
-    <p>This is the complete configuration I currently use. Save it as <a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>.wezterm.lua</code></a> in your home folder. Back up any existing configuration first, and adjust the Git Bash and MSYS paths, fonts and shell list for your PC. This file is newer than the examples above, so some shortcuts differ. In the attached file, press <code>Ctrl+U</code> then <code>s</code> to attach to the session, or <code>Ctrl+U</code> then <code>.</code> to see all shortcuts.</p>
+    <p>This is a copy of the complete configuration used on my PC on November 5, 2026. Save it as <a href="/assets/downloads/wezterm.lua" download=".wezterm.lua"><code>.wezterm.lua</code></a> in your home folder. Back up your existing configuration and adjust the Windows Git Bash and MSYS paths, fonts and shell list for your PC. Herdr integration also requires the matching key settings described above. Press <code>Ctrl+U</code> then <code>.</code> to see all shortcuts. Remember that <code>s</code> / <code>e</code> control the WezTerm session, while <code>q</code> detaches Herdr.</p>
 
   </article>
 

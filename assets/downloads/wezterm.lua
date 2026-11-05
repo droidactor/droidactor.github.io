@@ -397,12 +397,12 @@ local open_dock = wezterm.action_callback(function(win, pane)
 					if not is_client_domain(cand:get_domain_name()) then
 						table.insert(choices, {
 							id = tostring(cand:pane_id()),
-							-- tab# 은 탭 바에 보이는 번호 (0 부터)
+							-- tab# 은 탭 바에 보이는 번호 (1 부터)
 							label = string.format(
 								"pane=%-4d window=%d tab#%d  %s",
 								cand:pane_id(),
 								mw:window_id(),
-								i - 1,
+								i,
 								cand:get_title()
 							),
 						})
@@ -458,38 +458,156 @@ local leader_bindings = {
 		"세션에서 빠져나오기 (창만 닫히고 작업은 서버에서 계속)",
 		act.DetachDomain("CurrentPaneDomain"),
 	},
-	{ "x", "현재 pane 닫기 (확인)", act.CloseCurrentPane({ confirm = true }) },
+	{ "x", "현재 pane 닫기 (확인)", act.CloseCurrentPane({ confirm = true }), herdr = true },
+	-- herdr 의 prefix + q (detach) : herdr 화면만 닫히고 pane·에이전트는 herdr 서버에서 계속 돈다
+	{ "q", "herdr 끝내기 (Quit · 작업은 herdr 서버에 남음)", act.Nop, herdr = true },
 	{ "b", "이전 탭 (Back)", act.ActivateTabRelative(-1) },
 	{ "n", "다음 탭 (Next)", act.ActivateTabRelative(1) },
-	{ "w", "좌우 분할 (Width)", act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	{ "v", "상하 분할 (Vertical)", act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ "h", "왼쪽 pane 으로 이동", act.ActivatePaneDirection("Left") },
-	{ "j", "아래쪽 pane 으로 이동", act.ActivatePaneDirection("Down") },
-	{ "k", "위쪽 pane 으로 이동", act.ActivatePaneDirection("Up") },
-	{ "l", "오른쪽 pane 으로 이동", act.ActivatePaneDirection("Right") },
-	{ "LeftArrow", "pane 크기 조절 : 왼쪽 5", act.AdjustPaneSize({ "Left", 5 }) },
-	{ "RightArrow", "pane 크기 조절 : 오른쪽 5", act.AdjustPaneSize({ "Right", 5 }) },
-	{ "DownArrow", "pane 크기 조절 : 아래 5", act.AdjustPaneSize({ "Down", 5 }) },
-	{ "UpArrow", "pane 크기 조절 : 위 5", act.AdjustPaneSize({ "Up", 5 }) },
+	{ "w", "좌우 분할 (Width)", act.SplitHorizontal({ domain = "CurrentPaneDomain" }), herdr = true },
+	{ "v", "상하 분할 (Vertical)", act.SplitVertical({ domain = "CurrentPaneDomain" }), herdr = true },
+	{ "z", "현재 pane 확대 / 원래대로 (Zoom)", act.TogglePaneZoomState, herdr = true },
+	{ "h", "왼쪽 pane 으로 이동", act.ActivatePaneDirection("Left"), herdr = true },
+	{ "j", "아래쪽 pane 으로 이동", act.ActivatePaneDirection("Down"), herdr = true },
+	{ "k", "위쪽 pane 으로 이동", act.ActivatePaneDirection("Up"), herdr = true },
+	{ "l", "오른쪽 pane 으로 이동", act.ActivatePaneDirection("Right"), herdr = true },
+	{ "LeftArrow", "pane 크기 조절 : 왼쪽 5", act.AdjustPaneSize({ "Left", 5 }), herdr = true },
+	{ "RightArrow", "pane 크기 조절 : 오른쪽 5", act.AdjustPaneSize({ "Right", 5 }), herdr = true },
+	{ "DownArrow", "pane 크기 조절 : 아래 5", act.AdjustPaneSize({ "Down", 5 }), herdr = true },
+	{ "UpArrow", "pane 크기 조절 : 위 5", act.AdjustPaneSize({ "Up", 5 }), herdr = true },
 	{ "/", "커맨드 팔레트 (WezTerm 전체 명령 검색)", act.ActivateCommandPalette },
 }
+
+-- herdr 와 함께 쓰기 : 로컬에서는 prefix 를 Ctrl+U 하나만 쓴다.
+-- herdr = true 인 pane 키는, 현재 pane 에서 herdr 가 돌고 있으면 WezTerm 이 처리하지 않고
+-- herdr prefix(Ctrl+B) + 같은 키로 바꿔 보낸다. 키 뜻은 herdr config.toml 의 [keys] 에서 이쪽에 맞췄다
+-- (scripts/install-herdr-cli.ps1 이 쓴다 : w 좌우 · v 상하 · 방향키 크기 조절).
+-- 탭·창·세션 키는 언제나 WezTerm 몫이다. herdr 의 탭은 Ctrl+B 로 직접 다룬다.
+-- 판별은 pane 의 foreground 프로세스와 그 조상이라, ssh 너머·WSL 안·mux(LEADER s) pane 의 herdr 는
+-- 알아보지 못한다 (그때는 Ctrl+B 를 직접 누른다).
+-- HERDR_PREFIX 는 herdr config.toml 의 keys.prefix 와 같아야 한다 (install-herdr-cli.ps1 이 ctrl+b 로 쓴다).
+local HERDR_PREFIX = act.SendKey({ key = "b", mods = "CTRL" })
+
+-- 실행 파일 이름이 herdr(.exe) 인지
+local function is_herdr_process(path)
+	local base = (path or ""):lower():match("[^\\/]+$")
+	return base == "herdr.exe" or base == "herdr"
+end
+
+-- pane 에서 도는 herdr 프로세스의 procinfo (없으면 nil).
+-- Windows 의 foreground 는 pane 프로세스 트리에서 가장 늦게 시작된 자손이라, herdr 가 띄운
+-- ssh(--remote)·서버가 대신 잡힐 수 있다. 그래서 조상 쪽으로 올라가며 본다 (wezterm-gui 에서 멈춤).
+-- outermost 가 아니면 처음 만난 herdr 에서 멈춘다 (herdr 가 도는지만 알면 되는 키 전달용).
+-- outermost 면 끝까지 올라가 가장 바깥 herdr = 셸이 띄운 클라이언트를 고른다. 서버가 클라이언트의 자손이면
+-- 그 안 pane 에서 도는 herdr CLI (hd wait 등) 가 foreground 로 먼저 잡히기 때문이다.
+-- 키를 누를 때만 부른다. 탭 바([H] 표시)는 비용 때문에 foreground 이름만 본다.
+local function find_herdr_process(pane, outermost)
+	local gui = wezterm.procinfo.pid()
+	local info = pane:get_foreground_process_info()
+	local found
+	for _ = 1, 16 do
+		if not info or info.pid == gui then
+			break
+		end
+		if is_herdr_process(info.executable) then
+			found = info
+			if not outermost then
+				break
+			end
+		end
+		info = wezterm.procinfo.get_info_for_pid(info.ppid)
+	end
+	return found
+end
+
+-- herdr 클라이언트 argv 의 세션 이름 : `--session X` · `--session=X` · `session attach X`, 없으면 default.
+-- --remote 로 다른 PC 의 서버에 붙은 클라이언트면 nil (이 PC 에서 조회할 수 없다).
+-- 환경변수 (HERDR_SESSION 등) 로 고른 세션은 다른 프로세스의 환경을 읽을 수 없어 알지 못한다 (default 로 본다).
+local function herdr_session_of(argv)
+	local session = "default"
+	for i, a in ipairs(argv) do
+		if a == "--remote" or a:find("^%-%-remote=") then
+			return nil
+		elseif a == "--session" or (a == "attach" and argv[i - 1] == "session") then
+			session = argv[i + 1] or session
+		elseif a:find("^%-%-session=") then
+			session = a:sub(#"--session=" + 1)
+		end
+	end
+	return session
+end
+
+-- LEADER + . 의 id 행에 덧붙일 herdr 안쪽 id (herdr 가 아니면 nil).
+-- focused 는 마지막으로 조작한 클라이언트의 화면 기준이다. 같은 세션에 붙은 다른 클라이언트 (폰 등) 가
+-- 마지막으로 조작했으면 지금 이 화면과 다른 pane 이 나온다 (클라이언트별 화면을 묻는 API 는 없다).
+local function herdr_ids(pane)
+	local client = find_herdr_process(pane, true)
+	if not client then
+		return nil
+	end
+	local session = herdr_session_of(client.argv or {})
+	if not session then
+		return "herdr=원격 (--remote 는 조회하지 않음)"
+	end
+	-- 클라이언트와 같은 exe 로 묻는다 (herdr 는 업데이트 때 버전 폴더가 바뀌므로 PATH 에 기대지 않는다)
+	local ok, stdout, stderr = wezterm.run_child_process({ client.executable, "--session", session, "pane", "list" })
+	-- 오류 (서버 없음 등) 는 stderr 와 실패 코드로, 성공하면 stdout 에 JSON 을 낸다.
+	-- herdr 업데이트로 출력이 바뀌어도 치트시트 자체는 열리도록 파싱 실패는 로그만 남긴다.
+	local parsed, data = pcall(wezterm.json_parse, ok and stdout or "")
+	local panes = parsed and type(data) == "table" and data.result and data.result.panes
+	if type(panes) ~= "table" then
+		wezterm.log_warn("herdr pane list 실패 (session=" .. session .. "): " .. (ok and stdout or stderr))
+		return "herdr session=" .. session .. " 조회 실패"
+	end
+	for _, p in ipairs(panes) do
+		if p.focused then
+			return string.format(
+				"herdr session=%s ws=%s tab=%s pane=%s",
+				session,
+				p.workspace_id,
+				p.tab_id,
+				p.pane_id
+			)
+		end
+	end
+	return "herdr session=" .. session .. " (포커스된 pane 없음)"
+end
+
+for _, b in ipairs(leader_bindings) do
+	if b.herdr then
+		local wez_action = b[3]
+		local to_herdr = act.Multiple({ HERDR_PREFIX, act.SendKey({ key = b[1] }) })
+		b[2] = b[2] .. "   · herdr 안이면 herdr 로"
+		-- 콜백은 로드 시 1회만 만든다 (LEADER + . 치트시트 주석 참조)
+		b[3] = wezterm.action_callback(function(win, pane)
+			if find_herdr_process(pane) then
+				win:perform_action(to_herdr, pane)
+			else
+				win:perform_action(wez_action, pane)
+			end
+		end)
+	end
+end
 
 -- Add leader keys to the main keys table
 for _, b in ipairs(leader_bindings) do
 	table.insert(keys, { mods = "LEADER", key = b[1], action = b[3] })
 end
 
+-- LEADER + Ctrl+U : Ctrl+U 자체를 안쪽 프로그램에 보낸다 (셸의 줄 지우기, herdr 입력칸 지우기 등)
+table.insert(keys, { mods = "LEADER|CTRL", key = "u", action = act.SendKey({ key = "u", mods = "CTRL" }) })
+
+-- LEADER + 1..9 : 1번부터 센 탭 (herdr 의 prefix + 1..9 와 같다). 0 은 10번째 탭.
 for i = 0, 9 do
-	-- leader + number to activate that tab
 	table.insert(keys, {
 		key = tostring(i),
 		mods = "LEADER",
-		action = act.ActivateTab(i),
+		action = act.ActivateTab((i + 9) % 10),
 	})
 end
 
 -- LEADER + . : 위 목록을 그대로 오버레이로 표시. 고르면 그 동작을 실행한다.
 -- 맨 위 행에 현재 window/tab/pane id 를 함께 띄운다 (그 행에서 Enter 면 클립보드로 복사).
+-- herdr 가 도는 pane 이면 herdr 의 세션·workspace·tab·pane id 도 붙인다 (herdr_ids).
 -- 단축키 목록(choices)은 정적이라 config 로드 시점에 1회만 만든다.
 -- 콜백도 아래 둘을 로드 시 1회씩만 만든다 — 키 핸들러 안에서 wezterm.action_callback 을 부르면
 -- 누를 때마다 새 이벤트 핸들러가 등록되어 계속 쌓인다. 누를 때 새로 만드는 것은 순수 테이블뿐이다.
@@ -501,7 +619,8 @@ do
 	for _, b in ipairs(leader_bindings) do
 		add(b[1], b[2])
 	end
-	add("0 - 9", "해당 번호의 탭 활성화   (안내 · 여기서 누르지 말 것)", "")
+	add("1 - 9, 0", "해당 번호의 탭 활성화 (1 = 첫 탭, 0 = 10번째)   (안내 · 여기서 누르지 말 것)", "")
+	add("Ctrl+U", "Ctrl+U 를 안쪽 프로그램에 그대로 보내기   (안내)", "")
 	add(".", "이 목록   (안내)", "")
 end
 
@@ -526,8 +645,19 @@ end)
 
 -- id 는 창·pane 마다 다르므로 누르는 그 시점에 읽는다.
 local open_cheatsheet = wezterm.action_callback(function(win, pane)
-	local ids =
-		string.format("window=%d tab=%d pane=%d", win:window_id(), win:active_tab():tab_id(), pane:pane_id())
+	-- window/tab/pane id 는 GUI 프로세스마다 0 부터 매겨져 겹치므로 GUI pid 를 앞에 둔다.
+	-- 그 GUI 의 cli 소켓은 %USERPROFILE%\.local\share\wezterm\gui-sock-<pid> 이다 (WEZTERM_UNIX_SOCKET 으로 지정).
+	local ids = string.format(
+		"pid=%d window=%d tab=%d pane=%d",
+		wezterm.procinfo.pid(),
+		win:window_id(),
+		win:active_tab():tab_id(),
+		pane:pane_id()
+	)
+	local herdr = herdr_ids(pane)
+	if herdr then
+		ids = ids .. " | " .. herdr
+	end
 
 	local choices = {
 		{ id = ID_COPY_PREFIX .. ids, label = string.format("%-12s%s", "(id)", ids .. "   Enter → 클립보드 복사") },
@@ -567,26 +697,31 @@ Tab Bar
 config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
-config.tab_and_split_indices_are_zero_based = true
+-- 탭 번호는 1부터 (LEADER + 1 = 첫 탭, herdr 와 같음). 아래 format-tab-title 의 tab_index 는 늘 0부터라 +1 한다.
+config.tab_and_split_indices_are_zero_based = false
 
 local function tab_title(tab_info)
 	local title = tab_info.tab_title
 	-- if the tab title is explicitly set, take that
-	if title and #title > 0 then
-		return title
+	if not (title and #title > 0) then
+		-- Otherwise, use the title from the active pane
+		-- in that tab
+		title = tab_info.active_pane.title
 	end
-	-- Otherwise, use the title from the active pane
-	-- in that tab
-	return tab_info.active_pane.title
+	-- herdr 가 도는 탭 표시 : LEADER pane 키가 herdr 로 간다 (leader_bindings 의 herdr = true 참조)
+	if is_herdr_process(tab_info.active_pane.foreground_process_name) then
+		title = "[H] " .. title
+	end
+	return title
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	local title = " " .. tab.tab_index .. ": " .. tab_title(tab) .. " "
+	local title = " " .. (tab.tab_index + 1) .. ": " .. tab_title(tab) .. " "
 	local left_edge_text = ""
 	local right_edge_text = ""
 
 	if tab_style == "rounded" then
-		title = tab.tab_index .. ": " .. tab_title(tab)
+		title = (tab.tab_index + 1) .. ": " .. tab_title(tab)
 		title = wezterm.truncate_right(title, max_width - 2)
 		left_edge_text = wezterm.nerdfonts.ple_left_half_circle_thick
 		right_edge_text = wezterm.nerdfonts.ple_right_half_circle_thick
@@ -609,6 +744,8 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 			{ Text = right_edge_text },
 		}
 	end
+	-- 비활성 탭은 기본 색으로 같은 제목 (번호 1 부터 · [H] 표시가 모든 탭에 맞게)
+	return wezterm.truncate_right(title, max_width)
 end)
 
 -- Add new tab button click handler

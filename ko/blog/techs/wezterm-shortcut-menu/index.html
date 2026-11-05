@@ -30,7 +30,7 @@
       "url": "https://droidactor.github.io/ko/blog/techs/wezterm-shortcut-menu/",
       "mainEntityOfPage": "https://droidactor.github.io/ko/blog/techs/wezterm-shortcut-menu/",
       "datePublished": "2026-11-04",
-      "dateModified": "2026-11-04",
+      "dateModified": "2026-11-05",
       "inLanguage": "ko",
       "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
       "author": { "@id": "https://droidactor.github.io/#publisher" },
@@ -61,7 +61,7 @@
   <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>WezTerm 단축키 메뉴</nav>
   <div class="hero">
     <h1>WezTerm 단축키, Ctrl+U 다음 마침표만 기억하기</h1>
-    <p class="post-meta"><time datetime="2026-11-04">2026년 11월 4일</time></p>
+    <p class="post-meta"><time datetime="2026-11-04">2026년 11월 4일</time> · 수정 <time datetime="2026-11-05">2026년 11월 5일</time></p>
   </div>
 
   <article class="post-body">
@@ -83,7 +83,7 @@
     </div>
     <p>글자가 작게 보이면 <a href="https://droidactor.github.io/blog/techs/wezterm-shortcut-menu/assets/ko/leader-menu.png">메뉴 화면을 원본 크기로 보기</a>를 누르세요.</p>
     <p>화면에는 새 탭, 창 분리, 화면 분할, 이동, 크기 조절 같은 항목이 나옵니다. 왼쪽에는 단축키가, 오른쪽에는 그 키가 하는 일이 적혀 있습니다. 단축키만 나열한 종이 치트시트와 달리 이 목록은 실행 메뉴도 겸합니다.</p>
-    <p>다만 <strong>WezTerm을 설치하면 기본으로 나오는 메뉴는 아닙니다.</strong> 제가 설정 파일에 추가한 기능입니다. 리더 키도 사용자가 정하므로, 다른 설정을 쓰면 여는 키와 목록이 다릅니다. 아래 공개 파일은 기본 메뉴 예제입니다. 화면의 <code>z</code> 확대와 Herdr 연동은 그 뒤에 따로 추가한 설정입니다.</p>
+    <p>다만 <strong>WezTerm을 설치하면 기본으로 나오는 메뉴는 아닙니다.</strong> 제가 설정 파일에 추가한 기능입니다. 리더 키도 사용자가 정하므로, 다른 설정을 쓰면 여는 키와 목록이 다릅니다. 공개 파일은 2026년 11월 5일 현재 PC의 설정으로 갱신했으며, <code>z</code> 확대와 Herdr 연동도 포함합니다. 첨부 화면은 이전에 찍은 것으로, ID 표시 등은 현재 파일과 조금 다를 수 있습니다.</p>
 
     <h2>키가 생각나지 않으면 설명을 검색합니다</h2>
     <p>메뉴를 연 뒤에는 원하는 기능의 설명을 입력합니다. 예를 들어 <code>분할</code>로 찾으면 좌우 분할과 상하 분할을 고르기 편합니다. 방향키로 항목을 고르고 Enter를 누르면 실행하며, Esc를 누르면 닫힙니다.</p>
@@ -100,8 +100,9 @@
     <h2>자주 쓰는 키에는 뜻을 붙여 둡니다</h2>
     <p>화면의 설명에는 키를 떠올릴 단서도 넣었습니다. 새 탭은 <code>c</code> 옆에 Create, 창 분리는 <code>d</code> 옆에 Detach가 적혀 있습니다. 반대로 다른 창의 칸을 붙이는 <code>a</code>에는 Attach를 적어 두었습니다. 기능과 글자를 같이 보면 외울 때도 기준이 생깁니다.</p>
     <p>좌우 분할은 <code>w</code>의 Width, 상하 분할은 <code>v</code>의 Vertical, 확대는 <code>z</code>의 Zoom입니다. 처음부터 전부 외울 필요는 없습니다. 자주 찾는 기능 몇 개만 직접 누르기 시작해도 메뉴를 여는 횟수가 줄어듭니다.</p>
-    <p>목록 맨 위의 <code>(id)</code> 행은 현재 창과 탭, 칸의 번호를 보여 줍니다. 이 행에서 Enter를 누르면 그 정보를 클립보드로 복사합니다. 반면 <code>(안내)</code>가 붙은 탭 번호 등의 행은 설명용입니다. 번호로 탭을 바꾸려면 메뉴를 닫고 리더 키 다음 번호를 누릅니다.</p>
-    <p>첨부 화면에는 Herdr와 함께 쓰는 환경의 설명도 보입니다. <code>herdr 안이면 herdr로</code>라는 문구는 해당 환경에서 화면 분할 등을 Herdr 쪽에 전달한다는 뜻입니다. Herdr가 없는 환경에서는 목록의 일반 WezTerm 동작을 사용하며, Herdr 전용 기능은 별도 설치와 설정이 필요합니다.</p>
+    <p>현재 파일의 <code>(id)</code> 행은 GUI 프로세스의 <code>pid</code>와 창·탭·칸의 ID를 보여 주며, 로컬 Herdr를 감지하면 그쪽 ID도 덧붙입니다. 이 행에서 Enter를 누르면 정보를 클립보드로 복사합니다. ID는 탭 바의 표시 번호와 다릅니다. <code>(안내)</code>가 붙은 행은 설명용입니다. 탭을 바꾸려면 메뉴를 닫고 <code>Ctrl+U</code> 다음 <code>1</code>부터 <code>9</code>, 또는 <code>0</code>을 누릅니다. <code>1</code>은 첫 탭, <code>0</code>은 열 번째 탭입니다.</p>
+    <p><code>herdr 안이면 herdr로</code>라는 문구는 로컬 Herdr를 감지하면 분할·이동·크기 조절·확대·닫기 키를 Herdr에 전달한다는 뜻입니다. Herdr의 접두키를 <code>Ctrl+B</code>로 두고 분할·크기 조절 키도 맞춰야 합니다. SSH 너머·WSL 내부·WezTerm <code>mux</code> 도메인에서는 자동 감지하지 못하므로 Herdr 접두키를 직접 씁니다. <code>q</code>는 Herdr 화면에서 분리하는 키이며 일반 pane에서는 아무 동작도 하지 않습니다.</p>
+    <p>셸에 <code>Ctrl+U</code> 자체를 보내려면 <code>Ctrl+U</code>를 2초 안에 두 번 누릅니다. 두 번째에도 Ctrl을 함께 누르세요. 리더 다음 Ctrl 없이 <code>u</code>만 누르면 새 창이 열립니다.</p>
 
     <h2>설정 파일과 메뉴가 함께 바뀝니다</h2>
     <p>이 메뉴는 WezTerm의 <code>InputSelector</code>로 만들었습니다. 키, 설명, 실행 동작을 같은 목록에 적고, 거기서 실제 단축키와 메뉴를 함께 만듭니다. 그래서 키를 추가하거나 바꿀 때 설명도 같은 곳에서 관리합니다. 별도 문서에 적어 둔 단축키만 예전 상태로 남는 일을 줄입니다.</p>
