@@ -583,7 +583,7 @@
   -->
   <url>
     <loc>https://droidactor.github.io/blog/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
@@ -601,7 +601,169 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ja/blog/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/zh-Hant/blog/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/vi/blog/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/es/blog/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/fr/blog/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/de/blog/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/it/blog/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/pt-BR/blog/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/hi/blog/</loc>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
@@ -620,7 +782,7 @@
 
   <url>
     <loc>https://droidactor.github.io/blog/products/quick-nap-alarm/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/quick-nap-alarm/"/>
@@ -629,7 +791,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/products/quick-nap-alarm/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/quick-nap-alarm/"/>
@@ -696,7 +858,7 @@
 
   <url>
     <loc>https://droidactor.github.io/blog/products/tokyo-subway-map-app/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/tokyo-subway-map-app/"/>
@@ -705,179 +867,17 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/products/tokyo-subway-map-app/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/tokyo-subway-map-app/"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/tokyo-subway-map-app/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/tokyo-subway-map-app/"/>
   </url>
-  <url>
-    <loc>https://droidactor.github.io/ja/blog/</loc>
-    <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
-  </url>
-  <url>
-    <loc>https://droidactor.github.io/zh-Hant/blog/</loc>
-    <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
-  </url>
-  <url>
-    <loc>https://droidactor.github.io/vi/blog/</loc>
-    <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
-  </url>
-  <url>
-    <loc>https://droidactor.github.io/es/blog/</loc>
-    <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
-  </url>
-  <url>
-    <loc>https://droidactor.github.io/fr/blog/</loc>
-    <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
-  </url>
-  <url>
-    <loc>https://droidactor.github.io/de/blog/</loc>
-    <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
-  </url>
-  <url>
-    <loc>https://droidactor.github.io/it/blog/</loc>
-    <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
-  </url>
-  <url>
-    <loc>https://droidactor.github.io/pt-BR/blog/</loc>
-    <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
-  </url>
-  <url>
-    <loc>https://droidactor.github.io/hi/blog/</loc>
-    <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://droidactor.github.io/ja/blog/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://droidactor.github.io/zh-Hant/blog/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://droidactor.github.io/vi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://droidactor.github.io/es/blog/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://droidactor.github.io/fr/blog/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://droidactor.github.io/de/blog/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://droidactor.github.io/it/blog/"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
-  </url>
 
   <url>
     <loc>https://droidactor.github.io/blog/products/seoul-subway-map-app/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/seoul-subway-map-app/"/>
@@ -895,7 +895,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/products/seoul-subway-map-app/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/seoul-subway-map-app/"/>
@@ -913,7 +913,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ja/blog/products/seoul-subway-map-app/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/seoul-subway-map-app/"/>
@@ -931,7 +931,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/zh-Hant/blog/products/seoul-subway-map-app/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/seoul-subway-map-app/"/>
@@ -949,7 +949,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/vi/blog/products/seoul-subway-map-app/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/seoul-subway-map-app/"/>
@@ -967,7 +967,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/es/blog/products/seoul-subway-map-app/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/seoul-subway-map-app/"/>
@@ -985,7 +985,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/fr/blog/products/seoul-subway-map-app/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/seoul-subway-map-app/"/>
@@ -1003,7 +1003,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/de/blog/products/seoul-subway-map-app/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/seoul-subway-map-app/"/>
@@ -1021,7 +1021,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/it/blog/products/seoul-subway-map-app/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/seoul-subway-map-app/"/>
@@ -1039,7 +1039,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/pt-BR/blog/products/seoul-subway-map-app/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/seoul-subway-map-app/"/>
@@ -1057,7 +1057,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/hi/blog/products/seoul-subway-map-app/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/seoul-subway-map-app/"/>
@@ -1076,7 +1076,7 @@
 
   <url>
     <loc>https://droidactor.github.io/blog/products/morse-code-decoder-app/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/morse-code-decoder-app/"/>
@@ -1085,7 +1085,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/products/morse-code-decoder-app/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/morse-code-decoder-app/"/>
@@ -1095,7 +1095,7 @@
 
   <url>
     <loc>https://droidactor.github.io/blog/products/learn-korean-numbers/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/learn-korean-numbers/"/>
@@ -1104,7 +1104,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/products/learn-korean-numbers/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/learn-korean-numbers/"/>
@@ -1114,7 +1114,7 @@
 
   <url>
     <loc>https://droidactor.github.io/blog/products/learn-hangul-app/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/learn-hangul-app/"/>
@@ -1132,7 +1132,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/products/learn-hangul-app/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/learn-hangul-app/"/>
@@ -1150,7 +1150,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ja/blog/products/learn-hangul-app/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/learn-hangul-app/"/>
@@ -1168,7 +1168,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/zh-Hant/blog/products/learn-hangul-app/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/learn-hangul-app/"/>
@@ -1186,7 +1186,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/vi/blog/products/learn-hangul-app/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/learn-hangul-app/"/>
@@ -1204,7 +1204,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/es/blog/products/learn-hangul-app/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/learn-hangul-app/"/>
@@ -1222,7 +1222,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/fr/blog/products/learn-hangul-app/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/learn-hangul-app/"/>
@@ -1240,7 +1240,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/de/blog/products/learn-hangul-app/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/learn-hangul-app/"/>
@@ -1258,7 +1258,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/it/blog/products/learn-hangul-app/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/learn-hangul-app/"/>
@@ -1276,7 +1276,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/pt-BR/blog/products/learn-hangul-app/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/learn-hangul-app/"/>
@@ -1294,7 +1294,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/hi/blog/products/learn-hangul-app/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/learn-hangul-app/"/>
