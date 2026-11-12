@@ -138,7 +138,7 @@ Git으로 관리하며 기존 버전의 바이트를 덮어쓰지 않는다. Mob
 | 개발자 웹사이트 | `https://droidactor.github.io/` |
 | 개인정보 처리방침 (영문) | `https://droidactor.github.io/#privacy` |
 | 개인정보 처리방침 (국문) | `https://droidactor.github.io/ko/#privacy` |
-| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` · `hangul` · `morse` · `hannum` · `seoulmetro` · `busanmetro` · `daegumetro` · `gwangjumetro` · `tokyometro` · `gps` · `koreametro` · `alarm` · `pedometer` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
+| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` · `hangul` · `morse` · `hannum` · `seoulmetro` · `busanmetro` · `daegumetro` · `gwangjumetro` · `tokyometro` · `gps` · `koreametro` · `alarm` · `pedometer` · `lunar` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
 | app-ads.txt 검증 | `https://droidactor.github.io/app-ads.txt` |
 
 **`#privacy-*` 앵커는 이름을 바꾸지도, 앵커를 지우지도 않는다.** 스토어 리스팅에 이미 등록된 주소다 —
@@ -646,3 +646,5 @@ AdMob 콘솔의 app-ads.txt 상태가 "확인됨" 으로 바뀌는 데 하루 �
 
 - 2026-11-04: 도토리 알람 출시 준비. 한영 제품·홈·허브·개인정보처리방침 `#privacy-alarm`, 권한표, JSON-LD, 역방향 링크와 사이트맵을 추가했습니다. 공개 스토어 확인 전까지 Coming soon을 유지합니다.
 - 2026-11-12: 도토리 만보기 출시 준비. 한영 제품·홈·허브·개인정보처리방침 `#privacy-pedometer`, 권한표 `ACTIVITY_RECOGNITION` 행, JSON-LD, 역방향 링크와 사이트맵을 추가했습니다. 공개 스토어 확인 전까지 Coming soon을 유지합니다.
+
+- 2026-11-12: 도토리 날짜·음력 계산기 개발 자료. 한영 제품·홈·허브·처리방침 `#privacy-lunar`, 권한표, JSON-LD·역방향 링크·사이트맵을 추가했습니다. 앱의 Play 공개 전까지 Coming soon을 유지합니다.
