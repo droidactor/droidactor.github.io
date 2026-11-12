@@ -1,0 +1,64 @@
+{
+  "city": "seoul",
+  "contentSha256": "dfc9f99778d19120567370c1c175e0b5ac348ee130cafcfbcae11c15a70a837a",
+  "dataDate": null,
+  "dataVersion": 14,
+  "effectiveFrom": null,
+  "files": [
+    {
+      "name": "kr.holidays.json",
+      "schema": 1,
+      "sha256": "4f1cf273ec629636c9b8c916c9a8e5b1e977f6f9e0ab88b9d00dc372a49d1cf8",
+      "size": 1078
+    },
+    {
+      "name": "seoul.first-last.json",
+      "schema": 2,
+      "sha256": "c686d914b87e6db4c6f5381517ec83df5c653b45132b2872b5d51e3894c61c90",
+      "size": 653644
+    },
+    {
+      "name": "seoul.map.json",
+      "schema": 2,
+      "sha256": "132404b829a3fda2ae05fcc7bbae9efa505b73c046cf8c9199b342702bc82ed0",
+      "size": 207060
+    },
+    {
+      "name": "seoul.profile.json",
+      "schema": 1,
+      "sha256": "3eb37b0c7e55d81d5b08b7fedebab80d6516e0f055d8996720121dd9e1b00b89",
+      "size": 2803
+    },
+    {
+      "name": "seoul.routes.json",
+      "schema": 3,
+      "sha256": "9f0e3d62df9a5075392a279dd6c52b528a8103ea9e057893039da1bfc9ec65fc",
+      "size": 3248481
+    },
+    {
+      "name": "seoul.timetable-holiday.json",
+      "schema": 1,
+      "sha256": "36cd556bf78e73080bcd8157da3152f912fbc603720466f1e355a6e4c90c4228",
+      "size": 1370949
+    },
+    {
+      "name": "seoul.timetable-saturday.json",
+      "schema": 1,
+      "sha256": "922bb27794442680642529c8dbbf7219601b7c665aa8916d3a85332f0959ef4c",
+      "size": 1139826
+    },
+    {
+      "name": "seoul.timetable-weekday.json",
+      "schema": 1,
+      "sha256": "39cfdddc22937b137278d4eaf32db6f44b5a9b26068634ad20ba8c46f7431275",
+      "size": 1894366
+    }
+  ],
+  "maxAppVersionCode": null,
+  "minAppVersionCode": 1,
+  "schema": 1,
+  "sha256": "422cd370c96d47399bba43fa9d6af11665168de2c2c2eff161d24693e2098b06",
+  "size": 385286,
+  "url": "https://droidactor.github.io/data/metro/seoul/seoul-14.zip",
+  "validUntil": null
+}

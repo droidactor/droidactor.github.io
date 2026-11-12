@@ -1,0 +1,28 @@
+{
+  "city": "daegu",
+  "contentSha256": "01f0ae0d276048472870bf8a842d23f8f01925a6c87bbf01f184725e9b5511bb",
+  "dataDate": null,
+  "dataVersion": 11,
+  "effectiveFrom": null,
+  "files": [
+    {
+      "name": "daegu.map.json",
+      "schema": 3,
+      "sha256": "5241550b1eb2102a3915c6261773e5a85b6d3d2a10fd215b8818267fca7a50e1",
+      "size": 27941
+    },
+    {
+      "name": "daegu.profile.json",
+      "schema": 1,
+      "sha256": "a578a98ea7ad3ab12c60d3d8ff13aae8810b0002f60bd59967ba5b958e087f37",
+      "size": 212
+    }
+  ],
+  "maxAppVersionCode": null,
+  "minAppVersionCode": 5,
+  "schema": 1,
+  "sha256": "414f567e45cde1a25114f3718abaa0e11cd64d177a6b13cb6eae9c04205971ac",
+  "size": 9526,
+  "url": "https://droidactor.github.io/data/metro/daegu/daegu-11.zip",
+  "validUntil": null
+}
