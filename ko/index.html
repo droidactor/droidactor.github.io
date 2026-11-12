@@ -78,7 +78,8 @@
         {"@type": "ListItem", "position": 23, "name": "도토리 한국 지하철", "url": "https://droidactor.github.io/ko/apps/koreametro/"},
         {"@type": "ListItem", "position": 24, "name": "도토리 알람", "url": "https://droidactor.github.io/ko/apps/alarm/"},
         {"@type": "ListItem", "position": 25, "name": "도토리 만보기", "url": "https://droidactor.github.io/ko/apps/pedometer/"},
-        {"@type": "ListItem", "position": 26, "name": "도토리 날짜·음력 계산기", "url": "https://droidactor.github.io/ko/apps/lunar/"}
+        {"@type": "ListItem", "position": 26, "name": "도토리 날짜·음력 계산기", "url": "https://droidactor.github.io/ko/apps/lunar/"},
+        {"@type": "ListItem", "position": 27, "name": "도토리 PC 영상 리모컨", "url": "https://droidactor.github.io/ko/apps/remote/"}
       ]
     }
   ]
@@ -367,6 +368,13 @@
       </article>
       <article class="card"><div class="icon" aria-hidden="true"><img src="/assets/icons/lunar.png" width="48" height="48" alt="" decoding="async"></div><h3><a href="/ko/apps/lunar/">도토리 날짜·음력 계산기</a></h3><p class="pkg">com.droidactor.lunar</p><p class="desc">윤달을 포함한 한국 음력 변환, 세 가지 나이와 한국 영업일을 기기 안에서 계산합니다.</p><div class="foot"><span class="badge soon">출시 준비 중</span><a href="/ko/apps/lunar/">자세히</a><a href="/ko/#privacy-lunar">개인정보</a></div></article>
 
+      <article class="card">
+        <div class="icon"><img src="/assets/icons/remote.png" width="64" height="64" alt="" loading="lazy"></div>
+        <h3><a href="/ko/apps/remote/">도토리 PC 영상 리모컨</a></h3>
+        <div class="pkg">com.droidactor.bt_remote</div>
+        <p class="desc">PC YouTube 전용 블루투스 리모컨</p>
+        <div class="foot"><span class="badge soon">출시 예정</span><a href="/ko/apps/remote/">앱</a><a href="/ko/#privacy-remote">개인정보</a></div>
+      </article>
     </div>
   </section>
 
@@ -487,13 +495,13 @@
 
           <tr>
             <td><code>BLUETOOTH_CONNECT</code><br><code>BLUETOOTH_ADVERTISE</code></td>
-            <td><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스<br><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a></td>
+            <td><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스<br><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><a href="#privacy-remote">도토리 PC 영상 리모컨</a></td>
             <td>주변 host 에 HID 키보드·마우스로 나타나고 키·포인터 입력을 보내기 위해서입니다.
               블루투스 페어링에 Android 가 요구하는 권한입니다.</td>
           </tr>
           <tr>
             <td><code>BLUETOOTH</code><br><code>BLUETOOTH_ADMIN</code></td>
-            <td><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a></td>
+            <td><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><a href="#privacy-remote">도토리 PC 영상 리모컨</a></td>
             <td>Android 11 이하에서 호스트와 Bluetooth HID로 연결하기 위한 기존 Bluetooth 권한입니다.</td>
           </tr>
           <tr>
@@ -540,7 +548,7 @@
           </tr>
           <tr>
             <td><code>FOREGROUND_SERVICE_CONNECTED_DEVICE</code></td>
-            <td><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a></td>
+            <td><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><a href="#privacy-remote">도토리 PC 영상 리모컨</a></td>
             <td>연결된 호스트와 HID 세션을 유지하는 포그라운드 서비스 유형을 선언합니다.</td>
           </tr>
           <tr>
@@ -555,7 +563,7 @@
           </tr>
           <tr>
             <td><code>POST_NOTIFICATIONS</code></td>
-            <td><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스<br><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> YouTube Downloader · <a href="#privacy-alarm"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 알람</a></td>
+            <td><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스<br><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> YouTube Downloader · <a href="#privacy-alarm"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 알람</a><br><a href="#privacy-remote">도토리 PC 영상 리모컨</a></td>
             <td>동작 중인 HID 세션·진행 중이거나 스누즈 대기 중인 알람·다운로드에 따라붙는 알림을 표시하기 위해서입니다. 이 권한을 선언한
               앱은 위에 적은 앱들뿐이며, 홍보성 알림은 보내지 않습니다.</td>
           </tr>
@@ -567,7 +575,7 @@
           </tr>
           <tr>
             <td><code>com.droidactor.hid.session.permission.RELEASE</code><br><span class="badge">signature</span></td>
-            <td><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스<br><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a></td>
+            <td><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스<br><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><a href="#privacy-remote">도토리 PC 영상 리모컨</a></td>
             <td>같은 인증서로 서명한 <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> HID 앱끼리 연결 상태를 조회하고 세션을 반납·공유하기
               위해서입니다. 공유 연결에서는 사용자가 누른 키의 전송 요청을 연결을 소유한 앱에 전달합니다.
               Android가 같은 서명의 앱에만 부여하며, 다른 앱의 입력을 가로채는 권한은 아닙니다.</td>
@@ -1056,6 +1064,15 @@
       <p>화면 상단의 Google AdMob 배너와 지역에 필요한 Google UMP 개인정보 선택을 사용하며, 처리 방식은 위 3절을 따릅니다. Google Mobile Ads는 광고·분석·부정행위 방지를 위해 IP 기반 대략적 위치·앱 상호작용·진단 정보·기기 식별자를 수집·공유할 수 있습니다(<a href="https://developers.google.com/admob/android/privacy/play-data-disclosure" rel="noopener">Google SDK 공개 문서</a>). 앱 데이터를 삭제해도 Google이 이미 보관한 데이터까지 삭제되지는 않습니다. 기어 설정 &rarr; 개인정보 선택에서 광고 개인정보 선택을 다시 열 수 있습니다. 하우스 홍보 배너를 누르면 다른 <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 제품 페이지가 열릴 수 있으며 전면·보상형 광고는 없습니다.</p>
       <p>문의: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a>.</p>
       <p><a href="/ko/apps/seoulmetro/">제품 안내</a></p>
+    </div>
+
+    <div class="policy" id="privacy-remote">
+      <h3>도토리 PC 영상 리모컨<span class="pkg-inline">com.droidactor.bt_remote</span></h3>
+      <p>시행일: 2026년 11월 12일. 도토리 PC 영상 리모컨(com.droidactor.bt_remote)은 사용자가 누른 미디어 단축키를 선택한 PC에 Bluetooth HID로 직접 전달합니다. 키 입력과 호스트 이력을 개발자 서버나 광고 SDK로 보내지 않습니다. 앱 계정과 별도 분석 서비스가 없습니다.</p>
+      <p>연결 복원을 위해 선택한 호스트의 주소·이름, 연결 이력과 앱 설정을 폰의 내부 저장소에 보관합니다. Android 클라우드 자동 백업은 사용하지 않도록 설정합니다. 기기 간 이전 동작은 Android 버전과 제조사에 따라 달라질 수 있습니다. 앱 데이터 지우기나 제거로 로컬 기록과 설정을 삭제할 수 있습니다. 블루투스 권한은 페어링·연결에, 포그라운드 서비스와 알림은 선택한 연결 유지에 사용합니다. 위치·연락처·카메라·마이크·광범위한 저장소 권한은 요청하지 않습니다.</p>
+      <p>Google AdMob 배너 자리 한 개와 UMP 개인정보 메시지를 사용합니다. Google Mobile Ads는 광고·분석·부정 사용 방지를 위해 IP 기반 대략적 위치, 앱 상호작용, 진단, 기기 또는 기타 식별자를 수집·공유할 수 있습니다. 호스트 정보와 키 입력은 광고 SDK에 전달하지 않습니다. 필요한 동의 절차가 끝난 뒤 광고를 요청하며, 제공 가능한 개인정보 선택은 설정에서 다시 열 수 있습니다. 로컬 앱 데이터를 지워도 Google이 별도로 보관한 데이터까지 삭제되지는 않습니다.</p>
+      <p>Google Play 앱 업데이트는 업데이트 확인과 사용자 승인 후 다운로드를 위해 기기 메타데이터·앱 버전·설치 모듈 목록을 암호화 통신으로 처리할 수 있습니다. 블루투스 호스트 이력이나 키 입력을 업데이트 요청에 넣지 않습니다.</p>
+      <p><a href="https://policies.google.com/privacy" rel="noopener">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure" rel="noopener">Google SDK disclosure</a> · <a href="https://developer.android.com/guide/playcore/in-app-updates#data-safety" rel="noopener">Play update disclosures</a> · <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/ko/apps/remote/">도토리 PC 영상 리모컨</a></p>
     </div>
 
     <div class="policy" id="privacy-unitconverter">

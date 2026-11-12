@@ -648,3 +648,11 @@ AdMob 콘솔의 app-ads.txt 상태가 "확인됨" 으로 바뀌는 데 하루 �
 - 2026-11-12: 도토리 만보기 출시 준비. 한영 제품·홈·허브·개인정보처리방침 `#privacy-pedometer`, 권한표 `ACTIVITY_RECOGNITION` 행, JSON-LD, 역방향 링크와 사이트맵을 추가했습니다. 공개 스토어 확인 전까지 Coming soon을 유지합니다.
 
 - 2026-11-12: 도토리 날짜·음력 계산기 개발 자료. 한영 제품·홈·허브·처리방침 `#privacy-lunar`, 권한표, JSON-LD·역방향 링크·사이트맵을 추가했습니다. 앱의 Play 공개 전까지 Coming soon을 유지합니다.
+
+## PC 영상 리모컨 — 최초 출시 준비 (2026-11-12)
+
+`remote` / `com.droidactor.bt_remote`: 도토리 PC 영상 리모컨 / Dotori PC Video Remote.
+한영 제품 페이지는 `/apps/remote/`와 `/ko/apps/remote/`, 개인정보 처리방침은 양 언어 홈의
+`#privacy-remote`다. PC 웹 브라우저 YouTube 전용이며 일반 영상 사이트·미디어 플레이어·TV 앱은
+지원한다고 주장하지 않는다. 공개 Play URL이 확인될 때까지 `badge soon`을 유지한다.
+출시 상태의 정본은 Mobile `apps/bt-remote/play/release-checklist.md`다.

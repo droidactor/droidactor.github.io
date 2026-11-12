@@ -108,7 +108,8 @@
         {"@type": "ListItem", "position": 23, "name": "Dotori Korea Metro", "url": "https://droidactor.github.io/apps/koreametro/"},
         {"@type": "ListItem", "position": 24, "name": "Dotori Alarm Clock", "url": "https://droidactor.github.io/apps/alarm/"},
         {"@type": "ListItem", "position": 25, "name": "Dotori Pedometer", "url": "https://droidactor.github.io/apps/pedometer/"},
-        {"@type": "ListItem", "position": 26, "name": "Dotori Date & Lunar Calculator", "url": "https://droidactor.github.io/apps/lunar/"}
+        {"@type": "ListItem", "position": 26, "name": "Dotori Date & Lunar Calculator", "url": "https://droidactor.github.io/apps/lunar/"},
+        {"@type": "ListItem", "position": 27, "name": "Dotori PC Video Remote", "url": "https://droidactor.github.io/apps/remote/"}
       ]
     }
   ]
@@ -399,6 +400,13 @@
       </article>
       <article class="card"><div class="icon" aria-hidden="true"><img src="/assets/icons/lunar.png" width="48" height="48" alt="" decoding="async"></div><h3><a href="/apps/lunar/">Dotori Date &amp; Lunar Calculator</a></h3><p class="pkg">com.droidactor.lunar</p><p class="desc">Convert Korean lunar dates, compare three ages and calculate Korean business days on your phone.</p><div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/lunar/">Details</a><a href="/#privacy-lunar">Privacy</a></div></article>
 
+      <article class="card">
+        <div class="icon"><img src="/assets/icons/remote.png" width="64" height="64" alt="" loading="lazy"></div>
+        <h3><a href="/apps/remote/">Dotori PC Video Remote</a></h3>
+        <div class="pkg">com.droidactor.bt_remote</div>
+        <p class="desc">Bluetooth remote for YouTube on your PC.</p>
+        <div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/remote/">Apps</a><a href="/#privacy-remote">Privacy</a></div>
+      </article>
     </div>
   </section>
 
@@ -527,13 +535,13 @@
 
           <tr>
             <td><code>BLUETOOTH_CONNECT</code><br><code>BLUETOOTH_ADVERTISE</code></td>
-            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a></td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a><br><a href="#privacy-remote">Dotori PC Video Remote</a></td>
             <td>To appear as a HID keyboard/mouse to a nearby host and send your key and
               pointer input to it. Required by Android for any Bluetooth pairing.</td>
           </tr>
           <tr>
             <td><code>BLUETOOTH</code><br><code>BLUETOOTH_ADMIN</code></td>
-            <td><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a></td>
+            <td><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a><br><a href="#privacy-remote">Dotori PC Video Remote</a></td>
             <td>Legacy Bluetooth permissions for connecting to a host over Bluetooth HID on Android 11 and earlier.</td>
           </tr>
           <tr>
@@ -582,7 +590,7 @@
           </tr>
           <tr>
             <td><code>FOREGROUND_SERVICE_CONNECTED_DEVICE</code></td>
-            <td><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a></td>
+            <td><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a><br><a href="#privacy-remote">Dotori PC Video Remote</a></td>
             <td>Declares the foreground service type used to maintain a HID session with a connected host.</td>
           </tr>
           <tr>
@@ -597,7 +605,7 @@
           </tr>
           <tr>
             <td><code>POST_NOTIFICATIONS</code></td>
-            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a><br><span class="dotori">Dotori</span> YouTube Downloader · <a href="#privacy-alarm"><span class="dotori">Dotori</span> Alarm Clock</a></td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a><br><span class="dotori">Dotori</span> YouTube Downloader · <a href="#privacy-alarm"><span class="dotori">Dotori</span> Alarm Clock</a><br><a href="#privacy-remote">Dotori PC Video Remote</a></td>
             <td>To show the notification that accompanies a running HID session, active or snoozed alarm, or download. Only
               the apps listed declare it, and we send no promotional notifications.</td>
           </tr>
@@ -609,7 +617,7 @@
           </tr>
           <tr>
             <td><code>com.droidactor.hid.session.permission.RELEASE</code><br><span class="badge">signature</span></td>
-            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a></td>
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a><br><a href="#privacy-remote">Dotori PC Video Remote</a></td>
             <td>To let <span class="dotori">Dotori</span> HID apps signed with the same certificate query connection status and
               release or share a session. With a shared connection, requests to send keys you press are
               passed to the app that owns the connection. Android grants this permission only to apps
@@ -1137,6 +1145,15 @@
       <p>The app displays a Google AdMob banner at the top of the screen and uses Google UMP for applicable privacy choices, as described in section 3. Google Mobile Ads may collect and share IP-derived approximate location, app interactions, diagnostics and device identifiers for advertising, analytics and fraud prevention (<a href="https://developers.google.com/admob/android/privacy/play-data-disclosure" rel="noopener">Google's SDK disclosure</a>). Clearing app data does not delete data already held by Google. You can reopen the advertising privacy choices from Settings (gear) &rarr; Privacy choices. A house promo banner may open another <span class="dotori">Dotori</span> product page when selected. No interstitial or rewarded ads are used.</p>
       <p>Questions: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a>.</p>
       <p><a href="/apps/seoulmetro/">Product details</a></p>
+    </div>
+
+    <div class="policy" id="privacy-remote">
+      <h3>Dotori PC Video Remote<span class="pkg-inline">com.droidactor.bt_remote</span></h3>
+      <p>Effective date: 12 November 2026. Dotori PC Video Remote (com.droidactor.bt_remote) sends the media shortcut keys you select directly to your chosen PC over Bluetooth HID. Key inputs and host history are not sent to a developer-operated server or to the advertising SDK. There is no app account or separate analytics service.</p>
+      <p>The selected host address and name, connection history and app preferences are kept in private storage on the phone to restore connections. Android cloud backup is disabled. Device-to-device transfer behavior can vary with the Android version and device manufacturer. Clearing app data or uninstalling removes these local records and preferences. Bluetooth permissions support pairing and connecting; a foreground service and its notification maintain the selected connection. The app does not request location, contacts, camera, microphone or broad storage access.</p>
+      <p>One Google AdMob banner placement and Google UMP privacy messaging are included. Google Mobile Ads may collect and share IP-derived approximate location, app interactions, diagnostics and device or other identifiers for advertising, analytics and fraud prevention. Host information and key inputs are not passed to the advertising SDK. Where required, ad requests wait for the applicable consent flow; available privacy choices can be reopened in Settings. Clearing local app data does not delete information held separately by Google.</p>
+      <p>Google Play in-app updates may process device metadata, app version and installed module lists over encrypted transport to check for updates and download an update with your approval. Bluetooth host history and key inputs are not included in update requests.</p>
+      <p><a href="https://policies.google.com/privacy" rel="noopener">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure" rel="noopener">Google SDK disclosure</a> · <a href="https://developer.android.com/guide/playcore/in-app-updates#data-safety" rel="noopener">Play update disclosures</a> · <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/apps/remote/">Dotori PC Video Remote</a></p>
     </div>
 
     <div class="policy" id="privacy-unitconverter">
