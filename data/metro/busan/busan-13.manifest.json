@@ -1,0 +1,58 @@
+{
+  "city": "busan",
+  "contentSha256": "3c0c6e25c10cf9edfd47ada7c573ba4ed4fe9424bf679e1a8de693773e0b5e86",
+  "dataDate": null,
+  "dataVersion": 13,
+  "effectiveFrom": null,
+  "files": [
+    {
+      "name": "busan.first-last.json",
+      "schema": 2,
+      "sha256": "666beb586fd6fc16bb777efac9603983fbf2fcc6a2291309c8a260222b021111",
+      "size": 89454
+    },
+    {
+      "name": "busan.map.json",
+      "schema": 3,
+      "sha256": "9780edc7f491d37f731e674f9801f2a4fad5c684f4fdbe798f8a63e81bc15082",
+      "size": 39978
+    },
+    {
+      "name": "busan.profile.json",
+      "schema": 1,
+      "sha256": "e339a2dcebea8c74cc9953b2c77fd81232d12be163d12e8a5fdd8ac28804955d",
+      "size": 266
+    },
+    {
+      "name": "busan.timetable-holiday.json",
+      "schema": 2,
+      "sha256": "2b61c58a41144c261773c30303d93ecb1477af93554e12ee67e1b84c0c58a8ec",
+      "size": 3153302
+    },
+    {
+      "name": "busan.timetable-saturday.json",
+      "schema": 2,
+      "sha256": "a7655fd143026ba520b3a37fa356da5ac305c46487617e44f231409f0e8b5310",
+      "size": 3165443
+    },
+    {
+      "name": "busan.timetable-weekday.json",
+      "schema": 2,
+      "sha256": "afb1e0c8042b077f78fbab751880c9c76e5fa76afc4bfffe9aee79b99c0720a3",
+      "size": 3549638
+    },
+    {
+      "name": "kr.holidays.json",
+      "schema": 1,
+      "sha256": "4f1cf273ec629636c9b8c916c9a8e5b1e977f6f9e0ab88b9d00dc372a49d1cf8",
+      "size": 1078
+    }
+  ],
+  "maxAppVersionCode": null,
+  "minAppVersionCode": 9,
+  "schema": 1,
+  "sha256": "69aba9c10bae3207c71f5bfb1539964482ceb9e9c16a3574e746c50f07af3fb4",
+  "size": 400746,
+  "url": "https://droidactor.github.io/data/metro/busan/busan-13.zip",
+  "validUntil": null
+}

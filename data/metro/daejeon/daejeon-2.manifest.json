@@ -1,0 +1,58 @@
+{
+  "city": "daejeon",
+  "contentSha256": "77229c46473857545ab9eb2a1a62276d50fde3ac155ab7bdd18575fe7af98081",
+  "dataDate": null,
+  "dataVersion": 2,
+  "effectiveFrom": null,
+  "files": [
+    {
+      "name": "daejeon.first-last.json",
+      "schema": 2,
+      "sha256": "2d3d0663e8ec4a4c35c23c968814e08f31df9aa53f82fcef70e8fb6e4e6ea650",
+      "size": 10922
+    },
+    {
+      "name": "daejeon.map.json",
+      "schema": 3,
+      "sha256": "d20adc789b2f1d04983355dd4bbf55411b5b61ef4bc91e854208feff837d980b",
+      "size": 6132
+    },
+    {
+      "name": "daejeon.profile.json",
+      "schema": 1,
+      "sha256": "ad1143325af8312aae97d03b93bd37adf851a754a7b764dca7ca9092d1ec658e",
+      "size": 274
+    },
+    {
+      "name": "daejeon.timetable-holiday.json",
+      "schema": 2,
+      "sha256": "de664cd93a2b22d3bfde35158afa75825668cb774caaef9c304a0883ff1d3b07",
+      "size": 300313
+    },
+    {
+      "name": "daejeon.timetable-saturday.json",
+      "schema": 2,
+      "sha256": "761d4e89e03cd0dded6c66a3cdf82fae2b2294bf3508b8174e9d11289ebd3a6b",
+      "size": 300314
+    },
+    {
+      "name": "daejeon.timetable-weekday.json",
+      "schema": 2,
+      "sha256": "d95ab28d5b5c3dfe125eb758b117861b17a89e140a13b6884186c0bf3bd3c423",
+      "size": 333577
+    },
+    {
+      "name": "kr.holidays.json",
+      "schema": 1,
+      "sha256": "4f1cf273ec629636c9b8c916c9a8e5b1e977f6f9e0ab88b9d00dc372a49d1cf8",
+      "size": 1078
+    }
+  ],
+  "maxAppVersionCode": null,
+  "minAppVersionCode": 1,
+  "schema": 1,
+  "sha256": "55bde4c7d1424205401942b1a81d60d42714dd5643a2ba70901e8e4837d5ab18",
+  "size": 48692,
+  "url": "https://droidactor.github.io/data/metro/daejeon/daejeon-2.zip",
+  "validUntil": null
+}
