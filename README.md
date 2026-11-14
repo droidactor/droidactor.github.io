@@ -655,6 +655,9 @@ AdMob 콘솔의 app-ads.txt 상태가 "확인됨" 으로 바뀌는 데 하루 �
 한영 제품 페이지는 `/apps/remote/`와 `/ko/apps/remote/`, 개인정보 처리방침은 양 언어 홈의
 `#privacy-remote`다. PC 웹 브라우저 YouTube 전용이며 일반 영상 사이트·미디어 플레이어·TV 앱은
 지원한다고 주장하지 않는다. 공개 Play URL이 확인될 때까지 `badge soon`을 유지한다.
+2026-11-14 로그아웃 Play URL `200`을 확인하고 홈 2·제품 페이지 2에 Play 배지를 넣고(제품 페이지 푸터 상표 고지 포함)
+앱 허브 2의 `badge soon`을 떼고 카드 샷 2장을 넣었다. 매뉴얼·이 앱을 CTA로 둔 블로그 글은 없다.
+같은 날 공용 QR `assets/qr/remote/`와 합성 배너 `assets/banner/{,en/}remote-qr.png`를 게시했다.
 출시 상태의 정본은 Mobile `apps/bt-remote/play/release-checklist.md`다.
 
 ## Bluetooth Macro Pad 출시 준비 (2026-11-14)
