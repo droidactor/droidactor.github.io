@@ -232,6 +232,12 @@
           "position": 31,
           "name": "도토리 QR·바코드 스캐너",
           "url": "https://droidactor.github.io/ko/apps/qr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 32,
+          "name": "도토리 블루투스 매크로 패드",
+          "url": "https://droidactor.github.io/ko/apps/macropad/"
         }
       ]
     }
@@ -535,6 +541,7 @@
         <div class="foot"><span class="badge soon">출시 예정</span><a href="/ko/apps/remote/">앱</a><a href="/ko/#privacy-remote">개인정보</a></div>
       </article>
       <article class="card"><div class="icon" aria-hidden="true"><img src="/assets/icons/qr.png" width="48" height="48" alt="" decoding="async"></div><h3><a href="/ko/apps/qr/">도토리 QR·바코드 스캐너</a></h3><p class="pkg">com.droidactor.qr</p><p class="desc">카메라·사진·공유 이미지의 QR 코드와 바코드를 읽고, 링크는 열기 전에 이동할 곳을 먼저 확인하세요.</p><div class="foot"><span class="badge soon">출시 준비 중</span><a href="/ko/apps/qr/">자세히</a><a href="/ko/#privacy-qr">개인정보</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true"><img src="/assets/icons/macropad.png" width="48" height="48" alt="" decoding="async"></div><h3><a href="/ko/apps/macropad/">도토리 블루투스 매크로 패드</a></h3><p class="pkg">com.droidactor.bt_macropad</p><p class="desc">자주 쓰는 PC 단축키와 키 순서를 폰의 큰 버튼으로 누르세요.</p><div class="foot"><span class="badge soon">출시 예정</span><a href="/ko/apps/macropad/">앱 안내</a><a href="/ko/#privacy-macropad">개인정보</a></div></article>
     </div>
   </section>
 
@@ -655,13 +662,13 @@
 
           <tr>
             <td><code>BLUETOOTH_CONNECT</code><br><code>BLUETOOTH_ADVERTISE</code></td>
-            <td><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스<br><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><a href="#privacy-remote">도토리 PC 영상 리모컨</a></td>
+            <td><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스<br><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><a href="#privacy-remote">도토리 PC 영상 리모컨</a><br><a href="#privacy-macropad">도토리 블루투스 매크로 패드</a></td>
             <td>주변 host 에 HID 키보드·마우스로 나타나고 키·포인터 입력을 보내기 위해서입니다.
               블루투스 페어링에 Android 가 요구하는 권한입니다.</td>
           </tr>
           <tr>
             <td><code>BLUETOOTH</code><br><code>BLUETOOTH_ADMIN</code></td>
-            <td><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><a href="#privacy-remote">도토리 PC 영상 리모컨</a></td>
+            <td><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><a href="#privacy-remote">도토리 PC 영상 리모컨</a><br><a href="#privacy-macropad">도토리 블루투스 매크로 패드</a></td>
             <td>Android 11 이하에서 호스트와 Bluetooth HID로 연결하기 위한 기존 Bluetooth 권한입니다.</td>
           </tr>
           <tr>
@@ -708,7 +715,7 @@
           </tr>
           <tr>
             <td><code>FOREGROUND_SERVICE_CONNECTED_DEVICE</code></td>
-            <td><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><a href="#privacy-remote">도토리 PC 영상 리모컨</a></td>
+            <td><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><a href="#privacy-remote">도토리 PC 영상 리모컨</a><br><a href="#privacy-macropad">도토리 블루투스 매크로 패드</a></td>
             <td>연결된 호스트와 HID 세션을 유지하는 포그라운드 서비스 유형을 선언합니다.</td>
           </tr>
           <tr>
@@ -723,7 +730,7 @@
           </tr>
           <tr>
             <td><code>POST_NOTIFICATIONS</code></td>
-            <td><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스<br><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> YouTube Downloader · <a href="#privacy-alarm"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 알람</a><br><a href="#privacy-remote">도토리 PC 영상 리모컨</a></td>
+            <td><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스<br><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> YouTube Downloader · <a href="#privacy-alarm"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 알람</a><br><a href="#privacy-remote">도토리 PC 영상 리모컨</a><br><a href="#privacy-macropad">도토리 블루투스 매크로 패드</a></td>
             <td>동작 중인 HID 세션·진행 중이거나 스누즈 대기 중인 알람·다운로드에 따라붙는 알림을 표시하기 위해서입니다. 이 권한을 선언한
               앱은 위에 적은 앱들뿐이며, 홍보성 알림은 보내지 않습니다.</td>
           </tr>
@@ -735,7 +742,7 @@
           </tr>
           <tr>
             <td><code>com.droidactor.hid.session.permission.RELEASE</code><br><span class="badge">signature</span></td>
-            <td><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스<br><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><a href="#privacy-remote">도토리 PC 영상 리모컨</a></td>
+            <td><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨<br><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스<br><a href="#privacy-numpad"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드</a><br><a href="#privacy-remote">도토리 PC 영상 리모컨</a><br><a href="#privacy-macropad">도토리 블루투스 매크로 패드</a></td>
             <td>같은 인증서로 서명한 <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> HID 앱끼리 연결 상태를 조회하고 세션을 반납·공유하기
               위해서입니다. 공유 연결에서는 사용자가 누른 키의 전송 요청을 연결을 소유한 앱에 전달합니다.
               Android가 같은 서명의 앱에만 부여하며, 다른 앱의 입력을 가로채는 권한은 아닙니다.</td>
@@ -859,6 +866,8 @@
       </p>
       <p><a href="/ko/apps/bt-mouse/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스 자세히 보기</a></p>
     </div>
+
+    <div class="policy" id="privacy-macropad"><h3>도토리 블루투스 매크로 패드<span class="pkg-inline">com.droidactor.bt_macropad</span></h3><p>사용자가 고른 단축키와 최대 4단계 키 순서를 선택한 PC에 Bluetooth HID로 직접 보냅니다. 앱 계정과 개발자 서버가 없으며, 클립보드를 읽거나 키 입력·연결 이력을 개발자 서버에 보내지 않습니다.</p><p>매크로 세트, 버튼 이름·색상·배치·키 순서, 언어·자동 연결 설정과 재연결용 호스트 정보는 기기 내부에 저장합니다. Android 백업은 비활성화되어 있습니다. 같은 서명의 다른 도토리 HID 앱이 연결을 소유하면 그 앱에 키 전송을 요청합니다. 매크로 내용·키 입력·호스트 정보를 광고 SDK에 전달하지 않습니다.</p><p>배너 광고와 UMP 개인정보 선택 기능을 포함하며 전면 광고는 없습니다. Google AdMob의 데이터 처리는 위 3절을 따릅니다. 필요한 동의 절차 이후 광고를 요청하며 설정의 개인정보 옵션에서 선택을 관리합니다. Google Play 앱 내 업데이트는 위 공통 공개사항을 따르며 매크로·호스트 정보를 업데이트 요청에 넣지 않습니다.</p><p>앱 저장공간을 지우거나 앱을 제거하면 저장된 매크로·설정·호스트 기록이 삭제됩니다. OS의 페어링은 Android 블루투스 설정에서 별도로 제거할 수 있습니다.</p><p><a href="/#privacy-macropad">Privacy policy in English</a></p><p><a href="/ko/apps/macropad/">앱 안내</a></p></div>
 
     <div class="policy" id="privacy-numpad">
       <h3><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드<span class="pkg-inline">com.droidactor.bt_numpad</span></h3>

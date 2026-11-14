@@ -656,3 +656,7 @@ AdMob 콘솔의 app-ads.txt 상태가 "확인됨" 으로 바뀌는 데 하루 �
 `#privacy-remote`다. PC 웹 브라우저 YouTube 전용이며 일반 영상 사이트·미디어 플레이어·TV 앱은
 지원한다고 주장하지 않는다. 공개 Play URL이 확인될 때까지 `badge soon`을 유지한다.
 출시 상태의 정본은 Mobile `apps/bt-remote/play/release-checklist.md`다.
+
+## Bluetooth Macro Pad 출시 준비 (2026-11-14)
+
+`/apps/macropad/`·`/ko/apps/macropad/`, 한영 홈·허브·처리방침 `#privacy-macropad`, 권한 표·JSON-LD·역방향 링크·사이트맵을 추가했습니다. 공개 Play URL 확인 전까지 출시 예정 표시를 유지합니다. 실제 제출 상태는 Mobile `apps/bt-macropad/play/release-checklist.md`가 정본입니다.
