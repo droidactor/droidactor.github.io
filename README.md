@@ -227,7 +227,9 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
       홈·제품 한영 Play 배지, 제품 페이지 상표 고지, 앱 허브의 `badge soon` 떼기와 카드 샷 2장(`assets/shots/light/{en-US,ko-KR}/`
       의 02 홈·01 촬영 화면 800px WebP), 공용 Play QR 사본 `assets/qr/light/`, 홍보글 서두용 QR 합성 배너 한영
       (`assets/banner/{,en/}light-qr.png`, blogger `make_banner.py light`). 매뉴얼·CTA 블로그 글은 없다. 손댄 허브 2곳의 sitemap
-      `lastmod` 갱신(제품·홈은 이미 같은 날). 한영 제품 홍보글 발행·사이트 게재와 새 URL 색인 요청은 별도이며, 정본은 Mobile light
+      `lastmod` 갱신(제품·홈은 이미 같은 날). 같은 날 한영 제품 홍보글 `/blog/products/flashlight-camera-app/`·
+      `/ko/blog/products/flashlight-camera-app/` 을 blogger 원고 쌍으로 게재했다(목록·sitemap 포함, 앱 아이콘은
+      `blog/flashlight-camera-app/assets/icon.png`). 네이버·Blogger·Medium 발행과 새 URL 색인 요청 결과의 정본은 Mobile light
       worktree 의 `apps/light/play/release-checklist.md` 다.
 
 - [x] **알람 출시 후 홍보 자료 게시 (2026-11-04).** 공개 Play·Console 프로덕션 활성 확인 후 한영 홈·제품 배지, 제품 상태·스크린샷, 허브, 공용 QR·배너와 한영 제품 글 `alarm-snooze-schedule`·목록·사이트맵을 게시했습니다 (`446d341`). 공개 글·이미지 HTTP 200과 PC/모바일 검수 통과. [네이버](https://blog.naver.com/kwak52/224465027786)·[Blogger](https://zzunkong.blogspot.com/2026/11/preview-each-alarms-snooze-schedule.html) 발행 후 공개 본문·이미지·설치 링크·RSS를 확인했습니다. 새 사이트 홍보글 en 19:14·ko 19:17 KST에 Google `색인 생성 요청됨`을 확인했으며, 다시 요청하지 않습니다. 기존 홈·제품·허브와 사이트맵은 재제출하지 않았습니다. [한국어 영상](https://www.youtube.com/watch?v=EFr9peSIQIc)·[영어 영상](https://www.youtube.com/watch?v=SN-RjUjITCA)을 공개했고, 한영 홍보글과 네이버/Blogger에 같은 언어 영상 링크·장면 요약을 추가했습니다. Play 동영상 변경 2건은 검토 전송 완료, Medium은 최근 24시간 한도로 기존 초안에서 대기합니다. 전체 상태와 남은 작업은 Mobile alarm worktree의 `apps/alarm/play/README.md`가 정본입니다.
