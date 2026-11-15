@@ -365,11 +365,11 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
       앱 목록 2곳은 배지를 넣은 것이 아니라 `unit` 카드에만 남아 있던 `badge soon` 을 **뗀** 것이다
       (이 페이지는 출시 앱에도 Play 배지를 두지 않고 링크만 둔다 — 다른 3앱 카드에는 애초에 배지가 없었다).
       배지를 새로 넣은 10개 페이지에는 푸터 `<p class="tm">` 상표 고지를 함께 넣었다.
-      **`unit` 은 이 규칙의 유일한 예외다** — 실측 2026-09-15 에 `com.droidactor.currency` ·
+      **`unit` 은 이 규칙의 유일한 예외였다** — 실측 2026-09-15 에 `com.droidactor.currency` ·
       `com.droidactor.roman` · `com.droidactor.bt_numpad` 는 로그아웃 `200` 인데
-      `com.droidactor.unit` 은 **`404`** 다. 아직 스토어에 없는데 "정식 출시된 걸로 간주하고 작업하라"는
-      지시(2026-09-15)를 받아 배지를 걸었다. 그때까지 `unit` 배지는 **죽은 링크**이고, 실제로 올라온 뒤
-      `200` 을 확인하면 이 예외 문단을 지운다. 남은 미출시 앱은 `yt-downloader` 와 `unit` 이다.
+      `com.droidactor.unit` 은 **`404`** 였다. 아직 스토어에 없는데 "정식 출시된 걸로 간주하고 작업하라"는
+      지시(2026-09-15)를 받아 배지를 걸었다. **2026-11-15 에 `unit` 도 로그아웃 `200` 을 확인해 이 예외는
+      해소됐다** — 지금 `unit` 배지는 정상 링크다. 당시 남은 미출시 앱은 `yt-downloader` 와 `unit` 이었다.
 - [x] **`badge soon` → 스토어 배지 교체 3차 (2026-10-27).** `receipt` · `namecard` · `idphoto` 3종이
       로그아웃 `200` 인 것을 확인하고 출시 상태로 돌렸다. 고친 곳은 **10개 파일** — 홈 2 + 제품 페이지 6
       (`<div class="status">` 배지 + 사양표 `Status`/`상태` 행 + 푸터 `<p class="tm">`) + 앱 목록 2 다.
@@ -391,6 +391,17 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
       그 브랜치가 main 에 합쳐지면 허브 두 곳의 주석("morse is on Play but its thumbnails …")을 지우고 샷 2장을 넣는다
       (아래 미완 항목).
       남은 미출시 앱은 `yt-downloader` 하나다.
+- [x] **`badge soon` → 스토어 배지 교체 5차 (2026-11-15).** `pedometer` · `lunar` · `qr` · `counter` 4종이
+      로그아웃 `200` 인 것을 확인하고 출시 상태로 돌렸다(같은 날 `ytdownloader` · `daejeonmetro` · `vault` ·
+      `bt_macropad` 는 `404`). 고친 곳은 **10개 파일** — 홈 2 + 제품 페이지 6(`lunar`·`qr`·`counter` 의
+      `<div class="status">` 배지 + 푸터 `<p class="tm">`. 사양표가 없어 `Status`/`상태` 행은 해당 없음. `pedometer`
+      제품 페이지 2곳은 이미 출시 상태였다) + 앱 목록 2 와 `sitemap.xml`·`sitemap-all.xml` 이다. 매뉴얼과 블로그 CTA 는
+      네 앱 모두 없다(`grep -rlE 'apps/(pedometer|lunar|qr|counter)/' blog/ ko/blog/` 는 목록 페이지 둘만 잡는다).
+      앱 목록 2곳은 `badge soon` 을 떼고 네 앱 모두 카드 샷 2장을 넣었다 — pedometer `01-today`·`02-history`,
+      qr `01-link`·`02-wifi`, lunar `{en,ko}-01-lunar-age`·`{en,ko}-02-leap-month`, counter `01-count`·`02-counters`.
+      lunar·counter 는 `/assets/shots/` 축소본이 없어 이번에 `_screenshot` 원본에서 그 두 장만 만들었다(lunar 원본
+      파일명의 언어 접두사는 그대로 뒀다). 같은 날 영문 홈 `index.html` 본문에서 무지개 색이 빠진 `Dotori` 32곳에
+      `<span class="dotori">` 를 넣었다. 남은 미출시 앱은 `yt-downloader` · `daejeonmetro` · `vault` · `macropad` 4종이다.
 - [x] **morse 홍보 자료 게시 (2026-10-30).** 기존 폰 촬영 원본에서 800px WebP 10장, 네이버 절반 사본,
       허브 카드 `01-sound`·`03-text`, 한영 배너와 제품 홍보글을 게시했다. 공개 글 두 URL과 이미지 HTTP 200을 확인했다.
       실제 게시한 한영 YouTube 데모 링크도 원고에서 생성해 포함했다. Play QR은 기존 공통 공개 PNG를 쓴다.
@@ -496,6 +507,13 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
      + `404.html` 이고, 새 제품 페이지 쪽에는 나머지 앱 전부를 넣는다. 여기를 빠뜨리면 홈 카드 외에는
      새 앱으로 들어가는 내부 링크가 없어 크롤러가 한 경로로만 본다(bt-mouse 를 붙일 때 실제로 빠뜨렸다)
   8. 손댄 페이지의 `<lastmod>` 갱신
+  9. **새 앱 이름의 브랜드 낱말은 무지개로 감싼다** — 영문 `<span class="dotori">Dotori</span>`, 국문
+     `<span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span>`. 자리는 홈·허브 카드 제목,
+     제품·매뉴얼·기술 노트의 `<h1>`·경로 표시(`nav.crumb`), 처리방침 제목(`h3`·`h4`)·본문·권한 표, 모든
+     `<div class="also">` 링크, 제품 페이지 푸터의 앱 링크다. 블로그 본문·목록 설명·매뉴얼 문장은 감싸지 않는다
+     (`blogger` 저장소 `to_pages.py` 의 `brand()` 도 앱 이름 자리만 감싼다). `<title>`·meta·JSON-LD 에는 넣을 수 없다.
+     2026-10~11 에 추가한 앱 여럿이 이것을 빠뜨려 2026-11-16 에 73개 파일 490곳을 일괄 보정했다. 글자·링크가
+     그대로인 표시 전용 변경이라 그 페이지들의 `<lastmod>` 는 올리지 않았다
 - **앱이 출시되면** `badge soon` 을 스토어 배지로 바꾼다. **곳 수를 숫자로 외우지 말고 아래 규칙으로
   센다** — 앱마다 다르다(2026-08-14 기준 `bt-keyboard`·`bt-ppt`·`bt-mouse`·`ssh-scout`·`lgtv` 는 8곳,
   `wifi-scout` 은 12곳, `yt-downloader` 는 4곳). 홈과 제품 페이지만 고치고 끝내면 매뉴얼·블로그에는
@@ -519,7 +537,7 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
   - **교체 시점의 판정은 로그아웃 상태에서 스토어 URL 이 `200` 인지 하나뿐이다.** Console 이 "게시됨"
     으로 보여도 내부 테스트 트랙이면 테스터 외에는 `404` 라 배지가 죽은 링크가 된다
     (2026-09-15 에 `unit` 만 이 판정을 건너뛰었다 — `404` 인 채로 배지를 걸라는 지시였다. 예외이지
-    선례가 아니다. 경위와 되돌릴 조건은 위 "남은 일" 의 2차 교체 항목에 적었다)
+    선례가 아니다. 2026-11-15 에 `200` 이 되어 해소됐고, 경위는 위 "남은 일" 의 2차 교체 항목에 있다)
 - **6종 앱 매뉴얼을 고치면** 제품 소개나 블로그 설명과 섞지 않고 다음을 한 묶음으로 처리한다.
   1. `manual/<앱>/index.html`과 `ko/manual/<앱>/index.html`을 같은 목차·같은 기능 범위로 갱신
   2. 화면의 실제 버튼명은 앱 리소스 문자열, 동작·권한은 앱 코드와 `AndroidManifest.xml`을 근거로 확인
