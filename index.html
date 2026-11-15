@@ -274,6 +274,12 @@
           "position": 33,
           "name": "Dotori Tally Counter",
           "url": "https://droidactor.github.io/apps/counter/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 34,
+          "name": "Dotori Flashlight Camera",
+          "url": "https://droidactor.github.io/apps/light/"
         }
       ]
     }
@@ -581,6 +587,7 @@
       <article class="card"><div class="icon" aria-hidden="true"><img src="/assets/icons/qr.png" width="48" height="48" alt="" decoding="async"></div><h3><a href="/apps/qr/"><span class="dotori">Dotori</span> QR &amp; Barcode Scanner</a></h3><p class="pkg">com.droidactor.qr</p><p class="desc">Scan QR codes and barcodes with the camera, a photo or a shared image. See where a link goes before you open it.</p><div class="foot"><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.qr&amp;hl=en"><img src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a><a href="/apps/qr/">Details</a><a href="/#privacy-qr">Privacy</a></div></article>
       <article class="card"><div class="icon" aria-hidden="true"><img src="/assets/icons/macropad.png" width="48" height="48" alt="" decoding="async"></div><h3><a href="/apps/macropad/"><span class="dotori">Dotori</span> Bluetooth Macro Pad</a></h3><p class="pkg">com.droidactor.bt_macropad</p><p class="desc">Custom Bluetooth shortcuts and key sequences for your PC.</p><div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/macropad/">Details</a><a href="/#privacy-macropad">Privacy</a></div></article>
       <article class="card"><div class="icon" aria-hidden="true"><img src="/assets/icons/counter.png" width="48" height="48" alt="" decoding="async"></div><h3><a href="/apps/counter/"><span class="dotori">Dotori</span> Tally Counter</a></h3><p class="pkg">com.droidactor.counter</p><p class="desc">Tap anywhere to count. Two fingers add 5 and four add 10, and you can change the amount for each finger count.</p><div class="foot"><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.counter&amp;hl=en"><img src="assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a><a href="/apps/counter/">Details</a><a href="/#privacy-counter">Privacy</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true"><img src="/assets/icons/light.png" width="48" height="48" alt="" decoding="async"></div><h3><a href="/apps/light/"><span class="dotori">Dotori</span> Flashlight Camera</a></h3><p class="pkg">com.droidactor.light</p><p class="desc">Keep the flashlight on while you take photos. LED brightness on supported devices, an auto-off timer with notification controls and a quick settings tile.</p><div class="foot"><span class="badge soon">Coming soon</span><a href="/apps/light/">Details</a><a href="/#privacy-light">Privacy</a></div></article>
     </div>
   </section>
 
@@ -600,7 +607,7 @@
   <section id="privacy">
     <h2>Privacy policy</h2>
     <p class="lead">
-      Effective date: 14 November 2026 · Developer: droidactor (individual developer) ·
+      Effective date: 16 November 2026 · Developer: droidactor (individual developer) ·
       Contact: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> ·
       Applies to every app listed in section 7 below.
       <br><a href="/ko/#privacy" hreflang="ko" lang="ko">한국어 개인정보 처리방침</a>
@@ -740,8 +747,13 @@
           </tr>
           <tr>
             <td><code>CAMERA</code></td>
-            <td><a href="#privacy-idphoto"><span class="dotori">Dotori</span> ID Photo Maker</a> · <a href="#privacy-qr"><span class="dotori">Dotori</span> QR &amp; Barcode Scanner</a></td>
-            <td>ID Photo Maker requests it only when you choose to take a photo; the captured photo is processed on the device and is not sent to a server. QR &amp; Barcode Scanner requests it to scan and reads codes from the camera preview on the device; camera frames are not stored or sent.</td>
+            <td><a href="#privacy-idphoto"><span class="dotori">Dotori</span> ID Photo Maker</a> · <a href="#privacy-qr"><span class="dotori">Dotori</span> QR &amp; Barcode Scanner</a> · <a href="#privacy-light"><span class="dotori">Dotori</span> Flashlight Camera</a></td>
+            <td>ID Photo Maker requests it only when you choose to take a photo; the captured photo is processed on the device and is not sent to a server. QR &amp; Barcode Scanner requests it to scan and reads codes from the camera preview on the device; camera frames are not stored or sent. Flashlight Camera requests it only when you open its photo screen; photos are saved on the phone and are not sent anywhere.</td>
+          </tr>
+          <tr>
+            <td><code>WRITE_EXTERNAL_STORAGE</code><br>(Android 9 and earlier)</td>
+            <td><a href="#privacy-light"><span class="dotori">Dotori</span> Flashlight Camera</a></td>
+            <td>To save the photos you take to the phone&#x27;s Pictures folder on Android 9 and earlier. Android 10 and later need no storage permission for this, and the app does not read other photos.</td>
           </tr>
           <tr>
             <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code></td>
@@ -760,12 +772,17 @@
           <tr>
             <td><code>FOREGROUND_SERVICE</code></td>
             <td>All ad-supported apps, plus YouTube Downloader</td>
-            <td>Used to keep a HID session, alarm or download running while you use another app. Ad-supported apps also merge this declaration through the advertising SDK’s WorkManager dependency; the declaration alone does not mean that a service runs continuously.</td>
+            <td>Used to keep a HID session, alarm, download or flashlight running while you use another app or the screen is off. Ad-supported apps also merge this declaration through the advertising SDK’s WorkManager dependency; the declaration alone does not mean that a service runs continuously.</td>
           </tr>
           <tr>
             <td><code>FOREGROUND_SERVICE_CONNECTED_DEVICE</code></td>
             <td><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a><br><a href="#privacy-remote"><span class="dotori">Dotori</span> PC Video Remote</a><br><a href="#privacy-macropad"><span class="dotori">Dotori</span> Bluetooth Macro Pad</a></td>
             <td>Declares the foreground service type used to maintain a HID session with a connected host.</td>
+          </tr>
+          <tr>
+            <td><code>FOREGROUND_SERVICE_SPECIAL_USE</code></td>
+            <td><a href="#privacy-light"><span class="dotori">Dotori</span> Flashlight Camera</a></td>
+            <td>Declares the foreground service that keeps the camera LED flashlight on while the screen is off and turns it off when your auto-off timer ends.</td>
           </tr>
           <tr>
             <td><code>USE_EXACT_ALARM</code><br><code>SCHEDULE_EXACT_ALARM</code><br><code>USE_FULL_SCREEN_INTENT</code><br><code>FOREGROUND_SERVICE_SYSTEM_EXEMPTED</code><br><code>RECEIVE_BOOT_COMPLETED</code></td>
@@ -784,8 +801,8 @@
           </tr>
           <tr>
             <td><code>POST_NOTIFICATIONS</code></td>
-            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a><br><span class="dotori">Dotori</span> YouTube Downloader · <a href="#privacy-alarm"><span class="dotori">Dotori</span> Alarm Clock</a><br><a href="#privacy-remote"><span class="dotori">Dotori</span> PC Video Remote</a><br><a href="#privacy-macropad"><span class="dotori">Dotori</span> Bluetooth Macro Pad</a></td>
-            <td>To show the notification that accompanies a running HID session, active or snoozed alarm, or download. Only
+            <td><span class="dotori">Dotori</span> Bluetooth Keyboard<br><span class="dotori">Dotori</span> Bluetooth PPT Remote<br><span class="dotori">Dotori</span> Bluetooth Mouse<br><a href="#privacy-numpad"><span class="dotori">Dotori</span> Bluetooth Numpad</a><br><span class="dotori">Dotori</span> YouTube Downloader · <a href="#privacy-alarm"><span class="dotori">Dotori</span> Alarm Clock</a><br><a href="#privacy-remote"><span class="dotori">Dotori</span> PC Video Remote</a><br><a href="#privacy-macropad"><span class="dotori">Dotori</span> Bluetooth Macro Pad</a><br><a href="#privacy-light"><span class="dotori">Dotori</span> Flashlight Camera</a></td>
+            <td>To show the notification that accompanies a running HID session, active or snoozed alarm, download, or a lit flashlight and its timer. Only
               the apps listed declare it, and we send no promotional notifications.</td>
           </tr>
           <tr>
@@ -826,7 +843,7 @@
           <tr>
             <td><code>WAKE_LOCK</code></td>
             <td>All ad-supported apps (not YouTube Downloader)</td>
-            <td>Declared by the advertising SDK’s background-work dependencies to support their scheduled work; no permission to read app content. <span class="dotori">Dotori</span> Alarm Clock also keeps the CPU awake while an alarm rings to maintain sound and vibration.</td>
+            <td>Declared by the advertising SDK’s background-work dependencies to support their scheduled work; no permission to read app content. <span class="dotori">Dotori</span> Alarm Clock also keeps the CPU awake while an alarm rings to maintain sound and vibration. <span class="dotori">Dotori</span> Flashlight Camera keeps it awake only while an auto-off timer runs, so the light turns off on time with the screen off.</td>
           </tr>
           <tr>
             <td><code>&lt;package&gt;.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code></td>
@@ -1328,6 +1345,7 @@
     <div class="policy" id="privacy-vault"><h4><span class="dotori">Dotori</span> File Vault</h4><p>2026-11-13. Files, file names, folders and previews are encrypted in the app&#x27;s private storage on this phone. Vault passwords, recovery keys and file contents are not sent to the developer or advertising SDK. Android handles fingerprint authentication; the app does not receive fingerprint images. There is no developer account or cloud sync. System pickers and Share provide access only to files you choose; broad storage, location, contacts, camera and microphone permissions are not requested. If you save a backup or export through a cloud document provider, that provider may upload it at your request. Files opened in another app may be copied by that app. Automatic Android backup and device transfer are excluded. Uninstalling or clearing app data deletes the local vault; only an earlier backup can restore it. External backups and exported files must be deleted where you saved them. Google AdMob/UMP and Play updates may use the network. Under available privacy choices, the ad SDK may process IP-derived approximate location, ad interactions, diagnostics and device identifiers. Settings offers available advertising privacy options. Contact droidactor@gmail.com for privacy questions.</p><p><a href="https://policies.google.com/privacy">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK disclosure</a> · <a href="/apps/vault/"><span class="dotori">Dotori</span> File Vault</a></p></div>
     <div class="policy" id="privacy-qr"><h4><span class="dotori">Dotori</span> QR &amp; Barcode Scanner</h4><p>2026-11-13. The camera view, photos and shared images are used only to read codes on this phone; they are not stored or sent anywhere. Scan history is kept only in the app&#x27;s private storage on this phone and is excluded from automatic Android backup and device transfer. You can turn off saving history in Settings, and history is deleted from the history screen or when you uninstall the app. There is no developer account, server or cloud sync. Only the camera permission is requested; location, contacts, calendar, broad storage and microphone permissions are not requested. Saving a contact, event or Wi-Fi network, calling, texting, emailing, opening a map, searching the web and sharing hand the content to a system app or an app you choose, and that app&#x27;s own policy applies afterwards. Google AdMob/UMP and Play updates may use the network. Under available privacy choices, the ad SDK may process IP-derived approximate location, ad interactions, diagnostics and device identifiers. Settings offers advertising privacy options. Contact droidactor@gmail.com for privacy questions.</p><p><a href="https://policies.google.com/privacy">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK disclosure</a> · <a href="/apps/qr/"><span class="dotori">Dotori</span> QR &amp; Barcode Scanner</a></p></div>
     <div class="policy" id="privacy-counter"><h4><span class="dotori">Dotori</span> Tally Counter</h4><p>2026-11-14. Counts, counter names, undo history, the amount per finger count and feedback settings are kept only in the app&#x27;s private storage on this phone and are excluded from automatic Android backup and device transfer. They are deleted when you clear the app&#x27;s data or uninstall the app. There is no developer account, server or cloud sync. The app itself declares only VIBRATE, for count feedback; the ad SDK adds the network and advertising permissions listed in section 4. Location, camera, microphone, contacts and storage permissions are not requested. Sharing or copying results hands the text to the system share sheet or clipboard when you tap it, and the app you choose applies its own policy afterwards. Counts and counter names are not sent to the developer or the ad SDK. Google AdMob/UMP and Play updates may use the network. Under available privacy choices, the ad SDK may process IP-derived approximate location, ad interactions, diagnostics and device identifiers. Settings offers advertising privacy options. Contact droidactor@gmail.com for privacy questions.</p><p><a href="https://policies.google.com/privacy">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK disclosure</a> · <a href="/apps/counter/"><span class="dotori">Dotori</span> Tally Counter</a></p></div>
+    <div class="policy" id="privacy-light"><h4><span class="dotori">Dotori</span> Flashlight Camera</h4><p>2026-11-16. The flashlight turns on without camera permission. Camera permission is requested only when you open the photo screen; photos are saved only to the phone&#x27;s photo folder (Pictures/DotoriLight) and are not sent anywhere by the app. On Android 9 and earlier, storage permission is requested when a photo is saved. Sharing a photo hands it to the app you choose in the system share sheet, and that app&#x27;s own policy applies afterwards. Notification permission is used only to show that the flashlight is on and the time left on the timer. A foreground service keeps the light on while the screen is off, and a wake lock is held only while an auto-off timer runs. Brightness, timer, startup and shutter sound settings are kept only in the app&#x27;s private storage on this phone and are excluded from automatic Android backup and device transfer. Clearing the app&#x27;s data or uninstalling the app deletes these settings; photos in Pictures/DotoriLight stay in your gallery until you delete them. There is no developer account, server or cloud sync. Location, microphone and contacts permissions are not requested. Photos and flashlight settings are not sent to the developer or the ad SDK. Google AdMob/UMP and Play updates may use the network. Under available privacy choices, the ad SDK may process IP-derived approximate location, ad interactions, diagnostics and device identifiers. Settings offers advertising privacy options. Contact droidactor@gmail.com for privacy questions.</p><p><a href="https://policies.google.com/privacy">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK disclosure</a> · <a href="/apps/light/"><span class="dotori">Dotori</span> Flashlight Camera</a></p></div>
 
     <div class="policy" id="privacy-seoulmetro">
       <h3><span class="dotori">Dotori</span> Seoul Metro<span class="pkg-inline">com.droidactor.seoulmetro</span></h3>
