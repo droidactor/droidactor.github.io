@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finding Files Instantly With Everything — droidactor</title>
+<meta name="description" content="Why File Explorer search and the Windows index are slow and heavy, and how Everything, which indexes only file names, finds files as you type.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/everything-file-search-guide/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/everything-file-search-guide/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/everything-file-search-guide/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/everything-file-search-guide/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/everything-file-search-guide/">
+<meta property="og:title" content="Finding Files Instantly With Everything">
+<meta property="og:description" content="Why File Explorer search and the Windows index are slow and heavy, and how Everything, which indexes only file names, finds files as you type.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20261029-multilingual-posts">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Finding Files Instantly With Everything",
+      "description": "Why File Explorer search and the Windows index are slow and heavy, and how Everything, which indexes only file names, finds files as you type.",
+      "url": "https://droidactor.github.io/blog/techs/everything-file-search-guide/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/everything-file-search-guide/",
+      "datePublished": "2026-11-15",
+      "dateModified": "2026-11-15",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Finding Files Instantly With Everything", "item": "https://droidactor.github.io/blog/techs/everything-file-search-guide/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/everything-file-search-guide/" aria-current="page" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/everything-file-search-guide/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Finding Files Instantly With Everything</nav>
+  <div class="hero">
+    <h1>Finding Files Instantly With Everything</h1>
+    <p class="post-meta"><time datetime="2026-11-15">15 November 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+
+
+    <div class="note">
+      <p><strong>In short.</strong> Search File Explorer for a file and the green bar in the address bar crawls before results appear. The Windows Search index behind that box is slow to build as well. The first pass can take a couple of hours, and it uses CPU and disk. Everything is a free program that indexes only file names, so results appear as you type. It installs with one winget command. A handful of search operators narrow the list by size, date and extension.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_mouse2&amp;hl=en"><img src="/assets/banner/en/bt-mouse-qr.png" width="800" height="200" loading="lazy" decoding="async" alt="Google Play QR + Dotori Bluetooth Mouse - Your phone as a Bluetooth mouse for PC"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+    <p>This post covers four things. First, why Explorer search and the Windows index are slow and heavy, and how Everything differs. Next, how to install it with winget and check that your drives were picked up. Then a table of search syntax such as spaces, <code>!</code>, <code>ext:</code>, <code>size:</code> and <code>dm:</code>. After that come combinations you will actually type. Last, where Everything is weak: USB sticks and searching inside files.</p>
+
+    <h2>File Explorer search is slow because only some folders are indexed</h2>
+    <p>Windows finds files through an index that the Windows Search service builds in advance. The default Classic mode indexes only your Documents, Pictures and Music folders plus the desktop. Search outside that list, say your Downloads folder or a D: drive. Windows then walks the files one by one, with no index. Microsoft says that with an index such a search takes a fraction of a second. Without one, it can take minutes.</p>
+    <p>Widening the index brings its own problem. The Windows index reads every property of a file, not just the name. For files with text, it indexes the contents too. That is why the first pass can take a couple of hours. Microsoft notes that Enhanced mode, which indexes the whole PC, may use more system resources. Past about a million items, it warns, indexing can cause high CPU, memory or disk use.</p>
+    <p>On top of that, the indexer deliberately slows down while you are using the PC. If disk or CPU use is high, it stops and waits for a quieter moment. So the busier the PC, the later the index finishes. Until then, some files can be missing from results.</p>
+
+    <h2>Everything remembers only names, so it is ready in seconds</h2>
+    <p>Everything indexes file and folder names only. It also keeps size and date modified, but it never reads file contents, so it gets ready fast. The developer says a fresh Windows 11 install of about 250,000 files indexes in about 5 seconds. A million files take about a minute. At 1,000,000 files it uses about 100 MB of memory and 45 MB of disk.</p>
+    <p>Once the index exists, Everything reads each NTFS drive's change log (the USN Journal). It applies only what changed. Download a file or rename one and it shows up in results right away. Windows keeps changes made while Everything was closed in that same log. Restart it and it catches up without missing anything.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Comparison</th><th>Windows Search index</th><th>Everything</th></tr></thead>
+        <tbody>
+          <tr><td>What it indexes</td><td>Every file property, plus the contents of text files</td><td>File and folder names, size, date modified</td></tr>
+          <tr><td>Default scope</td><td>Documents, Pictures, Music and the desktop</td><td>Every fixed NTFS drive on the PC</td></tr>
+          <tr><td>First index</td><td>Up to a couple of hours</td><td>About 5 seconds for 250,000 files</td></tr>
+          <tr><td>Index size</td><td>Under 10% of the indexed files</td><td>About 45 MB of disk for 1,000,000 files</td></tr>
+          <tr><td>Searching contents</td><td>Fast, because contents are indexed</td><td>Possible but slow</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Install with one winget line and check that your drives are picked up</h2>
+    <p>On Windows 10 or 11, open Terminal or Command Prompt and run this line.</p>
+    <pre><code>winget install voidtools.Everything</code></pre>
+    <p>As of November 2026, winget installs the stable release 1.4.1.1032. The developer, voidtools, distributes it as freeware. The download page also offers a 1.5 beta. If you are new to Everything, start with the stable release. Every search in this post works on the stable release as written.</p>
+    <p>If you start it and the result list is empty, Everything cannot read your drives. It reads the file list of NTFS drives directly. That needs administrator rights or the Everything Service. The service is installed by default. If the list is still empty, open Tools &gt; Options &gt; General and check Everything Service. With the service on, Everything itself runs fine without administrator rights.</p>
+
+    <h2>Search syntax: join the pieces with spaces</h2>
+    <p>Type a word in the search box. Every file and folder with those letters in its name appears at once. Add the syntax below to keep only what you want, joining the pieces with spaces.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Syntax</th><th>Meaning</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>Space</td><td>Name contains both words</td><td><code>report 2026</code></td></tr>
+          <tr><td><code>!</code></td><td>Exclude names containing the word</td><td><code>report !draft</code></td></tr>
+          <tr><td><code>*</code></td><td>Any run of characters</td><td><code>*.mp3</code></td></tr>
+          <tr><td>Contains <code>\</code></td><td>Match the folder path too</td><td><code>\downloads</code></td></tr>
+          <tr><td><code>ext:</code></td><td>Extension, several separated by semicolons</td><td><code>ext:docx;xlsx;pdf</code></td></tr>
+          <tr><td><code>size:</code></td><td>File size</td><td><code>size:&gt;1gb</code>, <code>size:10mb..50mb</code></td></tr>
+          <tr><td><code>dm:</code></td><td>Date modified</td><td><code>dm:today</code>, <code>dm:yesterday</code></td></tr>
+          <tr><td><code>parent:</code></td><td>Only directly inside that folder</td><td><code>parent:c:\windows</code></td></tr>
+          <tr><td><code>folder:</code></td><td>Folders only</td><td><code>folder: photos</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>When either word will do, join them with a vertical bar. <code>invoice|contract</code> finds files with either word in the name. Put names that contain spaces in double quotes, as in <code>&quot;C:\Program Files&quot;</code>.</p>
+
+    <h2>Combinations worth remembering</h2>
+    <p>In practice you will use a few combinations more often than any single operator.</p>
+    <ol>
+      <li>Files downloaded today: <code>\downloads dm:today</code></li>
+      <li>Word, Excel or PDF files with &quot;invoice&quot; in the name: <code>invoice ext:docx;xlsx;pdf</code></li>
+      <li>Excel files you changed yesterday: <code>ext:xlsx dm:yesterday</code></li>
+      <li>Every file over 1 GB on all drives: <code>size:&gt;1gb</code></li>
+      <li>Executables over 10 MB inside the Windows folder: <code>c:\windows\ ext:exe size:&gt;10mb</code></li>
+    </ol>
+    <div class="screenshot-grid">
+      <figure><img src="/assets/blog/everything-search.png" width="1200" height="539" loading="lazy" decoding="async" alt="Everything 1.5 alpha: 23 exe files over 10 MB in the Windows folder appeared at once"></figure>
+    </div>
+    <p>The screen above is combination 5 entered in the 1.5 alpha installed on my PC. As soon as the query was in, 23 files appeared with their path, size and date. Double-click a result to open it. Open Path in the right-click menu opens the folder that holds it. Save the searches you use often in the Bookmarks menu so you never have to type them again.</p>
+    <p>Finding big files as in combination 4 is fast with Everything when you know the condition. When the culprit is unknown, the treemap in <a href="https://droidactor.github.io/blog/techs/windirstat-find-disk-hogs/">Catching Disk Hogs With WinDirStat</a> works better. It draws file sizes as areas, so the culprit catches your eye first.</p>
+
+    <h2>Where Everything is weak: USB sticks and file contents</h2>
+    <p>By default Everything indexes only the fixed NTFS drives attached to the PC. USB sticks formatted as FAT32 or exFAT and network drives must be added separately. Use folder indexing in the options. The official documentation says folder indexing is slower than NTFS indexing. If you swap USB sticks often, expect results to lag behind.</p>
+    <p>There is also <code>content:</code> for searching inside files. Contents are not indexed, so it is very slow. Add an extension or folder condition, as in <code>ext:docx content:contract</code>. That cuts down the files it has to read. For searching by words inside documents, use Windows Search, which indexes contents. Use Everything for finding by name.</p>
+
+    <h2>Summary</h2>
+    <p>File Explorer search is slow because it walks unindexed folders one by one. The Windows index is heavy because it reads contents too. Everything indexes only file names, is ready in seconds, and shows results as you type. Knowing just <code>ext:</code>, <code>size:</code> and <code>dm:</code> is enough to narrow down the file you want.</p>
+    <p>Open a terminal now and run <code>winget install voidtools.Everything</code>. Then type <code>size:&gt;1gb</code> into the search box.</p>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>
