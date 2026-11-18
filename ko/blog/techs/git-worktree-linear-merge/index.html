@@ -30,7 +30,7 @@
       "url": "https://droidactor.github.io/ko/blog/techs/git-worktree-linear-merge/",
       "mainEntityOfPage": "https://droidactor.github.io/ko/blog/techs/git-worktree-linear-merge/",
       "datePublished": "2026-08-23",
-      "dateModified": "2026-09-16",
+      "dateModified": "2026-11-18",
       "inLanguage": "ko",
       "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
       "author": { "@id": "https://droidactor.github.io/#publisher" },
@@ -61,7 +61,7 @@
   <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>worktree 여러 개를 한 줄로 병합하기</nav>
   <div class="hero">
     <h1>worktree 여러 개를 한 줄로 병합하기</h1>
-    <p class="post-meta"><time datetime="2026-08-23">2026년 8월 23일</time></p>
+    <p class="post-meta"><time datetime="2026-08-23">2026년 8월 23일</time> · 수정 <time datetime="2026-11-18">2026년 11월 18일</time></p>
   </div>
 
   <article class="post-body">
@@ -116,7 +116,12 @@ then retry.</code></pre>
     <p>worktree 폴더는 병렬 작업 슬롯이고, 슬롯을 늘린 대가는 마지막 병합에서 치릅니다. 그 대가를 merge 커밋 다발이 아니라 rebase 체인 한 줄로 받으면 히스토리가 읽히고, 모든 폴더가 같은 커밋에서 다시 출발합니다. 자동화로 넘길 수 있는지는 속도가 아니라 실패 시 원자성으로 판단합니다.</p>
     <p>다음에 브랜치 셋 이상을 동시에 굴리게 되면, 합칠 스크립트를 먼저 짜고 그 스크립트에 롤백을 넣으십시오.</p>
 
-  </article>
+    <h2>관련 글</h2>
+    <ul>
+      <li><a href="https://droidactor.github.io/ko/blog/techs/git-worktree-basics/">git worktree - 브랜치를 폴더로 바꾸기</a></li>
+    </ul>
+
+    </article>
 
   <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/apps/">전체 앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/tech-notes/">기술 노트</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play 및 Google Play 로고는 Google LLC 의 상표입니다.</p></footer>
 

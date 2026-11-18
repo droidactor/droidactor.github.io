@@ -30,7 +30,7 @@
       "url": "https://droidactor.github.io/blog/techs/git-worktree-basics/",
       "mainEntityOfPage": "https://droidactor.github.io/blog/techs/git-worktree-basics/",
       "datePublished": "2026-08-23",
-      "dateModified": "2026-09-16",
+      "dateModified": "2026-11-18",
       "inLanguage": "en",
       "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
       "author": { "@id": "https://droidactor.github.io/#publisher" },
@@ -61,7 +61,7 @@
   <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>git worktree</nav>
   <div class="hero">
     <h1>git worktree: Branches as Folders</h1>
-    <p class="post-meta"><time datetime="2026-08-23">23 August 2026</time></p>
+    <p class="post-meta"><time datetime="2026-08-23">23 August 2026</time> · Updated <time datetime="2026-11-18">18 November 2026</time></p>
   </div>
 
   <article class="post-body">
@@ -118,7 +118,12 @@ git worktree remove ../hotfix          # clean up the folder (the branch stays)<
     <p>The real cost of a branch switch is not swapping source but invalidating build output. A worktree separates the folders and takes that cost to zero. <code>add</code>, <code>list</code> and <code>remove</code> are all you need. Remember that a branch and a folder are one to one, and that <code>.git</code> is a file, and nothing goes wrong.</p>
     <p>Run <code>git worktree add ../hotfix -b hotfix</code> once in the repository you have open right now. The next post uses these folders as parallel work slots and merges them all in one line at the end.</p>
 
-  </article>
+    <h2>Related articles</h2>
+    <ul>
+      <li><a href="https://droidactor.github.io/blog/techs/git-worktree-linear-merge/">Merging Many Worktrees Into One Line</a></li>
+    </ul>
+
+    </article>
 
   <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
 

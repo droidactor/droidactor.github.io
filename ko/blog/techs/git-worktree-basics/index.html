@@ -30,7 +30,7 @@
       "url": "https://droidactor.github.io/ko/blog/techs/git-worktree-basics/",
       "mainEntityOfPage": "https://droidactor.github.io/ko/blog/techs/git-worktree-basics/",
       "datePublished": "2026-08-23",
-      "dateModified": "2026-09-16",
+      "dateModified": "2026-11-18",
       "inLanguage": "ko",
       "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
       "author": { "@id": "https://droidactor.github.io/#publisher" },
@@ -61,7 +61,7 @@
   <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>git worktree</nav>
   <div class="hero">
     <h1>git worktree - 브랜치를 폴더로 바꾸기</h1>
-    <p class="post-meta"><time datetime="2026-08-23">2026년 8월 23일</time></p>
+    <p class="post-meta"><time datetime="2026-08-23">2026년 8월 23일</time> · 수정 <time datetime="2026-11-18">2026년 11월 18일</time></p>
   </div>
 
   <article class="post-body">
@@ -118,7 +118,12 @@ git worktree remove ../hotfix          # 폴더 정리 (브랜치는 남습니�
     <p>브랜치 전환의 실제 비용은 소스 교체가 아니라 빌드 산출물 무효화입니다. worktree 는 폴더를 분리해 그 비용을 0으로 만들고, <code>add</code>/<code>list</code>/<code>remove</code> 세 명령이면 충분합니다. 브랜치와 폴더가 일대일이라는 제약, 그리고 <code>.git</code> 이 파일이라는 사실만 기억하면 사고가 없습니다.</p>
     <p>지금 저장소에서 <code>git worktree add ../hotfix -b hotfix</code> 를 한 번 실행해 보십시오. 다음 편에서는 이렇게 벌려 놓은 폴더를 병렬 작업 슬롯으로 쓰고, 마지막에 한 줄로 병합하는 방법을 다룹니다.</p>
 
-  </article>
+    <h2>관련 글</h2>
+    <ul>
+      <li><a href="https://droidactor.github.io/ko/blog/techs/git-worktree-linear-merge/">git worktree 여러 개를 한 줄로 병합하기</a></li>
+    </ul>
+
+    </article>
 
   <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/apps/">전체 앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/tech-notes/">기술 노트</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play 및 Google Play 로고는 Google LLC 의 상표입니다.</p></footer>
 

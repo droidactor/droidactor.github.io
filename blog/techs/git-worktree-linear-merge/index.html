@@ -30,7 +30,7 @@
       "url": "https://droidactor.github.io/blog/techs/git-worktree-linear-merge/",
       "mainEntityOfPage": "https://droidactor.github.io/blog/techs/git-worktree-linear-merge/",
       "datePublished": "2026-08-23",
-      "dateModified": "2026-09-16",
+      "dateModified": "2026-11-18",
       "inLanguage": "en",
       "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
       "author": { "@id": "https://droidactor.github.io/#publisher" },
@@ -61,7 +61,7 @@
   <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Merging Many Worktrees Into One Line</nav>
   <div class="hero">
     <h1>Merging Many Worktrees Into One Line</h1>
-    <p class="post-meta"><time datetime="2026-08-23">23 August 2026</time></p>
+    <p class="post-meta"><time datetime="2026-08-23">23 August 2026</time> · Updated <time datetime="2026-11-18">18 November 2026</time></p>
   </div>
 
   <article class="post-body">
@@ -117,7 +117,12 @@ then retry.</code></pre>
     <p>Worktree folders are parallel work slots, and the price of adding slots is paid at the final merge. Pay that price as one rebase chain rather than a bundle of merge commits. The history stays readable, and every folder starts again from the same commit. Whether a job can be handed to automation is decided by atomicity on failure, not by speed.</p>
     <p>Next time you run three or more branches at once, write the script that will combine them first. Put the rollback in that script.</p>
 
-  </article>
+    <h2>Related articles</h2>
+    <ul>
+      <li><a href="https://droidactor.github.io/blog/techs/git-worktree-basics/">git worktree: Branches as Folders</a></li>
+    </ul>
+
+    </article>
 
   <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
 
