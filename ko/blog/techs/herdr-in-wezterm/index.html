@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Herdr로 여러 코딩 AI의 작업을 한곳에서 관리하기 — droidactor</title>
+<meta name="description" content="코딩 AI의 상태 확인, 프로젝트별 작업 정리, 세션 유지와 원격 접속, 에이전트 간 작업 전달까지 Herdr가 편한 이유를 소개합니다. Windows와 WezTerm에서 쓰는 실제 설정도 공유합니다.">
+<link rel="canonical" href="https://droidactor.github.io/ko/blog/techs/herdr-in-wezterm/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/herdr-in-wezterm/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/herdr-in-wezterm/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/herdr-in-wezterm/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://droidactor.github.io/ko/blog/techs/herdr-in-wezterm/">
+<meta property="og:title" content="Herdr로 여러 코딩 AI의 작업을 한곳에서 관리하기">
+<meta property="og:description" content="코딩 AI의 상태 확인, 프로젝트별 작업 정리, 세션 유지와 원격 접속, 에이전트 간 작업 전달까지 Herdr가 편한 이유를 소개합니다. Windows와 WezTerm에서 쓰는 실제 설정도 공유합니다.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../../assets/site.css?v=20261029-multilingual-posts">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Herdr로 여러 코딩 AI의 작업을 한곳에서 관리하기",
+      "description": "코딩 AI의 상태 확인, 프로젝트별 작업 정리, 세션 유지와 원격 접속, 에이전트 간 작업 전달까지 Herdr가 편한 이유를 소개합니다. Windows와 WezTerm에서 쓰는 실제 설정도 공유합니다.",
+      "url": "https://droidactor.github.io/ko/blog/techs/herdr-in-wezterm/",
+      "mainEntityOfPage": "https://droidactor.github.io/ko/blog/techs/herdr-in-wezterm/",
+      "datePublished": "2026-11-06",
+      "dateModified": "2026-11-20",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://droidactor.github.io/ko/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/ko/" },
+        { "@type": "ListItem", "position": 2, "name": "현장 노트", "item": "https://droidactor.github.io/ko/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Herdr로 여러 코딩 AI의 작업을 한곳에서 관리하기", "item": "https://droidactor.github.io/ko/blog/techs/herdr-in-wezterm/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/ko/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="언어">
+    <a class="lang-btn" href="/blog/techs/herdr-in-wezterm/" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/herdr-in-wezterm/" aria-current="page" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="탐색 경로"><a href="/ko/">droidactor</a><span>/</span><a href="/ko/blog/">현장 노트</a><span>/</span>Herdr로 여러 코딩 AI의 작업을 한곳에서 관리하기</nav>
+  <div class="hero">
+    <h1>Herdr로 여러 코딩 AI의 작업을 한곳에서 관리하기</h1>
+    <p class="post-meta"><time datetime="2026-11-06">2026년 11월 6일</time> · 수정 <time datetime="2026-11-20">2026년 11월 20일</time></p>
+  </div>
+
+  <article class="post-body">
+
+
+
+    <div class="note">
+      <p><strong>요약.</strong> 코딩 AI를 여러 개 켜 두면 어느 쪽이 일을 마쳤는지 창을 바꿔 가며 확인하게 됩니다. 프로젝트까지 여러 개라면 방금 본 결과가 어느 작업의 것이었는지도 다시 살펴봅니다. 이때 Herdr를 더하면 AI와 터미널을 프로젝트별로 모으고, 지금 확인할 작업부터 찾아가기 편해집니다.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_keyboard&amp;hl=ko"><img src="/assets/banner/bt-keyboard-qr.png" width="800" height="200" loading="lazy" decoding="async" alt="Google Play QR + 도토리 한글 키보드 - 폰을 PC·TV 의 블루투스 키보드로"></a>
+      <p>제가 만든 무료 앱입니다. 많이 써 주세요.</p>
+    </div>
+
+    <p>Herdr는 실행 중인 AI의 상태를 표시하고, 프로젝트마다 작업 공간과 탭을 마련합니다. 터미널을 서버에 남겨 두므로 화면에서 나왔다가 같은 작업에 다시 접속하며, SSH를 통해 다른 컴퓨터의 작업도 봅니다. 명령으로 다른 AI에게 일을 전달하고 출력을 읽는 기능은 여러 에이전트를 연결할 때 쓸모가 있습니다.</p>
+    <p>저는 Windows의 WezTerm 안에서 Herdr를 사용합니다. 이 글에서는 그 환경을 바탕으로 여러 AI를 함께 쓸 때 편한 점과 실제 작업 구성을 소개합니다. 대상은 터미널 안에서 실행하는 <strong>Herdr TUI</strong>이며, 별도 프로그램인 Herdr 앱과는 구분합니다.</p>
+
+    <h2>어느 AI가 내 답을 기다리는지 먼저 보입니다</h2>
+    <p>여러 AI를 실행해 두었을 때 사람이 할 일은 매번 다릅니다. 어떤 AI는 코드를 작성하는 중이고, 어떤 AI는 결과를 내놓았고, 다른 AI는 질문에 대한 답을 기다립니다. 모든 창을 차례대로 열어 마지막 문장을 읽는 대신, Herdr의 왼쪽 목록에서 먼저 상태를 확인합니다.</p>
+    <p>목록의 상태를 읽는 기준은 다음과 같습니다. 이 상태는 해당 AI가 들어 있는 탭과 작업 공간에도 반영됩니다. 다른 프로젝트를 보고 있어도 지금 확인할 곳을 찾기 쉽습니다.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>표시</th><th>뜻</th><th>확인할 일</th></tr></thead>
+        <tbody>
+          <tr><td>working</td><td>작업 중</td><td>진행 중인 작업을 기다립니다</td></tr>
+          <tr><td>blocked</td><td>질문·승인 대기</td><td>화면을 열어 필요한 결정을 합니다</td></tr>
+          <tr><td>done</td><td>아직 보지 않은 완료 상태</td><td>새 결과를 읽고 검토합니다</td></tr>
+          <tr><td>idle</td><td>입력을 받을 준비가 된 상태</td><td>새 요청이 필요하면 전달합니다</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>예를 들어 검토 AI가 질문을 남겼는데 작성 AI의 화면만 오래 보고 있었다고 합시다. 목록에서 대기 상태를 발견하면 검토 쪽으로 바로 이동해 답한 뒤 작성 결과를 확인하면 됩니다. 작업을 더 맡기는 데 앞서, 이미 맡긴 일이 사람의 답변을 기다리며 멈춰 있는지 알게 되는 것입니다.</p>
+    <p>실제 내용도 AI가 원래 쓰는 터미널 화면으로 확인합니다. 질문에 어떤 선택지가 있는지, 방금 실행한 명령이 무엇인지 같은 정보를 그 자리에서 읽습니다. 다만 <a href="https://herdr.dev/tui/docs/agents/">상태 표시</a>는 화면이나 연동 정보를 바탕으로 판단하므로, 뜻밖의 대기 화면이 보이면 내용을 직접 확인합니다.</p>
+
+    <h2>프로젝트와 작업을 묶어 두면 다시 찾기 쉽습니다</h2>
+    <p>Herdr의 작업 공간은 프로젝트나 조사 주제를 담는 자리입니다. 그 안에 탭을 만들고 탭마다 터미널 칸을 배치합니다. 앱 A의 버그 수정과 앱 B의 배포 준비를 서로 다른 작업 공간에 두면 관련 AI와 로그를 함께 찾아갑니다.</p>
+    <p>한 프로젝트 안에서도 코딩, 검토, 실행 결과를 보는 자리를 구분하면 편합니다. 코딩 탭에는 작성 AI와 검토 AI를 나란히 두고, 실행 탭에는 개발 서버와 로그를 놓는 식입니다. 터미널 칸에는 AI뿐 아니라 일반 셸, 빌드, 테스트처럼 평소 실행하는 명령도 그대로 들어갑니다.</p>
+    <p>프로젝트를 오갈 때마다 터미널 창을 재배치할 필요도 줄어듭니다. 목록에서 프로젝트를 고르면 그쪽에 마련해 둔 화면으로 돌아갑니다. 결과를 읽다가 관련 로그를 확인하고 다시 AI에게 질문하는 흐름을 한 작업 공간 안에서 이어갑니다.</p>
+    <p>칸을 선택하거나 경계선을 끌어 크기를 바꾸는 일은 마우스로 처리합니다. 우클릭 메뉴로 화면을 나누고 탭을 만들며, 텍스트를 드래그해 복사합니다. <strong>단축키를 외우기 전부터 이런 구성을 사용할 수 있다는 점</strong>도 처음 접할 때 편합니다.</p>
+
+    <h2>화면에서 나왔다가 같은 작업으로 돌아옵니다</h2>
+    <p>긴 빌드나 테스트를 실행해 두었다면 결과가 나올 때까지 그 창을 계속 보고 있을 이유는 없습니다. Herdr는 화면을 보여 주는 클라이언트와 실제 터미널을 실행하는 서버를 나눕니다. 클라이언트에서 분리해도 서버 안의 셸과 AI, 실행 중인 명령은 계속 돌아갑니다.</p>
+    <p>다시 접속하면 같은 터미널로 돌아갑니다. AI를 새로 켜고 이전 상황을 설명하거나, 테스트를 처음부터 다시 실행하는 일을 줄이는 데 도움이 됩니다. 프로젝트 폴더와 화면 배치를 그대로 이어 보는 것도 이 방식의 장점입니다.</p>
+    <p>이 기능은 긴 작업을 맡겨 두고 다른 일을 하러 갈 때 특히 쓸모가 있습니다. 빌드 명령이 실행 중인 터미널과 대기 중인 AI를 같은 세션에 남겨 두었다가, 돌아와 결과와 질문을 차례대로 확인합니다. 화면을 떠날 시점과 작업을 끝낼 시점을 따로 정하면 됩니다.</p>
+    <p>계속 실행되는 조건은 Herdr 서버와 작업하는 컴퓨터가 살아 있는 것입니다. 컴퓨터를 재부팅하거나 서버를 종료하면 실행 중인 프로세스도 멈춥니다. <a href="https://herdr.dev/tui/docs/session-state/">세션 유지와 복원 안내</a>에서도 화면 배치를 복원하는 기능과 원래 프로세스의 계속 실행을 구분합니다.</p>
+
+    <h2>다른 기기에서도 원래 컴퓨터의 작업을 봅니다</h2>
+    <p>작업이 집의 데스크톱이나 원격 서버에서 실행 중이라면 다른 기기에서 그 작업을 확인하는 방법도 있습니다. SSH로 해당 컴퓨터에 접속한 뒤 Herdr를 실행하면 그쪽의 세션을 엽니다. 코드와 실행 환경은 원래 컴퓨터에 두고, 접속한 기기에서 화면을 보고 입력합니다.</p>
+    <p>노트북으로 자리를 옮겼을 때 빌드가 끝났는지 확인하거나, 잠깐 스마트폰에서 AI의 질문을 읽고 답하는 상황을 생각하면 됩니다. 공식 문서에는 휴대폰의 SSH 클라이언트로 같은 세션에 접속하는 흐름도 나옵니다. Herdr의 터미널 화면은 좁은 화면에 맞춰 사용할 수 있도록 구성됩니다.</p>
+    <p>여러 컴퓨터를 자주 오간다면 <a href="https://herdr.dev/tui/docs/connecting-machines/">SSH 장비를 저장</a>해 로컬 작업과 원격 작업을 한 Herdr 창에서 고르는 방식도 있습니다. 연결된 장비의 작업 공간과 에이전트 상태를 같은 목록에서 확인합니다. 매번 별도 터미널을 열어 어느 컴퓨터의 어느 세션인지 찾는 과정을 줄여 줍니다.</p>
+    <p>원격 작업은 원래 장비에서 계속 실행됩니다. 접속하려는 장비의 SSH와 네트워크 연결을 먼저 준비해야 합니다. 어느 컴퓨터를 켜 두어야 하고 어디에서 결과를 읽는지 알고 시작하면 연결을 구성하기도 편합니다.</p>
+
+    <h2>에이전트끼리 일을 주고받는 구성을 만들기 쉽습니다</h2>
+    <p>Herdr는 사람이 화면을 고르는 기능과 함께 명령으로 터미널과 AI를 제어하는 기능을 제공합니다. 다른 칸에 명령을 실행하고, AI에게 요청을 보내고, 출력을 읽거나 상태가 바뀔 때까지 기다리는 방식입니다. 반복되는 전달 과정을 스크립트나 메인 AI가 맡도록 구성할 때 유용합니다.</p>
+    <p>예를 들어 작성 역할의 AI가 변경을 끝낸 뒤 검토 역할의 AI에게 살펴볼 범위를 전달하도록 정할 수 있습니다. 메인 AI가 검토 결과를 읽고 다음 수정 지시를 만드는 흐름도 구성합니다. 사람이 두 창을 오가며 매번 요청과 답변을 복사하는 과정을 줄이는 데 쓰는 기능입니다.</p>
+    <p>여기에는 작업을 나누는 규칙이 필요합니다. 어느 AI가 작성하고 어느 AI가 검토할지, 무엇을 결과로 받을지, 언제 사람에게 결정을 요청할지 정해 줍니다. Herdr는 칸 생성·요청 전달·결과 읽기·상태 대기에 필요한 명령을 제공하며, 협업 순서는 사용자가 구성합니다.</p>
+    <p>처음에는 사람이 AI 두 개를 직접 다루고, 반복되는 흐름이 보이면 그 부분부터 연결하면 됩니다. 단순히 화면을 여러 개 여는 데서 시작해 같은 환경에서 자동화까지 확장하는 것입니다. 구체적인 명령은 <a href="https://herdr.dev/tui/docs/agent-automation/">공식 에이전트 자동화 문서</a>에 정리되어 있습니다.</p>
+
+    <h2>작성과 검토를 나누면 작업 흐름이 눈에 보입니다</h2>
+    <p>앞의 기능을 한 번에 써 보는 예로, 앱의 오류 하나를 고치는 작업을 생각해 보겠습니다. 작업 공간 하나를 만들고 작성 AI, 검토 AI, 테스트용 셸을 배치합니다. 사람은 먼저 재현 방법과 기대하는 동작을 정하고 각 역할에 필요한 정보를 전달합니다.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>자리</th><th>맡길 일</th><th>사람이 확인할 것</th></tr></thead>
+        <tbody>
+          <tr><td>작성 AI</td><td>원인을 찾고 수정안 작성</td><td>요청한 동작과 수정 범위</td></tr>
+          <tr><td>검토 AI</td><td>변경 내용과 실패 가능성 검토</td><td>근거가 있는 지적과 빠진 조건</td></tr>
+          <tr><td>테스트용 셸</td><td>빌드·테스트 실행</td><td>실제 성공 여부와 오류 로그</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>작성 AI가 작업하는 동안 검토 AI에는 관련 코드의 구조나 확인할 조건을 살펴보게 할 수 있습니다. 수정안이 나오면 검토 범위를 전달하고, 테스트용 셸에서 결과를 확인합니다. 각 AI의 진행 속도가 달라도 필요한 결과가 나오는 순서에 따라 다음 지시를 주면 됩니다.</p>
+    <p>중간에 테스트가 실패하면 로그를 보면서 작성 AI에게 실패 조건을 알려 줍니다. 검토 AI가 질문하면 해당 칸으로 이동해 답하고, 검토가 끝나면 수정 내용과 테스트 결과를 함께 판단합니다. 작업별 화면이 남아 있으므로 각 결과를 다시 찾아 읽는 데에도 도움이 됩니다.</p>
+    <p>작업이 끝났는지는 상태 표시와 실제 산출물을 함께 보고 결정합니다. AI가 입력을 받을 준비가 된 것과 요청한 수정이 올바르게 끝난 것은 별개의 판단입니다. 결과를 검증하는 자리를 따로 두면 여러 AI를 실행하더라도 사람이 확인할 근거가 남습니다.</p>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/techs/herdr-in-wezterm/assets/ko/herdr-agents.png" width="1352" height="1055" loading="lazy" decoding="async" alt="현재 사용 설정으로 WezTerm 안에서 Herdr와 코딩 AI를 나란히 실행한 화면"></figure>
+    </div>
+    <p><a href="https://droidactor.github.io/blog/techs/herdr-in-wezterm/assets/ko/herdr-agents.png">화면을 원본 크기로 보기</a></p>
+    <p>위 그림은 같은 설정으로 띄운 소개용 세션입니다. 왼쪽 Claude는 폴더 접근 확인을 기다리고, 오른쪽 Codex는 입력을 기다립니다. 각 AI의 실제 화면을 나란히 두고 확인하는 모습입니다.</p>
+
+    <h2>수정할 폴더까지 나눠야 한다면 worktree를 함께 씁니다</h2>
+    <p>여러 AI가 코드를 수정한다면 화면뿐 아니라 작업 파일도 구분할 필요가 있습니다. 같은 폴더에서 같은 파일을 동시에 수정하면 서로의 변경을 건드릴 수 있기 때문입니다. Git worktree는 같은 저장소의 다른 브랜치를 별도 폴더에서 작업하는 기능입니다.</p>
+    <p>Herdr에는 <a href="https://herdr.dev/tui/docs/cli-reference/#worktrees">worktree를 만들거나 여는 명령</a>도 있습니다. 새 작업 공간은 원래 저장소와 묶여 표시됩니다. 예를 들어 새 기능과 긴급 버그 수정을 각 worktree에 두면 코드 폴더와 AI의 작업 화면을 함께 구분해 관리합니다.</p>
+    <p>실제 수정 파일을 구분하려면 각 칸이 서로 다른 worktree 폴더를 사용하도록 지정합니다. 같은 코드를 읽으며 의견을 나누는 작업인지, 서로 다른 브랜치에서 실제로 수정하는 작업인지 먼저 정합니다. worktree 사용과 변경 내용의 병합은 그 선택에 맞춰 진행합니다.</p>
+
+    <h2>Windows와 WezTerm에서 두 칸으로 시작합니다</h2>
+    <p>제가 확인한 환경은 Windows 네이티브 Herdr 0.9.5와 Git Bash입니다. WezTerm은 터미널 창을 표시하고, 그 안에서 Herdr가 프로젝트와 AI 작업을 관리합니다. 글꼴과 배색처럼 익숙한 WezTerm 설정을 유지하면서 Herdr의 작업 공간과 세션 기능을 더하는 구성입니다.</p>
+    <p>시작할 때는 거창한 협업 자동화부터 만들 필요가 없습니다. 이미 쓰는 AI와 일반 셸을 한 작업 공간에 놓아 봅니다. 화면에서 결과를 확인하는 데 익숙해진 다음 검토 AI를 더하거나 원격 접속을 연결하는 편이 구성을 이해하기 쉽습니다.</p>
+    <ol>
+      <li>WezTerm과 Git Bash를 준비하고 <a href="https://herdr.dev/tui/docs/install/">공식 안내</a>에 따라 Herdr TUI를 설치합니다.</li>
+      <li>WezTerm에서 작업할 프로젝트 폴더로 이동해 <code>herdr</code>를 실행합니다.</li>
+      <li>마우스 우클릭 메뉴로 화면을 나누고 한쪽에서 <code>claude</code> 또는 <code>codex</code>를 실행합니다.</li>
+      <li>다른 쪽은 로그를 보는 셸로 쓰거나, 별도로 설치·로그인한 다른 AI를 실행합니다.</li>
+      <li>작업을 남겨 두려면 클라이언트에서 분리하고, 돌아와 같은 세션에 다시 접속합니다.</li>
+    </ol>
+    <p>처음 실행한 <code>herdr</code>는 기본 세션을 시작하거나 이미 실행 중인 기본 세션에 접속합니다. 이름을 붙여 세션을 열었다면 다시 접속할 때도 그 이름을 지정합니다. 일상적인 프로젝트 구분은 작업 공간으로 하고, 실행 환경을 따로 나눌 필요가 있을 때 이름 붙인 세션을 사용하면 됩니다.</p>
+    <p>읽을 내용이 길어지면 보고 있는 칸을 확대했다가 원래 배치로 돌아옵니다. 마우스로 칸을 선택하고 경계를 끌어 조절하는 것만으로도 대부분의 화면 구성을 만집니다. 단축키는 손에 익은 뒤 자주 쓰는 몇 개를 추가하는 정도로 시작해도 충분합니다.</p>
+
+    <h2>같은 모양으로 시작할 설정도 함께 공유합니다</h2>
+    <p><a href="https://droidactor.github.io/assets/downloads/herdr-wezterm-2026-11-06.zip">제가 쓰는 설정 묶음 ZIP</a>에는 WezTerm 설정, Herdr 설정, Git Bash의 현재 폴더 전달 부분을 담았습니다. 기본 셸은 Git Bash, 배색은 Catppuccin Macchiato, 글꼴은 JetBrains Mono입니다. 창의 제목 표시줄 색은 Windows 테마를 따릅니다.</p>
+    <p>기존 설정을 백업한 뒤 ZIP의 설명서대로 적용합니다. WezTerm 설정은 <code>%USERPROFILE%\.wezterm.lua</code>, Herdr 설정은 <code>%APPDATA%\herdr\config.toml</code>에 둡니다. Git Bash의 설치 경로가 다르면 파일 안의 셸 경로도 맞추고, 글꼴은 별도로 준비합니다.</p>
+    <p>현재 폴더 전달 설정은 Git Bash에서 폴더를 옮긴 뒤 새 칸을 나눌 때 그 위치를 Herdr에 알리는 부분입니다. 작은 설정이지만 프로젝트 폴더에서 분할했는데 다른 곳에 셸이 열리는 혼란을 줄입니다. AI 도구의 설치·로그인과 원격 접속 설정은 이 ZIP과 별도로 준비합니다.</p>
+    <p>이 설정에는 WezTerm과 Herdr의 칸 조작을 연결한 단축키도 들어 있습니다. 키 설명은 ZIP의 README와 <a href="https://droidactor.github.io/blog/techs/herdr-in-wezterm/assets/ko/herdr-shortcuts.png">단축키 메뉴 화면</a>에서 확인하시면 됩니다. Herdr를 쓰기 위해 이 단축키 구성을 그대로 채택할 필요는 없습니다.</p>
+
+    <h2>필요한 기능부터 더하며 작업 환경을 넓힙니다</h2>
+    <p>Herdr에는 기존 명령과 터미널 화면을 이용해 작업 흐름을 확장하는 플러그인 기능도 있습니다. 자주 쓰는 배치나 명령을 반복해서 준비한다면 이런 확장 기능을 살펴볼 만합니다. 다만 Windows의 플러그인 지원은 공식 문서에서 preview로 안내하므로, 기본 작업 공간과 세션 기능부터 사용하는 편이 시작하기 수월합니다.</p>
+    <p>터미널에서 실행되는 프로그램은 Herdr의 칸에서 사용하고, 지원되는 AI는 상태 표시까지 연결합니다. AI마다 상태 인식과 세션 복원 지원 범위가 다르므로 여러 도구를 함께 쓸 때는 <a href="https://herdr.dev/tui/docs/agents/">지원 에이전트 목록</a>을 확인합니다. 화면에 완료 표시가 떴다는 사실은 작업 결과를 검토할 순서가 왔다는 뜻으로 받아들이면 됩니다.</p>
+    <p>Herdr의 편리함은 프로젝트와 AI의 진행 상황을 한곳에서 보고, 원래 작업에 다시 접속하며, 필요한 전달 과정을 연결하는 데 있습니다. WezTerm 안에서 작업 공간 하나와 터미널 두 칸부터 열어 보세요. 쓰면서 자주 반복되는 확인과 전달 과정을 찾으면, 다음에 어떤 기능을 더할지도 정하기 쉽습니다.</p>
+
+    <h2>관련 글</h2>
+    <ul>
+      <li><a href="https://droidactor.github.io/ko/blog/techs/wezterm-windows-korean-tmux/">Windows 터미널, WezTerm 하나로 끝냅니다 (한글 + tmux 없이 tmux)</a></li>
+      <li><a href="https://droidactor.github.io/ko/blog/techs/wezterm-leader-cheatsheet/">WezTerm 사용법 2편 - 리더 단축키 스무 개 관리하기</a></li>
+      <li><a href="https://droidactor.github.io/ko/blog/techs/wezterm-unix-domain-persistence/">WezTerm 사용법 3편 - 창을 닫아도 살아 있는 세션</a></li>
+      <li><a href="https://droidactor.github.io/ko/blog/techs/wezterm-shortcut-menu/">WezTerm 단축키, Ctrl+U 다음 마침표만 기억하기</a></li>
+      <li><a href="https://droidactor.github.io/ko/blog/techs/git-worktree-basics/">git worktree - 브랜치를 폴더로 바꾸기</a></li>
+    </ul>
+
+  </article>
+
+  <footer><p>droidactor가 만드는 Android 앱.</p><p><a href="/ko/blog/">현장 노트</a> · <a href="/ko/apps/">전체 앱</a> · <a href="/ko/manual/">사용 설명서</a> · <a href="/ko/tech-notes/">기술 노트</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play 및 Google Play 로고는 Google LLC 의 상표입니다.</p></footer>
+
+</div>
+
+</body>
+</html>

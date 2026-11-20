@@ -583,7 +583,7 @@
   -->
   <url>
     <loc>https://droidactor.github.io/blog/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
@@ -601,7 +601,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/"/>
@@ -616,6 +616,101 @@
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://droidactor.github.io/pt-BR/blog/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://droidactor.github.io/hi/blog/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/products/qr-barcode-scanner-app/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/qr-barcode-scanner-app/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/qr-barcode-scanner-app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/qr-barcode-scanner-app/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/products/qr-barcode-scanner-app/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/qr-barcode-scanner-app/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/qr-barcode-scanner-app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/qr-barcode-scanner-app/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/techs/herdr-in-wezterm/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/herdr-in-wezterm/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/herdr-in-wezterm/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/herdr-in-wezterm/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/techs/herdr-in-wezterm/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/herdr-in-wezterm/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/herdr-in-wezterm/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/herdr-in-wezterm/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/products/pc-youtube-remote/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/pc-youtube-remote/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/pc-youtube-remote/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/pc-youtube-remote/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/products/pc-youtube-remote/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/pc-youtube-remote/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/pc-youtube-remote/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/pc-youtube-remote/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/products/review-walking-route-details/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/review-walking-route-details/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/review-walking-route-details/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/review-walking-route-details/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/products/review-walking-route-details/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/review-walking-route-details/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/review-walking-route-details/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/review-walking-route-details/"/>
+  </url>
+
+  <url>
+    <loc>https://droidactor.github.io/blog/products/korea-subway-regions/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/korea-subway-regions/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/korea-subway-regions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/korea-subway-regions/"/>
+  </url>
+  <url>
+    <loc>https://droidactor.github.io/ko/blog/products/korea-subway-regions/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/korea-subway-regions/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/korea-subway-regions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/korea-subway-regions/"/>
   </url>
 
   <url>
@@ -877,7 +972,7 @@
 
   <url>
     <loc>https://droidactor.github.io/blog/techs/wezterm-shortcut-menu/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-shortcut-menu/"/>
@@ -886,7 +981,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/techs/wezterm-shortcut-menu/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-shortcut-menu/"/>
@@ -1694,7 +1789,7 @@
 
   <url>
     <loc>https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/"/>
@@ -1703,7 +1798,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/techs/wezterm-unix-domain-persistence/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/"/>
@@ -1713,7 +1808,7 @@
 
   <url>
     <loc>https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/"/>
@@ -1722,7 +1817,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/techs/wezterm-leader-cheatsheet/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/"/>
@@ -1751,7 +1846,7 @@
 
   <url>
     <loc>https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/"/>
@@ -1760,7 +1855,7 @@
   </url>
   <url>
     <loc>https://droidactor.github.io/ko/blog/techs/wezterm-windows-korean-tmux/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/"/>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Herdr: Keep Your Coding AIs in One Place — droidactor</title>
+<meta name="description" content="Why Herdr makes several coding AIs easier to run: status at a glance, a workspace per project, sessions that keep running, remote access and hand-offs between agents. I also share the settings I use with WezTerm on Windows.">
+<link rel="canonical" href="https://droidactor.github.io/blog/techs/herdr-in-wezterm/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/techs/herdr-in-wezterm/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/techs/herdr-in-wezterm/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/techs/herdr-in-wezterm/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/techs/herdr-in-wezterm/">
+<meta property="og:title" content="Herdr: Keep Your Coding AIs in One Place">
+<meta property="og:description" content="Why Herdr makes several coding AIs easier to run: status at a glance, a workspace per project, sessions that keep running, remote access and hand-offs between agents. I also share the settings I use with WezTerm on Windows.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20261029-multilingual-posts">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Herdr: Keep Your Coding AIs in One Place",
+      "description": "Why Herdr makes several coding AIs easier to run: status at a glance, a workspace per project, sessions that keep running, remote access and hand-offs between agents. I also share the settings I use with WezTerm on Windows.",
+      "url": "https://droidactor.github.io/blog/techs/herdr-in-wezterm/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/techs/herdr-in-wezterm/",
+      "datePublished": "2026-11-06",
+      "dateModified": "2026-11-20",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Herdr in WezTerm", "item": "https://droidactor.github.io/blog/techs/herdr-in-wezterm/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/techs/herdr-in-wezterm/" aria-current="page" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/techs/herdr-in-wezterm/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Herdr in WezTerm</nav>
+  <div class="hero">
+    <h1>Herdr: Keep Your Coding AIs in One Place</h1>
+    <p class="post-meta"><time datetime="2026-11-06">6 November 2026</time> · Updated <time datetime="2026-11-20">20 November 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+
+
+    <div class="note">
+      <p><strong>In short.</strong> When you run several coding AIs at once, you keep switching windows to see which one has finished. With several projects open, you also stop to recall which task a result belongs to. Herdr groups your AIs and terminals by project. You can go straight to the work that needs you now.</p>
+    </div>
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.bt_keyboard&amp;hl=en"><img src="/assets/banner/en/bt-keyboard-qr.png" width="800" height="200" loading="lazy" decoding="async" alt="Google Play QR + Dotori Bluetooth Keyboard - Your phone as a keyboard for PC and TV"></a>
+      <p>A free app I built myself. Give it a try.</p>
+    </div>
+
+    <p>Herdr shows the state of each running AI and gives every project its own workspace and tabs. The terminals stay on a server, so you can leave and reattach to the same work later. You can also follow work on another computer over SSH. Commands that hand a task to another AI and read its output help you connect several agents.</p>
+    <p>I use Herdr inside WezTerm on Windows. Based on that setup, I show what gets easier with several AIs and how I arrange the work. It covers <strong>Herdr TUI</strong>, which runs inside a terminal, not the separate Herdr app.</p>
+
+    <h2>You see first which AI is waiting for your answer</h2>
+    <p>When several AIs are running, what you need to do changes each time. One AI is writing code, another has a result ready, and a third is waiting for an answer. Instead of reading the last line of every window, you check the states in Herdr's list on the left.</p>
+    <p>Here is how to read the states in the list. Each state also shows on the tab and workspace that hold that AI. Even while you look at another project, you can tell where to go next.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Label</th><th>Meaning</th><th>What to do</th></tr></thead>
+        <tbody>
+          <tr><td>working</td><td>Busy with a task</td><td>Wait for the task in progress</td></tr>
+          <tr><td>blocked</td><td>Waiting for an answer or approval</td><td>Open the pane and make the decision</td></tr>
+          <tr><td>done</td><td>Finished, not yet viewed</td><td>Read and review the new result</td></tr>
+          <tr><td>idle</td><td>Ready for input</td><td>Send a new request if needed</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Say the review AI left a question while you were watching only the writing AI. When the list shows it waiting, you answer in the review pane and then check the writing result. Before you hand out more work, you see whether earlier work has stopped to wait for you.</p>
+    <p>You read the actual content on the AI's own terminal screen. The options a question offers and the command that just ran are right there. <a href="https://herdr.dev/tui/docs/agents/">Status detection</a> relies on the screen or on integration data. If a waiting state looks wrong, read the pane yourself.</p>
+
+    <h2>Grouping projects and tasks makes them easy to find again</h2>
+    <p>A Herdr workspace holds a project or a research topic. Inside it you create tabs, and each tab holds terminal panes. Put a bug fix for app A and the release work for app B in separate workspaces. The related AIs and logs then stay together.</p>
+    <p>Within one project, it also helps to keep coding, review and output in separate places. The coding tab holds the writing AI and the review AI side by side. The run tab holds the dev server and its logs. Panes are not only for AIs. Your usual shell, builds and tests go in them as well.</p>
+    <p>You also spend less time rearranging terminal windows when you switch projects. Pick a project in the list and you are back in the layout you set up for it. Reading a result, checking the related log and asking the AI again all happen inside one workspace.</p>
+    <p>You select a pane or drag a border to resize it with the mouse. The right-click menu splits the screen and creates tabs, and dragging over text copies it. <strong>You can use this layout before you learn any shortcuts</strong>, which makes the first days easier.</p>
+
+    <h2>Leave the screen and come back to the same work</h2>
+    <p>If you started a long build or test, you do not need to watch that window until it ends. Herdr separates the client that shows the screen from the server that runs the terminals. When you detach the client, the shells, AIs and running commands on the server keep going.</p>
+    <p>Reattach and you are back in the same terminals. You do not have to restart the AI and explain the situation again, or rerun a test from the start. The same project folders and pane layout are waiting for you as well.</p>
+    <p>This helps most when you leave a long task running and do something else. Leave the terminal with the build and the waiting AI in the same session. When you come back, check the result and then answer the question. You no longer have to finish the work before you can leave the screen.</p>
+    <p>Everything keeps running only while the Herdr server and the computer stay up. If you restart the computer or stop the server, the running processes stop too. The <a href="https://herdr.dev/tui/docs/session-state/">session state guide</a> also tells layout restore apart from processes that keep running.</p>
+
+    <h2>See the original computer's work from another device</h2>
+    <p>If your work runs on a desktop at home or on a remote server, you can check it from another device. Connect to that computer over SSH and run Herdr to open its session. The code and the tools stay on the original computer. You watch and type from the device you connected with.</p>
+    <p>Picture moving to a laptop and checking whether a build has finished. Or picture reading an AI's question on your phone for a minute and answering it. The official documentation describes attaching to the same session from an SSH client on a phone. Herdr's terminal layout is built to stay usable on a narrow screen.</p>
+    <p>If you use several computers, <a href="https://herdr.dev/tui/docs/connecting-machines/">save SSH machines</a> and pick local or remote work in one Herdr window. The workspaces and agent states of connected machines appear in the same list. You no longer open a separate terminal each time to find the right session on the right computer.</p>
+    <p>Remote work keeps running on the original machine. Set up SSH and the network path to that machine first. It also helps to know which computer must stay on and where you will read the results.</p>
+
+    <h2>Building agents that hand off work is easy</h2>
+    <p>Besides letting you pick screens, Herdr gives you commands that control terminals and AIs. You can run a command in another pane, message an AI, read its output or wait for a state change. This helps when a script or a main AI takes over a hand-off you repeat.</p>
+    <p>For example, the writing AI can tell the review AI what to review once it finishes a change. You can also have a main AI read the review and write the next round of fix instructions. You stop switching between two windows to copy requests and answers by hand.</p>
+    <p>This needs rules for splitting the work. Decide which AI writes and which reviews, what each hands back, and when a person decides. Herdr provides the commands to create panes, send requests, read results and wait for states. You design the order of the work.</p>
+    <p>Start by running two AIs yourself, and connect the parts you repeat once you notice them. You begin with a few screens side by side and grow into automation in the same setup. The exact commands are in the <a href="https://herdr.dev/tui/docs/agent-automation/">official agent automation docs</a>.</p>
+
+    <h2>Splitting writing and review makes the workflow visible</h2>
+    <p>To put these features together, take fixing one bug in an app. Create a workspace and place a writing AI, a review AI and a test shell in it. First decide how to reproduce the bug and what you expect, then give each role what it needs.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Pane</th><th>Its job</th><th>What you check</th></tr></thead>
+        <tbody>
+          <tr><td>Writing AI</td><td>Find the cause and draft a fix</td><td>The requested behavior and the scope of the fix</td></tr>
+          <tr><td>Review AI</td><td>Review the change and how it could fail</td><td>Findings backed by evidence, and missed conditions</td></tr>
+          <tr><td>Test shell</td><td>Run builds and tests</td><td>Whether it really passes, and the error logs</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>While the writing AI works, the review AI can study the related code or the conditions to check. When the fix is ready, send the review scope and check the results in the test shell. The AIs may move at different speeds. Give each next instruction in the order the results arrive.</p>
+    <p>If a test fails, read the log and tell the writing AI the failing condition. If the review AI asks something, go to its pane and answer. Once the review is done, judge the fix together with the test results. Each task's screen stays where it was, so rereading a result later is easy.</p>
+    <p>Decide that the work is finished by looking at both the state label and the actual output. An AI that is ready for input has not necessarily made the fix you asked for. A separate place for checking results leaves you evidence, even with many AIs running.</p>
+    <div class="screenshot-grid">
+      <figure><img src="/blog/techs/herdr-in-wezterm/assets/ko/herdr-agents.png" width="1352" height="1055" loading="lazy" decoding="async" alt="Herdr and coding AIs running side by side in WezTerm with my current settings"></figure>
+    </div>
+    <p><a href="https://droidactor.github.io/blog/techs/herdr-in-wezterm/assets/ko/herdr-agents.png">Open the full-size image</a></p>
+    <p>The screenshot is a demo session started with the same settings. Claude on the left waits for you to confirm folder access, and Codex on the right waits for input. You read each AI's real screen side by side.</p>
+
+    <h2>Use worktrees when each AI needs its own folder</h2>
+    <p>If several AIs edit code, you need to separate the working files as well as the screens. Two AIs editing the same file in the same folder can overwrite each other's changes. Git worktree lets you check out another branch of the same repository into a separate folder.</p>
+    <p>Herdr also has <a href="https://herdr.dev/tui/docs/cli-reference/#worktrees">commands to create or open a worktree</a>. The new workspace is listed together with the original repository. For example, put a new feature and an urgent bug fix in separate worktrees. The code folders and the AI screens then stay apart.</p>
+    <p>To keep the edited files apart, point each pane at a different worktree folder. First decide whether the AIs read the same code and discuss it, or edit on different branches. Then create worktrees and merge the changes to match that choice.</p>
+
+    <h2>Start with two panes in WezTerm on Windows</h2>
+    <p>The setup I tested is native Windows Herdr 0.9.5 with Git Bash. WezTerm draws the terminal window, and inside it Herdr manages projects and AI work. You keep your familiar WezTerm fonts and colors and add Herdr's workspaces and sessions on top.</p>
+    <p>You do not need elaborate automation on day one. Put the AIs you already use and an ordinary shell in one workspace. Once you are used to checking results on screen, a review AI or remote access is easier to add.</p>
+    <ol>
+      <li>Install WezTerm and Git Bash, then install Herdr TUI by following the <a href="https://herdr.dev/tui/docs/install/">official guide</a>.</li>
+      <li>In WezTerm, go to your project folder and run <code>herdr</code>.</li>
+      <li>Split the screen from the right-click menu and run <code>claude</code> or <code>codex</code> on one side.</li>
+      <li>Use the other side as a shell for logs, or run another AI you have installed and signed in to.</li>
+      <li>To leave the work running, detach the client, and attach to the same session again when you return.</li>
+    </ol>
+    <p>The first time you run <code>herdr</code>, it starts the default session or attaches to the one already running. If you opened a named session, give the same name when you attach again. Use workspaces for everyday projects, and named sessions only when you need separate environments.</p>
+    <p>When a pane has a lot to read, zoom it and then return to the original layout. Selecting panes with the mouse and dragging borders covers most layout changes. Once the basics feel natural, add a few shortcuts you use often, and that is enough.</p>
+
+    <h2>I share my settings so you can start from the same layout</h2>
+    <p><a href="https://droidactor.github.io/assets/downloads/herdr-wezterm-2026-11-06.zip">My settings bundle (ZIP)</a> holds my WezTerm and Herdr settings. It also has a Git Bash snippet that passes on the current folder. The shell is Git Bash, the colors are Catppuccin Macchiato and the font is JetBrains Mono. The window title bar color follows the Windows theme.</p>
+    <p>Back up your current settings first, then apply the files as the bundle's README explains. The README is written in Korean. WezTerm settings go in <code>%USERPROFILE%\.wezterm.lua</code>. Herdr settings go in <code>%APPDATA%\herdr\config.toml</code>. If Git Bash lives elsewhere, update the shell path in the file, and install the font yourself.</p>
+    <p>The current-folder snippet tells Herdr where you moved in Git Bash, so a new split opens there. It is small, but without it a split in your project folder can open a shell somewhere else. AI tools, their sign-in and remote access are not part of this ZIP, so set them up yourself.</p>
+    <p>The settings also include shortcuts that link WezTerm and Herdr pane actions. The keys are listed in the README and on the <a href="https://droidactor.github.io/blog/techs/herdr-in-wezterm/assets/ko/herdr-shortcuts.png">shortcut menu screenshot</a>, which uses Korean labels. You do not have to adopt my shortcuts to use Herdr.</p>
+
+    <h2>Add features as you need them</h2>
+    <p>Herdr also supports plugins that build on your existing commands and terminal screens. If you keep setting up the same layout or commands, plugins are worth a look. The official docs list Windows plugin support as a preview, though. Start with the core workspaces and sessions.</p>
+    <p>Any terminal program works in a Herdr pane, and supported AIs also get state detection. Each AI supports state detection and session restore to a different degree. If you mix several tools, check the <a href="https://herdr.dev/tui/docs/agents/">list of supported agents</a>. Treat a done label as a signal that it is your turn to review the result.</p>
+    <p>Herdr shows the progress of every project and AI in one place. It takes you back to your original work and connects the hand-offs you need. Open one workspace with two terminal panes inside WezTerm. As you work, notice which checks and hand-offs you repeat, and you will know what to add next.</p>
+
+    <h2>Related articles</h2>
+    <ul>
+      <li><a href="https://droidactor.github.io/blog/techs/wezterm-windows-korean-tmux/">WezTerm: One Terminal, CJK and tmux</a></li>
+      <li><a href="https://droidactor.github.io/blog/techs/wezterm-leader-cheatsheet/">WezTerm 2: Twenty Leader Shortcuts</a></li>
+      <li><a href="https://droidactor.github.io/blog/techs/wezterm-unix-domain-persistence/">WezTerm 3: Sessions That Outlive Windows</a></li>
+      <li><a href="https://droidactor.github.io/blog/techs/wezterm-shortcut-menu/">WezTerm Shortcuts: Remember One Menu Key</a></li>
+      <li><a href="https://droidactor.github.io/blog/techs/git-worktree-basics/">git worktree: Branches as Folders</a></li>
+    </ul>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>
