@@ -1,6 +1,6 @@
 # Google Search Console 운영 문서 — droidactor.github.io
 
-마지막 갱신 2026-11-17 대기 4건 접수(미접수 0·보류 1) · 네이버 계정·권한 재확인 · 11-16 실적 확인 · 11-14 전면 축약
+마지막 갱신 2026-11-20 13:26 새 배포 `9f52cd3` 10건 접수(미접수 0·보류 1) · 보고서 기준일 11-16 재집계(색인 196, lgtv `다른 표준` 해소) · 00:00 daily 재대조 · 11-18 vault 한·영 접수 · 11-16 실적 확인 · 11-14 전면 축약
 
 이 문서에는 **다음 작업에 필요한 것만** 담는다. 지난 회차 기록·판독 근거·철회된 해석은 git 이력에 있다.
 
@@ -14,21 +14,22 @@
 
 ---
 
-## 1. 현재 상태 (2026-11-17)
+## 1. 현재 상태 (2026-11-20)
 
 | 항목 | 값 |
 |---|---|
 | 속성 | `https://droidactor.github.io/` (URL 접두어). 새 속성은 만들지 않는다 |
-| live sitemap | **234개**. 마지막으로 대조한 배포 커밋 `4e4dbec`(11-17 오후 재대조, HEAD = origin/main, 새 후보 없음). 로컬 `sitemap.xml`·`sitemap-all.xml`과 live 두 파일이 바이트까지 같다 |
-| Sitemaps 보고서 | 두 행 모두 `가져올 수 없음` · 발견 0 · 마지막 읽은 날짜 없음 (§7.1) |
-| Page indexing 보고서 | 기준일 **11-13**(11-17 오후 재확인, 기준일 불변으로 재집계 생략), 색인 **183** · 미색인 **30** (크롤링됨 28 · 다른 표준 2) |
+| live sitemap | **246개**. 마지막으로 대조한 배포 커밋 `9f52cd3`(11-20 13:05 KST 배포, 13:09 대조, fetch 후 HEAD = origin/main). `c6d1eb4` 이후 새 `<loc>` 10개(제품 글 4쌍·Herdr 기술 글 쌍)·삭제 0. `fbd051c`는 홈 처리방침 문구만 바꿨다. 로컬 `sitemap.xml`·`sitemap-all.xml`과 live 두 파일이 바이트까지 같다. 다른 세션 기록(`**/todo-google-search.md`·`**/play/README.md`)에 새 URL 10개의 접수 기록 없음 |
+| Sitemaps 보고서 | 두 행 모두 `가져올 수 없음` · 발견 0 · 마지막 읽은 날짜 없음 (11-20 재확인, §7.1) |
+| Page indexing 보고서 | 기준일 **11-16**(11-20 13:25 재집계), 색인 **196** · 미색인 **31** (크롤링됨 31 · 다른 표준 0) |
+| 최근 접수 URL 검사 | **11-20 13:14~13:23 KST** 요청 직전 검사: 새 URL 10개 모두 `아직 알려지지 않은 URL`. 11-18 vault 홍보글(영문 색인·국문 크롤 후 미색인)은 그 뒤 재검사하지 않았다. 보고서 합계에 합산하지 않는다 |
 | Google 실적 | 11-16 재판독 완료. 최근 28일 `10-18~11-14`, 페이지 표 136행 합계 **77클릭·2,582노출**. 헤드라인은 76클릭·약 2.53천 노출로 기준을 섞지 않는다 |
 | 네이버 서치어드바이저 | **11-17 로그인 계정 일치 확인·등록 사이트 0개**. 기존 사이트 요약에 직접 접근해도 `접근권한이 없습니다`. 8-10 등록 당시와 동일 계정인지는 기록 부족으로 미확정이며 sitemap 처리 결과도 미확인 |
-| 접수 원장 | **218개** (§4). 11-17 Everything 안내 글·손전등 제품 한·영 4건 접수 |
+| 접수 원장 | **230개** (§4). 11-20 새 배포 10건 접수 |
 | 남은 요청 | 미접수 **0개** + 보류 1개 (§2.1) |
-| 마지막 제출 시도 | **11-17 12:41:10 KST** 시도 → **12:41:26 접수** (`/ko/apps/light/`). 새 후보의 다음 회차는 **11-18 12:47 KST 이후** |
+| 마지막 제출 시도 | **11-20 13:23:48 KST** 시도 → **13:24:07 접수** (`/ko/blog/products/korea-subway-regions/`). 24시간 창 안 시도 10건(13:14:34~13:23:48)이라 새 후보의 다음 회차는 **11-21 13:29 KST 이후** |
 
-11-09 → 11-13 보고서 재대조: 색인 183개 전수 중 live sitemap 안 **173개**, 밖 10개(옛 스텁), sitemap 중 색인 목록에 없는 URL **61개**다. 직전 목록 대비 색인 진입 26개·이탈 0개. 크롤링됨은 기존 25개가 그대로이고 `/hi/blog/products/seoul-subway-map-app/`·`/ko/blog/techs/wezterm-shortcut-menu/`·`/ko/apps/vault/` 3개가 더해졌다. 홈·국문 Wi-Fi 미색인과 lgtv 다른 표준 2개는 그대로다. 드릴다운에는 기준일 뒤인 11-14 크롤도 섞여 있으므로 보고서 수치와 실시간 검사 결과는 구분한다. 원본·전수 목록·차이는 `.review/gsc-20261116-evening/`에 있다.
+11-13 → 11-16 보고서 재대조: 색인 196개 전수 중 live sitemap 안 **186개**, 밖 10개(같은 옛 스텁), sitemap 246개 중 색인 목록에 없는 URL **60개**(오늘 낸 10개 포함)다. 직전 목록 대비 색인 진입 14개·이탈 1개. 진입은 `(ko/)apps/{daejeonmetro,lgtv,light,macropad,qr}/` · `/apps/counter/` · `/ko/apps/vault/` · `(ko/)blog/products/flashlight-camera-app/`, 이탈은 `/ko/manual/lgtv/`(크롤링됨으로)다. 크롤링됨은 진입 4개(`(ko/)blog/techs/everything-file-search-guide/` · `/ko/apps/counter/` · `/ko/manual/lgtv/`)·이탈 1개(`/ko/apps/vault/`, 색인으로)다. **lgtv 새 URL 한·영이 11-16 크롤 후 색인돼 `다른 표준`이 0이 됐다**(§7.2). 홈·국문 Wi-Fi는 여전히 크롤링됨이다. 드릴다운에는 기준일 뒤인 11-17 크롤도 섞여 있으므로 보고서 수치와 실시간 검사 결과는 구분한다. 드릴다운 셀 끝에 아이콘 글꼴 문자(U+E000~F8FF)가 붙어 나오므로 대조 전에 지운다. 원본·전수 목록·차이는 `.review/gsc-20261120/`에 있다.
 
 실적 비교(각 28일, **페이지 표 전수 합**): 옛·새 URL은 §5.1의 7개 제품 한·영 쌍만 센다. 첫 구간은 9-17 기록과 이번 재조회 결과가 일치한다.
 
@@ -48,9 +49,9 @@
 
 | 순서 | URL |
 |---|---|
-| 보류 | `/hi/blog/` — 11-04 제출 오류 뒤 접수 여부를 확인하지 못했다. 11-14에도 `아직 알려지지 않은 URL`. **사용자 결정 없이 재요청하지 않는다** |
+| 보류 | `/hi/blog/` — 11-04 제출 오류 뒤 접수 여부를 확인하지 못했다. 11-18 19:05 KST에도 `아직 알려지지 않은 URL`. **사용자 결정 없이 재요청하지 않는다** |
 
-현재 제출 가능한 신규 URL은 없다. 새 배포로 생긴 URL은 이 표 끝에 더한다. 이번 회차의 사전 점검·URL 검사·접수 근거는 `.review/gsc-20261117-afternoon/`에 있다.
+현재 제출할 신규 URL은 없다. 11-20 배포 `9f52cd3`의 새 URL 10개(`(ko/)blog/products/{qr-barcode-scanner-app,pc-youtube-remote,review-walking-route-details,korea-subway-regions}/` · `(ko/)blog/techs/herdr-in-wezterm/`)는 사전 점검 통과·요청 직전 검사(모두 `아직 알려지지 않은 URL`) 뒤 13:15:09~13:24:07 KST에 모두 접수됐고, 대화상자를 닫은 뒤에도 오류가 없었다. 새 배포로 생긴 URL은 이 표 끝에 더한다. 사전 점검·URL 검사·접수 근거는 `.review/gsc-20261120/`에 있다.
 
 ### 2.2 회차 절차 (daily 재대조 포함)
 
@@ -69,9 +70,10 @@
 |---|---|
 | `/ko/blog/techs/wezterm-shortcut-menu/` | 11-13 요청, 같은 날 11:55:08 크롤 후 미색인 |
 | `/hi/blog/products/seoul-subway-map-app/` | 11-12 요청, 크롤 후 미색인 |
-| `/` · `/ko/apps/wifi-scout/` | 11-09 보고서에서 색인 → `크롤링됨`으로 빠졌다. 원인 미확인. 사이트는 그대로 두고, 다음 보고서에서 다시 분류됐는지 본다. `/`는 요청 이력이 없지만 **요청하지 않는다** — 다음 보고서를 본 뒤 필요하면 사용자 결정 |
-| 오래 미발견(11-09 보고서에 없음) | `(ko/)manual/bt-keyboard/`(08-17) · `(ko/)tech-notes/{bt-ppt,bt-mouse,wifi-scout,ssh-scout}/`(08-31) · `(ko/)apps/yt-downloader/`(09-05) · `(ko/)blog/use-android-phone-as-{bluetooth-mouse,powerpoint-remote}/`(09-10) · `(ko/)blog/products/learn-korean-numbers/`(10-30) |
-| 11-09 미색인 27의 나머지 | 허브 `/apps/`·`/ko/apps/`·`/manual/` · `/ko/blog/` · `/ko/tech-notes/bt-keyboard/`와 상세 4편 · `/ko/tech-notes/receipt/` · 국문 기술 글 6편 · `/blog/techs/what-to-delegate-to-ai/` · 경제 트렌딩 4편 · `/sitemap.xml` · 옛 스텁 `/ko/bt-ppt/` · 다른 표준 `(ko/)apps/lgtv/`(§7.2). 전수 목록은 `.review/gsc-20261113-followup/crawled-rows.json` |
+| `/` · `/ko/apps/wifi-scout/` | 11-09 보고서에서 색인 → `크롤링됨`으로 빠졌고 11-13·11-16 보고서에서도 그대로다. 원인 미확인. 사이트는 그대로 둔다. `/`는 요청 이력이 없지만 **요청하지 않는다** — 필요하면 사용자 결정 |
+| 오래 미발견(11-16 보고서에도 없음) | `(ko/)manual/bt-keyboard/`(08-17) · `(ko/)tech-notes/{bt-ppt,bt-mouse,wifi-scout,ssh-scout}/`(08-31) · `(ko/)apps/yt-downloader/`(09-05) · `(ko/)blog/use-android-phone-as-{bluetooth-mouse,powerpoint-remote}/`(09-10) · `(ko/)blog/products/learn-korean-numbers/`(10-30) |
+| 11-16 보고서에서 새로 크롤링됨 | `(ko/)blog/techs/everything-file-search-guide/`(11-17 요청·크롤) · `/ko/apps/counter/`(11-15 요청, 영문은 색인) · `/ko/manual/lgtv/`(색인에서 빠짐, 11-17 크롤) |
+| 그 밖의 크롤링됨 | 허브 `/apps/`·`/ko/apps/`·`/manual/` · `/ko/blog/` · `/ko/tech-notes/bt-keyboard/`와 상세 4편 · `/ko/tech-notes/receipt/` · 국문 기술 글 6편 · `/blog/techs/what-to-delegate-to-ai/` · 경제 트렌딩 4편 · `/sitemap.xml` · 옛 스텁 `/ko/bt-ppt/`. 전수 목록은 `.review/gsc-20261120/crawled-rows.json` |
 
 국문만 미색인이고 영문 짝은 색인된 묶음이 많다. 원인은 확인되지 않았다.
 
@@ -163,9 +165,9 @@
 
 ## 4. 요청 원장 — 재요청 금지 판정의 유일한 근거
 
-**고유 URL 218개.** 표기: `(ko/)x/` = `/x/`와 `/ko/x/`, `{a,b}` = 각각. 시각은 KST.
+**고유 URL 230개.** 표기: `(ko/)x/` = `/x/`와 `/ko/x/`, `{a,b}` = 각각. 시각은 KST.
 거절·실패·접수 불명(`/hi/blog/`)은 원장에 넣지 않는다. 중복 요청 3건(08-24 2건, 09-14 1건)은 합계에서 뺐다.
-11-17 검산: 행 합계 218 = 고유 218, 전부 live sitemap 안에 있다. sitemap에서 원장 밖인 16개는 보류 1·요청 전에 이미 색인돼 있던 15개(`/`, `/ko/tech-notes/`, 초기 블로그 글 6쌍, `/apps/tokyometro/`)다. 다른 세션의 `Mobile light/docs/todo-google-search.md`에 기록된 손전등 홍보글 한·영 2건을 합산했다. 영문은 첫 시도 결과를 못 받은 뒤 버튼 라벨로 미접수라고 보고 재시도한 기록이 있으나, §3.2대로 라벨은 접수 판정 근거가 아니다. 성공 기록은 고유 URL당 한 번만 센다.
+11-20 검산: 행 합계 230 = 고유 230, 전부 live sitemap 안에 있다. sitemap에서 원장 밖인 16개는 보류 1·요청 전에 이미 색인돼 있던 15개(`/`, `/ko/tech-notes/`, 초기 블로그 글 6쌍, `/apps/tokyometro/`)다. 다른 세션의 `Mobile light/docs/todo-google-search.md`에 기록된 손전등 홍보글 한·영 2건은 이미 합산돼 있다. 영문은 첫 시도 결과를 못 받은 뒤 버튼 라벨로 미접수라고 보고 재시도한 기록이 있으나, §3.2대로 라벨은 접수 판정 근거가 아니다. 성공 기록은 고유 URL당 한 번만 센다.
 
 | 날짜 (KST) | 접수 | URL |
 |---|---|---|
@@ -201,6 +203,8 @@
 | 11-15 18:52~18:59 | 8 | `(ko/)apps/{daejeonmetro,qr,macropad,counter}/` |
 | 11-16 06:56 | 2 | `(ko/)blog/products/flashlight-camera-app/` — 다른 세션 기록 합산. 이번 회차 재요청 없음 |
 | 11-17 12:39~12:41 | 4 | `(ko/)blog/techs/everything-file-search-guide/` · `(ko/)apps/light/` |
+| 11-18 14:42~14:43 | 2 | `(ko/)blog/products/photo-document-file-vault/` |
+| 11-20 13:15~13:24 | 10 | `(ko/)blog/products/{qr-barcode-scanner-app,pc-youtube-remote,review-walking-route-details,korea-subway-regions}/` · `(ko/)blog/techs/herdr-in-wezterm/` |
 
 ---
 
@@ -254,6 +258,7 @@
 
 ### 7.2 lgtv 새 URL을 옛 URL이 잠식한다
 
+- **11-16 보고서에서 진전**: `/apps/lgtv/`·`/ko/apps/lgtv/`가 11-16 크롤 후 색인 목록으로 옮겨졌고 `다른 표준` 사유는 0이 됐다. 옛 스텁 `/lgtv/`·`/ko/lgtv/`도 색인 목록에 남아 있다. 새 URL 노출이 생기는지는 다음 실적 판독에서 본다. 아래는 그 전까지의 기록이다.
 - `/apps/lgtv/`·`/ko/apps/lgtv/`의 Google 선택 표준이 옛 스텁 `/lgtv/`·`/ko/lgtv/`다(08-15 감지, 마지막 크롤 08-24, 11-09에도 같다). 실적에서도 새 URL 노출이 0이고 옛 스텁이 노출을 가져갔다(09-17 판독).
 - 배제된 가설: 본문 중복, 한·영 상호 중복, 내부 링크 잔재. 사이트 태그도 모두 정확하다.
 - 재요청은 이미 써 봤고 효과가 없었다(08-24). `noindex` 재도입·404·삭제 도구는 §5가 금지한다. **남은 조치는 재크롤을 기다리는 것뿐이다.**
