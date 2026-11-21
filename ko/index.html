@@ -574,7 +574,7 @@
   <section id="privacy">
     <h2>개인정보 처리방침</h2>
     <p class="lead">
-      시행일: 2026년 11월 16일 · 개발자: droidactor (개인 개발자) ·
+      시행일: 2026년 11월 21일 · 개발자: droidactor (개인 개발자) ·
       문의: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> ·
       아래 7절에 열거된 모든 앱에 적용됩니다.
       <br><a href="/#privacy" hreflang="en" lang="en">Privacy policy in English</a>
@@ -652,6 +652,9 @@
       제품 페이지를 기본 외부 브라우저로 넘깁니다. 로드된 유료 광고 위에는 자사 추천을 겹치지 않습니다.
     </p>
     <p>
+      <strong>운영 공지.</strong> <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> YouTube Downloader 를 제외한 앱을 열거나 설정에서 공지를 새로고침할 때, 운영 공지 확인을 위해 <code>droidactor.github.io</code>(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.
+    </p>
+    <p>
       각 앱의 설정 화면에서 개인정보 옵션을 언제든 다시 열어 동의를 변경하거나 철회할 수
       있습니다.
     </p>
@@ -717,7 +720,7 @@
           <tr>
             <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code></td>
             <td>전체. <a href="#privacy-receipt"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너</a>·<a href="#privacy-namecard"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 명함 스캐너</a>·<a href="#privacy-idphoto"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 증명사진</a>·<a href="#privacy-hangul"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 배우기</a> · <a href="#privacy-hannum"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한국어 숫자 읽기</a> · <a href="#privacy-seoulmetro"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 서울 지하철</a> 포함. 이 앱들에서는 광고 라이브러리 병합으로 선언됩니다. · <a href="#privacy-koreametro"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한국 지하철</a> · <a href="#privacy-alarm"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 알람</a> · <a href="#privacy-pedometer"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 만보기</a> · <a href="#privacy-lunar"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 날짜·음력 계산기</a></td>
-            <td>사용자가 지정한 장비·원본에 접속하고 광고를 받아오기 위해서입니다. HID 리모컨은
+            <td>사용자가 지정한 장비·원본에 접속하고, 광고를 받아오며, Google Play 앱 업데이트와 droidactor.github.io의 서명된 운영 공지를 확인하기 위해서입니다. HID 리모컨은
               입력을 인터넷이 아니라 블루투스로 보냅니다. <a href="#privacy-currency"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 환율 계산기</a>는 그 날의 환율 표를
               받아옵니다 — 입력한 금액은 그 요청에 담기지 않습니다. 영수증 스캐너는 ML Kit 진단 통신도 사용하며 스캐너 준비·클라우드 사진 공급자에 연결이 필요할 수 있습니다. 인식은 기기 안에서 처리합니다. 명함 스캐너도 같으며, 선택적인 개체 인식 모델을 Wi-Fi에서만 Google로부터 내려받습니다 — 이 다운로드에 명함 내용은 담기지 않습니다. 증명사진도 ML Kit 진단 통신을 사용하며, 얼굴 검출·배경 분리 모델이 앱에 포함되어 있어 모델을 내려받지 않고 기기 안에서 사진을 처리합니다. 한글 배우기도 ML Kit 진단 통신을 사용하며, 한국어 글자 인식 모델은 앱에 포함되어 있고 한국어 손글씨 모델(약 25MB)은 사용자가 고를 때만 네트워크 종류와 관계없이 Google로부터 내려받습니다 — 이 다운로드에 손글씨나 사진은 담기지 않습니다.</td>
           </tr>
@@ -865,6 +868,7 @@
         페어링·연결 중·가이드 테스트·복구 중에는 붙이지 않습니다. 슬롯은 조작 영역 위쪽에 따로 있어
         트랙패드와 키 위에는 광고가 그려지지 않습니다.
       </p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="/ko/apps/bt-keyboard/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한글 키보드 자세히 보기</a></p>
     </div>
 
@@ -877,6 +881,7 @@
         <strong>그 높이는 광고가 붙기 전에도 그대로 예약</strong>해 발표 도중 아래 버튼이 밀리지
         않습니다. 전면 광고는 없습니다.
       </p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="/ko/apps/bt-ppt/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PPT 리모컨 자세히 보기</a></p>
     </div>
 
@@ -893,10 +898,11 @@
         확보하며 동의 상태가 확인된 뒤에만 광고를 요청합니다. 트랙패드·마우스 버튼·스크롤 레일 위에는 광고를
         배치하지 않습니다. Google 의 광고 데이터 처리는 위 공통 처리방침을 따릅니다.
       </p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="/ko/apps/bt-mouse/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 마우스 자세히 보기</a></p>
     </div>
 
-    <div class="policy" id="privacy-macropad"><h3><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 매크로 패드<span class="pkg-inline">com.droidactor.bt_macropad</span></h3><p>사용자가 고른 단축키와 최대 4단계 키 순서를 선택한 PC에 Bluetooth HID로 직접 보냅니다. 앱 계정과 개발자 서버가 없으며, 클립보드를 읽거나 키 입력·연결 이력을 개발자 서버에 보내지 않습니다.</p><p>매크로 세트, 버튼 이름·색상·배치·키 순서, 언어·자동 연결 설정과 재연결용 호스트 정보는 기기 내부에 저장합니다. Android 백업은 비활성화되어 있습니다. 같은 서명의 다른 <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> HID 앱이 연결을 소유하면 그 앱에 키 전송을 요청합니다. 매크로 내용·키 입력·호스트 정보를 광고 SDK에 전달하지 않습니다.</p><p>배너 광고와 UMP 개인정보 선택 기능을 포함하며 전면 광고는 없습니다. Google AdMob의 데이터 처리는 위 3절을 따릅니다. 필요한 동의 절차 이후 광고를 요청하며 설정의 개인정보 옵션에서 선택을 관리합니다. Google Play 앱 내 업데이트는 위 공통 공개사항을 따르며 매크로·호스트 정보를 업데이트 요청에 넣지 않습니다.</p><p>앱 저장공간을 지우거나 앱을 제거하면 저장된 매크로·설정·호스트 기록이 삭제됩니다. OS의 페어링은 Android 블루투스 설정에서 별도로 제거할 수 있습니다.</p><p><a href="/#privacy-macropad">Privacy policy in English</a></p><p><a href="/ko/apps/macropad/">앱 안내</a></p></div>
+    <div class="policy" id="privacy-macropad"><h3><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 매크로 패드<span class="pkg-inline">com.droidactor.bt_macropad</span></h3><p>사용자가 고른 단축키와 최대 4단계 키 순서를 선택한 PC에 Bluetooth HID로 직접 보냅니다. 앱 계정과 개발자 서버가 없으며, 클립보드를 읽거나 키 입력·연결 이력을 개발자 서버에 보내지 않습니다.</p><p>매크로 세트, 버튼 이름·색상·배치·키 순서, 언어·자동 연결 설정과 재연결용 호스트 정보는 기기 내부에 저장합니다. Android 백업은 비활성화되어 있습니다. 같은 서명의 다른 <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> HID 앱이 연결을 소유하면 그 앱에 키 전송을 요청합니다. 매크로 내용·키 입력·호스트 정보를 광고 SDK에 전달하지 않습니다.</p><p>배너 광고와 UMP 개인정보 선택 기능을 포함하며 전면 광고는 없습니다. Google AdMob의 데이터 처리는 위 3절을 따릅니다. 필요한 동의 절차 이후 광고를 요청하며 설정의 개인정보 옵션에서 선택을 관리합니다. Google Play 앱 내 업데이트는 위 공통 공개사항을 따르며 매크로·호스트 정보를 업데이트 요청에 넣지 않습니다.</p><p>앱 저장공간을 지우거나 앱을 제거하면 저장된 매크로·설정·호스트 기록이 삭제됩니다. OS의 페어링은 Android 블루투스 설정에서 별도로 제거할 수 있습니다.</p><p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p><p><a href="/#privacy-macropad">Privacy policy in English</a></p><p><a href="/ko/apps/macropad/">앱 안내</a></p></div>
 
     <div class="policy" id="privacy-numpad">
       <h3><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드<span class="pkg-inline">com.droidactor.bt_numpad</span></h3>
@@ -926,6 +932,7 @@
         삭제됩니다. Bluetooth 페어링 해제가 확인되면 해당 호스트의 앱 내 기록도 삭제합니다.
         운영체제의 페어링 자체는 Android Bluetooth 설정에서 별도로 해제할 수 있습니다.
       </p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="/#privacy-numpad" hreflang="en" lang="en">Numpad privacy policy in English</a></p>
       <p><a href="/ko/apps/numpad/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 넘패드 자세히 보기</a></p>
     </div>
@@ -950,6 +957,7 @@
         결과 행은 딥링크로 <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> SSH 터미널에 넘길 수 있습니다. 이 링크는 host 와 port 만 싣고,
         사용자명·비밀번호는 절대 전달하지 않습니다.
       </p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="/ko/apps/wifi-scout/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 와이파이 스캐너 자세히 보기</a></p>
     </div>
 
@@ -969,6 +977,7 @@
         운영하지 않으므로, 그 서버가 세션을 어떻게 처리하는지는 서버 운영자의 정책이 적용됩니다. 본인이
         소유하거나 관리 권한을 받은 네트워크에서만 사용하십시오.
       </p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="/ko/apps/ssh-scout/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> SSH 터미널 자세히 보기</a></p>
     </div>
 
@@ -1000,6 +1009,7 @@
       <p>
         LG와 webOS는 LG전자의 상표이며 이 앱은 LG전자와 제휴하지 않은 비공식 앱입니다.
       </p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="/ko/apps/lgtv/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> LG TV 리모컨 자세히 보기</a></p>
     </div>
 
@@ -1012,6 +1022,7 @@
         광고는 화면 최상단에 고정된 배너 하나뿐이고 키패드와 여백·구분선으로 떼어 놓았습니다 —
         <strong>전면광고는 없습니다</strong>. 입력하는 중에 전체 화면으로 끼어드는 것이 없습니다.
       </p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="/ko/apps/roman/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 로마 숫자 변환기 자세히 보기</a></p>
     </div>
 
@@ -1028,6 +1039,7 @@
         떼어 놓았습니다 — <strong>전면광고는 없습니다</strong>. 표시되는 값은 참고용 기준 환율이며,
         은행·환전소는 각자의 마진을 붙이므로 실제로 내는 금액과는 차이가 납니다.
       </p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="/ko/apps/currency/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 환율 계산기 자세히 보기</a></p>
     </div>
 
@@ -1042,6 +1054,7 @@
         광고는 배너 하나뿐입니다. Google 이 게재하며 그 과정에서 Google Mobile Ads SDK 가 수집하는
         정보는 위 3항에 적혀 있습니다.
       </p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
     </div>
 
     <div class="policy" id="privacy-apartment">
@@ -1055,6 +1068,7 @@
         광고는 배너로 표시됩니다. Google 이 게재하며 그 과정에서 Google Mobile Ads SDK 가 수집하는
         정보는 위 3항에 적혀 있습니다.
       </p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
     </div>
 
     <div class="policy" id="privacy-calendar">
@@ -1079,6 +1093,7 @@
         광고는 배너로 표시됩니다. Google 이 게재하며 그 과정에서 Google Mobile Ads SDK 가 수집하는
         정보는 위 3항에 적혀 있습니다.
       </p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
     </div>
 
     <div class="policy" id="privacy-unit">
@@ -1094,8 +1109,8 @@
       </p>
       <p>
         앱이 직접 선언하는 권한은 선택적 키패드 진동을 위한 <code>VIBRATE</code> 하나입니다. 환산을 위해 위치·연락처·저장소·카메라·마이크 접근은 요청하지
-        않습니다. <code>INTERNET</code> 등 네트워크·광고 관련 권한은 광고 라이브러리의 매니페스트 병합으로 추가되며, 해당 통신은 환산이 아니라 광고·동의
-        서비스에서 사용합니다.
+        않습니다. <code>INTERNET</code> 등 네트워크·광고 관련 권한은 광고 라이브러리의 매니페스트 병합으로 추가되며, 해당 통신은 환산이 아니라 광고·동의·앱 업데이트·서명된 운영 공지 조회에서
+        사용합니다.
       </p>
       <p>
         Google Mobile Ads 배너 하나를 표시하며 <strong>전면광고는 없습니다.</strong> 광고 데이터는 3절에 설명되어 있습니다. Google
@@ -1103,6 +1118,7 @@
         있습니다. 온라인 광고·동의 관리에는 연결이 필요할 수 있지만 환산은 오프라인으로 계속 사용할 수 있습니다. 맞춤 광고를 거절해도 모든 SDK 통신이 중단된다는 뜻은
         아닙니다.
       </p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="/ko/apps/unit/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 단위 변환기 자세히 보기</a></p>
     </div>
 
@@ -1114,6 +1130,7 @@
       <p>영수증 DB·이미지·임시 입력 파일은 클라우드 백업에서 제외합니다. Android 기기 간 이전에서도 영수증 DB·이미지를 제외하도록 설정했으나 제조사 이전 도구의 동작은 다를 수 있습니다. 앱은 클라우드 동기화·복원을 제공하지 않습니다. 확정 기록 요약은 사용자가 공유를 선택할 때만 CSV로 전달하며, 선택한 수신 앱이 사본을 처리합니다. 수신 앱이 읽을 수 있도록 내보내기 파일을 임시 보관한 뒤 정리합니다. CSV는 백업 형식이 아닙니다.</p>
       <p>Document Scanner 준비에는 Google Play services의 구성요소 다운로드가, 클라우드 사진 공급자에는 연결이 필요할 수 있습니다. 이 입력 경로와 SDK 통신은 기기 내 인식과 구분됩니다. ML Kit는 기기·앱 정보, 설치 식별자, 성능·기능 이벤트 등 기술 진단·사용 정보를 수집합니다. Google은 <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit 데이터 공개</a>에 나열된 진단 데이터의 HTTPS 전송과 제3자 미전달을 설명합니다.</p>
       <p>앱은 AdMob 배너와 지역에 필요한 Google UMP 개인정보 선택을 사용하며 광고 처리는 3절과 같습니다. 영수증 내용을 광고 SDK에 제공하지 않습니다. 로컬 데이터 삭제가 Google의 진단·광고 기록을 삭제하는 것은 아닙니다. 앱은 위험 권한을 요청하지 않으며, 스캐너·선택 사진 입력을 위해 앱이 카메라나 광범위한 사진·저장소 접근을 요청하지 않습니다. 보조 라이브러리는 4절의 네트워크·광고·백그라운드 작업 권한을 추가합니다.</p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="/ko/apps/receipt/">제품 페이지: <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 영수증 스캐너</a></p>
     </div>
 
@@ -1125,6 +1142,7 @@
       <p>명함 DB·이미지·임시 입력 파일은 클라우드 백업에서 제외합니다. Android 기기 간 이전에서도 명함 DB·이미지를 제외하도록 설정했으나 제조사 이전 도구의 동작은 다를 수 있습니다. 앱은 클라우드 동기화·복원을 제공하지 않습니다. 명함은 사용자가 "연락처에 추가"를 고를 때만 먼저 저장한 뒤 연락처 앱으로 전달하며, 항목이 채워진 연락처 앱 화면에서 사용자가 저장을 마칩니다. 앱은 연락처 권한을 요청하지 않으며 기존 연락처를 읽지 않습니다. 명함은 사용자가 "vCard 공유"를 고를 때만 먼저 저장한 뒤 vCard 파일로 전달하며, 선택한 수신 앱이 사본을 처리합니다.</p>
       <p>Document Scanner 준비에는 Google Play services의 구성요소 다운로드가, 클라우드 사진 공급자에는 연결이 필요할 수 있습니다. 선택적인 개체 인식 모델은 Wi-Fi에서만 Google로부터 내려받으며, 이 다운로드에 명함 내용은 담기지 않습니다. QR 코드에서 찾은 링크는 후보로만 보여주고 자동으로 열지 않습니다. 사용자가 "링크 열기"를 누를 때만, http·https 주소일 때만 Android에 넘겨 주로 브라우저로 열며, 이후 처리는 그 앱의 정책을 따릅니다. ML Kit는 기기·앱 정보, 설치 식별자, 성능·기능 이벤트 등 기술 진단·사용 정보를 수집하며, 자세한 내용은 Google의 <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit 데이터 공개</a>에 있습니다.</p>
       <p>앱은 AdMob 배너와 지역에 필요한 Google UMP 개인정보 선택을 사용하며 광고 처리는 3절과 같습니다. 명함 내용을 광고 SDK에 제공하지 않습니다. 로컬 데이터 삭제가 Google의 진단·광고 기록을 삭제하는 것은 아닙니다. 앱은 위험 권한을 요청하지 않습니다. 보조 라이브러리는 4절의 네트워크·광고·백그라운드 작업 권한을 추가합니다.</p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="/ko/apps/namecard/">제품 페이지: <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 명함 스캐너</a></p>
     </div>
 
@@ -1135,6 +1153,7 @@
       <p>저장하면 갤러리(<code>Pictures/DotoriIdPhoto</code>)에 새 JPEG를 쓰며 원본을 덮어쓰지 않습니다. 저장한 파일에는 GPS 위치 같은 원본 사진의 메타데이터를 복사하지 않습니다. 저장한 사진은 갤러리나 클라우드 사진 서비스가 그 설정에 따라 백업할 수 있으니, 필요 없으면 갤러리에서 지우세요. 저장한 사진은 사용자가 공유를 선택할 때만 다른 앱으로 전달합니다.</p>
       <p>카메라 권한은 사진 촬영을 고를 때만 요청합니다. 사진 선택은 시스템 사진 선택기(오래된 기기에서는 시스템 파일 선택기)를 쓰므로 사진·저장소 전체 접근이 필요하지 않습니다. ML Kit는 기기·앱 정보, 설치 식별자 등 기술 진단·사용 정보를 수집하며, 자세한 내용은 Google의 <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit 데이터 공개</a>에 있습니다.</p>
       <p>앱은 홈 화면에 AdMob 배너와 지역에 필요한 Google UMP 개인정보 선택을 사용하며 광고 처리는 3절과 같습니다. 사진을 광고 SDK에 제공하지 않습니다. 앱 데이터 삭제나 앱 제거는 갤러리에 저장한 사진이나 Google의 진단·광고 기록을 삭제하지 않습니다. 보조 라이브러리는 4절의 네트워크·광고·백그라운드 작업 권한을 추가합니다. 광고 개인정보 옵션은 앱의 촬영·개인정보 안내 화면에서 다시 열 수 있습니다.</p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="/ko/apps/idphoto/">제품 페이지: <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 증명사진</a></p>
     </div>
 
@@ -1144,6 +1163,7 @@
       <p>한글 읽어 주기와, 따라 쓰기 칸에서 내 글씨가 무엇으로 읽혔는지 보는 기능은 Google ML Kit로 휴대폰 안에서 한글을 인식합니다. 사진은 카메라 앱이 자기 권한으로 찍거나, 시스템 사진 선택기(오래된 기기에서는 시스템 파일 선택기)에서 사용자가 고른 사진만 앱에 넘어옵니다. 한국어 글자 인식 모델은 앱에 들어 있고, 한국어 손글씨 모델(약 25MB)은 사용자가 내려받기를 고를 때만 Google에서 내려받습니다. 사진·손글씨·인식한 글은 저장하지 않으며 개발자 서버로 보내지 않습니다. 인식한 글은 사용자가 복사를 누를 때만 클립보드에 들어갑니다. 사진을 읽는 동안에는 카메라 앱에 다녀와도 이어 갈 수 있도록 앱 전용 저장소에 임시 사본을 두며, 이 사본은 백업에서 제외되고 읽기 화면을 떠날 때나, 다음에 앱을 켤 때(읽기 화면으로 다시 열리는 경우는 제외) 지웁니다. ML Kit는 기기·앱 정보, 설치 식별자, 성능·기능 이벤트 등 기술 진단·사용 정보를 수집합니다. Google은 <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">ML Kit 데이터 공개</a>에 나열된 진단 데이터의 HTTPS 전송과 제3자 미전달을 설명합니다.</p>
       <p>글자와 낱말의 소리는 앱에 들어 있는 음원이라 인터넷 없이 재생됩니다. 직접 만든 음절과 인식 결과에서 고른 글은, 휴대폰에 한국어 음성이 설치돼 있을 때 휴대폰의 음성 합성(TTS) 엔진에 읽어 달라고 넘깁니다. 엔진에는 그 음절이나 글만 전달되며, 엔진은 제공사의 약관에 따라 동작합니다. 출처 링크와 사전 찾기는 사용자가 누를 때만 브라우저로 엽니다. 사전 찾기는 고른 한국어 낱말을 주소에 담아 국립국어원 한국어기초사전 사이트로 보냅니다.</p>
       <p>앱은 화면 위쪽에 AdMob 배너와 지역에 필요한 Google UMP 개인정보 선택을 사용하며 광고 처리는 3절과 같습니다 &mdash; <strong>전면 광고는 없습니다</strong>. 학습 기록, 그린 획, 사진, 손글씨, 인식한 글을 광고 SDK에 제공하지 않습니다. 앱은 위험 권한, 위치 권한, 카메라·사진·저장소 권한을 요청하지 않으며, 보조 라이브러리가 4절의 네트워크·광고·백그라운드 작업 권한을 추가합니다. 광고 개인정보 옵션은 앱의 설정 화면에서 다시 열 수 있습니다.</p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="/ko/apps/hangul/">제품 안내</a></p>
     </div>
 
@@ -1160,6 +1180,7 @@
 <p>외부 지도·길찾기는 선택한 좌표와 짧은 표시명(메모 앞 20자가 포함될 수 있음)을 해당 제공자에게 전달합니다. 복사는 좌표·날짜·위치 링크를 클립보드에 넣습니다. 공유는 메모 포함을 선택한 경우에만 메모도 전달합니다. 위치 링크(https://droidactor.github.io/at/)는 좌표와, 메모 포함을 선택한 경우 메모 첫 줄 앞 20자를 "#" 뒤에 담습니다. 브라우저는 이 부분을 서버로 보내지 않으며, 페이지는 분석 없이 받는 사람의 브라우저 안에서만 읽습니다. 받는 사람이 그 페이지에서 열어 좌표·이름을 받는 지도 앱에는 해당 앱의 정책이 적용됩니다. GPX에는 경로 지점과 중요 지점의 메모가, JSON 백업에는 저장한 전체 기록이 포함됩니다. 해당 동작을 사용자가 선택할 때 전달하며 대상 앱·서비스의 정책이 적용됩니다.</p>
 <p>Google AdMob 배너와 UMP 개인정보 선택을 사용합니다. Google Mobile Ads는 IP 기반 대략적 위치·앱 상호작용·진단·기기 식별자를 광고·분석·사기 방지 목적으로 수집·공유할 수 있습니다. 공식 공개사항: https://developers.google.com/admob/android/privacy/play-data-disclosure . 설정에서 이용 가능한 광고 개인정보 선택을 다시 열 수 있습니다. 앱 데이터를 지워도 Google이 이미 처리한 정보가 삭제되지는 않습니다. 하우스 홍보를 선택하면 다른 <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 제품 페이지가 열릴 수 있습니다. 전면 광고는 없습니다.</p>
 <p>앱 업데이트는 Google Play의 자체 프로세스로 처리되며 업데이트 판정을 위해 기기 메타데이터·앱 버전·설치 모듈·asset pack 목록을 이용할 수 있습니다. 공식 공개사항: https://developer.android.com/guide/playcore/in-app-updates#data-safety . 좌표·기록·메모는 업데이트 요청에 첨부하지 않습니다. </p>
+<p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
     </div>
 
     <div class="policy" id="privacy-morse">
@@ -1169,6 +1190,7 @@
       <p>저장을 선택하면 모스 부호, 신호 지속시간, 수정 문장을 포함한 최근 메시지 최대 30개와 설정을 기기에 보관합니다. 기록 화면에서 메시지를 삭제하거나 앱 데이터 삭제·앱 제거로 로컬 기록을 지울 수 있습니다. Android 백업은 비활성입니다. 복사는 선택한 결과만 시스템 클립보드에 넣으며, 다른 앱에서 명시적으로 공유한 텍스트만 이 앱으로 받아 읽습니다.</p>
       <p>상단 AdMob 배너와 지역에 필요한 Google UMP 개인정보 선택을 사용합니다. IP 기반 대략적 위치, 광고 상호작용, 진단, 기기 식별자 등 광고 데이터 처리는 위 일반 방침 및 <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure" rel="noopener">Google SDK 공개 문서</a>와 같습니다. 마이크 소리와 메시지 내용을 광고에 제공하지 않습니다. 설정의 개인정보 옵션에서 제공 가능한 동의 선택을 다시 열 수 있습니다. 하우스 Promo 카드의 자세히 보기를 누르면 다른 <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 제품 페이지가 열릴 수 있으며 전면 광고는 없습니다.</p>
       <p>RECORD_AUDIO는 전경 톤 입력, VIBRATE는 선택적 누름 피드백에 사용합니다. 공용 광고 SDK가 위 표의 네트워크·광고 권한을 추가합니다. 문의: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a>. <a href="/ko/apps/morse/">제품 페이지</a>.</p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
     </div>
 
     <div class="policy" id="privacy-hannum">
@@ -1177,6 +1199,7 @@
       <p>예문 음원은 앱에 포함됩니다. 그 밖의 읽기는 한국어 음성이 사용 가능한 경우 요청한 한글 텍스트만 기기의 TTS 엔진에 전달합니다. 해당 엔진은 자체 설정과 제공자 약관에 따라 통신할 수 있습니다. 출처 링크는 사용자가 누를 때만 브라우저에서 열립니다.</p>
       <p>Google AdMob 배너와 UMP 광고 동의 기능을 사용하며, 처리 방식은 위 3절을 따릅니다. Google Mobile Ads는 광고·분석·사기 방지를 위해 IP 주소·앱 상호작용·진단 정보·기기 식별자를 수집·공유할 수 있습니다. 학습 기록과 저장한 표현은 광고 요청에 제공하지 않습니다. 앱 데이터를 삭제해도 Google이 이미 보관한 데이터까지 삭제되지는 않습니다. 설정에서 광고 개인정보 옵션을 다시 열 수 있습니다.</p>
       <p>카메라·마이크·연락처·저장소·위치 권한을 요청하지 않습니다. 지원 라이브러리가 4절의 네트워크·광고·백그라운드 작업 권한을 추가합니다.</p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="/ko/apps/hannum/">제품 안내</a></p>
     </div>
 
@@ -1186,12 +1209,14 @@
       <p>선택적인 위치 권한으로 앱 시작 시 또는 ‘현재 위치’ 선택 시 위치를 한 번 확인해 가까운 역을 찾습니다. 대략적인 위치만 허용해도 이용할 수 있습니다. 위치는 기기 안에서만 처리하고 개발자 서버나 광고 요청으로 보내지 않습니다. 권한 거절·확인 실패 시 서면에서 시작하며 배경 위치 추적은 하지 않습니다.</p><p>Google AdMob 배너와 UMP 개인정보 선택을 사용합니다. Google은 광고·분석·부정행위 방지를 위해 IP 기반 대략적 위치, 앱 상호작용, 진단 정보, 기기 식별자를 수집·공유할 수 있습니다. 설정의 개인정보 선택에서 가능한 동의를 다시 열 수 있습니다. 앱 데이터 삭제가 Google이 이미 보관한 데이터를 삭제하지는 않습니다. <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK</a></p>
       <p><a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/ko/apps/busanmetro/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 부산 지하철</a></p>
           <p>앱은 Google Play 앱 내 업데이트를 지원합니다. Google Play는 업데이트 가능 여부와 크기를 확인하기 위해 기기 메타데이터·앱 버전·설치 모듈 정보를 처리할 수 있습니다. 지도 자료는 droidactor.github.io에서 HTTPS로 서명된 정적 데이터팩을 받으며 위치·검색어·선택한 역/노선을 요청에 넣지 않습니다. GitHub Pages는 호스팅·개인정보 정책에 따라 보안 목적으로 방문 IP 주소를 기록합니다. 갱신 실패 시에도 검증된 오프라인 자료는 계속 사용할 수 있습니다. <a href="https://developer.android.com/guide/playcore/in-app-updates#data-safety">Play 업데이트 공개사항</a> · <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">GitHub Pages 접속 정보</a></p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
     </div>
 
     <div class="policy" id="privacy-daegumetro">
       <h3><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 대구 지하철<span class="pkg-inline">com.droidactor.daegumetro</span></h3>
       <p>시행일: 2026년 10월 28일. 검색어·선택한 역·노선·언어 설정은 기기에서 처리합니다. 계정이나 이동 이력 서버, 별도 분석 서비스가 없으며 Android 자동 백업은 꺼져 있습니다. 앱 데이터 삭제로 기기의 앱 데이터를 지울 수 있습니다.</p>
       <p>선택적인 위치 권한으로 앱 시작 시 또는 ‘현재 위치’ 선택 시 위치를 한 번 확인해 가까운 역을 찾습니다. 대략적인 위치만 허용해도 이용할 수 있습니다. 위치는 기기 안에서만 처리하고 개발자 서버나 광고 요청으로 보내지 않습니다. 권한 거절·확인 실패 시 반월당에서 시작하며 배경 위치 추적은 하지 않습니다.</p><p>Google AdMob 배너와 UMP 개인정보 선택을 사용합니다. Google은 광고·분석·부정행위 방지를 위해 IP 기반 대략적 위치, 앱 상호작용, 진단 정보, 기기 식별자를 수집·공유할 수 있습니다. 설정의 개인정보 선택에서 가능한 동의를 다시 열 수 있습니다. 앱 데이터 삭제가 Google이 이미 보관한 데이터를 삭제하지는 않습니다. <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK</a></p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/ko/apps/daegumetro/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 대구 지하철</a></p>
     </div>
 
@@ -1208,7 +1233,7 @@
 <h4>기기에 남는 정보</h4>
 <p>지도·검색·표시 상태는 기기에서 처리합니다. 표시 언어·라벨 설정과 위치 권한을 이미 물어봤는지 여부를 기기에 기록하며 위치 이력은 남기지 않습니다. 최근 역·즐겨찾기 역의 식별자와 최근 경로·제외 노선을 기기에 저장합니다. 검색 문구와 위치 이력은 저장하지 않습니다. 기록 삭제로 최근 역·최근 경로를 지우고 즐겨찾기는 개별 해제할 수 있습니다. 광고 구성요소는 동의 정보와 운영 데이터를 기기에 보관할 수 있습니다. 앱 저장공간을 지우거나 앱을 제거하면 해당 앱의 로컬 데이터를 지울 수 있습니다. Android 자동 클라우드 백업은 비활성화하지만 기기 간 이전은 제조사와 시스템 설정에 따라 다를 수 있습니다.</p>
 <h4>광고와 개인정보 선택</h4>
-<p>네트워크는 광고·개인정보 안내와 Google Play 앱 업데이트에 사용합니다. 광고나 처리방침 링크를 직접 열면 해당 외부 서비스에 접속합니다. AdMob은 광고·분석·부정행위 방지를 위해 IP 기반 대략적 위치, 앱 상호작용, 진단, 기기 식별자를 수집·공유할 수 있습니다. Google은 전송 구간에 TLS를 사용한다고 고지합니다. 이 SDK 의 데이터 처리는 기기 안에서 가까운 역을 찾는 기능과 별개이며, 그 기능의 좌표는 광고 SDK 에 전달하지 않습니다. <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure" rel="noopener">Google SDK 공개 안내</a>를 참고하세요.</p>
+<p>네트워크는 광고·개인정보 안내, Google Play 앱 업데이트와 서명된 운영 공지 조회에 사용합니다. 광고나 처리방침 링크를 직접 열면 해당 외부 서비스에 접속합니다. AdMob은 광고·분석·부정행위 방지를 위해 IP 기반 대략적 위치, 앱 상호작용, 진단, 기기 식별자를 수집·공유할 수 있습니다. Google은 전송 구간에 TLS를 사용한다고 고지합니다. 이 SDK 의 데이터 처리는 기기 안에서 가까운 역을 찾는 기능과 별개이며, 그 기능의 좌표는 광고 SDK 에 전달하지 않습니다. <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure" rel="noopener">Google SDK 공개 안내</a>를 참고하세요.</p>
 <p>적용되는 지역에서는 Google UMP로 개인정보 선택을 안내합니다. 제공 가능한 선택은 설정의 개인정보 선택에서 다시 열 수 있습니다. Android 광고 설정에서도 광고 ID를 제어할 수 있으나 모든 광고 데이터 처리가 중단된다는 뜻은 아닙니다. 홍보 배너를 선택하면 다른 <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 앱의 페이지로 연결될 수 있습니다. 이번 출시 구성에는 전면·보상형 광고가 없습니다.</p>
 <h4>보관·삭제·문의</h4>
 <p>삭제할 개발자 계정 데이터베이스는 없습니다. 앱의 로컬 데이터 삭제는 Google이 이미 처리한 데이터의 삭제를 대신하지 않습니다. Google의 보관·계정 제어는 <a href="https://policies.google.com/privacy" rel="noopener">Google 개인정보처리방침</a>을 따르며, 광고 제공자가 보관한 데이터의 고정 보관 기간이나 자동 삭제를 보장하지 않습니다.</p>
@@ -1217,6 +1242,8 @@
 <p>앱은 Google Play를 통해 새 앱 버전을 확인하고, 사용자가 동의하면 업데이트를 다운로드합니다. Google Play의 자체 프로세스는 업데이트 가능 여부와 크기를 판단하기 위해 기기 메타데이터, 앱 버전, 설치 모듈·asset pack 목록을 사용할 수 있습니다. Google은 암호화 전송, 제3자 공유 없음, 정해진 보관 기간 후 삭제를 안내합니다. 앱에서 처리하는 개인 콘텐츠를 업데이트 요청에 넣지 않습니다. <a href="https://developer.android.com/guide/playcore/in-app-updates#data-safety" rel="noopener">Play 업데이트 데이터 공개사항</a>을 참고하세요.</p>
 <h4>지도 데이터 갱신</h4>
 <p>도쿄메트로 9개·도에이 4개 노선의 지도·역 검색·노선도 경로를 포함합니다. 원격 지도 갱신 주소는 설정하지 않았으며 지도 자료 변경은 앱 업데이트로 전달합니다. ODPT 개발자 토큰은 앱에 넣지 않습니다. 선택적 가까운 역 찾기는 실제 좌표가 포함된 도쿄메트로·도에이 역을 대상으로 하며 개략도 위치는 실제 위경도가 아닙니다.</p>
+<h4>운영 공지</h4>
+<p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
 <p><a href="/ko/apps/tokyometro/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 도쿄 지하철</a></p>
 </div>
 
@@ -1224,12 +1251,14 @@
       <h3><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 광주 지하철<span class="pkg-inline">com.droidactor.gwangjumetro</span></h3>
       <p>시행일: 2026년 10월 28일. 검색어·선택한 역·노선·언어 설정은 기기에서 처리합니다. 계정이나 이동 이력 서버, 별도 분석 서비스가 없으며 Android 자동 백업은 꺼져 있습니다. 앱 데이터 삭제로 기기의 앱 데이터를 지울 수 있습니다.</p>
       <p>선택적인 위치 권한으로 앱 시작 시 또는 ‘현재 위치’ 선택 시 위치를 한 번 확인해 가까운 역을 찾습니다. 대략적인 위치만 허용해도 이용할 수 있습니다. 위치는 기기 안에서만 처리하고 개발자 서버나 광고 요청으로 보내지 않습니다. 권한 거절·확인 실패 시 문화전당에서 시작하며 배경 위치 추적은 하지 않습니다.</p><p>Google AdMob 배너와 UMP 개인정보 선택을 사용합니다. Google은 광고·분석·부정행위 방지를 위해 IP 기반 대략적 위치, 앱 상호작용, 진단 정보, 기기 식별자를 수집·공유할 수 있습니다. 설정의 개인정보 선택에서 가능한 동의를 다시 열 수 있습니다. 앱 데이터 삭제가 Google이 이미 보관한 데이터를 삭제하지는 않습니다. <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK</a></p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/ko/apps/gwangjumetro/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 광주 지하철</a></p>
     </div>
 <div class="policy" id="privacy-daejeonmetro">
       <h3><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 대전 지하철<span class="pkg-inline">com.droidactor.daejeonmetro</span></h3>
       <p>시행일: 2026년 11월 13일. 검색어·선택한 역·노선·언어 설정은 기기에서 처리합니다. 계정이나 이동 이력 서버, 별도 분석 서비스가 없으며 Android 자동 백업은 꺼져 있습니다. 앱 데이터 삭제로 기기의 앱 데이터를 지울 수 있습니다.</p>
       <p>선택적인 위치 권한으로 앱 시작 시 또는 ‘현재 위치’ 선택 시 위치를 한 번 확인해 가까운 역을 찾습니다. 대략적인 위치만 허용해도 이용할 수 있습니다. 위치는 기기 안에서만 처리하고 개발자 서버나 광고 요청으로 보내지 않습니다. 권한 거절·확인 실패 시 시청에서 시작하며 배경 위치 추적은 하지 않습니다.</p><p>Google AdMob 배너와 UMP 개인정보 선택을 사용합니다. Google은 광고·분석·부정행위 방지를 위해 IP 기반 대략적 위치, 앱 상호작용, 진단 정보, 기기 식별자를 수집·공유할 수 있습니다. 설정의 개인정보 선택에서 가능한 동의를 다시 열 수 있습니다. 앱 데이터 삭제가 Google이 이미 보관한 데이터를 삭제하지는 않습니다. <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK</a></p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/ko/apps/daejeonmetro/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 대전 지하철</a></p>
     </div>
 
@@ -1239,6 +1268,7 @@
       <p>위치를 허용하면 권역을 시작할 때나 ‘현재 위치’를 선택할 때 사용 중 위치를 확인해 선택한 권역에서 가까운 역을 찾습니다. 대략적인 위치도 사용할 수 있습니다. 위치로 권역을 자동 변경하거나 배경에서 이동을 추적하지 않습니다. 좌표는 저장하거나 개발자 서버·광고 요청으로 보내지 않습니다. 위치를 얻지 못하거나 해당 권역에서 사용할 수 없으면 권역별 기본역을 표시합니다. Android 설정에서 위치 권한을 해제할 수 있습니다.</p>
       <p>온라인 운임·시설 정보를 요청하면 해당 권역이 사용하는 공식 제공처로 관련 역명이나 역 식별자를 HTTPS로 전송합니다. 정보 범위는 권역과 노선마다 다릅니다. 초기 버전은 내장 자료를 사용하며 원격 데이터팩 다운로드는 구성하지 않았습니다. 외부 링크는 사용자가 선택할 때만 엽니다.</p>
       <p>Google AdMob 배너와 UMP 개인정보 선택을 사용합니다. Google은 광고·분석·부정행위 방지를 위해 IP 기반 대략적 위치, 앱 상호작용, 진단 정보, 기기 식별자를 수집·공유할 수 있습니다. 검색어·선택 경로·즐겨찾기·기기 좌표를 광고 API로 전달하지 않습니다. 설정에서 가능한 개인정보 선택을 다시 열 수 있습니다. 앱 데이터 삭제가 Google이 이미 보관한 데이터를 삭제하지는 않습니다. <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK 안내</a></p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/ko/apps/koreametro/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한국 지하철</a></p>
     </div>
 
@@ -1248,6 +1278,7 @@
       <p>사용자 오디오 파일을 알람음으로 고를 때는 Android 시스템 문서 선택기(SAF)를 사용합니다. 앱은 사용자가 직접 선택한 파일의 읽기 권한만 유지하며 광범위한 저장소·미디어 권한을 요청하지 않습니다. 선택한 음원을 재생할 수 없거나 재부팅 직후 첫 잠금 해제 전에는 기본 알람음으로 대체합니다. Android 자동 클라우드 백업과 기기 간 전송은 비활성화되어 있습니다.</p>
       <p>정확한 알람 예약(<code>USE_EXACT_ALARM</code> / <code>SCHEDULE_EXACT_ALARM</code>), 잠금 화면 전체 화면 알림(<code>USE_FULL_SCREEN_INTENT</code>), 알람 울림 포그라운드 서비스(<code>FOREGROUND_SERVICE</code> / <code>FOREGROUND_SERVICE_SYSTEM_EXEMPTED</code>), 재부팅 후 알람 복원(<code>RECEIVE_BOOT_COMPLETED</code>), 알림 표시(<code>POST_NOTIFICATIONS</code>), 진동(<code>VIBRATE</code>), 기기 깨우기(<code>WAKE_LOCK</code>) 권한을 알람 실행과 복구에만 사용합니다. 위치·카메라·마이크·연락처 권한은 요청하지 않습니다.</p>
       <p>앱은 메인 알람 목록 화면에만 Google AdMob 배너를 표시하고(알람 울림·스누즈 대기·해제 화면에는 광고를 표시하지 않음) 적용 지역에서 Google UMP 개인정보 선택을 사용합니다. Google Mobile Ads는 광고·분석·부정행위 방지를 위해 IP 기반 대략적 위치, 앱 상호작용, 진단 정보, 기기 식별자를 수집·공유할 수 있습니다(<a href="https://developers.google.com/admob/android/privacy/play-data-disclosure" rel="noopener">Google SDK 공개 문서</a>). 광고가 활성화된 환경에서는 설정의 개인정보 옵션에서 동의 선택을 다시 열 수 있습니다. 하우스 추천 카드를 선택하면 다른 <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 제품 페이지가 열릴 수 있으며, Google Play 앱 내 업데이트(<a href="https://developer.android.com/guide/playcore/in-app-updates#data-safety" rel="noopener">Play 업데이트 공개사항</a>)를 지원합니다. 앱 저장공간 삭제나 앱 제거로 기기 내 알람 데이터를 모두 지울 수 있습니다.</p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/ko/apps/alarm/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 알람</a></p>
     </div>
 
@@ -1255,15 +1286,16 @@
       <h3><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 만보기<span class="pkg-inline">com.droidactor.pedometer</span></h3>
       <p>시행일: 2026년 11월 16일. <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 만보기는 일별·구간별 걸음 수와 경로를 기록합니다. 하루 합계는 계정 없이 기기에 피트니스 데이터를 저장하는 Google Play 서비스의 모바일 Recording API와 걸음 센서를 이용하며 걸음 수만 구독하고 거리나 칼로리는 구독하지 않습니다. 계정·로그인·기록을 보관하는 개발자 서버·별도 분석 서비스는 없습니다. 기존 일별 걸음 이력은 위치 없이 보존됩니다. 일별 자동 측정이나 구간 측정을 켜면 정확한 위치로 경로를 기록합니다.</p>
       <p>기기 내부 저장소에는 날짜별 합계, 동기화 시간 구간, 측정 설정과 기록 공백, 표시 설정, 기록 이름과 원본 자료의 참조 범위를 보관합니다. 일별·구간별 경로 자료에는 좌표·시각·정확도·속도·고도·경로 구간·거리·시간·걸음 수가 포함됩니다. 동시에 측정하면 원본 자료를 공유하며 어느 하나를 종료해도 다른 측정은 계속됩니다. 걸음·경로 기록을 개발자 서버나 광고 SDK로 보내지 않고 Android 클라우드 자동 백업·기기 간 이전에서 제외합니다. 앱에서 종료된 구간 기록을 삭제할 수 있으며 다른 기록이 참조하는 원본은 보존합니다. 앱 데이터 지우기나 제거로 로컬 기록과 설정을 삭제할 수 있지만 Google 서비스나 광고 제공자가 별도로 보관하는 데이터까지 삭제되지는 않습니다. 하루 자동 기록을 끄기 전에는 사용 가능한 미동기화 걸음 이력을 저장하고 구독을 종료하며 이미 보존한 기록은 유지합니다. Recording API 제공 이력은 최대 10일이고 구독·권한·서비스 상태에 따라 가져올 수 있는 범위가 달라집니다.</p>
-      <p>걸음 수 기록과 조회에는 신체 활동(<code>ACTIVITY_RECOGNITION</code>) 권한을 사용합니다. 일별·구간 측정 시작·재개 시 위치(<code>ACCESS_FINE_LOCATION</code> / <code>ACCESS_COARSE_LOCATION</code>) 권한을 요청하며 경로 기록에는 정확한 위치가 필요합니다. 사용자가 시작한 포그라운드 서비스(<code>FOREGROUND_SERVICE</code>, <code>FOREGROUND_SERVICE_LOCATION</code>, <code>FOREGROUND_SERVICE_HEALTH</code>)는 다른 앱을 쓰거나 화면이 꺼져도 측정 알림과 함께 기록을 이어 갑니다. 조작은 앱에서 하며 앱 종료·재부팅으로 중단되면 앱에서 재개합니다. 해당 Android 버전에서는 <code>POST_NOTIFICATIONS</code>를 사용합니다. <code>ACCESS_BACKGROUND_LOCATION</code>, 연락처·카메라·마이크·광범위한 사진/저장소 접근은 요청하지 않습니다. 권한은 Android 설정에서 철회할 수 있습니다. 지도·광고·동의 관리·Play 업데이트는 인터넷/네트워크 접근을 사용하며 광고 SDK가 <code>AD_ID</code>를 병합할 수 있습니다.</p>
+      <p>걸음 수 기록과 조회에는 신체 활동(<code>ACTIVITY_RECOGNITION</code>) 권한을 사용합니다. 일별·구간 측정 시작·재개 시 위치(<code>ACCESS_FINE_LOCATION</code> / <code>ACCESS_COARSE_LOCATION</code>) 권한을 요청하며 경로 기록에는 정확한 위치가 필요합니다. 사용자가 시작한 포그라운드 서비스(<code>FOREGROUND_SERVICE</code>, <code>FOREGROUND_SERVICE_LOCATION</code>, <code>FOREGROUND_SERVICE_HEALTH</code>)는 다른 앱을 쓰거나 화면이 꺼져도 측정 알림과 함께 기록을 이어 갑니다. 조작은 앱에서 하며 앱 종료·재부팅으로 중단되면 앱에서 재개합니다. 해당 Android 버전에서는 <code>POST_NOTIFICATIONS</code>를 사용합니다. <code>ACCESS_BACKGROUND_LOCATION</code>, 연락처·카메라·마이크·광범위한 사진/저장소 접근은 요청하지 않습니다. 권한은 Android 설정에서 철회할 수 있습니다. 지도·광고·동의 관리·Play 업데이트·서명된 운영 공지 조회는 인터넷/네트워크 접근을 사용하며 광고 SDK가 <code>AD_ID</code>를 병합할 수 있습니다.</p>
       <p>Google Maps SDK for Android로 지도와 걷기 경로를 표시하며 네트워크가 필요합니다. 지도 요청으로 현재 위치 주변 지역이 Google에 전달될 수 있습니다. Google은 요청/기기 메타데이터, SDK 비정상 종료 정보, IP 주소, Maps SDK 식별자와 사용 방식에 따른 지도 조작 이벤트의 수집을 설명합니다. 걷기 기록 DB 자체를 업로드하는 것과는 구분됩니다. <a href="https://developers.google.com/maps/documentation/android-sdk/play-data-disclosure" rel="noopener">Maps SDK 공개사항</a>과 <a href="https://policies.google.com/privacy" rel="noopener">Google 개인정보처리방침</a>을 참고하세요.</p>
       <p>측정·조회·설정 탭은 상단의 Google AdMob 배너 광고 자리 하나를 공유하고, 적용 지역에서 Google UMP로 광고 개인정보 선택을 관리합니다. Google Mobile Ads는 IP 주소(대략적 위치 추정에 이용될 수 있음), 앱 상호작용, 진단 정보, 기기 또는 기타 식별자를 수집·공유할 수 있습니다(<a href="https://developers.google.com/admob/android/privacy/play-data-disclosure" rel="noopener">Google SDK 공개 안내</a>). 개인정보 옵션이 제공되는 경우 설정 → 개인정보 옵션에서 다시 열 수 있으며, Android 설정에서 광고 ID를 재설정하거나 삭제할 수 있습니다. 걸음·경로 기록은 광고 요청에 포함하지 않습니다. Google Play 인앱 업데이트도 이용하며(<a href="https://developer.android.com/guide/playcore/in-app-updates#data-safety" rel="noopener">Play 업데이트 공개 안내</a>) 업데이트 요청에 걸음 이력을 첨부하지 않습니다.</p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/ko/apps/pedometer/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 만보기</a></p>
     </div>
-    <div class="policy" id="privacy-lunar"><h4><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 날짜·음력 계산기</h4><p>2026-11-12. 출생일·변환 날짜·기간·추가 휴일은 기기 안에서 처리하며 개발자 서버나 광고 SDK에 보내지 않습니다. 계산 초안은 Android 화면 상태에, 테마·언어·방향 설정은 로컬에 보관하며 자동 백업·기기 간 이전은 제외합니다. 계정·로그인·달력·위치 권한은 없습니다. Google AdMob/UMP와 Play 업데이트는 네트워크를 사용할 수 있습니다. 광고 SDK는 개인정보 선택에 따라 IP 기반 대략적 위치·광고 상호작용·진단·기기 ID를 처리할 수 있습니다. 설정의 개인정보 옵션에서 제공되는 광고 선택을 다시 열 수 있습니다. 앱 데이터 지우기/제거로 로컬 설정을 삭제할 수 있습니다.</p><p><a href="https://policies.google.com/privacy">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK disclosure</a> · <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/ko/apps/lunar/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 날짜·음력 계산기</a></p></div>
-    <div class="policy" id="privacy-vault"><h4><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 파일 금고</h4><p>2026-11-13. 파일 내용·이름·폴더·미리보기는 이 폰의 앱 전용 저장소에 암호화해 보관합니다. 금고 비밀번호·복구 키·파일 내용을 개발자나 광고 SDK에 보내지 않습니다. 지문 인증은 Android 시스템이 담당하며 앱은 지문 이미지를 받지 않습니다. 개발자 계정이나 클라우드 동기화는 없습니다. 시스템 선택기·공유로 고른 파일만 읽으며 저장소 전체·위치·연락처·카메라·마이크 권한을 요청하지 않습니다. 클라우드 문서 제공자에 백업하거나 파일을 꺼내면 사용자 요청으로 해당 서비스에 저장될 수 있습니다. 다른 앱으로 연 파일은 그 앱이 복사할 수 있습니다. Android 자동 백업·기기 간 이전에서는 금고를 제외합니다. 앱 제거·앱 데이터 삭제는 로컬 금고를 삭제하며 이전에 만든 백업으로만 복구할 수 있습니다. 외부 백업·꺼낸 파일은 보관한 위치에서 직접 삭제해야 합니다. Google AdMob/UMP와 Play 업데이트는 네트워크를 사용할 수 있습니다. 개인정보 선택에 따라 광고 SDK가 IP 기반 대략적 위치·광고 상호작용·진단·기기 ID를 처리할 수 있습니다. 설정에서 제공되는 광고 개인정보 옵션을 다시 열 수 있습니다. 개인정보 문의는 droidactor@gmail.com으로 받습니다.</p><p><a href="https://policies.google.com/privacy">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK disclosure</a> · <a href="/ko/apps/vault/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 파일 금고</a></p></div>
-    <div class="policy" id="privacy-qr"><h4><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> QR·바코드 스캐너</h4><p>2026-11-18. 카메라 화면과 사진·공유받은 이미지는 이 폰 안에서 코드를 읽는 데만 쓰고 저장하거나 보내지 않습니다. 읽은 코드의 기록은 이 폰의 앱 전용 저장소에만 두며 Android 자동 백업·기기 간 이전에서 제외합니다. 기록 저장은 설정에서 끌 수 있고, 기록 화면에서 지우거나 앱을 제거하면 삭제됩니다. 직접 만든 코드는 이 폰에서 만들며, 만들기 자체에는 네트워크를 사용하지 않습니다. 공유나 갤러리에 저장을 누른 코드는 같은 기록에 남습니다. 갤러리에 저장을 고르면 코드 이미지를 사진 앨범(DotoriQR)에 저장합니다. 이 이미지는 사진에 접근할 수 있는 다른 앱도 볼 수 있고, 앱을 제거해도 남으므로 갤러리에서 지웁니다. 상품 바코드 결과에서 상품 정보 조회를 누르면 필요한 순서대로 Open Food Facts·Open Beauty Facts·Open Products Facts에 바코드 번호를 전송합니다. 해당 서비스는 접속 IP·앱 버전·앱 언어도 받습니다. 이미지·다른 QR 내용·스캔 기록은 보내지 않습니다. 조회는 자동으로 실행하지 않습니다. 받은 상품 정보는 앱 메모리에서만 처리하며 파일이나 스캔 기록에 저장하지 않습니다. 최근 조회 결과 최대 32건을 10분 동안 재조회에 재사용합니다. 공급자의 처리는 해당 서비스의 <a href="https://world.openfoodfacts.org/privacy">개인정보 처리방침</a>을 따릅니다. 현재 Wi-Fi 공유를 누를 때만 선택적 접근성 서비스를 사용할 수 있습니다. 앱 안의 설명에 동의한 뒤 Android 설정에서 사용자가 직접 켜야 합니다. 이 기능은 Wi-Fi 설정 화면의 네트워크 이름·연결 상태·버튼 등을 기기 안에서 잠시 읽고, 연결된 네트워크와 QR 공유 버튼을 대신 누른 후 멈춥니다. 읽은 화면 내용은 저장하거나 전송하지 않으며 다른 앱 화면 내용은 읽지 않습니다. 기기 인증과 QR 이미지 저장·전송은 자동 실행하지 않습니다. 설정의 접근성 메뉴에서 언제든 끌 수 있고, 허용하지 않아도 Wi-Fi 정보를 직접 입력해 QR을 만들 수 있습니다. 개발자 계정·개발자 서버·클라우드 동기화는 없습니다. 런타임 권한은 카메라만 요청하며 위치·연락처·캘린더·저장소 전체·마이크 권한을 요청하지 않습니다. 연락처·일정·Wi-Fi 저장, 전화·문자·메일, 지도·웹 검색·공유는 사용자가 고른 시스템 앱이나 다른 앱으로 넘기며 그 이후의 처리는 해당 앱의 방침을 따릅니다. Google AdMob/UMP와 Play 업데이트는 네트워크를 사용할 수 있습니다. 개인정보 선택에 따라 광고 SDK가 IP 기반 대략적 위치·광고 상호작용·진단·기기 ID를 처리할 수 있습니다. 설정에서 광고 개인정보 옵션을 다시 열 수 있습니다. 개인정보 문의는 droidactor@gmail.com으로 받습니다.</p><p><a href="https://policies.google.com/privacy">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK disclosure</a> · <a href="/ko/apps/qr/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> QR·바코드 스캐너</a></p></div>
-    <div class="policy" id="privacy-counter"><h4><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 계수기</h4><p>2026-11-14. 센 값, 카운터 이름, 되돌리기 기록, 손가락별 증가량과 반응 설정은 이 폰의 앱 전용 저장소에만 두며 Android 자동 백업·기기 간 이전에서 제외합니다. 앱 데이터를 지우거나 앱을 제거하면 삭제됩니다. 개발자 계정·서버·클라우드 동기화는 없습니다. 앱 자체가 선언하는 권한은 계수 반응을 위한 VIBRATE 하나이며, 광고 SDK가 위 4절 표의 네트워크·광고 권한을 추가합니다. 위치·카메라·마이크·연락처·저장소 권한은 요청하지 않습니다. 결과 공유·복사는 사용자가 누를 때 시스템 공유 창이나 클립보드로 넘기며 그 이후의 처리는 사용자가 고른 앱의 방침을 따릅니다. 센 값과 카운터 이름은 개발자나 광고 SDK에 보내지 않습니다. Google AdMob/UMP와 Play 업데이트는 네트워크를 사용할 수 있습니다. 개인정보 선택에 따라 광고 SDK가 IP 기반 대략적 위치·광고 상호작용·진단·기기 ID를 처리할 수 있습니다. 설정에서 광고 개인정보 옵션을 다시 열 수 있습니다. 개인정보 문의는 droidactor@gmail.com 으로 받습니다.</p><p><a href="https://policies.google.com/privacy">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK disclosure</a> · <a href="/ko/apps/counter/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 계수기</a></p></div>
+    <div class="policy" id="privacy-lunar"><h4><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 날짜·음력 계산기</h4><p>2026-11-12. 출생일·변환 날짜·기간·추가 휴일은 기기 안에서 처리하며 개발자 서버나 광고 SDK에 보내지 않습니다. 계산 초안은 Android 화면 상태에, 테마·언어·방향 설정은 로컬에 보관하며 자동 백업·기기 간 이전은 제외합니다. 계정·로그인·달력·위치 권한은 없습니다. 앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다. Google AdMob/UMP와 Play 업데이트는 네트워크를 사용할 수 있습니다. 광고 SDK는 개인정보 선택에 따라 IP 기반 대략적 위치·광고 상호작용·진단·기기 ID를 처리할 수 있습니다. 설정의 개인정보 옵션에서 제공되는 광고 선택을 다시 열 수 있습니다. 앱 데이터 지우기/제거로 로컬 설정을 삭제할 수 있습니다.</p><p><a href="https://policies.google.com/privacy">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK disclosure</a> · <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/ko/apps/lunar/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 날짜·음력 계산기</a></p></div>
+    <div class="policy" id="privacy-vault"><h4><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 파일 금고</h4><p>2026-11-13. 파일 내용·이름·폴더·미리보기는 이 폰의 앱 전용 저장소에 암호화해 보관합니다. 금고 비밀번호·복구 키·파일 내용을 개발자나 광고 SDK에 보내지 않습니다. 지문 인증은 Android 시스템이 담당하며 앱은 지문 이미지를 받지 않습니다. 개발자 계정이나 클라우드 동기화는 없습니다. 시스템 선택기·공유로 고른 파일만 읽으며 저장소 전체·위치·연락처·카메라·마이크 권한을 요청하지 않습니다. 클라우드 문서 제공자에 백업하거나 파일을 꺼내면 사용자 요청으로 해당 서비스에 저장될 수 있습니다. 다른 앱으로 연 파일은 그 앱이 복사할 수 있습니다. Android 자동 백업·기기 간 이전에서는 금고를 제외합니다. 앱 제거·앱 데이터 삭제는 로컬 금고를 삭제하며 이전에 만든 백업으로만 복구할 수 있습니다. 외부 백업·꺼낸 파일은 보관한 위치에서 직접 삭제해야 합니다. 앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다. Google AdMob/UMP와 Play 업데이트는 네트워크를 사용할 수 있습니다. 개인정보 선택에 따라 광고 SDK가 IP 기반 대략적 위치·광고 상호작용·진단·기기 ID를 처리할 수 있습니다. 설정에서 제공되는 광고 개인정보 옵션을 다시 열 수 있습니다. 개인정보 문의는 droidactor@gmail.com으로 받습니다.</p><p><a href="https://policies.google.com/privacy">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK disclosure</a> · <a href="/ko/apps/vault/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 파일 금고</a></p></div>
+    <div class="policy" id="privacy-qr"><h4><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> QR·바코드 스캐너</h4><p>2026-11-18. 카메라 화면과 사진·공유받은 이미지는 이 폰 안에서 코드를 읽는 데만 쓰고 저장하거나 보내지 않습니다. 읽은 코드의 기록은 이 폰의 앱 전용 저장소에만 두며 Android 자동 백업·기기 간 이전에서 제외합니다. 기록 저장은 설정에서 끌 수 있고, 기록 화면에서 지우거나 앱을 제거하면 삭제됩니다. 직접 만든 코드는 이 폰에서 만들며, 만들기 자체에는 네트워크를 사용하지 않습니다. 공유나 갤러리에 저장을 누른 코드는 같은 기록에 남습니다. 갤러리에 저장을 고르면 코드 이미지를 사진 앨범(DotoriQR)에 저장합니다. 이 이미지는 사진에 접근할 수 있는 다른 앱도 볼 수 있고, 앱을 제거해도 남으므로 갤러리에서 지웁니다. 상품 바코드 결과에서 상품 정보 조회를 누르면 필요한 순서대로 Open Food Facts·Open Beauty Facts·Open Products Facts에 바코드 번호를 전송합니다. 해당 서비스는 접속 IP·앱 버전·앱 언어도 받습니다. 이미지·다른 QR 내용·스캔 기록은 보내지 않습니다. 조회는 자동으로 실행하지 않습니다. 받은 상품 정보는 앱 메모리에서만 처리하며 파일이나 스캔 기록에 저장하지 않습니다. 최근 조회 결과 최대 32건을 10분 동안 재조회에 재사용합니다. 공급자의 처리는 해당 서비스의 <a href="https://world.openfoodfacts.org/privacy">개인정보 처리방침</a>을 따릅니다. 현재 Wi-Fi 공유를 누를 때만 선택적 접근성 서비스를 사용할 수 있습니다. 앱 안의 설명에 동의한 뒤 Android 설정에서 사용자가 직접 켜야 합니다. 이 기능은 Wi-Fi 설정 화면의 네트워크 이름·연결 상태·버튼 등을 기기 안에서 잠시 읽고, 연결된 네트워크와 QR 공유 버튼을 대신 누른 후 멈춥니다. 읽은 화면 내용은 저장하거나 전송하지 않으며 다른 앱 화면 내용은 읽지 않습니다. 기기 인증과 QR 이미지 저장·전송은 자동 실행하지 않습니다. 설정의 접근성 메뉴에서 언제든 끌 수 있고, 허용하지 않아도 Wi-Fi 정보를 직접 입력해 QR을 만들 수 있습니다. 개발자 계정·개발자 서버·클라우드 동기화는 없습니다. 런타임 권한은 카메라만 요청하며 위치·연락처·캘린더·저장소 전체·마이크 권한을 요청하지 않습니다. 연락처·일정·Wi-Fi 저장, 전화·문자·메일, 지도·웹 검색·공유는 사용자가 고른 시스템 앱이나 다른 앱으로 넘기며 그 이후의 처리는 해당 앱의 방침을 따릅니다. 앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다. Google AdMob/UMP와 Play 업데이트는 네트워크를 사용할 수 있습니다. 개인정보 선택에 따라 광고 SDK가 IP 기반 대략적 위치·광고 상호작용·진단·기기 ID를 처리할 수 있습니다. 설정에서 광고 개인정보 옵션을 다시 열 수 있습니다. 개인정보 문의는 droidactor@gmail.com으로 받습니다.</p><p><a href="https://policies.google.com/privacy">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK disclosure</a> · <a href="/ko/apps/qr/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> QR·바코드 스캐너</a></p></div>
+    <div class="policy" id="privacy-counter"><h4><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 계수기</h4><p>2026-11-14. 센 값, 카운터 이름, 되돌리기 기록, 손가락별 증가량과 반응 설정은 이 폰의 앱 전용 저장소에만 두며 Android 자동 백업·기기 간 이전에서 제외합니다. 앱 데이터를 지우거나 앱을 제거하면 삭제됩니다. 개발자 계정·서버·클라우드 동기화는 없습니다. 앱 자체가 선언하는 권한은 계수 반응을 위한 VIBRATE 하나이며, 광고 SDK가 위 4절 표의 네트워크·광고 권한을 추가합니다. 위치·카메라·마이크·연락처·저장소 권한은 요청하지 않습니다. 결과 공유·복사는 사용자가 누를 때 시스템 공유 창이나 클립보드로 넘기며 그 이후의 처리는 사용자가 고른 앱의 방침을 따릅니다. 센 값과 카운터 이름은 개발자나 광고 SDK에 보내지 않습니다. 앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다. Google AdMob/UMP와 Play 업데이트는 네트워크를 사용할 수 있습니다. 개인정보 선택에 따라 광고 SDK가 IP 기반 대략적 위치·광고 상호작용·진단·기기 ID를 처리할 수 있습니다. 설정에서 광고 개인정보 옵션을 다시 열 수 있습니다. 개인정보 문의는 droidactor@gmail.com 으로 받습니다.</p><p><a href="https://policies.google.com/privacy">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK disclosure</a> · <a href="/ko/apps/counter/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 계수기</a></p></div>
     <div class="policy" id="privacy-light"><h4><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 손전등 카메라</h4><p>2026-11-20. 손전등은 카메라 권한 없이 켭니다. 카메라 권한은 사용자가 촬영 화면을 열 때만 요청하며, 찍은 사진은 이 폰의 사진 폴더(Pictures/DotoriLight)에만 저장되고 앱이 어디로도 보내지 않습니다. Android 9 이하에서는 사진을 저장할 때 저장소 권한을 요청합니다. 사진 공유는 사용자가 누를 때 시스템 공유 창에서 고른 앱으로만 넘기며 그 이후의 처리는 해당 앱의 방침을 따릅니다. 알림 권한은 손전등 켜짐 상태와 타이머 남은 시간을 표시하는 데만 씁니다. 화면이 꺼져도 손전등을 유지하려고 포그라운드 서비스를 쓰고, 자동 꺼짐 타이머가 걸린 동안에만 절전 해제(wake lock)를 사용합니다. 밝기·타이머·실행 시 자동 점등·셔터음 설정값과 공지 읽음·표시 기록 및 캐시는 이 폰의 앱 전용 저장소에만 두며 Android 자동 백업·기기 간 이전에서 제외합니다. 앱 데이터를 지우거나 앱을 제거하면 설정값과 공지 기록은 삭제되고, Pictures/DotoriLight 에 저장된 사진은 사용자가 갤러리에서 지울 때까지 남습니다. 개발자 계정·서버·클라우드 동기화는 없습니다. 위치·마이크·연락처 권한은 요청하지 않습니다. 앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 사진·설정값·기기 식별자를 포함하지 않으며, 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다. 사진과 손전등 설정값은 개발자나 광고 SDK에 보내지 않습니다. Google AdMob/UMP와 Play 업데이트는 네트워크를 사용할 수 있습니다. 개인정보 선택에 따라 광고 SDK가 IP 기반 대략적 위치·광고 상호작용·진단·기기 ID를 처리할 수 있습니다. 설정에서 광고 개인정보 옵션을 다시 열 수 있습니다. 개인정보 문의는 droidactor@gmail.com 으로 받습니다.</p><p><a href="https://policies.google.com/privacy">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google SDK disclosure</a> · <a href="/ko/apps/light/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 손전등 카메라</a></p></div>
 
     <div class="policy" id="privacy-seoulmetro">
@@ -1271,6 +1303,7 @@
       <p>시행일: 2026년 10월 28일. <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 서울 지하철은 앱에 포함된 노선도와 역명 데이터를 기기에서 표시·검색합니다. 검색어, 선택한 역·노선, 라벨 선택은 기기 안에서 처리하며 개발자 운영 서버로 보내거나 광고 요청에 넣지 않습니다. 계정·이동 추적·검색 이력 저장·별도 분석 서비스가 없습니다. 언어·라벨 설정은 기기에 저장합니다. Android 백업은 비활성이며 앱 데이터를 지우거나 앱을 삭제하면 기기의 로컬 데이터가 지워집니다.</p>
       <p>선택적인 위치 권한으로 앱 시작 시 또는 ‘현재 위치’ 선택 시 위치를 한 번 조회하고, 기기에서 가까운 역을 찾습니다. 대략적인 위치만 허용해도 이용할 수 있으며 권한이나 위치 신호가 없으면 처음에는 강남역을 표시합니다. 좌표는 저장하거나 개발자 서버·광고 요청으로 보내지 않습니다. 백그라운드 위치 추적은 하지 않으며 Android 앱 설정에서 권한을 해제할 수 있습니다. 카메라·마이크·연락처·저장소 전체 접근 권한은 요청하지 않습니다. 공용 광고 SDK가 4절의 네트워크·광고 권한을 추가합니다. 이 처리방침 같은 링크는 사용자가 누를 때만 브라우저에서 열립니다.</p>
       <p>화면 상단의 Google AdMob 배너와 지역에 필요한 Google UMP 개인정보 선택을 사용하며, 처리 방식은 위 3절을 따릅니다. Google Mobile Ads는 광고·분석·부정행위 방지를 위해 IP 기반 대략적 위치·앱 상호작용·진단 정보·기기 식별자를 수집·공유할 수 있습니다(<a href="https://developers.google.com/admob/android/privacy/play-data-disclosure" rel="noopener">Google SDK 공개 문서</a>). 앱 데이터를 삭제해도 Google이 이미 보관한 데이터까지 삭제되지는 않습니다. 기어 설정 &rarr; 개인정보 선택에서 광고 개인정보 선택을 다시 열 수 있습니다. 하우스 홍보 배너를 누르면 다른 <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 제품 페이지가 열릴 수 있으며 전면·보상형 광고는 없습니다.</p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p>문의: <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a>.</p>
       <p><a href="/ko/apps/seoulmetro/">제품 안내</a></p>
     </div>
@@ -1281,6 +1314,7 @@
       <p>연결 복원을 위해 선택한 호스트의 주소·이름, 연결 이력과 앱 설정을 폰의 내부 저장소에 보관합니다. Android 클라우드 자동 백업은 사용하지 않도록 설정합니다. 기기 간 이전 동작은 Android 버전과 제조사에 따라 달라질 수 있습니다. 앱 데이터 지우기나 제거로 로컬 기록과 설정을 삭제할 수 있습니다. 블루투스 권한은 페어링·연결에, 포그라운드 서비스와 알림은 선택한 연결 유지에 사용합니다. 위치·연락처·카메라·마이크·광범위한 저장소 권한은 요청하지 않습니다.</p>
       <p>Google AdMob 배너 자리 한 개와 UMP 개인정보 메시지를 사용합니다. Google Mobile Ads는 광고·분석·부정 사용 방지를 위해 IP 기반 대략적 위치, 앱 상호작용, 진단, 기기 또는 기타 식별자를 수집·공유할 수 있습니다. 호스트 정보와 키 입력은 광고 SDK에 전달하지 않습니다. 필요한 동의 절차가 끝난 뒤 광고를 요청하며, 제공 가능한 개인정보 선택은 설정에서 다시 열 수 있습니다. 로컬 앱 데이터를 지워도 Google이 별도로 보관한 데이터까지 삭제되지는 않습니다.</p>
       <p>Google Play 앱 업데이트는 업데이트 확인과 사용자 승인 후 다운로드를 위해 기기 메타데이터·앱 버전·설치 모듈 목록을 암호화 통신으로 처리할 수 있습니다. 블루투스 호스트 이력이나 키 입력을 업데이트 요청에 넣지 않습니다.</p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
       <p><a href="https://policies.google.com/privacy" rel="noopener">Google privacy policy</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure" rel="noopener">Google SDK disclosure</a> · <a href="https://developer.android.com/guide/playcore/in-app-updates#data-safety" rel="noopener">Play update disclosures</a> · <a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/ko/apps/remote/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> PC 영상 리모컨</a></p>
     </div>
 
@@ -1294,6 +1328,7 @@
         광고는 배너로 표시됩니다. Google 이 게재하며 그 과정에서 Google Mobile Ads SDK 가 수집하는
         정보는 위 3항에 적혀 있습니다.
       </p>
+      <p>앱을 열거나 설정에서 공지를 새로고침할 때 운영 공지 확인을 위해 droidactor.github.io(GitHub Pages)의 서명된 정적 JSON 파일을 HTTPS로 요청할 수 있습니다. 이 요청에는 앱 내용·설정값·계정·기기 식별자를 포함하지 않으며, 공지 읽음·표시 기록과 캐시는 이 기기의 앱 전용 저장소에만 보관됩니다(앱 데이터 삭제 또는 앱 제거 시 함께 삭제). 호스팅 제공자인 GitHub가 보안 목적으로 IP 주소 등 일반 접속 기록을 처리할 수 있습니다.</p>
     </div>
 
     <h3>8. 변경과 문의</h3>
