@@ -250,6 +250,12 @@
           "position": 34,
           "name": "도토리 손전등 카메라",
           "url": "https://droidactor.github.io/ko/apps/light/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 35,
+          "url": "https://droidactor.github.io/ko/apps/mountain/",
+          "name": "도토리 한국 산행"
         }
       ]
     }
@@ -556,6 +562,7 @@
       <article class="card"><div class="icon" aria-hidden="true"><img src="/assets/icons/macropad.png" width="48" height="48" alt="" decoding="async"></div><h3><a href="/ko/apps/macropad/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 블루투스 매크로 패드</a></h3><p class="pkg">com.droidactor.bt_macropad</p><p class="desc">자주 쓰는 PC 단축키와 키 순서를 폰의 큰 버튼으로 누르세요.</p><div class="foot"><span class="badge soon">출시 예정</span><a href="/ko/apps/macropad/">앱 안내</a><a href="/ko/#privacy-macropad">개인정보</a></div></article>
       <article class="card"><div class="icon" aria-hidden="true"><img src="/assets/icons/counter.png" width="48" height="48" alt="" decoding="async"></div><h3><a href="/ko/apps/counter/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 계수기</a></h3><p class="pkg">com.droidactor.counter</p><p class="desc">화면 어디든 두드려 셉니다. 손가락 2개는 +5, 4개는 +10이며 손가락별 값은 설정에서 바꿀 수 있습니다.</p><div class="foot"><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.counter&amp;hl=ko"><img src="../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></a><a href="/ko/apps/counter/">자세히</a><a href="/ko/#privacy-counter">개인정보</a></div></article>
       <article class="card"><div class="icon" aria-hidden="true"><img src="/assets/icons/light.png" width="48" height="48" alt="" decoding="async"></div><h3><a href="/ko/apps/light/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 손전등 카메라</a></h3><p class="pkg">com.droidactor.light</p><p class="desc">손전등을 켠 채로 사진을 찍습니다. 지원 기기의 LED 밝기 조절, 알림에서 조작하는 자동 꺼짐 타이머, 빠른 설정 타일이 있습니다.</p><div class="foot"><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.light&amp;hl=ko"><img src="../assets/google-play-badge-ko.png" width="646" height="250" alt="Google Play에서 다운로드" decoding="async"></a><a href="/ko/apps/light/">자세히</a><a href="/ko/#privacy-light">개인정보</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true"><img src="/assets/icons/mountain.png" width="48" height="48" alt="" decoding="async"></div><h3><a href="/ko/apps/mountain/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한국 산행</a></h3><p class="pkg">com.droidactor.mountain</p><p class="desc">한국 명산 100곳과 607개 코스를 찾아보세요. 산행·GPX·하루 걸음 수를 함께 확인합니다.</p><div class="foot"><span class="badge soon">출시 준비 중</span> <a href="/ko/apps/mountain/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한국 산행</a> <a href="/ko/#privacy-mountain">개인정보</a></div></article>
     </div>
   </section>
 
@@ -809,7 +816,8 @@
             <td>AndroidX를 사용하는 앱</td>
             <td>내부 수신자 격리를 위한 AndroidX의 signature 보호 권한이며, 접두사는 각 앱의 패키지명입니다.</td>
           </tr>
-        </tbody>
+        <tr><td><code>ACCESS_FINE_LOCATION</code>, <code>ACCESS_COARSE_LOCATION</code>, <code>ACTIVITY_RECOGNITION</code>, <code>FOREGROUND_SERVICE_LOCATION</code>, <code>FOREGROUND_SERVICE_HEALTH</code>, <code>POST_NOTIFICATIONS</code>, <code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code>, <code>AD_ID</code></td><td><a href="/ko/apps/mountain/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한국 산행</a></td><td>산행 경로·걸음 기록·알림과 지도·자료 다운로드·광고. 배경 위치 권한과 전체 파일 권한은 사용하지 않습니다.</td></tr>
+</tbody>
       </table>
     </div>
 
@@ -1282,6 +1290,7 @@
       <p><a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/ko/apps/alarm/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 알람</a></p>
     </div>
 
+    <div class="policy" id="privacy-mountain"><h3><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한국 산행<span class="pkg-inline">com.droidactor.mountain</span></h3><p>시행일: 2026-11-24. 도토리 한국 산행은 즐겨찾기·코스·방문·산행 기록·하루 걸음 수를 기기에 저장합니다. 계정이나 개발자 운영 기록 서버는 없습니다. 하루 합계는 Google Play 서비스 모바일 Recording API와 기기 센서의 걸음 수만 사용하며 위치 권한이 필요하지 않습니다.</p><p>정밀 위치는 산행 시작 시 요청하며 시간·정확도·고도·속도·경로 구간과 함께 저장합니다. 신체 활동 권한은 하루와 산행 걸음 수에 사용합니다. 사용자가 시작한 location/health foreground service와 알림으로 화면이 꺼진 동안에도 산행 기록을 이어갑니다. 배경 위치 권한은 요청하지 않습니다. 중단된 기록은 앱을 다시 열어 재개합니다.</p><p>앱 전용 저장소에는 경로·걸음 합계·동기화 범위·보관 GPX 사본·방문·메모·즐겨찾기·설정을 보관합니다. Android 클라우드 백업과 자동 기기 이전은 제외합니다. 보관 코스·방문·완료 산행은 앱에서 삭제할 수 있고, 앱 데이터 삭제 또는 제거로 로컬 기록 전체를 지울 수 있습니다. GPX 가져오기·내보내기는 Android 파일 선택기를 사용합니다. 내보낸 파일은 선택한 위치에서 직접 삭제하기 전까지 남습니다. 전체 사진·저장소 권한은 요청하지 않습니다.</p><p>기본 지도는 Google Maps를 사용합니다. 지도 요청으로 현재 위치 주변 등 보고 있는 지역이 Google에 전달될 수 있습니다. Maps SDK는 요청·기기 메타데이터, SDK 충돌 정보, IP 주소, 가명 Maps 식별자를 수집하고 지도 카메라 사용 시 이동·확대 이벤트를 전송할 수 있습니다. 산행 기록 데이터베이스 업로드와는 별개입니다.</p><p>Google AdMob과 UMP가 배너 광고와 해당 지역 개인정보 선택을 제공합니다. Mobile Ads는 광고·분석·부정행위 방지를 위해 IP 기반 대략적 위치, 앱 상호작용, 진단, 기기·계정 식별자를 수집·공유할 수 있으며 전송 중 암호화합니다. 산행 경로와 걸음 기록은 광고 SDK에 전달하지 않습니다. 설정에서 제공되는 개인정보 옵션을 다시 열고 Android 설정에서 광고 ID를 재설정·삭제할 수 있습니다. 앱 데이터 삭제가 Google이 이미 보관한 데이터 삭제를 뜻하지는 않습니다.</p><p>선택한 서명된 공개 산행 팩, 업데이트 확인, 운영 공지는 HTTPS로 요청합니다. 이 요청에 계정·산행 기록·걸음 데이터베이스를 넣지 않습니다. 호스팅 제공자 GitHub Pages와 Google이 IP 주소 등 일반 접속 정보를 처리할 수 있습니다. 공지 상태와 캐시는 앱 데이터와 함께 삭제됩니다. 정부 기관을 대표하는 앱이 아니며 공개 코스·안전 지점은 현재 통행 가능 여부나 현장 상황을 보장하지 않습니다.</p><p><a href="https://developers.google.com/maps/documentation/android-sdk/play-data-disclosure">Maps SDK data disclosure</a> · <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Mobile Ads data disclosure</a> · <a href="https://policies.google.com/privacy">Google Privacy Policy</a></p><p><a href="mailto:droidactor@gmail.com">droidactor@gmail.com</a> · <a href="/ko/apps/mountain/"><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 한국 산행</a></p></div>
     <div class="policy" id="privacy-pedometer">
       <h3><span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 만보기<span class="pkg-inline">com.droidactor.pedometer</span></h3>
       <p>시행일: 2026년 11월 16일. <span class="dotori-ko"><span>도</span><span>토</span><span>리</span></span> 만보기는 일별·구간별 걸음 수와 경로를 기록합니다. 하루 합계는 계정 없이 기기에 피트니스 데이터를 저장하는 Google Play 서비스의 모바일 Recording API와 걸음 센서를 이용하며 걸음 수만 구독하고 거리나 칼로리는 구독하지 않습니다. 계정·로그인·기록을 보관하는 개발자 서버·별도 분석 서비스는 없습니다. 기존 일별 걸음 이력은 위치 없이 보존됩니다. 일별 자동 측정이나 구간 측정을 켜면 정확한 위치로 경로를 기록합니다.</p>
