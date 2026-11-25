@@ -223,6 +223,13 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
 
 ## 남은 일
 
+- [x] **tuner(도토리 튜너·메트로놈) 출시 배지 교체 (2026-11-25).** 10:42 로그아웃 Play `200`(한영) 확인 후 홈·제품 한영 Play 배지,
+      제품 페이지 상표 고지, 앱 허브의 `badge soon` 떼기와 카드 샷 2장(`01-guitar-tuned`·`04-metronome`)을 넣었다. 제품 페이지에
+      `Screens`/`화면` 절(01~04 4장, 05 설정 화면은 4장 기준이라 뺐다)·JSON-LD `screenshot`·`og:image`(앱 아이콘, `twitter:card`
+      `summary`)를 더했다. 축소본은 `_screenshot/tuner/{en-US,ko-KR}/` 에서 뽑은 800px WebP 8장(`assets/shots/tuner/`)이다. 사양표가
+      없어 `Status`/`상태` 행은 해당 없고 매뉴얼·기술 노트·블로그 CTA 도 없다(`grep -rl 'apps/tuner/' blog/ ko/blog/` 는 목록 페이지
+      둘만 잡는다). 공용 Play QR 사본은 `assets/qr/tuner/`. 손댄 페이지의 sitemap `lastmod` 는 이미 같은 날이라 그대로다.
+
 - [x] **vault(도토리 파일 금고) 한영 홍보글·출시 배지 준비 (2026-11-17).** 공개 Play `200`을 확인하고 제품 페이지 한영·한국어 홈의 Play 배지와 제품 상표 고지를 반영했습니다(영어 홈 배지는 이미 반영됨). 한영 앱 허브의 `badge soon`을 제거하고 금고 목록·PDF 화면 2장을 연결했습니다. blogger 원고 쌍에서 `/blog/products/photo-document-file-vault/`·`/ko/blog/products/photo-document-file-vault/`를 생성하고 글 목록·사이트맵을 갱신했습니다. 블로그 앱 아이콘은 `blog/photo-document-file-vault/assets/icon.png`이며 한영 원고·태그·발행 결과는 blogger와 Mobile `apps/vault/play/README.md`가 정본입니다. 로컬 자산·QR 배너·YouTube 링크·canonical·hreflang 검증을 마쳤습니다.
 
 - [x] **light(도토리 손전등 카메라) 출시 배지 교체 (2026-11-16).** 로그아웃 Play `200`(한영)·Console 프로덕션 활성 확인 후
