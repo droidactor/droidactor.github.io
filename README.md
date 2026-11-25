@@ -138,7 +138,7 @@ Git으로 관리하며 기존 버전의 바이트를 덮어쓰지 않는다. Mob
 | 개발자 웹사이트 | `https://droidactor.github.io/` |
 | 개인정보 처리방침 (영문) | `https://droidactor.github.io/#privacy` |
 | 개인정보 처리방침 (국문) | `https://droidactor.github.io/ko/#privacy` |
-| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` · `hangul` · `morse` · `hannum` · `seoulmetro` · `busanmetro` · `daegumetro` · `gwangjumetro` · `tokyometro` · `gps` · `koreametro` · `alarm` · `pedometer` · `lunar` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
+| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` · `hangul` · `morse` · `hannum` · `seoulmetro` · `busanmetro` · `daegumetro` · `gwangjumetro` · `tokyometro` · `gps` · `koreametro` · `alarm` · `pedometer` · `lunar` · `mountain` · `tuner` · `musicalnote` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
 | app-ads.txt 검증 | `https://droidactor.github.io/app-ads.txt` |
 
 **`#privacy-*` 앵커는 이름을 바꾸지도, 앵커를 지우지도 않는다.** 스토어 리스팅에 이미 등록된 주소다 —
@@ -694,3 +694,7 @@ AdMob 콘솔의 app-ads.txt 상태가 "확인됨" 으로 바뀌는 데 하루 �
 ## Bluetooth Macro Pad 출시 준비 (2026-11-14)
 
 `/apps/macropad/`·`/ko/apps/macropad/`, 한영 홈·허브·처리방침 `#privacy-macropad`, 권한 표·JSON-LD·역방향 링크·사이트맵을 추가했습니다. 공개 Play URL 확인 전까지 출시 예정 표시를 유지합니다. 실제 제출 상태는 Mobile `apps/bt-macropad/play/release-checklist.md`가 정본입니다.
+
+## 도토리 채보 개발 준비 (2026-11-25)
+
+`musicalnote` / `com.droidactor.musicalnote` (`Dotori Music Notes` / `도토리 채보`). `/apps/musicalnote/`·`/ko/apps/musicalnote/`, 한·영 홈·앱 허브 카드·JSON-LD·처리방침 `#privacy-musicalnote`·권한 표·역방향 링크·`sitemap.xml`/`sitemap-all.xml`을 로컬 초안으로 추가했습니다. 무반주 단선율 DSP 채보·편집·비교 재생·MIDI/MusicXML/PDF 내보내기 범위이며 혼합곡·화음·코드·가사 인식은 지원하지 않습니다. 공개 Play URL 200 확인 전까지 개발 중 표시와 `badge soon`을 유지하며, 스크린샷은 추가하지 않았습니다. 실제 제출 상태는 Mobile `apps/musical-note/play/release-checklist.md`가 정본입니다.
