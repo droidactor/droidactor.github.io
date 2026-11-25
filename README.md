@@ -702,6 +702,8 @@ AdMob 콘솔의 app-ads.txt 상태가 "확인됨" 으로 바뀌는 데 하루 �
 
 `/apps/macropad/`·`/ko/apps/macropad/`, 한영 홈·허브·처리방침 `#privacy-macropad`, 권한 표·JSON-LD·역방향 링크·사이트맵을 추가했습니다. 공개 Play URL 확인 전까지 출시 예정 표시를 유지합니다. 실제 제출 상태는 Mobile `apps/bt-macropad/play/release-checklist.md`가 정본입니다.
 
-## 도토리 채보 개발 준비 (2026-11-25)
+## 도토리 채보·한국 산행 출시 반영 (2026-11-25)
 
-`musicalnote` / `com.droidactor.musicalnote` (`Dotori Music Notes` / `도토리 채보`). `/apps/musicalnote/`·`/ko/apps/musicalnote/`, 한·영 홈·앱 허브 카드·JSON-LD·처리방침 `#privacy-musicalnote`·권한 표·역방향 링크·`sitemap.xml`/`sitemap-all.xml`을 로컬 초안으로 추가했습니다. 무반주 단선율 DSP 채보·편집·비교 재생·MIDI/MusicXML/PDF 내보내기 범위이며 혼합곡·화음·코드·가사 인식은 지원하지 않습니다. 공개 Play URL 200 확인 전까지 개발 중 표시와 `badge soon`을 유지하며, 스크린샷은 추가하지 않았습니다. 실제 제출 상태는 Mobile `apps/musical-note/play/release-checklist.md`가 정본입니다.
+`musicalnote` / `com.droidactor.musicalnote` (`Dotori Music Notes` / `도토리 채보`)와 `mountain` / `com.droidactor.mountain` (`Dotori Korea Hiking` / `도토리 한국 산행`)의 공개 Play URL이 비로그인 HTTP200임을 확인했습니다. `1a2136d`에서 두 앱의 한영 홈·제품 페이지에 Google Play 배지와 상표 고지를 반영하고, 앱 허브의 출시 준비 표식을 없애 공개 화면 두 장씩을 연결했습니다. 채보 제품 페이지의 개발 중·출시 예정 문구도 정리했습니다.
+
+채보는 무반주 단선율 채보·편집·비교 재생·MIDI/MusicXML/PDF 내보내기 범위이며 혼합곡·화음·코드·가사 인식은 지원하지 않습니다. 실제 기기 화면과 공용 Play QR(`assets/qr/musicalnote/play-store-qr.png`)을 추가했습니다. 사이트 전용 한영 원고는 별도 blogs의 `musicalnote/edit-a-melody-score-draft/site.{ko,en}.md`에 있고 아직 글 HTML은 생성·발행하지 않았습니다. 공개 배포 확인은 Mobile `todo/musicalnote-app.md`, Play 출시 상태는 앱 `play/release-checklist.md`가 정본입니다.
