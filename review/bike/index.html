@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Dotori Korea Bike — Foreground service review</title>
+  <style>body{font-family:system-ui,sans-serif;max-width:880px;margin:32px auto;padding:0 20px;line-height:1.6}video{display:block;max-width:100%;max-height:760px;background:#111}section{margin:32px 0}a{color:#176341}</style>
+</head>
+<body>
+  <h1>Dotori Korea Bike — Foreground service review</h1>
+  <p>Package <code>com.droidactor.bike</code>, version 1.0.0 (1). The recording uses a pre-release test build of the same app code with ads turned off for clarity.</p>
+  <section id="location">
+    <h2>Location: bike path following and ride recording</h2>
+    <p>An Android 16 emulator shows the user choosing the Hangang River Bike Path (south bank), starting path following and a ride, granting location (while using the app) and notification permissions, and viewing live speed and distance on the cycle computer. The ongoing notification shows the recording distance with Pause and Finish controls. After the user presses Home, the ride keeps recording through the location foreground service and the notification distance keeps increasing; tapping the notification returns to the app, and the user finishes the ride, which is then saved in Records. Public bike path coordinates are simulated on the emulator. The clip does not establish outdoor GPS accuracy or long background endurance.</p>
+    <video controls preload="metadata" src="location-1.0.0-1.mp4"></video>
+    <p><a href="location-1.0.0-1.mp4">Open the location demonstration video</a></p>
+  </section>
+  <p>Ride recording starts only through user action and can be paused or finished by the user from the app or the notification. The app does not request background location permission.</p>
+  <p><a href="/#privacy-bike">Privacy policy</a> · <a href="/apps/bike/">Product information</a></p>
+</body>
+</html>
