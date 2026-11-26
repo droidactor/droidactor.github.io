@@ -138,7 +138,7 @@ Git으로 관리하며 기존 버전의 바이트를 덮어쓰지 않는다. Mob
 | 개발자 웹사이트 | `https://droidactor.github.io/` |
 | 개인정보 처리방침 (영문) | `https://droidactor.github.io/#privacy` |
 | 개인정보 처리방침 (국문) | `https://droidactor.github.io/ko/#privacy` |
-| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` · `hangul` · `morse` · `hannum` · `seoulmetro` · `busanmetro` · `daegumetro` · `gwangjumetro` · `tokyometro` · `gps` · `koreametro` · `alarm` · `pedometer` · `lunar` · `mountain` · `tuner` · `musicalnote` · `bike` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
+| 앱별 처리방침 | `#privacy-<app key>` — `keyboard` · `ppt` · `mouse` · `numpad` · `wifi` · `ssh` · `ytdl` · `lgtv` · `roman` · `currency` · `gas` · `apartment` · `calendar` · `unitconverter` · `unit` · `receipt` · `namecard` · `idphoto` · `hangul` · `morse` · `hannum` · `seoulmetro` · `busanmetro` · `daegumetro` · `gwangjumetro` · `tokyometro` · `gps` · `koreametro` · `alarm` · `pedometer` · `lunar` · `mountain` · `tuner` · `musicalnote` · `bike` · `magnifier` (`apps.tsv` 등재 앱은 그 key 와 같다. 등재되지 않은 `gas`·`apartment`·`calendar`·`unitconverter` 는 이 표가 정본. 구 앱 `com.app.unitconverter` 는 `#privacy-unitconverter`, 새 앱 `com.droidactor.unit` 은 `#privacy-unit`) |
 | app-ads.txt 검증 | `https://droidactor.github.io/app-ads.txt` |
 
 **`#privacy-*` 앵커는 이름을 바꾸지도, 앵커를 지우지도 않는다.** 스토어 리스팅에 이미 등록된 주소다 —
@@ -711,3 +711,7 @@ AdMob 콘솔의 app-ads.txt 상태가 "확인됨" 으로 바뀌는 데 하루 �
 ## 도토리 한국 자전거길 출시 준비 (2026-11-25)
 
 `bike` / `com.droidactor.bike` (`Dotori Korea Bike` / `도토리 한국 자전거길`). `/apps/bike/`·`/ko/apps/bike/`, 한영 홈·앱 허브 카드·JSON-LD(허브 `numberOfItems` 37)·처리방침 `#privacy-bike`·권한 표(위치·위치 포그라운드 서비스·알림·진동 행 신설, `INTERNET`·`AD_ID` 행에 앱 이름 추가)·역방향 링크·`sitemap.xml`/`sitemap-all.xml`을 추가했습니다. 아이콘 `assets/icons/bike.png`는 앱 `play/store-listing/icon-512.png`를 그대로 복사했습니다. 국토종주 13대 자전거길(14개 코스) 동반 라이딩 범위이며 공식 사이버 인증 대체·턴바이턴 길안내·전국 모든 자전거도로·완전 오프라인 지도는 주장하지 않습니다. 출처는 행정안전부 자전거길 DB(3038533, 기준일 2024-02-29)와 한국수자원공사 자전거종주인증센터 현황(15006196, 기준일 2026-09-14)입니다. 공개 Play URL 200 확인 전까지 `badge soon`(출시 준비 중)을 유지합니다. 같은 날 실기기 스토어 화면 한영 4장씩(`_screenshot/bike/{en-US,ko-KR}/`)에서 800px WebP(`assets/shots/bike/`)를 만들어 제품 페이지 화면 절·JSON-LD `screenshot`에 실었습니다(채보 선례 `2cd6106`처럼 첫 절 앞, `og:image` 없음). 허브 카드 샷은 출시 뒤에 넣습니다. 실제 제출 상태는 Mobile `apps/bike/play/release-checklist.md`가 정본입니다.
+
+## 도토리 돋보기 출시 준비 (2026-11-26)
+
+`magnifier` / `com.droidactor.magnifier` (`Dotori Magnifier` / `도토리 돋보기`). `/apps/magnifier/`·`/ko/apps/magnifier/`, 한영 홈·앱 허브 카드·JSON-LD(허브 `numberOfItems` 38)·처리방침 `#privacy-magnifier`·권한 표(`CAMERA`·`WRITE_EXTERNAL_STORAGE`≤9·`INTERNET`·`AD_ID`)·역방향 링크·`sitemap.xml`/`sitemap-all.xml`을 추가했습니다. 아이콘 `assets/icons/magnifier.png`는 앱 `play/store-listing/icon-512.png`의 사본이며 실기기 화면 축소본은 `assets/shots/magnifier/{en-US,ko-KR}/`에 둡니다. 출시 상태는 Mobile `apps/magnifier/play/release-checklist.md`가 정본입니다.
