@@ -223,6 +223,8 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
 
 ## 남은 일
 
+- [x] **noise(도토리 소음 측정기) 출시 배지 교체·QR·배너 반영 (2026-11-27).** 로그아웃 Play `200`(기본·한·영) 및 Console 프로덕션 활성(`1 (1.0.0)`, 178개 국가/지역) 확인 후 홈 2·제품 페이지 2에 한·영 Google Play 배지와 제품 상표 고지를 넣고(`Coming soon`/`출시 준비 중` 문구 정리), 앱 허브 2의 `badge soon`을 떼고 카드 샷 2장(`en-01-measure`·`en-02-spectrum` / `ko-01-measure`·`ko-02-spectrum`)을 연결했다. 매뉴얼·CTA 블로그 글은 없다. 공용 Play QR 사본(`assets/qr/noise/play-store-qr.png`)과 QR 합성 블로그 배너 한·영(`assets/banner/{,en/}noise-qr.png`)을 준비했고, 손댄 6개 URL(`/`, `/ko/`, `/apps/`, `/ko/apps/`, `/apps/noise/`, `/ko/apps/noise/`)의 `sitemap.xml`·`sitemap-all.xml` `<lastmod>`를 `2026-11-27`로 갱신했다.
+
 - [x] **tuner(도토리 튜너·메트로놈) 출시 배지 교체 (2026-11-25).** 10:42 로그아웃 Play `200`(한영) 확인 후 홈·제품 한영 Play 배지,
       제품 페이지 상표 고지, 앱 허브의 `badge soon` 떼기와 카드 샷 2장(`01-guitar-tuned`·`04-metronome`)을 넣었다. 제품 페이지에
       `Screens`/`화면` 절(01~04 4장, 05 설정 화면은 4장 기준이라 뺐다)·JSON-LD `screenshot`·`og:image`(앱 아이콘, `twitter:card`
