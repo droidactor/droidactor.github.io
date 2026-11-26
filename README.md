@@ -715,3 +715,7 @@ AdMob 콘솔의 app-ads.txt 상태가 "확인됨" 으로 바뀌는 데 하루 �
 ## 도토리 돋보기 출시 준비 (2026-11-26)
 
 `magnifier` / `com.droidactor.magnifier` (`Dotori Magnifier` / `도토리 돋보기`). `/apps/magnifier/`·`/ko/apps/magnifier/`, 한영 홈·앱 허브 카드·JSON-LD(허브 `numberOfItems` 38)·처리방침 `#privacy-magnifier`·권한 표(`CAMERA`·`WRITE_EXTERNAL_STORAGE`≤9·`INTERNET`·`AD_ID`)·역방향 링크·`sitemap.xml`/`sitemap-all.xml`을 추가했습니다. 아이콘 `assets/icons/magnifier.png`는 앱 `play/store-listing/icon-512.png`의 사본이며 실기기 화면 축소본은 `assets/shots/magnifier/{en-US,ko-KR}/`에 둡니다. 출시 상태는 Mobile `apps/magnifier/play/release-checklist.md`가 정본입니다.
+
+## 도토리 음력 달력 제품 페이지 (2026-11-26)
+
+`calendar` / `com.droidactor.DrCalendar` (`Dotori Lunar Calendar` / `도토리 음력 달력`). 기존 출시 앱이라 처리방침 `#privacy-calendar`와 권한 표 행(`READ_CALENDAR`·`WRITE_CALENDAR`)은 이미 있었고 고치지 않았습니다. `/apps/calendar/`·`/ko/apps/calendar/`, 한영 홈·앱 허브 카드(공개 Play URL 비로그인 200 확인, 홈은 Play 배지, 허브는 화면 두 장)·JSON-LD(허브 `numberOfItems` 39)·역방향 링크·`sitemap.xml`/`sitemap-all.xml`을 추가했습니다. 아이콘 `assets/icons/calendar.png`는 앱 `play/store-listing/icon-512.png`의 사본이고, 화면은 `617e969`에서 올린 `assets/shots/calendar/{en-US,ko-KR}/` 5장을 씁니다. 캡션은 같은 날 `blogger` 저장소의 `{ko,en}/products/2026-11-26-lunar-birthday-calendar-app.md` 그림 설명과 같습니다.
