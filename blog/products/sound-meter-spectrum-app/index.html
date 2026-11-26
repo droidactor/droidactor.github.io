@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decibel Meter App with Spectrum &amp; CSV — droidactor</title>
+<meta name="description" content="How Dotori Sound Meter &amp; Spectrum measures live dBA, dBC and dBZ levels, compares Low/Mid/High bands and a 28-band spectrum, tunes 0.1 dB calibration and exports 4-hour interval logs as CSV or PNG for free without saving raw audio.">
+<link rel="canonical" href="https://droidactor.github.io/blog/products/sound-meter-spectrum-app/">
+<link rel="alternate" hreflang="en" href="https://droidactor.github.io/blog/products/sound-meter-spectrum-app/">
+<link rel="alternate" hreflang="ko" href="https://droidactor.github.io/ko/blog/products/sound-meter-spectrum-app/">
+<link rel="alternate" hreflang="x-default" href="https://droidactor.github.io/blog/products/sound-meter-spectrum-app/">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="droidactor">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:url" content="https://droidactor.github.io/blog/products/sound-meter-spectrum-app/">
+<meta property="og:title" content="Decibel Meter App with Spectrum &amp; CSV">
+<meta property="og:description" content="How Dotori Sound Meter &amp; Spectrum measures live dBA, dBC and dBZ levels, compares Low/Mid/High bands and a 28-band spectrum, tunes 0.1 dB calibration and exports 4-hour interval logs as CSV or PNG for free without saving raw audio.">
+<meta property="og:image" content="https://droidactor.github.io/blog/sound-meter-spectrum-app/assets/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../../assets/site.css?v=20261029-multilingual-posts">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Decibel Meter App with Spectrum & CSV",
+      "description": "How Dotori Sound Meter & Spectrum measures live dBA, dBC and dBZ levels, compares Low/Mid/High bands and a 28-band spectrum, tunes 0.1 dB calibration and exports 4-hour interval logs as CSV or PNG for free without saving raw audio.",
+      "url": "https://droidactor.github.io/blog/products/sound-meter-spectrum-app/",
+      "mainEntityOfPage": "https://droidactor.github.io/blog/products/sound-meter-spectrum-app/",
+      "image": "https://droidactor.github.io/blog/sound-meter-spectrum-app/assets/icon.png",
+      "datePublished": "2026-11-27",
+      "dateModified": "2026-11-27",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://droidactor.github.io/blog/#blog" },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Dotori Sound Meter & Spectrum",
+        "url": "https://droidactor.github.io/apps/noise/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android"
+      },
+      "author": { "@id": "https://droidactor.github.io/#publisher" },
+      "publisher": { "@id": "https://droidactor.github.io/#publisher" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "droidactor", "item": "https://droidactor.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Field notes", "item": "https://droidactor.github.io/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Decibel Meter App with Spectrum & CSV", "item": "https://droidactor.github.io/blog/products/sound-meter-spectrum-app/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><a href="/">droid<span>actor</span></a></div>
+  <nav class="langs" aria-label="Language">
+    <a class="lang-btn" href="/blog/products/sound-meter-spectrum-app/" aria-current="page" hreflang="en" lang="en">EN</a>
+    <a class="lang-btn" href="/ko/blog/products/sound-meter-spectrum-app/" hreflang="ko" lang="ko">한국어</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">droidactor</a><span>/</span><a href="/blog/">Field notes</a><span>/</span>Decibel Meter App with Spectrum &amp; CSV</nav>
+  <div class="hero">
+    <h1>Decibel Meter App with Spectrum &amp; CSV</h1>
+    <p class="post-meta"><time datetime="2026-11-27">27 November 2026</time></p>
+  </div>
+
+  <article class="post-body">
+
+    <div class="post-banner">
+      <a href="https://play.google.com/store/apps/details?id=com.droidactor.noise" aria-label="Google Play QR + Dotori Sound Meter &amp; Spectrum — get the app on Google Play"><img src="/assets/banner/en/noise-qr.png" width="800" height="200" loading="eager" decoding="async" alt="Google Play QR + Dotori Sound Meter &amp; Spectrum"></a>
+    </div>
+    <p><a href="https://play.google.com/store/apps/details?id=com.droidactor.noise">https://play.google.com/store/apps/details?id=com.droidactor.noise</a></p>
+
+    <div class="note">
+      <p><strong>In short.</strong> Checking a late-night hum or footsteps upstairs often stops at a full-screen ad or paywall. Dotori Sound Meter &amp; Spectrum is a free Android decibel meter and audio spectrum analyzer. It opens straight to live readings, a 60-second timeline and frequency bands. There is no account, trial or interstitial ad blocking the meter. I built this sound meter app so you can log everyday noise and export files without paying.</p>
+    </div>
+
+    <a class="post-app" href="https://play.google.com/store/apps/details?id=com.droidactor.noise&amp;hl=en">
+      <img src="/blog/sound-meter-spectrum-app/assets/icon.png" width="512" height="512" alt="Dotori Sound Meter &amp; Spectrum app icon" decoding="async">
+      <div class="post-app-text">
+        <p><strong><span class="dotori">Dotori</span> Sound Meter &amp; Spectrum</strong>Measure live dB, compare frequency bands and export interval logs free</p>
+        <span class="play-badge"><img
+          src="../../../assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></span>
+      </div>
+    </a>
+
+
+    <p>The app uses two tabs, Measure and Records. On Measure you see live dBA, dBC or dBZ readings alongside Min, Leq and Max figures. You also get a 60-second graph, three band bars and an expandable 28-band frequency spectrum. Tapping the top status chips opens weighting, response and 0.1 dB calibration settings. On Records you inspect saved timelines, add memos and export CSV or PNG reports for free.</p>
+
+    <h2>Open the app and read live dB with a 60-second history</h2>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.noise&amp;hl=en" aria-label="Live decibel readout, 60-second trend graph and Low, Mid and High bands — get the app on Google Play"><img src="/assets/shots/noise/en-US/en-01-measure.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Live decibel readout, 60-second trend graph and Low, Mid and High bands"></a></figure>
+    </div>
+    <p>Allow microphone access on the Measure tab and the dB meter starts updating right away. The large figure in the center shows the current level with an everyday sound comparison. Directly below it sit three values: Min, Average (Leq) and Max. Leq averages sound energy over time instead of taking a plain mean of the printed numbers. Brief loud spikes carry realistic weight in that average.</p>
+    <p>Beneath the statistics, a 60-second chart plots levels from 0 to 130 dB. When sound exceeds your phone microphone's range, the screen flags input overload. Affected samples appear as red dots on the timeline. If a call or another app takes the microphone, the noise meter leaves a visible gap. It never fills silent gaps with fake zeros, and it excludes missing intervals from Leq.</p>
+    <p>To take a quick reading, follow these steps:</p>
+    <ol>
+      <li>Open the Measure tab and allow microphone permission.</li>
+      <li>Watch the live reading, comparison label and 60-second history graph.</li>
+      <li>Tap Record interval when you want a 1-second numeric log of the current period.</li>
+      <li>Tap Reset to clear live Min, Leq and Max figures between checks.</li>
+    </ol>
+    <p>Audio is analyzed in memory on your phone and discarded immediately. No WAV or raw audio clip is ever recorded, saved or uploaded.</p>
+
+    <h2>Compare low rumble and high hum with 3-band and 28-band spectrum views</h2>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.noise&amp;hl=en" aria-label="Expanded 28-band logarithmic spectrum from 40 Hz to 16 kHz with peak frequency — get the app on Google Play"><img src="/assets/shots/noise/en-US/en-02-spectrum.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Expanded 28-band logarithmic spectrum from 40 Hz to 16 kHz with peak frequency"></a></figure>
+    </div>
+    <p>One overall decibel figure makes deep rumble and a sharp fan whine look identical. To separate them, Measure always displays three summary band bars. Low covers 20–250 Hz, Mid covers 250 Hz–2 kHz and High covers 2–16 kHz. Watching low-frequency noise rise against mid or high bars shows the character of the sound. You can compare heavy thumps against higher appliance hum at a glance.</p>
+    <p>Tap Show detailed spectrum to expand a 28-band logarithmic frequency spectrum from 40 Hz to 16 kHz. A live peak frequency readout in hertz sits at the top right of the chart. Both the 3-band bars and the 28-band chart stay unweighted (Z) for relative comparison. That holds even when the large headline number uses A or C weighting. Low energy stays visible instead of being rolled off by A-weighting.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Band</th><th>Frequency range</th><th>Typical comparison use</th></tr></thead>
+        <tbody>
+          <tr><td>Low</td><td>20–250 Hz</td><td>Heavy thumps, HVAC ducts, deep rumble</td></tr>
+          <tr><td>Mid</td><td>250 Hz–2 kHz</td><td>Speech, television, general room noise</td></tr>
+          <tr><td>High</td><td>2–16 kHz</td><td>Appliance fans, high-pitched hum or hiss</td></tr>
+          <tr><td>Detailed spectrum</td><td>40 Hz–16 kHz (28 bands)</td><td>Peak frequency (Hz) and relative band shape</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Phone microphones vary across frequencies, and many models attenuate deep bass in hardware. Treat the 3-band bars and 28-band audio spectrum analyzer as relative comparisons on one phone. Compare before and after closing a window or turning off a fan instead of reading absolute SPL.</p>
+
+    <h2>Switch dBA, dBC and dBZ weighting and tune a 0.1 dB calibration offset</h2>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.noise&amp;hl=en" aria-label="Frequency weighting, Fast or Slow response and 0.1 dB calibration sheet — get the app on Google Play"><img src="/assets/shots/noise/en-US/en-03-calibration.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Frequency weighting, Fast or Slow response and 0.1 dB calibration sheet"></a></figure>
+    </div>
+    <p>Tap any chip above the readout—weighting, response or calibration—to open measurement settings. Frequency weighting follows IEC 61672-1 curves. A-weighting (dBA) reduces low frequencies for everyday ambient checks. C-weighting (dBC) keeps more low-frequency energy, while Z-weighting (dBZ) applies no curve. Time response switches between Fast (125 ms) for quick peaks and Slow (1 s) for steady averages.</p>
+    <p>Because phone hardware differs widely, the status chip shows where the baseline comes from. It clearly separates Device sensitivity, Default (uncalibrated) and User offset. Manufacturer sensitivity is used only when Android confirms the internal mic matches raw input. Otherwise the chip labels the reading as an uncalibrated default.</p>
+    <p>If you have a calibrated reference meter in a steady sound field, compare both readings. You can adjust a calibration offset from −30.0 to +30.0 dB in ±0.1 or ±1.0 dB steps. The app saves the adjustment date right next to the offset. Keep in mind that one flat offset shifts all levels by the same amount. It cannot correct a microphone's frequency curve, so recheck it after OS or input changes.</p>
+
+    <h2>Record up to 4 hours and export CSV or PNG reports for free</h2>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.noise&amp;hl=en" aria-label="Saved interval measurement records list — get the app on Google Play"><img src="/assets/shots/noise/en-US/en-04-records.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Saved interval measurement records list"></a></figure>
+    </div>
+    <p>Watching live numbers helps for a minute, yet noise often shifts across an hour or an evening. Tap Record interval on Measure to start interval recording of 1-second numeric summaries. Each row stores Min, Leq, Max, Low/Mid/High levels, peak frequency and overload flags. One session holds up to 4 hours of valid samples on your phone. Weighting, response and calibration stay locked during a log so criteria never mix.</p>
+    <div class="screenshot-grid">
+      <figure><a href="https://play.google.com/store/apps/details?id=com.droidactor.noise&amp;hl=en" aria-label="Record detail with interactive timeline, memo and free CSV and PNG export — get the app on Google Play"><img src="/assets/shots/noise/en-US/en-05-record-detail.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Record detail with interactive timeline, memo and free CSV and PNG export"></a></figure>
+    </div>
+    <p>Open any saved item on the Records tab to inspect its full timeline. Touch or drag horizontally across the graph to check any second's level and band breakdown. You can save a short memo to note the room, appliance or time of day. Four buttons at the bottom—Save CSV, Share CSV, Save image and Share image—are all free.</p>
+    <p>The CSV export creates a UTF-8 spreadsheet with session metadata, calibration state and gaps. Every 1-second row opens cleanly in Excel or Google Sheets. Image export saves or shares a 1080×1440 PNG summary card with the timeline, stats and memo. No subscription or account is required for any recording or export feature.</p>
+
+    <h2>Know these limits before you rely on a reading</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Item</th><th>Details</th></tr></thead>
+        <tbody>
+          <tr><td>Account and pricing</td><td>No sign-up, subscription or in-app purchase</td></tr>
+          <tr><td>Audio and privacy</td><td>Microphone PCM analyzed in memory and discarded; raw audio never saved</td></tr>
+          <tr><td>Foreground only</td><td>Measuring and recording run only while the Measure screen stays visible</td></tr>
+          <tr><td>Ads and permissions</td><td>One banner ad at the top (no interstitials); microphone permission only</td></tr>
+          <tr><td>Requirements</td><td>Android 8.0 or later, English and Korean, dark and light themes</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Dotori Sound Meter &amp; Spectrum is a reference tool for everyday ambient checks. Smartphone microphones are not calibrated laboratory instruments. Do not use this app as a certified sound level meter or as legal evidence in noise disputes. Do not rely on it for regulatory limits, fault diagnosis, hearing safety or workplace safety.</p>
+    <p>Measuring and interval recording run only while the Measure screen stays visible. Version 1.0 does not support background recording with the screen off. Switching apps or turning off the screen closes the mic and saves a paused session. When you return, you can continue or finish, and missing time stays out of Leq. One banner ad sits at the top of each screen, and the app requests muted ad audio. Still, OS-level silence cannot be guaranteed for every external ad creative.</p>
+
+    <h2>Check the sound around you today</h2>
+    <p>Dotori Sound Meter &amp; Spectrum shows live dBA, dBC and dBZ levels with a 60-second chart. You get 3-band and 28-band spectrum views, 0.1 dB calibration and free 4-hour logs. CSV and PNG exports stay free, raw audio is never saved and status chips state limits clearly.</p>
+    <p>Install the app, open Measure and watch how the live level and three frequency bands respond.</p>
+
+    <div class="note">
+      <p><strong><span class="dotori">Dotori</span> Sound Meter &amp; Spectrum</strong> measures live dBA, dBC and dBZ levels, shows 3-band and 28-band spectrum, and exports interval logs as CSV or PNG free.
+        <a href="/apps/noise/">More about <span class="dotori">Dotori</span> Sound Meter &amp; Spectrum</a></p>
+      <p><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.droidactor.noise&amp;hl=en"><img
+        src="../../../assets/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" decoding="async"></a></p>
+    </div>
+
+  </article>
+
+  <footer><p>Android apps by droidactor.</p><p><a href="/blog/">Field notes</a> · <a href="/apps/">All apps</a> · <a href="/manual/">User manuals</a> · <a href="/tech-notes/">Tech notes</a> · <a href="/app-ads.txt">app-ads.txt</a></p><p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p></footer>
+
+</div>
+
+</body>
+</html>
