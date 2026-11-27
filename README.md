@@ -87,7 +87,7 @@ Git으로 관리하며 기존 버전의 바이트를 덮어쓰지 않는다. Mob
                         한 파일·외부 요청 없음·noindex·sitemap 제외. 링크 형식은 영구 약속이라 바꾸지 않는다
                         한국어/English 전환, URL `?lang=ko|en` > 저장된 선택 > 브라우저 언어. 영문 촬영은 `?lang=en#1,...`.
                         Google·Apple·카카오·네이버·TMAP 연결. iPhone/iPad는 Apple 먼저, 영문 그 밖의 기기는 Google 먼저
-                        (정본: mobile 저장소 `apps/gps/docs/gps-app-design.md` §3-3)
+                        (정본: mobile 저장소 `apps/outdoors/gps/docs/gps-app-design.md` §3-3)
 /assets/icons/maps/     `/at/` 버튼의 지도 앱 아이콘(각 앱의 공개 Google Play 등록정보 아이콘, 96px). gps 앱
                         `res/drawable-nodpi/ic_map_*` 와 같은 파일이고 네이버만 사이트에 따로 받았다
                         Apple은 공식 App Store의 Apple Inc. `915056765` 아이콘을 96px PNG로 저장했다(2026-11-05, iTunes Lookup API)
@@ -232,7 +232,7 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
 - [x] **tuner(도토리 튜너·메트로놈) 출시 배지 교체 (2026-11-25).** 10:42 로그아웃 Play `200`(한영) 확인 후 홈·제품 한영 Play 배지,
       제품 페이지 상표 고지, 앱 허브의 `badge soon` 떼기와 카드 샷 2장(`01-guitar-tuned`·`04-metronome`)을 넣었다. 제품 페이지에
       `Screens`/`화면` 절(01~04 4장, 05 설정 화면은 4장 기준이라 뺐다)·JSON-LD `screenshot`·`og:image`(앱 아이콘, `twitter:card`
-      `summary`)를 더했다. 축소본은 `_screenshot/tuner/{en-US,ko-KR}/` 에서 뽑은 800px WebP 8장(`assets/shots/tuner/`)이다. 사양표가
+      `summary`)를 더했다. 축소본은 `_media/screenshot/tuner/{en-US,ko-KR}/` 에서 뽑은 800px WebP 8장(`assets/shots/tuner/`)이다. 사양표가
       없어 `Status`/`상태` 행은 해당 없고 매뉴얼·기술 노트·블로그 CTA 도 없다(`grep -rl 'apps/tuner/' blog/ ko/blog/` 는 목록 페이지
       둘만 잡는다). 공용 Play QR 사본은 `assets/qr/tuner/`. 손댄 페이지의 sitemap `lastmod` 는 이미 같은 날이라 그대로다.
 
@@ -412,7 +412,7 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
       매뉴얼과 블로그 CTA 는 두 앱 모두 없다(`grep -rlE 'apps/(morse|hannum)/' blog/ ko/blog/` 는 목록 페이지
       `index.html` 둘만 잡는다). 앱 목록 2곳은 `badge soon` 을 떼고, `hannum` 에만 카드 샷 2장
       (`01-compare`·`03-lesson` — 비교 화면과 수업 화면으로 기능이 겹치지 않게 골랐다)을 넣었다.
-      **`morse` 는 캡처(`_screenshot/morse/`)가 있지만 허브 샷을 넣지 않았다** — 그 축소본 10장이
+      **`morse` 는 캡처(`_media/screenshot/morse/`)가 있지만 허브 샷을 넣지 않았다** — 그 축소본 10장이
       `release-morse` 브랜치(`5726813`)에만 있고 main 의 `/assets/shots/morse/` 에는 아직 없어서다.
       그 브랜치가 main 에 합쳐지면 허브 두 곳의 주석("morse is on Play but its thumbnails …")을 지우고 샷 2장을 넣는다
       (아래 미완 항목).
@@ -425,7 +425,7 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
       네 앱 모두 없다(`grep -rlE 'apps/(pedometer|lunar|qr|counter)/' blog/ ko/blog/` 는 목록 페이지 둘만 잡는다).
       앱 목록 2곳은 `badge soon` 을 떼고 네 앱 모두 카드 샷 2장을 넣었다 — pedometer `01-today`·`02-history`,
       qr `01-link`·`02-wifi`, lunar `{en,ko}-01-lunar-age`·`{en,ko}-02-leap-month`, counter `01-count`·`02-counters`.
-      lunar·counter 는 `/assets/shots/` 축소본이 없어 이번에 `_screenshot` 원본에서 그 두 장만 만들었다(lunar 원본
+      lunar·counter 는 `/assets/shots/` 축소본이 없어 이번에 `_media/screenshot` 원본에서 그 두 장만 만들었다(lunar 원본
       파일명의 언어 접두사는 그대로 뒀다). 같은 날 영문 홈 `index.html` 본문에서 무지개 색이 빠진 `Dotori` 32곳에
       `<span class="dotori">` 를 넣었다. 남은 미출시 앱은 `yt-downloader` · `daejeonmetro` · `vault` · `macropad` 4종이다.
 - [x] **morse 홍보 자료 게시 (2026-10-30).** 기존 폰 촬영 원본에서 800px WebP 10장, 네이버 절반 사본,
@@ -482,16 +482,16 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
       8페이지에 `Screens`/`화면` 절을 넣고 4장씩 실었다(`ssh-scout` 은 이미 6장이 있어 그대로 뒀다).
       `ko/apps/lgtv/` 는 국문 자산이 멀쩡해 함께 넣었다. `og:image` 는 그 앱 아이콘으로 12페이지에 채웠고
       제품 JSON-LD 에 `screenshot` 배열을 더했다.
-- [x] **`apps/lgtv/`(영문)의 스크린샷 (2026-08-27).** 제품 페이지가 발행 PNG 대신 `_screenshot` 에서
+- [x] **`apps/lgtv/`(영문)의 스크린샷 (2026-08-27).** 제품 페이지가 발행 PNG 대신 `_media/screenshot` 에서
       만든 `/assets/shots/` 축소본을 쓰게 되면서 막고 있던 사유가 사라졌다 — 새 캡처에는
       `App 현재 방송` 한글이 없다.
-- [x] **lgtv 발행 그림을 `_screenshot` 기준으로 갱신 (2026-08-27).** `blog/control-lg-webos-tv-over-wifi/`
-      `assets/` 의 en·ko 12장을 교체해 6개 앱 발행 자산이 전부 `_screenshot` 과 byte 동일해졌다
+- [x] **lgtv 발행 그림을 `_media/screenshot` 기준으로 갱신 (2026-08-27).** `blog/control-lg-webos-tv-over-wifi/`
+      `assets/` 의 en·ko 12장을 교체해 6개 앱 발행 자산이 전부 `_media/screenshot` 과 byte 동일해졌다
       (예외는 원본이 없는 `bt-mouse/01-home` 과 원본명이 `01-mouse-control` 인 `06-mouse-control` 둘).
       옛 캡처의 `App 현재 방송` 은 TV 가 돌려준 소스 이름이 TV 언어를 따른 것인데 영문 글·매뉴얼에서
       오식으로 읽혔다. **그 줄이 있던 것은 `01-remote`·`03-tv-picker` 이고 `06-language` 가 아니다** —
       `06-language` 의 옛 영문 캡션은 그 두 장을 해설하던 문장이라 그림을 설명하는 문구로 바꿨다.
-      제품 페이지는 이때 이미 `_screenshot` 에서 만든 축소본을 쓰고 있어 영향을 받지 않았다.
+      제품 페이지는 이때 이미 `_media/screenshot` 에서 만든 축소본을 쓰고 있어 영향을 받지 않았다.
 - [ ] **lgtv 캡처를 현행 앱(`1.0.0+3`)에서 재촬영.** 지금 발행된 12장은 두 가지가 어긋난다.
       1. **광고를 끈 store screenshot mode 로 찍혀 `Privacy options`(개인정보 옵션)가 없다.**
          그 항목은 `SettingsScreen.kt` 의 `if (runtime.adsEnabled)` 안에 있어 배포본에는 나오지만
@@ -500,11 +500,11 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
       2. **`settings_section_tv`(TV 연결)·`settings_section_appearance`(겉모습) 절이 없다.** 두 절은
          2026-08-12 에 들어왔는데 캡처는 그 이전 빌드다. 매뉴얼 본문이 두 절을 안내하므로 그림과
          어긋난다(옛 발행 캡처도 같았다 — 교체가 만든 문제가 아니라 그대로 남은 문제다)
-      재촬영하면 `_screenshot` → 발행 PNG 12장 → `assets/shots/lgtv/` webp 8장을 함께 다시 뽑는다.
+      재촬영하면 `_media/screenshot` → 발행 PNG 12장 → `assets/shots/lgtv/` webp 8장을 함께 다시 뽑는다.
       그때까지 `05-settings-about` 캡션 4곳(en·ko × 글·매뉴얼)은 개인정보 옵션·겉모습을 언급하지 않는다.
 - [ ] **`manual/lgtv/` 의 검증 앱 버전 갱신.** 현재 `1.0.0 (1)` 인데 앱은 `1.0.0+3` 이다. 위 재촬영과
       함께 실제로 다시 확인하고 올린다(그림의 About 카드도 `1.0.0` 이라 지금은 그림과 모순은 없다).
-- [ ] **`yt-downloader` 의 스크린샷·`og:image`.** 미출시라 `_screenshot` 에도 발행 자산에도 캡처가 없고
+- [ ] **`yt-downloader` 의 스크린샷·`og:image`.** 미출시라 `_media/screenshot` 에도 발행 자산에도 캡처가 없고
       아이콘도 없다(블로그 글이 없어서다). 출시 준비와 함께 처리한다.
 - [ ] **2026-08-14 경로 개편 배포 확인.** 배포 뒤 `/apps/`·`/manual/` 허브, 7종 새 제품 URL,
       6종 새 매뉴얼 URL과 기존 제품 URL 14개의 호환 이동이 실제 도메인에서 `200`인지 확인한다.
@@ -571,7 +571,7 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
   4. 제품 페이지의 매뉴얼 CTA와 해당 기술 글의 관련 글 링크가 양방향으로 살아 있는지 확인
   5. 스크린샷은 기존 블로그 자산을 참조한다. 발행된 자산 경로를 매뉴얼 때문에 이동하거나 복제하지 않는다
 - **앱 허브(`/apps/`·`/ko/apps/`)의 카드 스크린샷을 고치면** 다음을 지킨다.
-  1. 원본은 `<Mobile-worktree>/../_screenshot/<앱>/<로케일>/`이다. 공용 루트의 실제 위치는 Mobile `CLAUDE.md`의 "스크린샷" 절을 따른다. 사이트의 다른 샷과 같은 출처다
+  1. 원본은 `<Mobile-worktree>/../_media/screenshot/<앱>/<로케일>/`이다. 공용 루트의 실제 위치는 Mobile `CLAUDE.md`의 "스크린샷" 절을 따른다. 사이트의 다른 샷과 같은 출처다
   2. 허브는 **1080px 발행 PNG 를 직접 가리키지 않는다.** 카드에서 156~340px 폭으로 그려지는데
      발행본을 그대로 쓰면 페이지가 2.0MB 가 되고, 카드가 촘촘해 `loading="lazy"` 가 한 장도 미루지
      못한다(실측). 대신 `/assets/shots/<앱>/<로케일>/<이름>.webp` 를 쓴다 —
@@ -601,15 +601,15 @@ Google Search Console 과 **별개 경로**다. 한국어 검색 유입의 상�
      `twitter:card` 는 `summary` 로 둔다. 앱 샷은 1:2.17 이라 `summary_large_image` 에 넣으면 잘린다
   6. 제품 JSON-LD(`SoftwareApplication`)의 `screenshot` 배열도 그 페이지가 싣는 샷으로 함께 갱신한다
   7. `sitemap.xml` 의 해당 `<lastmod>` 갱신
-- **축소본을 만들거나 다시 만들 때**는 정본인 `<Mobile-worktree>/../_screenshot/<원본폴더>/<로케일>/`에서 뽑는다.
+- **축소본을 만들거나 다시 만들 때**는 정본인 `<Mobile-worktree>/../_media/screenshot/<원본폴더>/<로케일>/`에서 뽑는다.
   `magick <src>.png -resize 800x -strip -quality 88 <dst>.webp` (가로 캡처만 `-resize 1200x`).
   허브와 제품 페이지가 이 한 벌을 공유하므로 같은 그림이 두 해상도로 갈리지 않는다. 이 명령의 정본은
   여기 한 곳이다 — 페이지 주석에 사본을 두지 않는다(720px 시절 사본이 갈린 적이 있다).
   어긋나는 이름 셋을 조심한다.
-  1. **`_screenshot` 폴더명이 앱 key 와 다르다** — `ssh-scout` → `_screenshot/ssh/`,
-     `wifi-scout` → `_screenshot/wifi/`. 나머지 넷은 같다
-  2. `bt-mouse/01-home` 은 `_screenshot` 에 없다. 발행본에서 뽑는다
-  3. `_screenshot/bt-mouse/*/01-mouse-control.png` 의 발행명은 `06-mouse-control` 이다
+  1. **`_media/screenshot` 폴더명이 앱 key 와 다르다** — `ssh-scout` → `_media/screenshot/ssh/`,
+     `wifi-scout` → `_media/screenshot/wifi/`. 나머지 넷은 같다
+  2. `bt-mouse/01-home` 은 `_media/screenshot` 에 없다. 발행본에서 뽑는다
+  3. `_media/screenshot/bt-mouse/*/01-mouse-control.png` 의 발행명은 `06-mouse-control` 이다
 - **`assets/shots/<앱>/<로케일>/half/` 는 네이버 블로그 판 절반 크기 사본이다**(2026-10-28). 위의 800px webp 를
   `blogger` 저장소 `to_naver.py`(`shots.py`)가 절반으로 줄여 만들고 네이버 글이 그 URL 을 참조하므로 **글·페이지에 없다고
   지우지 않는다**. 800px 원본을 다시 만들었으면 `half/` 의 같은 이름을 지우고 `to_naver.py` 를 다시 돌린다(내용이 달라졌으면
@@ -680,7 +680,7 @@ AdMob 콘솔의 app-ads.txt 상태가 "확인됨" 으로 바뀌는 데 하루 �
 
 ### Hannum 스토어 화면 (2026-10-27)
 
-- 사용자 후속 요청에 따라 실제 release 앱에서 한·영 4장씩 촬영했다. 원본은 공용 `_screenshot/hannum/{en-US,ko-KR}/`에 보관한다.
+- 사용자 후속 요청에 따라 실제 release 앱에서 한·영 4장씩 촬영했다. 원본은 공용 `_media/screenshot/hannum/{en-US,ko-KR}/`에 보관한다.
 - `assets/shots/hannum/`에는 같은 원본의 800px WebP를 두고, 한·영 제품 페이지의 화면 절·SoftwareApplication screenshot 배열·아이콘 og:image를 함께 반영했다.
 - 공개 Play 출시 전이므로 제품 페이지의 출시 준비 상태를 유지하고, 미출시 스토어로 연결하는 링크나 허브 샷은 추가하지 않는다.
   → 같은 날 저녁 스토어 `200` 을 확인해 출시 상태로 돌리고 허브 샷을 넣었다("남은 일" 4차 교체).
@@ -702,7 +702,7 @@ AdMob 콘솔의 app-ads.txt 상태가 "확인됨" 으로 바뀌는 데 하루 �
 2026-11-14 로그아웃 Play URL `200`을 확인하고 홈 2·제품 페이지 2에 Play 배지를 넣고(제품 페이지 푸터 상표 고지 포함)
 앱 허브 2의 `badge soon`을 떼고 카드 샷 2장을 넣었다. 매뉴얼·이 앱을 CTA로 둔 블로그 글은 없다.
 같은 날 공용 QR `assets/qr/remote/`와 합성 배너 `assets/banner/{,en/}remote-qr.png`를 게시했다.
-출시 상태의 정본은 Mobile `apps/bt-remote/play/release-checklist.md`다.
+출시 상태의 정본은 Mobile `apps/bluetooth/remote/play/release-checklist.md`다.
 
 ## Bluetooth Macro Pad 출시 준비 (2026-11-14)
 
@@ -716,7 +716,7 @@ AdMob 콘솔의 app-ads.txt 상태가 "확인됨" 으로 바뀌는 데 하루 �
 
 ## 도토리 한국 자전거길 출시 준비 (2026-11-25)
 
-`bike` / `com.droidactor.bike` (`Dotori Korea Bike` / `도토리 한국 자전거길`). `/apps/bike/`·`/ko/apps/bike/`, 한영 홈·앱 허브 카드·JSON-LD(허브 `numberOfItems` 37)·처리방침 `#privacy-bike`·권한 표(위치·위치 포그라운드 서비스·알림·진동 행 신설, `INTERNET`·`AD_ID` 행에 앱 이름 추가)·역방향 링크·`sitemap.xml`/`sitemap-all.xml`을 추가했습니다. 아이콘 `assets/icons/bike.png`는 앱 `play/store-listing/icon-512.png`를 그대로 복사했습니다. 국토종주 13대 자전거길(14개 코스) 동반 라이딩 범위이며 공식 사이버 인증 대체·턴바이턴 길안내·전국 모든 자전거도로·완전 오프라인 지도는 주장하지 않습니다. 출처는 행정안전부 자전거길 DB(3038533, 기준일 2024-02-29)와 한국수자원공사 자전거종주인증센터 현황(15006196, 기준일 2026-09-14)입니다. 공개 Play URL 200 확인 전까지 `badge soon`(출시 준비 중)을 유지합니다. 같은 날 실기기 스토어 화면 한영 4장씩(`_screenshot/bike/{en-US,ko-KR}/`)에서 800px WebP(`assets/shots/bike/`)를 만들어 제품 페이지 화면 절·JSON-LD `screenshot`에 실었습니다(채보 선례 `2cd6106`처럼 첫 절 앞, `og:image` 없음). 허브 카드 샷은 출시 뒤에 넣습니다. 실제 제출 상태는 Mobile `apps/bike/play/release-checklist.md`가 정본입니다.
+`bike` / `com.droidactor.bike` (`Dotori Korea Bike` / `도토리 한국 자전거길`). `/apps/bike/`·`/ko/apps/bike/`, 한영 홈·앱 허브 카드·JSON-LD(허브 `numberOfItems` 37)·처리방침 `#privacy-bike`·권한 표(위치·위치 포그라운드 서비스·알림·진동 행 신설, `INTERNET`·`AD_ID` 행에 앱 이름 추가)·역방향 링크·`sitemap.xml`/`sitemap-all.xml`을 추가했습니다. 아이콘 `assets/icons/bike.png`는 앱 `play/store-listing/icon-512.png`를 그대로 복사했습니다. 국토종주 13대 자전거길(14개 코스) 동반 라이딩 범위이며 공식 사이버 인증 대체·턴바이턴 길안내·전국 모든 자전거도로·완전 오프라인 지도는 주장하지 않습니다. 출처는 행정안전부 자전거길 DB(3038533, 기준일 2024-02-29)와 한국수자원공사 자전거종주인증센터 현황(15006196, 기준일 2026-09-14)입니다. 공개 Play URL 200 확인 전까지 `badge soon`(출시 준비 중)을 유지합니다. 같은 날 실기기 스토어 화면 한영 4장씩(`_media/screenshot/bike/{en-US,ko-KR}/`)에서 800px WebP(`assets/shots/bike/`)를 만들어 제품 페이지 화면 절·JSON-LD `screenshot`에 실었습니다(채보 선례 `2cd6106`처럼 첫 절 앞, `og:image` 없음). 허브 카드 샷은 출시 뒤에 넣습니다. 실제 제출 상태는 Mobile `apps/bike/play/release-checklist.md`가 정본입니다.
 
 ## 도토리 돋보기 출시 준비 (2026-11-26)
 
@@ -728,5 +728,5 @@ AdMob 콘솔의 app-ads.txt 상태가 "확인됨" 으로 바뀌는 데 하루 �
 
 ## 도토리 텍스트 스캐너 출시 준비 (2026-11-27)
 
-`textscanner` / `com.droidactor.textscanner` (`Dotori Text Scanner` / `도토리 텍스트 스캐너`). 공개 Play 전 상태로 "앱을 추가하면" 1~9 를 한 번에 했습니다 — 제품 페이지 `/apps/textscanner/`·`/ko/apps/textscanner/`(신규. `badge soon`, 사양표 `Status`/`상태` 행 "출시 준비 중", Play 링크·배지·상표 고지 없음. 화면 절은 돋보기·소음 측정기 선례대로 첫 절 앞에 5장, JSON-LD `screenshot`, 아이콘 `og:image`), 한영 홈 카드와 처리방침 `#privacy-textscanner`, 앱 허브 카드(`badge soon`, 샷 없음), JSON-LD `ItemList` 43번 4곳, 역방향 링크(제품 페이지 78 · 블로그 목록 2 · `404.html` 두 블록 · `hermes-secretary`), `sitemap.xml`/`sitemap-all.xml` URL 2개(266→268)와 손댄 84 URL 의 `<lastmod>`. 권한은 새 행 없이 `CAMERA`·`INTERNET`/`ACCESS_NETWORK_STATE`·`AD_ID` 행에 앱 이름을 더했고(앱 자체 권한은 `CAMERA` 하나, 저장소 권한 없음. 나머지는 광고 SDK 병합), 처리방침 머리 시행일을 두 언어 모두 2026-11-27 로 올렸습니다. 같은 작업에서 허브 2곳 JSON-LD 에 빠져 있던 `trail`(41)·`noise`(42)를 넣고 `numberOfItems` 를 39→43 으로 맞췄습니다. 아이콘 `assets/icons/textscanner.png` 는 앱 `play/store-listing/icon-512.png` 사본이고, 화면은 `_screenshot/textscanner/{en-US,ko-KR}/` 에서 뽑은 800px WebP 10장(`assets/shots/textscanner/`. 영문 원본 파일명에는 언어 접두가 없지만 국문·최근 앱과 짝을 맞춰 `en-` 를 붙였습니다)입니다. 문안 근거는 Mobile `apps/text-scanner/play/store-listing/*.md`·`privacy/*.md` 이고, 하지 않을 주장(유일·렌즈보다 낫다·정확히 읽는다·손글씨·번역·광고 없음·수집 데이터 없음·완전 오프라인·모든 언어·PDF 스캔)은 `promotion/strategy/positioning.md` 의 textscanner 절을 따랐습니다. 매뉴얼·기술 노트·CTA 블로그 글은 없습니다.
+`textscanner` / `com.droidactor.textscanner` (`Dotori Text Scanner` / `도토리 텍스트 스캐너`). 공개 Play 전 상태로 "앱을 추가하면" 1~9 를 한 번에 했습니다 — 제품 페이지 `/apps/textscanner/`·`/ko/apps/textscanner/`(신규. `badge soon`, 사양표 `Status`/`상태` 행 "출시 준비 중", Play 링크·배지·상표 고지 없음. 화면 절은 돋보기·소음 측정기 선례대로 첫 절 앞에 5장, JSON-LD `screenshot`, 아이콘 `og:image`), 한영 홈 카드와 처리방침 `#privacy-textscanner`, 앱 허브 카드(`badge soon`, 샷 없음), JSON-LD `ItemList` 43번 4곳, 역방향 링크(제품 페이지 78 · 블로그 목록 2 · `404.html` 두 블록 · `hermes-secretary`), `sitemap.xml`/`sitemap-all.xml` URL 2개(266→268)와 손댄 84 URL 의 `<lastmod>`. 권한은 새 행 없이 `CAMERA`·`INTERNET`/`ACCESS_NETWORK_STATE`·`AD_ID` 행에 앱 이름을 더했고(앱 자체 권한은 `CAMERA` 하나, 저장소 권한 없음. 나머지는 광고 SDK 병합), 처리방침 머리 시행일을 두 언어 모두 2026-11-27 로 올렸습니다. 같은 작업에서 허브 2곳 JSON-LD 에 빠져 있던 `trail`(41)·`noise`(42)를 넣고 `numberOfItems` 를 39→43 으로 맞췄습니다. 아이콘 `assets/icons/textscanner.png` 는 앱 `play/store-listing/icon-512.png` 사본이고, 화면은 `_media/screenshot/textscanner/{en-US,ko-KR}/` 에서 뽑은 800px WebP 10장(`assets/shots/textscanner/`. 영문 원본 파일명에는 언어 접두가 없지만 국문·최근 앱과 짝을 맞춰 `en-` 를 붙였습니다)입니다. 문안 근거는 Mobile `apps/text-scanner/play/store-listing/*.md`·`privacy/*.md` 이고, 하지 않을 주장(유일·렌즈보다 낫다·정확히 읽는다·손글씨·번역·광고 없음·수집 데이터 없음·완전 오프라인·모든 언어·PDF 스캔)은 `promotion/strategy/positioning.md` 의 textscanner 절을 따랐습니다. 매뉴얼·기술 노트·CTA 블로그 글은 없습니다.
 **출시 뒤 남은 것** — 로그아웃 Play `200` 이 되면 "앱이 출시되면" 절차로 홈 2·제품 2 의 Play 배지(제품 페이지 사양표 상태 행과 푸터 상표 고지 포함)를 넣고, 허브 2 의 `badge soon` 을 떼고 카드 샷 2장(예: `en-01-pick`·`en-02-edit` / `ko-01-pick`·`ko-02-edit`)을 넣습니다. 출시 상태는 Mobile `apps/text-scanner/play/release-checklist.md` 가 정본입니다.
